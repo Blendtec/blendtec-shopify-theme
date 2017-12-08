@@ -1,0 +1,324 @@
+{% comment %}
+
+  For more information on collection tags:
+    - http://docs.shopify.com/themes/liquid-variables/collection
+
+Four layout options: 2x3, 3x3, 4x3, 5x3
+
+{% endcomment %}
+
+{% assign gridLayoutStyle = section.settings.collection_layout_style %}
+{% if gridLayoutStyle == "twoByThree"  %}
+  {% assign productsOnPage = 6 %}
+  {% assign grid_item_width = 'large--one-half medium--one-half' %}
+{% elsif gridLayoutStyle == "threeByThree" %}
+  {% assign productsOnPage = 9 %}
+  {% assign grid_item_width = 'large--one-third medium--one-third' %}
+{% elsif gridLayoutStyle == "fourByThree" %}
+  {% assign productsOnPage = 12 %}
+  {% assign grid_item_width = 'large--one-quarter medium--one-quarter' %}
+{% elsif gridLayoutStyle == "fiveByThree" %}
+  {% assign productsOnPage = 15 %}
+  {% assign grid_item_width = 'large--one-fifth medium--one-fifth' %}
+{% endif %}
+
+{% paginate collection.products by productsOnPage %}
+
+<header class="section-header
+  {% if collection.image and section.settings.show_collection_header %}
+    section-header--image
+    {% if section.settings.enable_dropshadow %}
+      drop-shadow
+    {% endif %}
+  {% elsif section.settings.show_collection_header %}
+    section-header--no-image-loaded
+  {% endif %}"
+  {% if collection.image %}
+    style="background-image: url({{ collection.image | img_url: 'master' }})"
+  {% endif %}
+>
+  {% if section.settings.show_collection_header %}
+    <div class="text-wrapper--center-cell text-max-width">
+      <div class="text-wrapper--small text-center">
+        <h1 class="section-header__title text-center">{{ collection.title }}</h1>
+        {% if section.settings.show_collection_description and collection.description != blank %}
+          {% comment %}Shopify sometime will wrap the output in a <p> tag and sometimes won't, depending on what the user inputs.  We /always/ want one wrapped for margins, but this can sometimes lead to duplicates.{% endcomment %}
+          <p>{{collection.description}}</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</header>
+
+{% if section.settings.enable_collection_sorting %}
+  {% assign hasFiltersWrapper = true %}
+{% endif %}
+
+{% if section.settings.enable_collection_filtering and collection.all_tags.size > 0 %}
+  {% assign hasFiltersWrapper = true %}
+{% endif %}
+
+{% if hasFiltersWrapper %}
+<div class="collection-filters-wrapper {% if section.settings.show_collection_header %}has-border{% endif %}">
+{% else %}
+<div class="breadcrumb-wrapper content-wrapper--squished content-wrapper--half-top medium-down--text-center medium-down--hide">
+{% endif %}
+  {% include 'breadcrumb' %}
+
+  {% if hasFiltersWrapper %}
+    <div class="collection-filters">
+      {% if section.settings.enable_collection_filtering and collection.all_tags.size > 0 %}
+        <div class="collection-filtering">
+          <span class="collection-filters-title">{{ 'collections.filter.title' | t }}</span>
+          <select data-collection-handle="{{ collection.handle }}">
+            <option value="">{{ 'collections.filter.all' | t }}</option>
+            {% for tag in collection.all_tags %}
+              <option value="{{ tag | handle }}" {% if current_tags contains tag %}selected="selected"{% endif %}>{{ tag }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endif %}
+
+      {% if section.settings.enable_collection_sorting %}
+        <div class="collection-sort {% if collection.products.first.vendor == collection.title %}vendor-page{% endif %}">
+          <span class="collection-filters-title">{{ 'collections.sort.title' | t }}</span>
+          {% assign sortHandles = 'manual|price-ascending|price-descending|title-ascending|title-descending|created-ascending|created-descending|best-selling' | split: '|' %}
+
+          {% capture sortTitles %}{{ 'collections.sort.manual' | t }}|{{ 'collections.sort.price_ascending' | t }}|{{ 'collections.sort.price_descending' | t }}|{{ 'collections.sort.title_ascending' | t }}|{{ 'collections.sort.title_descending' | t }}|{{ 'collections.sort.created_descending' | t }}|{{ 'collections.sort.created_ascending' | t }}|{{ 'collections.sort.best_selling' | t }}{% endcapture %}
+
+          {% assign sortTitles = sortTitles | split: '|' %}
+
+          {% for handle in sortHandles %}
+            {% if collection.sort_by == blank and collection.default_sort_by == handle %}
+              {% assign currentTitle = sortTitles[forloop.index0] %}
+            {% elsif collection.sort_by == handle %}
+              {% assign currentTitle = sortTitles[forloop.index0] %}
+            {% endif %}
+          {% endfor %}
+
+          <select>
+            {% for handle in sortHandles %}
+              {% if collection.sort_by == blank and collection.default_sort_by == handle %}
+                <option value="{{ handle }}" selected="selected">{{ sortTitles[forloop.index0] }}</option>
+              {% elsif collection.sort_by == handle %}
+                <option value="{{ handle }}" selected="selected">{{ sortTitles[forloop.index0] }}</option>
+              {% else %}
+                <option value="{{ handle }}">{{ sortTitles[forloop.index0] }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% assign collectionSize = collection.products | size %}
+{% if collectionSize == 0 %}
+  <div class="content-wrapper collection-empty">
+    <h1 class='text-center'>{{'collections.general.no_matches' | t}}</h1>
+  </div>
+{% endif %}
+
+<div class="grid--products grid--full">
+  {% for product in collection.products %}
+    {% assign hover_class = section.settings.collection_style %}
+    {% assign fit_image_class = 'grid__item--variable-height grid__image' %}
+    {% include 'product-grid-item' %}
+  {% endfor %}
+</div>
+
+{% if paginate.pages > 1 %}
+  {% if section.settings.collection_style == "grid__image--caption" %}
+    <hr class="collection-pagination-rule">
+  {% endif %}
+  <div class="pagination">
+    {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+  </div>
+{% endif %}
+
+{% endpaginate %}
+
+<style>
+  .grid--products {
+    background-color: {{ settings.color_body_bg }};
+  }
+
+  .template-collection:not(#products) .collection-pages .section-header--image {
+    background-position: {{section.settings.image_alignment}};
+  }
+
+  .template-collection:not(#products) .collection-pages .section-header--image:after {
+    background-color: {{section.settings.color_overlay_color}};
+    opacity: {{section.settings.color_overlay_opacity}};
+  }
+
+  .template-collection:not(#products) .collection-pages .section-header--image h1,
+  .template-collection:not(#products) .collection-pages .section-header--image .text-wrapper--center-cell {
+    color: {{section.settings.color_text}};
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Collection pages",
+    "class": "collection-pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_collection_filtering",
+        "label": "Enable tag filtering"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_collection_sorting",
+        "label": "Enable sorting",
+        "info": "A-Z, Z-A, etc."
+      },
+      {
+        "type": "select",
+        "id": "collection_style",
+        "label": "Product title \/ price style",
+        "options": [
+          {
+            "value": "grid__image--hover",
+            "label": "Display on hover"
+          },
+          {
+            "value": "grid__image--caption",
+            "label": "Always display"
+          }
+        ],
+        "default": "grid__image--caption"
+      },
+      {
+        "type": "select",
+        "id": "collection_layout_style",
+        "label": "Products per row",
+        "options": [
+          {
+            "value": "twoByThree",
+            "label": "Two"
+          },
+          {
+            "value": "threeByThree",
+            "label": "Three"
+          },
+          {
+            "value": "fourByThree",
+            "label": "Four"
+          },
+          {
+            "value": "fiveByThree",
+            "label": "Five"
+          }
+        ],
+        "default": "threeByThree"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_header",
+        "label": "Enable collection header"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_description",
+        "label": "Show description"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_dropshadow",
+        "default": false,
+        "label": "Show dropshadow"
+      },
+      {
+        "type": "select",
+        "id": "image_alignment",
+        "default": "center",
+        "label": "Image alignment",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "color_overlay_opacity",
+        "default": "0.8",
+        "label": "Overlay opacity",
+        "options": [
+          {
+            "value": "0",
+            "label": "Off"
+          },
+          {
+            "value": "0.1",
+            "label": "10%"
+          },
+          {
+            "value": "0.2",
+            "label": "20%"
+          },
+          {
+            "value": "0.3",
+            "label": "30%"
+          },
+          {
+            "value": "0.4",
+            "label": "40%"
+          },
+          {
+            "value": "0.5",
+            "label": "50%"
+          },
+          {
+            "value": "0.6",
+            "label": "60%"
+          },
+          {
+            "value": "0.7",
+            "label": "70%"
+          },
+          {
+            "value": "0.8",
+            "label": "80%"
+          },
+          {
+            "value": "0.9",
+            "label": "90%"
+          },
+          {
+            "value": "1",
+            "label": "100%"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "color_overlay_color",
+        "default": "#031207",
+        "label": "Overlay color"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "default": "#FFFFFF",
+        "label": "Text color"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,25 @@
+<div class="grid__item grid__text {{textCellWidth}} layout-{{block.settings.layout}} small--text-center {% if block.settings.border_override %}has-border{% endif %}" style="border-color:{{section.settings.border_color}};">
+  <div class="cell-wrapper table--full-height">
+    <div class="center-cell small--text-center">
+      <div class="text-wrapper align-{{block.settings.text_alignment}}">
+        <h3 style="color:{{section.settings.header_color}};">{{ block.settings.text_header | escape }}</h3>
+
+        <div>
+          {{ block.settings.text_body }}
+        </div>
+
+        {% comment %}
+        Unless these are empty or the default values, show the CTA.
+        {% endcomment %}
+        {% unless block.settings.button_cta == blank
+               or block.settings.button_link == blank
+               or block.settings.button_cta == "text"
+               or block.settings.button_link == "http://example.com" %}
+          <a href="{{block.settings.button_link}}" tabindex="0">
+            <button class="btn">{{ block.settings.button_cta | escape }}</button>
+          </a>
+        {% endunless %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<!-- snippets/onboarding-featured-collections.liquid -->
+{{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+{% for i in (1..3) %}
+    <a href="">
+        <div class="grid__item {{collectionWidthClass}} collection-block__image-wrapper">
+            {% capture imageUrl %}//cdn.shopify.com/s/images/themes/product-{{ i }}.png{% endcapture %}
+
+            <div class="collectionBlock__image" style='background-image:url({{imageUrl}})'></div>
+
+            <div class="collectionBlock__caption text-wrapper">
+             <h3>{{ 'homepage.onboarding.collection_title' | t }}</h3>
+            </div>
+        </div>
+    </a>
+{% endfor %}
+

@@ -1,0 +1,20 @@
+<!-- snippets/onboarding-featured-products.liquid -->
+{{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+<div class="grid__item">
+  <div class="grid--full grid--featured-products text-center helper-content">
+    {% for i in (4..6) %}
+      <div class="grid__item  grid__image {{hover_class}} {{ grid_item_width }} {{product_class}} placeholder">
+        <a href="#" class="">
+          <div class="cell-wrapper">
+            {% capture placeholder %}product-{{forloop.index}}{% endcapture %}
+            {{ placeholder | placeholder_svg_tag }}
+          </div>
+        </a>
+        <span class="product_image_caption">
+              <h6>{{ 'homepage.onboarding.product_title' | t }}</h6>
+              <span class="price">{{ 99 | money }}</span>
+        </span>
+      </div>
+    {% endfor %}
+  </div>
+</div>

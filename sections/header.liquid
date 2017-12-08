@@ -1,0 +1,513 @@
+{% include 'drawer-nav' %}
+{% include 'drawer-cart' %}
+
+{% assign currency_converter_enabled = false %}
+{% if section.settings.notification_bar_enable_currency and settings.show_multiple_currencies %}
+  {% assign currency_converter_enabled = true %}
+{% endif %}
+
+{% assign notification_bar_on = false %}
+{% if section.settings.notification_bar_text != blank or currency_converter_enabled or section.settings.notification_bar_enable_social %}
+  {% assign notification_bar_on = true %}
+{% endif %}
+
+{% if notification_bar_on %}
+  {% include 'defineParallaxAttributes' %}
+
+  <div id='notification-bar' class='table' {{reverseParallaxAttributes}}>
+    {% if currency_converter_enabled %}
+      <div class="header-message-currency">
+        <label class="currency-picker__wrapper">
+          <span class="header-message-label currency-picker__label">Currency</span>
+          <select class="currency-picker" name="currencies" style="display: inline; width: auto; vertical-align: inherit;">
+          {% assign codes = 'USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,ILS,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK' | split: ',' %}
+          {% assign supported_codes = settings.supported_currencies | split: ' ' %}
+          <option value="{{ shop.currency }}" selected="selected">{{ shop.currency }}</option>
+          {% for code in supported_codes %}
+            {% if code != shop.currency and codes contains code %}
+            <option value="{{ code }}">{{ code }}</option>
+            {% endif %}
+          {% endfor %}
+          </select>
+        </label>
+      </div>
+    {% endif %}
+
+    {% if section.settings.notification_bar_text != blank %}
+      {% if section.settings.notification_bar_link != blank %}
+        <a href="{{section.settings.notification_bar_link}}" class='table--cell-center'>
+          <span class="header-message-text">{{ section.settings.notification_bar_text | escape }}</span>
+        </a>
+      {% else %}
+        <span class="header-message-text table--cell-center text-center">{{ section.settings.notification_bar_text | escape }}</span>
+      {% endif %}
+    {% endif %}
+
+    {% assign social_options = "Facebook, Twitter, Pinterest, Instagram, Google Plus, tumblr, YouTube, Vimeo" | split: ", " %}
+    {% assign is_social = false %}
+    {% for option_title in social_options %}
+      {% capture option_setting %}social_{{ option_title | downcase | replace: " ", "_" }}_link{% endcapture %}
+      {% if settings[option_setting] != blank %}
+        {% assign is_social = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if section.settings.notification_bar_enable_social and is_social %}
+      <div class="header-message-social">
+        <span class="header-message-label">{{ 'layout.footer.social_title' | t }}</span>
+
+        <ul class="header-message-social-links">
+          {% include 'social_links' %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% assign hasBreadcrumbs = false %}
+{% if template contains "collection" or template contains "product" %}
+  {% assign hasBreadcrumbs = true %}
+{% endif %}
+
+<header
+  role="banner"
+  class="site-header {% if hasBreadcrumbs %}has-breadcrumbs{% endif %} is-moved-by-drawer {% if section.settings.transparent_header %}transparent-header{% endif %} {% if notification_bar_on %}with-notification-bar offset-by-notification-bar sm-offset-by-notification-bar{% endif %} {% if section.settings.navigation_style == 'icons' or section.settings.navigation_style == 'links' %}squished-header{% endif %} {% if section.settings.navigation_style == 'links' %}inline-navigation{% endif %} {% if section.settings.sticky_header %}sticky-header{% endif %}"
+  data-sticky-header="{{ section.settings.sticky_header }}"
+  data-inline-navigation="{% if section.settings.navigation_style == 'links' %}true{% endif %}"
+  data-notification-bar="{{ notification_bar_on }}"
+  data-transparent-header="{{ section.settings.transparent_header }}"
+  data-currency-converter="{{ section.settings.notification_bar_enable_currency }}"
+>
+  <div class="grid--full grid--full-height">
+    <div class="grid__item grid--full-height table large--{% if section.settings.navigation_style == 'links' or section.settings.navigation_style == 'icons' %}three-quarters{% else %}two-thirds{% endif %} medium--one-whole header-shop-name" tab"1">
+      <div class="large--text-left display-table-cell">
+        {% comment %}
+          Use the uploaded logo from theme settings if enabled.
+          Site name gets precedence with H1 tag on homepage, div on other pages.
+        {% endcomment %}
+        {% if template == 'index' %}
+          <h1 class="site-header__logo shop-name" itemscope itemtype="http://schema.org/Organization">
+        {% else %}
+          <div class="h1 site-header__logo shop-name" itemscope itemtype="http://schema.org/Organization">
+        {% endif %}
+
+          {% if section.settings.logo_image != blank %}
+            {% assign logoWidth = section.settings.logo_max_width | remove: 'px' | append: 'x' | escape %}
+            <a href="/" itemprop="url" class="logo-link" tabindex="0">
+              <img class="{% if section.settings.logo_transparent_image %}has-transparent-logo{% endif %}" src="{{ section.settings.logo_image | img_url: logoWidth }}" alt="{{ shop.name }}" itemprop="logo">
+              {% if template == 'index' or template == 'collection' %}
+                {% if section.settings.transparent_header and section.settings.logo_transparent_image != blank %}
+                  <img class="logo-alt-image" src="{{ section.settings.logo_transparent_image | img_url: logoWidth }}" alt="{{ shop.name }}" itemprop="logo">
+                {% endif %}
+              {% endif %}
+            </a>
+          {% else %}
+            <a href="/" itemprop="url" class='site-header__link'>{{ shop.name }}</a>
+          {% endif %}
+
+        {% if template == 'index' %}
+          </h1>
+        {% else %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.navigation_style == 'links' %}
+          {% include 'navigation' %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="grid__item grid--full-height large--{% if section.settings.navigation_style == 'links' or section.settings.navigation_style == 'icons' %}one-quarter{% else %}one-third{% endif %} medium--one-whole small--one-whole controls-container">
+      <div class="grid--full grid--full-height site-header-controls">
+        <div class="grid__item full-height large--one-third medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control js-drawer-open-NavDrawer">
+          <a class="icon-fallback-text site-nav__link table--cell-center " aria-controls="NavDrawer" aria-expanded="false" tabindex="0"  href="javascript:void(0);">
+            <span class="icon hamburger-svg" tabindex="-1">
+              <svg><use xlink:href="#icon-burger"></use></svg>
+              <svg class="icon-close"><use xlink:href="#icon-close"></use></svg>
+            </span>
+            <span class="fallback-text" tabindex="-1">{{ 'layout.navigation.menu' | t }}</span>
+          </a>
+        </div>
+
+        {% if shop.customer_accounts_enabled and section.settings.navigation_style == 'links' %}
+          <div class="grid__item full-height large--one-third medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control js-account-icon">
+            <a class="icon-fallback-text site-nav__link table--cell-center " aria-controls="Account" aria-expanded="false" tabindex="0"  href="/account">
+              <span class="icon account-svg" tabindex="-1">
+                <svg><use xlink:href="#icon-account"></use></svg>
+                <svg class="icon-close"><use xlink:href="#icon-close"></use></svg>
+              </span>
+              <span class="fallback-text" tabindex="-1">{{ 'layout.navigation.account' | t }}</span>
+            </a>
+          </div>
+        {% endif %}
+
+        <div class="grid__item full-height large--one-third medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control search-open">
+          <a class="icon-fallback-text site-nav__link table--cell-center" href="/search" aria-controls="HeaderSearchBar" aria-expanded="false"  tabindex="0">
+            <span class="icon search-svg" tabindex="-1">
+              <svg><use xlink:href="#icon-search"></use></svg>
+            </span>
+            <span class="fallback-text" tabindex="-1">{{ 'layout.navigation.search' | t }}</span>
+          </a>
+        </div>
+        <div class="grid__item full-height large--one-third medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control  js-drawer-open-CartDrawer">
+          {% comment %}
+            Show number of items in the cart and total cost in the /cart link
+
+            Ajax Cart Notes:
+              - #cartCount updates the total number of items in the cart
+              - #cartCost updates the total cost of the cart
+              - Documentation:  http://shopify.com/timber#ajax-cart
+          {% endcomment %}
+          <a href="/cart" class="icon-fallback-text site-nav__link table--cell-center" aria-controls="CartDrawer" aria-expanded="false" tabindex="0" >
+            {% comment %}<span class="icon cart-svg">{{ 'cart.svg' | asset_url | img_tag }}</span>{% endcomment %}
+            <span class="icon cart-svg" tabindex="-1">
+              <svg><use xlink:href="#icon-cart"></use></svg>
+              <svg class="icon-close"><use xlink:href="#icon-close"></use></svg>
+            </span>
+            <span tabindex="-1" class="fallback-text">{{ 'layout.navigation.cart' | t }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="HeaderSearchBar">
+     {% include 'search-bar' %}
+  </div>
+</header>
+
+<style>
+  @media screen and (max-width: 840px) {
+    .header-control.active,
+    .header-control.active:hover,
+    .js-drawer-open #PageContainer:before {
+      background-color: {{section.settings.color_nav_drawer}};
+    }
+  }
+
+  .drawer {
+    background-color: {{section.settings.color_nav_drawer}};
+    color: {{section.settings.color_nav_text}};
+  }
+
+  .drawer a:not(.accent),
+  .drawer .mobile-nav__link {
+    color: {{section.settings.color_nav_text}};
+  }
+
+  #HeaderSearchBar {
+    background-color: {{ section.settings.color_nav_drawer | hex_to_rgba: 0.97 }};
+  }
+
+  .drawer input:not([type="image"]):not([type="submit"]),
+  .drawer textarea {
+    border-color: {{section.settings.color_nav_border}};
+  }
+
+  .drawer hr {
+    border-top: 1px solid {{section.settings.color_nav_border}};
+  }
+
+  .ajaxcart__row {
+    border-bottom: 1px solid {{section.settings.color_nav_border}};
+  }
+
+  .ajaxcart__footer:before {
+    background-color: {{section.settings.color_nav_border}};
+  }
+
+  .ajaxcart__qty-num {
+    border-color: {{section.settings.color_nav_border}};
+    color: {{section.settings.color_nav_text}};
+  }
+
+  .ajaxcart__qty-adjust {
+    color: {{section.settings.color_nav_text}};
+  }
+
+  .ajaxcart__qty--plus {
+    border-color: {{section.settings.color_nav_border}};
+  }
+
+  .ajaxcart__qty--minus {
+    border-color: {{section.settings.color_nav_border}};
+  }
+
+  #HeaderSearchBar input[type="search"],
+  #HeaderSearchBar input[type="text"] {
+    color: {{section.settings.color_nav_text}};
+    border-bottom: 1px solid {{ section.settings.color_nav_text | hex_to_rgba: 0.3 }};
+  }
+
+  #HeaderSearchBar input[type="search"]::-webkit-input-placeholder,
+  #HeaderSearchBar input[type="text"]::-webkit-input-placeholder {
+     color: {{section.settings.color_nav_text | hex_to_rgba: 0.3}};
+  }
+
+  #HeaderSearchBar input[type="search"]:-moz-placeholder,
+  #HeaderSearchBar input[type="text"]:-moz-placeholder { /* Firefox 18- */
+     color: {{section.settings.color_nav_text | hex_to_rgba: 0.3}};
+  }
+
+  #HeaderSearchBar input[type="search"]::-moz-placeholder,
+  #HeaderSearchBar input[type="text"]::-moz-placeholder {  /* Firefox 19+ */
+     color: {{section.settings.color_nav_text | hex_to_rgba: 0.3}};
+  }
+
+  #HeaderSearchBar input[type="search"]:-ms-input-placeholder,
+  #HeaderSearchBar input[type="text"]:-ms-input-placeholder {
+     color: {{section.settings.color_nav_text | hex_to_rgba: 0.3}};
+  }
+
+  .mobile-nav__item a,
+  .mobile-nav__toggle button {
+    color: {{section.settings.color_nav_text}};
+  }
+
+  .mobile-nav__toggle,
+  .mobile-nav__header {
+    color: {{ section.settings.color_nav_text | hex_to_rgba: 0.35 }};
+  }
+
+  .drawer button[disabled] a {
+    color: {{ section.settings.color_nav_text | hex_to_rgba: 0.6 }};
+  }
+
+  .drawer button[disabled] a:hover {
+    color: {{ section.settings.color_nav_text | hex_to_rgba: 0.6 }} !important;
+  }
+
+  .drawer__close button {
+    color: {{ section.settings.color_nav_text | hex_to_rgba: 0.3 }};
+  }
+
+  .drawer__close button path {
+    fill: {{ section.settings.color_nav_text | hex_to_rgba: 0.3 }};
+  }
+
+  .drawer__close button:active,
+  .drawer__close button:focus {
+    color: {{ section.settings.color_nav_text | hex_to_rgba: 0.3 }};
+  }
+
+  @media screen and (min-width: 840px) {
+    .template-index .transparent-header .site-header__link,
+    .template-collection:not(#products) .transparent-header .site-header__link {
+      color: {{section.settings.color_transparent_header_icon}} !important;
+    }
+
+    .template-index .transparent-header .account-svg svg,
+    .template-index .transparent-header .search-svg svg,
+    .template-index .transparent-header .cart-svg svg,
+    .template-index .transparent-header .hamburger-svg svg,
+    .template-collection:not(#products) .transparent-header .account-svg svg,
+    .template-collection:not(#products) .transparent-header .search-svg svg,
+    .template-collection:not(#products) .transparent-header .cart-svg svg,
+    .template-collection:not(#products) .transparent-header .hamburger-svg svg {
+      fill: {{section.settings.color_transparent_header_icon}} !important;
+    }
+  }
+
+  {% if notification_bar_on %}
+    @media screen and (max-width: 840px) {
+      // The drawer is below the header ONLY on medium/small
+      .drawer {
+        top: 166px;
+      }
+    }
+  {% endif %}
+
+  {% if section.settings.navigation_style == 'links' %}
+    @media screen and (min-width: 841px) {
+      .squished-header .js-drawer-open-NavDrawer {
+        margin-right: 30px !important;
+      }
+    }
+  {% endif %}
+
+  {% if section.settings.transparent_header %}
+    .feature-section .feature-section-overlay {
+      padding-top: 90px;
+    }
+
+    @media screen and (min-width: 840px) {
+      .carousel-overlay {
+        padding-top: 80px;
+      }
+    }
+
+    .transparent-header .main-navigation a,
+    .transparent-header .main-navigation a:hover {
+      color: {{ section.settings.color_transparent_header_icon }};
+    }
+  {% endif %}
+
+  {% if section.settings.sticky_header %}
+    @media screen and (min-width: 840px) {
+      .sticky-header {
+        top: 0px !important;
+      }
+
+      .sticky-header.offset-by-notification-bar {
+        top: 40px !important;
+      }
+    }
+  {% endif %}
+</style>
+
+{% schema %}
+  {
+    "name": "Header",
+    "class": "header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "sticky_header",
+        "label": "Enable sticky header",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "transparent_header",
+        "label": "Enable transparent header"
+      },
+      {
+        "type": "color",
+        "id": "color_transparent_header_icon",
+        "label": "Header elements color override",
+        "info": "Used only when transparent header is enabled.",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+        "type": "select",
+        "id": "navigation_style",
+        "label": "Navigation style",
+        "default": "buttons",
+        "options": [
+          {
+            "value": "buttons",
+            "label": "Buttons"
+          },
+          {
+            "value": "icons",
+            "label": "Icons"
+          },
+          {
+            "value": "links",
+            "label": "Links"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "color_nav_drawer",
+        "label": "Background color",
+        "default": "#383838"
+      },
+      {
+        "type": "color",
+        "id": "color_nav_border",
+        "label": "Border color",
+        "default": "#383838"
+      },
+      {
+        "type": "color",
+        "id": "color_nav_text",
+        "label": "Text color",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": "Menus"
+      },
+      {
+        "type": "link_list",
+        "id": "nav_linklist",
+        "label": "Main menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "paragraph",
+        "content": "Enable a catalog dropdown on your Main Menu from your link lists below. Note that inline navigation is required and the selected link list must be nested within your Main Menu."
+      },
+      {
+        "type": "link_list",
+        "id": "catalog_menu",
+        "label": "Catalog menu"
+      },
+      {
+        "type": "image_picker",
+        "id": "catalog_menu_image",
+        "label": "Catalog menu image",
+        "info": "Required. Should be at least 400 x 250px."
+      },
+      {
+        "type": "paragraph",
+        "content": "Need more from your navigation? Add additional link lists below. Note that these lists are disabled if you have inline navigation enabled. For more information, check out [our documentation](http:\/\/fluorescent.co\/ira\/navigation.html)."
+      },
+      {
+        "type": "link_list",
+        "id": "nav_linklist_2",
+        "label": "Secondary menu #1"
+      },
+      {
+        "type": "link_list",
+        "id": "nav_linklist_3",
+        "label": "Secondary menu #2"
+      },
+      {
+        "type": "header",
+        "content": "Custom logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Logo image",
+        "info": "450 x 200px max."
+      },
+      {
+        "type": "text",
+        "id": "logo_max_width",
+        "label": "Custom logo width (in pixels)",
+        "default": "300"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_transparent_image",
+        "label": "Transparent logo image",
+        "info": "450 x 200px max."
+      },
+      {
+        "type": "header",
+        "content": "Promotions bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "notification_bar_enable_currency",
+        "label": "Enable currency converter",
+        "info": "Currency converter can be managed in General settings."
+      },
+      {
+        "type": "checkbox",
+        "id": "notification_bar_enable_social",
+        "label": "Enable social links",
+        "info": "Social links can be managed in General settings."
+      },
+      {
+        "type": "text",
+        "id": "notification_bar_text",
+        "label": "Text",
+        "placeholder": "Free shipping on all orders over $50."
+      },
+      {
+        "type": "url",
+        "id": "notification_bar_link",
+        "label": "Link"
+      }
+    ]
+  }
+{% endschema %}

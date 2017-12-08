@@ -1,0 +1,33 @@
+<!-- snippets/onboarding-featured-blog.liquid -->
+{{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+<div class="grid__item">
+  <div class="helper-section">
+    <div class="helper-note">
+      <span class="helper-icon"></span>
+      <h3>{{ 'homepage.onboarding.modal_title' | t }}</h3>
+      <p>{{ 'homepage.onboarding.featured_blog' | t }}</p>
+      <p><a class="admin-btn-primary" href="/admin/themes">{{ 'homepage.onboarding.setup_your_theme' | t }}</a></p>
+    </div>
+
+    <div class="helper-content grid--full">
+      {% for i in (1..3) %}
+        <div class="grid__item large--one-third medium--one-third small--one-whole">
+          <div class="featured-blog__image-wrapper">
+              <div class='featured-blog__image' style='background-image: url( http://cdn.shopify.com/s/images/themes/product-1.png )'></div>
+
+          </div>
+
+          <div class="featured-blog__caption small--text-center text-wrapper">
+              <p class="meta-info">{{ '2015-07-31T20:00:00-04:00"' | date: "%B %d, %Y"  }}</p>
+
+              <a href="#"><h4 class='featured-blog__title'>{% cycle 'First blog post', 'Second blog post', 'Third blog post' %}</h4></a>
+
+              {% capture placeholderArticleText %}{% cycle 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt nesciunt dignissimos dolores tempore minima ex suscipit excepturi ab impedit itaque aut ipsum sed dolorem cumque alias fugiat neque dicta odit.', 'Quo incidunt atque ea voluptas ratione laudantium commodi reprehenderit id explicabo nobis sapiente sit nemo dolor voluptatem aliquam sequi eaque odio architecto. Reiciendis repellendus deserunt ratione recusandae nostrum doloribus molestias!', 'Adipisci voluptatem error incidunt quo dolores enim neque distinctio dolor qui sed suscipit rem numquam tempora? Natus nobis quam quasi ad cumque ipsum voluptatem vero dolore doloremque minima expedita pariatur.' %}{% endcapture %}
+
+              <p class='excerpt'>{{placeholderArticleText | truncate: 180 }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

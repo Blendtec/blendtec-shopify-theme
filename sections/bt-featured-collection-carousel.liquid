@@ -1,0 +1,240 @@
+{% comment %}Should this be a setting?{% endcomment %}
+{% assign slide_timeout = section.settings.slide_timeout %}
+{% assign slide_timeout_ms = slide_timeout | times: 1000 %}
+
+<div class="carousel-container" id="carousel-{{section.id}}" data-slide-timeout="{{slide_timeout_ms}}">
+  <div class="carousel-slides">
+    {% if section.blocks.size > 0 %}
+      {% for slide in section.blocks limit: section.blocks.size %}
+        <div class="carousel-slide {% if slide.settings.slide_image == blank %}placeholder-image{% endif %}" data-index="{{ forloop.index }}" {{ slide.shopify_attributes }}>
+          {% if slide.settings.slide_image != blank %}
+            <div class="carousel-slide-image" style="background-image: url({{ slide.settings.slide_image | img_url: '1440x', scale: 2 }})"></div>
+          {% else %}
+            <div class="carousel-slide-image placeholder">
+              {{ 'lifestyle-1' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+
+          {% assign buttonText = false %}
+          {% assign buttonUrl = false %}
+          {% assign button = false %}
+          {% assign heading = false %}
+          {% assign text = false %}
+          {% assign isDefault = false %}
+
+          {% if slide.settings.button_cta != blank %}
+            {% assign buttonText = slide.settings.button_cta | escape %}
+          {% endif %}
+
+          {% if slide.settings.button_link != blank %}
+            {% assign buttonUrl = slide.settings.button_link %}
+          {% endif %}
+
+          {% if buttonText and buttonUrl %}
+            {% assign button = true %}
+          {% endif %}
+
+          {% if slide.settings.heading_text != blank %}
+            {% assign heading = slide.settings.heading_text | escape %}
+          {% endif %}
+
+          {% if slide.settings.page_text != blank %}
+            {% assign text = slide.settings.page_text | escape %}
+          {% endif %}
+
+          {% if slide.settings.heading_text == "Welcome to your new store!" %}
+            {% assign isDefault = true %}
+          {% endif %}
+
+          {% if heading or text or button %}
+            <div class="carousel-slide-text {{ slide.settings.text_position }}">
+              <div class="carousel-slide-text-inner">
+                {% if slide.settings.button_cta == blank and slide.settings.button_link != blank %}
+                  <a href='{{slide.settings.button_link}}' tabindex='0'>
+                {% endif %}
+
+                {% if slide.settings.heading_text == blank and slide.settings.page_text == blank %}
+                  <h1 class="bigHeader placeholder-text"></h1>
+                {% else %}
+                  {% if slide.settings.page_text == blank %}
+                    <h1 class="bigHeader">{{slide.settings.heading_text}}</h1>
+                  {% elsif slide.settings.heading_text == blank %}
+                    <p {{slide.settings.page_text}}</p>
+                  {% else %}
+                    {% if slide.settings.page_text == blank %}
+                      <h1 class="bigHeader">{{slide.settings.heading_text | escape }}</h1>
+                    {% elsif slide.settings.heading_text == blank %}
+                      <p>{{slide.settings.page_text | escape }}</p>
+                    {% else %}
+                      <h1>{{slide.settings.heading_text | escape }}</h1>
+                      <p>{{slide.settings.page_text | escape }}</p>
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+
+                {% if slide.settings.button_cta == blank and slide.settings.button_link != blank %}
+                  </a>
+                {% endif %}
+
+                {% if slide.settings.button_cta != blank %}
+                  {% if slide.settings.button_link != blank %}
+                    <a href="{{slide.settings.button_link}}" class='block button-container' tabindex='0'>
+                      <button class="btn btn--large">{{ slide.settings.button_cta | escape }}</button>
+                    </a>
+                  {% elsif isDefault %}
+                    <a href="/admin/themes/{{theme.id}}/editor" class='block button-container' tabindex='0'>
+                      <button class="btn btn--large">{{ slide.settings.button_cta | escape }}</button>
+                    </a>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          {% elsif slide.settings.button_link != blank %}
+            <a class="full-slide-link" href='{{slide.settings.button_link}}' tabindex='0'></a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  @media screen and (max-width: 699px) {
+    #carousel-{{section.id}} .carousel-slides {
+      background-color: {{ settings.color_primary }};
+    }
+
+    #carousel-{{section.id}} .carousel-slide-text .btn {
+      background-color: {{section.settings.controls_color}};
+      color: {{ settings.color_primary }};
+    }
+  }
+
+  #carousel-{{section.id}} .carousel-slide-text,
+  #carousel-{{section.id}} .carousel-slide-text h1,
+  #carousel-{{section.id}} .carousel-slide-text p {
+    color: {{section.settings.controls_color}};
+  }
+
+  #carousel-{{section.id}} .slick-active .carousel-slide-progress-bar {
+    -webkit-animation: progress-expand {{slide_timeout_ms}}ms linear;
+    -moz-animation: progress-expand {{slide_timeout_ms}}ms linear;
+    -o-animation: progress-expand {{slide_timeout_ms}}ms linear;
+    animation: progress-expand {{slide_timeout_ms}}ms linear;
+  }
+
+  #carousel-{{section.id}} .slick-dots button:before {
+    color: {{section.settings.controls_color}};
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Featured Collection Large",
+    "class": "carousel",
+    "max_blocks": 9,
+    "settings": [
+      {
+        "type": "color",
+        "id": "controls_color",
+        "default": "#FFFFFF",
+        "label": "Text color"
+      },
+      {
+        "type": "range",
+		"label": "Slide Timeout (seconds)",
+        "id": "slide_timeout",
+        "default": 10,
+        "min": 1,
+		"max": 30
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide_image",
+            "label": "Slide image",
+            "info": "Landscape orientation (3:2 w:h). 1440 x 960px minimum recommended"
+          },
+          {
+            "type": "select",
+            "id": "text_position",
+            "label": "Text alignment",
+            "options": [
+              {
+                "value": "align-center-bottom",
+                "label": "Bottom"
+              },
+              {
+                "value": "align-center-middle",
+                "label": "Middle"
+              },
+              {
+                "value": "align-center-top",
+                "label": "Top"
+              },
+              {
+                "value": "align-center-top-mid",
+                "label": "Topish"
+              }
+            ],
+            "default": "align-center-middle"
+          },
+          {
+            "type": "text",
+            "id": "heading_text",
+            "label": "Heading text",
+            "default": "Welcome to your new store!"
+          },
+          {
+            "type": "text",
+            "id": "page_text",
+            "label": "Subheading text",
+            "default": "This is your new slideshow. There are many like it, but this one is yours. It's perfect for product promotions or announcements."
+          },
+          {
+            "type": "text",
+            "id": "button_cta",
+            "label": "Button text",
+            "default": "Setup your store"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Collection Large",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "slide",
+            "settings": {
+              "text_position": "align-center-bottom",
+              "heading_text": "Welcome to your new store!",
+              "page_text": "This is your new slideshow. There are many like it, but this one is yours. It's perfect for product promotions or announcements.",
+              "button_cta": "Setup your store"
+            }
+          },
+          {
+            "type": "slide",
+            "settings": {
+              "text_position": "align-center-bottom",
+              "heading_text": "Welcome to your new store!",
+              "page_text": "This is your new slideshow. There are many like it, but this one is yours. It's perfect for product promotions or announcements.",
+              "button_cta": "Setup your store"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

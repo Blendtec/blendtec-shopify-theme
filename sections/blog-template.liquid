@@ -1,0 +1,108 @@
+<!-- /templates/blog.liquid -->
+{% paginate blog.articles by 12 %}
+{% comment %}
+  This template is also used for listing out articles of a specific tag.
+  You can change layouts or styles by checking if current_tags is true.
+{% endcomment %}
+<div class="grid--full">
+    <div class="grid__item large--two-thirds push--large--one-sixth">
+      <div class="text-center content-wrapper--horizontal section-header">
+        <div class="display-table-cell">
+          {% if current_tags %}
+            <h1>{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}
+              <a href="{{blog.url}}.atom">
+                <span aria-hidden="true" class='icon icon-rss'></span>
+              </a>
+            </h1>
+          {% else %}
+            <h1>{{ blog.title }}
+              <a href="{{blog.url}}.atom">
+                <span aria-hidden="true" class='icon icon-rss'></span>
+              </a>
+            </h1>
+          {% endif %}
+          {% include 'breadcrumb' %}
+        </div>
+      </div>
+    </div>
+    <div class="grid__item grid--full large--one-whole" data-grid-subpixel>
+      {% comment %}
+        Loop through each article in your blog. This is limited to what you set for pagination above.
+
+        For more info on article liquid tags:
+          - http://docs.shopify.com/themes/liquid-variables/article
+      {% endcomment %}
+      {% for article in blog.articles %}
+          {% assign remainder = forloop.index0 | modulo:3 %}
+
+          {% if article.image.size >= 1 %}
+            {% assign src = article.image | img_url: 'master' %}
+          {% else %}
+            {% assign src = false %}
+          {% endif %}
+
+        <div class="grid__item large--one-third medium--one-half small--one-whole" data-grid-item>
+          {% if src %}
+          <a href="{{article.url}}">
+            <div class="featured-blog__image-wrapper">
+              <div class='featured-blog__image'>
+                <span class="image-wrapper">
+                  {{ src | img_tag }}
+                </span>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+          <div class="featured-blog__caption small--text-center text-wrapper">
+              <p class="meta-info">{{article.published_at | date: "%B %d, %Y"  }}</p>
+              <a href="{{article.url}}"><h4 class='featured-blog__title'>{{article.title}}</h4></a>
+
+              {% if section.settings.enable_blog_author %}
+                <p class="author">{{'blogs.article.author_by_html' | t: author : article.author }}</p>
+              {% endif %}
+
+              <span class="excerpt">
+                  {{article.excerpt_or_content}}
+              </span>
+
+              <p class='blog-info'><a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a></p>
+              <ul class="inline-list blog-info">
+                {% if blog.comments_enabled? %}
+                <li>
+                  <a href="{{ article.url }}#Comments">
+                    {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+              <span class="blog-info">{% include 'tags-article' %}</span>
+          </div>
+        </div>
+        {% if remainder == 2 %}
+        {% comment %}We want to manually break rows after 3.{% endcomment %}
+        <div class="clearfix medium-down--hide"></div>
+        {% endif %}
+      {% endfor %}
+      {% if paginate.pages > 1 %}
+        <hr>
+        <div class="pagination">
+          {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+        </div>
+      {% endif %}
+    </div>
+</div>
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Blog",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_blog_author",
+        "default": false,
+        "label": "Show author"
+      }
+    ]
+  }
+{% endschema %}

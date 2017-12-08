@@ -1,0 +1,294 @@
+<footer class="site-footer small--text-center {% if section.blocks.size > 0 %}has-content{% endif %}" role="contentinfo">
+  <div class="footer-wrapper">
+    <div class="grid small--text-left">
+      {% if section.blocks.size > 0 %}
+        <div class="footer-blocks-container">
+          {% for block in section.blocks limit: section.blocks.size %}
+
+            {% case block.type %}
+
+            {% when 'store_description' %}
+              <div class="grid__item large--one-third footer-content-item {% if section.blocks.size > 1 and forloop.index == section.blocks.size %}floatR{% endif %}">
+                <p class="header">{{ block.settings.title | escape }}</p>
+                <div>{{ block.settings.description_text }}</div>
+              </div>
+
+            {% when 'footer_menu' %}
+              {% assign menu_link_list = "footer" %}
+              {% if block.settings.menu_link_list != blank %}
+                {% assign menu_link_list = block.settings.menu_link_list %}
+              {% endif %}
+
+              <div class="grid__item large--one-sixth footer-content-item list-column {% if section.blocks.size > 1 and forloop.index == section.blocks.size %}floatR{% endif %}">
+                <p class="header">{{ linklists[menu_link_list].title }}</p>
+                  <ul class="no-bullets">
+                    {% for link in linklists[menu_link_list].links %}
+                      <li><a href="{{ link.url }}">
+                        {% if link.title contains 'Twitter' %}
+                          <span class="icon icon-twitter" aria-hidden="true"></span>
+                        {% endif %}
+
+                        {% if link.title contains 'Facebook' %}
+                          <span class="icon icon-facebook" aria-hidden="true"></span>
+                        {% endif %}
+
+                        {% if link.title contains 'Instagram' %}
+                          <span class="icon icon-instagram" aria-hidden="true"></span>
+                        {% endif %}
+
+                        {% if link.title contains 'Tumblr' %}
+                          <span class="icon icon-tumblr" aria-hidden="true"></span>
+                        {% endif %}
+
+                        {% if link.title contains 'Pinterest' %}
+                          <span class="icon icon-pinterest" aria-hidden="true"></span>
+                        {% endif %}
+
+                        {% if link.title contains 'Vimeo' %}
+                          <span class="icon icon-vimeo" aria-hidden="true"></span>
+                        {% endif %}
+
+                        {% if link.title contains 'Youtube' %}
+                          <span class="icon icon-youtube" aria-hidden="true"></span>
+                        {% endif %}
+
+                        {% if link.title contains 'Google' %}
+                          <span class="icon icon-google" aria-hidden="true"></span>
+                        {% endif %}
+
+                        {{ link.title }}
+                      </a></li>
+                    {% endfor %}
+                  </ul>
+              </div>
+
+            {% when 'social_media' %}
+              {% assign hasSocial = false %}
+              {% assign social_options = "Facebook, Twitter, Pinterest, Instagram, Google Plus, tumblr, YouTube, Vimeo" | split: ", " %}
+              {% for option_title in social_options %}
+                {% capture option_setting %}social_{{ option_title | downcase | replace: " ", "_" }}_link{% endcapture %}
+                {% if settings[option_setting] != blank %}
+                  {% assign hasSocial = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+
+              {% if hasSocial %}
+                <div class="grid__item large--one-sixth footer-content-item list-column {% if section.blocks.size > 1 and forloop.index == section.blocks.size %}floatR{% endif %}">
+                  <p class="header">{{ 'layout.footer.social_title' | t }}</p>
+                  <ul class="no-bullets">
+                    {% include 'social_links' %}
+                  </ul>
+                </div>
+              {% else %}
+                <div class="grid__item large--one-sixth footer-content-item list-column {% if section.blocks.size > 1 and forloop.index == section.blocks.size %}floatR{% endif %}">
+                  <p class="header">{{ 'layout.footer.social_title' | t }}</p>
+                  <p>{{ "layout.footer.no_social" | t }}</p>
+                </div>
+              {% endif %}
+
+            {% when 'newsletter' %}
+              <div class="grid__item large--one-third footer-content-item {% if section.blocks.size > 1 and forloop.index == section.blocks.size %}floatR{% endif %}">
+                {% unless block.settings.title == blank %}
+                  <p class="header">{{ block.settings.title | escape }}</p>
+                {% else %}
+                  {% comment %}For consistent alignment of the body text,
+                  we always want a header at the wide layout{% endcomment %}
+                  <p class="header">{{ 'layout.footer.newsletter_title' | t }}</p>
+                {% endunless %}
+
+                {% unless block.settings.newsletter_text == blank %}
+                  <p>{{ block.settings.newsletter_text | escape }}</p>
+                {% else %}
+                  <p>{{ 'layout.footer.newsletter_body' | t }}</p>
+                {% endunless %}
+
+                {% unless block.settings.newsletter_button_text == blank %}
+                  <button class="btn btn--small show-exit-intent">{{ block.settings.newsletter_button_text | escape }}</button>
+                {% else %}
+                  <button class="btn btn--small show-exit-intent">{{ 'layout.footer.newsletter_button' | t }}</button>
+                {% endunless %}
+              </div>
+
+            {% endcase %}
+
+          {% endfor %}
+        </div>
+
+        <hr class="full-width" />
+      {% endif %}
+
+      <div class="footer-lower grid__item">
+        <div class="large--left">
+          {% if section.settings.enable_shop_name %}
+            <a href="/" itemprop="url">
+              <h1 class='shop-name'>{{ shop.name }}</h1>
+            </a>
+          {% elsif shop.enabled_payment_types.size > 0 %}
+            {% include "footer-payments" %}
+          {% endif %}
+        </div>
+
+        <div class="footer-lower-right large--text-right">
+          {% if shop.enabled_payment_types.size > 0 and section.settings.enable_shop_name %}
+            {% include "footer-payments" %}
+          {% endif %}
+
+          <small class="footer-attribution">{{ powered_by_link }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+    .site-footer {
+      background-color: {{ section.settings.color_footer_bg }};
+    }
+
+    .social h1,
+    .social a,
+    .header,
+    .shop-name {
+      color: {{ section.settings.color_footer_header }};
+    }
+
+    .shop-name {
+      fill: {{ section.settings.color_footer_header }};
+    }
+
+    .site-footer,
+    .site-footer .list-column a,
+    .payment-icons li,
+    .social-icons li a,
+    .site-header__logo {
+      color: {{ section.settings.color_footer_text }};
+    }
+
+    .site-footer hr,
+    .site-footer .grid__item {
+      border-color: {{ section.settings.color_footer_HR }};
+    }
+
+    .footer-attribution {
+      border: 1px solid {{ section.settings.color_footer_text }};
+    }
+
+    .footer-attribution a {
+      color: {{ section.settings.color_footer_text }} !important;
+    }
+
+    .footer-payment svg {
+      color: {{ section.settings.color_footer_text }};
+    }
+</style>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_shop_name",
+        "label": "Enable shop name",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "color_footer_header",
+        "label": "Headings",
+        "default": "#404040"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_text",
+        "label": "Text",
+        "default": "#636363"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_bg",
+        "label": "Background",
+        "default": "#f2f2f2"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_HR",
+        "label": "Horizontal rule",
+        "default": "#E2E2E2"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "store_description",
+        "name": "Store description",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Header",
+            "placeholder": "About",
+            "default": "About"
+          },
+          {
+            "type": "richtext",
+            "id": "description_text",
+            "label": "Text",
+            "default": "<p>This Section is perfect for providing a three to four sentence description of your store. Talk a little bit about your history and your values. This Section looks best with three to four sentences!</p>"
+          }
+        ]
+      },
+      {
+        "type": "footer_menu",
+        "name": "Footer menu",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "menu_link_list",
+            "label": "Menu"
+          }
+        ]
+      },
+      {
+        "type": "social_media",
+        "limit": 1,
+        "name": "Social media",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Social links can be managed in General settings"
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+        "name": "Newsletter subscription",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Header",
+            "placeholder": "Newsletter",
+            "default": "Newsletter"
+          },
+          {
+            "type": "text",
+            "id": "newsletter_text",
+            "label": "Text",
+            "placeholder": "Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.",
+            "default": "Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers."
+          },
+          {
+            "type": "text",
+            "id": "newsletter_button_text",
+            "label": "Button text",
+            "placeholder": "Subscribe now"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

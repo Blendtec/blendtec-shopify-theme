@@ -1,0 +1,29 @@
+<div class="breadcrumb-wrapper content-wrapper--squished content-wrapper--half-top medium-down--text-center medium-down--hide">{% include 'breadcrumb' %}</div>
+
+{% assign gridLayoutStyle = settings.collection_layout_style %}
+{% if gridLayoutStyle == "twoByThree"  %}
+  {% assign productLimit = 4 %}
+  {% assign grid_item_width = 'large--one-half medium--one-half' %}
+{% else %}
+  {% assign productLimit = 6 %}
+  {% assign grid_item_width = 'large--one-third medium--one-third' %}
+{% endif %}
+{% for collection in collections %}
+  {% unless collection.handle == 'frontpage' %}
+    {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+    <div class="section-header">
+      <div class="text-wrapper--center-cell">
+        <p class="h1 section-header__left">{{ collection_title }}</p>
+        <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">More {{ collection_title }} &rsaquo;</a>
+      </div>
+    </div>
+    <div class="grid--products grid--full">
+      {% for product in collection.products limit:productLimit %}
+        {% assign hover_class = "grid__image--caption" %}
+        {% assign fit_image_class = 'grid__item--variable-height grid__image' %}
+        {% include 'product-grid-item' %}
+      {% endfor %}
+    </div>
+    {% unless forloop.last %}<div class='clearfix'></div>{% endunless %}
+  {% endunless %}
+{% endfor %}

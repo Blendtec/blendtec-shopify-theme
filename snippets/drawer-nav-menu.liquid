@@ -1,0 +1,97 @@
+{% if linklists[child_list_handle].links != blank %}
+  <li class="mobile-nav__item" aria-haspopup="true">
+
+    <div class="mobile-nav__has-sublist">
+      <div class="mobile-nav__link">{{ link.title }}</div>
+      <button type="button" class="icon-fallback-text mobile-nav__toggle">
+        <svg><use xlink:href="#icon-dropdown"></use></svg>
+        <span class="fallback-text">See More</span>
+      </button>
+    </div>
+
+    <ul class="mobile-nav__sublist">
+      {% assign count = 0 %}
+      {% for childlink in linklists[child_list_handle].links %}
+
+        {% comment %}
+          Now we repeat the entire structure again to have another layer of depth, giving us 2 layers of dropdowns.
+        {% endcomment %}
+
+        {% assign nested_child_list_handle = childlink.title | handleize %}
+        {% if linklists[nested_child_list_handle].links != blank %}
+          <li class="mobile-nav__item animation-sequence-{{ count }} {% if childlink.active %}mobile-nav__item--active{% endif %}" aria-haspopup="true">
+
+            <div class="mobile-nav__has-sublist">
+              <div class="mobile-nav__link">{{ childlink.title }}</div>
+              <button type="button" class="icon-fallback-text mobile-nav__toggle">
+                <svg><use xlink:href="#icon-dropdown"></use></svg>
+                <span class="fallback-text">{{ "layout.drawers.see_more" | t }}</span>
+              </button>
+            </div>
+
+            <ul class="mobile-nav__sublist">
+              {% assign count_1 = 0 %}
+              {% for childlink in linklists[nested_child_list_handle].links %}
+
+                {% comment %}
+                  Now we repeat the entire structure again to have another layer of depth, giving us 2 layers of dropdowns.
+                {% endcomment %}
+
+                {% assign nested_child_list_handle = childlink.title | handleize %}
+                {% if linklists[nested_child_list_handle].links != blank %}
+                  <li class="mobile-nav__item animation-sequence-{{ count_1 }} {% if childlink.active %}mobile-nav__item--active{% endif %}" aria-haspopup="true">
+
+                    <div class="mobile-nav__has-sublist">
+                      <div class="mobile-nav__link">{{ childlink.title }}</div>
+                      <button type="button" class="icon-fallback-text mobile-nav__toggle">
+                        <svg><use xlink:href="#icon-dropdown"></use></svg>
+                        <span class="fallback-text">{{ "layout.drawers.see_more" | t }}</span>
+                      </button>
+                    </div>
+
+                    <ul class="mobile-nav__sublist">
+                      {% assign count_2 = 0 %}
+                      {% for nested_childlink in linklists[nested_child_list_handle].links %}
+                        <li class="mobile-nav__item animation-sequence-{{ count_2 }} {% if nested_childlink.active %} mobile-nav__item--active{% endif %}">
+                          <a href="{{ nested_childlink.url }}" class="mobile-nav__link">{{ nested_childlink.title | escape }}</a>
+                        </li>
+                        {% assign count_2 = count_2 | plus: 1 %}
+                      {% endfor %}
+                    </ul>
+
+                  </li>
+
+                {% else %}
+
+                  <li class="mobile-nav__item animation-sequence-{{ count_1 }} {% if childlink.active %}mobile-nav__item--active{% endif %}">
+                    <a href="{{ childlink.url }}" class="mobile-nav__link">{{ childlink.title }}</a>
+                  </li>
+
+                {% endif %}
+
+                {% assign count_1 = count_1 | plus: 1 %}
+              {% endfor %}
+            </ul>
+
+          </li>
+
+        {% else %}
+
+          <li class="mobile-nav__item animation-sequence-{{ count }} {% if childlink.active %}mobile-nav__item--active{% endif %}">
+            <a href="{{ childlink.url }}" class="mobile-nav__link">{{ childlink.title }}</a>
+          </li>
+
+        {% endif %}
+
+        {% assign count = count | plus: 1 %}
+      {% endfor %}
+    </ul>
+  </li>
+
+{% else %}
+
+  <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}">
+    <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+  </li>
+
+{% endif %}

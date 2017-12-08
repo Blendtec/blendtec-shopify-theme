@@ -1,0 +1,118 @@
+<div class="bt-background-image">
+  <div class="grid section4-background-image javascript-load-image" backgroundimagesrc1200="{{section.settings.main_background_image | img_url: '1200x' }}" backgroundimagesrc1000="{{section.settings.main_background_image | img_url: '1000x' }}" backgroundimagesrc900="{{section.settings.main_background_image | img_url: '900x' }}" backgroundimagesrc800="{{section.settings.main_background_image | img_url: '800x' }}" backgroundimagesrc700="{{section.settings.main_background_image | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.main_background_image | img_url: '600x' }}" backgroundimagesrc500="{{section.settings.main_background_image | img_url: '500x' }}" backgroundimagesrc400="{{section.settings.main_background_image | img_url: '400x' }}">
+    {% if section.settings.image_orientation == 'one' %}
+    <div class="grid__item large--one-sixth medium--one-sixth small--one-twelfth"></div>
+    <div style="text-align:left;" class="grid__item large--one-third medium--two-thirds small--five-sixths">
+    {% endif %}
+    {% if section.settings.image_orientation == 'two' %}
+    <div class="grid__item large--one-half medium--one-half small--one-twelfth"></div>
+    <div style="text-align:right;" class="grid__item large--one-third medium--two-thirds small--five-sixths">
+    {% endif %}
+    
+      <h2 class="section4-headline">
+      {{section.settings.section4_headline}}
+      </h2>
+      <div class="section4-text">{{section.settings.section4_text}}</div>
+          <div style="margin-top:15px;">
+		<a href="{{section.settings.section4_link}}" class="section4-learn-more">{{section.settings.section4_link_text}}</a><span class="section2-arrow">&gt;</span>
+		</div>
+          </div>
+
+    </div>
+  </div>
+{{ 'autofit_images.js' | asset_url | script_tag }}
+	<style>
+      .section4-text{
+      	color: #3d3f4b;
+        line-height: 1;
+    	text-shadow: white 0px 0px 1px;
+      }
+      .section4-headline{
+		line-height: 1;
+        font-size: 50px;
+        margin-top: 40%;
+        text-shadow: white 0px 0px 1px;
+        font-weight: 900;
+        color: #3d3f4b;
+      }
+      .section4-background-image{
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	    height:600px;
+        background-position:50%;
+      }
+	.section4-learn-more{
+		color: #f41d2f;
+		font-size:18px;
+		font-style:italic;
+		text-decoration:none;
+		font-weight:900;
+	}
+	.section2-arrow{
+	    position: absolute;
+	    margin-top: 7px;
+	    font-size: 9px;
+	    margin-left: 3px;
+	    font-weight: 900;
+	    font-style: italic;
+	    color: #f41d2f;
+	}
+
+</style>
+{% schema %}
+{
+"name":"bt-background-image",
+"class":"bt-background-image",
+"max_blocks":1,
+"settings":[
+{
+"type":"image_picker",
+"id":"main_background_image",
+"label":"Section 4 main image",
+"info":"This is the main background image for this section"
+},
+{
+"type":"text",
+"id":"section4_headline",
+"label":"Section 4 headline",
+"default":"H2 HEADLINE TOM'S STORY"
+},
+{
+"type":"text",
+"id":"section4_text",
+"label":"Section 4 Text",
+"default":"Nam et leo scelerisque, facilisis turpis non, maximus elit. Donec ut arcu ac magna viverra ornare eu ac sem. Nunc orci diam, ultricies ac dignissim ac, eleifend eget libero. Vestibulum eleifend vel tortor nec vulputate. Nam sed sodales turpis, nec imperdiet nisi. Morbi vitae euismod erat, eu dignissim risus."
+},
+{
+"type":"text",
+"id":"section4_link_text",
+"label":"Section 4 Link Text",
+"default":"WATCH TOM'S VIDEO"
+},
+{
+"type": "url",
+"id": "section4_link",
+"label": "Section 4 Link"
+},
+{
+"type":      "radio",
+"id":        "image_orientation",
+"label":     "Image/text vs Text/image",
+"options": [
+{ "value": "one", "label": "Text on Left" },
+{ "value": "two", "label": "Text on Right" }
+],
+"default":   "one",
+"info":      "This determines the orientation of this section"
+}
+],
+"blocks":[
+],
+    "presets": [
+      {
+        "name": "bt-background-image",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}

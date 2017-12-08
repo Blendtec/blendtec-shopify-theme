@@ -1,0 +1,8 @@
+{% include "icons-payment" %}
+<div class="footer-payment">
+  <ul class="no-bullets">
+    {% for type in shop.enabled_payment_types %}
+      <li class="{{ type | replace: '_', '-' }}"><svg><use xlink:href="#payment-{{ type }}"></use></svg></li>
+    {% endfor %}
+  </ul>
+</div>

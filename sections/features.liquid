@@ -1,0 +1,175 @@
+<div class="grid--full index-features">
+  {% if section.settings.title != blank %}
+    <h2>{{ section.settings.title | escape }}</h2>
+  {% endif %}
+
+  {% if section.settings.subheading != blank %}
+    <div class="subheading">{{ section.settings.subheading }}</div>
+  {% endif %}
+
+  {% case section.blocks.size %}
+    {% when 1 %}
+      {% assign itemSize = "large--one-whole medium--one-whole" %}
+    {% when 2 %}
+      {% assign itemSize = "large--one-half medium--one-half" %}
+    {% else %}
+      {% assign itemSize = "large--one-third medium--one-third" %}
+  {% endcase %}
+
+  <div class="index-features-items {% if section.settings.enable_animation %}can-animate{% endif %}">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        <article class="grid__item {{ itemSize }} small--one-whole animation-sequence-{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <figure class="index-features-item-image">
+            {% assign isDefault = false %}
+            {% assign url = false %}
+            {% assign heading = false %}
+            {% assign subheading = false %}
+            {% assign button = false %}
+            {% assign buttonText = false %}
+
+            {% if block.settings.title != blank %}
+              {% assign heading = block.settings.title | escape %}
+            {% endif %}
+            {% if block.settings.feature-subheading != blank %}
+              {% assign subheading = block.settings.feature-subheading %}
+              {% if subheading contains "Lorem ipsum" %}
+                {% assign isDefault = true %}
+              {% endif %}
+            {% endif %}
+            {% if block.settings.feature-buttonText != blank %}
+              {% assign buttonText = block.settings.feature-buttonText | escape %}
+            {% endif %}
+            {% if block.settings.feature-url %}
+              {% assign url = block.settings.feature-url %}
+            {% endif %}
+            {% if buttonText and url %}
+              {% assign button = true %}
+            {% endif %}
+
+            {% assign icon = block.settings.feature-icon %}
+            {% assign iconSize = "x120" %}
+            {% if icon %}
+              {% if url %}<a href="{{ url }}">{% endif %}
+              <img src="{{ icon | img_url: iconSize }}"
+                   srcset="{{ icon | img_url: iconSize }} 1x, {{ icon | img_url: iconSize, scale: 2 }} 2x"
+                   alt="{{ block.settings.title | escape }}">
+              {% if url %}</a>{% endif %}
+            {% elsif isDefault %}
+              <img class="placeholder" src="{{ 'index-placeholder-features.png' | asset_url }}" alt="{{ heading | escape }}">
+            {% endif %}
+
+            {% if heading or subheading or button %}
+              <figcaption>
+                {% if heading %}<h4>{{ block.settings.title | escape }}</h4>{% endif %}
+                {% if subheading %}<div class="index-feature-item-text">{{ block.settings.feature-subheading }}</div>{% endif %}
+                {% if button %}
+                  <div class="index-feature-item-link">
+                    <a class="btn btn--small" href="{{ url }}"><span>{{ block.settings.feature-buttonText | escape }}</span></a>
+                  </div>
+                {% elsif buttonText and isDefault %}
+                  <div class="index-feature-item-link">
+                    <a class="btn btn--small" href="/collections/all"><span>{{ block.settings.feature-buttonText | escape }}</span></a>
+                  </div>
+                {% endif %}
+              </figcaption>
+            {% endif %}
+          </figure>
+        </article>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Text columns with images",
+    "class": "features",
+    "max_blocks": 9,
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Heading"
+      },
+      {
+        "id": "subheading",
+        "type": "richtext",
+        "label": "Subheading"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animation",
+        "label": "Enable fade-in animation"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "feature",
+        "name": "Feature",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "feature-icon",
+            "label": "Icon"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Text column"
+          },
+          {
+            "type": "richtext",
+            "id": "feature-subheading",
+            "label": "Subheading",
+            "default": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).</p>"
+          },
+          {
+            "type": "text",
+            "id": "feature-buttonText",
+            "label": "Button text",
+            "default": "Read more"
+          },
+          {
+            "type": "url",
+            "id": "feature-url",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text columns with images",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "feature",
+            "settings": {
+              "title": "Text column",
+              "feature-subheading": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).</p>",
+              "feature-buttonText": "Read more"
+            }
+          },
+          {
+            "type": "feature",
+            "settings": {
+              "title": "Text column",
+              "feature-subheading": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).</p>",
+              "feature-buttonText": "Read more"
+            }
+          },
+          {
+            "type": "feature",
+            "settings": {
+              "title": "Text column",
+              "feature-subheading": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).</p>",
+              "feature-buttonText": "Read more"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

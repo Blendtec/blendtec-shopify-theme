@@ -1,0 +1,44 @@
+{% if section.settings.instagram_grid_API.size > 0 %}
+  <div id="instagrid" class='grid--full' data-access-token="{{ section.settings.instagram_grid_API | escape }}">
+    <div class="grid__item large--one-quarter medium--one-quarter small--one-half"></div>
+  </div>
+{% else %}
+  <div id="instagrid" class='grid--full insta-placeholder'>
+    <div class="grid__item large--one-quarter medium--one-quarter small--one-half">
+      {{ 'image' | placeholder_svg_tag }}
+    </div>
+    <div class="grid__item large--one-quarter medium--one-quarter small--one-half">
+      {{ 'image' | placeholder_svg_tag }}
+    </div>
+    <div class="grid__item large--one-quarter medium--one-quarter small--one-half">
+      {{ 'image' | placeholder_svg_tag }}
+    </div>
+    <div class="grid__item large--one-quarter medium--one-quarter small--one-half">
+      {{ 'image' | placeholder_svg_tag }}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Instagram feed",
+    "class": "instagram",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Get your [Instagram access token](http:\/\/fluorescent.co\/instagram.html)."
+      },
+      {
+        "type": "text",
+        "id": "instagram_grid_API",
+        "label": "Instagram token"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Instagram feed",
+        "category": "Social media"
+      }
+    ]
+  }
+{% endschema %}

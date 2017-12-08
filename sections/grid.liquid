@@ -1,0 +1,344 @@
+<div class="index-grid">
+  {% assign count = section.blocks.size %}
+
+  <div class="index-grid-items count-{{ count }}" data-grid-subpixel>
+    {% assign index = 0 %}
+
+    {% for block in section.blocks %}
+
+      {% case count %}
+        {% when 1 %}
+          {% assign columnWidth = "large--one-whole medium-down--one-whole" %}
+        {% when 5 %}
+          {% capture columnWidth %}
+            {% cycle
+              "large--two-thirds medium--two-thirds small--one-whole",
+              "large--one-third medium--one-third small--one-whole",
+              "",
+              "large--two-thirds medium--two-thirds small--one-whole",
+              "large--one-third medium--one-third small--one-whole" %}
+          {% endcapture %}
+        {% else %}
+          {% assign columnWidth = "large--one-half medium--one-half small--one-whole" %}
+      {% endcase %}
+
+      {% capture openRow %}
+        <div class="index-grid-row">
+        <div class="index-grid-column {{ columnWidth }}">
+      {% endcapture %}
+
+      {% capture open %}
+        <div class="index-grid-column {{ columnWidth }}">
+      {% endcapture %}
+
+      {% capture closeRow %}
+        </div>
+        </div>
+      {% endcapture %}
+
+      {% capture close %}
+        </div>
+      {% endcapture %}
+
+      {% case count %}
+        {% when 1 %}
+          {% cycle openRow %}
+        {% when 2 %}
+          {% cycle openRow, open %}
+        {% when 3 %}
+          {% cycle openRow, open, "" %}
+          {% capture itemHeight %}{% cycle "portrait", "landscape", "landscape" %}{% endcapture %}
+        {% when 4 %}
+          {% cycle openRow, "", open, "" %}
+          {% capture itemHeight %}{% cycle "portrait", "landscape", "landscape", "portrait" %}{% endcapture %}
+        {% when 5 %}
+          {% cycle openRow, open, "", openRow, open %}
+          {% capture itemHeight %}{% cycle "square", "portrait", "landscape", "landscape tall", "portrait" %}{% endcapture %}
+      {% endcase %}
+
+      {% assign image = block.settings.image %}
+      {% assign imageSize = "master" %}
+      {% assign hasHeading = false %}
+      {% assign hasSubheading = false %}
+      {% assign hasButton = false %}
+      {% assign isDefault = false %}
+
+      {% if block.settings.heading != blank %}
+        {% assign hasHeading = true %}
+      {% endif %}
+      {% if block.settings.subheading != blank %}
+        {% assign hasSubheading = true %}
+      {% endif %}
+      {% if block.settings.buttonStyle != "0" and block.settings.linkText != blank and block.settings.link %}
+        {% assign hasButton = true %}
+      {% endif %}
+
+      {% unless hasHeading or hasSubheading or hasButton or image %}
+        {% assign isDefault = true %}
+      {% endunless %}
+
+      {% assign hover = false %}
+      {% assign isTranslucent = false %}
+      {% if block.settings.overlayOpacity != 0 and block.settings.overlayOpacity != 1 %}
+        {% assign isTranslucent = true %}
+      {% endif %}
+      {% if block.settings.link and image and isTranslucent %}
+        {% assign hover = true %}
+      {% endif %}
+
+      <article class="index-grid-item height-css {{ itemHeight }} small--one-whole {% unless image %}no-image{% endunless %} {% if hover %}has-hover{% endif %}" data-grid-item {{ block.shopify_attributes }}>
+        <figure {% if isDefault %}class="placeholder"{% endif %}>
+          {% if image %}
+            <span class="image-wrapper">
+              <img src="{{ image | img_url: imageSize }}"
+                   srcset="{{ image | img_url: imageSize }} 1x, {{ image | img_url: imageSize, scale: 2 }} 2x"
+                   alt="{{ block.settings.heading | escape }}">
+            </span>
+          {% elsif isDefault %}
+            <span class="image-wrapper">
+              {% capture index %}{% cycle '1', '2', '3', '4', '5' %}{% endcapture %}
+              {{ 'collection-' | append: index | placeholder_svg_tag }}
+            </span>
+          {% endif %}
+
+          {% if block.settings.overlayOpacity != "0" %}
+            <span class="index-grid-item-overlay"
+                  style="
+                    background-color: {{ block.settings.overlayColor }};
+                    opacity: {{ block.settings.overlayOpacity }};"
+                    data-opacity="{{ block.settings.overlayOpacity }}"
+                    data-hover-opacity="{{ block.settings.overlayOpacity | plus: 0.15 }}">
+            </span>
+          {% endif %}
+
+          {% if hasHeading or hasSubheading or hasButton %}
+            <figcaption class="{{ block.settings.textAlignment }} animation-sequence-{{ index }} {% if section.settings.enable_animation %}can-animate{% endif %}">
+              {% if hasHeading %}
+                <h3 style="color: {{ block.settings.textColor }}">
+                  <span>{{ block.settings.heading | escape }}</span>
+                </h3>
+              {% endif %}
+              {% if hasSubheading %}
+                <div class="index-grid-item-text" style="color: {{ block.settings.textColor }}">
+                  <div>{{ block.settings.subheading }}</div>
+                </div>
+              {% endif %}
+              {% if hasButton %}
+                <a class="btn {% if block.settings.buttonStyle == '1' %}btn-normal{% else %}btn-alt{% endif %}" href="{{ block.settings.link }}" style="color: {{ block.settings.textColor }}; border-color: {{ block.settings.textColor }}"><span>{{ block.settings.linkText | escape }}</span></a>
+              {% endif %}
+            </figcaption>
+          {% endif %}
+        </figure>
+
+        {% if block.settings.link %}
+          <a class="index-grid-item-link-overlay" href="{{ block.settings.link }}"></a>
+        {% endif %}
+      </article>
+
+      {% case count %}
+        {% when 1 %}
+          {% cycle closeRow %}
+        {% when 2 %}
+          {% cycle close, closeRow %}
+        {% when 3 %}
+          {% cycle close, "", closeRow %}
+        {% when 4 %}
+          {% cycle "", close, "", closeRow %}
+        {% when 5 %}
+          {% cycle close, "", closeRow, close, closeRow %}
+      {% endcase %}
+
+      {% assign index = index | plus: 1 %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Grid",
+    "class": "index-grid-wrapper",
+    "max_blocks": 5,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_animation",
+        "label": "Enable fade-in animation"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "grid-item",
+        "name": "Grid item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "id": "overlayOpacity",
+            "type": "select",
+            "label": "Overlay opacity",
+            "default": "0.3",
+            "options": [
+              {
+                "value": "0",
+                "label": "No overlay"
+              },
+              {
+                "value": "0.1",
+                "label": "10%"
+              },
+              {
+                "value": "0.2",
+                "label": "20%"
+              },
+              {
+                "value": "0.3",
+                "label": "30%"
+              },
+              {
+                "value": "0.4",
+                "label": "40%"
+              },
+              {
+                "value": "0.5",
+                "label": "50%"
+              },
+              {
+                "value": "0.6",
+                "label": "60%"
+              },
+              {
+                "value": "0.7",
+                "label": "70%"
+              },
+              {
+                "value": "0.8",
+                "label": "80%"
+              },
+              {
+                "value": "0.9",
+                "label": "90%"
+              },
+              {
+                "value": "1",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "color",
+            "id": "overlayColor",
+            "label": "Overlay color",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "textColor",
+            "label": "Text color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "subheading",
+            "label": "Subheading"
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Link"
+          },
+          {
+            "id": "linkText",
+            "type": "text",
+            "label": "Button text"
+          },
+          {
+            "id": "buttonStyle",
+            "type": "select",
+            "label": "Choose button style",
+            "default": "2",
+            "options": [
+              {
+                "value": "0",
+                "label": "No button"
+              },
+              {
+                "value": "1",
+                "label": "Standard button"
+              },
+              {
+                "value": "2",
+                "label": "Transparent button"
+              }
+            ]
+          },
+          {
+            "id": "textAlignment",
+            "type": "select",
+            "label": "Text alignment",
+            "options": [
+              {
+                "value": "top left",
+                "label": "Top left"
+              },
+              {
+                "value": "top right",
+                "label": "Top right"
+              },
+              {
+                "value": "center left",
+                "label": "Center left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "center right",
+                "label": "Center right"
+              },
+              {
+                "value": "bottom left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom right",
+                "label": "Bottom right"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Grid",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "grid-item"
+          },
+          {
+            "type": "grid-item"
+          },
+          {
+            "type": "grid-item"
+          },
+          {
+            "type": "grid-item"
+          },
+          {
+            "type": "grid-item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

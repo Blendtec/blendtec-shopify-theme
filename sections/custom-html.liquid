@@ -1,0 +1,39 @@
+{% for block in section.blocks %}
+  {% if block.settings.code != blank %}
+    <div>
+      {{ block.settings.code }}
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "Custom HTML",
+    "class": "custom-html",
+    "blocks": [
+      {
+        "type": "html",
+        "name": "Custom HTML",
+        "settings": [
+          {
+            "type": "html",
+            "id": "code",
+            "label": "HTML",
+            "default": "<div style='text-align:center;'><h2>Use HTML to format your text so it can be easily read.</h2>This text can be used to share information about your brand with customers.</div>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom HTML",
+        "category": "Advanced layout",
+        "blocks": [
+          {
+            "type": "html"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

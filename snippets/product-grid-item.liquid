@@ -1,0 +1,98 @@
+<!-- /snippets/product-grid-item.liquid -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+
+{% endcomment %}
+
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'large--one-third medium--one-third' %}
+{% endunless %}
+
+{% comment %}
+  Check if the product is on sale and set a variable to be used below.
+{% endcomment %}
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% unless hide_on_sale_badge %}
+    {% assign on_sale = true %}
+  {% endunless %}
+{% endif %}
+{% comment %}
+  Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% unless hover_class %}
+  {% assign hover_class = 'product_image focus_image' %}
+{% endunless %}
+
+{% unless fit_image_class %}
+  {% assign fit_image_class = 'grid__image' %}
+{% endunless %}
+
+{% assign variant_image = false %}
+{% if product.images.size > 1 %}
+  {% assign variant_image = product.images[1] %}
+{% endif %}
+
+<div class="grid__item {{ fit_image_class }} {{hover_class}} {{ grid_item_width }} {{product_class}} animation-sequence-{{ forloop.index0 }}">
+    <a href="{{ product.url | within: collection }}" tabindex='0'>
+
+      <div class="cell-wrapper">
+        {% if on_sale %}
+          <div class='sale-badge'>{{ 'products.product.on_sale' | t }}</div>
+        {% endif %}
+
+        {% if product.images.size > 0 %}
+          {% if variant_image %}
+            <img src="{{ variant_image | product_img_url: '700x' }}" alt="{{ product.images[1].alt | escape }}" class="is-variant">
+          {% endif %}
+          <img src="{{ product.featured_image | product_img_url: '700x' }}" alt="{{ product.featured_image.alt | escape }}" class="{% if variant_image %}has-hover{% endif %}">
+        {% else %}
+          <img src="//cdn.shopify.com/s/images/themes/product-1.png" class="placeholder-image">
+        {% endif %}
+      </div>
+
+      <span class="product_image_caption">
+        <h6>{{ product.title }}</h6>
+
+        {% if on_sale %}
+          {% if product.price_varies %}
+            {% assign sale_price = product.price | money %}
+            <span class="price">{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
+          {% else %}
+            <span class="price">{{ product.price | money }}</span>
+          {% endif %}
+        {% else %}
+          {% if product.price_varies %}
+            {% assign price = product.price | money %}
+            <span class="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
+          {% else %}
+            {{ product.price | money }}
+          {% endif %}
+        {% endif %}
+        {% if sold_out %}
+          <strong>{{ 'products.product.sold_out' | t }}</strong>
+        {% endif %}
+        {% if on_sale %}
+          <s><span class="price">{{ product.compare_at_price | money }}</span></s>
+        {% endif %}
+      </span>
+    </a>
+</div>

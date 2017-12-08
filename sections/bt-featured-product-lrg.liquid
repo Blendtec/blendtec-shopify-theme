@@ -1,0 +1,220 @@
+<div class="bt-third">
+
+<div class="black-background">
+<div class="section3-text-container">
+     <div style="padding-top:150px;" class="grid blender-text-descriptor-wrapper">
+     <div class="grid__item large--one-twelfth medium--one-twelfth small--one-twelfth"></div>
+    <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
+      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_topleft_title}}</h4>
+      <hr class="red-hr">
+      <div class="jar-description">{{section.settings.info_topleft_text}}</div>
+    </div>
+     </div>
+     <div style="margin-top:25px;" class="grid blender-text-descriptor-wrapper">
+     <div class="grid__item large--ten-twelfths medium--two-thirds small--one-third"></div>
+    <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
+      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_topright_title}}</h4>
+      <hr class="red-hr">
+      <div class="jar-description">{{section.settings.info_topright_text}}</div>
+    </div>
+     </div>
+     <div style="margin-top:25px;" class="grid blender-text-descriptor-wrapper">
+     <div class="grid__item large--one-sixth medium--one-sixth small--one-twelfth"></div>
+    <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
+      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_midleft_title}}</h4>
+      <hr class="red-hr">
+      <div class="jar-description">{{section.settings.info_midleft_text}} </div>
+    </div>
+     </div>
+     <div class="grid blender-image-container">
+
+      <div class="grid__item background-blotch javascript-load-image" backgroundimagesrc300="{{section.settings.blender_background_image | img_url: '300x' }}" backgroundimagesrc400="{{section.settings.blender_background_image | img_url: '400x' }}" backgroundimagesrc500="{{section.settings.blender_background_image | img_url: '500x' }}" backgroundimagesrc600="{{section.settings.blender_background_image | img_url: '600x' }}" backgroundimagesrc700="{{section.settings.blender_background_image | img_url: '700x' }}" backgroundimagesrc800="{{section.settings.blender_background_image | img_url: '800x' }}" backgroundimagesrc900="{{section.settings.blender_background_image | img_url: '900x' }}" backgroundimagesrc1000="{{section.settings.blender_background_image | img_url: '1000x' }}" backgroundimagesrc1200="{{section.settings.blender_background_image | img_url: '1200x' }}">
+        <img class="blender-image javascript-load-image" imagebasesrc700="{{section.settings.blender_image | img_url: '700x' }}" imagebasesrc500="{{section.settings.blender_image | img_url: '500x' }}" imagebasesrc800="{{section.settings.blender_image | img_url: '800x' }}" imagebasesrc600="{{section.settings.blender_image | img_url: '600x' }}" imagebasesrc400="{{section.settings.blender_image | img_url: '400x' }}" imagebasesrc300="{{section.settings.blender_image | img_url: '300x' }}">
+
+
+      </div>
+     </div>
+     <div style="margin-top:25px;" class="grid blender-text-descriptor-wrapper">
+     <div class="grid__item large--nine-twelfths medium--two-thirds small--one-third"></div>
+    <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
+      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_bottomright_title}}</h4>
+      <hr class="red-hr">
+      <div class="jar-description"> {{section.settings.info_bottomright_text}}</div>
+    </div>
+     </div>
+     <div style="margin-top:25px;padding-bottom:50px;" class="grid blender-text-descriptor-wrapper">
+     <div class="grid__item large--one-twelfth medium--one-twelfth small--one-twelfth"></div>
+    <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
+      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_bottomleft_title}}</h4>
+      <hr class="red-hr">
+      <div class="jar-description">{{section.settings.info_bottomleft_text}}</div>
+    </div>
+     </div>
+</div>
+</div>
+
+</div>
+
+  <style>
+  .black-background{
+      width: 100%;
+      background-color: black;
+      position:relative;
+      z-index:0;
+  }
+  .section3-text-container{
+      z-index: 10;
+      position: relative;
+  }
+  .red-hr{
+    border-color:#f41d2f;
+    margin:5px 0px 5px 0px;
+    width:50px;
+  }
+  .jar-description{
+    opacity: 0.7;
+    color:white;
+    font-size:18px;
+    line-height:1;
+  }
+  .blender-text-descriptor-title{
+    color:white;
+    margin-bottom:0px;
+    font-size:26px;
+  }
+  .blender-image-container{
+      position: absolute;
+      top: 50px;
+      width: 100%;
+      z-index: 1;
+  }
+  .blender-text-descriptor-wrapper{
+    z-index:2;
+    position:relative;
+  }
+  .blender-image{
+    width: 99%;
+      max-width: 613px !important;
+      margin: 0 auto;
+      display: block;
+  }
+  .background-blotch{
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position:50%;
+  }
+
+@media screen and (max-width: 768px) { /*xsmall - 600width*/
+  .blender-image-container{
+    position:static;
+  }
+}
+
+
+
+
+</style>
+
+{{ 'autofit_images.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+"name":"bt-featured-product-lrg",
+"class":"bt-featured-product-lrg",
+"max_blocks":1,
+"settings":[
+{
+"type":"image_picker",
+"id":"blender_image",
+"label":"Blender Image",
+"info":"Blender image"
+},
+{
+"type":"image_picker",
+"id":"blender_background_image",
+"label":"Blender Background Image",
+"info":"The image which appears behind the main blender image"
+},
+{
+"type":"image_picker",
+"id":"background_image2",
+"label":"Background Image 2",
+"info":"Image for the background behind the bottom blenders"
+},
+{
+"type":"text",
+"id":"descriptive_title",
+"label":"Descriptive Title",
+"default":"DESCRIPTIVE TITLE"
+},
+{
+"type":"text",
+"id":"info_topleft_title",
+"label":"Blender Info Top Left title",
+"default":"LID"
+},
+{
+"type":"text",
+"id":"info_topleft_text",
+"label":"Blender Info Top Left text",
+"default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
+},
+{
+"type":"text",
+"id":"info_topright_title",
+"label":"Blender Info Top Right title",
+"default":"JAR"
+},
+{
+"type":"text",
+"id":"info_topright_text",
+"label":"Blender Info Top Right text",
+"default":"Donec dolor est, suscipit ac consectetur at, suscipit ac sem. Vivamus nec urna eu nisi venenatis facilisis. Fusce vitae efficitur ligula."
+},
+{
+"type":"text",
+"id":"info_midleft_title",
+"label":"Blender Info Mid Left title",
+"default":"SHAPE"
+},
+{
+"type":"text",
+"id":"info_midleft_text",
+"label":"Blender Info Mid Left text",
+"default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
+},
+{
+"type":"text",
+"id":"info_bottomright_title",
+"label":"Blender Info Mid Left title",
+"default":"BLADE"
+},
+{
+"type":"text",
+"id":"info_bottomright_text",
+"label":"Blender Info Mid Left text",
+"default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
+},
+{
+"type":"text",
+"id":"info_bottomleft_title",
+"label":"Blender Info Mid Left title",
+"default":"MOTOR"
+},
+{
+"type":"text",
+"id":"info_bottomleft_text",
+"label":"Blender Info Mid Left text",
+"default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
+}
+],
+"blocks":[
+],
+    "presets": [
+      {
+        "name": "bt-featured-product-lrg",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}

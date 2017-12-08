@@ -1,0 +1,16 @@
+{% form 'customer' %}
+
+  {{ form.errors | default_errors }}
+
+  {% if form.posted_successfully? %}
+    <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+  {% else %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.email_address_placeholder' | t }}" name="contact[email]" aria-label="{{ 'general.newsletter_form.email_address_placeholder' | t }}" autocorrect="off" autocapitalize="off" class='grid__item large--seven-tenths medium--seven-tenths small--one-whole'>
+
+    <button class="btn">
+      {{ 'general.newsletter_form.subscribe' | t}}
+    </button>
+  {% endif %}
+
+{% endform %}

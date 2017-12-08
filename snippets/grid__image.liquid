@@ -1,0 +1,17 @@
+<div class="grid__item grid--story__image {{ imageCellWidth }} layout-{{block.settings.layout}} {% if block.settings.block_image == blank %}placeholder{%endif%}" data-gapless-image data-index={{forloop.index0}}>
+  {% if block.settings.button_link != blank %}<a href="{{block.settings.button_link}}" tabindex='0'>{% endif %}
+    <div class="cell-wrapper">
+      {% if block.settings.block_image == blank %}
+        {% capture index %}{% cycle '4', '5', '6' %}{% endcapture %}
+        {% capture placeholder %}collection-{{index}}{% endcapture %}
+        {{ placeholder | placeholder_svg_tag }}
+      {% else %}
+        <img src="{{ block.settings.block_image | img_url: '1024x' }}">
+      {% endif %}
+    </div>
+
+    <div class="img-caption">
+      <button class='btn'>{{ block.settings.button_cta | escape }}</button>
+    </div>
+  {% if block.settings.button_link != blank %}</a>{% endif %}
+</div>

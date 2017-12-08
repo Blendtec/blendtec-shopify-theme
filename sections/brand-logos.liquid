@@ -1,0 +1,104 @@
+<div class="grid--full index-brands">
+  {% if section.settings.title != blank %}
+    <h2>{{ section.settings.title | escape }}</h2>
+  {% endif %}
+
+  {% if section.settings.subheading != blank %}
+    <div class="subheading">{{ section.settings.subheading }}</div>
+  {% endif %}
+
+  <div class="index-brands-items">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        <article class="grid__item small--one-whole" {{ block.shopify_attributes }}>
+          {% assign logo = block.settings.brandLogo %}
+          {% assign logoSize = "x100" %}
+          {% if block.settings.logoWidth != blank %}
+            {% assign logoSize = block.settings.logoWidth | remove: "px" | append: "x" %}
+          {% endif %}
+          {% if logo %}
+            <img class="index-brands-item"
+                 src="{{ logo }}"
+                   srcset="{{ logo | img_url: logoSize }} 1x, {{ logo | img_url: logoSize, scale: 2 }} 2x"
+                   alt="{{ logo.alt | escape }}">
+          {% else %}
+            <span class="placeholder">{{ 'logo' | placeholder_svg_tag }}</span>
+          {% endif %}
+        </article>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  {% if section.settings.linkText != blank and section.settings.link != blank %}
+    <a class="btn" href="{{ section.settings.link }}">{{ section.settings.linkText | escape }}</a>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Logo list",
+    "class": "brands",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Heading"
+      },
+      {
+        "id": "subheading",
+        "type": "richtext",
+        "label": "Subheading"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "linkText",
+        "type": "text",
+        "label": "Button text"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "brand",
+        "name": "Brand",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "brandLogo",
+            "label": "Brand image"
+          },
+          {
+            "type": "text",
+            "id": "logoWidth",
+            "label": "Logo width",
+            "info": "Uploading a logo at double this width will provide support for retina screens."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo list",
+        "category": "Image",
+        "settings": {
+          "title": "Featured in these amazing publications",
+          "subheading": "<p></p>"
+        },
+        "blocks": [
+          {
+            "type": "brand"
+          },
+          {
+            "type": "brand"
+          },
+          {
+            "type": "brand"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

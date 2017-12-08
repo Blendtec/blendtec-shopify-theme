@@ -1,0 +1,9 @@
+<!-- snippets/onboarding-product-feature-carousel.liquid -->
+{% for i in (1..5) %}
+  {% capture imageUrl %}//cdn.shopify.com/s/images/themes/product-{{ i }}.png{% endcapture %}
+    <div class="carousel__slide">
+      <div class="image-wrapper">
+        <div class="carousel__image" style='background-image: url({{imageUrl}})'></div>
+      </div>
+    </div>
+{% endfor %}

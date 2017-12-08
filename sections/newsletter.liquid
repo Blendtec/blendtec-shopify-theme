@@ -1,0 +1,43 @@
+<section class='newsletter-block inline-subscribe table'>
+  <div class='display-table-cell'>
+    <div class="cell-wrapper text-center">
+      {% unless section.settings.homepage_newsletter_title == blank %}
+        <h2>{{ section.settings.homepage_newsletter_title | escape }}</h2>
+      {% endunless %}
+
+      {% unless section.settings.homepage_newsletter_body == blank %}
+        <div>
+          {{ section.settings.homepage_newsletter_body }}
+        </div>
+      {% endunless %}
+
+      {% include 'email-signup' %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "class": "newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "homepage_newsletter_title",
+        "label": "Heading text",
+        "placeholder": "Join our newsletter"
+      },
+      {
+        "type": "richtext",
+        "id": "homepage_newsletter_body",
+        "label": "Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Newsletter",
+        "category": "Promotional"
+      }
+    ]
+  }
+{% endschema %}

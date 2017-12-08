@@ -1,0 +1,128 @@
+<div class="bt-third">
+<div class="wavy-background javascript-load-image" backgroundimagesrc600="{{section.settings.background_image1 | img_url: '300x' }}">
+    <div class="grid" style="padding-top:130px;">
+  <div class="grid__item large--one-sixth medium--one-sixth small--one-sixth" style=""></div>
+  <div class="small-left-padding grid__item large--one-half">
+        <h4 style="" class="h4-subhead">{{section.settings.h4_subhead}}</h4>
+        <h3 class="h3-subhead">{{section.settings.h3_headline}}</h3>
+        <h3 class="h3-subhead">{{section.settings.descriptive_title}}</h3>
+     </div>
+  <div class="small-left-padding grid__item large--one-third medium--one-half">
+    <a href="{{section.settings.section3_top_button_link}}" class="button-hero">{{section.settings.section3_top_button}}</a>
+     </div>
+     </div>
+  </div>
+  <div class="gradient-black-background"></div>
+</div>
+
+  <style>
+
+  .button-hero{
+      background-color: #f41d2f;
+      padding: 5px 10px 5px 10px;
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+      border-radius: 0;
+      line-height: 1.6;
+      display: inline-block;
+  }
+
+  .wavy-background{
+      height:349px;
+      position:relative;
+      z-index:1;
+  }
+
+  .h4-subhead{
+    color:#646674;
+    font-size:26px;
+  }
+  .h3-subhead{
+    color: white;
+      font-size: 40px;
+      line-height: 1;
+      margin-top:-15px;
+  }
+
+  @media screen and (max-width: 848px) {
+
+      .small-left-padding{
+          padding-left:45px;
+      }
+  }
+    
+    .gradient-black-background{
+      width: 100%;
+      background-color: black;
+      height: {{section.settings.black_background_height}}px;
+      margin-top: -{{section.settings.black_background_height}}px;;
+    }
+      
+
+</style>
+
+{% schema %}
+{
+"name":"bt-headline-with-cta",
+"class":"bt-headline-with-cta",
+"max_blocks":1,
+"settings":[
+
+{
+"type":"image_picker",
+"id":"background_image1",
+"label":"Background Image 1",
+"info":"Image for the background"
+},
+{
+"type":"text",
+"id":"section3_top_button",
+"label":"Section 3 Top Button Text",
+"default":"SHOP BLENDERS"
+},
+{
+"type": "url",
+"id": "section3_top_button_link",
+"label": "Top Button Link"
+},
+{
+"type":"text",
+"id":"h4_subhead",
+"label":"h4 Subhead",
+"default":"H4 SUB HEAD"
+},
+{
+"type":"text",
+"id":"h3_headline",
+"label":"h3 Headline",
+"default":"H3 HEADLINE"
+},
+{
+"type":"text",
+"id":"descriptive_title",
+"label":"Descriptive Title",
+"default":"DESCRIPTIVE TITLE"
+},
+{
+"type":      "range",
+"id":        "black_background_height",
+"min":       200,
+"max":        300,
+"step":       1,
+"unit":       "px",
+"label":     "Height of Background",
+"default":   200
+}
+
+],
+"blocks":[
+],
+    "presets": [
+      {
+        "name": "bt-headline-with-cta",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}

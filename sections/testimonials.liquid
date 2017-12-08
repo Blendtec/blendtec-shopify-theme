@@ -1,0 +1,133 @@
+<div class="grid--full index-testimonials">
+  {% if section.settings.title != blank %}
+    <h2>{{ section.settings.title | escape }}</h2>
+  {% endif %}
+
+  {% if section.settings.subheading != blank %}
+    <div class="subheading">{{ section.settings.subheading }}</div>
+  {% endif %}
+
+  {% case section.blocks.size %}
+    {% when 1 %}
+      {% assign itemSize = "large--one-whole medium--one-whole" %}
+    {% when 2 %}
+      {% assign itemSize = "large--one-half medium--one-half" %}
+    {% else %}
+      {% assign itemSize = "large--one-third medium--one-half" %}
+  {% endcase %}
+
+  <div class="index-testimonials-items {% if section.settings.enable_animation %}can-animate{% endif %}">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% assign isDefault = false %}
+        {% assign text = false  %}
+        {% assign name = false  %}
+
+        {% if block.settings.text != blank %}
+          {% assign text = block.settings.text %}
+        {% endif %}
+        {% if block.settings.title != blank %}
+          {% assign name = block.settings.title | escape %}
+        {% endif %}
+        {% if name == "Jane Smith" and text contains "Absolutely fantastic products. Well made, great service and quickly shipped." %}
+          {% assign isDefault = true %}
+        {% endif %}
+
+        <article class="grid__item {{ itemSize }} small--one-whole animation-sequence-{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div class="index-testimonial-item-text">{{ block.settings.text }}</div>
+          <div class="index-testimonial-item-profile">
+            {% assign profile = block.settings.profile %}
+            {% assign profileSize = "x100" %}
+            {% if profile %}
+              <span class="image-wrapper" style="background-image: url('{{ profile | img_url: profileSize }}')"></span>
+            {% elsif isDefault %}
+              <span class="image-wrapper" style="background-image: url({{ 'index-placeholder-testimonials.png' | asset_url }})"></span>
+            {% endif %}
+            <h4>{{ block.settings.title | escape }}</h4>
+          </div>
+        </article>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Testimonials",
+    "class": "testimonials",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Heading"
+      },
+      {
+        "id": "subheading",
+        "type": "richtext",
+        "label": "Subheading"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animation",
+        "label": "Enable fade-in animation"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>\"Absolutely fantastic products. Well made, great service and quickly shipped.\"</p>"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Name",
+            "default": "Jane Smith"
+          },
+          {
+            "type": "image_picker",
+            "id": "profile",
+            "label": "Profile image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials",
+        "category": "Text",
+        "settings": {
+          "title": "Our customers love us"
+        },
+        "blocks": [
+          {
+            "type": "testimonial",
+            "settings": {
+              "text": "<p>\"Absolutely fantastic products. Well made, great service and quickly shipped.\"</p>",
+              "title": "Jane Smith"
+            }
+          },
+          {
+            "type": "testimonial",
+            "settings": {
+              "text": "<p>\"Absolutely fantastic products. Well made, great service and quickly shipped.\"</p>",
+              "title": "Jane Smith"
+            }
+          },
+          {
+            "type": "testimonial",
+            "settings": {
+              "text": "<p>\"Absolutely fantastic products. Well made, great service and quickly shipped.\"</p>",
+              "title": "Jane Smith"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

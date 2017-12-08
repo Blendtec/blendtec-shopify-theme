@@ -1,0 +1,62 @@
+{% comment %}
+  Collections to ignore.
+  Never pick related items from those.
+{% endcomment %}
+
+{% assign exclusions = 'frontpage,all' | split: ',' %}
+
+{% comment %}
+  Looking for a relevant collection.
+{% endcomment %}
+
+{% assign found_a_collection = false %}
+{% if collection and collection.all_products_count > 1 %}
+  {% unless exclusions contains collection.handle %}
+    {% assign found_a_collection = true %}
+  {% endunless %}
+{% endif %}
+{% unless found_a_collection %}
+  {% for c in product.collections %}
+    {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+      {% assign found_a_collection = true %}
+      {% assign collection = c %}
+      {% break %}
+    {% endunless %}
+  {% endfor %}
+{% endunless %}
+
+{% comment %}
+  If we have a relevant collection.
+{% endcomment %}
+
+{% if found_a_collection %}
+  {% assign counter = 0 %}
+  {% assign break_at = 3 %}
+  {% assign current_product = product %}
+
+  {% capture related_items %}
+    {% for product in collection.products %}
+      {% unless product.handle == current_product.handle %}
+        {% assign hover_class = "grid__image--caption" %}
+        {% assign fit_image_class = 'grid__item--variable-height grid__image' %}
+        {% include 'product-grid-item' %}
+        {% assign counter = counter | plus: 1 %}
+        {% if counter == break_at %}
+          {% break %}
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+  {% endcapture %}
+
+  {% assign related_items = related_items | trim %}
+
+  {% unless related_items == blank %}
+    <section class="product-related">
+      <h2 class="text-center">{{ "products.product.related" | t }}</h2>
+      <div class="grid--products grid--full">
+        {{ related_items }}
+      </div>
+    </section>
+  {% endunless %}
+
+{% endif %}

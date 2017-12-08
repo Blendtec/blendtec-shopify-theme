@@ -1,0 +1,72 @@
+{%- assign userBlog = blogs[section.settings.blog] -%}
+
+<div class="grid--full" id='featured-blog' data-grid-subpixel>
+  {% assign articleCount = userBlog.articles | size %}
+
+  {% if articleCount >= 1 %}
+    {% for article in userBlog.articles limit:3 %}
+
+      {% if article.image.size >= 1 %}
+        {% assign src = article.image | img_url: 'master' %}
+      {% else %}
+        {% assign src = false %}
+      {% endif %}
+
+      <div class="grid__item large--one-third medium--one-third small--one-whole animation-sequence-{{ forloop.index0 }}" data-grid-item>
+
+        {% if src %}
+          <a href="{{article.url}}" tabindex="0">
+            <div class="featured-blog__image-wrapper">
+              <div class='featured-blog__image'>
+                <span class="image-wrapper">{{ src | img_tag }}</span>
+              </div>
+            </div>
+          </a>
+        {% endif %}
+
+        <div class="featured-blog__caption small--text-center text-wrapper">
+          <p class="meta-info">{{article.published_at | date: "%B %d, %Y"  }}</p>
+          <a href="{{article.url}}"><h4 class='featured-blog__title'>{{article.title}}</h4></a>
+
+          <span class="excerpt">
+            {% comment %}This excerpt is further adjusted in the JS{% endcomment %}
+            <p>{{article.excerpt_or_content | strip_html | truncatewords: 40}}</p>
+          </span>
+
+          <span class='blog-info'><a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a></span>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    {% for i in (1..3) %}
+      <div class="grid__item large--one-third medium--one-third small--one-whole animation-sequence-{{ forloop.index0 }}">
+        <div class="featured-blog__caption small--text-center text-wrapper">
+          <p class="meta-info">{{ 'now' | date: "%B %d, %Y"  }}</p>
+          <a href="#"><h4 class='featured-blog__title'>{{ 'homepage.onboarding.blog_title' | t }}</h4></a>
+          <p class="excerpt">{{ 'homepage.onboarding.blog_excerpt' | t }}</p>
+          <span class='blog-info'><a href="#">{{ 'blogs.article.read_more' | t }}</a></span>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Blog posts",
+    "class": "featured-blog",
+    "settings": [
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog posts",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}

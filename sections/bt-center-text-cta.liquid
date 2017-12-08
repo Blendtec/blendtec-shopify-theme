@@ -1,0 +1,88 @@
+<div class="bt-center-text-cta javascript-load-image"  backgroundimagesrc1200="{{section.settings.section5_background | img_url: '1200x' }}" backgroundimagesrc900="{{section.settings.section5_background | img_url: '900x' }}" backgroundimagesrc800="{{section.settings.section5_background | img_url: '800x' }}" backgroundimagesrc700="{{section.settings.section5_background | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.section5_background | img_url: '600x' }}" backgroundimagesrc500="{{section.settings.section5_background | img_url: '500x' }}" backgroundimagesrc400="{{section.settings.section5_background | img_url: '400x' }}">
+
+  <div class="section5-bottom-background" style="padding-top:50px;padding-bottom:20px;">
+
+      <div style="text-align:center;width:280px;margin:0 auto;padding-top:100px;">
+        <h3 class="review-text">{{section.settings.section5_review}}</h3>
+        <hr class="section5-red-hr">
+        <a href="{{section.settings.section5_review_link}}" class="section5-learn-more">{{section.settings.section5_review_linktext}}</a>
+      </div>
+
+  </div>
+  </div>
+<style>
+  .review-text{
+  	color:black;
+    font-weight:600;
+    line-height:1.25;
+  }
+  	.section5-learn-more{
+		color: #f41d2f;
+		font-size:18px;
+		font-style:italic;
+		text-decoration:none;
+		font-weight:900;
+	}
+  .section5-bottom-background{
+    {% if section.settings.review_background %}
+    background-image:url({{section.settings.review_background | img_url: '300x' }});
+    {% endif %}
+  }
+  .bt-center-text-cta{
+  	background-size: cover;
+    background-position-y:15%;
+  }
+  .section5-red-hr{
+    border-color: #f41d2f;
+    width: 120px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+</style>
+
+{% schema %}
+{
+"name":"bt-center-text-cta",
+"class":"section5",
+"max_blocks":8,
+"settings":[
+{
+"type":"image_picker",
+"id":"section5_background",
+"label":"Section Background Image",
+"info":"This is the background image for the section"
+},
+{
+"type":"text",
+"id":"section5_review",
+"label":"Section 5 review",
+"default":"“This blender is easy to use and delivers really awesome blending results.”"
+},
+{
+"type":"image_picker",
+"id":"review_background",
+"label":"Review Background",
+"info":"The background for the reviews"
+},
+{
+"type":"text",
+"id":"section5_review_linktext",
+"label":"Text for the Review Link",
+"default":"READ REVIEW"
+},
+{
+"type": "url",
+"id": "section5_review_link",
+"label": "Link for the featured review"
+}
+],
+"blocks":[
+],
+    "presets": [
+      {
+        "name": "bt-center-text-cta",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}

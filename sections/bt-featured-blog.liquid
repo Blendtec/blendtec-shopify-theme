@@ -1,0 +1,160 @@
+<div class="bt-fifth section5-background javascript-load-image" backgroundimagesrc1200="{{section.settings.section5_background | img_url: '1200x' }}" backgroundimagesrc900="{{section.settings.section5_background | img_url: '900x' }}" backgroundimagesrc800="{{section.settings.section5_background | img_url: '800x' }}" backgroundimagesrc700="{{section.settings.section5_background | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.section5_background | img_url: '600x' }}" backgroundimagesrc500="{{section.settings.section5_background | img_url: '500x' }}" backgroundimagesrc400="{{section.settings.section5_background | img_url: '400x' }}">
+  <div class="grid" style="padding-top:35px;">
+    <div class="grid__item large--one-twelfth medium--one-twelfth"></div>
+    <div class="grid__item large--five-sixths medium--five-sixths">
+      <div class="grid">
+        <div class="grid__item large--one-half medium--two-thirds">
+          <a href="{{section.settings.recipe1_url}}">
+            <div class="grid section5-recipe-container">
+            	<div style="padding:0;" class="grid__item large--one-half medium--one-half small--one-half">
+              	<img class="javascript-load-image recipe-image" style="width:100%;" imagebasesrc500="{{section.settings.recipe1 | img_url: '500x' }}" imagebasesrc400="{{section.settings.recipe1 | img_url: '400x' }}" imagebasesrc300="{{section.settings.recipe1 | img_url: '300x' }}" imagebasesrc250="{{section.settings.recipe1 | img_url: '250x' }}" imagebasesrc200="{{section.settings.recipe1 | img_url: '200x' }}" imagebasesrc150="{{section.settings.recipe1 | img_url: '150x' }}">
+              </div>
+            	<div class="grid__item large--one-half medium--one-half small--one-half">
+                  <div class="section5-small-description">Blendtec Recipe</div>
+                  <h3 class="section5-recipe-title">{{section.settings.recipe1_title}}</h3>
+                  <hr class="section5-red-hr">
+                  <div class="section5-recipe-text">{{section.settings.recipe1_text}}</div>
+                  </div>
+            </div>
+          </a>
+        </div>
+        <div class="grid__item large--one-half medium--two-thirds">
+          <a href="{{section.settings.recipe2_url}}">
+            <div class="grid section5-recipe-container">
+              <div style="padding:0;" class="grid__item large--one-half medium--one-half small--one-half">
+              	<img class="javascript-load-image recipe-image" style="width:100%;" imagebasesrc500="{{section.settings.recipe2 | img_url: '500x' }}" imagebasesrc400="{{section.settings.recipe2 | img_url: '400x' }}" imagebasesrc300="{{section.settings.recipe2 | img_url: '300x' }}" imagebasesrc250="{{section.settings.recipe2 | img_url: '250x' }}" imagebasesrc200="{{section.settings.recipe2 | img_url: '200x' }}" imagebasesrc150="{{section.settings.recipe2 | img_url: '150x' }}">
+
+              </div>
+              <div class="grid__item large--one-half medium--one-half small--one-half">
+                  <div class="section5-small-description">Blendtec Recipe</div>
+                  <h3 class="section5-recipe-title">{{section.settings.recipe2_title}}</h3>
+                  <hr class="section5-red-hr">
+                  <div class="section5-recipe-text">{{section.settings.recipe2_text}}</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+<style>
+  .review-text{
+  	color:black;
+    font-weight:600;
+    line-height:1.25;
+  }
+  	.section5-learn-more{
+		color: #f41d2f;
+		font-size:18px;
+		font-style:italic;
+		text-decoration:none;
+		font-weight:900;
+	}
+  .section5-small-description{
+      margin-top: 25px;
+      color: #3d3f4b;
+      font-size: 14px;
+  }
+  .section5-recipe-title{
+    color: #3d3f4b;
+    font-size: 32px;
+    line-height: 1;
+    margin-top: 8px;
+  }
+  .section5-recipe-text{
+      color: #3d3f4b;
+    	line-height: 1.2;
+  }
+  .section5-recipe-container{
+	border: solid 1px #979797;
+    margin:3px;
+  }
+  .section5-recipe-container:hover {
+-webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+ 
+  }
+  .section5-background{
+  	background-size: cover;
+  }
+  .section5-red-hr{
+    border-color: #f41d2f;
+    width: 120px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+</style>
+
+{{ 'autofit_images.js' | asset_url | script_tag }}
+{% schema %}
+{
+"name":"bt-featured-blog",
+"class":"section5",
+"max_blocks":8,
+"settings":[
+{
+"type":"image_picker",
+"id":"section5_background",
+"label":"Section Background Image",
+"info":"This is the background image for the section"
+},
+{
+"type":"image_picker",
+"id":"recipe1",
+"label":"The First Recipe",
+"info":"This is the image for the first recipe"
+},
+{
+"type":"text",
+"id":"recipe1_title",
+"label":"Recipe 1 title",
+"default":"Rasberry Go Smoothie"
+},
+{
+"type":"text",
+"id":"recipe1_text",
+"label":"Recipe 1 text",
+"default":"Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros"
+},
+{
+"type": "url",
+"id": "recipe1_url",
+"label": "Link to 1st Recipe"
+},
+{
+"type":"image_picker",
+"id":"recipe2",
+"label":"The Second Recipe",
+"info":"This is the image for the second recipe"
+},
+{
+"type":"text",
+"id":"recipe2_title",
+"label":"Recipe 2 title",
+"default":"Creamy Tomato Soup"
+},
+{
+"type":"text",
+"id":"recipe2_text",
+"label":"Recipe 2 text",
+"default":"Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros"
+},
+{
+"type": "url",
+"id": "recipe2_url",
+"label": "Link to 2nd Recipe"
+}
+],
+"blocks":[
+
+],
+    "presets": [
+      {
+        "name": "bt-featured-blog",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}

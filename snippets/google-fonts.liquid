@@ -1,0 +1,80 @@
+{% assign googleBody = false %}
+{% assign googleHeader = false %}
+{% assign googleLogo = false %}
+{% assign typekitBody = false %}
+{% assign typekitHeader = false %}
+{% assign typekitLogo = false %}
+
+{% if settings.google-font-body != blank %}
+  {% assign googleBody = true %}
+{% endif %}
+{% if settings.google-font-header != blank %}
+  {% assign googleHeader = true %}
+{% endif %}
+{% if settings.google-font-logo != blank %}
+  {% assign googleLogo = true %}
+{% endif %}
+
+{% if settings.typekit != blank %}
+  {% assign typekitEnabled = true %}
+
+  {% if settings.typekit-font-body != blank %}
+    {% assign typekitBody = true %}
+  {% endif %}
+  {% if settings.typekit-font-header != blank %}
+    {% assign typekitHeader = true %}
+  {% endif %}
+  {% if settings.typekit-font-logo != blank %}
+    {% assign typekitLogo = true %}
+  {% endif %}
+{% endif %}
+
+
+<!-- Body font -->
+
+{% unless typekitBody %}
+  {% if googleBody %}
+    {% capture font %}{{ settings.google-font-body }}{% endcapture %}
+    {% assign fontSplit = font | split: "'" %}
+    {% capture fontJoin %}{{ fontSplit[1] | split: " " | join: "+" | append: ":400,400i,700,700i" }}{% endcapture %}
+    {{ '//fonts.googleapis.com/css?family=' | append: fontJoin | stylesheet_tag }}
+  {% elsif settings.font contains 'Google' %}
+    {% assign type_base_parts = settings.font | split: '_' %}
+    {% capture font %}{{ type_base_parts[1] }}{% endcapture %}
+    {% capture weights %}{{ type_base_parts[2] | split: ':' }}{% endcapture %}
+    {% capture baseGoogleUrl %}{{ type_base_parts[1] }}:{{ type_base_parts[2] }}{% endcapture %}
+    {{ '//fonts.googleapis.com/css?family=' | append: baseGoogleUrl | stylesheet_tag }}
+  {% endif %}
+{% endunless %}
+
+
+<!-- Header font -->
+
+{% unless typekitHeader %}
+  {% if googleHeader %}
+    {% capture font %}{{ settings.google-font-header }}{% endcapture %}
+    {% assign fontSplit = font | split: "'" %}
+    {% capture fontJoin %}{{ fontSplit[1] | split: " " | join: "+" | append: ":400,700" }}{% endcapture %}
+    {{ '//fonts.googleapis.com/css?family=' | append: fontJoin | stylesheet_tag }}
+  {% elsif settings.font_header contains 'Google' %}
+    {% assign type_header_parts = settings.font_header | split: '_' %}
+    {% capture headerGoogleUrl %}{{ type_header_parts[1] }}:{{ type_header_parts[2] }}{% endcapture %}
+    {{ '//fonts.googleapis.com/css?family=' | append: headerGoogleUrl | stylesheet_tag }}
+  {% endif %}
+{% endunless %}
+
+
+<!-- Logo font -->
+
+{% unless typekitLogo %}
+  {% if googleLogo %}
+    {% capture font %}{{ settings.google-font-logo }}{% endcapture %}
+    {% assign fontSplit = font | split: "'" %}
+    {% capture fontJoin %}{{ fontSplit[1] | split: " " | join: "+" | append: ":400,700" }}{% endcapture %}
+    {{ '//fonts.googleapis.com/css?family=' | append: fontJoin | stylesheet_tag }}
+  {% elsif settings.font_logo contains 'Google' %}
+    {% assign type_accent_parts = settings.font_logo | split: '_' %}
+    {% capture accentGoogleUrl %}{{ type_accent_parts[1] }}:{{ type_accent_parts[2] }}{% endcapture %}
+    {{ '//fonts.googleapis.com/css?family=' | append: accentGoogleUrl | stylesheet_tag }}
+  {% endif %}
+{% endunless %}

@@ -1,0 +1,80 @@
+{% assign isDefault = false %}
+{% assign heading = false %}
+{% assign text = false %}
+{% assign url = false %}
+{% assign buttonText = false %}
+
+{% if section.settings.title != blank %}
+  {% assign heading = section.settings.title | escape %}
+  {% if heading == "Welcome to our store!" %}
+    {% assign isDefault = true %}
+  {% endif %}
+{% endif %}
+
+{% if section.settings.text != blank %}
+  {% assign text = section.settings.text %}
+{% endif %}
+
+{% if section.settings.link != blank %}
+  {% assign url = section.settings.link %}
+{% elsif isDefault %}
+  {% assign url = "/collections/all" %}
+{% endif %}
+
+{% if section.settings.linkText != blank %}
+  {% assign buttonText = section.settings.linkText | escape %}
+{% endif %}
+
+<div class="grid--full index-featured-text">
+  {% if heading %}
+    <h2>{{ section.settings.title | escape }}</h2>
+  {% endif %}
+
+  {% if text %}
+    <div>{{ section.settings.text }}</div>
+  {% endif %}
+
+  {% if buttonText and url %}
+    <a class="btn" href="{{ url }}">{{ section.settings.linkText | escape }}</a>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Rich text",
+    "class": "featured-text",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Heading"
+      },
+      {
+        "id": "text",
+        "type": "richtext",
+        "label": "Text"
+      },
+      {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      },
+      {
+        "id": "linkText",
+        "type": "text",
+        "label": "Button text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich text",
+        "category": "Text",
+        "settings": {
+          "title": "Welcome to our store!",
+          "text": "<p>All of our products are locally sourced, handmade and designed with attention to detail. We ship everything within a few business days.</p>",
+          "linkText": "Read more"
+        }
+      }
+    ]
+  }
+{% endschema %}

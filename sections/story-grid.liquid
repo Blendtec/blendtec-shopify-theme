@@ -1,0 +1,219 @@
+{% comment %}
+  This story-grid is the heart and soul of the homepage.
+  There are currently 2 different layouts, but it's intentionally extensible for future designs.
+{% endcomment %}
+
+<div class="grid--full grid--story" id="story-grid" data-section-id="{{ section.id }}" style="background-color:{{section.settings.background_color}};color:{{section.settings.text_color}};">
+  {% for block in section.blocks limit: section.blocks.size %}
+    {% assign imageCellWidth = 'half-half' %}
+    {% assign textCellWidth = 'half-half' %}
+
+    {% case block.settings.layout %}
+      {% when 'one-two' %}
+        {% assign imageCellWidth = 'one-third' %}
+        {% assign textCellWidth = 'two-thirds' %}
+      {% when 'two-one' %}
+        {% assign imageCellWidth = 'two-thirds' %}
+        {% assign textCellWidth = 'one-third' %}
+    {% endcase %}
+
+    {% case block.settings.image_position %}
+      {% when 'left' %}
+        {% include 'grid__image' %}
+        {% include 'grid__text' %}
+      {% when 'right' %}
+        {% include 'grid__text' %}
+        {% include 'grid__image' %}
+    {% endcase %}
+  {% endfor %}
+</div>
+
+<style>
+  #story-grid .grid__image.placeholder {
+    background-color: #eee !important;
+  }
+
+  .grid__text.layout-one-two + .grid__item + .grid__text.layout-one-two,
+  .grid__text.layout-two-one + .grid__item + .grid__text.layout-two-one,
+  .grid__text.layout-half-half + .grid__item + .grid__text.layout-half-half,
+  #story-grid .grid__item.has-border {
+    border-top: 1px solid;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Image with text",
+    "max_blocks": 5,
+    "class": "featured-content",
+    "settings": [
+      {
+        "type": "color",
+        "id": "header_color",
+        "label": "Heading color",
+        "default": "#232323"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#424242"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Border color",
+        "default": "#E2E2E2"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "content_block",
+        "name": "Content",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "block_image",
+            "label": "Block image"
+          },
+          {
+            "type": "select",
+            "id": "layout",
+            "label": "Image width",
+            "options": [
+              {
+                "value": "one-two",
+                "label": "30%"
+              },
+              {
+                "value": "half-half",
+                "label": "50%"
+              },
+              {
+                "value": "two-one",
+                "label": "70%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "image_position",
+            "label": "Image position",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "left"
+          },
+          {
+            "type": "select",
+            "id": "text_alignment",
+            "label": "Text alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "left"
+          },
+          {
+            "type": "text",
+            "id": "text_header",
+            "label": "Heading text",
+            "placeholder": "New Accessories for Spring\/Summer"
+          },
+          {
+            "type": "richtext",
+            "id": "text_body",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "button_cta",
+            "label": "Button text",
+            "placeholder": "Shop the Collection"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Link"
+          },
+          {
+            "type": "checkbox",
+            "id": "border_override",
+            "label": "Show top border",
+            "default": false
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text",
+        "category": "Image",
+        "settings": {
+          "header_color": "#232323",
+          "text_color": "#424242",
+          "background_color": "#fff",
+          "border_color": "#e2e2e2"
+        },
+        "blocks": [
+          {
+            "type": "content_block",
+            "settings": {
+              "layout": "two-one",
+              "image_position": "left",
+              "text_header": "Welcome to Shopify",
+              "text_body": "<p>To begin, jump into the Theme Settings by clicking Setup your Theme below.</p>",
+              "button_cta": "Setup your Theme",
+              "button_link": ""
+            }
+          },
+          {
+            "type": "content_block",
+            "settings": {
+              "layout": "two-one",
+              "image_position": "right",
+              "text_header": "The Story Grid",
+              "text_body": "<p>The Story Grid allows you to construct your own unique layout. Ready to get started?</p>",
+              "button_cta": "Setup your Theme",
+              "button_link": ""
+            }
+          },
+          {
+            "type": "content_block",
+            "settings": {
+              "layout": "two-one",
+              "image_position": "left",
+              "text_header": "Documentation",
+              "text_body": "<p>This theme comes with extensive documentation and is supported by Fluorescent. For details, visit the Knowledge Base.</p>",
+              "button_cta": "Visit the Knowledge Base",
+              "button_link": ""
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

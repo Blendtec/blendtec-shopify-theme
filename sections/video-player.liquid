@@ -1,0 +1,218 @@
+<div class="feature-video-container" id="feature-video-{{section.id}}" data-id="{{section.id}}">
+  <div class="feature-video-container-inner">
+    {% if section.settings.video_url != blank %}
+      <video class="feature-video-video" playsinline autoplay loop muted id="video-el-{{section.id}}">
+        <source src="{{ section.settings.video_url | escape }}">
+      </video>
+    {% else %}
+      <div class="feature-video-placeholder">
+        {{ 'video.svg' | asset_url | img_tag }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.color_overlay_opacity != '0' %}
+      <div class="feature-video-overlay"></div>
+    {% endif %}
+  </div>
+
+  {% if section.settings.heading_text != blank or section.settings.page_text != blank or section.settings.button_cta != blank %}
+    <div class="feature-video-slide-text align-{{ section.settings.text_position }} {% if section.settings.enable_animation %}can-animate{% endif %}">
+      {% if section.settings.button_cta == blank and section.settings.button_link != blank %}
+        <a href='{{section.settings.button_link}}' tabindex='0'>
+      {% endif %}
+
+      {% if section.settings.page_text == blank %}
+        <h1 class="bigHeader {% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">{{section.settings.heading_text | escape }}</h1>
+      {% elsif section.settings.heading_text == blank %}
+        <p class="{% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">{{section.settings.page_text | escape }}</p>
+      {% else %}
+        <h1 class="{% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">{{section.settings.heading_text | escape }}</h1>
+        <p class="{% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">{{section.settings.page_text | escape }}</p>
+      {% endif %}
+
+      {% if section.settings.button_cta == blank and section.settings.button_link != blank %}
+        </a>
+      {% endif %}
+
+      {% if section.settings.button_cta != blank and section.settings.button_link != blank %}
+        <a href="{{section.settings.button_link}}" class='block' tabindex='0'>
+          <button class="btn btn--large {% if section.settings.enable_dropshadow %}drop-shadow{%endif%}">{{ section.settings.button_cta | escape }}</button>
+        </a>
+      {% endif %}
+    </div>
+  {% elsif section.settings.button_link != blank %}
+    <a class="full-slide-link" href='{{section.settings.button_link}}' tabindex='0'></a>
+  {% endif %}
+</div>
+
+<style>
+  #feature-video-{{section.id}} .feature-video-container-inner {
+    background-image: url({{ section.settings.fallback_image | img_url: '1440x', scale: 2 }});
+    background-size: cover;
+  }
+
+  @media screen and (max-width: 699px) {
+    #feature-video-{{section.id}} .feature-video-slide-text .btn {
+      background-color: {{section.settings.controls_color}};
+    }
+  }
+
+  {% if section.settings.color_overlay_opacity != '0' %}
+    #feature-video-{{section.id}} .feature-video-overlay {
+      background-color: {{section.settings.color_overlay_color}};
+      opacity: {{section.settings.color_overlay_opacity}};
+    }
+  {% endif %}
+
+  #feature-video-{{section.id}} .feature-video-slide-text,
+  #feature-video-{{section.id}} .feature-video-slide-text h1,
+  #feature-video-{{section.id}} .feature-video-slide-text p {
+    color: {{section.settings.controls_color}};
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Featured video",
+    "class": "video-player",
+    "settings": [
+      {
+        "type": "text",
+        "id": "video_url",
+        "label": "Video URL",
+        "info": "Direct link to an MP4 video. We recommend using a public Dropbox URL. If you're using Dropbox, replace the \"www\" in your Dropbox URL with \"DL\" to form \"https://dl.dropbox.com/s/number\"."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animation",
+        "label": "Enable fade-in animation"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_dropshadow",
+        "default": false,
+        "label": "Show dropshadow",
+        "info": "Adds a shadow effect to your video text and button."
+      },
+      {
+        "type": "select",
+        "id": "color_overlay_opacity",
+        "default": "0.5",
+        "label": "Overlay opacity",
+        "options": [
+          {
+            "value": "0",
+            "label": "Off"
+          },
+          {
+            "value": "0.1",
+            "label": "10%"
+          },
+          {
+            "value": "0.2",
+            "label": "20%"
+          },
+          {
+            "value": "0.3",
+            "label": "30%"
+          },
+          {
+            "value": "0.4",
+            "label": "40%"
+          },
+          {
+            "value": "0.5",
+            "label": "50%"
+          },
+          {
+            "value": "0.6",
+            "label": "60%"
+          },
+          {
+            "value": "0.7",
+            "label": "70%"
+          },
+          {
+            "value": "0.8",
+            "label": "80%"
+          },
+          {
+            "value": "0.9",
+            "label": "90%"
+          },
+          {
+            "value": "1",
+            "label": "100%"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "color_overlay_color",
+        "default": "#000000",
+        "label": "Overlay color"
+      },
+      {
+        "type": "color",
+        "id": "controls_color",
+        "default": "#1b1b1b",
+        "label": "Text color"
+      },
+      {
+        "type": "select",
+        "id": "text_position",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "center-bottom",
+            "label": "Bottom"
+          },
+          {
+            "value": "center-middle",
+            "label": "Middle"
+          },
+          {
+            "value": "center-top",
+            "label": "Top"
+          }
+        ],
+        "default": "center-bottom"
+      },
+      {
+        "type": "text",
+        "id": "heading_text",
+        "label": "Heading text",
+        "placeholder": "New Accessories for Spring\/Summer"
+      },
+      {
+        "type": "text",
+        "id": "page_text",
+        "label": "Subheading text",
+        "placeholder": "Sourced from the finest manufacturers"
+      },
+      {
+        "type": "text",
+        "id": "button_cta",
+        "label": "Button text",
+        "placeholder": "Shop the Collection"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "fallback_image",
+        "label": "Fallback image",
+        "info": "Your fallback image will display if the video fails to load."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured video",
+        "category": "Video"
+      }
+    ]
+  }
+{% endschema %}

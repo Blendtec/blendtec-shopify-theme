@@ -1,0 +1,2 @@
+run "theme watch" this will push any local changes to the theme
+run "theme download" to download the current theme

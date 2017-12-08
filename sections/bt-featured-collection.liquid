@@ -1,0 +1,121 @@
+<div class="bt-featured-collection">
+
+  <div class="grid" style="padding-top:10%;padding-bottom:10%; ">
+  <hr class="hr-style">        
+    </div>
+  <div class="blenders-bottom-background bottom-blenders-wrapper javascript-load-image" backgroundimagesrc300="{{section.settings.background_image2 | img_url: '300x' }}">
+  <div class="grid ">
+    <div class="grid__item large--one-third medium--one-third bottom-blender"><a href="{{section.settings.blender1_link}}" style="position:relative;"><div class="blender-bottom-title">{{section.settings.blender1_title}}</div><img class=" javascript-load-image" style="width:100%" imagebasesrc150="{{section.settings.bottom_blender1 | img_url: '150x' }}" imagebasesrc200="{{section.settings.bottom_blender1 | img_url: '200x' }}" imagebasesrc300="{{section.settings.bottom_blender1 | img_url: '300x' }}" imagebasesrc400="{{section.settings.bottom_blender1 | img_url: '400x' }}" imagebasesrc500="{{section.settings.bottom_blender1 | img_url: '500x' }}" imagebasesrc600="{{section.settings.bottom_blender1 | img_url: '600x' }}"></a></div>
+    <div class="grid__item large--one-third medium--one-third bottom-blender"><a href="{{section.settings.blender2_link}}" style="position:relative;"><div class="blender-bottom-title">{{section.settings.blender2_title}}</div><img class=" javascript-load-image" style="width:100%" imagebasesrc150="{{section.settings.bottom_blender2 | img_url: '150x' }}" imagebasesrc200="{{section.settings.bottom_blender2 | img_url: '200x' }}" imagebasesrc300="{{section.settings.bottom_blender2 | img_url: '300x' }}" imagebasesrc400="{{section.settings.bottom_blender2 | img_url: '400x' }}" imagebasesrc500="{{section.settings.bottom_blender2 | img_url: '500x' }}" imagebasesrc600="{{section.settings.bottom_blender2 | img_url: '600x' }}"></a></div>
+    <div class="grid__item large--one-third medium--one-third bottom-blender"><a href="{{section.settings.blender3_link}}" style="position:relative;"><div class="blender-bottom-title">{{section.settings.blender3_title}}</div><img class=" javascript-load-image" style="width:100%" imagebasesrc150="{{section.settings.bottom_blender3 | img_url: '150x' }}" imagebasesrc200="{{section.settings.bottom_blender3 | img_url: '200x' }}" imagebasesrc300="{{section.settings.bottom_blender3 | img_url: '300x' }}" imagebasesrc400="{{section.settings.bottom_blender3 | img_url: '400x' }}" imagebasesrc500="{{section.settings.bottom_blender3 | img_url: '500x' }}" imagebasesrc600="{{section.settings.bottom_blender3 | img_url: '600x' }}"></a></div>
+  </div>
+  </div>
+</div>
+
+
+  <style>
+      .blender-bottom-title{
+        position: absolute;
+        margin-top: 50%;
+        text-align: center;
+        width: 100%;
+        font-size: 3em;
+        color: #f41d2f;
+        font-weight: 900;
+      }
+      .bottom-blender:hover{
+        opacity:.75;
+      }
+      .bottom-blenders-wrapper{
+        width:80%;
+        margin-left:10%;
+      }
+      .hr-style{
+          width: 80%;
+          margin-left: 10%;
+          border-color: #d5d5d5;
+          opacity: .65;
+      }
+
+    .bt-featured-collection{
+    	background-color:black;
+    }
+
+</style>
+
+{{ 'autofit_images.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+"name":"bt-featured-collection",
+"class":"bt-featured-collection",
+"max_blocks":1,
+"settings":[
+{
+"type":"image_picker",
+"id":"bottom_blender1",
+"label":"Bottom Blender 1",
+"info":"1st Blender Image on Bottom of Section"
+},
+{
+"type":"text",
+"id":"blender1_title",
+"label":"Blender 1 title",
+"default":"DESIGNER"
+},
+{
+"type": "url",
+"id": "blender1_link",
+"label": "Blender 1 Link"
+},
+{
+"type":"image_picker",
+"id":"bottom_blender2",
+"label":"Bottom Blender ",
+"info":"2nd Blender Image on Bottom of Section"
+},
+{
+"type":"text",
+"id":"blender2_title",
+"label":"Blender 2 title",
+"default":"PRO"
+},
+{
+"type": "url",
+"id": "blender2_link",
+"label": "Blender 2 Link"
+},
+{
+"type":"image_picker",
+"id":"bottom_blender3",
+"label":"Bottom Blender 3",
+"info":"3rd Blender Image on Bottom of Section"
+},
+{
+"type":"text",
+"id":"blender3_title",
+"label":"Blender 3 title",
+"default":"CLASSIC"
+},
+{
+"type": "url",
+"id": "blender3_link",
+"label": "Blender 3 Link"
+},
+{
+"type":"image_picker",
+"id":"background_image2",
+"label":"Background Image",
+"info":"The background image for the blenders"
+}
+],
+"blocks":[
+],
+    "presets": [
+      {
+        "name": "bt-featured-collection",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}

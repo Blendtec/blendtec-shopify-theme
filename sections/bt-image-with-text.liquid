@@ -1,0 +1,221 @@
+<div class="bt-image-with-text">
+{% if section.settings.image_orientation == 'one' %}
+<div class="grid" style="max-width:1200px;margin:auto;">
+  <div class="grid__item">
+    <div class="grid">
+
+      <div class="grid__item large--one-half">
+        <div class="section-two-image-wrapper">
+        <img imagebasesrc200="{{section.settings.section2_image | img_url: '200x' }}" imagebasesrc300="{{section.settings.section2_image | img_url: '300x' }}" imagebasesrc400="{{section.settings.section2_image | img_url: '400x' }}" imagebasesrc500="{{section.settings.section2_image | img_url: '500x' }}" imagebasesrc600="{{section.settings.section2_image | img_url: '600x' }}" imagebasesrc700="{{section.settings.section2_image | img_url: '700x' }}" imagebasesrc800="{{section.settings.section2_image | img_url: '800x' }}" class="section2-image javascript-load-image">
+        </div>
+      </div>
+
+      <div class="grid__item large--one-half">
+    <div class="section2-text">
+    <h2 class="section2-h2">{{section.settings.section2_headline}}</h2>
+    <div>
+{{section.settings.section2_text}}
+          </div>
+    <a href="{{section.settings.section2_link}}"  class="section2-learn-more">{{section.settings.section2_linktext}}</a><span class="section2-arrow">&gt;</span>
+    </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endif %}
+{% if section.settings.image_orientation == 'two' %}
+<div class="grid" style="max-width:1200px;margin:auto;">
+  <div class="grid__item">
+    <div class="grid">
+
+
+      <div class="grid__item large--one-half">
+    <div class="section2-text">
+    <h2 class="section2-h2">{{section.settings.section2_headline}}</h2>
+    <div>
+{{section.settings.section2_text}}
+          </div>
+    <a href="{{section.settings.section2_link}}"  class="section2-learn-more">{{section.settings.section2_linktext}}</a><span class="section2-arrow">&gt;</span>
+    </div>
+      </div>
+      
+      <div class="grid__item large--one-half">
+        <div class="section-two-image-wrapper">
+        <img imagebasesrc200="{{section.settings.section2_image | img_url: '200x' }}" imagebasesrc300="{{section.settings.section2_image | img_url: '300x' }}" imagebasesrc400="{{section.settings.section2_image | img_url: '400x' }}" imagebasesrc500="{{section.settings.section2_image | img_url: '500x' }}" imagebasesrc600="{{section.settings.section2_image | img_url: '600x' }}" imagebasesrc700="{{section.settings.section2_image | img_url: '700x' }}" imagebasesrc800="{{section.settings.section2_image | img_url: '800x' }}" class="section2-image javascript-load-image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endif %}
+</div>
+<style>
+    .section2-text{
+    margin: 100px 0px 100px -30px;
+    max-width:600px;
+  }
+  .section2-text{
+    margin: 100px 0px 100px -30px;
+    max-width:600px;
+  }
+
+  .section2-learn-more{
+    color: #f41d2f;
+    font-size:18px;
+    font-style:italic;
+    text-decoration:none;
+    font-weight:900;
+  }
+  .section2-arrow{
+      position: absolute;
+      margin-top: 7px;
+      font-size: 9px;
+      margin-left: 3px;
+      font-weight: 900;
+      font-style: italic;
+      color: #f41d2f;
+  }
+  .section2-h2{
+      color: #353949;
+      font-size: 45px;
+      font-weight:900;
+  }
+  .section-two-image-wrapper{
+    margin-left:-30px;
+  }
+  .section2-image{
+    max-width:140%;
+    width:130%;
+    margin-top:-15%;
+    margin-bottom:-15%;
+    position:relative;
+    z-index:3;
+  }
+  .shopify-section{
+    position:static !important;
+  }
+
+
+@media screen and (max-width: 1199px) { /*medium 991width*/
+
+  .section2-image{
+    width:120%;
+    margin-top:-10%;
+    margin-bottom:-10%;
+  }
+}
+
+@media screen and (max-width: 991px) { /*small - 767width*/
+
+  .section-two-image-wrapper{
+    margin-top:15px;
+    position:initial;
+  }
+  .section2-image{
+    width:100%;
+    margin-top:0%;
+  }
+  .section2-h2{
+    font-size:45px;
+  }
+}
+
+  @media screen and (max-width: 848px) {
+
+  .section2-text{
+    margin: 50px 0px 100px -15px;
+  }
+
+  }
+
+  
+@media screen and (max-width: 768px) { /*xsmall - 600width*/
+
+
+  .small-left-padding{
+    padding-left:45px;
+  }
+}
+
+@media screen and (max-width: 600px) { /*xxsmall - 400width*/
+
+  .section2-h2{
+    font-size:30px;
+  }
+}
+
+</style>
+{{ 'autofit_images.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+"name":"bt-image-with-text",
+"class":"section2",
+"max_blocks":1,
+"settings":[
+{
+"type":"image_picker",
+"id":"section2_image",
+"label":"Section2 Image",
+"info":"This will overlap the sections above and below"
+},
+{
+"type":"text",
+"id":"section2_headline",
+"label":"Section 2 Headline",
+"default":"HEADLINE H2"
+},
+{
+"type":"text",
+"id":"section2_text",
+"label":"Section 2 Text",
+"default":"Nam et leo scelerisque, facilisis turpis non, maximus elit. Donec ut arcu ac magna viverra ornare eu ac sem. Nunc orci diam, ultricies ac dignissim ac, eleifend eget libero. Vestibulum eleifend vel tortor nec vulputate. Nam sed sodales turpis, nec imperdiet nisi. Morbi vitae euismod erat, eu dignissim risus."
+},
+{
+"type":"text",
+"id":"section2_linktext",
+"label":"Section2 Link Text",
+"default":"LEARN MORE"
+},
+{
+"type": "url",
+"id": "section2_link",
+"label": "Section 2 Link"
+},
+{
+"type":      "radio",
+"id":        "image_orientation",
+"label":     "Image/text vs Text/image",
+"options": [
+{ "value": "one", "label": "Image/text" },
+{ "value": "two", "label": "Text/image" }
+],
+"default":   "one",
+"info":      "This determines the orientation of this section"
+}
+],
+"blocks":[
+{
+"type":"header",
+"name":"section2",
+"settings":[
+
+]
+}
+],
+    "presets": [
+      {
+        "name": "bt-image-with-text",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

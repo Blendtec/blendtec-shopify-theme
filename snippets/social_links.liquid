@@ -1,0 +1,18 @@
+{% comment %}
+Note - as social media names are proper nouns they are not internationalized.
+{% endcomment %}
+
+{% assign social_options = "Facebook, Twitter, Pinterest, Instagram, Google Plus, tumblr, YouTube, Vimeo" | split: ", " %}
+
+{% for option_title in social_options %}
+  {% capture option_setting %}social_{{ option_title | downcase | replace: " ", "_" }}_link{% endcapture %}
+  {% capture icon_class %}icon-{{ option_title | downcase | replace: " ", "-" }}{% endcapture %}
+
+  {% if settings[option_setting] != blank %}
+    <li>
+      <a href="{{ settings[option_setting] }}">
+        <span class="icon {{ icon_class }}" aria-hidden="true">{{ option_title }}</span>
+      </a>
+    </li>
+  {% endif %}
+{% endfor %}
