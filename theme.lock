@@ -286,7 +286,7 @@ templates/list-collections.liquid:
 templates/page.contact.liquid:
   development: 2017-11-02T14:46:51-06:00   43f397081de39e07372574e02851b92a
 templates/page.liquid:
-  development: 2017-11-02T14:46:51-06:00   279feea4b25faefa9614642af32137dc
+  development: 2017-12-12T15:53:44-07:00   279feea4b25faefa9614642af32137dc
 templates/password.liquid:
   development: 2017-11-02T14:46:51-06:00   ee76be4d72c25744a18451066fe5739c
 templates/product.liquid:

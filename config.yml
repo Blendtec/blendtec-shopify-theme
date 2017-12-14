@@ -1,4 +1,4 @@
 development:
-  password: ffae3a11fa4285534471313b83d6cb2b
-  theme_id: "226885652"
-  store: blendtec.myshopify.com
+  password: THEMEKIT_PASSWORD
+  theme_id: THEMEKIT_THEME_ID
+  store: THEMEKIT_STORE
