@@ -24,11 +24,12 @@ function getPosition(element) {
 
     return yPosition;
 }
-  
+
   function animateImageIfjQuery (element, source, backgroundImage) {
+    element.alreadyLoaded = true;
     if (typeof element != 'undefined' && typeof source != 'undefined' && typeof backgroundImage != 'undefined') {
       if ((!element.src || element.src.length === 0) && !backgroundImage) {
-		element.src = source;
+		    element.src = source;
 
         var originalElementOpacity = element.style.opacity;
         if (!originalElementOpacity || originalElementOpacity == 0) {
@@ -42,14 +43,15 @@ function getPosition(element) {
               $(element).animate({
                                 opacity: originalElementOpacity
                               }, 500, function() {
-									element.onload = null;
+                  element.onload = null;
                               });
           } else {
               element.style.opacity = originalElementOpacity;
               element.onload = null;
           }
+
         }
-        
+
 
       } else if (backgroundImage && element.style.backgroundImage != 'url('+source+')') {
           element.style.backgroundImage = 'url('+source+')';
@@ -59,16 +61,21 @@ function getPosition(element) {
     }
 
   }
-  
-  function loadIfVisible () {
-  	var doc = document.documentElement;
-  	var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
-    var win_height = window.innerHeight;
-    var bottom_of_page = top+win_height;
-    var top_of_page = top;
-  
+
+  function loadIfVisible (bottomSet = null, topSet = null) {
+    var bottom_of_page = bottomSet;
+    var top_of_page = topSet;
+    var keepOpaque = true;
+    if (bottom_of_page === null && top_of_page === null) {
+      var doc = document.documentElement;
+      var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+      var win_height = window.innerHeight;
+      bottom_of_page = top+win_height;
+      top_of_page = top;
+      keepOpaque = false;
+    }
+
     var imagesToLoad = document.getElementsByClassName('javascript-load-image');
-    
     for (var i in imagesToLoad) {
       if (imagesToLoad && imagesToLoad[i] && (imagesToLoad[i].selectedSrc || imagesToLoad[i].selectedBackgroundSrc)) {
       	var elem_position_top = getPosition(imagesToLoad[i]);
@@ -81,12 +88,12 @@ function getPosition(element) {
         }
       }
     }
-    
-  }  
-  
+
+  }
+
 function loadImagesByWidth (imagesrc, backgroundimagesrc) {
 	var imagesToLoad = document.getElementsByClassName('javascript-load-image');
-  
+
 	for (var i in imagesToLoad) {
 		 var chosenNode = getClosestWidth(imagesToLoad[i], imagesrc);
 		 if (chosenNode && imagesToLoad[i] && imagesToLoad[i].attributes && imagesToLoad[i].attributes[chosenNode]) {
@@ -99,7 +106,47 @@ function loadImagesByWidth (imagesrc, backgroundimagesrc) {
 	}
   loadIfVisible();
 }
- 
+var newImg = new Image;
+function preloadImage (element, source, backgroundImage, callback) {
+    newImg.onload = function() {
+      console.log(source + " loaded");
+      if (backgroundImage) {
+        element.style.backgroundImage = 'url('+source+')';
+      }
+      callback();
+    }
+    newImg.src = source;
+
+}
+
+function loadIfNotVisible (i) {
+  var imagesToLoad = document.getElementsByClassName('javascript-load-image');
+  if (i < imagesToLoad.length) {
+    var imageToLoad = imagesToLoad[i];
+    if (imageToLoad && imageToLoad.alreadyLoaded) {
+      loadIfNotVisible(i + 1);
+    } else {
+      if (imageToLoad && (imageToLoad.selectedSrc || imageToLoad.selectedBackgroundSrc)) {
+        if (imageToLoad.selectedSrc) {
+          preloadImage(imageToLoad, imageToLoad.selectedSrc, false, function () {
+            console.log('hello world2');
+            loadIfNotVisible(i + 1);
+          });
+        }
+        if (imageToLoad.selectedBackgroundSrc) {
+          preloadImage(imageToLoad, imageToLoad.selectedBackgroundSrc, true, function () {
+            console.log('hello world1');
+            loadIfNotVisible(i + 1);
+          });
+        }
+      }
+    }
+  } else {
+            console.log('hello world4');
+    return;
+  }
+}
+
 
 
 window.onresize = function () {
@@ -110,10 +157,12 @@ window.onresize = function () {
 
 window.onload = function () {
 	loadImagesByWidth('imagebasesrc', 'backgroundimagesrc');
+
+  loadIfNotVisible(0);
 };
 
 window.onscroll = function () {
-loadIfVisible();
+  loadIfVisible();
 };
 
   })();
