@@ -139,7 +139,6 @@ function loadIfNotVisible (i) {
       }
     }
   } else {
-            console.log('hello world4');
     return;
   }
 }

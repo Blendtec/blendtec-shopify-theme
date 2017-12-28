@@ -8,7 +8,7 @@ assets/ajax-loader.gif:
 assets/arrow-right.svg:
   development: 2017-11-02T14:46:42-06:00   e844b7ee590ed226791a9e3a08b416a8
 assets/autofit_images.js:
-  development: 2017-12-27T09:43:34-07:00   93e2dcf7060e011831ab8b92a0709619
+  development: 2017-12-28T10:03:43-07:00   6c8fcc1b9872f8a7875fdab573bcfe7e
 assets/backgroundsize.min.htc:
   development: 2017-11-02T14:46:42-06:00   3646d426d3f484b6166c39ae1e83de1e
 assets/cart.svg:
@@ -116,7 +116,7 @@ sections/bt-featured-collection.liquid:
 sections/bt-featured-product-lrg.liquid:
   development: 2017-12-01T13:46:52-07:00   a19f0f25b9b0bb2e0967dfe95518ab87
 sections/bt-footer.liquid:
-  development: 2017-12-28T09:46:19-07:00   df078ef605488e021c4e52353e10df41
+  development: 2017-12-28T10:16:03-07:00   c6c151d1ad8d8514f507f403473b9141
 sections/bt-header.liquid:
   development: 2017-11-03T18:55:09-06:00   0b28cee7b24cefddcf5147711409f760
 sections/bt-headline-with-cta.liquid:
