@@ -109,7 +109,6 @@ function loadImagesByWidth (imagesrc, backgroundimagesrc) {
 var newImg = new Image;
 function preloadImage (element, source, backgroundImage, callback) {
     newImg.onload = function() {
-      console.log(source + " loaded");
       if (backgroundImage) {
         element.style.backgroundImage = 'url('+source+')';
       }
@@ -129,13 +128,11 @@ function loadIfNotVisible (i) {
       if (imageToLoad && (imageToLoad.selectedSrc || imageToLoad.selectedBackgroundSrc)) {
         if (imageToLoad.selectedSrc) {
           preloadImage(imageToLoad, imageToLoad.selectedSrc, false, function () {
-            console.log('hello world2');
             loadIfNotVisible(i + 1);
           });
         }
         if (imageToLoad.selectedBackgroundSrc) {
           preloadImage(imageToLoad, imageToLoad.selectedBackgroundSrc, true, function () {
-            console.log('hello world1');
             loadIfNotVisible(i + 1);
           });
         }

@@ -8,7 +8,7 @@ assets/ajax-loader.gif:
 assets/arrow-right.svg:
   development: 2017-11-02T14:46:42-06:00   e844b7ee590ed226791a9e3a08b416a8
 assets/autofit_images.js:
-  development: 2017-12-20T14:04:57-07:00   c6ff7147ef21b0c36266956d322e6be9
+  development: 2017-12-27T09:43:34-07:00   93e2dcf7060e011831ab8b92a0709619
 assets/backgroundsize.min.htc:
   development: 2017-11-02T14:46:42-06:00   3646d426d3f484b6166c39ae1e83de1e
 assets/cart.svg:
@@ -94,7 +94,7 @@ config/settings_schema.json:
 layout/theme.gem-layout-none.liquid:
   development: 2017-11-28T08:52:13-07:00   5eb37e3a84cd0729885d8eb6097eacec
 layout/theme.liquid:
-  development: 2017-11-28T08:52:13-07:00   8c747855014b378577ba4f594b755136
+  development: 2017-12-27T13:19:56-07:00   5551b05ba18d7741b0c7c1cadef614bd
 locales/en.default.json:
   development: 2017-11-03T16:26:59-06:00   8bf16a85d86975909634ed7ca8eb6cd0
 sections/blog-template.liquid:
@@ -115,6 +115,8 @@ sections/bt-featured-collection.liquid:
   development: 2017-12-01T13:47:42-07:00   495d844ae147e25f10944522be781333
 sections/bt-featured-product-lrg.liquid:
   development: 2017-12-01T13:46:52-07:00   a19f0f25b9b0bb2e0967dfe95518ab87
+sections/bt-footer.liquid:
+  development: 2017-12-28T09:46:19-07:00   df078ef605488e021c4e52353e10df41
 sections/bt-header.liquid:
   development: 2017-11-03T18:55:09-06:00   0b28cee7b24cefddcf5147711409f760
 sections/bt-headline-with-cta.liquid:
@@ -144,7 +146,7 @@ sections/featured-text.liquid:
 sections/features.liquid:
   development: 2017-11-02T14:46:39-06:00   6e4da4f6f22600340d2b9afebe156383
 sections/footer.liquid:
-  development: 2017-11-02T14:46:39-06:00   8b44200e946c0ad5d19c5724c7cf6047
+  development: 2017-12-27T15:19:24-07:00   8b44200e946c0ad5d19c5724c7cf6047
 sections/grid.liquid:
   development: 2017-11-02T14:46:39-06:00   b7bd12af423558a4337e29a42f4542d8
 sections/header.liquid:
@@ -245,6 +247,8 @@ snippets/social-meta-tags.liquid:
   development: 2017-11-02T14:46:50-06:00   e472544cf580625e997467cdb313d1ae
 snippets/social-sharing.liquid:
   development: 2017-11-02T14:46:50-06:00   3f3dce0f24702de0660925a94a8bdde9
+snippets/social_buttons.liquid:
+  development: 2017-12-28T09:26:03-07:00   f69627d7125d6b1120aa216845cf59e3
 snippets/social_links.liquid:
   development: 2017-11-02T14:46:50-06:00   2a25bf600c955c94a031f35ce3a391f4
 snippets/tags-article.liquid:
