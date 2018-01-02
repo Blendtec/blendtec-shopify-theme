@@ -161,6 +161,8 @@ sections/popup.liquid:
   development: 2017-11-02T14:46:40-06:00   10b9cf04ae00bacf01e497ca08069865
 sections/product-template.liquid:
   development: 2017-11-02T14:46:40-06:00   e8b176d390b2880710cd0f00037df51f
+sections/recipe-template.liquid:
+  development: 2018-01-02T15:14:05-07:00   5dfa4b5a60bf49df147d3fac5fcef425
 sections/story-grid.liquid:
   development: 2017-11-02T14:46:40-06:00   8196db837575434e0757aaba6d14583d
 sections/testimonials.liquid:
@@ -261,6 +263,8 @@ templates/404.liquid:
   development: 2017-11-02T14:46:50-06:00   b0f095ebb3df0e4ef1b23136759a4f77
 templates/article.liquid:
   development: 2017-11-02T14:46:50-06:00   e65899a9a3a2a2a01aac306295c8c1e1
+templates/article.recipe.liquid:
+  development: 2018-01-02T15:14:05-07:00   8fc02df41caaf9961de29ec43fb5e76e
 templates/blog.liquid:
   development: 2017-11-02T14:46:50-06:00   2d9763b480fe6879080163b1e0e33e54
 templates/cart.liquid:
