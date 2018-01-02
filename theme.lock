@@ -295,6 +295,8 @@ templates/page.liquid:
   development: 2017-12-12T15:53:44-07:00   279feea4b25faefa9614642af32137dc
 templates/page.registration.liquid:
   development: 2018-01-02T11:31:22-07:00   5fd9085dcb4c66aa17840f291c8bb7a7
+templates/page.warranties.liquid:
+  development: 2018-01-02T14:19:23-07:00   0f351c2cec780f6a85feec04ded7a946
 templates/password.liquid:
   development: 2017-11-02T14:46:51-06:00   ee76be4d72c25744a18451066fe5739c
 templates/product.liquid:
