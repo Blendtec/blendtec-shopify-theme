@@ -1,0 +1,21 @@
+<!-- /templates/page.registration.liquid -->
+
+  <link href="{{ 'registration.css' | asset_url }}" rel="stylesheet">
+
+<div class="grid--full text-max-width">
+  <div>
+    <div class="text-center content-wrapper--horizontal section-header">
+      <div class="display-table-cell">
+        <h1>{{ page.title }}</h1>
+        {% include 'breadcrumb' %}
+      </div>
+    </div>
+  </div>
+  <hr class='hr--center'>
+  <div>
+    <div class="rte">
+      {{ page.content }}
+    </div>
+   </div>
+   <hr class="hr--center">
+</div>

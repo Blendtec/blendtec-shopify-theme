@@ -1,0 +1,128 @@
+.languages {
+  list-style-type: none;
+  margin-left: 0px;
+}
+.languages li {
+  display:inline-block;
+  margin-right: 5px;
+}
+.registration-thank-you {
+  max-width: 860px;
+  margin: auto; }
+  .registration-thank-you--hero-image {
+    background: url("#https://cdn.blendtec.com/img/registration/product-registration-hero-sm.jpg") no-repeat;
+    background-position: 70% 0;
+    background-size: cover; }
+    @media (min-width: 250px) {
+      .registration-thank-you--hero-image {
+        background: url("#https://cdn.blendtec.com/img/registration/product-registration-hero.jpg") no-repeat;
+        background-position: 70% 0;
+        background-size: cover; } }
+  .registration-thank-you--leader-title {
+    font-size: 2.4rem;
+    margin: 50px auto 0; }
+    @media (min-width: 250px) {
+      .registration-thank-you--leader-title {
+        font-size: 2.8rem; } }
+  .registration-thank-you--heading {
+    text-align: center;
+    text-transform: uppercase; }
+  .registration-thank-you--para {
+    text-align: center;
+    font-size: 1.4rem;
+    max-width: 600px;
+    margin: 10px auto; }
+  .registration-thank-you--buttons {
+    max-width: 1120px;
+    margin-top: 60px;
+    margin-bottom: 160px; }
+  .registration-thank-you--button {
+    display: block;
+    margin-bottom: 30px;
+    display: block;
+    margin-bottom: 30px;
+    width: 49.15254%;
+    float: right;
+    margin-right: 0; }
+    @media (min-width: 650px) {
+      .registration-thank-you--button {
+        margin-bottom: 0px;
+        width:23.7%; } }
+    @media (min-width: 650px) {
+      .registration-thank-you--button:last-of-type {
+        margin-bottom: 0px;
+        width: 23.72881%; } }
+  .registration-thank-you--social-box {
+    display: block;
+    text-align: center; }
+  .registration-thank-you--button-image {
+    height: auto;
+    max-width: 130px;
+    width: 100%;
+    display: block;
+    margin: auto; }
+    @media (min-width: 250px) {
+      .registration-thank-you--button-image {
+        max-width: 150px; } }
+  .registration-thank-you--button-content {
+    text-align: center;
+    display: block; }
+  .registration-thank-you--btn-title {
+    font-size: 1.14rem;
+    color: #58595b;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 14px 0; }
+    .registration-thank-you--button:hover .registration-thank-you--btn-title {
+      color: #ED1B2C; }
+  .registration-thank-you--button-arrow svg {
+    display: block;
+    height: 30px;
+    margin: 0 auto;
+    width: 30px;
+    padding: 1px; }
+    .registration-thank-you--button-arrow svg #circle {
+      stroke: red;
+      stroke-width: 40; }
+    .registration-thank-you--button-arrow svg #arrow {
+      fill: #58595b; }
+    .registration-thank-you--button:hover .registration-thank-you--button-arrow svg #circle {
+      stroke: none;
+      fill: #ED1B2C; }
+    .registration-thank-you--button:hover .registration-thank-you--button-arrow svg #arrow {
+      fill: white; }
+.social-icons .social-icon a {
+    color: #ED1B2C;
+}
+.social-icons .social-icon a:hover {
+    color: #58595b;
+}
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.social-icons .social-icon {
+    font-size: 21px;
+    font-size: 1.5rem;
+    list-style: none;
+    display: inline-block;
+    padding: 0 6px;
+}
+.icon svg {
+    fill: #ED1B2C;
+}
+.icon:hover svg{
+    fill: #58595b;
+}
+.text-max-width{
+    max-width:1200px;
+}

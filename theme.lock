@@ -59,6 +59,8 @@ assets/modernizr.min.js:
   development: 2017-11-02T14:46:45-06:00   dc21cffad945a84cbbe770d52b1a0ded
 assets/raf.js:
   development: 2017-11-02T14:46:45-06:00   38bb0fbe122f71de125da23a5109db39
+assets/registration.css:
+  development: 2018-01-02T11:46:36-07:00   1bb2fb222a273ba18d4461ca40f077aa
 assets/respond-proxy.html:
   development: 2017-11-02T14:46:45-06:00   48a2f4c318a6f7b29499c2e9f5b9083f
 assets/respond.min.js:
@@ -104,7 +106,7 @@ sections/brand-logos.liquid:
 sections/bt-background-image.liquid:
   development: 2017-12-01T13:28:45-07:00   3f6b2f76eac3f109ff6f8533e5e5ef99
 sections/bt-carousel.liquid:
-  development: 2017-11-14T14:13:39-07:00   b052ab8e0ec440b172050b10f79e5a72
+  development: 2018-01-02T10:21:14-07:00   b052ab8e0ec440b172050b10f79e5a72
 sections/bt-center-text-cta.liquid:
   development: 2017-12-01T13:54:44-07:00   774619455fd0e7fd20f508156d2067c8
 sections/bt-featured-blog.liquid:
@@ -116,7 +118,7 @@ sections/bt-featured-collection.liquid:
 sections/bt-featured-product-lrg.liquid:
   development: 2017-12-01T13:46:52-07:00   a19f0f25b9b0bb2e0967dfe95518ab87
 sections/bt-footer.liquid:
-  development: 2017-12-28T10:16:03-07:00   c6c151d1ad8d8514f507f403473b9141
+  development: 2018-01-02T10:24:12-07:00   c6c151d1ad8d8514f507f403473b9141
 sections/bt-header.liquid:
   development: 2017-11-03T18:55:09-06:00   0b28cee7b24cefddcf5147711409f760
 sections/bt-headline-with-cta.liquid:
@@ -291,6 +293,8 @@ templates/page.contact.liquid:
   development: 2017-11-02T14:46:51-06:00   43f397081de39e07372574e02851b92a
 templates/page.liquid:
   development: 2017-12-12T15:53:44-07:00   279feea4b25faefa9614642af32137dc
+templates/page.registration.liquid:
+  development: 2018-01-02T11:31:22-07:00   5fd9085dcb4c66aa17840f291c8bb7a7
 templates/password.liquid:
   development: 2017-11-02T14:46:51-06:00   ee76be4d72c25744a18451066fe5739c
 templates/product.liquid:
