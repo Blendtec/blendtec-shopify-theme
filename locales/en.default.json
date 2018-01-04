@@ -88,6 +88,23 @@
       "categories": "Categories"
     }
   },
+  "recipes": {
+    "ingredients": "Ingredients",
+    "instructions": "Instructions",
+    "nutrition_info": "Nutritional Information",
+    "variations": "Variations",
+    "servings": "Servings",
+    "servingsize": "Serving Size",
+    "calories": "Calories",
+    "fat": "Fat",
+    "satfat": "Saturated Fat",
+    "cholesterol": "Cholesterol",
+    "sodium": "Sodium",
+    "carbs": "Carbohydrates",
+    "fiber": "Fiber",
+    "sugar": "Sugar",
+    "protein": "Protein"
+  },
   "cart": {
     "general": {
       "title": "Shopping Cart",
