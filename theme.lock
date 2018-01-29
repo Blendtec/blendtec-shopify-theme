@@ -44,7 +44,7 @@ assets/index-placeholder-features.png:
 assets/index-placeholder-testimonials.png:
   development: 2017-11-02T14:46:44-06:00   20f74033ff607c3cadab0e50cf5ecee6
 assets/ira.js.liquid:
-  development: 2017-11-03T15:52:16-06:00   9074ed2d45d2a0e8e9d04d46486483ef
+  development: 2018-01-29T12:58:29-07:00   8ed6ecf6158a11d34fa6e8cac84443fb
 assets/ira.min.js.liquid:
   development: 2017-11-02T14:46:44-06:00   80e95a6965a4dbea9248e95d0bf31cdb
 assets/jquery.currencies.min.js:
@@ -96,7 +96,7 @@ config/settings_schema.json:
 layout/theme.gem-layout-none.liquid:
   development: 2017-11-28T08:52:13-07:00   5eb37e3a84cd0729885d8eb6097eacec
 layout/theme.liquid:
-  development: 2017-12-27T13:19:56-07:00   5551b05ba18d7741b0c7c1cadef614bd
+  development: 2018-01-08T13:57:07-07:00   284ab4cd5ae3825c0086d1fc48d64c9b
 locales/en.default.json:
   development: 2017-11-03T16:26:59-06:00   8bf16a85d86975909634ed7ca8eb6cd0
 sections/blog-template.liquid:
@@ -120,7 +120,7 @@ sections/bt-featured-product-lrg.liquid:
 sections/bt-footer.liquid:
   development: 2018-01-02T10:24:12-07:00   c6c151d1ad8d8514f507f403473b9141
 sections/bt-header.liquid:
-  development: 2017-11-03T18:55:09-06:00   0b28cee7b24cefddcf5147711409f760
+  development: 2018-01-29T12:50:29-07:00   0b28cee7b24cefddcf5147711409f760
 sections/bt-headline-with-cta.liquid:
   development: 2017-12-01T14:19:15-07:00   e1709d0c9788ee0a508d93fc3aba66f9
 sections/bt-hero-section.liquid:
@@ -194,7 +194,7 @@ snippets/drawer-cart.liquid:
 snippets/drawer-nav-menu.liquid:
   development: 2017-11-02T14:46:48-06:00   ecaf040831990cbf2fb74d4862871110
 snippets/drawer-nav.liquid:
-  development: 2017-11-02T14:46:48-06:00   648c70235987109df81b04dc4aa901b4
+  development: 2018-01-29T12:44:16-07:00   472265cdde9346a0699e528533eba9e5
 snippets/dropdown.liquid:
   development: 2017-11-02T14:46:48-06:00   2dd2eca884435773370c1737b1856353
 snippets/email-signup.liquid:
@@ -220,9 +220,9 @@ snippets/icons-payment.liquid:
 snippets/icons.svg.liquid:
   development: 2017-11-02T14:46:49-06:00   0531d2abbff49d92775c895ee3fd6e3a
 snippets/mobile-menu.liquid:
-  development: 2017-11-02T14:46:49-06:00   2f92e2f9965fb7cc948e8031b052e166
+  development: 2018-01-29T12:41:15-07:00   973dff405b1c6a662ff080d51061df06
 snippets/navigation.liquid:
-  development: 2017-11-02T14:46:49-06:00   6ed875e7a109aaf451045e662a99c35d
+  development: 2018-01-29T13:01:25-07:00   fcb6741fc97c9ea6d089c89997e198bf
 snippets/oldIE-js.liquid:
   development: 2017-11-02T14:46:49-06:00   5647bbce3c1e63006bda8c1939c15bff
 snippets/onboarding-empty-collection.liquid:
