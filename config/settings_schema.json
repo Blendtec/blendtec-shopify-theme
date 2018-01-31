@@ -1151,6 +1151,21 @@
         "id": "default_currency",
         "label": "Default currency",
         "default": "USD"
+      },
+      {
+        "name": "PriceSpider",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "PriceSpider find a store widget."
+          },
+          {
+            "type": "text",
+            "id": "pricespider_main_widget_id",
+            "label": "Widget Id",
+            "info": "Widget Id is found here: https:\/\/portal.pricespider.com under WhereToBuy menu"
+          }
+        ]
       }
     ]
   }
