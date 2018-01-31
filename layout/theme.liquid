@@ -73,6 +73,10 @@
 <!--Gem_Page_Header_Script-->
 {% include 'gem-app-header-scripts' %}
 <!--End_Gem_Page_Header_Script-->
+{% if template == 'page.find-a-store' %}
+  {% include 'price-spider-header-scripts' %}
+{% endif %}
+
 </head>
 
 {% comment %}
