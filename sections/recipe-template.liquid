@@ -1,82 +1,42 @@
-<div class="section-header text-center">
-    <h1 class="article__title">{{ article.title }}</h1>
-    {% if section.settings.blog_show_author %}
-    <span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
-    {% endif %}
-
-    {% if section.settings.blog_show_date %}
-    <span class="article__date">
-      {{ article.published_at | time_tag: format: 'month_day_year' }}
-    </span>
-    {% endif %}
-</div>
 <div>
-{% if article.image %}
-{% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
-{% capture img_wrapper_id %}ArticleImageWrapper-{{ article.image.id }}{% endcapture %}
-{%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-
-{% include 'image-style' with image: article.image, small_style: true, width: 750, height: 387, wrapper_id: img_wrapper_id, img_id: img_id %}
-
-<div id="{{ img_wrapper_id }}" class="article__grid-image-wrapper js">
-    <a href="{{ article.url }}" style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;" class="article__grid-image-container">
-        <img id="{{ img_id }}"
-             class="article__grid-image lazyload"
-             src="{{ article.image | img_url: '700x700' }}"
-             data-src="{{ img_url }}"
-             data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-             data-aspectratio="{{ article.image.aspect_ratio }}"
-             data-sizes="auto"
-             alt="{{ article.image.alt | escape }}">
-    </a>
-</div>
-
-<noscript>
-    <a href="{{ article.url }}" class="article__grid-image-wrapper">
-        {{ article | img_url: '345x', scale: 2 | img_tag: article.title, 'article__grid-image' }}
-    </a>
-</noscript>
-{% endif %}</div>
-<div class="rte" itemprop="articleBody">
-{{ article.content }}
-</div>
-<div>
-{% assign youtube = article.metafields["global"]["youtube_id"] %}
-{% if youtube %}
-<iframe width="560" height="315" src="https://www.youtube.com/embed/{{youtube}}?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-{% endif %}
-</div>
-<div class="rte recipe-instructions">
-<h3 class="recipe_instructions">{{ 'recipes.instructions' | t}}</h3>
-{{ article.metafields["global"]["instructions"] }}
-</div>
-<div class="rte recipe-ingredients">
-<h3 class="recipe_instructions">{{ 'recipes.ingredients' | t}}</h3>
-<ul>
-    {{ article.metafields["global"]["ingredients"] }}
-</ul>
-
-
-</div>
-        {% assign nonEdible = article.metafields["global"]["non_edible"] %}
-        {% if nonEdible == 0 %}
-<div class="rte recipe-ingredients">
-<h3 class="recipe_instructions">{{ 'recipes.nutrition_info' | t}}</h3>
-<p><span>{{ 'recipes.servings' | t}}: </span>{{ article.metafields["global"]["servings"] }}</p>
-<p><span>{{ 'recipes.servingsize' | t}}: </span>{{ article.metafields["global"]["servingsize"] }}{{ article.metafields["global"]["serving-size-measurement"] }}</p>
-<p><span>{{ 'recipes.calories' | t}}: </span>{{ article.metafields["global"]["calories"] }}</p>
-<p><span>{{ 'recipes.fat' | t}}: </span>{{ article.metafields["global"]["fat"] }}g</p>
-<p><span>{{ 'recipes.satfat' | t}}: </span>{{ article.metafields["global"]["satfat"] }}g</p>
-<p><span>{{ 'recipes.cholesterol' | t}}: </span>{{ article.metafields["global"]["cholesterol"] }}mg</p>
-<p><span>{{ 'recipes.sodium' | t}}: </span>{{ article.metafields["global"]["sodium"] }}mg</p>
-<p><span>{{ 'recipes.carbs' | t}}: </span>{{ article.metafields["global"]["carbohydrates"] }}g</p>
-<p><span>{{ 'recipes.fiber' | t}}: </span>{{ article.metafields["global"]["fiber"] }}g</p>
-<p><span>{{ 'recipes.sugar' | t}}: </span>{{ article.metafields["global"]["sugar"] }}g</p>
-<p><span>{{ 'recipes.protein' | t}}: </span>{{ article.metafields["global"]["protein"] }}g</p>
-</div>
-<div class="rte recipe-variations">
-<h3 class="recipe_variations">{{ 'recipes.variations' | t}}</h3>
-{{ article.metafields["global"]["variations"] }}
+    <div>
+        {% assign youtube = article.metafields["global"]["youtube_id"] %}
+        {% if youtube %}
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{youtube}}?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+    </div>
+    <div class="rte recipe-instructions">
+        <h3 class="recipe_instructions">{{ 'recipes.instructions' | t}}</h3>
+        <span itemprop="cookTime">{{ article.metafields["global"]["cookTime"] }}</span>
+    </div>
+    <div class="rte recipe-instructions">
+        <h3 class="recipe_instructions">{{ 'recipes.instructions' | t}}</h3>
+        <span itemprop="recipeInstructions">{{ article.metafields["global"]["instructions"] }}</span>
+    </div>
+    <div class="rte recipe-ingredients">
+        <h3 class="recipe_instructions">{{ 'recipes.ingredients' | t}}</h3>
+        <ul>{{ article.metafields["global"]["ingredients"] }}</ul>
+    </div>
+    {% assign nonEdible = article.metafields["global"]["non_edible"] %}
+    {% if nonEdible == 0 %}
+    <div class="rte recipe-ingredients" itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" typeof="NutritionInformation">
+        <h3 class="recipe_instructions">{{ 'recipes.nutrition_info' | t}}</h3>
+        <p><span>{{ 'recipes.servings' | t}}: </span><span  itemprop="recipeYield">{{ article.metafields["global"]["servings"] }}</span></p>
+        <p><span>{{ 'recipes.servingsize' | t}}: </span><span  itemprop="servingSize">{{ article.metafields["global"]["servingsize"] }}{{ article.metafields["global"]["serving-size-measurement"] }}</span></p>
+        <p><span>{{ 'recipes.calories' | t}}: </span><span  itemprop="calories">{{ article.metafields["global"]["calories"] }}</span></p>
+        <p><span >{{ 'recipes.fat' | t}}: </span><span itemprop="fatContent">{{ article.metafields["global"]["fat"] }}g</span></p>
+        <p><span >{{ 'recipes.satfat' | t}}: </span><span itemprop="saturatedFatContent">{{ article.metafields["global"]["satfat"] }}g</span></p>
+        <p><span >{{ 'recipes.cholesterol' | t}}: </span><span itemprop="cholesterolContent">{{ article.metafields["global"]["cholesterol"] }}mg</span></p>
+        <p><span >{{ 'recipes.sodium' | t}}: </span><span itemprop="sodiumContent">{{ article.metafields["global"]["sodium"] }}mg</span></p>
+        <p><span >{{ 'recipes.carbs' | t}}: </span><span itemprop="carbohydrateContent">{{ article.metafields["global"]["carbohydrates"] }}g</span></p>
+        <p><span >{{ 'recipes.fiber' | t}}: </span><span itemprop="fiberContent">{{ article.metafields["global"]["fiber"] }}g</span></p>
+        <p><span >{{ 'recipes.sugar' | t}}: </span><span itemprop="sugarContent">{{ article.metafields["global"]["sugar"] }}g</span></p>
+        <p><span >{{ 'recipes.protein' | t}}: </span><span itemprop="proteinContent">{{ article.metafields["global"]["protein"] }}g</span></p>
+    </div>
+    <div class="rte recipe-variations">
+        <h3 class="recipe_variations">{{ 'recipes.variations' | t}}</h3>
+        {{ article.metafields["global"]["variations"] }}
+    </div>
 </div>
         {% endif %}
 
@@ -110,3 +70,4 @@
         ]
         }
         {% endschema %}
+
