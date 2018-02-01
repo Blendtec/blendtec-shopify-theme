@@ -1,4 +1,4 @@
-<!-- /templates/blog.liquid -->
+<!-- /templates/recipe-blog.liquid -->
         {% paginate blog.articles by 12 %}
         {% comment %}
         This template is also used for listing out articles of a specific tag.
@@ -42,7 +42,7 @@
         {% assign src = false %}
         {% endif %}
 
-        <div class="grid__item large--one-third medium--one-half small--one-whole" data-grid-item itemprop="itemListElement" itemscope itemtype="http://schema.org/Article">
+        <div class="grid__item large--one-third medium--one-half small--one-whole" data-grid-item itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
             {% if src %}
             <a itemprop="url" href="{{article.url}}">
                 <div class="featured-blog__image-wrapper">
@@ -96,7 +96,7 @@
 
         {% schema %}
         {
-        "name": "Blog",
+        "name": "Recipe Blog",
         "settings": [
         {
         "type": "checkbox",
