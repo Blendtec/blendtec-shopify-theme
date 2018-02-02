@@ -1,0 +1,30 @@
+sudo: required
+dist: trusty
+git:
+  depth: 1
+language: node_js
+node_js:
+- stable
+matrix:
+  fast_finish: true
+install:
+- curl -s https://raw.githubusercontent.com/Shopify/themekit/master/scripts/install | sudo python
+script:
+- echo Ya!
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: theme -e production upload
+  on:
+    branch: master
+- provider: script
+  skip_cleanup: true
+  script: theme -e stage upload --force
+  on:
+    branch: staging
+- provider: script
+  skip_cleanup: true
+  script: theme -e development upload --force
+  on:
+    branch: develop

@@ -15,7 +15,10 @@
     </div>
     <div class="rte recipe-ingredients">
         <h3 class="recipe_instructions">{{ 'recipes.ingredients' | t}}</h3>
-        <ul>{{ article.metafields["global"]["ingredients"] }}</ul>
+        {% assign ingredients = article.metafields["global"]["ingredients"] %}
+        {% assign ingredients = ingredients | replace: "<li>", "<li itemprop='recipeIngredient'>" %}
+        {% assign ingredients = ingredients | replace: "property", "itemprop" %}
+        <ul>{{ ingredients  }}</ul>
     </div>
     {% assign nonEdible = article.metafields["global"]["non_edible"] %}
     {% if nonEdible == 0 %}
@@ -24,14 +27,14 @@
         <p><span>{{ 'recipes.servings' | t}}: </span><span  itemprop="recipeYield">{{ article.metafields["global"]["servings"] }}</span></p>
         <p><span>{{ 'recipes.servingsize' | t}}: </span><span  itemprop="servingSize">{{ article.metafields["global"]["servingsize"] }}{{ article.metafields["global"]["serving-size-measurement"] }}</span></p>
         <p><span>{{ 'recipes.calories' | t}}: </span><span  itemprop="calories">{{ article.metafields["global"]["calories"] }}</span></p>
-        <p><span >{{ 'recipes.fat' | t}}: </span><span itemprop="fatContent">{{ article.metafields["global"]["fat"] }}g</span></p>
-        <p><span >{{ 'recipes.satfat' | t}}: </span><span itemprop="saturatedFatContent">{{ article.metafields["global"]["satfat"] }}g</span></p>
+        <p><span >{{ 'recipes.fat' | t}}: </span><span itemprop="fatContent">{{ article.metafields["global"]["fat"] | divided_by: 1000 }}g</span></p>
+        <p><span >{{ 'recipes.satfat' | t}}: </span><span itemprop="saturatedFatContent">{{ article.metafields["global"]["satfat"] | divided_by: 1000}}g</span></p>
         <p><span >{{ 'recipes.cholesterol' | t}}: </span><span itemprop="cholesterolContent">{{ article.metafields["global"]["cholesterol"] }}mg</span></p>
         <p><span >{{ 'recipes.sodium' | t}}: </span><span itemprop="sodiumContent">{{ article.metafields["global"]["sodium"] }}mg</span></p>
-        <p><span >{{ 'recipes.carbs' | t}}: </span><span itemprop="carbohydrateContent">{{ article.metafields["global"]["carbohydrates"] }}g</span></p>
-        <p><span >{{ 'recipes.fiber' | t}}: </span><span itemprop="fiberContent">{{ article.metafields["global"]["fiber"] }}g</span></p>
-        <p><span >{{ 'recipes.sugar' | t}}: </span><span itemprop="sugarContent">{{ article.metafields["global"]["sugar"] }}g</span></p>
-        <p><span >{{ 'recipes.protein' | t}}: </span><span itemprop="proteinContent">{{ article.metafields["global"]["protein"] }}g</span></p>
+        <p><span >{{ 'recipes.carbs' | t}}: </span><span itemprop="carbohydrateContent">{{ article.metafields["global"]["carbohydrates"] | divided_by: 1000 }}g</span></p>
+        <p><span >{{ 'recipes.fiber' | t}}: </span><span itemprop="fiberContent">{{ article.metafields["global"]["fiber"] | divided_by: 1000 }}g</span></p>
+        <p><span >{{ 'recipes.sugar' | t}}: </span><span itemprop="sugarContent">{{ article.metafields["global"]["sugar"] | divided_by: 1000 }}g</span></p>
+        <p><span >{{ 'recipes.protein' | t}}: </span><span itemprop="proteinContent">{{ article.metafields["global"]["protein"] | divided_by: 1000 }}g</span></p>
     </div>
     <div class="rte recipe-variations">
         <h3 class="recipe_variations">{{ 'recipes.variations' | t}}</h3>
