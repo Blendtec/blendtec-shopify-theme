@@ -1,4 +1,18 @@
-development:
+stage:
+  password: THEMEKIT_PASSWORD_STAGE
+  theme_id: THEMEKIT_THEME_ID_STAGE
+  store: THEMEKIT_STORE_STAGE
+  ignores:
+    - themekit_ignores
+production:
   password: THEMEKIT_PASSWORD
   theme_id: THEMEKIT_THEME_ID
   store: THEMEKIT_STORE
+  ignores:
+    - themekit_ignores
+development:
+  password: THEMEKIT_PASSWORD_DEV
+  theme_id: THEMEKIT_THEME_ID_DEV
+  store: THEMEKIT_STORE_DEV
+  ignores:
+    - themekit_ignores
