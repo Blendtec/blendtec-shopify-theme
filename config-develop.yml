@@ -1,4 +1,4 @@
 development:
-  password: THEMEKIT_PASSWORD_DEV
-  theme_id: THEMEKIT_THEME_ID_DEV
-  store: THEMEKIT_STORE_DEV
+  password: THEMEKIT_PASSWORD_STAGE
+  theme_id: THEMEKIT_THEME_ID_STAGE
+  store: THEMEKIT_STORE_STAGE

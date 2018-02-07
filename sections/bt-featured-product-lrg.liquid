@@ -1,3 +1,33 @@
+<div class="section-background javascript-load-image"
+        numBlocks="{{section.blocks.size}}"
+        typeImage="backgroundimagesrc"
+        tieTextClass="show-block-"
+        {% for i in section.blocks %}
+
+          {% assign placement = forloop.index  %}
+
+            {% for y in (8..12) %}
+              {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+              {{placement}}backgroundimagesrc{{ y | times: 100 }}="{{i.settings.blender_background_image | img_url: imageSize }}"
+
+            {% endfor %}
+
+        {% endfor %}
+>
+<div class="">
+    <div class="grid" style="padding-top:130px;">
+  <div class="grid__item large--one-sixth medium--one-sixth small--one-sixth" style=""></div>
+  <div class="small-left-padding grid__item large--one-half">
+        <h4 style="" class="h4-subhead">{{section.settings.h4_subhead}}</h4>
+        <h3 class="h3-subhead">{{section.settings.h3_headline}}</h3>
+        <h3 class="h3-subhead">{{section.settings.descriptive_title_top}}</h3>
+     </div>
+  <div class="small-left-padding grid__item large--one-third medium--one-half">
+    <a href="{{section.settings.section3_top_button_link}}" class="button-hero">{{section.settings.section3_top_button}}</a>
+     </div>
+     </div>
+  </div>
+  <div class="gradient-black-background"></div>
 <div class="bt-third">
 
 <div class="black-background">
@@ -5,31 +35,56 @@
      <div style="padding-top:150px;" class="grid blender-text-descriptor-wrapper">
      <div class="grid__item large--one-twelfth medium--one-twelfth small--one-twelfth"></div>
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
-      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_topleft_title}}</h4>
+    {% for i in section.blocks %}
+      <div class="show-block-{{forloop.index}}" style="display:none;">
+      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_topleft_title}}</h4>
       <hr class="red-hr">
-      <div class="jar-description">{{section.settings.info_topleft_text}}</div>
+      <div class="jar-description">{{i.settings.info_topleft_text}}</div>
+      </div>
+      {% endfor %}
     </div>
      </div>
      <div style="margin-top:25px;" class="grid blender-text-descriptor-wrapper">
      <div class="grid__item large--ten-twelfths medium--two-thirds small--one-third"></div>
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
-      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_topright_title}}</h4>
+    {% for i in section.blocks %}
+      <div class="show-block-{{forloop.index}}" style="display:none;">
+      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_topright_title}}</h4>
       <hr class="red-hr">
-      <div class="jar-description">{{section.settings.info_topright_text}}</div>
+      <div class="jar-description">{{i.settings.info_topright_text}}</div>
+      </div>
+      {% endfor %}
     </div>
      </div>
      <div style="margin-top:25px;" class="grid blender-text-descriptor-wrapper">
      <div class="grid__item large--one-sixth medium--one-sixth small--one-twelfth"></div>
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
-      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_midleft_title}}</h4>
+    {% for i in section.blocks %}
+      <div class="show-block-{{forloop.index}}" style="display:none;">
+      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_midleft_title}}</h4>
       <hr class="red-hr">
-      <div class="jar-description">{{section.settings.info_midleft_text}} </div>
+      <div class="jar-description">{{i.settings.info_midleft_text}}</div>
+      </div>
+      {% endfor %}
     </div>
      </div>
      <div class="grid blender-image-container">
 
-      <div class="grid__item background-blotch javascript-load-image" backgroundimagesrc300="{{section.settings.blender_background_image | img_url: '300x' }}" backgroundimagesrc400="{{section.settings.blender_background_image | img_url: '400x' }}" backgroundimagesrc500="{{section.settings.blender_background_image | img_url: '500x' }}" backgroundimagesrc600="{{section.settings.blender_background_image | img_url: '600x' }}" backgroundimagesrc700="{{section.settings.blender_background_image | img_url: '700x' }}" backgroundimagesrc800="{{section.settings.blender_background_image | img_url: '800x' }}" backgroundimagesrc900="{{section.settings.blender_background_image | img_url: '900x' }}" backgroundimagesrc1000="{{section.settings.blender_background_image | img_url: '1000x' }}" backgroundimagesrc1200="{{section.settings.blender_background_image | img_url: '1200x' }}">
-        <img class="blender-image javascript-load-image" imagebasesrc700="{{section.settings.blender_image | img_url: '700x' }}" imagebasesrc500="{{section.settings.blender_image | img_url: '500x' }}" imagebasesrc800="{{section.settings.blender_image | img_url: '800x' }}" imagebasesrc600="{{section.settings.blender_image | img_url: '600x' }}" imagebasesrc400="{{section.settings.blender_image | img_url: '400x' }}" imagebasesrc300="{{section.settings.blender_image | img_url: '300x' }}">
+      <div class="grid__item background-blotch">
+        <img class="blender-image javascript-load-image"
+        numBlocks="{{section.blocks.size}}"
+        typeImage="imagebasesrc"
+        {% for i in section.blocks %}
+
+          {% assign placement = forloop.index  %}
+
+            {% for y in (3..8) %}
+              {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+              {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.blender_image | img_url: imageSize }}"
+
+            {% endfor %}
+
+        {% endfor %}>
 
 
       </div>
@@ -37,28 +92,35 @@
      <div style="margin-top:25px;" class="grid blender-text-descriptor-wrapper">
      <div class="grid__item large--nine-twelfths medium--two-thirds small--one-third"></div>
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
-      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_bottomright_title}}</h4>
+    {% for i in section.blocks %}
+      <div class="show-block-{{forloop.index}}" style="display:none;">
+      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_bottomright_title}}</h4>
       <hr class="red-hr">
-      <div class="jar-description"> {{section.settings.info_bottomright_text}}</div>
+      <div class="jar-description">{{i.settings.info_bottomright_text}}</div>
+      </div>
+      {% endfor %}
     </div>
      </div>
      <div style="margin-top:25px;padding-bottom:50px;" class="grid blender-text-descriptor-wrapper">
      <div class="grid__item large--one-twelfth medium--one-twelfth small--one-twelfth"></div>
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
-      <h4 style="" class="blender-text-descriptor-title">{{section.settings.info_bottomleft_title}}</h4>
+    {% for i in section.blocks %}
+      <div class="show-block-{{forloop.index}}" style="display:none;">
+      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_bottomleft_title}}</h4>
       <hr class="red-hr">
-      <div class="jar-description">{{section.settings.info_bottomleft_text}}</div>
+      <div class="jar-description">{{i.settings.info_bottomleft_text}}</div>
+      </div>
+      {% endfor %}
     </div>
      </div>
 </div>
 </div>
 
 </div>
-
+</div>
   <style>
   .black-background{
       width: 100%;
-      background-color: black;
       position:relative;
       z-index:0;
   }
@@ -98,17 +160,60 @@
       margin: 0 auto;
       display: block;
   }
-  .background-blotch{
+  .bt-third{
       background-size: cover;
       background-repeat: no-repeat;
-      background-position:50%;
   }
 
-@media screen and (max-width: 768px) { /*xsmall - 600width*/
-  .blender-image-container{
-    position:static;
+  .button-hero{
+      background-color: #f41d2f;
+      padding: 5px 10px 5px 10px;
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+      border-radius: 0;
+      line-height: 1.6;
+      display: inline-block;
   }
-}
+
+  .wavy-background{
+      height:349px;
+      position:relative;
+      z-index:1;
+  }
+
+  .h4-subhead{
+    color:#646674;
+    font-size:26px;
+  }
+  .h3-subhead{
+    color: white;
+      font-size: 40px;
+      line-height: 1;
+      margin-top:-15px;
+  }
+
+  .section-background {
+    background-size:cover;
+    background-repeat:no-repeat;
+  }
+
+  @media screen and (max-width: 848px) {
+
+      .small-left-padding{
+          padding-left:45px;
+      }
+      .blender-image-container{
+        position:static;
+      }
+  }
+
+    .gradient-black-background{
+      width: 100%;
+      height: {{section.settings.black_background_height}}px;
+      margin-top: -{{section.settings.black_background_height}}px;;
+    }
+
 
 
 
@@ -121,7 +226,64 @@
 {
 "name":"bt-featured-product-lrg",
 "class":"bt-featured-product-lrg",
-"max_blocks":1,
+"max_blocks":9,
+"settings":[
+{
+"type":"text",
+"id":"descriptive_title",
+"label":"Descriptive Title",
+"default":"DESCRIPTIVE TITLE"
+},
+{
+"type":"image_picker",
+"id":"background_image1",
+"label":"Background Image 1",
+"info":"Image for the background"
+},
+{
+"type":"text",
+"id":"section3_top_button",
+"label":"Section 3 Top Button Text",
+"default":"SHOP BLENDERS"
+},
+{
+"type": "url",
+"id": "section3_top_button_link",
+"label": "Top Button Link"
+},
+{
+"type":"text",
+"id":"h4_subhead",
+"label":"h4 Subhead",
+"default":"H4 SUB HEAD"
+},
+{
+"type":"text",
+"id":"h3_headline",
+"label":"h3 Headline",
+"default":"H3 HEADLINE"
+},
+{
+"type":"text",
+"id":"descriptive_title_top",
+"label":"Descriptive Title",
+"default":"DESCRIPTIVE TITLE"
+},
+{
+"type":      "range",
+"id":        "black_background_height",
+"min":       200,
+"max":        300,
+"step":       1,
+"unit":       "px",
+"label":     "Height of Background",
+"default":   200
+}
+],
+"blocks":[
+{
+"type":"header",
+"name":"bt-featured-product-lrg",
 "settings":[
 {
 "type":"image_picker",
@@ -134,18 +296,6 @@
 "id":"blender_background_image",
 "label":"Blender Background Image",
 "info":"The image which appears behind the main blender image"
-},
-{
-"type":"image_picker",
-"id":"background_image2",
-"label":"Background Image 2",
-"info":"Image for the background behind the bottom blenders"
-},
-{
-"type":"text",
-"id":"descriptive_title",
-"label":"Descriptive Title",
-"default":"DESCRIPTIVE TITLE"
 },
 {
 "type":"text",
@@ -207,8 +357,8 @@
 "label":"Blender Info Mid Left text",
 "default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
 }
-],
-"blocks":[
+]
+}
 ],
     "presets": [
       {

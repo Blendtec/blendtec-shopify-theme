@@ -1,5 +1,10 @@
 <div class="bt-background-image">
-  <div class="grid section4-background-image javascript-load-image" backgroundimagesrc1200="{{section.settings.main_background_image | img_url: '1200x' }}" backgroundimagesrc1000="{{section.settings.main_background_image | img_url: '1000x' }}" backgroundimagesrc900="{{section.settings.main_background_image | img_url: '900x' }}" backgroundimagesrc800="{{section.settings.main_background_image | img_url: '800x' }}" backgroundimagesrc700="{{section.settings.main_background_image | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.main_background_image | img_url: '600x' }}" backgroundimagesrc500="{{section.settings.main_background_image | img_url: '500x' }}" backgroundimagesrc400="{{section.settings.main_background_image | img_url: '400x' }}">
+  <div class="grid section4-background-image javascript-load-image"
+    {% for y in (8..12) %}
+      {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+      backgroundimagesrc{{ y | times: 100 }}="{{section.settings.main_background_image | img_url: imageSize }}"
+
+    {% endfor %}>
     {% if section.settings.image_orientation == 'one' %}
     <div class="grid__item large--one-sixth medium--one-sixth small--one-twelfth"></div>
     <div style="text-align:left;" class="grid__item large--one-third medium--two-thirds small--five-sixths">
@@ -8,7 +13,7 @@
     <div class="grid__item large--one-half medium--one-half small--one-twelfth"></div>
     <div style="text-align:right;" class="grid__item large--one-third medium--two-thirds small--five-sixths">
     {% endif %}
-    
+
       <h2 class="section4-headline">
       {{section.settings.section4_headline}}
       </h2>
