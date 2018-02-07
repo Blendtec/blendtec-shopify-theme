@@ -1,30 +1,85 @@
 <div class="bt-featured-collection">
 
-  <div class="grid" style="padding-top:10%;padding-bottom:10%; ">
-  <hr class="hr-style">        
+  <div class="grid" style="padding-top:25%;padding-bottom:2%; ">
+  <hr class="hr-style">
     </div>
   <div class="blenders-bottom-background bottom-blenders-wrapper javascript-load-image" backgroundimagesrc300="{{section.settings.background_image2 | img_url: '300x' }}">
-  <div class="grid ">
-    <div class="grid__item large--one-third medium--one-third bottom-blender"><a href="{{section.settings.blender1_link}}" style="position:relative;"><div class="blender-bottom-title">{{section.settings.blender1_title}}</div><img class=" javascript-load-image" style="width:100%" imagebasesrc150="{{section.settings.bottom_blender1 | img_url: '150x' }}" imagebasesrc200="{{section.settings.bottom_blender1 | img_url: '200x' }}" imagebasesrc300="{{section.settings.bottom_blender1 | img_url: '300x' }}" imagebasesrc400="{{section.settings.bottom_blender1 | img_url: '400x' }}" imagebasesrc500="{{section.settings.bottom_blender1 | img_url: '500x' }}" imagebasesrc600="{{section.settings.bottom_blender1 | img_url: '600x' }}"></a></div>
-    <div class="grid__item large--one-third medium--one-third bottom-blender"><a href="{{section.settings.blender2_link}}" style="position:relative;"><div class="blender-bottom-title">{{section.settings.blender2_title}}</div><img class=" javascript-load-image" style="width:100%" imagebasesrc150="{{section.settings.bottom_blender2 | img_url: '150x' }}" imagebasesrc200="{{section.settings.bottom_blender2 | img_url: '200x' }}" imagebasesrc300="{{section.settings.bottom_blender2 | img_url: '300x' }}" imagebasesrc400="{{section.settings.bottom_blender2 | img_url: '400x' }}" imagebasesrc500="{{section.settings.bottom_blender2 | img_url: '500x' }}" imagebasesrc600="{{section.settings.bottom_blender2 | img_url: '600x' }}"></a></div>
-    <div class="grid__item large--one-third medium--one-third bottom-blender"><a href="{{section.settings.blender3_link}}" style="position:relative;"><div class="blender-bottom-title">{{section.settings.blender3_title}}</div><img class=" javascript-load-image" style="width:100%" imagebasesrc150="{{section.settings.bottom_blender3 | img_url: '150x' }}" imagebasesrc200="{{section.settings.bottom_blender3 | img_url: '200x' }}" imagebasesrc300="{{section.settings.bottom_blender3 | img_url: '300x' }}" imagebasesrc400="{{section.settings.bottom_blender3 | img_url: '400x' }}" imagebasesrc500="{{section.settings.bottom_blender3 | img_url: '500x' }}" imagebasesrc600="{{section.settings.bottom_blender3 | img_url: '600x' }}"></a></div>
+  <div class="grid " style="padding-bottom:50px;">
+    <div class="grid__item large--one-third medium--one-third bottom-blender"><div>
+    <div class="blender-bottom-title">{{section.settings.blender1_title}}</div>
+    <div class="rectangle-seperator-1"></div>
+    <div class="grid">
+      <div class="grid__item large--one-half description-text">
+      <div>
+        {{section.settings.blender1_text}}
+      </div>
+        <div style="margin-top:15px;">
+          <a href="{{section.settings.blender1_link}}" class="button-hero">&nbsp;&nbsp;SHOP&nbsp;&nbsp;</a>
+        </div>
+      </div>
+      <div class="grid__item large--one-half">
+       <img class=" javascript-load-image" style="width:100%"
+        {% for y in (3..12) %}
+          {% assign imageSize = y | times: 50 | downcase | append: 'x'  %}
+          imagebasesrc{{ y | times: 50 }}="{{section.settings.bottom_blender1 | img_url: imageSize }}"
+        {% endfor %}
+        >
+      </div>
+    </div>
+    </div></div>
+    <div class="grid__item large--one-third medium--one-third bottom-blender">    <div class="blender-bottom-title">{{section.settings.blender2_title}}</div>
+    <div class="rectangle-seperator-2"></div>
+    <div class="grid">
+      <div class="grid__item large--one-half description-text">
+      <div>
+        {{section.settings.blender2_text}}
+      </div>
+        <div style="margin-top:15px;">
+          <a href="{{section.settings.blender2_link}}" class="button-hero">&nbsp;&nbsp;SHOP&nbsp;&nbsp;</a>
+        </div>
+      </div>
+      <div class="grid__item large--one-half">
+       <img class=" javascript-load-image" style="width:100%"
+        {% for y in (3..12) %}
+          {% assign imageSize = y | times: 50 | downcase | append: 'x'  %}
+          imagebasesrc{{ y | times: 50 }}="{{section.settings.bottom_blender2 | img_url: imageSize }}"
+        {% endfor %}
+        >
+      </div>
+    </div>
+    </div>
+    <div class="grid__item large--one-third medium--one-third bottom-blender">    <div class="blender-bottom-title">{{section.settings.blender3_title}}</div>
+    <div class="rectangle-seperator-3"></div>
+    <div class="grid">
+      <div class="grid__item large--one-half description-text">
+      <div>
+        {{section.settings.blender3_text}}
+      </div>
+        <div style="margin-top:15px;">
+          <a href="{{section.settings.blender3_link}}" class="button-hero">&nbsp;&nbsp;SHOP&nbsp;&nbsp;</a>
+        </div>
+      </div>
+      <div class="grid__item large--one-half">
+       <img class=" javascript-load-image" style="width:100%"
+        {% for y in (3..12) %}
+          {% assign imageSize = y | times: 50 | downcase | append: 'x'  %}
+          imagebasesrc{{ y | times: 50 }}="{{section.settings.bottom_blender3 | img_url: imageSize }}"
+        {% endfor %}
+        >
+      </div>
+    </div>
+    </div></div>
   </div>
   </div>
-</div>
 
 
   <style>
       .blender-bottom-title{
-        position: absolute;
-        margin-top: 50%;
-        text-align: center;
-        width: 100%;
-        font-size: 3em;
-        color: #f41d2f;
-        font-weight: 900;
-      }
-      .bottom-blender:hover{
-        opacity:.75;
+    width: 100%;
+    font-size: 24px;
+    font-size: 3vmax;
+    color: white;
+    font-weight: 900;
       }
       .bottom-blenders-wrapper{
         width:80%;
@@ -36,10 +91,42 @@
           border-color: #d5d5d5;
           opacity: .65;
       }
+      .description-text {
+        color:white;
+      }
 
     .bt-featured-collection{
     	background-color:black;
     }
+
+
+  .button-hero{
+      background-color: #f41d2f;
+      padding: 5px 10px 5px 10px;
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+      border-radius: 0;
+      line-height: 1.6;
+      display: inline-block;
+  }
+    .rectangle-seperator-1 {
+      width: 100%;
+      height: 10px;
+      background-image: linear-gradient(to right, #4c4c4c, rgba(55, 55, 55, 0));
+    }
+    .rectangle-seperator-2 {
+      width: 100%;
+      height: 10px;
+      background-image: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+    }
+    .rectangle-seperator-3 {
+      width: 100%;
+      height: 10px;
+      background-image: linear-gradient(to right, #f0dca9, rgba(220, 183, 112, 0));
+    }
+
+
 
 </style>
 
@@ -64,6 +151,12 @@
 "default":"DESIGNER"
 },
 {
+"type":"text",
+"id":"blender1_text",
+"label":"Blender 1 text",
+"default":"Donec dolor est, siscipit ac consectetur at, secipit ac sem. Vivamus nec urna eu nisi venenatis facilisis. Fisce vitae efficitur ligula."
+},
+{
 "type": "url",
 "id": "blender1_link",
 "label": "Blender 1 Link"
@@ -81,6 +174,12 @@
 "default":"PRO"
 },
 {
+"type":"text",
+"id":"blender2_text",
+"label":"Blender 2 text",
+"default":"Donec dolor est, siscipit ac consectetur at, secipit ac sem. Vivamus nec urna eu nisi venenatis facilisis. Fisce vitae efficitur ligula."
+},
+{
 "type": "url",
 "id": "blender2_link",
 "label": "Blender 2 Link"
@@ -96,6 +195,12 @@
 "id":"blender3_title",
 "label":"Blender 3 title",
 "default":"CLASSIC"
+},
+{
+"type":"text",
+"id":"blender3_text",
+"label":"Blender 3 text",
+"default":"Donec dolor est, siscipit ac consectetur at, secipit ac sem. Vivamus nec urna eu nisi venenatis facilisis. Fisce vitae efficitur ligula."
 },
 {
 "type": "url",
