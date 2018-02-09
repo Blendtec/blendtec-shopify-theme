@@ -1,4 +1,6 @@
 (function(){
+
+
 function getClosestWidth (element, baseNode) {
 	var elementWidth = element.offsetWidth;
 	var baseWidthCheck = 50;
@@ -143,16 +145,76 @@ function loadIfNotVisible (i) {
   }
 }
 
+addAttributes = function(nodeName, elem, num) {
+for (var i = 0; i < elem.attributes.length; i++) {
+    var attrib = elem.attributes[i];
+    if (attrib.name.match(new RegExp(num+nodeName))) {
+      var att = document.createAttribute(attrib.name.replace(/[0-9]*/,''));
+      att.value = attrib.value;
+      elem.setAttributeNode(att);
 
+    }
+}
+
+};
+
+showText = function(className) {
+  if (window.jQuery) {
+    $('.'+className).show();
+  } else {
+    var elements = document.getElementsByClassName(className);
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].style.display = null;
+    }
+  }
+}
+
+var backgroundString = 'backgroundimagesrc';
+var imageString = 'imagebasesrc';
+
+
+randomImages = function () {
+    var maxArrLength = 0;
+  var images = document.getElementsByClassName('javascript-load-image');
+  for (var i in images) {
+    if (images[i] && images[i].attributes && images[i].attributes['numBlocks'] && images[i].attributes['numBlocks'].nodeValue) {
+      if (!isNaN(images[i].attributes['numBlocks'].nodeValue) && Number(images[i].attributes['numBlocks'].nodeValue) > maxArrLength) {
+        maxArrLength = Number(images[i].attributes['numBlocks'].nodeValue);
+      }
+    }
+  }
+  if (maxArrLength > 0) {
+    var randomImageToShow = Math.floor((Math.random() * maxArrLength) + 1);
+
+    for (var i in images) {
+      if (images[i] && images[i].attributes && images[i].attributes['typeImage'] && images[i].attributes['typeImage'].nodeValue) {
+        var numToPass = randomImageToShow;
+        if (!isNaN(images[i].attributes['numBlocks'].nodeValue) && randomImageToShow > Number(images[i].attributes['numBlocks'].nodeValue)) {
+          numToPass = Number(images[i].attributes['numBlocks'].nodeValue);
+        }
+        //tieTextClass
+        if (images[i].attributes['tieTextClass'] && images[i].attributes['tieTextClass'].nodeValue) {
+          showText(images[i].attributes['tieTextClass'].nodeValue + numToPass);
+        }
+        var nodeName = images[i].attributes['typeImage'].nodeValue;
+        addAttributes(nodeName, images[i], numToPass);
+
+      }
+    }
+  }
+
+
+}
 
 window.onresize = function () {
-	loadImagesByWidth('imagebasesrc', 'backgroundimagesrc');
+	loadImagesByWidth(imageString, backgroundString);
 };
 
 
 
 window.onload = function () {
-	loadImagesByWidth('imagebasesrc', 'backgroundimagesrc');
+  randomImages();
+	loadImagesByWidth(imageString, backgroundString);
 
   loadIfNotVisible(0);
 };

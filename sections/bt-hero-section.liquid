@@ -1,12 +1,25 @@
 
-
 <div class="bt-hero">
 <div class="hero-info" id="hero-image-wrapper">
-<div id="hero-image" class="javascript-load-image" backgroundimagesrc1200="{{section.blocks[0].settings.hero_image | img_url: '1200x' }}" backgroundimagesrc1000="{{section.blocks[0].settings.hero_image | img_url: '1000x' }}" backgroundimagesrc900="{{section.blocks[0].settings.hero_image | img_url: '900x' }}" backgroundimagesrc800="{{section.blocks[0].settings.hero_image | img_url: '800x' }}" backgroundimagesrc700="{{section.blocks[0].settings.hero_image | img_url: '700x' }}" backgroundimagesrc600="{{section.blocks[0].settings.hero_image | img_url: '600x' }}" backgroundimagesrc500="{{section.blocks[0].settings.hero_image | img_url: '500x' }}" backgroundimagesrc400="{{section.blocks[0].settings.hero_image | img_url: '400x' }}">
+<div id="hero-image" class="javascript-load-image"
+	numBlocks="{{section.blocks.size}}"
+	typeImage="backgroundimagesrc"
+{% for i in section.blocks %}
+
+	{% assign placement = forloop.index  %}
+
+		{% for y in (1..6) %}
+			{% assign imageSize = y | times: 200 | downcase | append: 'x'  %}
+			{{placement}}backgroundimagesrc{{ y | times: 200 }}="{{i.settings.hero_image | img_url: imageSize }}"
+
+		{% endfor %}
+
+{% endfor %}
+>
 	<div class="header-text-wrapper">
-		<h2 class="header-text" style="">{{section.blocks[0].settings.top_header}}</h2>
-		<h2 class="header-text" style="margin-left:8%;width:90%;">{{section.blocks[0].settings.second_header}}</h2>
-		<h2 class="header-text" style="margin-left:12%;width:86%;">{{section.blocks[0].settings.third_header}}</h2>
+		<h2 class="header-text" style="">{{section.settings.top_header}}</h2>
+		<h2 class="header-text" style="margin-left:8%;width:90%;">{{section.settings.second_header}}</h2>
+		<h2 class="header-text" style="margin-left:12%;width:86%;">{{section.settings.third_header}}</h2>
 		<div class="button-wrapper">
 		<button style="border-right-style: solid;border-right-width:1px;" class="button-hero">
 		<svg height="10" width="10" style="fill: white;" class="triangle-10">
@@ -15,7 +28,7 @@
 	  	<svg height="8" width="8" style="fill: white;" class="triangle-8">
 		    <polygon points="0,0 0,8 8,4" class="triangle"></polygon>
 	  	</svg>
-	  {{section.blocks[0].settings.hero_button1text}}</button><a href="{{section.blocks[0].settings.hero_button2Link}}" class="button-hero">{{section.blocks[0].settings.hero_button2text}}</a></div>
+	  {{section.settings.hero_button1text}}</button><a href="{{section.blocks[0].settings.hero_button2Link}}" class="button-hero">{{section.settings.hero_button2text}}</a></div>
 	</div>
 </div>
 
@@ -83,7 +96,7 @@
 @media screen and (max-width: 991px) { /*small - 767width*/
 
 	.hero-info{
-		height:580px;
+		height:480px;
 	}
 }
 
@@ -237,6 +250,7 @@ window.onresize = function () {
 window.onload = function () {
 	stylingByHeight('hero-image', 'hero-image-wrapper', 100, {'upper':{'paddingBottom':'0px'}, 'lower':{'paddingBottom':'0px'}});
 }
+
                                               </script>
 
 
@@ -248,6 +262,37 @@ window.onload = function () {
 "class":"section1",
 "max_blocks":9,
 "settings":[
+
+{
+"type":"text",
+"id":"top_header",
+"label":"Top Header",
+"default":"A BLENDER AS"
+},
+{
+"type":"text",
+"id":"second_header",
+"label":"Second Header",
+"default":"POWERFUL AS"
+},
+{
+"type":"text",
+"id":"third_header",
+"label":"Third Header",
+"default":"YOUR AMBITION"
+},
+{
+"type":"text",
+"id":"hero_button1text",
+"label":"Hero Button 1 text",
+"default":"WATCH THE VIDEO"
+},
+{
+"type":"text",
+"id":"hero_button2text",
+"label":"Hero Button 2 text",
+"default":"SHOP BLENDERS"
+},
       {
         "type": "checkbox",
         "id": "enable_ken_burns",
@@ -356,36 +401,6 @@ window.onload = function () {
 "id":"hero_image",
 "label":"Hero Image",
 "info":"Landscape orientation (3:2 w:h). 1200 x 752px minimum recommended"
-},
-{
-"type":"text",
-"id":"top_header",
-"label":"Top Header",
-"default":"A BLENDER AS"
-},
-{
-"type":"text",
-"id":"second_header",
-"label":"Second Header",
-"default":"POWERFUL AS"
-},
-{
-"type":"text",
-"id":"third_header",
-"label":"Third Header",
-"default":"YOUR AMBITION"
-},
-{
-"type":"text",
-"id":"hero_button1text",
-"label":"Hero Button 1 text",
-"default":"WATCH THE VIDEO"
-},
-{
-"type":"text",
-"id":"hero_button2text",
-"label":"Hero Button 2 text",
-"default":"SHOP BLENDERS"
 },
 {
 "type": "url",

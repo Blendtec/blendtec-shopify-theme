@@ -292,6 +292,11 @@
               {{ product.description }}
             </div>
           {% endif %}
+          {% if  product.metafields["global"]["disclaimer"] != blank %}
+            <div class="product-disclaimer rte" id="disclaimer">
+              <small>*{{ product.metafields["global"]["disclaimer"] }}</small>
+            </div>
+          {% endif %}
          </div>
       </div>
     </div>

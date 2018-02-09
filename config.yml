@@ -2,3 +2,11 @@ development:
   password: THEMEKIT_PASSWORD
   theme_id: THEMEKIT_THEME_ID
   store: THEMEKIT_STORE
+  ignores:
+    - themekit_ignores
+production:
+  password: THEMEKIT_PASSWORD
+  theme_id: THEMEKIT_THEME_ID
+  store: THEMEKIT_STORE
+  ignores:
+    - themekit_ignores
