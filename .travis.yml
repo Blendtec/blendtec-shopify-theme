@@ -22,9 +22,4 @@ deploy:
   skip_cleanup: true
   script: theme -e stage upload --force
   on:
-    branch: staging
-- provider: script
-  skip_cleanup: true
-  script: theme -e development upload --force
-  on:
-    branch: develop
+    branch: stage
