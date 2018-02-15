@@ -1,0 +1,14 @@
+{% assign product = all_products[product_name] %}
+<div class="grid__item large--one-fifth medium--one-third small--one-half">
+<div>
+<img style="width:100%;" src="{{ product.variants[0].featured_image.src | img_url: '700x' }}"
+{% for i in product.variants %}
+{{ forloop.index }}src="{{ i.featured_image.src | img_url: '700x' }}"
+{% endfor %}
+>
+</div>
+
+<div>
+<img style="width:100%;" src="{{ product.metafields['global']['Panel-Image'] }}">
+</div>
+</div>

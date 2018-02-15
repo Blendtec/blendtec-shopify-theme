@@ -1,0 +1,87 @@
+<div class="bt-featured-collection">
+
+<div class="grid">
+  {% for i in section.blocks %}
+    {% assign product_name = i.settings.product_id | text  %}
+    {% include 'product-to-compare' %}
+  {% endfor %}
+</div>
+
+</div>
+
+
+  <style>
+
+
+</style>
+
+{% schema %}
+{
+"name":"bt-compare-products",
+"class":"bt-compare-products",
+"max_blocks":20,
+"settings":[
+{
+"type":"text",
+"id":"product_compare_title",
+"label":"Product Compare Title",
+"default":"COMPARE AVAILABLE MODELS"
+},
+{
+"type":"text",
+"id":"product_compare_title_2",
+"label":"Product Compare Title Secondary",
+"default":"FIND THE ONE THAT'S RIGHT FOR YOU"
+},
+{
+"type":"image_picker",
+"id":"top_image",
+"label":"Top Image"
+},
+{
+"type":"text",
+"id":"product_row_1_title",
+"label":"Product Row 1 Title",
+"default":"Products"
+},
+{
+"type":"text",
+"id":"product_row_2_title",
+"label":"Product Row 2 Title",
+"default":"Certified Refurbished"
+}
+],
+"blocks":[
+{
+"type":"products-1",
+"name":"compare-product-1",
+"settings":[
+{
+"type":"text",
+"id":"product_id",
+"label":"Product Id",
+"info":"Name of product you want to display. So for the url 'https://blendtec.myshopify.com/products/classic-575' what you want to input is 'classic-575'."
+}
+]
+},
+{
+"type":"products-2",
+"name":"compare-product-2",
+"settings":[
+{
+"type":"text",
+"id":"product_id",
+"label":"Product Id",
+"info":"Name of product you want to display. So for the url 'https://blendtec.myshopify.com/products/classic-575' what you want to input is 'classic-575'."
+}
+]
+}
+],
+    "presets": [
+      {
+        "name": "bt-featured-collection",
+        "category": "Image"
+      }
+    ]
+}
+{% endschema %}
