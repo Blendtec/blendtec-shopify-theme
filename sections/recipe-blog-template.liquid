@@ -92,19 +92,15 @@
         {% endif %}
     </div>
 </div>
-        {% endpaginate %}
-
-        {% schema %}
-        {
-        "name": "Recipe Blog",
-        "settings": [
-        {
+{% endpaginate %}
+{% schema %}
+{
+    "name": "Recipe Blog",
+    "settings": [{
         "type": "checkbox",
         "id": "enable_blog_author",
         "default": false,
         "label": "Show author"
-        }
-        ]
-        }
-        {% endschema %}
-
+    }]
+}
+{% endschema %}
