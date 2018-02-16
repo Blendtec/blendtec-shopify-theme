@@ -411,10 +411,10 @@ templates/404.preSEOManager.liquid:
   development: 2018-02-09T14:52:07-07:00   0c85f6723c6a9d212c06a2fde696860d
   stage: 2018-02-09T14:52:07-07:00   0c85f6723c6a9d212c06a2fde696860d
 templates/article.liquid:
-  development: 2018-02-09T14:51:48-07:00   026aa57ce31900681de2e57569c5b8ad
+  development: 2018-02-16T18:46:05-05:00   c1d219629f1de2da1abb1dd77aaccc14
   stage: 2018-02-09T14:51:48-07:00   026aa57ce31900681de2e57569c5b8ad
 templates/article.recipe.liquid:
-  development: 2018-02-09T14:51:32-07:00   413f57f550a21a5e5283ff5ecf690702
+  development: 2018-02-16T18:46:51-05:00   8a2893203153958011516d69b0addaed
   stage: 2018-02-09T14:51:32-07:00   413f57f550a21a5e5283ff5ecf690702
 templates/blog.liquid:
   development: 2018-02-09T14:51:07-07:00   02bd6c5a55d29139ba1933e3ee8b149d
