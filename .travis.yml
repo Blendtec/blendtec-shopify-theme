@@ -15,11 +15,11 @@ script:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: theme -e production upload
+  script: theme upload -p $PROD_PASSWORD -s $PROD_SHOP -t $PROD_THEME_ID --force --no-update-notifier --ignores './themekit_ignores'
   on:
     branch: master
 - provider: script
   skip_cleanup: true
-  script: theme upload -p $STAGE_PASSWORD -s $STAGE_SHOP -t $STAGE_THEME_ID --force
+  script: theme upload -p $STAGE_PASSWORD -s $STAGE_SHOP -t $STAGE_THEME_ID --force --no-update-notifier --ignores './themekit_ignores'
   on:
     branch: stage
