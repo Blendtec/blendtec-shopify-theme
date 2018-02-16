@@ -20,6 +20,6 @@ deploy:
     branch: master
 - provider: script
   skip_cleanup: true
-  script: theme -e stage upload --force
+  script: theme -p $STAGE_PASSWORD -s $STAGE_SHOP -t $STAGE_THEME_ID --force
   on:
     branch: stage
