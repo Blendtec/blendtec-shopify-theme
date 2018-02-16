@@ -132,7 +132,7 @@
               ID addToCartForm is a selector for the ajax cart plugin
             {% endcomment %}
             {% assign noPrice = false %}
-            {% for tags in product.tags%}
+            {% for tag in product.tags%}
               {% if tag == 'NoPrice'%}
                 {% assign noPrice = true %}
               {% endif %}
