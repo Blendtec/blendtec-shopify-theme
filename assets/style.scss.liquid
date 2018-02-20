@@ -103,11 +103,13 @@ $colorLink: $colorPrimary;
 $colorLinkHover: lighten($colorPrimary, 15%);
 
 // Text colors
-$colorTextBody: {{ settings.color_body_text }};
+$colorTextBody: {{ settings.color_body_text }};$colorHeaderBackground: {{ settings.color_header_bg }};
 $colorTextHeader: {{settings.color_header}};
 
 // Backgrounds
 $colorBody: {{ settings.color_body_bg }};
+$colorHeaderBackground: {{ settings.color_header_bg }};
+
 
 // Border colors
 $colorBorder: {{ settings.color_borders }};
@@ -2619,7 +2621,7 @@ $condenseTransitionTime: 0.15s;
 $headerTransition : "height #{$condenseTransitionTime}, background-color 0.5s, transform 0.2s, -webkit-transform 0.2s";
 
 .site-header {
-  background-color: white;
+  background-color: $colorHeaderBackground;
   position: absolute;
   left: 0;
   right: 0;
@@ -2712,7 +2714,7 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
 
 .squished-header {
   .site-header-controls {
-    background-color: white;
+    background-color: $colorHeaderBackground;
     border-left: none;
     @include at-query($min, $large){
       width: 14em;
