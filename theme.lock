@@ -36,16 +36,16 @@ assets/ico-select.svg.liquid:
   development: 2018-02-16T09:57:38-07:00   9c9cc5a57cc74a0a64c2f62b1370a920
   stage: 2018-02-09T14:51:53-07:00   9c9cc5a57cc74a0a64c2f62b1370a920
 assets/icons.eot:
-  development: 2017-11-02T14:46:43-06:00   4ecb7df48c3002b24cc4e572a8dcc12d
+  development: 2018-02-09T12:45:38-05:00   4ecb7df48c3002b24cc4e572a8dcc12d
   stage: 2017-11-02T14:46:43-06:00   4ecb7df48c3002b24cc4e572a8dcc12d
 assets/icons.json:
-  development: 2018-02-01T14:29:52-07:00   2b9754d0f646647052464e1a5dbff785
+  development: 2018-02-09T12:45:38-05:00   2b9754d0f646647052464e1a5dbff785
   stage: 2018-02-01T14:29:52-07:00   2b9754d0f646647052464e1a5dbff785
 assets/icons.svg:
   development: 2018-02-16T09:57:36-07:00   ee39bf76bcfb53c6c421e8ac96d7ce1e
   stage: 2018-02-09T14:51:24-07:00   ee39bf76bcfb53c6c421e8ac96d7ce1e
 assets/icons.ttf:
-  development: 2017-11-02T14:46:44-06:00   fb47e10b87ea6b72245f5f6d4ff89f9f
+  development: 2018-02-09T12:45:38-05:00   fb47e10b87ea6b72245f5f6d4ff89f9f
   stage: 2017-11-02T14:46:44-06:00   fb47e10b87ea6b72245f5f6d4ff89f9f
 assets/icons.woff:
   development: 2018-02-09T12:35:37-07:00   2e42f3c67b6e8f4af7485f9d39bf1d40
@@ -96,7 +96,7 @@ assets/slick.css:
   development: 2018-02-09T14:51:10-07:00   c605c05dffecf0a5929347258278412a
   stage: 2018-02-09T14:51:10-07:00   c605c05dffecf0a5929347258278412a
 assets/slick.eot:
-  development: 2017-11-02T14:46:46-06:00   ced611daf7709cc778da928fec876475
+  development: 2018-02-09T12:45:40-05:00   ced611daf7709cc778da928fec876475
   stage: 2017-11-02T14:46:46-06:00   ced611daf7709cc778da928fec876475
 assets/slick.min.js:
   development: 2018-02-09T14:51:25-07:00   feb62cc230e2ba2acd2e32d423d79720
@@ -111,10 +111,10 @@ assets/slick.woff:
   development: 2018-02-09T12:35:40-07:00   b7c9e1e479de3b53f1e4e30ebac2403a
   stage: 2017-11-02T14:46:47-06:00   b7c9e1e479de3b53f1e4e30ebac2403a
 assets/style.scss.liquid:
-  development: 2018-02-14T16:31:09-07:00   1e9f5ffb59b4107f8791672be8733ecd
+  development: 2018-02-21T11:55:49-05:00   a834f86b70e0d0fbebc55efaa2651406
   stage: 2018-02-16T11:52:53-07:00   1383b4ba2f4723d6ce9b827930a4f46c
 assets/video.svg:
-  development: 2017-11-02T14:46:47-06:00   4c3096406feb53d87f657fddc6227ead
+  development: 2018-02-09T12:45:41-05:00   4c3096406feb53d87f657fddc6227ead
   stage: 2017-11-02T14:46:47-06:00   4c3096406feb53d87f657fddc6227ead
 assets/x.svg:
   development: 2018-02-09T14:52:00-07:00   766d9bd263a4c48fc9f0a7126127073b
@@ -123,7 +123,7 @@ config/settings_data.json:
   development: 2017-11-30T14:54:39-07:00   83fd81d92cc72dfe247afd24b7e80a11
   production: 2018-02-01T14:30:48-07:00   83fd81d92cc72dfe247afd24b7e80a11
 config/settings_schema.json:
-  development: 2018-01-31T10:26:29-07:00   0914b0c3fb5240e1bbdf4756f93a5cea
+  development: 2018-02-20T12:55:05-05:00   99f8da32953e88fdc05505320fa6763c
   stage: 2018-01-31T10:26:29-07:00   0914b0c3fb5240e1bbdf4756f93a5cea
 layout/checkout.liquid:
   development: 2018-02-15T09:13:00-07:00   58dc78bdab5b84f3139f53577b3df936
@@ -135,7 +135,7 @@ layout/theme.liquid:
   development: 2018-02-09T14:51:14-07:00   a20951e337d6668a5f4999bf011d9edd
   stage: 2018-02-09T14:51:14-07:00   a20951e337d6668a5f4999bf011d9edd
 locales/en.default.json:
-  development: 2018-01-04T10:04:38-07:00   3b9d912985a53445b32962b1f6665c1c
+  development: 2018-02-09T12:45:41-05:00   3b9d912985a53445b32962b1f6665c1c
   stage: 2018-01-04T10:04:38-07:00   3b9d912985a53445b32962b1f6665c1c
 sections/blog-template.liquid:
   development: 2018-02-09T14:51:52-07:00   9db619cae29158c59c7a13625a76ce84
@@ -159,7 +159,7 @@ sections/bt-featured-collection-carousel.liquid:
   development: 2018-02-09T14:51:19-07:00   25a4d757affe175c613ac58919143cd8
   stage: 2018-02-09T14:51:19-07:00   25a4d757affe175c613ac58919143cd8
 sections/bt-featured-collection.liquid:
-  development: 2018-02-16T09:57:25-07:00   8a9b122f86a75ca53384c721d2570260
+  development: 2018-02-21T11:56:31-05:00   505d2fb21f0f547f54469e1719e201ca
   stage: 2018-02-09T14:51:49-07:00   8a9b122f86a75ca53384c721d2570260
 sections/bt-featured-product-lrg.liquid:
   development: 2018-02-09T14:51:19-07:00   307975434388ffbf94f5fb5253714e1a
@@ -171,7 +171,7 @@ sections/bt-header.liquid:
   development: 2018-02-09T14:52:04-07:00   f23321977328e5f821745e4bc7ac0e2d
   stage: 2018-02-09T14:52:04-07:00   f23321977328e5f821745e4bc7ac0e2d
 sections/bt-headline-with-cta.liquid:
-  development: 2018-02-07T15:23:17-07:00   aaf72c1660752e340ef96b9136febf3a
+  development: 2018-02-09T12:45:36-05:00   aaf72c1660752e340ef96b9136febf3a
   stage: 2018-02-16T11:51:35-07:00   c10c06dabfe9c8b5b1f185db28f545ae
 sections/bt-hero-section.liquid:
   development: 2018-02-09T14:51:26-07:00   f9085ccbc1dee69770bc3247c7de958e
@@ -231,7 +231,7 @@ sections/popup.liquid:
   development: 2018-02-09T14:52:08-07:00   92fecf8dbde474ccf47479bb6acc63f2
   stage: 2018-02-09T14:52:08-07:00   92fecf8dbde474ccf47479bb6acc63f2
 sections/product-template.liquid:
-  development: 2018-02-09T12:17:07-07:00   777cf1da0ddbcb65af6903383c27d83a
+  development: 2018-02-15T19:05:02-05:00   c150623ebd0259b293da6b6a6cbf4279
   stage: 2018-02-16T11:52:02-07:00   44129055351345d00f3770502382493b
 sections/recipe-blog-template.liquid:
   development: 2018-02-16T09:57:26-07:00   dbe864e1081257959dd6232ce140c9cc
@@ -255,7 +255,7 @@ snippets/SEOManager.liquid:
   development: 2018-02-09T14:51:51-07:00   6647ffb51da372418ef2170aa6f1f048
   stage: 2018-02-09T14:51:51-07:00   6647ffb51da372418ef2170aa6f1f048
 snippets/SEOMetaManager.liquid:
-  development: 2018-02-01T14:46:34-07:00   63248d1bdd7cdcb0e8ba9bfd7ea6e95a
+  development: 2018-02-09T12:45:41-05:00   63248d1bdd7cdcb0e8ba9bfd7ea6e95a
   stage: 2018-02-01T14:46:34-07:00   63248d1bdd7cdcb0e8ba9bfd7ea6e95a
 snippets/ajax-cart-template.liquid:
   development: 2018-02-09T14:51:46-07:00   da2d771cd1aebf8e29d09a4c3e7f5321
@@ -306,10 +306,10 @@ snippets/footer-payments.liquid:
   development: 2018-02-09T14:51:47-07:00   27b6285ac9b70b9e0e2dd94268a3609b
   stage: 2018-02-09T14:51:47-07:00   27b6285ac9b70b9e0e2dd94268a3609b
 snippets/gem-app-footer-scripts.liquid:
-  development: 2017-11-28T08:52:12-07:00   c753d14da1d74b4080ae937268fe38ab
+  development: 2018-02-09T12:45:41-05:00   c753d14da1d74b4080ae937268fe38ab
   stage: 2017-11-28T08:52:12-07:00   c753d14da1d74b4080ae937268fe38ab
 snippets/gem-app-header-scripts.liquid:
-  development: 2017-11-28T08:52:12-07:00   320846ac5f9ed89353e869338a7f6ce5
+  development: 2018-02-09T12:45:41-05:00   320846ac5f9ed89353e869338a7f6ce5
   stage: 2017-11-28T08:52:12-07:00   320846ac5f9ed89353e869338a7f6ce5
 snippets/google-fonts.liquid:
   development: 2018-02-09T14:51:53-07:00   b2bc6310dcd33a480b1d276583efd9ff
@@ -411,10 +411,10 @@ templates/404.preSEOManager.liquid:
   development: 2018-02-09T14:52:07-07:00   0c85f6723c6a9d212c06a2fde696860d
   stage: 2018-02-09T14:52:07-07:00   0c85f6723c6a9d212c06a2fde696860d
 templates/article.liquid:
-  development: 2018-02-09T14:51:48-07:00   026aa57ce31900681de2e57569c5b8ad
+  development: 2018-02-16T18:46:05-05:00   c1d219629f1de2da1abb1dd77aaccc14
   stage: 2018-02-09T14:51:48-07:00   026aa57ce31900681de2e57569c5b8ad
 templates/article.recipe.liquid:
-  development: 2018-02-09T14:51:32-07:00   413f57f550a21a5e5283ff5ecf690702
+  development: 2018-02-16T18:46:51-05:00   8a2893203153958011516d69b0addaed
   stage: 2018-02-09T14:51:32-07:00   413f57f550a21a5e5283ff5ecf690702
 templates/blog.liquid:
   development: 2018-02-09T14:51:07-07:00   02bd6c5a55d29139ba1933e3ee8b149d
