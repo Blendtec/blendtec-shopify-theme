@@ -103,7 +103,8 @@
     "carbs": "Carbohydrates",
     "fiber": "Fiber",
     "sugar": "Sugar",
-    "protein": "Protein"
+    "protein": "Protein",
+    "cooktime": "Cook time"
   },
   "cart": {
     "general": {
