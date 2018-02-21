@@ -129,7 +129,7 @@ sections/carousel.liquid:
 sections/collection-template.liquid:
   development: 2018-02-09T14:51:56-07:00   85b9a00139fe12576a760333386768c1
 sections/compare-blender.liquid:
-  development: 2018-02-14T15:04:26-07:00   568dc1728e006623bb86e2b63e5d40f0
+  development: 2018-02-21T15:14:17-07:00   a3e03fecd6319d51d699d8922f2f8787
 sections/custom-html.liquid:
   development: 2018-02-09T14:51:09-07:00   6ae4866d54cdde98bc93936bfd455c2d
 sections/featured-blog.liquid:
@@ -247,7 +247,7 @@ snippets/product-grid-item.liquid:
 snippets/product-related.liquid:
   development: 2018-02-09T14:51:54-07:00   e74fc776fa6a50f2b86f267a9d47ce69
 snippets/product-to-compare.liquid:
-  development: 2018-02-14T15:07:52-07:00   4a42c8ef9f377a74287a8f8252f1e718
+  development: 2018-02-21T14:43:44-07:00   d312e072a5c60e0a6d80348bf9974fd3
 snippets/recipe-ingredients.liquid:
   development: 2018-02-14T16:14:10-07:00   942099705319f563de398045093c66c7
 snippets/related-products.liquid:
