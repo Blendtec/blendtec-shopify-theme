@@ -49,6 +49,8 @@ assets/masonry.pkgd.min.js:
   development: 2018-02-09T14:51:20-07:00   7055b53b3da0bedce27f793a9909472b
 assets/modernizr.min.js:
   development: 2018-02-09T14:51:00-07:00   ab2abefe8877efc3f058844353d4088a
+assets/product-compare.scss.liquid:
+  development: 2018-02-22T15:41:02-07:00   8807b00b3433f71dd56f4e4d149ef40d
 assets/raf.js:
   development: 2018-02-09T14:51:40-07:00   d5420795aa0b640804ac0811e8f4bbfd
 assets/registration.css:
@@ -129,7 +131,7 @@ sections/carousel.liquid:
 sections/collection-template.liquid:
   development: 2018-02-09T14:51:56-07:00   85b9a00139fe12576a760333386768c1
 sections/compare-blender.liquid:
-  development: 2018-02-21T15:14:17-07:00   a3e03fecd6319d51d699d8922f2f8787
+  development: 2018-02-22T15:41:42-07:00   a2a8fcfeeaec20ff2dbc3d90dd6e0435
 sections/custom-html.liquid:
   development: 2018-02-09T14:51:09-07:00   6ae4866d54cdde98bc93936bfd455c2d
 sections/featured-blog.liquid:
@@ -247,7 +249,7 @@ snippets/product-grid-item.liquid:
 snippets/product-related.liquid:
   development: 2018-02-09T14:51:54-07:00   e74fc776fa6a50f2b86f267a9d47ce69
 snippets/product-to-compare.liquid:
-  development: 2018-02-21T14:43:44-07:00   d312e072a5c60e0a6d80348bf9974fd3
+  development: 2018-02-22T15:08:16-07:00   2961ec9dfdf49ebd80a695c887e7108f
 snippets/recipe-ingredients.liquid:
   development: 2018-02-14T16:14:10-07:00   942099705319f563de398045093c66c7
 snippets/related-products.liquid:
