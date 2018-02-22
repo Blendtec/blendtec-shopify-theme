@@ -90,6 +90,7 @@ $breakpoint-has-pull:  ('medium', 'medium-down', 'large');
 $colorPrimary: {{ settings.color_primary }};
 $colorPlaceholder: #C2C2C2; //Only used when the theme has no content
 
+
 // Button colors
 $colorBtnPrimary: {{ settings.color_primary }};
 $colorBtnPrimaryHover: darken($colorBtnPrimary, 3%);
@@ -108,6 +109,7 @@ $colorTextHeader: {{settings.color_header}};
 
 // Backgrounds
 $colorBody: {{ settings.color_body_bg }};
+$colorHeaderBackground: {{ settings.color_header_bg }};
 
 // Border colors
 $colorBorder: {{ settings.color_borders }};
@@ -183,6 +185,14 @@ $baseFontSize: 16px; // Henseforth known as 1em
 {% else %}
   {% assign logo_family = settings.font_logo %}
 {% endif %}
+
+h3.heavy {
+  width: 100%;
+  font-size: 24px;
+  font-size: 3vmax;
+  color: white;
+  font-weight: 900;
+}
 
 $bodyFontStack: {{ base_family }};
 $headerFontStack: {{ header_family }};
@@ -2619,7 +2629,7 @@ $condenseTransitionTime: 0.15s;
 $headerTransition : "height #{$condenseTransitionTime}, background-color 0.5s, transform 0.2s, -webkit-transform 0.2s";
 
 .site-header {
-  background-color: white;
+  background-color: $colorHeaderBackground;
   position: absolute;
   left: 0;
   right: 0;
@@ -2712,7 +2722,7 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
 
 .squished-header {
   .site-header-controls {
-    background-color: white;
+    background-color: $colorHeaderBackground;
     border-left: none;
     @include at-query($min, $large){
       width: 14em;
@@ -7651,3 +7661,53 @@ body:not(.ios) .shopify-section.features {
 //     transition-delay: 300ms;
 //   }
 // }
+
+/*============================================================================
+  #Blendtec
+==============================================================================*/
+.br-gradient-grey{
+  width: 100%;
+  height: 10px;
+  background-image: linear-gradient(to right, #4c4c4c, rgba(55, 55, 55, 0));
+}
+.br-gradient-silver {
+  width: 100%;
+  height: 10px;
+  background-image: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+}
+.br-gradient-gold {
+  width: 100%;
+  height: 10px;
+  background-image: linear-gradient(to right, #f0dca9, rgba(220, 183, 112, 0));
+}
+
+/*============================================================================
+  #Components
+==============================================================================*/
+.bt-featured-collection {
+  .bottom-blenders-wrapper {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  hr {
+    width: 80%;
+    margin-left: 10%;
+    border-color: #d5d5d5;
+    opacity: .65;
+  }
+
+  .description-text {
+    color: white;
+  }
+
+  .bt-featured-collection {
+    background-color: black;
+  }
+
+  .btn {
+    margin-top: 1rem;
+  }
+}
+
+

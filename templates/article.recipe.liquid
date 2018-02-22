@@ -24,10 +24,7 @@
   <div class="grid__item large--two-thirds push--large--one-sixth">
     <div class="text-center content-wrapper--horizontal section-header">
       <div class="display-table-cell">
-        <h1 itemprop="name">{{ article.title }}</h1>
-        {% capture author %}<strong itemprop="author">{{ article.author }}</strong>{% endcapture %}
-        {% capture date %}<time itemprop="datePublished" content="{{ article.published_at | date: '%Y-%m-%d' }}" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
-        <p class='h6 light'>{{ 'blogs.article.author_on_date_html' | t: author: author, date: date }}</p>
+        {% include 'article-title' %}
         {% include 'breadcrumb' %}
       </div>
     </div>
@@ -85,7 +82,7 @@
     {% comment %}
     Just like blog.liquid page, define how many comments should be on each page.
     {% endcomment %}
-    {% paginate article.comments by 5 %}
+    {% paginate article.comments by 999 %}
     {% comment %}
     #comments is required, it is used as an anchor link by Shopify.
     {% endcomment %}

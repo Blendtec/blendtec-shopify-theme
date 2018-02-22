@@ -1,0 +1,4 @@
+<h1 itemprop="name">{{ article.title }}</h1>
+{% capture author %}<strong itemprop="author">{{ article.author | remove: "*" }}</strong>{% endcapture %}
+{% capture date %}<time itemprop="datePublished" content="{{ article.published_at | date: '%Y-%m-%d' }}" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
+<p class='h6 light'>{{ 'blogs.article.author_on_date_html' | t: author: author, date: date }}</p>
