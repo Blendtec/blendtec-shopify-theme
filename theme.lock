@@ -111,7 +111,7 @@ assets/slick.woff:
   development: 2018-02-09T12:35:40-07:00   b7c9e1e479de3b53f1e4e30ebac2403a
   stage: 2017-11-02T14:46:47-06:00   b7c9e1e479de3b53f1e4e30ebac2403a
 assets/style.scss.liquid:
-  development: 2018-02-21T11:55:49-05:00   a834f86b70e0d0fbebc55efaa2651406
+  development: 2018-02-22T19:51:46-05:00   0d7d8fa5c5531914c074874e121d2e87
   stage: 2018-02-16T11:52:53-07:00   1383b4ba2f4723d6ce9b827930a4f46c
 assets/video.svg:
   development: 2018-02-09T12:45:41-05:00   4c3096406feb53d87f657fddc6227ead
@@ -174,7 +174,7 @@ sections/bt-headline-with-cta.liquid:
   development: 2018-02-09T12:45:36-05:00   aaf72c1660752e340ef96b9136febf3a
   stage: 2018-02-16T11:51:35-07:00   c10c06dabfe9c8b5b1f185db28f545ae
 sections/bt-hero-section.liquid:
-  development: 2018-02-09T14:51:26-07:00   f9085ccbc1dee69770bc3247c7de958e
+  development: 2018-02-22T19:47:01-05:00   b65628c06220004ef3725d475ae49db1
   stage: 2018-02-09T14:51:26-07:00   f9085ccbc1dee69770bc3247c7de958e
 sections/bt-image-with-text.liquid:
   development: 2018-02-16T09:57:36-07:00   23e439bf97e1c301d1ab19593f63505b
