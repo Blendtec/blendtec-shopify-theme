@@ -22,17 +22,19 @@
                    class="btn btn--small">{{ section.settings.hero_button2text }}</a></div>
         </div>
     </div>
-    <div class="small--header-text-wrapper small--show medium--hide large--hide">
-        <h1 class="heavy">{{ section.settings.top_header }}</h1>
-        <h1 class="heavy" style="margin-left:8%;width:90%;">{{ section.settings.second_header }}</h1>
-        <h1 class="heavy" style="margin-left:12%;width:86%;">{{ section.settings.third_header }}</h1>
-        <div class="button-wrapper">
-            <button class="btn btn--small btn--left">
-                <i class="fa fa-caret-right"></i>
-                {{ section.settings.hero_button1text }}</button>
-            <a href="{{ section.blocks[0].settings.hero_button2Link }}" class="btn btn--small">
-                {{ section.settings.hero_button2text }}
-            </a>
+    <div class="small--show medium--hide large--hide">
+        <div class="header-text-wrapper">
+            <h1 class="heavy">{{ section.settings.top_header }}</h1>
+            <h1 class="heavy" style="margin-left:8%;width:90%;">{{ section.settings.second_header }}</h1>
+            <h1 class="heavy" style="margin-left:12%;width:86%;">{{ section.settings.third_header }}</h1>
+            <div class="button-wrapper">
+                <button class="btn btn--small btn--left">
+                    <i class="fa fa-caret-right"></i>
+                    {{ section.settings.hero_button1text }}</button>
+                <a href="{{ section.blocks[0].settings.hero_button2Link }}" class="btn btn--small">
+                    {{ section.settings.hero_button2text }}
+                </a>
+            </div>
         </div>
     </div>
 </div>
