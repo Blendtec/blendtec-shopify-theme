@@ -1,4 +1,18 @@
+
+$small: 700px;
+$medium: 840px;
+$large: 841px;
+$xlarge: 1000px;
+$xxlarge: 1200px;
+
 .compare-blender {
+.product-table{
+  margin-left:0px;
+}
+.product-wrapper {
+  max-width:80rem;
+  margin:0 auto;
+}
 .product-comparison--bg-image{
     background-position: 0 50%;
     background-size: cover;
@@ -27,7 +41,7 @@
     left: 20%;
   }
 
-@media screen  and (max-width: 840px) /* Tablet */ {
+@media screen  and (max-width: $medium) /* Tablet */ {
   #thePopup{
     width:80%;
     left: 10%;
@@ -35,17 +49,24 @@
 
 }
 
-@media screen and (max-width: 700px) /* Mobile */ {
+@media screen and (max-width: $small) /* Mobile */ {
   #thePopup{
     width:94%;
     left: 3%;
   }
 
 }
-#circle{
-  fill: #ED1B2C;
+#exitButton{
+    background: transparent;
+    padding: 0;
+    border: 0;
+    position:absolute;
+    cursor:pointer;
+    right:10px;
+    top:10px;
+    width:25px;
 }
-#exitButton:hover #circle{
+#exitButton:hover{
   opacity:.5;
 }
 #thePopup{
