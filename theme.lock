@@ -21,7 +21,7 @@ assets/checkout.scss.liquid:
   development: 2018-02-14T17:40:46-07:00   59cd56198e6efce986c10f41e362686b
   stage: 2018-02-16T11:51:56-07:00   e95e506b21b2414a72a599cabe886a75
 assets/compare-blender.js:
-  development: 2018-02-23T09:30:03-07:00   ccd2f5b7dbd23085987e12b412f9e6db
+  development: 2018-02-23T11:50:55-07:00   023655e107e2acda3c712db3bc3b4292
 assets/exit-button.svg.liquid:
   development: 2018-02-23T11:45:56-07:00   618a04adb29b6637695af369c4700c74
 assets/gift-card.scss.liquid:
