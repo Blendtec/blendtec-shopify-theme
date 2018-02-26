@@ -186,13 +186,11 @@ $baseFontSize: 16px; // Henseforth known as 1em
   {% assign logo_family = settings.font_logo %}
 {% endif %}
 
-h3.heavy {
-  width: 100%;
-  font-size: 24px;
-  font-size: 3vmax;
-  color: white;
-  font-weight: 900;
-}
+
+.heavy {
+   font-weight: 900;
+   font-size: 3vmax;
+ }
 
 $bodyFontStack: {{ base_family }};
 $headerFontStack: {{ header_family }};
@@ -7697,6 +7695,11 @@ body:not(.ios) .shopify-section.features {
     opacity: .65;
   }
 
+  .heavy {
+    color: white;
+    width: 100%;
+  }
+
   .description-text {
     color: white;
   }
@@ -7708,6 +7711,84 @@ body:not(.ios) .shopify-section.features {
   .btn {
     margin-top: 1rem;
   }
+}
+.bt-hero {
+  h1 {
+    font-size: 60px;
+  }
+  .hero {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 680px;
+  }
+
+  .hero-info {
+    height: 680px;
+    background-color: #6f6f6f;
+  }
+
+  .heavy {
+    color: white;
+    margin-bottom: -30px;
+  }
+
+  .header-text-wrapper {
+    padding-top: 15%;
+    padding-left: 10%;
+  }
+
+
+  .btn--left {
+    border-right: solid;
+    border-right-color: #ffffff;
+    border-right-width: 1px;
+    margin-right: -3px;
+  }
+
+  .button-wrapper {
+    margin-top: 4%;
+    margin-left: 32%;
+  }
+
+  .small--show {
+    .button-wrapper {
+      margin-top: 4%;
+      margin-left: 15%;
+    }
+
+    .header-text-wrapper {
+      background-color: #58595b;
+      padding: 5px;
+    }
+
+    H1 {
+      margin-bottom: -15px;
+      font-size: 30px;
+    }
+
+  }
+  @media only screen and (max-width: $large) {
+    .hero {
+      height: 480px;
+    }
+    .header-text-wrapper {
+      padding-top: 25%;
+      padding-left: 10%;
+    }
+  }
+
+  @media only screen and (max-width: $medium) {
+    .hero {
+      height: 480px;
+    }
+  }
+
+  @media only screen and (max-width: $small) {
+    .hero {
+      height: 240px;
+    }
+  }
+
 }
 
 
