@@ -62,6 +62,7 @@
   "blogs": {
     "article": {
       "author_on_date_html": "Posted by {{ author }} on {{ date }}",
+      "on_date_html": "Posted on {{ date }}",
       "author_by_html": "Posted by {{author}}",
       "older_post": "Older Post",
       "newer_post": "Newer Post",

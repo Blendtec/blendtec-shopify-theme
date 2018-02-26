@@ -24,7 +24,9 @@
   <div class="grid__item large--two-thirds push--large--one-sixth">
     <div class="text-center content-wrapper--horizontal section-header">
       <div class="display-table-cell">
-        {% include 'article-title' %}
+        <h1 itemprop="name">{{ article.title }}</h1>
+          {% capture date %}<time itemprop="datePublished" content="{{ article.published_at | date: '%Y-%m-%d' }}" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
+        <p class='h6 light'>{{ 'blogs.article.on_date_html' | t: date: date }}</p>
         {% include 'breadcrumb' %}
       </div>
     </div>
