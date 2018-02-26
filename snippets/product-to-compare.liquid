@@ -1,14 +1,94 @@
 {% assign product = all_products[product_name] %}
-<div class="grid__item large--one-fifth medium--one-third small--one-half">
-<div>
-<img style="width:100%;" src="{{ product.variants[0].featured_image.src | img_url: '700x' }}"
-{% for i in product.variants %}
-{{ forloop.index }}src="{{ i.featured_image.src | img_url: '700x' }}"
-{% endfor %}
->
+
+<div class="grid__item large--one-sixth medium--one-third small--one-third blender-info-side" style="padding-left:0px;">
+<div class="cell"></div>
+<div class="cell"></div>
+<div style="border-top: 1px solid #d6d5d5;">
+<div class="cell"></div>
+<div class="cell"></div>
+<div class="bg-gray cell"><h6 class="heavy">HORSEPOWER</h6></div>
+<div class="cell"><h6 class="heavy">CYCLES</h6></div>
+<div class="bg-gray cell"><h6 class="heavy">SPEEDS</h6></div>
+<div class="cell"><h6 class="heavy">CONTROL</h6></div>
+<div class="bg-gray cell"><h6 class="heavy">FINISH</h6></div>
+<div class="cell"><h6 class="heavy">WARRANTY</h6></div>
+<div class="bg-gray cell"><h6 class="heavy">COLORS</h6></div>
+<div class="cell"></div>
+</div>
 </div>
 
-<div>
-<img style="width:100%;" src="{{ product.metafields['global']['Panel-Image'] }}">
+<div class="grid__item large--one-sixth medium--one-third small--two-thirds" style="padding-left:0px;">
+<div  class="cell">
+<a class="product-link-{{ product.id }}" href="{{ product.url }}"><img style="width:100%;" id="productImage-{{ product.id }}" src="{{ product.variants[0].featured_image.src | img_url: '700x' }}"></a>
+</div>
+
+<div class="cell">
+<img class="panel-image" onload="standardize_cell_size()" src="{{ product.metafields['global']['Panel-Image'] }}">
+<span class="zoom" onclick="zoomin('{{ product.id }}')">+zoom</span>
+</div>
+<div class="product-borders">
+	<div class="cell"><h6>{{ product.title }}</h6></div>
+	<div class="cell" id="productSecondaryTitle-{{ product.id }}">{{ product.variants[0].title }}</div>
+	<div class="bg-gray cell">
+		{{ product.metafields["global"]["Horsepower"] }}
+	</div>
+	<div class="cell">
+		{{ product.metafields["global"]["Cycles"] }}
+	</div>
+	<div class="bg-gray cell">
+		{{ product.metafields["global"]["Speeds"] }}
+	</div>
+	<div class="cell">
+		{{ product.metafields["global"]["Control"] }}
+	</div>
+	<div class="bg-gray cell">
+		{{ product.metafields["global"]["Finish"] }}
+	</div>
+	<div class="cell">
+		{{ product.metafields["global"]["Warranty"] }}
+	</div>
+	<div class="bg-gray" style="display:none;">
+	<select onchange="selectOption2(this.value, '{{ product.id }}')">
+	{% assign done_jars = '' | split: "  ,   " %}
+
+			{% for i in product.variants %}
+				{% unless done_jars contains i.option2 %}
+				{% assign tempArr = i.option2 | split: "   ,  " %}
+				{% assign done_jars = done_jars | concat: tempArr %}
+					<option value="{{ i.option2 }}" class="list-colors">{{ i.option2 }}</option>
+				{% endunless %}
+			{% endfor %}
+			</select>
+	</div>
+	<div class="bg-gray cell">
+		<ul style="margin:0px;">
+		{% assign done_colors = '' | split: "  ,   " %}
+			{% for i in product.variants %}
+				{% unless done_colors contains i.option1 %}
+				{% assign tempArr = i.option1 | split: "   ,  " %}
+				{% assign done_colors = done_colors | concat: tempArr %}
+					<li onclick="selectOption1('{{ i.option1 }}', '{{ product.id }}')" class="list-colors"><div class="color-square" style="background-color:{{ settings.product_colors[i.option1] }};"></div> &nbsp; {{ i.option1 }}</li>
+				{% endunless %}
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="cell">
+		<h4 id="productPrice-{{ product.id }}">{{ product.variants[0].price | money }}</h4>
+	</div>
+	<div class="cell">
+		<a class="btn product-link-{{ product.id }}" href="{{ product.url }}" name="add">SEE DETAILS</a>
+	</div>
 </div>
 </div>
+
+<script type="text/javascript">
+	  var variantToOptions = (variantToOptions)?variantToOptions:{};
+  var productSelectedVariant = (productSelectedVariant)?productSelectedVariant:{};
+  {% for i in product.variants %}
+    variantToOptions['{{ i.id }}'] = {productId: '{{ product.id }}', variantId: '{{ i.id }}', color: '{{ i.option1 }}', jar: '{{ i.option2 }}', src: '{{ i.featured_image.src  | img_url: "700x" }}', title: '{{ i.title }}', price: '{{ i.price | money }}', panel: "{{ product.metafields['global']['Panel-Image'] }}", url: '{{ product.url }}'};
+    if (!productSelectedVariant['{{ product.id }}']) {
+      productSelectedVariant['{{ product.id }}'] = '{{ i.id }}';
+    }
+  {% endfor %}
+
+</script>

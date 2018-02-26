@@ -1,19 +1,79 @@
-<div class="bt-featured-collection">
 
-<div class="grid">
+<div class="compare-blender">
+<script>
+  var standardize_cell_size = function(){};
+</script>
+
+<div style="display:none;" onclick="exitPopup()" id="popupBackground"></div>
+
+<div id="thePopUp" class="exit-intent-overlay">
+  <section class="exit-intent inline-subscribe  ">
+    <div class="display-table-cell exit-intent__content">
+<button onclick="exitPopup()" type="button" id="exitButton" class="close product-comparison--close" data-dismiss="modal" aria-hidden="true">
+<i class="fa fa-times" style="position:fixed;" aria-hidden="true"></i>
+</button>
+
+<div>
+  <img id="zoomInProduct" style="width:100%;">
+</div>
+<div>
+  <img id="zoomInPanel">
+</div>
+<div>
+
+</div>
+    </div>
+  </section>
+</div>
+<div class="full-width layout wrap product-comparison--bg-image">
+      <div class="row-fluid top-level head-image">
+        <div class="col-md-12 product-comparison--header-container">
+          <h1 class="product-comparison--leader">{{ section.settings.product_compare_title }}</h1>
+          <h2 class="product-comparison--sub-leader">{{ section.settings.product_compare_title_2 }}</h2>
+        </div>
+      </div>
+    </div>
+
+<div class="product-wrapper">
+<h3 class="header-top-spacing">{{ section.settings.product_row_1_title }}</h3>
+
+<div class="grid product-table">
+
   {% for i in section.blocks %}
-    {% assign product_name = i.settings.product_id | text  %}
-    {% include 'product-to-compare' %}
+    {% if i.type == 'products-1' %}
+      {% assign product_name = i.settings.product_id | text  %}
+      {% include 'product-to-compare' %}
+    {% endif %}
   {% endfor %}
 </div>
 
+
+
+<h3 class="header-top-spacing">{{ section.settings.product_row_2_title }}</h3>
+
+<div class="grid product-table">
+
+  {% for i in section.blocks %}
+    {% if i.type == 'products-2' %}
+      {% assign product_name = i.settings.product_id | text  %}
+      {% include 'product-to-compare' %}
+    {% endif %}
+  {% endfor %}
 </div>
 
 
-  <style>
+</div>
+</div>
+
+<style>
+  .product-comparison--bg-image{
+    background-image: url('{{ section.settings.top_image | img_url: '1000x' }}}');
+  }
 
 
 </style>
+  {{ 'product-compare.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'compare-blender.js' | asset_url | script_tag }}
 
 {% schema %}
 {
@@ -79,7 +139,7 @@
 ],
     "presets": [
       {
-        "name": "bt-featured-collection",
+        "name": "compare-blender",
         "category": "Image"
       }
     ]
