@@ -113,18 +113,27 @@
     }
   };
 
+  var showPopUp = function() {
+    document.getElementById('popupBackground').style.display = null;
+    document.getElementById('thePopup').style.display = null;
+    if (window.jQuery) {
+      $('#thePopup').animate({opacity: 1, top: '5%'}, "slow");
+    } else {
+      document.getElementById('thePopup').style.opacity = 1;
+      document.getElementById('thePopup').style.top = '5%';
+    }
+  }
+
   var zoomin = function(product) {
     var index = productSelectedVariant[product];
 
-    document.getElementById('popupBackground').style.display = null;
-    document.getElementById('thePopup').style.display = null;
     document.getElementById('zoomInProduct').src = variantToOptions[index].src;
     document.getElementById('zoomInPanel').src = variantToOptions[index].panel;
+    document.getElementById('thePopUp').classList.add('show');
   };
 
   var exitPopup = function() {
-    document.getElementById('popupBackground').style.display = 'none';
-    document.getElementById('thePopup').style.display = 'none';
+    document.getElementById('thePopUp').classList.remove('show');
   };
 
 standardize_cell_size();

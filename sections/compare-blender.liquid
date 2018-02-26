@@ -1,25 +1,30 @@
+
 <div class="compare-blender">
 <script>
   var standardize_cell_size = function(){};
 </script>
 
 <div style="display:none;" onclick="exitPopup()" id="popupBackground"></div>
-<div id="thePopup" style="display:none;">
+
+<div id="thePopUp" class="exit-intent-overlay">
+  <section class="exit-intent inline-subscribe  ">
+    <div class="display-table-cell exit-intent__content">
 <button onclick="exitPopup()" type="button" id="exitButton" class="close product-comparison--close" data-dismiss="modal" aria-hidden="true">
-<img src='{{ "exit-button.svg" | asset_url }}' style="width:100%;">
+<i class="fa fa-times" style="position:fixed;" aria-hidden="true"></i>
 </button>
 
 <div>
   <img id="zoomInProduct" style="width:100%;">
 </div>
 <div>
-  <img id="zoomInPanel" style="width:100%;">
+  <img id="zoomInPanel">
 </div>
 <div>
 
 </div>
+    </div>
+  </section>
 </div>
-
 <div class="full-width layout wrap product-comparison--bg-image">
       <div class="row-fluid top-level head-image">
         <div class="col-md-12 product-comparison--header-container">
@@ -30,7 +35,7 @@
     </div>
 
 <div class="product-wrapper">
-<h3 style="margin-top:50px;">{{ section.settings.product_row_1_title }}</h3>
+<h3 class="header-top-spacing">{{ section.settings.product_row_1_title }}</h3>
 
 <div class="grid product-table">
 
@@ -44,7 +49,7 @@
 
 
 
-<h3>{{ section.settings.product_row_2_title }}</h3>
+<h3 class="header-top-spacing">{{ section.settings.product_row_2_title }}</h3>
 
 <div class="grid product-table">
 

@@ -6,20 +6,20 @@
 <div style="border-top: 1px solid #d6d5d5;">
 <div class="cell"></div>
 <div class="cell"></div>
-<div class="bg-gray cell bold-titles">HORSEPOWER</div>
-<div class="cell bold-titles">CYCLES</div>
-<div class="bg-gray cell bold-titles">SPEEDS</div>
-<div class="cell bold-titles">CONTROL</div>
-<div class="bg-gray cell bold-titles">FINISH</div>
-<div class="cell bold-titles">WARRANTY</div>
-<div class="bg-gray cell bold-titles">COLORS</div>
+<div class="bg-gray cell"><h6 class="heavy">HORSEPOWER</h6></div>
+<div class="cell"><h6 class="heavy">CYCLES</h6></div>
+<div class="bg-gray cell"><h6 class="heavy">SPEEDS</h6></div>
+<div class="cell"><h6 class="heavy">CONTROL</h6></div>
+<div class="bg-gray cell"><h6 class="heavy">FINISH</h6></div>
+<div class="cell"><h6 class="heavy">WARRANTY</h6></div>
+<div class="bg-gray cell"><h6 class="heavy">COLORS</h6></div>
 <div class="cell"></div>
 </div>
 </div>
 
 <div class="grid__item large--one-sixth medium--one-third small--two-thirds" style="padding-left:0px;">
 <div  class="cell">
-<a class="product-link-{{ product.id }}" href="{{ product.url }}"><img style="width:100%;" onload="standardize_cell_size()"  id="productImage-{{ product.id }}" src="{{ product.variants[0].featured_image.src | img_url: '700x' }}"></a>
+<a class="product-link-{{ product.id }}" href="{{ product.url }}"><img style="width:100%;" id="productImage-{{ product.id }}" src="{{ product.variants[0].featured_image.src | img_url: '700x' }}"></a>
 </div>
 
 <div class="cell">
@@ -27,8 +27,8 @@
 <span class="zoom" onclick="zoomin('{{ product.id }}')">+zoom</span>
 </div>
 <div class="product-borders">
-	<div class="cell product-title">{{ product.title }}</div>
-	<div class="product-title-secondary cell" id="productSecondaryTitle-{{ product.id }}">{{ product.variants[0].title }}</div>
+	<div class="cell"><h6>{{ product.title }}</h6></div>
+	<div class="cell" id="productSecondaryTitle-{{ product.id }}">{{ product.variants[0].title }}</div>
 	<div class="bg-gray cell">
 		{{ product.metafields["global"]["Horsepower"] }}
 	</div>
