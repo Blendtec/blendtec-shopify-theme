@@ -195,7 +195,7 @@ sections/carousel.liquid:
   development: 2018-02-09T14:52:10-07:00   47a841c940168292fd3d6c619d288f2f
   stage: 2018-02-09T14:52:10-07:00   47a841c940168292fd3d6c619d288f2f
 sections/collection-template.liquid:
-  development: 2018-02-16T09:57:40-07:00   85b9a00139fe12576a760333386768c1
+  development: 2018-02-28T10:19:34-07:00   8d33eba9b30b6916c0be67a13be51545
   stage: 2018-02-09T14:51:56-07:00   85b9a00139fe12576a760333386768c1
 sections/compare-blender.liquid:
   development: 2018-02-26T13:12:04-07:00   3afa0af567d6c5923406ecf84cdfbef8
@@ -236,7 +236,7 @@ sections/popup.liquid:
   development: 2018-02-09T14:52:08-07:00   92fecf8dbde474ccf47479bb6acc63f2
   stage: 2018-02-09T14:52:08-07:00   92fecf8dbde474ccf47479bb6acc63f2
 sections/product-template.liquid:
-  development: 2018-02-15T19:05:02-05:00   c150623ebd0259b293da6b6a6cbf4279
+  development: 2018-02-27T13:00:29-07:00   df976868ce2c52e3d64c985da27799cc
   stage: 2018-02-16T11:52:02-07:00   44129055351345d00f3770502382493b
 sections/recipe-blog-template.liquid:
   development: 2018-02-16T09:57:26-07:00   dbe864e1081257959dd6232ce140c9cc
@@ -368,7 +368,7 @@ snippets/price-spider-header-scripts.liquid:
   development: 2018-02-09T14:51:55-07:00   a6e8807d64c30ea6f20555fcb05d6262
   stage: 2018-02-09T14:51:55-07:00   a6e8807d64c30ea6f20555fcb05d6262
 snippets/product-grid-item.liquid:
-  development: 2018-02-16T09:57:35-07:00   c5dfb6f44fa46a98acc019e5092702d1
+  development: 2018-02-28T10:18:07-07:00   13649270088cd19f7640630bd8a843a8
   stage: 2018-02-09T14:51:57-07:00   c5dfb6f44fa46a98acc019e5092702d1
 snippets/product-related.liquid:
   development: 2018-02-09T14:51:54-07:00   e74fc776fa6a50f2b86f267a9d47ce69
@@ -427,7 +427,7 @@ templates/cart.liquid:
   development: 2018-02-09T14:51:50-07:00   74c37c90b7d09c6820120edcbe4ddb53
   stage: 2018-02-09T14:51:50-07:00   74c37c90b7d09c6820120edcbe4ddb53
 templates/collection.liquid:
-  development: 2018-02-16T09:57:27-07:00   b6766ba53815f5ffd880875f320ed4a2
+  development: 2018-02-27T09:38:44-07:00   5b7cfc8de5da5787d2dd11e25dffa695
   stage: 2018-02-09T14:51:04-07:00   b6766ba53815f5ffd880875f320ed4a2
 templates/customers/account.liquid:
   development: 2018-02-16T09:57:30-07:00   ca6253e631976350803a7d8ba3aaefff

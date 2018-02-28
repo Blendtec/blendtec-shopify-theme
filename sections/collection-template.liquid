@@ -40,7 +40,7 @@ Four layout options: 2x3, 3x3, 4x3, 5x3
   {% if section.settings.show_collection_header %}
     <div class="text-wrapper--center-cell text-max-width">
       <div class="text-wrapper--small text-center">
-        <h1 class="section-header__title text-center">{{ collection.title }}</h1>
+        <h1 class="section-header__title text-center" style="font-size:3em;">{{ collection.title }}</h1>
         {% if section.settings.show_collection_description and collection.description != blank %}
           {% comment %}Shopify sometime will wrap the output in a <p> tag and sometimes won't, depending on what the user inputs.  We /always/ want one wrapped for margins, but this can sometimes lead to duplicates.{% endcomment %}
           <p>{{collection.description}}</p>
@@ -157,8 +157,66 @@ Four layout options: 2x3, 3x3, 4x3, 5x3
   .template-collection:not(#products) .collection-pages .section-header--image .text-wrapper--center-cell {
     color: {{section.settings.color_text}};
   }
+  .slick-next{
+    right: 0px;
+    background-color: grey;
+    border-radius: 100px;
+    opacity: 0;
+  }
+  .slick-prev{
+    left:0px;
+    background-color: grey;
+    border-radius: 100px;
+    opacity: 0;
+  }
+  .slick-dots{
+    opacity:0;
+  }
+  .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+     color: white;
+    outline: none;
+    background: grey;
+    opacity:.3;
+  }
+  .single-item:hover .slick-next{
+    opacity:.5;
+  }
+  .single-item:hover .slick-prev{
+    opacity:.5;
+  }
+  .single-item:hover .slick-dots{
+    opacity:1;
+  }
 </style>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.single-item').slick({
+        dots: true,
+        arrows: true,
+        mobileFirst: true,
+        respondTo: 'min',
+        adaptiveHeight: true,
+        pauseOnHover: false,
+        draggable: true,
+        lazyload: 'progressive',
+      }).init(function() {
+        var imagePosition = '0';
+
+        if (imagePosition) {
+          $('.single-item').slick('slickGoTo', imagePosition, false);
+        }
+      });
+    $(".single-item").on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        var productId = event.target.getAttribute('productId');
+        var title = document.getElementById('title-'+productId).getAttribute('title'+(nextSlide+1));
+        $('#title-'+productId).text(title);
+
+        var link = document.getElementById('link-'+productId).getAttribute('link'+(nextSlide+1));
+        $('#link-'+productId).attr('href', link);
+    });
+  });
+</script>
 {% schema %}
   {
     "name": "Collection pages",
