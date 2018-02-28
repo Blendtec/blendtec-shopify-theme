@@ -368,7 +368,7 @@ snippets/price-spider-header-scripts.liquid:
   development: 2018-02-09T14:51:55-07:00   a6e8807d64c30ea6f20555fcb05d6262
   stage: 2018-02-09T14:51:55-07:00   a6e8807d64c30ea6f20555fcb05d6262
 snippets/product-grid-item.liquid:
-  development: 2018-02-28T10:18:07-07:00   13649270088cd19f7640630bd8a843a8
+  development: 2018-02-28T11:25:37-07:00   abfcc77f54104c66bf8d74a1364d5b4a
   stage: 2018-02-09T14:51:57-07:00   c5dfb6f44fa46a98acc019e5092702d1
 snippets/product-related.liquid:
   development: 2018-02-09T14:51:54-07:00   e74fc776fa6a50f2b86f267a9d47ce69

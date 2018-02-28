@@ -62,10 +62,13 @@
 
           {% if product.variants.size > 0 %}
             {% for variant in product.variants %}
+            {% if variant.featured_image.src %}
             {% assign image = variant.featured_image %}
                   {% assign variantIDs = image.variants | map: 'id' | join: '-' %}
                   <div><img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' id="{{ variantIDs }}"></div>
-
+            {% else %}
+                   <div><img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' id="{{ variantIDs }}"></div>
+            {% endif %}
             {% endfor %}
           {% endif %}
           {% if variants.size == 0 %}
