@@ -4112,8 +4112,36 @@ body:not(.js-drawer-open) .drawer__content {
   height: 1px;
   width: 1px;
 }
-
-
+/*============================================================================
+  #Slick slider changes
+==============================================================================*/
+.slick-next{
+  right: 0px;
+  background-color: grey;
+  border-radius: 100px;
+  opacity: 0;
+}
+.slick-prev{
+  left:0px;
+  background-color: grey;
+  border-radius: 100px;
+  opacity: 0;
+}
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+  color: white;
+  outline: none;
+  background: grey;
+  opacity:.3;
+}
+.single-item:hover .slick-next{
+  opacity:.5;
+}
+.single-item:hover .slick-prev{
+  opacity:.5;
+}
+.single-item:hover .slick-dots{
+  display:block !important;
+}
 
 /*============================================================================
   #Pages
