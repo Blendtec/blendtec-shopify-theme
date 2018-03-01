@@ -1,0 +1,23 @@
+<div class="blog-filters">
+<div class="blog-filtering">
+<form action="/search" method="get" class="" role="search">
+  <input style="height:38px;" type="search" id="searchBarInput" name="q" value="" placeholder="Search {{ baseUrlTag }}" class="blog-input-field" aria-label="Search {{ baseUrlTag }}" autocomplete="on" tabindex="0">
+  <input type="hidden" name="type" value="article" />
+</form>
+</div>
+        <div class="blog-filtering">
+          <span class="blog-filters-title">Showing: </span>
+          <select data-collection-handle="{{ baseUrlTag }}" style="padding-left: 70px;" class="blog-input-field">
+            <option value="">All</option>
+          {% for tag in theTagsToSearch %}
+            <option {% if current_tags contains tag %}selected="selected"{% endif %} value="{{ tag }}">{{ tag }}</option>
+          {% endfor %}
+          </select>
+        </div>
+    </div>
+<script>
+$(function() {
+var tags = [];
+  ira.blogFilter();
+});
+</script>

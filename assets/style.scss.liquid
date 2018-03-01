@@ -5011,6 +5011,114 @@ $ig-gap: 0px;
 }
 
 /*============================================================================
+  #Blog Filters
+==============================================================================*/
+
+.blog-filters-wrapper {
+  position: relative;
+  display: table;
+  width: 100%;
+  padding: 20px 2.5rem;
+  font-size: $baseFontSize;
+  box-shadow: 0 1px 1px -1px rgba(0,0,0,0.3);
+  z-index: 10;
+  background-color: $colorBody;
+
+  .section-header--no-image-loaded + &.has-border { border-top: 1px solid $colorBorder; }
+
+  @include at-query($max, $medium) { display: block; }
+
+  .breadcrumb {
+    display: table-cell;
+    vertical-align: middle;
+
+    @include at-query($max, $medium) {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  select {
+    max-width: 200px;
+    width: 100%;
+
+    @include at-query($max, $medium) {
+      max-width: none;
+    }
+  }
+}
+
+.blog-filters {
+  vertical-align: middle;
+  text-align: right;
+
+  @include at-query($max, $medium) {
+    display: block;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  select {
+    position: relative;
+    z-index: 1;
+    height: 38px;
+    padding: 0 25px;
+    font-size: em(16px);
+    font-weight: 700;
+  }
+}
+
+.blog-filtering,
+.blog-sort {
+  position: relative;
+  display: inline-block;
+
+  @include at-query($min, $medium + 1) {
+    &:last-child { margin-left: 5px; }
+  }
+
+  @include at-query($max, $medium) {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    &:first-child { margin-top: 0; }
+    &:last-child { margin-bottom: 0; }
+  }
+
+  .blog-filters-title {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    z-index: 0;
+    display: block;
+    font-size: em(14px);
+  }
+}
+
+.blog-input-field{
+  height:38px;
+  width:100%;
+  font-size:16px;
+}
+
+.blog-filtering {
+  select { padding-left: 71px; }
+}
+
+.blog-sort {
+  select { padding-left: 62px; }
+}
+
+.blog-pagination-rule {
+  margin-top: 0;
+}
+
+.blog-empty {
+  margin-bottom: 4em;
+}
+
+/*============================================================================
   #Collection Filters
 ==============================================================================*/
 
