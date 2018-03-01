@@ -378,7 +378,7 @@ snippets/product-related.liquid:
   development: 2018-02-23T11:56:19-05:00   e74fc776fa6a50f2b86f267a9d47ce69
   stage: 2018-02-09T14:51:54-07:00   e74fc776fa6a50f2b86f267a9d47ce69
 snippets/product-to-compare.liquid:
-  development: 2018-03-01T15:39:03-07:00   85f0ba7ddf6c713e4ed29b895b9f6921
+  development: 2018-03-01T15:46:58-07:00   ce9c5fea8f80a172ec27181e454386d8
 snippets/recipe-ingredients.liquid:
   development: 2018-02-23T11:56:11-05:00   1925f2421c17b2bd3ce9836e49438158
   stage: 2018-02-16T11:52:28-07:00   1925f2421c17b2bd3ce9836e49438158

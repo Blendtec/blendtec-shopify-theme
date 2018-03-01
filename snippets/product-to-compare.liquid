@@ -84,7 +84,7 @@
 	  var variantToOptions = (variantToOptions)?variantToOptions:{};
   var productSelectedVariant = (productSelectedVariant)?productSelectedVariant:{};
   {% for i in product.variants %}
-    variantToOptions['{{ i.id }}'] = {productId: '{{ product.id }}', variantId: '{{ i.id }}', color: '{{ i.option1 }}', jar: '{{ i.option2 }}', src: '{{ i.featured_image.src  | img_url: "700x" }}', title: '{{ i.title }}', price: '{{ i.price | money }}', panel: "https://s3.amazonaws.com/metafields.blendtec.com" + "{{ product.metafields['global']['Panel-Image'] }}".replace("https://metafields.blendtec.com.s3.amazonaws.com", ""), url: '{{ product.url }}'};
+    variantToOptions['{{ i.id }}'] = {productId: '{{ product.id }}', variantId: '{{ i.id }}', color: '{{ i.option1 }}', jar: '{{ i.option2 }}', src: '{{ i.featured_image.src  | img_url: "700x" }}', title: '{{ i.title }}', price: '{{ i.price | money }}', panel: "https://s3.amazonaws.com/metafields.blendtec.com{{ product.metafields['global']['Panel-Image'] | remove: 'https://metafields.blendtec.com.s3.amazonaws.com' }}", url: '{{ product.url }}'};
     if (!productSelectedVariant['{{ product.id }}']) {
       productSelectedVariant['{{ product.id }}'] = '{{ i.id }}';
     }
