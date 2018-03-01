@@ -1693,6 +1693,7 @@ ira.fadeOutOnClick = function(){
     if (e.metaKey || e.shiftKey) return;
     var href = $(this).attr('href');
     //If it's a #, or starts with one, it's either an anchor or a dummy link.
+    if(e.currentTarget && e.currentTarget.className == 'ps_ProductLocalSellersLocationButtonStyle') return;
     if (typeof href === 'undefined' || href === '#' || href.indexOf('#') === 0) return;
     if ($(this).attr('target') == "_blank") return;
 
