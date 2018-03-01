@@ -23,9 +23,9 @@ assets/checkout.scss.liquid:
   development: 2018-02-23T11:56:44-05:00   e95e506b21b2414a72a599cabe886a75
   stage: 2018-02-16T11:51:56-07:00   e95e506b21b2414a72a599cabe886a75
 assets/compare-blender.js:
-  development: 2018-02-26T13:10:46-07:00   e2409f72c3aafb24210ae2a742bf8ad1
+  development: 2018-03-01T12:59:32-05:00   b1f285c6a84e036cf6dd1d0604e3888f
 assets/exit-button.svg.liquid:
-  development: 2018-02-23T11:45:56-07:00   618a04adb29b6637695af369c4700c74
+  development: 2018-03-01T12:59:02-05:00   618a04adb29b6637695af369c4700c74
 assets/gift-card.scss.liquid:
   development: 2018-02-23T11:56:45-05:00   5c072e61350f79c146c1036f744e702d
   stage: 2018-02-09T14:51:38-07:00   5c072e61350f79c146c1036f744e702d
@@ -54,13 +54,13 @@ assets/icons.ttf:
   development: 2018-02-09T12:45:38-05:00   fb47e10b87ea6b72245f5f6d4ff89f9f
   stage: 2017-11-02T14:46:44-06:00   fb47e10b87ea6b72245f5f6d4ff89f9f
 assets/icons.woff:
-  development: 2018-02-09T12:35:37-07:00   2e42f3c67b6e8f4af7485f9d39bf1d40
+  development: 2018-02-09T12:45:38-05:00   2e42f3c67b6e8f4af7485f9d39bf1d40
   stage: 2017-11-02T14:46:44-06:00   2e42f3c67b6e8f4af7485f9d39bf1d40
 assets/imagesloaded.pkgd.js:
   development: 2018-02-23T11:56:33-05:00   8725a19b66058cd2d197e3ee4c2909d4
   stage: 2018-02-09T14:51:26-07:00   8725a19b66058cd2d197e3ee4c2909d4
 assets/ira.js.liquid:
-  development: 2018-02-23T11:57:00-05:00   d95ee6897aceecde25395ef6f44948f3
+  development: 2018-03-01T12:59:41-05:00   d95ee6897aceecde25395ef6f44948f3
   stage: 2018-02-09T14:51:10-07:00   d95ee6897aceecde25395ef6f44948f3
 assets/ira.min.js.liquid:
   development: 2018-02-23T11:56:05-05:00   d4840a264cea1a5cc6ae4b3d81725240
@@ -81,7 +81,7 @@ assets/modernizr.min.js:
   development: 2018-02-23T11:56:34-05:00   ab2abefe8877efc3f058844353d4088a
   stage: 2018-02-09T14:51:00-07:00   ab2abefe8877efc3f058844353d4088a
 assets/product-compare.scss.liquid:
-  development: 2018-02-26T13:14:34-07:00   e0b1592c844196f46529948a5e27d498
+  development: 2018-03-01T12:59:41-05:00   733967c2f2473373568f3d16a1c17c34
 assets/raf.js:
   development: 2018-02-23T11:55:47-05:00   d5420795aa0b640804ac0811e8f4bbfd
   stage: 2018-02-09T14:51:40-07:00   d5420795aa0b640804ac0811e8f4bbfd
@@ -113,13 +113,13 @@ assets/slick.svg:
   development: 2018-02-23T11:56:04-05:00   526d7fdf63614222d376257221e8b754
   stage: 2018-02-09T14:51:42-07:00   526d7fdf63614222d376257221e8b754
 assets/slick.ttf:
-  development: 2018-02-09T12:35:40-07:00   d41f55a78e6f49a5512878df1737e58a
+  development: 2018-02-09T12:45:41-05:00   d41f55a78e6f49a5512878df1737e58a
   stage: 2017-11-02T14:46:46-06:00   d41f55a78e6f49a5512878df1737e58a
 assets/slick.woff:
-  development: 2018-02-09T12:35:40-07:00   b7c9e1e479de3b53f1e4e30ebac2403a
+  development: 2018-02-09T12:45:41-05:00   b7c9e1e479de3b53f1e4e30ebac2403a
   stage: 2017-11-02T14:46:47-06:00   b7c9e1e479de3b53f1e4e30ebac2403a
 assets/style.scss.liquid:
-  development: 2018-02-28T10:51:13-07:00   5f0eaf31c9d7bea057c629911abc076c
+  development: 2018-03-01T12:59:51-05:00   21668cdb42094d0cf176c5f782d5f75c
   stage: 2018-02-16T11:52:53-07:00   1383b4ba2f4723d6ce9b827930a4f46c
 assets/video.svg:
   development: 2018-02-09T12:45:41-05:00   4c3096406feb53d87f657fddc6227ead
@@ -137,16 +137,15 @@ layout/checkout.liquid:
   development: 2018-02-23T11:56:34-05:00   e9f169d83df90421ba3b4b9429313d7b
   stage: 2018-02-16T11:52:10-07:00   e9f169d83df90421ba3b4b9429313d7b
 layout/theme.gem-layout-none.liquid:
-  development: 2018-02-23T11:56:00-05:00   5c966a5fb15e7c31649f9d44fb2664dd
   stage: 2018-02-09T14:52:05-07:00   5c966a5fb15e7c31649f9d44fb2664dd
 layout/theme.liquid:
-  development: 2018-02-28T16:53:53-05:00   10274458e17c8316f57682ab2d799fe8
+  development: 2018-03-01T13:05:31-05:00   d1c3ac6adaaf62c23c2176e366f82051
   stage: 2018-02-09T14:51:14-07:00   a20951e337d6668a5f4999bf011d9edd
 locales/en.default.json:
   development: 2018-02-22T15:10:34-05:00   5acdbca2224c771fad85253df356d18f
   stage: 2018-01-04T10:04:38-07:00   3b9d912985a53445b32962b1f6665c1c
 sections/blog-template.liquid:
-  development: 2018-02-23T11:56:10-05:00   ad4110afacdc966ff37fb11b34d421e2
+  development: 2018-03-01T12:58:49-05:00   ad4110afacdc966ff37fb11b34d421e2
   stage: 2018-02-09T14:51:52-07:00   9db619cae29158c59c7a13625a76ce84
 sections/brand-logos.liquid:
   development: 2018-02-23T11:57:04-05:00   aefe1bcda785dc4ecd140b93768a8c00
@@ -197,10 +196,10 @@ sections/carousel.liquid:
   development: 2018-02-23T11:57:07-05:00   47a841c940168292fd3d6c619d288f2f
   stage: 2018-02-09T14:52:10-07:00   47a841c940168292fd3d6c619d288f2f
 sections/collection-template.liquid:
-  development: 2018-02-28T10:48:53-07:00   90369c5f93b5133665071eb35797acdf
+  development: 2018-03-01T12:59:34-05:00   90369c5f93b5133665071eb35797acdf
   stage: 2018-02-09T14:51:56-07:00   85b9a00139fe12576a760333386768c1
 sections/compare-blender.liquid:
-  development: 2018-02-26T13:12:04-07:00   3afa0af567d6c5923406ecf84cdfbef8
+  development: 2018-03-01T12:59:43-05:00   e5ed0caa5dcfd585a7716a1106218137
 sections/custom-html.liquid:
   development: 2018-02-23T11:56:46-05:00   6ae4866d54cdde98bc93936bfd455c2d
   stage: 2018-02-09T14:51:09-07:00   6ae4866d54cdde98bc93936bfd455c2d
@@ -313,10 +312,8 @@ snippets/footer-payments.liquid:
   development: 2018-02-23T11:56:01-05:00   27b6285ac9b70b9e0e2dd94268a3609b
   stage: 2018-02-09T14:51:47-07:00   27b6285ac9b70b9e0e2dd94268a3609b
 snippets/gem-app-footer-scripts.liquid:
-  development: 2018-02-09T12:45:41-05:00   c753d14da1d74b4080ae937268fe38ab
   stage: 2017-11-28T08:52:12-07:00   c753d14da1d74b4080ae937268fe38ab
 snippets/gem-app-header-scripts.liquid:
-  development: 2018-02-09T12:45:41-05:00   320846ac5f9ed89353e869338a7f6ce5
   stage: 2017-11-28T08:52:12-07:00   320846ac5f9ed89353e869338a7f6ce5
 snippets/google-fonts.liquid:
   development: 2018-02-23T11:55:58-05:00   b2bc6310dcd33a480b1d276583efd9ff
@@ -370,13 +367,13 @@ snippets/price-spider-header-scripts.liquid:
   development: 2018-02-23T11:56:59-05:00   a6e8807d64c30ea6f20555fcb05d6262
   stage: 2018-02-09T14:51:55-07:00   a6e8807d64c30ea6f20555fcb05d6262
 snippets/product-grid-item.liquid:
-  development: 2018-02-28T11:25:37-07:00   abfcc77f54104c66bf8d74a1364d5b4a
+  development: 2018-03-01T12:58:47-05:00   abfcc77f54104c66bf8d74a1364d5b4a
   stage: 2018-02-09T14:51:57-07:00   c5dfb6f44fa46a98acc019e5092702d1
 snippets/product-related.liquid:
   development: 2018-02-23T11:56:19-05:00   e74fc776fa6a50f2b86f267a9d47ce69
   stage: 2018-02-09T14:51:54-07:00   e74fc776fa6a50f2b86f267a9d47ce69
 snippets/product-to-compare.liquid:
-  development: 2018-02-26T12:52:12-07:00   34abf1cca9d6225e2af08438f8bd5e9d
+  development: 2018-03-01T12:58:52-05:00   4496f053c962504ee49c4614ebf6a899
 snippets/recipe-ingredients.liquid:
   development: 2018-02-23T11:56:11-05:00   1925f2421c17b2bd3ce9836e49438158
   stage: 2018-02-16T11:52:28-07:00   1925f2421c17b2bd3ce9836e49438158
@@ -429,7 +426,7 @@ templates/cart.liquid:
   development: 2018-02-28T16:59:08-05:00   97f445f67684824f73731041dfc2ae42
   stage: 2018-02-09T14:51:50-07:00   74c37c90b7d09c6820120edcbe4ddb53
 templates/collection.liquid:
-  development: 2018-02-27T09:38:44-07:00   5b7cfc8de5da5787d2dd11e25dffa695
+  development: 2018-03-01T12:58:44-05:00   5b7cfc8de5da5787d2dd11e25dffa695
   stage: 2018-02-09T14:51:04-07:00   b6766ba53815f5ffd880875f320ed4a2
 templates/customers/account.liquid:
   development: 2018-02-23T11:56:25-05:00   ca6253e631976350803a7d8ba3aaefff
@@ -456,7 +453,7 @@ templates/gift_card.liquid:
   development: 2018-02-23T11:56:50-05:00   a00db5891edf581d55cce792c5f5abf5
   stage: 2018-02-09T14:51:20-07:00   a00db5891edf581d55cce792c5f5abf5
 templates/index.gem-preview.liquid:
-  development: 2018-02-09T12:35:44-07:00   8d31352054b7314e4bda61f1d2344126
+  development: 2018-02-09T12:45:42-05:00   8d31352054b7314e4bda61f1d2344126
   stage: 2017-12-07T11:24:03-07:00   8d31352054b7314e4bda61f1d2344126
 templates/index.liquid:
   development: 2018-02-23T11:56:28-05:00   19228af4ae8f37687f7e499fd88b2b83
