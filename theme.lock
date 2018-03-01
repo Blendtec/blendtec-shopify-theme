@@ -241,7 +241,7 @@ sections/product-template.liquid:
   development: 2018-02-28T16:54:55-05:00   849c22d0017f9bea5fcba2eb56957523
   stage: 2018-02-16T11:52:02-07:00   44129055351345d00f3770502382493b
 sections/recipe-blog-template.liquid:
-  development: 2018-03-01T13:33:40-07:00   c361560742f8308bda165fd50f35b7a4
+  development: 2018-03-01T13:52:26-07:00   6feff6fb916d14038caa7ea10a4a3a0c
   stage: 2018-02-09T14:51:36-07:00   dbe864e1081257959dd6232ce140c9cc
 sections/recipe-template.liquid:
   development: 2018-02-28T15:10:29-07:00   891660aaa61cf968fc6597b8a4169f9b
