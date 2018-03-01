@@ -117,7 +117,7 @@ assets/slick.woff:
   development: 2018-02-09T12:35:40-07:00   b7c9e1e479de3b53f1e4e30ebac2403a
   stage: 2017-11-02T14:46:47-06:00   b7c9e1e479de3b53f1e4e30ebac2403a
 assets/style.scss.liquid:
-  development: 2018-03-01T13:25:29-07:00   47d8a2b5f29a245f6a279a882cef07c0
+  development: 2018-03-01T13:34:45-07:00   13ee5e34683020525ca5a2872abe8fa8
   stage: 2018-02-16T11:52:53-07:00   1383b4ba2f4723d6ce9b827930a4f46c
 assets/video.svg:
   development: 2018-02-09T12:45:41-05:00   4c3096406feb53d87f657fddc6227ead
@@ -239,7 +239,7 @@ sections/product-template.liquid:
   development: 2018-02-27T13:00:29-07:00   df976868ce2c52e3d64c985da27799cc
   stage: 2018-02-16T11:52:02-07:00   44129055351345d00f3770502382493b
 sections/recipe-blog-template.liquid:
-  development: 2018-03-01T12:40:07-07:00   3ef0fd87c05e070fc4d01d80b0bf5d97
+  development: 2018-03-01T13:33:40-07:00   c361560742f8308bda165fd50f35b7a4
   stage: 2018-02-09T14:51:36-07:00   dbe864e1081257959dd6232ce140c9cc
 sections/recipe-template.liquid:
   development: 2018-02-28T15:10:29-07:00   891660aaa61cf968fc6597b8a4169f9b

@@ -22,7 +22,7 @@
                     </a>
                 </h1>
                 {% endif %}
-                {% include 'breadcrumb' %}
+
             </div>
         </div>
     </div>
@@ -30,6 +30,7 @@
 <div class="blog-filters-wrapper has-border">
         {% assign theTagsToSearch = blog.all_tags %}
         {% assign baseUrlTag = 'recipes' %}
+        {% include 'breadcrumb' %}
     <div >{% include 'blog-tag' %}</div>
 </div>
     <div class="grid__item grid--full large--one-whole" data-grid-subpixel itemscope itemtype="http://schema.org/ItemList">
