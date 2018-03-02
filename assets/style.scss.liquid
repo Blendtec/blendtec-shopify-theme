@@ -1480,23 +1480,23 @@ p {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: em(68px);
 }
 
 h2 {
-  font-size: em(26px);
+  font-size: em(34px);
 }
 
 h3 {
-  font-size: em(22px);
+  font-size: em(28px);
 }
 
 h4 {
-  font-size: em(20px);
+  font-size: em(24px);
 }
 
 h5 {
-  font-size: em(18px);
+  font-size: em(20px);
 }
 
 h6 {
@@ -1722,7 +1722,7 @@ hr {
 .section-header--image {
   background-size: cover;
   -ms-behavior: url({{'backgroundsize.min.htc' | asset_url }}); //polyfill IE8
-  height: 340px;
+  height: 209px;
   @include at-query($max, $medium){
     height: 280px;
   }
@@ -1730,6 +1730,7 @@ hr {
   margin-bottom: 0;
   display: table;
   width: 100%;
+  border-bottom: $colorPrimary solid 15px;
 
   .text-wrapper--center-cell {
     text-align: center;
