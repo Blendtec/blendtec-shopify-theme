@@ -50,27 +50,56 @@
 {% if product.images.size > 1 %}
   {% assign variant_image = product.images[1] %}
 {% endif %}
-
 <div class="grid__item {{ fit_image_class }} {{hover_class}} {{ grid_item_width }} {{product_class}} animation-sequence-{{ forloop.index0 }}">
-    <a href="{{ product.url | within: collection }}" tabindex='0'>
-
-      <div class="cell-wrapper">
+      <div class="">
         {% if on_sale %}
           <div class='sale-badge'>{{ 'products.product.on_sale' | t }}</div>
         {% endif %}
 
-        {% if product.images.size > 0 %}
-          {% if variant_image %}
-            <img src="{{ variant_image | product_img_url: '700x' }}" alt="{{ product.images[1].alt | escape }}" class="is-variant">
+        {% if product.variants.size > 0 %}
+        <div productId="{{product.id}}" class=" slider single-item CollectionProductPhotoSlideshow" style="display:block !important;">
+          {% assign featured_image = product.featured_image %}
+
+          {% if product.variants.size > 0 %}
+            {% for variant in product.variants %}
+            {% if variant.featured_image.src %}
+            {% assign image = variant.featured_image %}
+                  {% assign variantIDs = image.variants | map: 'id' | join: '-' %}
+                  <div><img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' id="{{ variantIDs }}"></div>
+            {% else %}
+                   <div><img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' id="{{ variantIDs }}"></div>
+            {% endif %}
+            {% endfor %}
           {% endif %}
-          <img src="{{ product.featured_image | product_img_url: '700x' }}" alt="{{ product.featured_image.alt | escape }}" class="{% if variant_image %}has-hover{% endif %}">
+          {% if variants.size == 0 %}
+            {% assign image = product.featured_image %}
+                  <div><img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' id="{{ variantIDs }}"></div>
+          {% endif %}
+          {% comment %}
+            Make sure the default, non-variant featured image is shown
+            if the user is accessing the URL from a variant URL.
+          {% endcomment %}
+
+          {% unless product.featured_image == featured_image %}
+            <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-unless='unlessupinhere' >
+          {% endunless %}
+        </div>
         {% else %}
           <img src="//cdn.shopify.com/s/images/themes/product-1.png" class="placeholder-image">
         {% endif %}
       </div>
-
+<a
+        id="link-{{product.id}}"
+      {% for variant in product.variants %}
+      link{{forloop.index}}="{{ product.url | within: collection }}?variant={{variant.id}}"
+      {% endfor %}
+ href="{{ product.url | within: collection }}?variant={{product.variants[0].id}}" tabindex='0'>
       <span class="product_image_caption">
-        <h6>{{ product.title }}</h6>
+        <h6>{{ product.title }} <br> <span
+        id="title-{{product.id}}"
+      {% for variant in product.variants %}
+      title{{forloop.index}}="{{variant.title}}"
+      {% endfor %}>{{product.variants[0].title}}</span></h6>
 
         {% if on_sale %}
           {% if product.price_varies %}

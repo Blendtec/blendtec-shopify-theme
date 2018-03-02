@@ -138,7 +138,7 @@
               {% endif %}
             {% endfor %}
 
-            {% if noPrice == false %}	
+            {% if noPrice == false %}
             <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
               <p class="medium-down--text-center">
                 <span id="ProductPrice" class='faded medium-down--text-center' itemprop="price">
@@ -164,15 +164,15 @@
                 For more information on products with multiple options, visit:
                   - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
               {% endcomment %}
-              
+
               {% assign noPurchase = false %}
               {% for tag in product.tags %}
    				 {% if tag == 'NoPurchase'%}
 					{% assign noPurchase = true %}
                  {% endif %}
 			  {% endfor %}
-              
-		      {% if noPurchase == false %}					  
+
+		      {% if noPurchase == false %}
               <div class="product-selectors">
                 <select name="id" id="productSelect" class="product-single__variants">
                   {% for variant in product.variants %}
@@ -197,6 +197,7 @@
                   <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
                 </button>
               </div>
+              <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
               {% endif %}
             </form>
             {% endif %}

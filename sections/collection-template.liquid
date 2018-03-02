@@ -157,8 +157,37 @@ Four layout options: 2x3, 3x3, 4x3, 5x3
   .template-collection:not(#products) .collection-pages .section-header--image .text-wrapper--center-cell {
     color: {{section.settings.color_text}};
   }
+
 </style>
 
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.single-item').slick({
+        dots: true,
+        arrows: true,
+        mobileFirst: true,
+        respondTo: 'min',
+        adaptiveHeight: true,
+        pauseOnHover: false,
+        draggable: true,
+        lazyload: 'progressive',
+      }).init(function() {
+        var imagePosition = '0';
+        $('.slick-dots').addClass('large--hide');
+        if (imagePosition) {
+          $('.single-item').slick('slickGoTo', imagePosition, false);
+        }
+      });
+    $(".single-item").on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        var productId = event.target.getAttribute('productId');
+        var title = document.getElementById('title-'+productId).getAttribute('title'+(nextSlide+1));
+        $('#title-'+productId).text(title);
+
+        var link = document.getElementById('link-'+productId).getAttribute('link'+(nextSlide+1));
+        $('#link-'+productId).attr('href', link);
+    });
+  });
+</script>
 {% schema %}
   {
     "name": "Collection pages",

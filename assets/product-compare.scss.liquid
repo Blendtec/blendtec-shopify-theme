@@ -1,0 +1,107 @@
+
+$small: 700px;
+$medium: 840px;
+$large: 841px;
+$xlarge: 1000px;
+$xxlarge: 1200px;
+
+@media screen and (max-width: 840px) {
+  .main-content {
+      padding: 0 1em;
+  }
+}
+
+.compare-blender {
+.product-table{
+  margin-left:0px;
+}
+.product-wrapper {
+  max-width:80rem;
+  margin:0 auto;
+}
+.product-comparison--bg-image{
+    background-position: 0 50%;
+    background-size: cover;
+    display: inline-block;
+    width: 100%;
+}
+.product-comparison--header-container {
+    padding: 100px 0 120px;
+}
+.product-comparison--sub-leader {
+    font-size: 28px;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+.product-comparison--leader {
+    font-size: 56px;
+    font-size: 4rem;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+#exitButton{
+    background: transparent;
+    padding: 0;
+    border: 0;
+    position:absolute;
+    cursor:pointer;
+    right:10px;
+    top:10px;
+    width:25px;
+}
+#exitButton:hover{
+  opacity:.5;
+}
+  .cell{
+    padding-left: 5px;
+  }
+  .product-borders{
+    border-top-style:solid;
+    border-top-color:{{ settings.color_blendtec_grey }};
+    border-top-width:1px;
+    border-left-style:solid;
+    border-left-color:{{ settings.color_blendtec_grey }};
+    border-left-width:1px;
+  }
+  .bg-gray{
+    background-color: {{ settings.color_borders }};
+  }
+  .header-top-spacing{
+    padding-top:50px;
+  }
+  .color-square{
+    height:15px;
+    width:15px;
+    border-color:grey;
+    border-width:1px;
+    border-style:solid;
+    display:inline-block;
+  }
+  .list-colors{
+    cursor:pointer;
+    list-style:none;
+  }
+  .color-square:hover{
+    -webkit-box-shadow: inset 1px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 1px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: inset 1px 1px 5px 0px rgba(0,0,0,0.75);
+  }
+  .panel-image{
+    max-height:60%;
+    display:block;
+    margin: 0 auto;
+  }
+  .bold-titles{
+    font-weight:900;
+  }
+  .zoom:hover{
+    color:{{ settings.color_blendtec_red }};
+    cursor:pointer;
+  }
+  .zoom{
+    font-weight:900;
+  }
+}

@@ -1480,23 +1480,23 @@ p {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: em(68px);
 }
 
 h2 {
-  font-size: em(26px);
+  font-size: em(34px);
 }
 
 h3 {
-  font-size: em(22px);
+  font-size: em(28px);
 }
 
 h4 {
-  font-size: em(20px);
+  font-size: em(24px);
 }
 
 h5 {
-  font-size: em(18px);
+  font-size: em(20px);
 }
 
 h6 {
@@ -1722,7 +1722,7 @@ hr {
 .section-header--image {
   background-size: cover;
   -ms-behavior: url({{'backgroundsize.min.htc' | asset_url }}); //polyfill IE8
-  height: 340px;
+  height: 209px;
   @include at-query($max, $medium){
     height: 280px;
   }
@@ -1730,6 +1730,7 @@ hr {
   margin-bottom: 0;
   display: table;
   width: 100%;
+  border-bottom: $colorPrimary solid 15px;
 
   .text-wrapper--center-cell {
     text-align: center;
@@ -4112,8 +4113,36 @@ body:not(.js-drawer-open) .drawer__content {
   height: 1px;
   width: 1px;
 }
-
-
+/*============================================================================
+  #Slick slider changes
+==============================================================================*/
+.slick-next{
+  right: 0px;
+  background-color: grey;
+  border-radius: 100px;
+  opacity: 0;
+}
+.slick-prev{
+  left:0px;
+  background-color: grey;
+  border-radius: 100px;
+  opacity: 0;
+}
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+  color: white;
+  outline: none;
+  background: grey;
+  opacity:.3;
+}
+.single-item:hover .slick-next{
+  opacity:.5;
+}
+.single-item:hover .slick-prev{
+  opacity:.5;
+}
+.single-item:hover .slick-dots{
+  display:block !important;
+}
 
 /*============================================================================
   #Pages
@@ -4233,8 +4262,8 @@ body:not(.js-drawer-open) .drawer__content {
 
 .article-feature-image {
   margin-bottom: 1.9rem !important;
-  float: left;
-  width: 100%;
+  display: block;
+  margin: auto;
 }
 
 
@@ -4979,6 +5008,121 @@ $ig-gap: 0px;
         }
       }
     }
+  }
+}
+
+/*============================================================================
+  #Blog Filters
+==============================================================================*/
+
+.blog-filters-wrapper {
+  position: relative;
+  display: table;
+  width: 100%;
+  padding: 20px 2.5rem;
+  font-size: $baseFontSize;
+  box-shadow: 0 1px 1px -1px rgba(0,0,0,0.3);
+  z-index: 10;
+  background-color: $colorBody;
+
+  .section-header--no-image-loaded + &.has-border { border-top: 1px solid $colorBorder; }
+
+  @include at-query($max, $medium) { display: block; }
+
+  .breadcrumb {
+    display: table-cell;
+    vertical-align: middle;
+
+    @include at-query($max, $medium) {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  select {
+    max-width: 200px;
+    width: 100%;
+
+    @include at-query($max, $medium) {
+      max-width: none;
+    }
+  }
+}
+
+.blog-filters {
+  vertical-align: middle;
+  text-align: right;
+
+  @include at-query($max, $medium) {
+    display: block;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  select {
+    position: relative;
+    z-index: 1;
+    height: 38px;
+    padding: 0 25px;
+    font-size: em(16px);
+    font-weight: 700;
+  }
+}
+
+.blog-filtering,
+.blog-sort {
+  position: relative;
+  display: inline-block;
+
+  @include at-query($min, $medium + 1) {
+    &:last-child { margin-left: 5px; }
+  }
+
+  @include at-query($max, $medium) {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    &:first-child { margin-top: 0; }
+    &:last-child { margin-bottom: 0; }
+  }
+
+  .blog-filters-title {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+    z-index: 0;
+    display: block;
+    font-size: em(14px);
+  }
+}
+
+.blog-input-field{
+  height:38px;
+  width:100%;
+  font-size:16px;
+}
+
+.blog-filtering {
+  select { padding-left: 71px; }
+}
+
+.blog-sort {
+  select { padding-left: 62px; }
+}
+
+.blog-pagination-rule {
+  margin-top: 0;
+}
+
+.blog-empty {
+  margin-bottom: 4em;
+}
+
+.recipe-blog{
+  h1{
+    z-index:11;
+    position:relative;
   }
 }
 
@@ -6676,6 +6820,7 @@ $blogBgColor: $colorBody;
 .featured-blog__image-wrapper {
   overflow: hidden;
   position: relative;
+  margin: 0 5px 0 5px;
 }
 
 .meta-info {
@@ -7791,4 +7936,23 @@ body:not(.ios) .shopify-section.features {
 
 }
 
+/*================ AFFIRM ================*/
+.template-product {
+
+  .affirm-as-low-as {
+    margin-top: 1rem;
+  }
+
+}
+.template-cart {
+
+  .affirm-as-low-as {
+    margin: 1rem 0 1rem 0;
+  }
+}
+.template-blog {
+  .section-header--image {
+    padding-top: 90px;
+  }
+}
 
