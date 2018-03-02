@@ -1,0 +1,49 @@
+{% if section.settings.header_img %}
+    <header class="section-header
+            {% if section.settings.header_img %}
+                section-header--image"
+                style="background-image: url({{ section.settings.header_img | img_url: '1440x'}})"
+            {% else %}
+               "
+            {% endif %}
+    >
+    <div class="text-center content-wrapper--horizontal section-header">
+        <div class="display-table-cell">
+            {% if current_tags %}
+                <h1 style="color: {{ section.settings.color_text }}">{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}
+                    <a href="{{blog.url}}.atom">
+                        <span aria-hidden="true" class='icon icon-rss'></span>
+                    </a>
+                </h1>
+            {% else %}
+                <h1 style="color: {{ section.settings.color_text }}">{{ blog.title }}
+                    <a href="{{blog.url}}.atom">
+                        <span aria-hidden="true" class='icon icon-rss'></span>
+                    </a>
+                </h1>
+            {% endif %}
+        </div>
+    </div>
+    </header>
+{% else %}
+    <div class="grid__item large--two-thirds push--large--one-sixth">
+        <div class="text-center content-wrapper--horizontal section-header">
+            <div class="display-table-cell">
+                {% if current_tags %}
+                    <h1>{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}
+                        <a href="{{blog.url}}.atom">
+                            <span aria-hidden="true" class='icon icon-rss'></span>
+                        </a>
+                    </h1>
+                {% else %}
+                    <h1>{{ blog.title }}
+                        <a href="{{blog.url}}.atom">
+                            <span aria-hidden="true" class='icon icon-rss'></span>
+                        </a>
+                    </h1>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endif %}

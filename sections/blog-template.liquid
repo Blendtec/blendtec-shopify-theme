@@ -4,32 +4,13 @@
         This template is also used for listing out articles of a specific tag.
         You can change layouts or styles by checking if current_tags is true.
         {% endcomment %}
-<div class="grid--full">
-    <header class="section-header"
-            {% if section.settings.header_img != '' %}
-                style="background-image: url({{ section.settings.header_img | img_url: '1440x'}})"
-                section-header--image
-            {% endif %}>
-    </header>
-    <div class="grid__item large--two-thirds push--large--one-sixth">
-        <div class="text-center content-wrapper--horizontal section-header">
-            <div class="display-table-cell">
-                {% if current_tags %}
-                <h1>{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}
-                    <a href="{{blog.url}}.atom">
-                        <span aria-hidden="true" class='icon icon-rss'></span>
-                    </a>
-                </h1>
-                {% else %}
-                <h1>{{ blog.title }}
-                    <a href="{{blog.url}}.atom">
-                        <span aria-hidden="true" class='icon icon-rss'></span>
-                    </a>
-                </h1>
-                {% endif %}
-                {% include 'breadcrumb' %}
-            </div>
-        </div>
+<div class="grid--full template-blog">
+    {% include 'blog-header' %}
+    <div class="blog-filters-wrapper has-border">
+        {% assign theTagsToSearch = blog.all_tags %}
+        {% assign baseUrlTag = blog.title | downcase %}
+        {% include 'breadcrumb' %}
+        <div >{% include 'blog-tag' %}</div>
     </div>
     <div class="grid__item grid--full large--one-whole" data-grid-subpixel itemscope itemtype="http://schema.org/ItemList">
         {% comment %}
@@ -61,10 +42,12 @@
             </a>
             {% endif %}
             <div class="featured-blog__caption small--text-center text-wrapper">
+                {% if section.settings.show_date %}
                 <p class="meta-info" itemprop="datePublished">{{article.published_at | date: "%B %d, %Y"  }}</p>
-                <a  itemprop="url" href="{{article.url}}"><h4 class='featured-blog__title' itemprop="name">{{article.title}}</h4></a>
+                {% endif %}
+                <a  itemprop="url" href="{{article.url}}"><h4 class='featured-blog__title' itemprop="name">{{article.title | upcase}}</h4></a>
 
-                {% if section.settings.enable_blog_author %}
+                {% if section.settings.show_blog_author %}
                 <p class="author" itemprop="author">{{'blogs.article.author_by_html' | t: author : article.author }}</p>
                 {% endif %}
 
@@ -72,17 +55,27 @@
                   {{article.excerpt_or_content}}
               </span>
 
-                <p class='blog-info'><a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a></p>
+                <p class='blog-info'>
+                    <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t | upcase}}
+                        <i class="fa fa-angle-right"></i>
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </p>
+
                 <ul class="inline-list blog-info">
-                    {% if blog.comments_enabled? %}
-                    <li>
-                        <a href="{{ article.url }}#Comments">
-                            {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
-                        </a>
-                    </li>
+                    {% if blog.comments_enabled? and section.settings.show_comment_number %}
+                        <li>
+                            <a href="{{ article.url }}#Comments">
+                                {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                            </a>
+                        </li>
                     {% endif %}
                 </ul>
-                <span class="blog-info" itemprop="keywords">{% include 'tags-article' %}</span>
+               {% if section.settings.show_tags? %}
+                    <span class="blog-info" itemprop="keywords">
+                        {% include 'tags-article' %}
+                    </span>
+                {% endif %}
             </div>
         </div>
         {% if remainder == 2 %}
@@ -103,74 +96,35 @@
 {% schema %}
 {
    "name": "Blog",
-    "settings": [{
+    "settings": [
+    {
         "type": "checkbox",
-        "id": "enable_blog_author",
-        "default": false,
+        "id": "show_blog_author",
+        "default": true,
         "label": "Show author"
+    },
+    {
+    "type": "checkbox",
+    "id": "show_tags",
+    "default": true,
+    "label": "Show tags"
+    },
+    {
+    "type": "checkbox",
+    "id": "show_comment_number",
+    "default": true,
+    "label": "Show Comment Preview"
+    },
+    {
+    "type": "checkbox",
+    "id": "show_date",
+    "default": true,
+    "label": "Show Publish Date"
     },
     {
     "type": "image_picker",
     "id": "header_img",
     "label": "Header Image"
-    },
-    {
-    "type": "select",
-    "id": "color_overlay_opacity",
-    "default": "0.8",
-    "label": "Overlay opacity",
-    "options": [
-    {
-    "value": "0",
-    "label": "Off"
-    },
-    {
-    "value": "0.1",
-    "label": "10%"
-    },
-    {
-    "value": "0.2",
-    "label": "20%"
-    },
-    {
-    "value": "0.3",
-    "label": "30%"
-    },
-    {
-    "value": "0.4",
-    "label": "40%"
-    },
-    {
-    "value": "0.5",
-    "label": "50%"
-    },
-    {
-    "value": "0.6",
-    "label": "60%"
-    },
-    {
-    "value": "0.7",
-    "label": "70%"
-    },
-    {
-    "value": "0.8",
-    "label": "80%"
-    },
-    {
-    "value": "0.9",
-    "label": "90%"
-    },
-    {
-    "value": "1",
-    "label": "100%"
-    }
-    ]
-    },
-    {
-    "type": "color",
-    "id": "color_overlay_color",
-    "default": "#031207",
-    "label": "Overlay color"
     },
     {
     "type": "color",

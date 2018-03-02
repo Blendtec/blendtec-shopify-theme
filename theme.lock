@@ -60,7 +60,7 @@ assets/imagesloaded.pkgd.js:
   development: 2018-02-23T11:56:33-05:00   8725a19b66058cd2d197e3ee4c2909d4
   stage: 2018-02-09T14:51:26-07:00   8725a19b66058cd2d197e3ee4c2909d4
 assets/ira.js.liquid:
-  development: 2018-03-01T16:40:04-05:00   b88d28e7746687b2e43533a0bd76cede
+  development: 2018-03-01T19:15:50-05:00   59e7336a75fe9c6963fe2b89f490e265
   stage: 2018-02-09T14:51:10-07:00   d95ee6897aceecde25395ef6f44948f3
 assets/ira.min.js.liquid:
   development: 2018-02-23T11:56:05-05:00   d4840a264cea1a5cc6ae4b3d81725240
@@ -119,7 +119,7 @@ assets/slick.woff:
   development: 2018-02-09T12:45:41-05:00   b7c9e1e479de3b53f1e4e30ebac2403a
   stage: 2017-11-02T14:46:47-06:00   b7c9e1e479de3b53f1e4e30ebac2403a
 assets/style.scss.liquid:
-  development: 2018-03-01T16:40:51-05:00   dacfe110c31eaf1565679060c8f4daee
+  development: 2018-03-01T19:10:59-05:00   6c6118c081e7f6226b0d442942fa8735
   stage: 2018-02-16T11:52:53-07:00   1383b4ba2f4723d6ce9b827930a4f46c
 assets/video.svg:
   development: 2018-02-09T12:45:41-05:00   4c3096406feb53d87f657fddc6227ead
@@ -146,7 +146,7 @@ locales/en.default.json:
   development: 2018-02-22T15:10:34-05:00   5acdbca2224c771fad85253df356d18f
   stage: 2018-01-04T10:04:38-07:00   3b9d912985a53445b32962b1f6665c1c
 sections/blog-template.liquid:
-  development: 2018-03-01T17:12:13-05:00   0bb276e010ea77f881eb9a57797c448d
+  development: 2018-03-01T19:26:11-05:00   1eb2d32a32a919d235d5d0ef8c2e43de
   stage: 2018-02-09T14:51:52-07:00   9db619cae29158c59c7a13625a76ce84
 sections/brand-logos.liquid:
   development: 2018-02-23T11:57:04-05:00   aefe1bcda785dc4ecd140b93768a8c00
@@ -197,7 +197,7 @@ sections/carousel.liquid:
   development: 2018-02-23T11:57:07-05:00   47a841c940168292fd3d6c619d288f2f
   stage: 2018-02-09T14:52:10-07:00   47a841c940168292fd3d6c619d288f2f
 sections/collection-template.liquid:
-  development: 2018-03-01T12:59:34-05:00   90369c5f93b5133665071eb35797acdf
+  development: 2018-03-01T19:23:52-05:00   51a4f924405d492783bbfe5922d48c9c
   stage: 2018-02-09T14:51:56-07:00   85b9a00139fe12576a760333386768c1
 sections/compare-blender.liquid:
   development: 2018-03-01T12:59:43-05:00   e5ed0caa5dcfd585a7716a1106218137
@@ -241,7 +241,7 @@ sections/product-template.liquid:
   development: 2018-02-28T16:54:55-05:00   849c22d0017f9bea5fcba2eb56957523
   stage: 2018-02-16T11:52:02-07:00   44129055351345d00f3770502382493b
 sections/recipe-blog-template.liquid:
-  development: 2018-03-01T16:39:52-05:00   97df267a5209168d0b8d9dc4cf98dcce
+  development: 2018-03-01T19:02:00-05:00   627c0e5867253322ca859ccd90ff091b
   stage: 2018-02-09T14:51:36-07:00   dbe864e1081257959dd6232ce140c9cc
 sections/recipe-template.liquid:
   development: 2018-02-21T16:45:03-05:00   aee26f00a6c1b294ba4d3ddd670f2d20
@@ -267,6 +267,8 @@ snippets/SEOMetaManager.liquid:
 snippets/ajax-cart-template.liquid:
   development: 2018-02-23T11:57:01-05:00   da2d771cd1aebf8e29d09a4c3e7f5321
   stage: 2018-02-09T14:51:46-07:00   da2d771cd1aebf8e29d09a4c3e7f5321
+snippets/blog-header.liquid:
+  development: 2018-03-01T19:21:14-05:00   f8a7e9b3e68e4af2b239d421d5941499
 snippets/blog-tag.liquid:
   development: 2018-03-01T16:40:00-05:00   3137dae086942e5757cbb0c5a73cd9f5
 snippets/breadcrumb.liquid:
