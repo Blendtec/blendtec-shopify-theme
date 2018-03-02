@@ -67,7 +67,8 @@
 				{% unless done_colors contains i.option1 %}
 				{% assign tempArr = i.option1 | split: "   ,  " %}
 				{% assign done_colors = done_colors | concat: tempArr %}
-					<li onclick="selectOption1('{{ i.option1 }}', '{{ product.id }}')" class="list-colors"><div class="color-square" style="background-color:{{ settings.product_colors[i.option1] }};"></div> &nbsp; {{ i.option1 }}</li>
+				{% assign colorSelector = i.option1 | remove: '/' %}
+					<li onclick="selectOption1('{{ i.option1 }}', '{{ product.id }}')" class="list-colors"><div class="color-square" style="background-color:{{ settings[colorSelector] }};"></div> &nbsp; {{ i.option1 }}</li>
 				{% endunless %}
 			{% endfor %}
 		</ul>
