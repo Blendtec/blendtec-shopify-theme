@@ -2,10 +2,10 @@
   {
     "name": "theme_info",
     "theme_name": "Blendtec",
-    "theme_author": "Fluorescent",
+    "theme_author": "Blendtec",
     "theme_version": "2.3.1",
-    "theme_documentation_url": "http:\/\/www.fluorescent.co\/ira",
-    "theme_support_url": "http:\/\/www.fluorescent.co\/ira\/#support"
+    "theme_support_url": "https:\/\/www.github.com\/Blendtec",
+    "theme_documentation_url": "https:\/\/www.github.com\/Blendtec"
   },
   {
     "name": "Colors",
@@ -1296,6 +1296,20 @@
         "id": "pricespider_main_widget_id",
         "label": "Widget Id",
         "info": "Widget Id is found here: https:\/\/portal.pricespider.com under WhereToBuy menu"
+      }
+    ]
+  },
+  {
+    "name": "Google Tag Manager",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Google Tag Manager ID"
+      },
+      {
+        "type": "text",
+        "id": "gtm_id",
+        "label": "GTM Id"
       }
     ]
   }
