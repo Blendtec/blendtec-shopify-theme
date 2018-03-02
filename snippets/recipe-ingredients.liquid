@@ -1,5 +1,3 @@
-<div class="rte recipe-ingredients">
-  <h3 class="recipe_instructions">{{ 'recipes.ingredients' | t}}</h3>
   {% assign ingredients = article.metafields["global"]["ingredients"] %}
   {% assign ingredients = ingredients | replace: "<li>", "<li itemprop='recipeIngredient'>" %}
   {% assign ingredients = ingredients | replace: "property", "itemprop" %}
@@ -14,6 +12,4 @@
   {% assign ingredients = ingredients | replace: ".5", " 1/2 " %}
   {% assign ingredients = ingredients | replace: ".75", " 3/4 " %}
   {% assign ingredients = ingredients | replace: ".33", " 1/3 " %}
-  
   <ul>{{ ingredients  }}</ul>
-</div>
