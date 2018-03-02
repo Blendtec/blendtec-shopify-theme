@@ -73,6 +73,130 @@
     ]
   },
   {
+    "name": "Product Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "White",
+        "label": "White",
+        "default": "#ffffff",
+        "info": "Product color white."
+      },
+      {
+        "type": "color",
+        "id": "Polar White",
+        "label": "Polar White",
+        "default": "#ffffff",
+        "info": "Product color Polar White."
+      },
+      {
+        "type": "color",
+        "id": "Black",
+        "label": "Black",
+        "default": "#000000",
+        "info": "Product color Black."
+      },
+      {
+        "type": "color",
+        "id": "Slate Grey",
+        "label": "Slate Grey",
+        "default": "#828387",
+        "info": "Product color Slate Grey."
+      },
+      {
+        "type": "color",
+        "id": "Orchid",
+        "label": "Orchid",
+        "default": "#622f50",
+        "info": "Product color Orchid."
+      },
+      {
+        "type": "color",
+        "id": "Poppy",
+        "label": "Poppy",
+        "default": "#ee1b2c",
+        "info": "Product color Poppy."
+      },
+      {
+        "type": "color",
+        "id": "Caribbean Blue",
+        "label": "Caribbean Blue",
+        "default": "#0ea6b4",
+        "info": "Product color Caribbean Blue."
+      },
+      {
+        "type": "color",
+        "id": "Chartreuse",
+        "label": "Chartreuse",
+        "default": "#b2c142",
+        "info": "Product color Chartreuse."
+      },
+      {
+        "type": "color",
+        "id": "Sea Foam",
+        "label": "Sea Foam",
+        "default": "#9ed6cd",
+        "info": "Product color Sea Foam."
+      },
+      {
+        "type": "color",
+        "id": "Pomegranate",
+        "label": "Pomegranate",
+        "default": "#772330",
+        "info": "Product color Pomegranate."
+      },
+      {
+        "type": "color",
+        "id": "Dark Roast",
+        "label": "Dark Roast",
+        "default": "#49301c",
+        "info": "Product color Dark Roast."
+      },
+      {
+        "type": "color",
+        "id": "Charcoal",
+        "label": "Charcoal",
+        "default": "#585550",
+        "info": "Product color Charcoal."
+      },
+      {
+        "type": "color",
+        "id": "Champagne",
+        "label": "Champagne",
+        "default": "#49301c",
+        "info": "Product color Charcoal."
+      },
+      {
+        "type": "color",
+        "id": "StainlessBlack",
+        "label": "Stainless Black",
+        "default": "#a7a8ac",
+        "info": "Product color Stainless\/Black."
+      },
+      {
+        "type": "color",
+        "id": "StainlessWhite",
+        "label": "Stainless White",
+        "default": "#a7a8ac",
+        "info": "Product color Stainless\/White."
+      },
+      {
+        "type": "color",
+        "id": "Gunmetal",
+        "label": "Gunmetal",
+        "default": "#58585a",
+        "info": "Product color Gunmetal."
+      },
+      {
+        "type": "color",
+        "id": "Red",
+        "label": "Red",
+        "default": "#ee1b2c",
+        "info": "Product color Red."
+      }
+    ]
+  },
+  {
     "name": "Typography",
     "settings": [
       {
