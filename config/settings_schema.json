@@ -2,10 +2,10 @@
   {
     "name": "theme_info",
     "theme_name": "Blendtec",
-    "theme_author": "Fluorescent",
+    "theme_author": "Blendtec",
     "theme_version": "2.3.1",
-    "theme_documentation_url": "http:\/\/www.fluorescent.co\/ira",
-    "theme_support_url": "http:\/\/www.fluorescent.co\/ira\/#support"
+    "theme_support_url": "https:\/\/www.github.com\/Blendtec",
+    "theme_documentation_url": "https:\/\/www.github.com\/Blendtec"
   },
   {
     "name": "Colors",
@@ -204,6 +204,76 @@
         "id": "font_logo",
         "label": "Logo",
         "options": [
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Bold",
+            "label": "CooperHewitt-Bold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BoldItalic",
+            "label": "CooperHewitt-BoldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Book",
+            "label": "CooperHewitt-Book"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BookItalic",
+            "label": "CooperHewitt-BookItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Heavy",
+            "label": "CooperHewitt-Heavy"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-HeavyItalic",
+            "label": "CooperHewitt-HeavyItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Light",
+            "label": "CooperHewitt-Light"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-LightItalic",
+            "label": "CooperHewitt-LightItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Medium",
+            "label": "CooperHewitt-Medium"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-MediumItalic",
+            "label": "CooperHewitt-MediumItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Semibold",
+            "label": "CooperHewitt-Semibold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-SemiboldItalic",
+            "label": "CooperHewitt-SemiboldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Thin",
+            "label": "CooperHewitt-Thin"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-ThinItalic",
+            "label": "CooperHewitt-ThinItalic"
+          },
           {
             "group": "Sans serif",
             "value": "Google_Alegreya+Sans_400,400i,700,700i_sans",
@@ -508,6 +578,76 @@
         "label": "Header",
         "options": [
           {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Bold",
+            "label": "CooperHewitt-Bold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BoldItalic",
+            "label": "CooperHewitt-BoldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Book",
+            "label": "CooperHewitt-Book"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BookItalic",
+            "label": "CooperHewitt-BookItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Heavy",
+            "label": "CooperHewitt-Heavy"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-HeavyItalic",
+            "label": "CooperHewitt-HeavyItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Light",
+            "label": "CooperHewitt-Light"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-LightItalic",
+            "label": "CooperHewitt-LightItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Medium",
+            "label": "CooperHewitt-Medium"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-MediumItalic",
+            "label": "CooperHewitt-MediumItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Semibold",
+            "label": "CooperHewitt-Semibold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-SemiboldItalic",
+            "label": "CooperHewitt-SemiboldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Thin",
+            "label": "CooperHewitt-Thin"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-ThinItalic",
+            "label": "CooperHewitt-ThinItalic"
+          },
+          {
             "group": "Sans serif",
             "value": "Google_Alegreya+Sans_400,400i,700,700i_sans",
             "label": "Alegreya Sans"
@@ -810,6 +950,76 @@
         "id": "font",
         "label": "Body",
         "options": [
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Bold",
+            "label": "CooperHewitt-Bold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BoldItalic",
+            "label": "CooperHewitt-BoldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Book",
+            "label": "CooperHewitt-Book"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BookItalic",
+            "label": "CooperHewitt-BookItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Heavy",
+            "label": "CooperHewitt-Heavy"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-HeavyItalic",
+            "label": "CooperHewitt-HeavyItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Light",
+            "label": "CooperHewitt-Light"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-LightItalic",
+            "label": "CooperHewitt-LightItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Medium",
+            "label": "CooperHewitt-Medium"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-MediumItalic",
+            "label": "CooperHewitt-MediumItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Semibold",
+            "label": "CooperHewitt-Semibold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-SemiboldItalic",
+            "label": "CooperHewitt-SemiboldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Thin",
+            "label": "CooperHewitt-Thin"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-ThinItalic",
+            "label": "CooperHewitt-ThinItalic"
+          },
           {
             "group": "Sans serif",
             "value": "Google_Alegreya+Sans_400,400i,700,700i_sans",
@@ -1296,6 +1506,20 @@
         "id": "pricespider_main_widget_id",
         "label": "Widget Id",
         "info": "Widget Id is found here: https:\/\/portal.pricespider.com under WhereToBuy menu"
+      }
+    ]
+  },
+  {
+    "name": "Google Tag Manager",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Google Tag Manager ID"
+      },
+      {
+        "type": "text",
+        "id": "gtm_id",
+        "label": "GTM Id"
       }
     ]
   }
