@@ -51,6 +51,12 @@
   {% assign variant_image = product.images[1] %}
 {% endif %}
 <div class="grid__item {{ fit_image_class }} {{hover_class}} {{ grid_item_width }} {{product_class}} animation-sequence-{{ forloop.index0 }}">
+<a
+        id="link-{{product.id}}"
+      {% for variant in product.variants %}
+      link{{forloop.index}}="{{ product.url | within: collection }}?variant={{variant.id}}"
+      {% endfor %}
+ href="{{ product.url | within: collection }}?variant={{product.variants[0].id}}" tabindex='0'>
       <div class="">
         {% if on_sale %}
           <div class='sale-badge'>{{ 'products.product.on_sale' | t }}</div>
@@ -88,12 +94,6 @@
           <img src="//cdn.shopify.com/s/images/themes/product-1.png" class="placeholder-image">
         {% endif %}
       </div>
-<a
-        id="link-{{product.id}}"
-      {% for variant in product.variants %}
-      link{{forloop.index}}="{{ product.url | within: collection }}?variant={{variant.id}}"
-      {% endfor %}
- href="{{ product.url | within: collection }}?variant={{product.variants[0].id}}" tabindex='0'>
       <span class="product_image_caption">
         <h6>{{ product.title }} <br> <span
         id="title-{{product.id}}"
