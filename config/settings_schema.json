@@ -205,6 +205,76 @@
         "label": "Logo",
         "options": [
           {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Bold",
+            "label": "CooperHewitt-Bold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BoldItalic",
+            "label": "CooperHewitt-BoldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Book",
+            "label": "CooperHewitt-Book"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BookItalic",
+            "label": "CooperHewitt-BookItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Heavy",
+            "label": "CooperHewitt-Heavy"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-HeavyItalic",
+            "label": "CooperHewitt-HeavyItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Light",
+            "label": "CooperHewitt-Light"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-LightItalic",
+            "label": "CooperHewitt-LightItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Medium",
+            "label": "CooperHewitt-Medium"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-MediumItalic",
+            "label": "CooperHewitt-MediumItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Semibold",
+            "label": "CooperHewitt-Semibold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-SemiboldItalic",
+            "label": "CooperHewitt-SemiboldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Thin",
+            "label": "CooperHewitt-Thin"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-ThinItalic",
+            "label": "CooperHewitt-ThinItalic"
+          },
+          {
             "group": "Sans serif",
             "value": "Google_Alegreya+Sans_400,400i,700,700i_sans",
             "label": "Alegreya Sans"
@@ -508,6 +578,76 @@
         "label": "Header",
         "options": [
           {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Bold",
+            "label": "CooperHewitt-Bold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BoldItalic",
+            "label": "CooperHewitt-BoldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Book",
+            "label": "CooperHewitt-Book"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BookItalic",
+            "label": "CooperHewitt-BookItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Heavy",
+            "label": "CooperHewitt-Heavy"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-HeavyItalic",
+            "label": "CooperHewitt-HeavyItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Light",
+            "label": "CooperHewitt-Light"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-LightItalic",
+            "label": "CooperHewitt-LightItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Medium",
+            "label": "CooperHewitt-Medium"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-MediumItalic",
+            "label": "CooperHewitt-MediumItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Semibold",
+            "label": "CooperHewitt-Semibold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-SemiboldItalic",
+            "label": "CooperHewitt-SemiboldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Thin",
+            "label": "CooperHewitt-Thin"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-ThinItalic",
+            "label": "CooperHewitt-ThinItalic"
+          },
+          {
             "group": "Sans serif",
             "value": "Google_Alegreya+Sans_400,400i,700,700i_sans",
             "label": "Alegreya Sans"
@@ -810,6 +950,76 @@
         "id": "font",
         "label": "Body",
         "options": [
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Bold",
+            "label": "CooperHewitt-Bold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BoldItalic",
+            "label": "CooperHewitt-BoldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Book",
+            "label": "CooperHewitt-Book"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BookItalic",
+            "label": "CooperHewitt-BookItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Heavy",
+            "label": "CooperHewitt-Heavy"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-HeavyItalic",
+            "label": "CooperHewitt-HeavyItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Light",
+            "label": "CooperHewitt-Light"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-LightItalic",
+            "label": "CooperHewitt-LightItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Medium",
+            "label": "CooperHewitt-Medium"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-MediumItalic",
+            "label": "CooperHewitt-MediumItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Semibold",
+            "label": "CooperHewitt-Semibold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-SemiboldItalic",
+            "label": "CooperHewitt-SemiboldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Thin",
+            "label": "CooperHewitt-Thin"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-ThinItalic",
+            "label": "CooperHewitt-ThinItalic"
+          },
           {
             "group": "Sans serif",
             "value": "Google_Alegreya+Sans_400,400i,700,700i_sans",
