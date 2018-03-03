@@ -26,6 +26,10 @@
 	  })(window, document, 'script', 'dataLayer', '{{ settings.gtm_id }}');</script>
   <!-- End Google Tag Manager -->
 
+  <!-- Avantlink -->
+  {{ 'avmws.js' | asset_url | script_tag }}
+  <!-- End AvantLink -->
+
   <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
