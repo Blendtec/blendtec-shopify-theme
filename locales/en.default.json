@@ -60,6 +60,7 @@
     }
   },
   "blogs": {
+    "title": "Blog",
     "article": {
       "author_on_date_html": "Posted by {{ author }} on {{ date }}",
       "on_date_html": "Posted on {{ date }}",
