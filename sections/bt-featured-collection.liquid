@@ -24,7 +24,7 @@
                             </div>
                         {% endfor %}
                         {% for i in section.blocks %}
-                         <div class="show-block-{{forloop.index}}">
+                         <div class="show-block-{{forloop.index}}" style="display:none;">
                             <a href="{{ i.settings.blender1_link }}" class="btn btn--small">SHOP</a>
                             </div>
                         {% endfor %}
@@ -62,7 +62,7 @@
                             </div>
                         {% endfor %}
                         {% for i in section.blocks %}
-                         <div class="show-block-{{forloop.index}}">
+                         <div class="show-block-{{forloop.index}}" style="display:none;">
                             <a href="{{ i.settings.blender2_link }}" class="btn btn--small">SHOP</a>
                             </div>
                         {% endfor %}
@@ -99,7 +99,7 @@
                             </div>
                         {% endfor %}
                         {% for i in section.blocks %}
-                        <div class="show-block-{{forloop.index}}">
+                        <div class="show-block-{{forloop.index}}" style="display:none;">
                             <a href="{{ i.settings.blender3_link }}" class="btn btn--small ">SHOP</a>
                             </div>
                         {% endfor %}
