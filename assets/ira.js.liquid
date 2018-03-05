@@ -961,10 +961,11 @@ ira.setupNavigation = function(options) {
 
   if (options.navigationInline) {
     ira.navigationStyle = 'desktop';
-
-    $('.site-header').imagesLoaded(function() {
-      ira.setNavStyle(ira.whichNav());
-    });
+    if ($('.site-header').imagesLoaded) {
+      $('.site-header').imagesLoaded(function() {
+        ira.setNavStyle(ira.whichNav());
+      });
+    }
 
     if ($(window).width() > 840) {
       ira.navWidth = ira.getNavWidth();
