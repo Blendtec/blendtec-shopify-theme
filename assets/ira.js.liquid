@@ -975,14 +975,13 @@ ira.setupNavigation = function(options) {
 
 ira.setNavStyle = function(type) {
   if (type === 'mobile') {
-    ira.navigationStyle = 'mobile';
     $('.js-drawer-open-NavDrawer').css('display', 'inline-block');
     $('.js-account-icon').css('display', 'none');
     $('.main-navigation').hide().removeClass('nav-loading');
   } else {
     $('.js-drawer-open-NavDrawer').css('display', 'none');
     $('.js-account-icon').css('display', 'inline-block');
-    $('.main-navigation').css({ "left": "50%" }).show().removeClass('nav-loading');
+    $('.main-navigation').css({ "left": "17%" }).show().removeClass('nav-loading');
   }
 }
 
