@@ -371,7 +371,6 @@ ira.init = function () {
   ira.loginForms();
   ira.imageGridInit();
   ira.exitIntentInit();
-  ira.fadeOutOnClick();
   ira.truncateExcerptText();
   ira.headerInit();
   ira.initInstaGrid();
@@ -1661,49 +1660,6 @@ ira.initInstaGrid = function(){
   if (!instagramContainer.length || accessToken == null || !accessToken.length) return;
 
   ira.instaGrid = new ira.InstaGrid(accessToken);
-}
-
-
-/**
- * Whenever the user follows a link, have the site
- * fade to white.
- */
-ira.fadeOutOnClick = function(){
-
-  //By setting up an Unload event we remove page caching
-  //which makes the browser do a new HTTP request when
-  //clicking the back button, instead of trying to
-  //rebuild the page.
-  window.onunload = function(e){
-    // console.info("unload event:", e);
-  };
-
-  window.onpageshow = function(event) {
-      if (event.persisted) {
-          window.location.reload()
-      }
-  };
-
-
-  var $overlay = this.cache.$fadeOutOverlay;
-  var time = 300;
-  var animation = 'ease';
-  $('body').on('click', 'a', function(e){
-    if (e.metaKey || e.shiftKey) return;
-    var href = $(this).attr('href');
-    //If it's a #, or starts with one, it's either an anchor or a dummy link.
-    if(e.currentTarget && e.currentTarget.className == 'ps_ProductLocalSellersLocationButtonStyle') return;
-    if (typeof href === 'undefined' || href === '#' || href.indexOf('#') === 0) return;
-    if ($(this).attr('target') == "_blank") return;
-
-    e.preventDefault();
-    $overlay.addClass('show');
-
-     setTimeout(function(){
-        location.href = href;
-    }.bind(this), time / 2)
-  });
-
 }
 
 ira.parallax = function() {
