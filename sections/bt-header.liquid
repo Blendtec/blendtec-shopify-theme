@@ -119,7 +119,7 @@
 
     <div class="grid__item grid--full-height large--{% if section.settings.navigation_style == 'links' or section.settings.navigation_style == 'icons' %}five-twelfths{% else %}one-third{% endif %} medium--one-whole small--one-whole controls-container">
       <div class="grid--full grid--full-height site-header-controls">
-        <div class="grid__item full-height large--one-twelfth medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control js-drawer-open-NavDrawer">
+        <div class="grid__item full-height large--one-twelfth medium--one-sixth push--medium--one-quarter small--one-third header-control js-drawer-open-NavDrawer">
           <a class="icon-fallback-text site-nav__link table--cell-center" aria-controls="NavDrawer" aria-expanded="false" tabindex="0"  href="javascript:void(0);">
             <span class="icon hamburger-svg" tabindex="-1">
               <svg><use xlink:href="#icon-burger"></use></svg>
@@ -130,7 +130,7 @@
         </div>
 
 
-        <div class="grid__item full-height large--one-twelfth medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control search-open slight-35px-adjustment">
+        <div class="grid__item full-height large--one-twelfth medium--one-sixth push--medium--one-quarter small--one-third header-control search-open">
           <a class="icon-fallback-text site-nav__link table--cell-center center-aligned" href="/search" aria-controls="HeaderSearchBar" aria-expanded="false"  tabindex="0">
             <span class="icon search-svg" tabindex="-1">
               <svg><use xlink:href="#icon-search"></use></svg>
@@ -139,13 +139,13 @@
           </a>
         </div>
 
-        <div class="grid__item full-height large--five-twelfths medium--one-sixth push--medium--thirteen-fiftieths small--one-third secondary-navbar questions-margin">
-            <span class="fallback-text" tabindex="-1">Questions? Call 1-800-748-5400</span>
+        <div class="grid__item full-height large--five-twelfths medium-down--hide secondary-navbar questions-margin" style="background-color:transparent;">
+            <span class="fallback-text" tabindex="-1">{{section.settings.questions_text }}</span>
         </div>
         <div class="grid__item full-height large--one-twelfth medium-down--hide hide-1100px">
           <div class="nav-dot"></div>
         </div>
-      <div class="grid__item full-height large--one-sixth medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control secondary-navbar">
+      <div class="grid__item full-height large--one-sixth medium-down--hide header-control secondary-navbar">
       <a style="cursor:pointer;" onclick="window.open('https://home-c19.incontact.com/inContact/ChatClient/ChatClient.aspx?poc=85fda090-bbef-4d11-aecd-83b1eb016e74&amp;bu=4595702','popup','height=450, width=500, left =' + window.screenX + ', top =' + window.screenY);">
         <span class="">{{ 'layout.promo-header.live_chat' | t }}</span>
         </a>
@@ -155,7 +155,7 @@
         </div>
 
         {% if shop.customer_accounts_enabled and section.settings.navigation_style == 'links' %}
-          <div class="grid__item full-height large--one-third medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control js-account-icon">
+          <div class="grid__item full-height large--one-third medium--one-sixth push--medium--one-quarter small--one-third header-control js-account-icon">
             <a class="icon-fallback-text site-nav__link table--cell-center " aria-controls="Account" aria-expanded="false" tabindex="0"  href="/account">
               <span class="icon account-svg" tabindex="-1">
                 <svg><use xlink:href="#icon-account"></use></svg>
@@ -166,7 +166,7 @@
           </div>
         {% endif %}
 
-        <div class="grid__item full-height large--one-twelfth medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control  js-drawer-open-CartDrawer ">
+        <div class="grid__item full-height large--one-twelfth medium--one-sixth push--medium--one-quarter small--one-third header-control  js-drawer-open-CartDrawer ">
           {% comment %}
             Show number of items in the cart and total cost in the /cart link
 
@@ -530,6 +530,12 @@
         "id": "notification_bar_text",
         "label": "Text",
         "placeholder": "Free shipping on all orders over $50."
+      },
+      {
+        "type": "text",
+        "id": "questions_text",
+        "label": "Text",
+        "default": "Questions? Call 1-800-748-5400"
       },
       {
         "type": "url",

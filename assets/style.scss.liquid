@@ -2756,8 +2756,8 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   @include transition($headerTransition);
 
   @include at-query($max, $large) {
-    max-height: $headerSize - 10px;
-    min-height: $headerSize - 10px;
+    max-height: $headerSize - 5px;
+    min-height: $headerSize - 5px;
 
     .js-drawer-open &.medium-down--fixed { top: 80px; }
   }
@@ -3090,7 +3090,7 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
 
 .main-content {
   position: relative;
-  margin-top: 160px;
+  margin-top: 121px;
 
   .respond-to-notification-bar & {
     margin-top: 200px;
@@ -3385,6 +3385,12 @@ $animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);
 .logo-link img {
   margin-left:-45px;
 }
+}
+@media only screen and (max-width: $medium){
+.logo-link img {
+  margin-left:0px;
+}
+
 }
 @media only screen and (max-width: 865px){
 .slight-35px-adjustment {
