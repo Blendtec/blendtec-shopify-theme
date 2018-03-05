@@ -64,7 +64,7 @@ function getPosition(element) {
 
   }
 
-  function loadIfVisible (bottomSet, topSet = null) {
+  function loadIfVisible (bottomSet, topSet) {
     if (!bottomSet) {
       bottomSet = null;
     }
