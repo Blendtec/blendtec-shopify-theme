@@ -2,10 +2,10 @@
   <div class="grid" style="padding-top:35px;" class="flex-wrapper-large">
     <div class="grid__item large--one-twelfth medium--one-twelfth"></div>
     <div class="grid__item large--five-sixths medium--five-sixths">
-      <div class="grid">
+      <div class="grid flex-wrapper-large">
         <div class="grid__item large--one-half medium--two-thirds">
           <a
-          class="show-block-{{forloop.index}}-href"
+          class="show-block-href"
           {% for i in section.blocks %}
             {{ forloop.index }}href="{{i.settings.recipe1_url}}"
           {% endfor %}
@@ -46,7 +46,7 @@
         </div>
         <div class="grid__item large--one-half medium--two-thirds">
           <a
-          class="show-block-{{forloop.index}}-href"
+          class="show-block-href"
           {% for i in section.blocks %}
             {{ forloop.index }}href="{{i.settings.recipe2_url}}"
           {% endfor %}>
