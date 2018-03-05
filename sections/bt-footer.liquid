@@ -115,7 +115,10 @@
               {% endif %}
 
     </div>
-    <div class="bottom-terms"><a style="color:{{ section.settings.color_footer_header }}" href="{{section.settings.privacy_policy}}">Privacy Policy   |   Terms & Conditions</a></div>
+    <div class="bottom-terms">
+        <a style="color:{{ section.settings.color_footer_header }}" href="{{section.settings.privacy_policy_link}}">Privacy Policy</a>
+       &nbsp;|&nbsp;<a style="color:{{ section.settings.color_footer_header }}" href="{{section.settings.tos_link}}">Terms & Conditions</a>
+    </div>
   </div>
 
 
@@ -279,10 +282,15 @@
         "label": "Background Image"
       },
       {
-        "id": "privacy_policy",
+        "id": "privacy_policy_link",
         "type": "url",
         "label": "Link to Privacy Policy"
-      }
+      },
+    {
+    "id": "tos_policy_link",
+    "type": "url",
+    "label": "Link to Tos"
+    }
     ],
     "blocks": [
       {
