@@ -1,7 +1,7 @@
 <div class="bt-center-text-cta javascript-load-image"  backgroundimagesrc1200="{{section.settings.section5_background | img_url: '1200x' }}" backgroundimagesrc900="{{section.settings.section5_background | img_url: '900x' }}" backgroundimagesrc800="{{section.settings.section5_background | img_url: '800x' }}" backgroundimagesrc700="{{section.settings.section5_background | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.section5_background | img_url: '600x' }}" backgroundimagesrc500="{{section.settings.section5_background | img_url: '500x' }}" backgroundimagesrc400="{{section.settings.section5_background | img_url: '400x' }}">
 
   <div class="section5-bottom-background" style="padding-top:50px;padding-bottom:20px;">
-  <div class="slider single-item" style="text-align:center;width:280px;margin:0 auto;padding-top:60px;margin-bottom:30px;">
+  <div class="slider single-item" style="text-align:center;width:280px;margin:0 auto;padding-top:50px;margin-bottom:40px;">
     {% for i in section.blocks %}
       <div>
         <h3 class="review-text">{{i.settings.section5_review}}</h3>
@@ -53,7 +53,9 @@
   }
   .section5-red-hr{
     border-color: #f41d2f;
+    background-color: #979797;
     width: 120px;
+    padding-right:5px;
     margin: 0 auto;
     padding: 10px;
   }
