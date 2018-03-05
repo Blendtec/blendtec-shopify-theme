@@ -24,7 +24,9 @@
                             </div>
                         {% endfor %}
                         {% for i in section.blocks %}
-                            <a href="{{ i.settings.blender1_link }}" class="btn btn--small show-block-{{forloop.index}}">SHOP</a>
+                         <div class="show-block-{{forloop.index}}">
+                            <a href="{{ i.settings.blender1_link }}" class="btn btn--small">SHOP</a>
+                            </div>
                         {% endfor %}
                         </div>
                         <div class="grid__item large--one-half">
@@ -60,7 +62,9 @@
                             </div>
                         {% endfor %}
                         {% for i in section.blocks %}
-                            <a href="{{ i.settings.blender2_link }}" class="btn btn--small show-block-{{forloop.index}}">SHOP</a>
+                         <div class="show-block-{{forloop.index}}">
+                            <a href="{{ i.settings.blender2_link }}" class="btn btn--small">SHOP</a>
+                            </div>
                         {% endfor %}
                     </div>
                     <div class="grid__item large--one-half">
@@ -95,7 +99,9 @@
                             </div>
                         {% endfor %}
                         {% for i in section.blocks %}
-                            <a href="{{ i.settings.blender3_link }}" class="btn btn--small show-block-{{forloop.index}}">SHOP</a>
+                        <div class="show-block-{{forloop.index}}">
+                            <a href="{{ i.settings.blender3_link }}" class="btn btn--small ">SHOP</a>
+                            </div>
                         {% endfor %}
                     </div>
                     <div class="grid__item large--one-half">
