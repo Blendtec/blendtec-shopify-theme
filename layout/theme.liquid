@@ -90,9 +90,6 @@
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
   {% endif %}
 
-<!--Gem_Page_Header_Script-->
-{% include 'gem-app-header-scripts' %}
-<!--End_Gem_Page_Header_Script-->
 {% if template == 'page.find-a-store' %}
   {% include 'price-spider-header-scripts' %}
 {% endif %}
@@ -163,8 +160,5 @@
     {% if settings.show_multiple_currencies %}
       {% include 'currencies' %}
     {% endif %}
-<!--Gem_Page_Footer_Script-->
-{% include 'gem-app-footer-scripts' %}
-<!--End_Gem_Page_Footer_Script-->
 </body>
 </html>
