@@ -209,7 +209,7 @@ randomImages = function () {
         //tieTextClass
         if (images[i].attributes['tieTextClass'] && images[i].attributes['tieTextClass'].nodeValue) {
           showText(images[i].attributes['tieTextClass'].nodeValue + numToPass);
-          setUrl(images[i].attributes['tieTextClass'].nodeValue + numToPass + '-href', numToPass);
+          setUrl(images[i].attributes['tieTextClass'].nodeValue + 'href', numToPass);
         }
         var nodeName = images[i].attributes['typeImage'].nodeValue;
         addAttributes(nodeName, images[i], numToPass);
