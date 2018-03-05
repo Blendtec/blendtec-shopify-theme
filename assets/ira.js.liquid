@@ -375,9 +375,11 @@ ira.init = function () {
   ira.headerInit();
   ira.initInstaGrid();
 
-  ira.cache.$body.imagesLoaded(function() {
-    ira.footerInit();
-  });
+  if (ira.cache.$body.imagesLoaded) {
+    ira.cache.$body.imagesLoaded(function() {
+      ira.footerInit();
+    });
+  }
 
   if ($('#story-grid').length) {
     ira.storyGridInit();
