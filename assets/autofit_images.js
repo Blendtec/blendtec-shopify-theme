@@ -64,7 +64,13 @@ function getPosition(element) {
 
   }
 
-  function loadIfVisible (bottomSet = null, topSet = null) {
+  function loadIfVisible (bottomSet, topSet = null) {
+    if (!bottomSet) {
+      bottomSet = null;
+    }
+    if (!topSet) {
+      topSet = null;
+    }
     var bottom_of_page = bottomSet;
     var top_of_page = topSet;
     var keepOpaque = true;
