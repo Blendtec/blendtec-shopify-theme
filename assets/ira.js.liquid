@@ -2019,14 +2019,16 @@ ira.ImageGrid = (function () {
     if (this.$grid) { this.resizeImages(); }
     if (this.$subpixelGrid) { this.subpixelGrid(); }
 
-    this.$grid.imagesLoaded().done(function(){
-      if (this.$grid) { this.resizeImages(); }
-      if (this.$subpixelGrid) {
-        this.bindEvents();
-        this.subpixelGrid();
-      }
-      $(window).on('widthChange', throttlePrepare);
-    }.bind(this));
+    if (this.$grid && this.$grid.imagesLoaded) {
+      this.$grid.imagesLoaded().done(function(){
+        if (this.$grid) { this.resizeImages(); }
+        if (this.$subpixelGrid) {
+          this.bindEvents();
+          this.subpixelGrid();
+        }
+        $(window).on('widthChange', throttlePrepare);
+      }.bind(this));
+    }
   };
 
   ImageGrid.prototype.subpixelGrid = function(){
