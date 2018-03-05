@@ -183,6 +183,16 @@ Four layout options: 2x3, 3x3, 4x3, 5x3
         var title = document.getElementById('title-'+productId).getAttribute('title'+(nextSlide+1));
         $('#title-'+productId).text(title);
 
+        var isAvailable = document.getElementById('soldout-'+productId).getAttribute('soldout'+(nextSlide+1));
+        if (isAvailable === "false") {
+          $('#soldout-'+productId).show();
+        } else {
+          $('#soldout-'+productId).hide();
+        }
+
+        $('.price-'+productId).hide();
+        $('#price-'+productId+'-'+(nextSlide+1)).show();
+
         var link = document.getElementById('link-'+productId).getAttribute('link'+(nextSlide+1));
         $('#link-'+productId).attr('href', link);
     });
