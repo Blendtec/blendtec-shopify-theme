@@ -6,8 +6,15 @@
 </button>
 <i class="fa fa-spinner fa-spin" style="font-size:48px;" id="videoLoadingSpinner"></i>
 <div id="videoWrapper" style="opacity:0;">
-  <iframe style="width:100%;height:100%;" id="videoIdToShow"
-src="https://www.youtube.com/embed/{{ section.settings.video_id }}?playlist={{ section.settings.video_id }}">
+  <iframe style="width:100%;height:100%;" id="videoIdToShow" class="javascript-load-image"
+        numBlocks="{{section.blocks.size}}"
+        typeImage="imagebasesrc"
+        {% for i in section.blocks %}
+
+          {% assign placement = forloop.index  %}
+              {{placement}}imagebasesrc100="https://www.youtube.com/embed/{{ i.settings.video_id }}?playlist={{ i.settings.video_id }}"
+        {% endfor %}
+src="">
 </iframe>
 </div>
     </div>
@@ -26,31 +33,39 @@ src="https://www.youtube.com/embed/{{ section.settings.video_id }}?playlist={{ s
         {% endfor %}
             {% endfor %}>
         <div class="header-text-wrapper small--hide">
-            <h1 class="heavy">{{ section.settings.top_header }}</h1>
-            <h1 class="heavy" style="margin-left:8%;width:90%;">{{ section.settings.second_header }}</h1>
-            <h1 class="heavy" style="margin-left:12%;width:86%;">{{ section.settings.third_header }}</h1>
+        {% for i in section.blocks %}
+        <div class="show-block-{{forloop.index}}" style="display:none;">
+            <h1 class="heavy">{{ i.settings.top_header }}</h1>
+            <h1 class="heavy" style="margin-left:8%;width:90%;">{{ i.settings.second_header }}</h1>
+            <h1 class="heavy" style="margin-left:12%;width:86%;">{{ i.settings.third_header }}</h1>
             <div class="button-wrapper">
                 <button onclick="showPopUp()" class="btn btn--small btn--left">
                     <i class="fa fa-caret-right"></i>
-                    {{ section.settings.hero_button1text }}</button>
-                <a href="{{ section.blocks[0].settings.hero_button2Link }}"
-                   class="btn btn--small">{{ section.settings.hero_button2text }}</a></div>
+                    {{ i.settings.hero_button1text }}</button>
+                <a href="{{ i.settings.hero_button2Link }}"
+                   class="btn btn--small">{{ i.settings.hero_button2text }}</a></div>
+            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="small--show medium--hide large--hide">
+        {% for i in section.blocks %}
+        <div class="show-block-{{forloop.index}}" style="display:none;">
         <div class="header-text-wrapper">
-            <h1 class="heavy">{{ section.settings.top_header }}</h1>
-            <h1 class="heavy" style="margin-left:8%;width:90%;">{{ section.settings.second_header }}</h1>
-            <h1 class="heavy" style="margin-left:12%;width:86%;">{{ section.settings.third_header }}</h1>
+            <h1 class="heavy">{{ i.settings.top_header }}</h1>
+            <h1 class="heavy" style="margin-left:8%;width:90%;">{{ i.settings.second_header }}</h1>
+            <h1 class="heavy" style="margin-left:12%;width:86%;">{{ i.settings.third_header }}</h1>
             <div class="button-wrapper">
                 <button onclick="showPopUp()" class="btn btn--small btn--left">
                     <i class="fa fa-caret-right"></i>
-                    {{ section.settings.hero_button1text }}</button>
-                <a href="{{ section.blocks[0].settings.hero_button2Link }}" class="btn btn--small">
-                    {{ section.settings.hero_button2text }}
+                    {{ i.settings.hero_button1text }}</button>
+                <a href="{{ i.settings.hero_button2Link }}" class="btn btn--small">
+                    {{ i.settings.hero_button2text }}
                 </a>
             </div>
         </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 <style>
@@ -117,7 +132,9 @@ $(document).ready(function() {
         if (widthToSet > maxWidth) {
             widthToSet = maxWidth;
         }
+    var heightToSet = widthToSet * 9 / 16;
     $('#videoWrapper').width(widthToSet);
+    $('#videoWrapper').height(heightToSet);
     };
 
     window.addEventListener("resize", function() {
@@ -134,7 +151,29 @@ resizeVideo();
     "class":"section1",
     "max_blocks":9,
     "settings":[
-
+    {
+    "type":"range",
+    "id":"video_max_size",
+    "min":500,
+    "max":2000,
+    "step":20,
+    "unit":"px",
+    "label":"Max Video Size",
+    "default":800,
+    "info":"Maximum size of the shown video"
+    }
+    ],
+    "blocks":[
+    {
+    "type":"header",
+    "name":"hero",
+    "settings":[
+    {
+    "type":"image_picker",
+    "id":"hero_image",
+    "label":"Hero Image",
+    "info":"Landscape orientation (3:2 w:h). 1200 x 752px minimum recommended"
+    },
     {
     "type":"text",
     "id":"top_header",
@@ -167,135 +206,15 @@ resizeVideo();
     "info":"Id for youtube video to be shown. So for 'https://www.youtube.com/watch?v=tgbNymZ7vqY' the id you need to enter is 'tgbNymZ7vqY'"
     },
     {
-    "type":"range",
-    "id":"video_max_size",
-    "min":500,
-    "max":2000,
-    "step":20,
-    "unit":"px",
-    "label":"Max Video Size",
-    "default":800,
-    "info":"Maximum size of the shown video"
+    "type": "url",
+    "id": "hero_button2Link",
+    "label": "Section 2 Link"
     },
     {
     "type":"text",
     "id":"hero_button2text",
     "label":"Hero Button 2 text",
     "default":"SHOP BLENDERS"
-    },
-    {
-    "type": "checkbox",
-    "id": "enable_ken_burns",
-    "label": "Enable zoom animation",
-    "default": false
-    },
-    {
-    "type": "checkbox",
-    "id": "enable_progress_bar",
-    "default": true,
-    "label": "Show progress bar"
-    },
-    {
-    "type": "checkbox",
-    "id": "enable_dropshadow",
-    "default": false,
-    "label": "Show dropshadow",
-    "info": "Adds a shadow effect to your slideshow text and buttons."
-    },
-    {
-    "type": "select",
-    "id": "color_overlay_opacity",
-    "default": "0.8",
-    "label": "Overlay opacity",
-    "options": [
-    {
-    "value": "0",
-    "label": "Off"
-    },
-    {
-    "value": "0.1",
-    "label": "10%"
-    },
-    {
-    "value": "0.2",
-    "label": "20%"
-    },
-    {
-    "value": "0.3",
-    "label": "30%"
-    },
-    {
-    "value": "0.4",
-    "label": "40%"
-    },
-    {
-    "value": "0.5",
-    "label": "50%"
-    },
-    {
-    "value": "0.6",
-    "label": "60%"
-    },
-    {
-    "value": "0.7",
-    "label": "70%"
-    },
-    {
-    "value": "0.8",
-    "label": "80%"
-    },
-    {
-    "value": "0.9",
-    "label": "90%"
-    },
-    {
-    "value": "1",
-    "label": "100%"
-    }
-    ]
-    },
-    {
-    "type": "color",
-    "id": "color_overlay_color",
-    "default": "#031207",
-    "label": "Overlay color"
-    },
-    {
-    "type": "color",
-    "id": "progress_bar_color",
-    "default": "#FFFFFF",
-    "label": "Progress bar color"
-    },
-    {
-    "type": "color",
-    "id": "controls_color",
-    "default": "#FFFFFF",
-    "label": "Text color"
-    },
-    {
-    "type": "range",
-    "label": "Slide Timeout (seconds)",
-    "id": "slide_timeout",
-    "default": 10,
-    "min": 1,
-    "max": 30
-    }
-    ],
-    "blocks":[
-    {
-    "type":"header",
-    "name":"hero",
-    "settings":[
-    {
-    "type":"image_picker",
-    "id":"hero_image",
-    "label":"Hero Image",
-    "info":"Landscape orientation (3:2 w:h). 1200 x 752px minimum recommended"
-    },
-    {
-    "type": "url",
-    "id": "hero_button2Link",
-    "label": "Section 2 Link"
     }
     ]
     }

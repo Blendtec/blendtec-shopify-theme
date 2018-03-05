@@ -38,16 +38,19 @@
         >
         </div>
       </div>
-
+    {% for i in section.blocks %}
+      <div class="show-block-{{forloop.index}}" style="display:none;">
       <div class="grid__item large--one-half">
     <div class="section2-text">
-    <h2 class="section2-h2">{{section.settings.section2_headline}}</h2>
+    <h2 class="section2-h2">{{i.settings.section2_headline}}</h2>
     <div>
-{{section.settings.section2_text}}
+{{i.settings.section2_text}}
           </div>
-    <a href="{{section.settings.section2_link}}"  class="section2-learn-more">{{section.settings.section2_linktext}}</a><span class="section2-arrow">&gt;</span>
+    <a href="{{i.settings.section2_link}}"  class="section2-learn-more">{{i.settings.section2_linktext}}</a><span class="section2-arrow">&gt;</span>
     </div>
       </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 
@@ -58,16 +61,19 @@
   <div class="grid__item">
     <div class="grid">
 
-
+    {% for i in section.blocks %}
+      <div class="show-block-{{forloop.index}}" style="display:none;">
       <div class="grid__item large--one-half">
     <div class="section2-text">
-    <h2 class="section2-h2">{{section.settings.section2_headline}}</h2>
+    <h2 class="section2-h2">{{i.settings.section2_headline}}</h2>
     <div>
-{{section.settings.section2_text}}
+{{i.settings.section2_text}}
           </div>
-    <a href="{{section.settings.section2_link}}"  class="section2-learn-more">{{section.settings.section2_linktext}}</a><span class="section2-arrow">&gt;</span>
+    <a href="{{i.settings.section2_link}}"  class="section2-learn-more">{{i.settings.section2_linktext}}</a><span class="section2-arrow">&gt;</span>
     </div>
       </div>
+      </div>
+      {% endfor %}
 
       <div class="grid__item large--one-half">
         <div class="section-two-image-wrapper">
@@ -195,29 +201,6 @@
 "max_blocks":9,
 "settings":[
 {
-"type":"text",
-"id":"section2_headline",
-"label":"Section 2 Headline",
-"default":"HEADLINE H2"
-},
-{
-"type":"text",
-"id":"section2_text",
-"label":"Section 2 Text",
-"default":"Nam et leo scelerisque, facilisis turpis non, maximus elit. Donec ut arcu ac magna viverra ornare eu ac sem. Nunc orci diam, ultricies ac dignissim ac, eleifend eget libero. Vestibulum eleifend vel tortor nec vulputate. Nam sed sodales turpis, nec imperdiet nisi. Morbi vitae euismod erat, eu dignissim risus."
-},
-{
-"type":"text",
-"id":"section2_linktext",
-"label":"Section2 Link Text",
-"default":"LEARN MORE"
-},
-{
-"type": "url",
-"id": "section2_link",
-"label": "Section 2 Link"
-},
-{
 "type":      "radio",
 "id":        "image_orientation",
 "label":     "Image/text vs Text/image",
@@ -245,6 +228,29 @@
 "id":"section2_imagebackground",
 "label":"Section2 Image Background",
 "info":"This is the background of the section image"
+},
+{
+"type":"text",
+"id":"section2_headline",
+"label":"Section 2 Headline",
+"default":"UNBEATABLE.<br>YOU KNOW THE FEELING."
+},
+{
+"type":"text",
+"id":"section2_text",
+"label":"Section 2 Text",
+"default":"Downtime — a nice thought but it's not on your radar. You have goals: break records, leap buildings, scale all new heights, and be at the top of your game. Secret weapons work for some people, but what you need are tools drive as hard as you do. Today's great, but wait to see what happens tomorrow."
+},
+{
+"type":"text",
+"id":"section2_linktext",
+"label":"Section2 Link Text",
+"default":"LEARN MORE"
+},
+{
+"type": "url",
+"id": "section2_link",
+"label": "Section 2 Link"
 }
 ]
 }

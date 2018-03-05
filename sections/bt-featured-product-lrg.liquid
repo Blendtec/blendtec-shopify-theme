@@ -18,13 +18,21 @@
     <div class="grid" style="padding-top:130px;">
   <div class="grid__item large--one-sixth medium--one-sixth small--one-sixth" style=""></div>
   <div class="small-left-padding grid__item large--one-half">
-        <h4 style="" class="h4-subhead">{{section.settings.h4_subhead}}</h4>
-        <h3 class="h3-subhead">{{section.settings.h3_headline}}</h3>
-        <h3 class="h3-subhead">{{section.settings.descriptive_title_top}}</h3>
+    {% for i in section.blocks %}
+      <div class="show-block-{{forloop.index}}" style="display:none;">
+        <h4 style="" class="h4-subhead">{{i.settings.h4_subhead}}</h4>
+        <h3 class="h3-subhead">{{i.settings.h3_headline}}</h3>
+        <h3 class="h3-subhead">{{i.settings.descriptive_title_top}}</h3>
+        </div>
+        {% endfor %}
      </div>
+    {% for i in section.blocks %}
+      <div class="show-block-{{forloop.index}}" style="display:none;">
   <div class="small-left-padding grid__item large--one-third medium--one-half">
-    <a href="{{section.settings.section3_top_button_link}}" class="button-hero">{{section.settings.section3_top_button}}</a>
+    <a href="{{i.settings.section3_top_button_link}}" class="button-hero">{{i.settings.section3_top_button}}</a>
      </div>
+     </div>
+     {% endfor %}
      </div>
   </div>
   <div class="gradient-black-background"></div>
@@ -229,47 +237,6 @@
 "max_blocks":9,
 "settings":[
 {
-"type":"text",
-"id":"descriptive_title",
-"label":"Descriptive Title",
-"default":"DESCRIPTIVE TITLE"
-},
-{
-"type":"image_picker",
-"id":"background_image1",
-"label":"Background Image 1",
-"info":"Image for the background"
-},
-{
-"type":"text",
-"id":"section3_top_button",
-"label":"Section 3 Top Button Text",
-"default":"SHOP BLENDERS"
-},
-{
-"type": "url",
-"id": "section3_top_button_link",
-"label": "Top Button Link"
-},
-{
-"type":"text",
-"id":"h4_subhead",
-"label":"h4 Subhead",
-"default":"H4 SUB HEAD"
-},
-{
-"type":"text",
-"id":"h3_headline",
-"label":"h3 Headline",
-"default":"H3 HEADLINE"
-},
-{
-"type":"text",
-"id":"descriptive_title_top",
-"label":"Descriptive Title",
-"default":"DESCRIPTIVE TITLE"
-},
-{
 "type":      "range",
 "id":        "black_background_height",
 "min":       200,
@@ -285,6 +252,35 @@
 "type":"header",
 "name":"bt-featured-product-lrg",
 "settings":[
+{
+"type":"text",
+"id":"section3_top_button",
+"label":"Section 3 Top Button Text",
+"default":"SHOP BLENDERS"
+},
+{
+"type": "url",
+"id": "section3_top_button_link",
+"label": "Top Button Link"
+},
+{
+"type":"text",
+"id":"h4_subhead",
+"label":"h4 Subhead",
+"default":"DRVEN"
+},
+{
+"type":"text",
+"id":"h3_headline",
+"label":"h3 Headline",
+"default":"POWER THROUGH <br>ANYTHING"
+},
+{
+"type":"text",
+"id":"descriptive_title_top",
+"label":"Descriptive Title",
+"default":"<br>"
+},
 {
 "type":"image_picker",
 "id":"blender_image",
