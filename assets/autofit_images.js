@@ -175,6 +175,14 @@ showText = function(className) {
   }
 }
 
+setUrl = function(className, which) {
+var elements = document.getElementsByClassName(className);
+for (var i = 0; i < elements.length; i++) {
+  var tempHref = elements[i].getAttribute(which+'href');
+  elements[i].href = tempHref;
+}
+};
+
 var backgroundString = 'backgroundimagesrc';
 var imageString = 'imagebasesrc';
 
@@ -201,6 +209,7 @@ randomImages = function () {
         //tieTextClass
         if (images[i].attributes['tieTextClass'] && images[i].attributes['tieTextClass'].nodeValue) {
           showText(images[i].attributes['tieTextClass'].nodeValue + numToPass);
+          setUrl(images[i].attributes['tieTextClass'].nodeValue + numToPass + '-href', numToPass);
         }
         var nodeName = images[i].attributes['typeImage'].nodeValue;
         addAttributes(nodeName, images[i], numToPass);

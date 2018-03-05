@@ -2064,6 +2064,7 @@ ol.alpha { list-style: lower-alpha outside; }
 /*============================================================================
   #Tables
 ==============================================================================*/
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -2696,7 +2697,11 @@ $headerTransition : "height #{$condenseTransitionTime}, background-color 0.5s, t
     top: 0px !important;
   }
 }
-
+@media screen and (min-width: $large) {
+  .flex-wrapper-large{
+    display:flex;
+  }
+}
 body:not(.js-drawer-open).template-index .transparent-header .site-header-controls,
 body:not(.js-drawer-open).template-collection .transparent-header .site-header-controls,
 body.js-drawer-open .transparent-header .site-header-controls {
