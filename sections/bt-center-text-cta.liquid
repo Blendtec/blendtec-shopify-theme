@@ -1,15 +1,34 @@
 <div class="bt-center-text-cta javascript-load-image"  backgroundimagesrc1200="{{section.settings.section5_background | img_url: '1200x' }}" backgroundimagesrc900="{{section.settings.section5_background | img_url: '900x' }}" backgroundimagesrc800="{{section.settings.section5_background | img_url: '800x' }}" backgroundimagesrc700="{{section.settings.section5_background | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.section5_background | img_url: '600x' }}" backgroundimagesrc500="{{section.settings.section5_background | img_url: '500x' }}" backgroundimagesrc400="{{section.settings.section5_background | img_url: '400x' }}">
 
   <div class="section5-bottom-background" style="padding-top:50px;padding-bottom:20px;">
-
-      <div style="text-align:center;width:280px;margin:0 auto;padding-top:100px;">
-        <h3 class="review-text">{{section.settings.section5_review}}</h3>
+  <div class="slider single-item" style="text-align:center;width:280px;margin:0 auto;padding-top:100px;">
+    {% for i in section.blocks %}
+      <div>
+        <h3 class="review-text">{{i.settings.section5_review}}</h3>
         <hr class="section5-red-hr">
-        <a href="{{section.settings.section5_review_link}}" class="section5-learn-more">{{section.settings.section5_review_linktext}}</a>
+        <a href="{{i.settings.section5_review_link}}" class="section5-learn-more">{{i.settings.section5_review_linktext}}</a>
       </div>
+      {% endfor %}
+      </div>
+  </div>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
 
-  </div>
-  </div>
+    $('.single-item').slick({
+        dots: true,
+        arrows: true,
+        mobileFirst: true,
+        respondTo: 'min',
+        adaptiveHeight: true,
+        pauseOnHover: false,
+        draggable: true,
+        lazyload: 'progressive',
+      }).init(function() {
+      });
+
+    });
+  </script>
 <style>
   .review-text{
   	color:black;
@@ -53,16 +72,22 @@
 "info":"This is the background image for the section"
 },
 {
-"type":"text",
-"id":"section5_review",
-"label":"Section 5 review",
-"default":"“This blender is easy to use and delivers really awesome blending results.”"
-},
-{
 "type":"image_picker",
 "id":"review_background",
 "label":"Review Background",
 "info":"The background for the reviews"
+}
+],
+"blocks":[
+{
+"type":"header",
+"name":"bt-center-text-cta",
+"settings":[
+{
+"type":"text",
+"id":"section5_review",
+"label":"Section 5 review",
+"default":"“This blender is easy to use and delivers really awesome blending results.”"
 },
 {
 "type":"text",
@@ -75,8 +100,8 @@
 "id": "section5_review_link",
 "label": "Link for the featured review"
 }
-],
-"blocks":[
+]
+}
 ],
     "presets": [
       {

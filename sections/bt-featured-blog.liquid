@@ -7,13 +7,30 @@
           <a href="{{section.settings.recipe1_url}}">
             <div class="grid section5-recipe-container">
             	<div style="padding:0;" class="grid__item large--one-half medium--one-half small--one-half">
-              	<img class="javascript-load-image recipe-image" style="width:100%;" imagebasesrc500="{{section.settings.recipe1 | img_url: '500x' }}" imagebasesrc400="{{section.settings.recipe1 | img_url: '400x' }}" imagebasesrc300="{{section.settings.recipe1 | img_url: '300x' }}" imagebasesrc250="{{section.settings.recipe1 | img_url: '250x' }}" imagebasesrc200="{{section.settings.recipe1 | img_url: '200x' }}" imagebasesrc150="{{section.settings.recipe1 | img_url: '150x' }}">
+              	<img class="javascript-load-image recipe-image" style="width:100%;"
+                numBlocks="{{section.blocks.size}}"
+                typeImage="imagebasesrc"
+                {% for i in section.blocks %}
+
+                  {% assign placement = forloop.index  %}
+
+                    {% for y in (1..6) %}
+                      {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+                      {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe1 | img_url: imageSize }}"
+
+                    {% endfor %}
+
+                {% endfor %}>
               </div>
             	<div class="grid__item large--one-half medium--one-half small--one-half">
+              {% for i in section.blocks %}
+                <div class="show-block-{{forloop.index}}" style="display:none;">
                   <div class="section5-small-description">Blendtec Recipe</div>
-                  <h3 class="section5-recipe-title">{{section.settings.recipe1_title}}</h3>
+                  <h3 class="section5-recipe-title">{{i.settings.recipe1_title}}</h3>
                   <hr class="section5-red-hr">
-                  <div class="section5-recipe-text">{{section.settings.recipe1_text}}</div>
+                  <div class="section5-recipe-text">{{i.settings.recipe1_text}}</div>
+                  </div>
+                  {% endfor %}
                   </div>
             </div>
           </a>
@@ -22,14 +39,31 @@
           <a href="{{section.settings.recipe2_url}}">
             <div class="grid section5-recipe-container">
               <div style="padding:0;" class="grid__item large--one-half medium--one-half small--one-half">
-              	<img class="javascript-load-image recipe-image" style="width:100%;" imagebasesrc500="{{section.settings.recipe2 | img_url: '500x' }}" imagebasesrc400="{{section.settings.recipe2 | img_url: '400x' }}" imagebasesrc300="{{section.settings.recipe2 | img_url: '300x' }}" imagebasesrc250="{{section.settings.recipe2 | img_url: '250x' }}" imagebasesrc200="{{section.settings.recipe2 | img_url: '200x' }}" imagebasesrc150="{{section.settings.recipe2 | img_url: '150x' }}">
+              	<img class="javascript-load-image recipe-image" style="width:100%;"
+                numBlocks="{{section.blocks.size}}"
+                typeImage="imagebasesrc"
+                {% for i in section.blocks %}
+
+                  {% assign placement = forloop.index  %}
+
+                    {% for y in (1..6) %}
+                      {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+                      {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe2 | img_url: imageSize }}"
+
+                    {% endfor %}
+
+                {% endfor %}>
 
               </div>
               <div class="grid__item large--one-half medium--one-half small--one-half">
+              {% for i in section.blocks %}
+                <div class="show-block-{{forloop.index}}" style="display:none;">
                   <div class="section5-small-description">Blendtec Recipe</div>
-                  <h3 class="section5-recipe-title">{{section.settings.recipe2_title}}</h3>
+                  <h3 class="section5-recipe-title">{{i.settings.recipe2_title}}</h3>
                   <hr class="section5-red-hr">
-                  <div class="section5-recipe-text">{{section.settings.recipe2_text}}</div>
+                  <div class="section5-recipe-text">{{i.settings.recipe2_text}}</div>
+                  </div>
+                  {% endfor %}
               </div>
             </div>
           </a>
@@ -74,7 +108,7 @@
 -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
- 
+
   }
   .section5-background{
   	background-size: cover;
@@ -99,7 +133,13 @@ box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 "id":"section5_background",
 "label":"Section Background Image",
 "info":"This is the background image for the section"
-},
+}
+],
+"blocks":[
+{
+"type":"header",
+"name":"bt-featured-product-lrg",
+"settings":[
 {
 "type":"image_picker",
 "id":"recipe1",
@@ -146,9 +186,8 @@ box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 "id": "recipe2_url",
 "label": "Link to 2nd Recipe"
 }
-],
-"blocks":[
-
+]
+}
 ],
     "presets": [
       {
