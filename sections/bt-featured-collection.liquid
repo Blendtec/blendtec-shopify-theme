@@ -25,7 +25,7 @@
                         {% endfor %}
                         {% for i in section.blocks %}
                          <div class="show-block-{{forloop.index}}" style="display:none;">
-                            <a href="{{ i.settings.blender1_link }}" class="btn btn--small">SHOP</a>
+                            <a href="{{ i.settings.blender1_link }}" class="btn btn--small">{{ i.settings.blender1_link_text }}</a>
                             </div>
                         {% endfor %}
                         </div>
@@ -63,7 +63,7 @@
                         {% endfor %}
                         {% for i in section.blocks %}
                          <div class="show-block-{{forloop.index}}" style="display:none;">
-                            <a href="{{ i.settings.blender2_link }}" class="btn btn--small">SHOP</a>
+                            <a href="{{ i.settings.blender2_link }}" class="btn btn--small">{{ i.settings.blender2_link_text }}</a>
                             </div>
                         {% endfor %}
                     </div>
@@ -100,7 +100,7 @@
                         {% endfor %}
                         {% for i in section.blocks %}
                         <div class="show-block-{{forloop.index}}" style="display:none;">
-                            <a href="{{ i.settings.blender3_link }}" class="btn btn--small ">SHOP</a>
+                            <a href="{{ i.settings.blender3_link }}" class="btn btn--small ">{{ i.settings.blender3_link_text }}</a>
                             </div>
                         {% endfor %}
                     </div>
@@ -166,6 +166,11 @@
     "label": "Blender 1 Link"
     },
     {
+    "type": "text",
+    "id": "blender1_link_text",
+    "label": "Blender 1 Link Text"
+    },
+    {
     "type":"image_picker",
     "id":"bottom_blender2",
     "label":"Bottom Blender ",
@@ -189,6 +194,11 @@
     "label": "Blender 2 Link"
     },
     {
+    "type": "text",
+    "id": "blender2_link_text",
+    "label": "Blender 2 Link Text"
+    },
+    {
     "type":"image_picker",
     "id":"bottom_blender3",
     "label":"Bottom Blender 3",
@@ -210,6 +220,11 @@
     "type": "url",
     "id": "blender3_link",
     "label": "Blender 3 Link"
+    },
+    {
+    "type": "text",
+    "id": "blender3_link_text",
+    "label": "Blender 3 Link Text"
     }
     ]
     }
