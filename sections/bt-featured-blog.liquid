@@ -35,8 +35,9 @@
                   <hr class="section5-red-hr">
                   <div class="section5-recipe-text">{{i.settings.recipe1_text}}</div>
                   <div style="margin-top:15px;">
-                    <a href="{{ i.settings.recipe1_url }}" class="section5-learn-more">{{i.settings.recipe1_learnmore}}</a>
-                    <span class="section5-arrow">&gt;</span>
+                    <a href="{{ i.settings.recipe1_url }}" class="section5-learn-more">{{i.settings.recipe1_learnmore}}
+                      <i class="fa fa-angle-right"></i>
+                    </a>
                   </div>
                   </div>
                   {% endfor %}
@@ -77,7 +78,7 @@
                   <div class="section5-recipe-text">{{i.settings.recipe2_text}}</div>
                   <div style="margin-top:15px;">
                     <a href="{{ i.settings.recipe2_url }}" class="section5-learn-more">{{i.settings.recipe2_learnmore}}</a>
-                    <span class="section5-arrow">&gt;</span>
+                    <i class="fa fa-angle-right"></i>
                   </div>
                   </div>
                   {% endfor %}
@@ -90,15 +91,6 @@
   </div>
   </div>
 <style>
-  .section5-arrow{
-    position: absolute;
-    margin-top: 7px;
-    font-size: 9px;
-    margin-left: 3px;
-    font-weight: 900;
-    font-style: italic;
-    color: #f41d2f;
-  }
   .section5-learn-more{
     color: #f41d2f;
     font-size: 18px;

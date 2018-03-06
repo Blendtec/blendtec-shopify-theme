@@ -1,0 +1,113 @@
+<div class="blog-filters">
+    <div class="blog-filtering">
+        <span class="blog-filters-title">Special Diets: </span>
+        <select data-collection-handle="{{ baseUrlTag }}" style="padding-left: 70px;" class="blog-input-field">
+            <option value="">All</option>
+            <option {% if current_tags contains 'Baby Food'%}selected="selected"{% endif %} value="Baby Food">Baby Food</option>
+            <option {% if current_tags contains 'Dairy-free' %}selected="selected"{% endif %} value="Dairy-free">Dairy-free</option>
+            <option {% if current_tags contains 'Gluten Free' %}selected="selected"{% endif %} value="Gluten Free">Gluten Free</option>
+            <option {% if current_tags contains 'Milk Alternatives' %}selected="selected"{% endif %} value="Milk Alternatives">Milk Alternatives</option>
+            <option {% if current_tags contains 'Pet Food' %}selected="selected"{% endif %} value="Pet Food">Pet Food</option>
+            <option {% if current_tags contains 'Raw' %}selected="selected"{% endif %} value="Raw">Raw</option>
+            <option {% if current_tags contains 'Vegan' %}selected="selected"{% endif %} value="Vegan">Vegan</option>
+            <option {% if current_tags contains 'Vegetarian' %}selected="selected"{% endif %} value="Vegetarian">Vegetarian</option>
+        </select>
+    </div>
+    <div class="blog-filtering">
+        <span class="blog-filters-title">Ingredients: </span>
+        <select data-collection-handle="{{ baseUrlTag }}" style="padding-left: 70px;" class="blog-input-field">
+            <option value="">All</option>
+            <option {% if current_tags contains 'Alcohol' %}selected="selected"{% endif %} value="Alcohol">Alcohol</option>
+            <option {% if current_tags contains 'almonds' %}selected="selected"{% endif %} value="almonds">almonds</option>
+            <option {% if current_tags contains 'Apple' %}selected="selected"{% endif %} value="Apple">Apple</option>
+            <option {% if current_tags contains 'Banana' %}selected="selected"{% endif %} value="Banana">Banana</option>
+            <option {% if current_tags contains 'Berries' %}selected="selected"{% endif %} value="Berries">Berries</option>
+            <option {% if current_tags contains 'Chocolate' %}selected="selected"{% endif %} value="Chocolate">Chocolate</option>
+            <option {% if current_tags contains 'Coffee' %}selected="selected"{% endif %} value="Coffee">Coffee</option>
+            <option {% if current_tags contains 'Fruit' %}selected="selected"{% endif %} value="Fruit">Fruit</option>
+            <option {% if current_tags contains 'Nut Butters' %}selected="selected"{% endif %} value="Nut Butters">Nut Butters</option>
+            <option {% if current_tags contains 'Papaya' %}selected="selected"{% endif %} value="Papaya">Papaya</option>
+            <option {% if current_tags contains 'peanut-butter' %}selected="selected"{% endif %} value="peanut-butter">peanut-butter</option>
+            <option {% if current_tags contains 'Potato' %}selected="selected"{% endif %} value="Potato">Potato</option>
+            <option {% if current_tags contains 'spinach' %}selected="selected"{% endif %} value="spinach">spinach</option>
+            <option {% if current_tags contains 'Tomato' %}selected="selected"{% endif %} value="Tomato">Tomato</option>
+        </select>
+    </div>
+    <div class="blog-filtering">
+        <span class="blog-filters-title">Type: </span>
+        <select data-collection-handle="{{ baseUrlTag }}" style="padding-left: 70px;" class="blog-input-field">
+            <option value="">All</option>
+            <option {% if current_tags contains 'Alcohol' %}selected="selected"{% endif %} value="Alcohol">Alcohol</option>
+            <option {% if current_tags contains 'Appetizers' %}selected="selected"{% endif %} value="Appetizers">Appetizers</option>
+            <option {% if current_tags contains 'Banana' %}selected="selected"{% endif %} value="Banana">Banana</option>
+            <option {% if current_tags contains 'Batters' %}selected="selected"{% endif %} value="Batters">Batters</option>
+            <option {% if current_tags contains 'Beauty' %}selected="selected"{% endif %} value="Beauty">Beauty</option>
+            <option {% if current_tags contains 'Beverages' %}selected="selected"{% endif %} value="Beverages">Beverages</option>
+            <option {% if current_tags contains 'Breads and Batters' %}selected="selected"{% endif %} value="Breads and Batters">Breads and Batters</option>
+            <option {% if current_tags contains 'Cereals and Bars' %}selected="selected"{% endif %} value="Cereals and Bars">Cereals and Bars</option>
+            <option {% if current_tags contains 'Chilled Soups' %}selected="selected"{% endif %} value="Chilled Soups">Chilled Soups</option>
+            <option {% if current_tags contains 'Cookies' %}selected="selected"{% endif %} value="Cookies">Cookies</option>
+            <option {% if current_tags contains 'Desserts' %}selected="selected"{% endif %} value="Desserts">Desserts</option>
+            <option {% if current_tags contains 'Dinner' %}selected="selected"{% endif %} value="Dinner">Dinner</option>
+            <option {% if current_tags contains 'Dips' %}selected="selected"{% endif %} value="Dips">Dips</option>
+            <option {% if current_tags contains 'Dressings and Marinades' %}selected="selected"{% endif %} value="Dressings and Marinades">Dressings and Marinades</option>
+            <option {% if current_tags contains 'Frozen' %}selected="selected"{% endif %} value="Frozen">Frozen</option>
+            <option {% if current_tags contains 'Fruit' %}selected="selected"{% endif %} value="Fruit">Fruit</option>
+            <option {% if current_tags contains 'Green Smoothies' %}selected="selected"{% endif %} value="Green Smoothies">Green Smoothies</option>
+            <option {% if current_tags contains 'Ice Cream' %}selected="selected"{% endif %} value="Ice Cream">Ice Cream</option>
+            <option {% if current_tags contains 'Jams' %}selected="selected"{% endif %} value="Jams">Jams</option>
+            <option {% if current_tags contains 'Juices' %}selected="selected"{% endif %} value="Juices">Juices</option>
+            <option {% if current_tags contains 'Kids' %}selected="selected"{% endif %} value="Kids">Kids</option>
+            <option {% if current_tags contains 'Lunch' %}selected="selected"{% endif %} value="Lunch">Lunch</option>
+            <option {% if current_tags contains 'Meal Ideas' %}selected="selected"{% endif %} value="Meal Ideas">Meal Ideas</option>
+            <option {% if current_tags contains 'Milkshakes' %}selected="selected"{% endif %} value="Milkshakes">Milkshakes</option>
+            <option {% if current_tags contains 'Muffins' %}selected="selected"{% endif %} value="Muffins">Muffins</option>
+            <option {% if current_tags contains 'Nut Butters' %}selected="selected"{% endif %} value="Nut Butters">Nut Butters</option>
+            <option {% if current_tags contains 'pancakes' %}selected="selected"{% endif %} value="pancakes">pancakes</option>
+            <option {% if current_tags contains 'Pet Food' %}selected="selected"{% endif %} value="Pet Food">Pet Food</option>
+            <option {% if current_tags contains 'Quick Breads' %}selected="selected"{% endif %} value="Quick Breads">Quick Breads</option>
+            <option {% if current_tags contains 'Salad' %}selected="selected"{% endif %} value="Salad">Salad</option>
+            <option {% if current_tags contains 'Sauces' %}selected="selected"{% endif %} value="Sauces">Sauces</option>
+            <option {% if current_tags contains 'Side dish' %}selected="selected"{% endif %} value="Side dish">Side dish</option>
+            <option {% if current_tags contains 'Smoothies' %}selected="selected"{% endif %} value="Smoothies">Smoothies</option>
+            <option {% if current_tags contains 'Snacks' %}selected="selected"{% endif %} value="Snacks">Snacks</option>
+            <option {% if current_tags contains 'Soups' %}selected="selected"{% endif %} value="Soups">Soups</option>
+            <option {% if current_tags contains 'Spreads' %}selected="selected"{% endif %} value="Spreads">Spreads</option>
+            <option {% if current_tags contains 'Spring and Summer' %}selected="selected"{% endif %} value="Spring and Summer">Spring and Summer</option>
+            <option {% if current_tags contains 'Sweet Sips' %}selected="selected"{% endif %} value="Sweet Sips">Sweet Sips</option>
+            <option {% if current_tags contains 'Syrups' %}selected="selected"{% endif %} value="Syrups">Syrups</option>
+            <option {% if current_tags contains 'Waffles' %}selected="selected"{% endif %} value="Waffles">Waffles</option>
+            <option {% if current_tags contains 'Warm Soups' %}selected="selected"{% endif %} value="Warm Soups">Warm Soups</option>
+            <option {% if current_tags contains 'Whole Juices' %}selected="selected"{% endif %} value="Whole Juices">Whole Juices</option>
+            <option {% if current_tags contains 'Whole Wheat' %}selected="selected"{% endif %} value="Whole Wheat">Whole Wheat</option>
+            <option {% if current_tags contains 'Yeast Breads' %}selected="selected"{% endif %} value="Yeast Breads">Yeast Breads</option>
+        </select>
+    </div>
+    <div class="blog-filtering">
+        <span class="blog-filters-title">Seasons & Holidays: </span>
+        <select data-collection-handle="{{ baseUrlTag }}" style="padding-left: 70px;" class="blog-input-field">
+            <option value="">All</option>
+            <option {% if current_tags contains 'Christmas' %}selected="selected"{% endif %} value="Christmas">Christmas</option>
+            <option {% if current_tags contains 'Fall' %}selected="selected"{% endif %} value="Fall">Fall</option>
+            <option {% if current_tags contains 'Game Day' %}selected="selected"{% endif %} value="Game Day">Game Day</option>
+            <option {% if current_tags contains 'Holidays and Seasons' %}selected="selected"{% endif %} value="Holidays and Seasons">Holidays &amp; Seasons</option>
+            <option {% if current_tags contains 'Spring and Summer' %}selected="selected"{% endif %} value="Spring and Summer">Spring and Summer</option>
+            <option {% if current_tags contains 'Thanksgiving' %}selected="selected"{% endif %} value="Thanksgiving">Thanksgiving</option>
+            <option {% if current_tags contains 'Winter' %}selected="selected"{% endif %} value="Winter">Winter</option>
+        </select>
+    </div>
+    <div class="blog-filtering">
+        <form action="/search" method="get" class="" role="search">
+            <input style="height:38px;" type="search" id="searchBarInput" name="q" value=""
+                   placeholder="Search {{ baseUrlTag }}" class="blog-input-field" aria-label="Search {{ baseUrlTag }}"
+                   autocomplete="on" tabindex="0">
+            <input type="hidden" name="type" value="article"/>
+        </form>
+    </div>
+</div>
+<script>
+	$(function () {
+		var tags = [];
+		ira.blogFilter();
+	});
+</script>

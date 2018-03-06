@@ -29,7 +29,7 @@
     {% for i in section.blocks %}
       <div class="show-block-{{forloop.index}}" style="display:none;">
   <div class="small-left-padding grid__item large--one-third medium--one-half">
-    <a href="{{i.settings.section3_top_button_link}}" class="button-hero">{{i.settings.section3_top_button}}</a>
+    <a href="{{i.settings.section3_top_button_link}}" class="btn btn--small">{{i.settings.section3_top_button}}</a>
      </div>
      </div>
      {% endfor %}
@@ -175,17 +175,6 @@
   .bt-third{
       background-size: cover;
       background-repeat: no-repeat;
-  }
-
-  .button-hero{
-      background-color: #f41d2f;
-      padding: 5px 10px 5px 10px;
-      color: white;
-      font-size: 14px;
-      font-weight: 900;
-      border-radius: 0;
-      line-height: 1.6;
-      display: inline-block;
   }
 
   .wavy-background{

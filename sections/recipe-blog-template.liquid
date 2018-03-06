@@ -58,8 +58,10 @@
 <div class="blog-filters-wrapper has-border">
         {% assign theTagsToSearch = blog.all_tags %}
         {% assign baseUrlTag = blog.title | downcase %}
+    <div class="grid">
         {% include 'breadcrumb' %}
-    <div >{% include 'blog-tag' %}</div>
+    </div>
+    <div class="grid">{% include 'recipe-search' %}</div>
 </div>
 <div class="grid__item grid--full large--one-whole" data-grid-subpixel itemscope itemtype="http://schema.org/ItemList">
         {% comment %}
