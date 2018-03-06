@@ -1,18 +1,16 @@
 <div class="bt-fifth section5-background javascript-load-image" backgroundimagesrc1200="{{section.settings.section5_background | img_url: '1200x' }}" backgroundimagesrc900="{{section.settings.section5_background | img_url: '900x' }}" backgroundimagesrc800="{{section.settings.section5_background | img_url: '800x' }}" backgroundimagesrc700="{{section.settings.section5_background | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.section5_background | img_url: '600x' }}" backgroundimagesrc500="{{section.settings.section5_background | img_url: '500x' }}" backgroundimagesrc400="{{section.settings.section5_background | img_url: '400x' }}">
-  <div class="grid" style="padding-top:35px;" class="flex-wrapper-large">
-    <div class="grid__item large--one-twelfth medium--one-twelfth"></div>
-    <div class="grid__item large--five-sixths medium--five-sixths">
-      <div class="grid flex-wrapper-large">
-        <div class="grid__item large--one-half medium--two-thirds">
+  <div class="grid blocks-wrapper" style="">
+      <div class="">
+        <div class="featured-blog-block block-featured-left">
           <a
           class="show-block-href"
           {% for i in section.blocks %}
             {{ forloop.index }}href="{{i.settings.recipe1_url}}"
           {% endfor %}
            href="">
-            <div class="grid section5-recipe-container">
-            	<div style="padding:0;" class="grid__item large--one-half medium--one-half small--one-half">
-              	<img class="javascript-load-image recipe-image" style="width:100%;"
+            <div class="section5-recipe-container">
+              <div style="padding:0;" class="image-wrapper-featured-blog">
+                <img class="javascript-load-image recipe-image" style="width:100%;height:100%;"
                 numBlocks="{{section.blocks.size}}"
                 typeImage="imagebasesrc"
                 {% for i in section.blocks %}
@@ -27,7 +25,7 @@
 
                 {% endfor %}>
               </div>
-            	<div class="grid__item large--one-half medium--one-half small--one-half">
+              <div class="text-wrapper-featured-blog">
               {% for i in section.blocks %}
                 <div class="show-block-{{forloop.index}}" style="display:none;">
                   <div class="section5-small-description">{{ i.settings.recipe1_label }}</div>
@@ -35,9 +33,8 @@
                   <hr class="section5-red-hr">
                   <div class="section5-recipe-text">{{i.settings.recipe1_text}}</div>
                   <div style="margin-top:15px;">
-                    <a href="{{ i.settings.recipe1_url }}" class="section5-learn-more">{{i.settings.recipe1_learnmore}}
-                      <i class="fa fa-angle-right"></i>
-                    </a>
+                    <a href="{{ i.settings.recipe1_url }}" class="section5-learn-more">{{i.settings.recipe1_learnmore}}</a>
+                    <span class="section5-arrow">&gt;</span>
                   </div>
                   </div>
                   {% endfor %}
@@ -45,15 +42,16 @@
             </div>
           </a>
         </div>
-        <div class="grid__item large--one-half medium--two-thirds">
+        <div class="featured-blog-block block-featured-right">
           <a
           class="show-block-href"
           {% for i in section.blocks %}
             {{ forloop.index }}href="{{i.settings.recipe2_url}}"
-          {% endfor %}>
-            <div class="grid section5-recipe-container">
-              <div style="padding:0;" class="grid__item large--one-half medium--one-half small--one-half">
-              	<img class="javascript-load-image recipe-image" style="width:100%;"
+          {% endfor %}
+          href="">
+            <div class="section5-recipe-container">
+              <div style="padding:0;" class="image-wrapper-featured-blog">
+                <img class="javascript-load-image recipe-image" style="width:100%;height:100%;"
                 numBlocks="{{section.blocks.size}}"
                 typeImage="imagebasesrc"
                 {% for i in section.blocks %}
@@ -69,7 +67,7 @@
                 {% endfor %}>
 
               </div>
-              <div class="grid__item large--one-half medium--one-half small--one-half">
+              <div class="text-wrapper-featured-blog">
               {% for i in section.blocks %}
                 <div class="show-block-{{forloop.index}}" style="display:none;">
                   <div class="section5-small-description">{{ i.settings.recipe2_label }}</div>
@@ -78,7 +76,7 @@
                   <div class="section5-recipe-text">{{i.settings.recipe2_text}}</div>
                   <div style="margin-top:15px;">
                     <a href="{{ i.settings.recipe2_url }}" class="section5-learn-more">{{i.settings.recipe2_learnmore}}</a>
-                    <i class="fa fa-angle-right"></i>
+                    <span class="section5-arrow">&gt;</span>
                   </div>
                   </div>
                   {% endfor %}
@@ -87,10 +85,79 @@
           </a>
         </div>
       </div>
-    </div>
   </div>
   </div>
 <style>
+.blocks-wrapper{
+  padding-top:35px;
+  max-width:{{ section.settings.block_width | times: 2 | plus: 500 }}px;
+  margin:auto;
+}
+.block-featured-left{
+  float:left;
+  margin-left:100px;
+}
+.block-featured-right{
+  float:right;
+  margin-right:100px;
+}
+@media screen and (max-width: {{section.settings.block_width | times: 2 | plus: 300}}px) {
+  .block-featured-left{
+    margin-left:50px;
+  }
+  .block-featured-right{
+    margin-right:50px;
+  }
+}
+@media screen and (max-width: {{section.settings.block_width | times: 2 | plus: 100}}px) {
+  .block-featured-left{
+    margin-left:0px;
+  }
+  .block-featured-right{
+    margin-right:0px;
+  }
+}
+@media screen and (max-width: {{section.settings.block_width | times: 2 }}px) {
+
+  .block-featured-right{
+    float:left;
+    margin-top:10px;
+  }
+  .blocks-wrapper{
+    max-width:{{ section.settings.block_width }}px;
+    margin:auto;
+  }
+}
+
+.image-wrapper-featured-blog{
+    padding: 0;
+    width: 50%;
+    display: inline-block;
+    float: left;
+}
+.text-wrapper-featured-blog{
+  width:{{section.settings.block_width | divided_by: 2 | minus: 20}}px;
+  height:{{section.settings.block_height}}px;
+  float:right;
+}
+.image-wrapper-featured-blog{
+  width:{{section.settings.block_width| divided_by: 2}}px;
+  height:{{section.settings.block_height}}px;
+  float:left;
+}
+.featured-blog-block{
+  width:{{section.settings.block_width}}px;
+  height:{{section.settings.block_height}}px;
+}
+  .section5-arrow{
+    position: absolute;
+    margin-top: 7px;
+    font-size: 9px;
+    margin-left: 3px;
+    font-weight: 900;
+    font-style: italic;
+    color: #f41d2f;
+  }
   .section5-learn-more{
     color: #f41d2f;
     font-size: 18px;
@@ -99,17 +166,17 @@
     font-weight: 900;
   }
   .review-text{
-  	color:black;
+    color:black;
     font-weight:600;
     line-height:1.25;
   }
-  	.section5-learn-more{
-		color: #f41d2f;
-		font-size:18px;
-		font-style:italic;
-		text-decoration:none;
-		font-weight:900;
-	}
+    .section5-learn-more{
+    color: #f41d2f;
+    font-size:18px;
+    font-style:italic;
+    text-decoration:none;
+    font-weight:900;
+  }
   .section5-small-description{
       margin-top: 25px;
       color: #3d3f4b;
@@ -123,13 +190,12 @@
   }
   .section5-recipe-text{
       color: #3d3f4b;
-    	line-height: 1.2;
+      line-height: 1.2;
   }
   .section5-recipe-container{
     height:100%;
-	  border: solid 1px #979797;
+    border: solid 1px #979797;
     margin:3px;
-    padding-right: 5px;
     background-color: #979797;
   }
   .section5-recipe-container:hover {
@@ -139,7 +205,7 @@ box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 
   }
   .section5-background{
-  	background-size: cover;
+    background-size: cover;
   }
   .section5-red-hr{
     border-color: #f41d2f;
@@ -147,6 +213,22 @@ box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
     margin: 0 auto;
     padding: 10px;
   }
+@media screen and (max-width: {{section.settings.block_width | minus: 1}}px) {
+  .section5-recipe-container{
+    margin: 0px;
+  }
+.text-wrapper-featured-blog{
+  float:left;
+  padding:3px;
+}
+.featured-blog-block{
+  width:{{section.settings.block_width | divided_by: 2}}px;
+  height:{{section.settings.block_height | times: 2}}px;
+}
+  .blocks-wrapper{
+    max-width:{{ section.settings.block_width | divided_by: 2 }}px;
+  }
+}
 </style>
 
 {{ 'autofit_images.js' | asset_url | script_tag }}
@@ -161,6 +243,26 @@ box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 "id":"section5_background",
 "label":"Section Background Image",
 "info":"This is the background image for the section"
+},
+{
+  "type":"range",
+  "id":"block_width",
+  "min":500,
+  "max":900,
+  "step":5,
+  "unit":"px",
+  "label":"Width of the Blocks",
+  "default":670
+},
+{
+  "type":"range",
+  "id":"block_height",
+  "min":300,
+  "max":700,
+  "step":5,
+  "unit":"px",
+  "label":"Height of the Blocks",
+  "default":450
 }
 ],
 "blocks":[
