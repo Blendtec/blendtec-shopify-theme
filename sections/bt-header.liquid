@@ -140,7 +140,7 @@
         </div>
 
         <div class="grid__item full-height large--five-twelfths medium-down--hide secondary-navbar questions-margin" style="background-color:transparent;">
-            <span class="fallback-text" tabindex="-1">{{section.settings.questions_text }}</span>
+            <span class="fallback-text" tabindex="-1">{{section.settings.questions_text }}<a href="tel:{{section.settings.questions_text_number}}">{{section.settings.questions_text_number}}</a></span>
         </div>
         <div class="grid__item full-height large--one-twelfth medium-down--hide hide-1100px">
           <div class="nav-dot"></div>
@@ -535,7 +535,13 @@
         "type": "text",
         "id": "questions_text",
         "label": "Text",
-        "default": "Questions? Call 1-800-748-5400"
+        "default": "Questions? Call "
+      },
+      {
+        "type": "text",
+        "id": "questions_text_number",
+        "label": "Text",
+        "default": "1-800-748-5400"
       },
       {
         "type": "url",
