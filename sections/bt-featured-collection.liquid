@@ -1,239 +1,267 @@
+
+
 <div class="bt-featured-collection">
-
-    <div class="grid" style="padding-top:25%;padding-bottom:2%; ">
-        <hr>
-    </div>
-    <div class="blenders-bottom-background bottom-blenders-wrapper javascript-load-image"
-         backgroundimagesrc300="{{ section.settings.background_image2 | img_url: '300x' }}">
-        <div class="grid " style="padding-bottom:50px;">
-            <div class="grid__item large--one-third medium--one-third bottom-blender">
-                <div>
-                {% for i in section.blocks %}
-                  <div class="show-block-{{forloop.index}}" style="display:none;">
-                    <h4 class="heavy">{{ i.settings.blender1_title }}</h4>
-                    </div>
-                    {% endfor %}
-                    <div class="br-gradient-grey"></div>
-                    <div class="grid">
-                        <div class="grid__item large--one-half description-text">
-                        {% for i in section.blocks %}
-                          <div class="show-block-{{forloop.index}}" style="display:none;">
-                            <div>
-                                {{ i.settings.blender1_text }}
-                            </div>
-                            </div>
-                        {% endfor %}
-                        {% for i in section.blocks %}
-                         <div class="show-block-{{forloop.index}}" style="display:none;">
-                            <a href="{{ i.settings.blender1_link }}" class="btn btn--small">{{ i.settings.blender1_link_text }}</a>
-                            </div>
-                        {% endfor %}
+   <div class="grid" style="padding-top:25%;padding-bottom:2%; ">
+      <hr>
+   </div>
+   <div class="blenders-bottom-background bottom-blenders-wrapper javascript-load-image"
+      backgroundimagesrc300="{{ section.settings.background_image2 | img_url: '300x' }}">
+      <div class="grid " style="padding-bottom:50px;">
+         <div class="grid__item large--one-third medium--one-third bottom-blender">
+            <div>
+               {% for i in section.blocks %}
+               <div class="show-block-{{forloop.index}}" style="display:none;">
+                  <h4 class="heavy" style="color:{{i.settings.blender1_title_color}}">{{ i.settings.blender1_title }}</h4>
+               </div>
+               {% endfor %}
+               <div class="br-gradient-grey"></div>
+               <div class="grid">
+                  <div class="grid__item large--one-half description-text">
+                     {% for i in section.blocks %}
+                     <div class="show-block-{{forloop.index}}" style="display:none;">
+                        <div style="color:{{i.settings.blender1_text_color}}">
+                           {{ i.settings.blender1_text }}
                         </div>
-                        <div class="grid__item large--one-half">
-                            <img class=" javascript-load-image" style="width:100%"
-                            numBlocks="{{section.blocks.size}}"
-                            typeImage="imagebasesrc"
-                            {% for i in section.blocks %}
-                                {% for y in (3..12) %}
-                                    {% assign imageSize = y | times: 50 | downcase | append: 'x' %}
-                                    {{placement}}imagebasesrc{{ y | times: 50 }}="{{ i.settings.bottom_blender1 | img_url: imageSize }}"
-                                {% endfor %}
-                            {% endfor %}
-                            >
-                        </div>
-                    </div>
-                </div>
+                     </div>
+                     {% endfor %}
+                     {% for i in section.blocks %}
+                     <div class="show-block-{{forloop.index}}" style="display:none;">
+                        <a href="{{ i.settings.blender1_link }}" class="btn btn--small">{{ i.settings.blender1_link_text }}</a>
+                     </div>
+                     {% endfor %}
+                  </div>
+                  <div class="grid__item large--one-half">
+                     <img class=" javascript-load-image" style="width:100%"
+                     numBlocks="{{section.blocks.size}}"
+                     typeImage="imagebasesrc"
+                     {% for i in section.blocks %}
+                     {% for y in (3..12) %}
+                     {% assign imageSize = y | times: 50 | downcase | append: 'x' %}
+                     {{placement}}imagebasesrc{{ y | times: 50 }}="{{ i.settings.bottom_blender1 | img_url: imageSize }}"
+                     {% endfor %}
+                     {% endfor %}
+                     >
+                  </div>
+               </div>
             </div>
-            <div class="grid__item large--one-third medium--one-third bottom-blender">
-
-                {% for i in section.blocks %}
+         </div>
+         <div class="grid__item large--one-third medium--one-third bottom-blender">
+            {% for i in section.blocks %}
+            <div class="show-block-{{forloop.index}}" style="display:none;">
+               <h4 class="heavy" style="color:{{i.settings.blender2_title_color}}">{{ i.settings.blender2_title }}</h4>
+            </div>
+            {% endfor %}
+            <div class="br-gradient-silver"></div>
+            <div class="grid">
+               <div class="grid__item large--one-half description-text">
+                  {% for i in section.blocks %}
                   <div class="show-block-{{forloop.index}}" style="display:none;">
-                    <h4 class="heavy">{{ i.settings.blender2_title }}</h4>
-                    </div>
-                    {% endfor %}
-                <div class="br-gradient-silver"></div>
-                <div class="grid">
-                    <div class="grid__item large--one-half description-text">
-                        {% for i in section.blocks %}
-                          <div class="show-block-{{forloop.index}}" style="display:none;">
-                            <div>
-                                {{ i.settings.blender2_text }}
-                            </div>
-                            </div>
-                        {% endfor %}
-                        {% for i in section.blocks %}
-                         <div class="show-block-{{forloop.index}}" style="display:none;">
-                            <a href="{{ i.settings.blender2_link }}" class="btn btn--small">{{ i.settings.blender2_link_text }}</a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="grid__item large--one-half">
-                        <img class=" javascript-load-image" style="width:100%"
-                            numBlocks="{{section.blocks.size}}"
-                            typeImage="imagebasesrc"
-                            {% for i in section.blocks %}
-                                {% for y in (3..12) %}
-                                    {% assign imageSize = y | times: 50 | downcase | append: 'x' %}
-                                    {{placement}}imagebasesrc{{ y | times: 50 }}="{{ i.settings.bottom_blender2 | img_url: imageSize }}"
-                                {% endfor %}
-                            {% endfor %}
-                        >
-                    </div>
-                </div>
-            </div>
-            <div class="grid__item large--one-third medium--one-third bottom-blender">
-
-                {% for i in section.blocks %}
+                     <div style="color:{{i.settings.blender2_text_color}}">
+                        {{ i.settings.blender2_text }}
+                     </div>
+                  </div>
+                  {% endfor %}
+                  {% for i in section.blocks %}
                   <div class="show-block-{{forloop.index}}" style="display:none;">
-                    <h4 class="heavy">{{ i.settings.blender3_title }}</h4>
-                    </div>
-                    {% endfor %}
-                <div class="br-gradient-gold"></div>
-                <div class="grid">
-                    <div class="grid__item large--one-half description-text">
-                        {% for i in section.blocks %}
-                          <div class="show-block-{{forloop.index}}" style="display:none;">
-                            <div>
-                                {{ i.settings.blender3_text }}
-                            </div>
-                            </div>
-                        {% endfor %}
-                        {% for i in section.blocks %}
-                        <div class="show-block-{{forloop.index}}" style="display:none;">
-                            <a href="{{ i.settings.blender3_link }}" class="btn btn--small ">{{ i.settings.blender3_link_text }}</a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="grid__item large--one-half">
-                        <img class=" javascript-load-image" style="width:100%"
-                            numBlocks="{{section.blocks.size}}"
-                            typeImage="imagebasesrc"
-                            {% for i in section.blocks %}
-                                {% for y in (3..12) %}
-                                    {% assign imageSize = y | times: 50 | downcase | append: 'x' %}
-                                    {{placement}}imagebasesrc{{ y | times: 50 }}="{{ i.settings.bottom_blender3 | img_url: imageSize }}"
-                                {% endfor %}
-                            {% endfor %}
-                        >
-                    </div>
-                </div>
+                     <a href="{{ i.settings.blender2_link }}" class="btn btn--small">{{ i.settings.blender2_link_text }}</a>
+                  </div>
+                  {% endfor %}
+               </div>
+               <div class="grid__item large--one-half">
+                  <img class=" javascript-load-image" style="width:100%"
+                  numBlocks="{{section.blocks.size}}"
+                  typeImage="imagebasesrc"
+                  {% for i in section.blocks %}
+                  {% for y in (3..12) %}
+                  {% assign imageSize = y | times: 50 | downcase | append: 'x' %}
+                  {{placement}}imagebasesrc{{ y | times: 50 }}="{{ i.settings.bottom_blender2 | img_url: imageSize }}"
+                  {% endfor %}
+                  {% endfor %}
+                  >
+               </div>
             </div>
-        </div>
-    </div>
+         </div>
+         <div class="grid__item large--one-third medium--one-third bottom-blender">
+            {% for i in section.blocks %}
+            <div class="show-block-{{forloop.index}}" style="display:none;">
+               <h4 class="heavy" style="color:{{i.settings.blender3_title_color}}">{{ i.settings.blender3_title }}</h4>
+            </div>
+            {% endfor %}
+            <div class="br-gradient-gold"></div>
+            <div class="grid">
+               <div class="grid__item large--one-half description-text">
+                  {% for i in section.blocks %}
+                  <div class="show-block-{{forloop.index}}" style="display:none;">
+                     <div style="color:{{i.settings.blender3_text_color}}">
+                        {{ i.settings.blender3_text }}
+                     </div>
+                  </div>
+                  {% endfor %}
+                  {% for i in section.blocks %}
+                  <div class="show-block-{{forloop.index}}" style="display:none;">
+                     <a href="{{ i.settings.blender3_link }}" class="btn btn--small ">{{ i.settings.blender3_link_text }}</a>
+                  </div>
+                  {% endfor %}
+               </div>
+               <div class="grid__item large--one-half">
+                  <img class=" javascript-load-image" style="width:100%"
+                  numBlocks="{{section.blocks.size}}"
+                  typeImage="imagebasesrc"
+                  {% for i in section.blocks %}
+                  {% for y in (3..12) %}
+                  {% assign imageSize = y | times: 50 | downcase | append: 'x' %}
+                  {{placement}}imagebasesrc{{ y | times: 50 }}="{{ i.settings.bottom_blender3 | img_url: imageSize }}"
+                  {% endfor %}
+                  {% endfor %}
+                  >
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 
 {{ 'autofit_images.js' | asset_url | script_tag }}
 
 {% schema %}
-    {
-    "name":"bt-featured-collection",
-    "class":"bt-featured-collection",
-    "max_blocks":9,
-    "settings":[
-    {
-    "type":"image_picker",
-    "id":"background_image2",
-    "label":"Background Image",
-    "info":"The background image for the blenders"
-    }
-    ],
-    "blocks":[
-    {
-    "type":"header",
-    "name":"bt-featured-collection",
-    "settings":[
-    {
-    "type":"image_picker",
-    "id":"bottom_blender1",
-    "label":"Bottom Blender 1",
-    "info":"1st Blender Image on Bottom of Section"
-    },
-    {
-    "type":"text",
-    "id":"blender1_title",
-    "label":"Blender 1 title",
-    "default":"CLASSIC"
-    },
-    {
-    "type":"text",
-    "id":"blender1_text",
-    "label":"Blender 1 text",
-    "default":"The famous, powerful original. Our Classic series blenders are the ultimate all-in-one appliance."
-    },
-    {
-    "type": "url",
-    "id": "blender1_link",
-    "label": "Blender 1 Link"
-    },
-    {
-    "type": "text",
-    "id": "blender1_link_text",
-    "label": "Blender 1 Link Text"
-    },
-    {
-    "type":"image_picker",
-    "id":"bottom_blender2",
-    "label":"Bottom Blender ",
-    "info":"2nd Blender Image on Bottom of Section"
-    },
-    {
-    "type":"text",
-    "id":"blender2_title",
-    "label":"Blender 2 title",
-    "default":"DESIGNER"
-    },
-    {
-    "type":"text",
-    "id":"blender2_text",
-    "label":"Blender 2 text",
-    "default":"Sleek, modern design paired with advanced, easy-to-use features make the Designer a modern kitchen must."
-    },
-    {
-    "type": "url",
-    "id": "blender2_link",
-    "label": "Blender 2 Link"
-    },
-    {
-    "type": "text",
-    "id": "blender2_link_text",
-    "label": "Blender 2 Link Text"
-    },
-    {
-    "type":"image_picker",
-    "id":"bottom_blender3",
-    "label":"Bottom Blender 3",
-    "info":"3rd Blender Image on Bottom of Section"
-    },
-    {
-    "type":"text",
-    "id":"blender3_title",
-    "label":"Blender 3 title",
-    "default":"PROFESSIONAL"
-    },
-    {
-    "type":"text",
-    "id":"blender3_text",
-    "label":"Blender 3 text",
-    "default":"The culmination of commercial-grade power and innovation now comes right to the home—quietly."
-    },
-    {
-    "type": "url",
-    "id": "blender3_link",
-    "label": "Blender 3 Link"
-    },
-    {
-    "type": "text",
-    "id": "blender3_link_text",
-    "label": "Blender 3 Link Text"
-    }
-    ]
-    }
-    ],
-    "presets": [
-    {
-    "name": "bt-featured-collection",
-    "category": "Image"
-    }
-    ]
-    }
+   {
+   	"name": "bt-featured-collection",
+   	"class": "bt-featured-collection",
+   	"max_blocks": 9,
+   	"settings": [{
+   		"type": "image_picker",
+   		"id": "background_image2",
+   		"label": "Background Image",
+   		"info": "The background image for the blenders"
+   	}],
+   	"blocks": [{
+   		"type": "header",
+   		"name": "bt-featured-collection",
+   		"settings": [{
+   				"type": "image_picker",
+   				"id": "bottom_blender1",
+   				"label": "Bottom Blender 1",
+   				"info": "1st Blender Image on Bottom of Section"
+   			},
+   			{
+   				"type": "text",
+   				"id": "blender1_title",
+   				"label": "Blender 1 title",
+   				"default": "CLASSIC"
+   			},
+   			{
+   				"type": "color",
+   				"id": "blender1_title_color",
+   				"label": "Blender 1 title color",
+   				"default": "#ffffff"
+   			},
+   			{
+   				"type": "text",
+   				"id": "blender1_text",
+   				"label": "Blender 1 text",
+   				"default": "The famous, powerful original. Our Classic series blenders are the ultimate all-in-one appliance."
+   			},
+   			{
+   				"type": "color",
+   				"id": "blender1_text_color",
+   				"label": "Blender 1 text color",
+   				"default": "#ffffff"
+   			},
+   			{
+   				"type": "url",
+   				"id": "blender1_link",
+   				"label": "Blender 1 Link"
+   			},
+   			{
+   				"type": "text",
+   				"id": "blender1_link_text",
+   				"label": "Blender 1 Link Text"
+   			},
+   			{
+   				"type": "image_picker",
+   				"id": "bottom_blender2",
+   				"label": "Bottom Blender ",
+   				"info": "2nd Blender Image on Bottom of Section"
+   			},
+   			{
+   				"type": "text",
+   				"id": "blender2_title",
+   				"label": "Blender 2 title",
+   				"default": "DESIGNER"
+   			},
+   			{
+   				"type": "color",
+   				"id": "blender2_title_color",
+   				"label": "Blender 2 title color",
+   				"default": "#ffffff"
+   			},
+   			{
+   				"type": "text",
+   				"id": "blender2_text",
+   				"label": "Blender 2 text",
+   				"default": "Sleek, modern design paired with advanced, easy-to-use features make the Designer a modern kitchen must."
+   			},
+   			{
+   				"type": "color",
+   				"id": "blender2_text_color",
+   				"label": "Blender 2 text color",
+   				"default": "#ffffff"
+   			},
+   			{
+   				"type": "url",
+   				"id": "blender2_link",
+   				"label": "Blender 2 Link"
+   			},
+   			{
+   				"type": "text",
+   				"id": "blender2_link_text",
+   				"label": "Blender 2 Link Text"
+   			},
+   			{
+   				"type": "image_picker",
+   				"id": "bottom_blender3",
+   				"label": "Bottom Blender 3",
+   				"info": "3rd Blender Image on Bottom of Section"
+   			},
+   			{
+   				"type": "text",
+   				"id": "blender3_title",
+   				"label": "Blender 3 title",
+   				"default": "PROFESSIONAL"
+   			},
+   			{
+   				"type": "color",
+   				"id": "blender3_title_color",
+   				"label": "Blender 3 title color",
+   				"default": "#ffffff"
+   			},
+   			{
+   				"type": "text",
+   				"id": "blender3_text",
+   				"label": "Blender 3 text",
+   				"default": "The culmination of commercial-grade power and innovation now comes right to the home—quietly."
+   			},
+   			{
+   				"type": "color",
+   				"id": "blender3_text_color",
+   				"label": "Blender 3 text color",
+   				"default": "#ffffff"
+   			},
+   			{
+   				"type": "url",
+   				"id": "blender3_link",
+   				"label": "Blender 3 Link"
+   			},
+   			{
+   				"type": "text",
+   				"id": "blender3_link_text",
+   				"label": "Blender 3 Link Text"
+   			}
+   		]
+   	}],
+   	"presets": [{
+   		"name": "bt-featured-collection",
+   		"category": "Image"
+   	}]
+   }
 {% endschema %}

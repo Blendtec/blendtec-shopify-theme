@@ -35,9 +35,9 @@ src="">
         <div class="header-text-wrapper small--hide">
         {% for i in section.blocks %}
         <div class="show-block-{{forloop.index}}" style="display:none;">
-            <h1 class="heavy">{{ i.settings.top_header }}</h1>
-            <h1 class="heavy" style="margin-left:8%;width:90%;">{{ i.settings.second_header }}</h1>
-            <h1 class="heavy" style="margin-left:12%;width:86%;">{{ i.settings.third_header }}</h1>
+            <h1 class="heavy" style="color:{{i.settings.line_one_color}}">{{ i.settings.line_one }}</h1>
+            <h1 class="heavy" style="margin-left:8%;width:90%;color:{{i.settings.line_two_color}}">{{ i.settings.line_two }}</h1>
+            <h1 class="heavy" style="margin-left:12%;width:86%;color:{{i.settings.line_three_color}}">{{ i.settings.line_three }}</h1>
             <div class="button-wrapper">
                 <button onclick="showPopUp()" class="btn btn--small btn--left">
                     <i class="fa fa-caret-right"></i>
@@ -52,9 +52,9 @@ src="">
         {% for i in section.blocks %}
         <div class="show-block-{{forloop.index}}" style="display:none;">
         <div class="header-text-wrapper">
-            <h1 class="heavy">{{ i.settings.top_header }}</h1>
-            <h1 class="heavy" style="margin-left:8%;width:90%;">{{ i.settings.second_header }}</h1>
-            <h1 class="heavy" style="margin-left:12%;width:86%;">{{ i.settings.third_header }}</h1>
+            <h1 class="heavy" style="color: {{i.settings.line_one_color}}">{{ i.settings.line_one }}</h1>
+            <h1 class="heavy" style="margin-left:8%;width:90%;color:{{i.settings.line_two_color}}">{{ i.settings.line_two }}</h1>
+            <h1 class="heavy" style="margin-left:12%;width:86%;color:{{i.settings.line_three_color}}">{{ i.settings.line_three }}</h1>
             <div class="button-wrapper">
                 <button onclick="showPopUp()" class="btn btn--small btn--left">
                     <i class="fa fa-caret-right"></i>
@@ -176,21 +176,39 @@ resizeVideo();
     },
     {
     "type":"text",
-    "id":"top_header",
-    "label":"Top Header",
+    "id":"line_one",
+    "label":"Header One",
     "default":"A BLENDER AS"
     },
     {
-    "type":"text",
-    "id":"second_header",
-    "label":"Second Header",
-    "default":"POWERFUL AS"
+           "type": "color",
+           "id": "line_one_color",
+           "label": "Header One Color",
+           "default": "#ffffff"
     },
     {
     "type":"text",
-    "id":"third_header",
-    "label":"Third Header",
+    "id":"line_two",
+    "label":"Header Two",
+    "default":"POWERFUL AS"
+    },
+    {
+           "type": "color",
+           "id": "line_two_color",
+           "label": "Header Two Color",
+           "default": "#ffffff"
+    },
+    {
+    "type":"text",
+    "id":"line_three",
+    "label":"Header Three",
     "default":"YOUR AMBITION"
+    },
+    {
+           "type": "color",
+           "id": "line_three_color",
+           "label": "Third Header Color",
+           "default": "#ffffff"
     },
     {
     "type":"text",

@@ -16,26 +16,26 @@
 >
 <div class="">
     <div class="grid" style="padding-top:130px;">
-  <div class="grid__item large--one-sixth medium--one-sixth small--one-sixth" style=""></div>
-  <div class="small-left-padding grid__item large--one-half">
-    {% for i in section.blocks %}
-      <div class="show-block-{{forloop.index}}" style="display:none;">
-        <h4 style="" class="h4-subhead">{{i.settings.h4_subhead}}</h4>
-        <h3 class="h3-subhead">{{i.settings.h3_headline}}</h3>
-        <h3 class="h3-subhead">{{i.settings.descriptive_title_top}}</h3>
+        <div class="grid__item large--one-sixth medium--one-sixth small--one-sixth"></div>
+        <div class="small-left-padding grid__item large--one-half">
+            {% for i in section.blocks %}
+                <div class="show-block-{{forloop.index}}" style="display:none;">
+                    <h4 class="h4-subhead" style="color:{{i.settings.h4_subhead_color}}">{{i.settings.h4_subhead}}</h4>
+                    <h3 class="h3-subhead" style="color:{{i.settings.h3_headline_color}}">{{i.settings.h3_headline}}</h3>
+                    <h3 class="h3-subhead" style="color:{{i.settings.descriptive_title_top_color}}">{{i.settings.descriptive_title_top}}</h3>
+                </div>
+            {% endfor %}
         </div>
+        {% for i in section.blocks %}
+            <div class="show-block-{{forloop.index}}" style="display:none;">
+                <div class="small-left-padding grid__item large--one-third medium--one-half">
+                    <a href="{{i.settings.section3_top_button_link}}" class="btn btn--small">{{i.settings.section3_top_button}}</a>
+                </div>
+            </div>
         {% endfor %}
-     </div>
-    {% for i in section.blocks %}
-      <div class="show-block-{{forloop.index}}" style="display:none;">
-  <div class="small-left-padding grid__item large--one-third medium--one-half">
-    <a href="{{i.settings.section3_top_button_link}}" class="btn btn--small">{{i.settings.section3_top_button}}</a>
-     </div>
-     </div>
-     {% endfor %}
-     </div>
-  </div>
-  <div class="gradient-black-background"></div>
+    </div>
+</div>
+<div class="gradient-black-background"></div>
 <div class="bt-third">
 
 <div class="black-background">
@@ -45,9 +45,9 @@
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
     {% for i in section.blocks %}
       <div class="show-block-{{forloop.index}}" style="display:none;">
-      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_topleft_title}}</h4>
-      <hr class="red-hr">
-      <div class="jar-description">{{i.settings.info_topleft_text}}</div>
+        <h4 style="color:{{i.settings.info_topleft_title_color}}" class="blender-text-descriptor-title">{{i.settings.info_topleft_title}}</h4>
+        <hr class="red-hr"/>
+        <div class="jar-description" style="color:{{i.settings.info_topleft_text_color}}">{{i.settings.info_topleft_text}}</div>
       </div>
       {% endfor %}
     </div>
@@ -57,21 +57,21 @@
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
     {% for i in section.blocks %}
       <div class="show-block-{{forloop.index}}" style="display:none;">
-      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_topright_title}}</h4>
-      <hr class="red-hr">
-      <div class="jar-description">{{i.settings.info_topright_text}}</div>
+        <h4 style="color:{{i.settings.info_topright_title_color}}" class="blender-text-descriptor-title">{{i.settings.info_topright_title}}</h4>
+        <hr class="red-hr">
+        <div class="jar-description" style="color:{{i.settings.info_topright_text_color}}">{{i.settings.info_topright_text}}</div>
       </div>
       {% endfor %}
     </div>
-     </div>
+    </div>
      <div style="margin-top:25px;" class="grid blender-text-descriptor-wrapper">
      <div class="grid__item large--one-twelfth medium--one-twelfth small--one-twelfth"></div>
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
     {% for i in section.blocks %}
       <div class="show-block-{{forloop.index}}" style="display:none;">
-      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_midleft_title}}</h4>
+      <h4 style="color:{{i.settings.info_midleft_title_color}}" class="blender-text-descriptor-title">{{i.settings.info_midleft_title}}</h4>
       <hr class="red-hr">
-      <div class="jar-description">{{i.settings.info_midleft_text}}</div>
+      <div class="jar-description" style="color: {{i.settings.info_midleft_text_color}}">{{i.settings.info_midleft_text}}</div>
       </div>
       {% endfor %}
     </div>
@@ -102,9 +102,9 @@
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
     {% for i in section.blocks %}
       <div class="show-block-{{forloop.index}}" style="display:none;">
-      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_bottomright_title}}</h4>
+      <h4 style="color:{{i.settings.info_bottomright_title_color}}" class="blender-text-descriptor-title">{{i.settings.info_bottomright_title}}</h4>
       <hr class="red-hr">
-      <div class="jar-description">{{i.settings.info_bottomright_text}}</div>
+      <div style="color:{{i.settings.info_bottomright_text_color}}" class="jar-description">{{i.settings.info_bottomright_text}}</div>
       </div>
       {% endfor %}
     </div>
@@ -114,11 +114,11 @@
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
     {% for i in section.blocks %}
       <div class="show-block-{{forloop.index}}" style="display:none;">
-      <h4 style="" class="blender-text-descriptor-title">{{i.settings.info_bottomleft_title}}</h4>
-      <hr class="red-hr">
-      <div class="jar-description">{{i.settings.info_bottomleft_text}}</div>
+        <h4 style="color:{{i.settings.info_bottomleft_title_color}}" class="blender-text-descriptor-title">{{i.settings.info_bottomleft_title}}</h4>
+        <hr class="red-hr">
+        <div style="color:{{i.settings.info_bottomleft_text_color}}" class="jar-description">{{i.settings.info_bottomleft_text}}</div>
       </div>
-      {% endfor %}
+    {% endfor %}
     </div>
      </div>
 </div>
@@ -184,11 +184,9 @@
   }
 
   .h4-subhead{
-    color:#646674;
     font-size:26px;
   }
   .h3-subhead{
-    color: white;
       font-size: 40px;
       line-height: 1;
       margin-top:-15px;
@@ -214,139 +212,207 @@
       height: {{section.settings.black_background_height}}px;
       margin-top: -{{section.settings.black_background_height}}px;;
     }
-
-
-
-
-
 </style>
 
 {{ 'autofit_images.js' | asset_url | script_tag }}
 
 {% schema %}
 {
-"name":"bt-featured-product-lrg",
-"class":"bt-featured-product-lrg",
-"max_blocks":9,
-"settings":[
-{
-"type":      "range",
-"id":        "black_background_height",
-"min":       200,
-"max":        300,
-"step":       1,
-"unit":       "px",
-"label":     "Height of Background",
-"default":   200
-}
-],
-"blocks":[
-{
-"type":"header",
-"name":"bt-featured-product-lrg",
-"settings":[
-{
-"type":"text",
-"id":"section3_top_button",
-"label":"Section 3 Top Button Text",
-"default":"SHOP BLENDERS"
-},
-{
-"type": "url",
-"id": "section3_top_button_link",
-"label": "Top Button Link"
-},
-{
-"type":"text",
-"id":"h4_subhead",
-"label":"h4 Subhead",
-"default":"DRVEN"
-},
-{
-"type":"text",
-"id":"h3_headline",
-"label":"h3 Headline",
-"default":"POWER THROUGH <br>ANYTHING"
-},
-{
-"type":"text",
-"id":"descriptive_title_top",
-"label":"Descriptive Title",
-"default":"<br>"
-},
-{
-"type":"image_picker",
-"id":"blender_image",
-"label":"Blender Image",
-"info":"Blender image"
-},
-{
-"type":"image_picker",
-"id":"blender_background_image",
-"label":"Blender Background Image",
-"info":"The image which appears behind the main blender image"
-},
-{
-"type":"text",
-"id":"info_topleft_title",
-"label":"Blender Info Top Left title",
-"default":"LID"
-},
-{
-"type":"text",
-"id":"info_topleft_text",
-"label":"Blender Info Top Left text",
-"default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
-},
-{
-"type":"text",
-"id":"info_topright_title",
-"label":"Blender Info Top Right title",
-"default":"JAR"
-},
-{
-"type":"text",
-"id":"info_topright_text",
-"label":"Blender Info Top Right text",
-"default":"Donec dolor est, suscipit ac consectetur at, suscipit ac sem. Vivamus nec urna eu nisi venenatis facilisis. Fusce vitae efficitur ligula."
-},
-{
-"type":"text",
-"id":"info_midleft_title",
-"label":"Blender Info Mid Left title",
-"default":"SHAPE"
-},
-{
-"type":"text",
-"id":"info_midleft_text",
-"label":"Blender Info Mid Left text",
-"default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
-},
-{
-"type":"text",
-"id":"info_bottomright_title",
-"label":"Blender Info Mid Left title",
-"default":"BLADE"
-},
-{
-"type":"text",
-"id":"info_bottomright_text",
-"label":"Blender Info Mid Left text",
-"default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
-},
-{
-"type":"text",
-"id":"info_bottomleft_title",
-"label":"Blender Info Mid Left title",
-"default":"MOTOR"
-},
-{
-"type":"text",
-"id":"info_bottomleft_text",
-"label":"Blender Info Mid Left text",
-"default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
-}
-]
+    "name":"bt-featured-product-lrg",
+    "class":"bt-featured-product-lrg",
+    "max_blocks":9,
+    "settings":[{
+        "type":      "range",
+        "id":        "black_background_height",
+        "min":       200,
+        "max":        300,
+        "step":       1,
+        "unit":       "px",
+        "label":     "Height of Background",
+        "default":   200
+    }],
+    "blocks":[{
+        "type":"header",
+        "name":"bt-featured-product-lrg",
+        "settings":[{
+            "type":"text",
+            "id":"section3_top_button",
+            "label":"Section 3 Top Button Text",
+            "default":"SHOP BLENDERS"
+        },
+        {
+            "type": "url",
+            "id": "section3_top_button_link",
+            "label": "Top Button Link"
+        },
+        {
+            "type":"text",
+            "id":"h4_subhead",
+            "label":"Subheading Text",
+            "default":"DRVEN"
+        },
+        {
+            "type": "color",
+            "id": "h4_subhead_color",
+            "label": "Subheading Color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"h3_headline",
+            "label":"Headline Text",
+            "default":"POWER THROUGH <br>ANYTHING"
+        },
+        {
+            "type": "color",
+            "id": "h3_headline_color",
+            "label": "Headline Color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"descriptive_title_top",
+            "label":"Descriptive Title",
+            "default":"<br>"
+        },
+        {
+            "type": "color",
+            "id": "descriptive_title_top_color",
+            "label": "Descriptive Title Color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"image_picker",
+            "id":"blender_image",
+            "label":"Blender Image",
+            "info":"Blender image"
+        },
+        {
+            "type":"image_picker",
+            "id":"blender_background_image",
+            "label":"Blender Background Image",
+            "info":"The image which appears behind the main blender image"
+        },
+        {
+            "type":"text",
+            "id":"info_topleft_title",
+            "label":"Blender Info top left title",
+            "default":"LID"
+        },
+        {
+            "type": "color",
+            "id": "info_topleft_title_color",
+            "label": "Blender info top left title color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"info_topleft_text",
+            "label":"Blender Info top left text",
+            "default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
+        },
+        {
+            "type": "color",
+            "id": "info_topleft_text_color",
+            "label": "Blender Info top left text color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"info_topright_title",
+            "label":"Blender Info Top Right title",
+            "default":"JAR"
+        },
+        {
+            "type": "color",
+            "id": "info_topright_title_color",
+            "label":"Blender info top right title color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"info_topright_text",
+            "label":"Blender Info Top Right text",
+            "default":"Donec dolor est, suscipit ac consectetur at, suscipit ac sem. Vivamus nec urna eu nisi venenatis facilisis. Fusce vitae efficitur ligula."
+        },
+        {
+            "type": "color",
+            "id": "info_topright_text_color",
+            "label":"Blender info top right text color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"info_midleft_title",
+            "label":"Blender info mid left title",
+            "default":"SHAPE"
+        },
+        {
+            "type": "color",
+            "id": "info_midleft_title_color",
+            "label":"Blender info mid left title",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"info_midleft_text",
+            "label":"Blender info mid left text",
+            "default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
+        },
+        {
+            "type": "color",
+            "id":"info_midleft_text_color",
+            "label":"Blender info mid left text color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"info_bottomright_title",
+            "label":"Blender info mid left title",
+            "default":"BLADE"
+        },
+        {
+            "type": "color",
+            "id":"info_bottomright_title_color",
+            "label":"Blender info mid left title color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"info_bottomright_text",
+            "label":"Blender info mid left text",
+            "default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
+        },
+        {
+            "type": "color",
+            "id":"info_bottomright_text_color",
+            "label":"Blender info mid left text color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"info_bottomleft_title",
+            "label":"Blender info mid left title",
+            "default":"MOTOR"
+        },
+        {
+            "type": "color",
+            "id":"info_bottomleft_title_color",
+            "label":"Blender info mid left text color",
+            "default": "#ffffff"
+        },
+        {
+            "type":"text",
+            "id":"info_bottomleft_text",
+            "label":"Blender info mid left text",
+            "default":"Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
+        },
+        {
+            "type": "color",
+            "id":"info_bottomleft_text_color",
+            "label":"Blender info mid left text color",
+            "default": "#ffffff"
+        }]
 }
 ],
     "presets": [

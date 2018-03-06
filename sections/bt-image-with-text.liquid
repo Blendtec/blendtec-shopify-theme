@@ -20,8 +20,7 @@
 
       <div class="grid__item large--one-half">
         <div class="section-two-image-wrapper">
-        <img
-         class="section2-image javascript-load-image"
+        <img class="section2-image javascript-load-image"
         numBlocks="{{section.blocks.size}}"
         typeImage="imagebasesrc"
         {% for i in section.blocks %}
@@ -42,11 +41,9 @@
       <div class="show-block-{{forloop.index}}" style="display:none;">
       <div class="grid__item large--one-half">
     <div class="section2-text">
-    <h2 class="section2-h2">{{i.settings.section2_headline}}</h2>
-    <div>
-{{i.settings.section2_text}}
-          </div>
-    <a href="{{i.settings.section2_link}}"  class="section2-learn-more">{{i.settings.section2_linktext}}
+    <h2 class="section2-h2" style="color:{{i.settings.header_color}}">{{i.settings.header}}</h2>
+    <div style="color: i.settings.text_color">{{i.settings.text}}</div>
+    <a style="color:{{i.settings.cta_text_color}}" href="{{i.settings.cta_link}}"  class="section2-learn-more">{{i.settings.cta_text}}
       <i class="fa fa-angle-right"></i>
     </a>
     </div>
@@ -67,11 +64,9 @@
       <div class="show-block-{{forloop.index}}" style="display:none;">
       <div class="grid__item large--one-half">
     <div class="section2-text">
-    <h2 class="section2-h2">{{i.settings.section2_headline}}</h2>
-    <div>
-{{i.settings.section2_text}}
-          </div>
-    <a href="{{i.settings.section2_link}}"  class="section2-learn-more">{{i.settings.section2_linktext}}<i class="fa fa-angle-right"></i></a>
+    <h2 class="section2-h2" style="color:{{i.settings.header_color}}">{{i.settings.header}}</h2>
+    <div style="color:{{i.settings.text_color}}">{{i.settings.text}}</div>
+    <a href="{{i.settings.cta_link}}"  class="section2-learn-more" style="color:{{i.settings.cta_text_color}}">{{i.settings.cta_text}}<i class="fa fa-angle-right"></i></a>
     </div>
       </div>
       </div>
@@ -99,23 +94,12 @@
   }
 
   .section2-learn-more{
-    color: #f41d2f;
     font-size:18px;
     font-style:italic;
     text-decoration:none;
     font-weight:900;
   }
-  .section2-arrow{
-      position: absolute;
-      margin-top: 7px;
-      font-size: 9px;
-      margin-left: 3px;
-      font-weight: 900;
-      font-style: italic;
-      color: #f41d2f;
-  }
   .section2-h2{
-      color: #353949;
       font-size: 45px;
       font-weight:900;
   }
@@ -231,30 +215,47 @@
 "label":"Section2 Image Background",
 "info":"This is the background of the section image"
 },
-{
-"type":"text",
-"id":"section2_headline",
-"label":"Section 2 Headline",
-"default":"UNBEATABLE.<br>YOU KNOW THE FEELING."
-},
-{
-"type":"text",
-"id":"section2_text",
-"label":"Section 2 Text",
-"default":"Downtime — a nice thought but it's not on your radar. You have goals: break records, leap buildings, scale all new heights, and be at the top of your game. Secret weapons work for some people, but what you need are tools drive as hard as you do. Today's great, but wait to see what happens tomorrow."
-},
-{
-"type":"text",
-"id":"section2_linktext",
-"label":"Section2 Link Text",
-"default":"LEARN MORE"
-},
-{
-"type": "url",
-"id": "section2_link",
-"label": "Section 2 Link"
-}
-]
+    {
+        "type":"text",
+        "id":"header",
+        "label":"Section 2 Headline",
+        "default":"UNBEATABLE.<br>YOU KNOW THE FEELING."
+    },
+    {
+        "type": "color",
+        "id": "header_color",
+        "label": "Header Color",
+        "default": "#000000"
+    },
+    {
+        "type":"text",
+        "id":"text",
+        "label":"Text",
+        "default":"Downtime — a nice thought but it's not on your radar. You have goals: break records, leap buildings, scale all new heights, and be at the top of your game. Secret weapons work for some people, but what you need are tools drive as hard as you do. Today's great, but wait to see what happens tomorrow."
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+    },
+    {
+        "type":"text",
+        "id":"cta_text",
+        "label":"Section2 Link Text",
+        "default":"LEARN MORE"
+    },
+    {
+       "type": "color",
+       "id": "cta_text_color",
+       "label": "CTA Color",
+       "default": "#ed1b2c"
+    },
+    {
+       "type": "url",
+       "id": "cta_link",
+       "label": "CTA Link"
+    }]
 }
 ],
     "presets": [
