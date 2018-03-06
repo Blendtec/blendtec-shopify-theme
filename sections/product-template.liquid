@@ -124,6 +124,7 @@
       <div class="sidebarColumn-inner">
         <div class="content-wrapper--title js-fix-on-scroll--target fix-on-scroll--large-only">
           <h1 itemprop="name" class='medium-down--text-center product-title'>{{ product.title }}</h1>
+            {% include 'bv-summary' %}
           <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <meta itemprop="priceCurrency" content="{{ shop.currency }}">
             <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
@@ -131,14 +132,6 @@
             {% comment %}
               ID addToCartForm is a selector for the ajax cart plugin
             {% endcomment %}
-            {% assign noPrice = false %}
-            {% for tag in product.tags %}
-              {% if tag == 'NoPrice'%}
-              	{% assign noPrice = true %}
-              {% endif %}
-            {% endfor %}
-
-            {% if noPrice == false %}
             <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
               <p class="medium-down--text-center">
                 <span id="ProductPrice" class='faded medium-down--text-center' itemprop="price">
@@ -150,7 +143,6 @@
                   </span>
                 {% endif %}
               </p>
-
               {% comment %}
                 Add product variants as a dropdown.
                   - By default, each variant (or combination of variants) will display as its own <option>
@@ -196,11 +188,9 @@
                 <button type="submit" name="add" id="AddToCart" class="btn">
                   <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
                 </button>
-              </div>
               <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
               {% endif %}
             </form>
-            {% endif %}
           </div>
 
           {% if section.blocks.size > 0 %}
@@ -308,6 +298,9 @@
             <div class="product-description rte" id="description" itemprop="description">
               {{ product.description }}
             </div>
+              <div class="bv--ratings-reviews-container">
+                {% include 'bv-ratings-and-reviews' %}
+              </div>
           {% endif %}
          </div>
       </div>
