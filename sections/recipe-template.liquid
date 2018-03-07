@@ -8,7 +8,8 @@
     <div class="grid recipe--stats">
         <div class="grid__item large--one-third medium--one-third">
             <h5>Total Time:&nbsp;
-                <span itemprop="cookTime">{{ article.metafields["global"]["cooktime"] | minus: 18000 | date: "%l H&nbsp; %M M&nbsp; %S S" | replace: "12 H&nbsp;", "" | replace: "0 H&nbsp;", ""| replace: "00 M&nbsp;", ""| replace: "00 S", "" }}</span>
+            {% assign snipTime = article.metafields["global"]["cooktime"] %}
+                <span itemprop="cookTime">{% include 'cooktime' %}</span>
             </h5>
         </div>
         <div class="grid__item large--one-third medium--one-third">
