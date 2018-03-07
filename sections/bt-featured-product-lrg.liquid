@@ -16,23 +16,19 @@
 >
 <div class="">
     <div class="grid" style="padding-top:130px;">
-        <div class="grid__item large--one-sixth medium--one-sixth small--one-sixth"></div>
-        <div class="small-left-padding grid__item large--one-half">
+        <div class="grid__item large--one-twelfth medium--one-twelfth small--one-twelfth"></div>
+        <div style="max-width:970px;" class="small-left-padding grid__item large--five-sixths medium--five-sixths small--ten-twelfths">
             {% for i in section.blocks %}
                 <div class="show-block-{{forloop.index}}" style="display:none;">
                     <h4 class="h4-subhead" style="color:{{i.settings.h4_subhead_color}}">{{i.settings.h4_subhead}}</h4>
                     <h3 class="h3-subhead" style="color:{{i.settings.h3_headline_color}}">{{i.settings.h3_headline}}</h3>
                     <h3 class="h3-subhead" style="color:{{i.settings.descriptive_title_top_color}}">{{i.settings.descriptive_title_top}}</h3>
+                    <div>
+                    <a href="{{i.settings.section3_top_button_link}}" class="btn btn--small">{{i.settings.section3_top_button}}</a>
+                    </div>
                 </div>
             {% endfor %}
         </div>
-        {% for i in section.blocks %}
-            <div class="show-block-{{forloop.index}}" style="display:none;">
-                <div class="small-left-padding grid__item large--one-third medium--one-half">
-                    <a href="{{i.settings.section3_top_button_link}}" class="btn btn--small">{{i.settings.section3_top_button}}</a>
-                </div>
-            </div>
-        {% endfor %}
     </div>
 </div>
 <div class="gradient-black-background"></div>
@@ -53,7 +49,7 @@
     </div>
      </div>
      <div style="margin-top:25px;" class="grid blender-text-descriptor-wrapper">
-    <div class="grid__item large--nine-twelfths medium--two-thirds small--one-third"></div>
+    <div class="grid__item large--nine-twelfths medium--two-thirds small--one-twelfth"></div>
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
     {% for i in section.blocks %}
       <div class="show-block-{{forloop.index}}" style="display:none;">
@@ -98,7 +94,7 @@
       </div>
      </div>
      <div style="margin-top:25px;" class="grid blender-text-descriptor-wrapper">
-     <div class="grid__item large--nine-twelfths medium--two-thirds small--one-third"></div>
+     <div class="grid__item large--nine-twelfths medium--two-thirds small--one-twelfth"></div>
     <div class="grid__item large--one-sixth medium--one-third small--two-thirds">
     {% for i in section.blocks %}
       <div class="show-block-{{forloop.index}}" style="display:none;">
@@ -187,6 +183,7 @@
 
   .h4-subhead{
     font-size:26px;
+    font-family: 'CooperHewitt-Bold';
   }
   .h3-subhead{
       font-size: 40px;
@@ -197,6 +194,7 @@
   .section-background {
     background-size:cover;
     background-repeat:no-repeat;
+    padding-top: 68px;
   }
 
   @media screen and (max-width: 848px) {
