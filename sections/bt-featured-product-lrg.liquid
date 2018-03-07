@@ -24,7 +24,7 @@
                     <h3 class="h3-subhead" style="color:{{i.settings.h3_headline_color}}">{{i.settings.h3_headline}}</h3>
                     <div class="" style="margin-top:15px;color:{{i.settings.descriptive_title_top_color}}">{{i.settings.descriptive_title_top}}</div>
                     <div style="margin-top:30px;">
-                    <a href="{{i.settings.section3_top_button_link}}" class="btn btn--small">{{i.settings.section3_top_button}}</a>
+                    {% include 'cta-button' with text: i.settings.section3_top_button, url: i.settings.section3_top_button_link%}
                     </div>
                 </div>
             {% endfor %}

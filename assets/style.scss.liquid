@@ -147,7 +147,7 @@ $zindexNavDropdowns: 5;
 $zindexDrawer: 20;
 
 /*================ Typography ================*/
-$headerFontWeight: 700;
+$headerFontWeight: 900;
 $baseFontSize: 16px; // Henseforth known as 1em
 
 {% if settings.typekit != blank and settings.typekit-font-body != blank %}
@@ -191,6 +191,14 @@ $baseFontSize: 16px; // Henseforth known as 1em
    font-weight: 900;
    font-size: 3vmax;
  }
+
+a.cta {
+  display: inline-block;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 900;
+  margin-top: 15px;
+}
 
 $bodyFontStack: {{ base_family }};
 $headerFontStack: {{ header_family }};
@@ -1484,7 +1492,7 @@ h1 {
 }
 
 h2 {
-  font-size: em(34px);
+  font-size: em(45px);
 }
 
 h3 {
@@ -7980,7 +7988,6 @@ body:not(.ios) .shopify-section.features {
   }
 
   .heavy {
-    color: white;
     margin-bottom: -30px;
   }
 
@@ -8061,5 +8068,9 @@ body:not(.ios) .shopify-section.features {
   .section-header--image {
     padding-top: 90px;
   }
+}
+
+.__affirm-logo {
+  font-size: 1.5rem !important;
 }
 
