@@ -26,7 +26,7 @@
                      {% endfor %}
                      {% for i in section.blocks %}
                      <div class="show-block-{{forloop.index}}" style="display:none;">
-                        <a href="{{ i.settings.blender1_link }}" class="btn btn--small">{{ i.settings.blender1_link_text }}</a>
+                         {% include 'cta-button' with text: i.settings.blender1_link_text, url: i.settings.blender1_link %}
                      </div>
                      {% endfor %}
                   </div>
@@ -63,7 +63,7 @@
                   {% endfor %}
                   {% for i in section.blocks %}
                   <div class="show-block-{{forloop.index}}" style="display:none;">
-                     <a href="{{ i.settings.blender2_link }}" class="btn btn--small">{{ i.settings.blender2_link_text }}</a>
+                      {% include 'cta-button' with text: i.settings.blender2_link_text, url: i.settings.blender2_link %}
                   </div>
                   {% endfor %}
                </div>
@@ -99,7 +99,7 @@
                   {% endfor %}
                   {% for i in section.blocks %}
                   <div class="show-block-{{forloop.index}}" style="display:none;">
-                     <a href="{{ i.settings.blender3_link }}" class="btn btn--small ">{{ i.settings.blender3_link_text }}</a>
+                      {% include 'cta-button' with text: i.settings.blender3_link_text, url: i.settings.blender3_link %}
                   </div>
                   {% endfor %}
                </div>
