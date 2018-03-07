@@ -3,14 +3,15 @@
   {% assign ingredients = ingredients | replace: "property", "itemprop" %}
   {% assign ingredients = ingredients | replace: "tbsp", " tbsp" %}
   {% assign ingredients = ingredients | replace: "0.125", "1/8 " %}
-  {% assign ingredients = ingredients | replace: "0.25", "1/5 " %}
+  {% assign ingredients = ingredients | replace: "0.25", "1/4 " %}
   {% assign ingredients = ingredients | replace: "0.33", "1/3 " %}
   {% assign ingredients = ingredients | replace: "0.5", "1/2 " %}
   {% assign ingredients = ingredients | replace: "0.75", "3/4 " %}
   {% assign ingredients = ingredients | replace: ".125", " 1/8 " %}
-  {% assign ingredients = ingredients | replace: ".25", " 1/5 " %}
+  {% assign ingredients = ingredients | replace: ".25", " 1/4 " %}
   {% assign ingredients = ingredients | replace: ".5", " 1/2 " %}
   {% assign ingredients = ingredients | replace: ".75", " 3/4 " %}
   {% assign ingredients = ingredients | replace: ".33", " 1/3 " %}
+  {% assign ingredients = ingredients | replace: ".0625", " 1/16 " %}
 
     {{ ingredients }}
