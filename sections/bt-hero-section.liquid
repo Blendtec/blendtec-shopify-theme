@@ -42,8 +42,9 @@ src="">
                 <button onclick="showPopUp()" class="btn btn--small btn--left">
                     <i class="fa fa-caret-right"></i>
                     {{ i.settings.hero_button1text }}</button>
-                <a href="{{ i.settings.hero_button2Link }}"
-                   class="btn btn--small">{{ i.settings.hero_button2text }}</a></div>
+                {% include 'cta-button' with text: i.settings.hero_button2text, url: i.settings.hero_button2Link %}
+
+            </div>
             </div>
             {% endfor %}
         </div>
@@ -59,9 +60,7 @@ src="">
                 <button onclick="showPopUp()" class="btn btn--small btn--left">
                     <i class="fa fa-caret-right"></i>
                     {{ i.settings.hero_button1text }}</button>
-                <a href="{{ i.settings.hero_button2Link }}" class="btn btn--small">
-                    {{ i.settings.hero_button2text }}
-                </a>
+                {% include 'cta-button' with text: i.settings.hero_button2text, url: i.settings.hero_button2Link %}
             </div>
         </div>
         </div>

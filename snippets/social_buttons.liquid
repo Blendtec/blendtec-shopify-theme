@@ -9,7 +9,7 @@ Note - as social media names are proper nouns they are not internationalized.
   {% capture icon_class %}icon-{{ option_title | downcase | replace: " ", "-" }}{% endcapture %}
 
   {% if settings[option_setting] != blank %}
-      <a href="{{ settings[option_setting] }}" class="social_buttons">
+      <a target="_blank" href="{{ settings[option_setting] }}" class="social_buttons">
         <span class="icon {{ icon_class }}" aria-hidden="true"></span>
       </a>
   {% endif %}

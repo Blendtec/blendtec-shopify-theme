@@ -147,7 +147,7 @@ $zindexNavDropdowns: 5;
 $zindexDrawer: 20;
 
 /*================ Typography ================*/
-$headerFontWeight: 700;
+$headerFontWeight: 900;
 $baseFontSize: 16px; // Henseforth known as 1em
 
 {% if settings.typekit != blank and settings.typekit-font-body != blank %}
@@ -191,6 +191,14 @@ $baseFontSize: 16px; // Henseforth known as 1em
    font-weight: 900;
    font-size: 3vmax;
  }
+
+a.cta {
+  display: inline-block;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 900;
+  margin-top: 15px;
+}
 
 $bodyFontStack: {{ base_family }};
 $headerFontStack: {{ header_family }};
@@ -1484,7 +1492,7 @@ h1 {
 }
 
 h2 {
-  font-size: em(34px);
+  font-size: em(45px);
 }
 
 h3 {
@@ -2750,6 +2758,7 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
 }
 
 .site-header-controls {
+  max-width: 470px;
   height: $headerSize;
   max-height: $headerSize;
   min-height: $headerSize;
@@ -2815,8 +2824,6 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
         &:last-child { margin-right: 0; }
 
         .icon {
-          left: 0;
-          margin-left: 0;
         }
 
       }
@@ -2824,6 +2831,11 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   }
 }
 
+@media screen and (max-width: $medium) {
+  .site-header-controls{
+    max-width: $medium;
+  }
+}
 
 .header-control {
   $headerIconTransition: 'top 0.4s ease 0s, opacity 0.2s ease 0s';
@@ -3355,9 +3367,9 @@ $animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);
 
 .secondary-navbar {
   color: $colorTextHeader;
+  margin-top: 22px;
   a{
     color: $colorTextHeader;
-    line-height: $headerSize;
   }
   font-size: 12px;
   font-family: $headerFontStack;
@@ -6359,8 +6371,20 @@ p.h6.light {
   @include kenBurns();
 }
 
+.recipe-ingredients {
+  ul {
+    list-style:none;
+    margin-left:0px;
+  }
+  li {
+    border-bottom-width: 1px;
+    border-bottom-color: #ccc7c7;
+    border-bottom-style: dotted;
+  }
+}
 
 .sale-badge {
+  display:none;
   position: absolute;
   top: 2.5rem;
   left: 2.5rem;
@@ -7911,10 +7935,13 @@ body:not(.ios) .shopify-section.features {
   .heavy {
     color: white;
     width: 100%;
+    font-family: 'CooperHewitt-Bold';
+    font-size:24px;
   }
 
   .description-text {
     color: white;
+    margin-top:15px;
   }
 
   .bt-featured-collection {
@@ -7961,7 +7988,6 @@ body:not(.ios) .shopify-section.features {
   }
 
   .heavy {
-    color: white;
     margin-bottom: -30px;
   }
 
@@ -8042,5 +8068,9 @@ body:not(.ios) .shopify-section.features {
   .section-header--image {
     padding-top: 90px;
   }
+}
+
+.__affirm-logo {
+  font-size: 1.5rem !important;
 }
 

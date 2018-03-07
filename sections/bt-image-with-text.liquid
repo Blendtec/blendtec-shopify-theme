@@ -1,87 +1,56 @@
-<div class="bt-image-with-text javascript-load-image"
-        numBlocks="{{section.blocks.size}}"
-        typeImage="backgroundimagesrc"
-        {% for i in section.blocks %}
+<div class="bt-image-with-text javascript-load-image" numBlocks="{{section.blocks.size}}" typeImage="backgroundimagesrc" {% for i in section.blocks %} {% assign placement=f orloop.index %} {% for y in (1..4) %} {% assign imageSize=y | times: 200 | downcase | append: 'x' %} {{placement}}backgroundimagesrc{{ y | times: 200 }}="{{i.settings.section2_imagebackground | img_url: imageSize }}" {% endfor %} {% endfor %}>
+    {% if section.settings.image_orientation == 'one' %}
+        <div class="grid" style="max-width:1200px;margin:auto;">
+            <div class="grid__item">
+                <div class="grid">
 
-          {% assign placement = forloop.index  %}
+                    <div class="grid__item large--one-half">
+                        <div class="section-two-image-wrapper">
+                            <img class="section2-image javascript-load-image" numBlocks="{{section.blocks.size}}" typeImage="imagebasesrc" {% for i in section.blocks %} {% assign placement=f orloop.index %} {% for y in (1..4) %} {% assign imageSize=y | times: 200 | downcase | append: 'x' %} {{placement}}imagebasesrc{{ y | times: 200 }}="{{i.settings.section2_image | img_url: imageSize }}" {% endfor %} {% endfor %}>
+                        </div>
+                    </div>
+                    {% for i in section.blocks %}
+                        <div class="show-block-{{forloop.index}}" style="display:none;">
+                            <div class="grid__item large--one-half">
+                                <div class="section2-text">
+                                    <h2 class="section2-h2" style="color:{{i.settings.header_color}}">{{i.settings.header}}</h2>
+                                    <div style="color: {{i.settings.text_color}}">{{i.settings.text}}</div>
+                                    {% include 'cta-text' with text: i.settings.cta_text, url: i.settings.cta_link, text_color: i.settings.cta_text_color%}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
 
-            {% for y in (1..4) %}
-              {% assign imageSize = y | times: 200 | downcase | append: 'x'  %}
-              {{placement}}backgroundimagesrc{{ y | times: 200 }}="{{i.settings.section2_imagebackground | img_url: imageSize }}"
-
-            {% endfor %}
-
-        {% endfor %}
->
-{% if section.settings.image_orientation == 'one' %}
-<div class="grid" style="max-width:1200px;margin:auto;">
-  <div class="grid__item">
-    <div class="grid">
-
-      <div class="grid__item large--one-half">
-        <div class="section-two-image-wrapper">
-        <img class="section2-image javascript-load-image"
-        numBlocks="{{section.blocks.size}}"
-        typeImage="imagebasesrc"
-        {% for i in section.blocks %}
-
-          {% assign placement = forloop.index  %}
-
-            {% for y in (1..4) %}
-              {% assign imageSize = y | times: 200 | downcase | append: 'x'  %}
-              {{placement}}imagebasesrc{{ y | times: 200 }}="{{i.settings.section2_image | img_url: imageSize }}"
-
-            {% endfor %}
-
-        {% endfor %}
-        >
         </div>
-      </div>
-    {% for i in section.blocks %}
-      <div class="show-block-{{forloop.index}}" style="display:none;">
-      <div class="grid__item large--one-half">
-    <div class="section2-text">
-    <h2 class="section2-h2" style="color:{{i.settings.header_color}}">{{i.settings.header}}</h2>
-    <div style="color: i.settings.text_color">{{i.settings.text}}</div>
-    <a style="color:{{i.settings.cta_text_color}}" href="{{i.settings.cta_link}}"  class="section2-learn-more">{{i.settings.cta_text}}
-      <i class="fa fa-angle-right"></i>
-    </a>
-    </div>
-      </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
+    {% endif %} {% if section.settings.image_orientation == 'two' %}
+        <div class="grid" style="max-width:1200px;margin:auto;">
+            <div class="grid__item">
+                <div class="grid">
 
-</div>
-{% endif %}
-{% if section.settings.image_orientation == 'two' %}
-<div class="grid" style="max-width:1200px;margin:auto;">
-  <div class="grid__item">
-    <div class="grid">
+                    {% for i in section.blocks %}
+                        <div class="show-block-{{forloop.index}}" style="display:none;">
+                            <div class="grid__item large--one-half">
+                                <div class="section2-text">
+                                    <h2 class="section2-h2" style="color:{{i.settings.header_color}}">{{i.settings.header}}</h2>
+                                    <div style="color:{{i.settings.text_color}}">{{i.settings.text}}</div>
+                                    {% include 'cta-text' with text: i.settings.cta_text, url: i.settings.cta_link, text_color: i.settings.cta_text_color%}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
 
-    {% for i in section.blocks %}
-      <div class="show-block-{{forloop.index}}" style="display:none;">
-      <div class="grid__item large--one-half">
-    <div class="section2-text">
-    <h2 class="section2-h2" style="color:{{i.settings.header_color}}">{{i.settings.header}}</h2>
-    <div style="color:{{i.settings.text_color}}">{{i.settings.text}}</div>
-    <a href="{{i.settings.cta_link}}"  class="section2-learn-more" style="color:{{i.settings.cta_text_color}}">{{i.settings.cta_text}}<i class="fa fa-angle-right"></i></a>
-    </div>
-      </div>
-      </div>
-      {% endfor %}
+                    <div class="grid__item large--one-half">
+                        <div class="section-two-image-wrapper">
+                            <img imagebasesrc200="{{section.settings.section2_image | img_url: '200x' }}" imagebasesrc300="{{section.settings.section2_image | img_url: '300x' }}" imagebasesrc400="{{section.settings.section2_image | img_url: '400x' }}" imagebasesrc500="{{section.settings.section2_image | img_url: '500x' }}" imagebasesrc600="{{section.settings.section2_image | img_url: '600x' }}" imagebasesrc700="{{section.settings.section2_image | img_url: '700x' }}" imagebasesrc800="{{section.settings.section2_image | img_url: '800x' }}" class="section2-image javascript-load-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      <div class="grid__item large--one-half">
-        <div class="section-two-image-wrapper">
-        <img imagebasesrc200="{{section.settings.section2_image | img_url: '200x' }}" imagebasesrc300="{{section.settings.section2_image | img_url: '300x' }}" imagebasesrc400="{{section.settings.section2_image | img_url: '400x' }}" imagebasesrc500="{{section.settings.section2_image | img_url: '500x' }}" imagebasesrc600="{{section.settings.section2_image | img_url: '600x' }}" imagebasesrc700="{{section.settings.section2_image | img_url: '700x' }}" imagebasesrc800="{{section.settings.section2_image | img_url: '800x' }}" class="section2-image javascript-load-image">
         </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-{% endif %}
+    {% endif %}
 </div>
 <style>
     .section2-text{
@@ -93,15 +62,8 @@
     max-width:600px;
   }
 
-  .section2-learn-more{
-    font-size:18px;
-    font-style:italic;
-    text-decoration:none;
-    font-weight:900;
-  }
   .section2-h2{
       font-size: 45px;
-      font-weight:900;
   }
   .section-two-image-wrapper{
     margin-left:-30px;
@@ -178,7 +140,6 @@
 }
 
 </style>
-{{ 'autofit_images.js' | asset_url | script_tag }}
 
 {% schema %}
 {

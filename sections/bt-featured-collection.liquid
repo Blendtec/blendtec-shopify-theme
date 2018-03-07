@@ -1,7 +1,7 @@
 
 
 <div class="bt-featured-collection">
-   <div class="grid" style="padding-top:25%;padding-bottom:2%; ">
+   <div class="grid" style="padding-top:30%;padding-bottom:2%; ">
       <hr>
    </div>
    <div class="blenders-bottom-background bottom-blenders-wrapper javascript-load-image"
@@ -26,7 +26,7 @@
                      {% endfor %}
                      {% for i in section.blocks %}
                      <div class="show-block-{{forloop.index}}" style="display:none;">
-                        <a href="{{ i.settings.blender1_link }}" class="btn btn--small">{{ i.settings.blender1_link_text }}</a>
+                         {% include 'cta-button' with text: i.settings.blender1_link_text, url: i.settings.blender1_link %}
                      </div>
                      {% endfor %}
                   </div>
@@ -63,7 +63,7 @@
                   {% endfor %}
                   {% for i in section.blocks %}
                   <div class="show-block-{{forloop.index}}" style="display:none;">
-                     <a href="{{ i.settings.blender2_link }}" class="btn btn--small">{{ i.settings.blender2_link_text }}</a>
+                      {% include 'cta-button' with text: i.settings.blender2_link_text, url: i.settings.blender2_link %}
                   </div>
                   {% endfor %}
                </div>
@@ -99,7 +99,7 @@
                   {% endfor %}
                   {% for i in section.blocks %}
                   <div class="show-block-{{forloop.index}}" style="display:none;">
-                     <a href="{{ i.settings.blender3_link }}" class="btn btn--small ">{{ i.settings.blender3_link_text }}</a>
+                      {% include 'cta-button' with text: i.settings.blender3_link_text, url: i.settings.blender3_link %}
                   </div>
                   {% endfor %}
                </div>
@@ -121,7 +121,6 @@
    </div>
 </div>
 
-{{ 'autofit_images.js' | asset_url | script_tag }}
 
 {% schema %}
    {

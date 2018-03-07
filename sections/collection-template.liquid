@@ -40,7 +40,7 @@ Four layout options: 2x3, 3x3, 4x3, 5x3
   {% if section.settings.show_collection_header %}
     <div class="text-wrapper--center-cell text-max-width">
       <div class="text-wrapper--small text-center">
-        <h1 class="section-header__title text-center">{{ collection.title }}</h1>
+        <h1 class="section-header__title text-center">{{ collection.title | upcase }}</h1>
         {% if section.settings.show_collection_description and collection.description != blank %}
           {% comment %}Shopify sometime will wrap the output in a <p> tag and sometimes won't, depending on what the user inputs.  We /always/ want one wrapped for margins, but this can sometimes lead to duplicates.{% endcomment %}
           <p>{{collection.description}}</p>
