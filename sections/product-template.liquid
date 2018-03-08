@@ -85,6 +85,11 @@
           {% else %}
             <img src="//cdn.shopify.com/s/images/themes/product-1.png" class='default-image placeholder-image'>
           {% endif %}
+
+          <div class="bv--ratings-reviews-container">
+              {% include 'bv-ratings-and-reviews' %}
+          </div>
+
         </div>
       {% endif %}
 
@@ -299,13 +304,8 @@
               {{ product.description }}
             </div>
 
-              <div class="bv--ratings-reviews-container">
-                {% include 'bv-ratings-and-reviews' %}
-              </div>
-
               <div class="product-disclaimer">
-                  PEAK HORSEPOWER” (PHP) DOES NOT DENOTE THE OPERATIONAL HORSEPOWER OF A BLENDER BUT RATHER THE HORSEPOWER OUTPUT OF A MOTOR, INCLUDING THE MOTOR’S INERTIAL CONTRIBUTION, ACHIEVED IN LABORATORY TESTING. IN ACTUAL USE, BLENDTEC MOTORS DO NOT OPERATE AT THE PEAK HORSEPOWER SHOWN.
-                  {{ product.metafields["global"]["disclaimer"] }}
+                  <p><small>{{ product.metafields["global"]["disclaimer"] }}</small></p>
               </div>
           {% endif %}
          </div>
