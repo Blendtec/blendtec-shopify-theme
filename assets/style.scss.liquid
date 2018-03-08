@@ -3358,6 +3358,19 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   @include at-query($max, $medium) { display: none; }
 }
 
+.large-margin-right{
+  margin-right:60px;
+}
+@media only screen and (max-width: 1100px){
+  .large-margin-right{
+    margin-right:20px;
+  }
+}
+@media only screen and (max-width: $medium){
+  .large-margin-right{
+    margin-right:0px;
+  }
+}
 /*============================================================================
   #Site Nav and Dropdowns
 ==============================================================================*/
