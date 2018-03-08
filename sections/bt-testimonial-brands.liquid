@@ -5,7 +5,7 @@
         <div class="grid__item large--one-sixth" style="margin-left:55px;"></div>
       {% for slide in section.blocks limit: section.blocks.size %}
 
-      <div class="grid__item large--one-twelfth medium--one-sixth small--one-third">
+      <div class="grid__item large--one-twelfth medium--one-sixth small--one-third brand-image">
         {% if slide.settings.empty_corporate_partner == false %}
        	 {% if slide.settings.corporate_partners_link %}
        	 	<a href="{{slide.settings.corporate_partners_link}}">
@@ -26,6 +26,10 @@
   	background-size: cover;
     background-image:url({{section.settings.section5_background | img_url: '1200x' }});
     background-position-y:20%;
+  }
+  .brand-image{
+    max-height: 50px;
+    width: auto;
   }
 </style>
 
