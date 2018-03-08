@@ -99,11 +99,11 @@
         id="title-{{product.id}}"
       {% for variant in product.variants %}
       title{{forloop.index}}="{{variant.title}}"
-      {% endfor %}>{{product.variants[0].title}}</span></h6>
+      {% endfor %}>{% if product.variants[0].title != 'Default Title' %}
+      {{product.variants[0].title}}
+      {% endif %}</span></h6>
 
-        <span class="price-{{product.id}}" id="price-{{product.id}}"
-
-        >
+    {% if product.price > 0 %}
         {% if on_sale %}
           {% if product.price_varies %}
             {% assign sale_price = product.price | money %}
@@ -119,7 +119,7 @@
             {{ product.price | money }}
           {% endif %}
         {% endif %}
-        </span>
+        {% endif %}
 
           <strong
         {% unless variant.available %}
