@@ -1,7 +1,7 @@
 <div class="bt-center-text-cta javascript-load-image"  backgroundimagesrc1200="{{section.settings.section5_background | img_url: '1200x' }}" backgroundimagesrc900="{{section.settings.section5_background | img_url: '900x' }}" backgroundimagesrc800="{{section.settings.section5_background | img_url: '800x' }}" backgroundimagesrc700="{{section.settings.section5_background | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.section5_background | img_url: '600x' }}" backgroundimagesrc500="{{section.settings.section5_background | img_url: '500x' }}" backgroundimagesrc400="{{section.settings.section5_background | img_url: '400x' }}">
 
   <div class="section5-bottom-background" style="padding-top:50px;padding-bottom:20px;">
-  <div class="slider single-item" style="text-align:center;width:280px;margin:0 auto;padding-top:50px;margin-bottom:40px;">
+  <div class="slider single-item slider-wrapper">
     {% for i in section.blocks %}
       <div>
         <h3 class="review-text">{{i.settings.section5_review}}</h3>
@@ -30,10 +30,18 @@
     });
   </script>
 <style>
+  .slider-wrapper{
+    text-align:center;
+    max-width:600px;
+    width:100%;
+    margin:0 auto;
+    padding-top:50px;
+    margin-bottom:40px;
+  }
   .review-text{
-  	color:black;
-    font-weight:600;
-    line-height:1.25;
+    color: black;
+    font-family: 'CooperHewitt-Semibold';
+    font-size: 32px;
   }
   	.section5-learn-more{
 		color: #f41d2f;
