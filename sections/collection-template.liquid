@@ -6,7 +6,7 @@
 Four layout options: 2x3, 3x3, 4x3, 5x3
 
 {% endcomment %}
-
+{% include 'bold_mem_helper' with 'collection' %}
 {% assign gridLayoutStyle = section.settings.collection_layout_style %}
 {% if gridLayoutStyle == "twoByThree"  %}
   {% assign productsOnPage = 6 %}
