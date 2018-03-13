@@ -1,5 +1,8 @@
+{% comment %}
+    <!-- /snippets/bv-ratings-reviews.liquid -->
+    <!-- Bazaarvoice Ratings & Reviews -->
+{% endcomment %}
 
-<!-- Bazaarvoice Ratings & Reviews ======== -->
 <div data-bv-show="reviews" data-bv-productId="{{product.id }}">
     {% if product.metafields.bazaarvoice.reviews %}
         {{ product.metafields.bazaarvoice.reviews }}
@@ -10,4 +13,7 @@
         {{ product.metafields.bazaarvoice.questions }}
     {% endif %}
 </div>
-<!-- ============================= -->
+
+{% comment %}
+    <!-- End Bazaarvoice Ratings & Reviews -->
+{% endcomment %}
