@@ -150,6 +150,7 @@ $zindexDrawer: 20;
 $headerFontWeight: 900;
 $baseFontSize: 16px; // Henseforth known as 1em
 
+
 {% if settings.typekit != blank and settings.typekit-font-body != blank %}
   {% capture base_family %}{{ settings.typekit-font-body }}{% endcapture %}
 {% elsif settings.google-font-body != blank %}
@@ -1527,7 +1528,7 @@ b, strong {
 }
 
 small {
-  font-size: 0.9em;
+  font-size: 0.7em;
 }
 
 sup, sub {
@@ -1821,7 +1822,11 @@ hr {
   cursor: default;
   color: $colorPrimary;
 }
-
+@media (max-width: $medium) {
+  h1{
+    font-size: em(40px);
+  }
+}
 /*================ Helper Typographic Fonts ================*/
 
 .light {
