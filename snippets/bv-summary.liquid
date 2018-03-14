@@ -1,9 +1,14 @@
-<!-- Bazaarvoice Summary Container ======== -->
-<div data-bv-show="rating_summary" data-bv-productId="product.id">
+{% comment %}
+    <!-- /snippets/bv-summary.liquid -->
+    <!-- Bazaarvoice Summary Container -->
+{% endcomment %}
 
+<div data-bv-show="rating_summary" data-bv-productId="{{product.id}}">
     {% if product.metafields.bazaarvoice.reviews-aggregate-ratings %}
         {{ product.metafields.bazaarvoice.reviews-aggregate-ratings }}
-
     {% endif %}
 </div>
-<!-- ============================= -->
+
+{% comment %}
+    <!-- End Bazaarvoice Summary Container -->
+{% endcomment %}

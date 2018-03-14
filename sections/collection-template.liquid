@@ -6,7 +6,7 @@
 Four layout options: 2x3, 3x3, 4x3, 5x3
 
 {% endcomment %}
-
+{% include 'bold_mem_helper' with 'collection' %}
 {% assign gridLayoutStyle = section.settings.collection_layout_style %}
 {% if gridLayoutStyle == "twoByThree"  %}
   {% assign productsOnPage = 6 %}
@@ -120,12 +120,14 @@ Four layout options: 2x3, 3x3, 4x3, 5x3
   </div>
 {% endif %}
 
-<div class="grid--products grid--full">
-  {% for product in collection.products %}
-    {% assign hover_class = section.settings.collection_style %}
-    {% assign fit_image_class = 'grid__item--variable-height grid__image' %}
-    {% include 'product-grid-item' %}
-  {% endfor %}
+<div class="grid--product-wrapper">
+  <div class="grid--products grid--full">
+    {% for product in collection.products %}
+      {% assign hover_class = section.settings.collection_style %}
+      {% assign fit_image_class = 'grid__item--variable-height grid__image' %}
+      {% include 'product-grid-item' %}
+    {% endfor %}
+  </div>
 </div>
 
 {% if paginate.pages > 1 %}
@@ -140,6 +142,9 @@ Four layout options: 2x3, 3x3, 4x3, 5x3
 {% endpaginate %}
 
 <style>
+  .grid--product-wrapper {
+    background-color: {{ settings.color_body_bg }};
+  }
   .grid--products {
     background-color: {{ settings.color_body_bg }};
   }
@@ -163,7 +168,7 @@ Four layout options: 2x3, 3x3, 4x3, 5x3
 <script type="text/javascript">
   $(document).ready(function() {
     $('.single-item').slick({
-        dots: true,
+        dots: false,
         arrows: true,
         mobileFirst: true,
         respondTo: 'min',

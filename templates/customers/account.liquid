@@ -5,10 +5,11 @@
     - http://docs.shopify.com/themes/liquid-variables/customer
 
 {% endcomment %}
+{% include 'bold-memberships-salt' %}
 <div class="content-wrapper">
   
   <h1>{{ 'customer.account.title' | t }}</h1>
-  
+ {% include 'bold-memberships-account' %}
   <hr>
   
   <div class="grid">

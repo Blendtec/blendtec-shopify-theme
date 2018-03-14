@@ -96,6 +96,7 @@
 <!--Affirm Header Script-->
   <script src="{{ 'affirm-header.js' | asset_url }}"></script>
 <!--End Affirm Header Script-->
+  {% include 'deadline-funnel' %}
 </head>
 
 {% comment %}
@@ -103,6 +104,7 @@
 {% endcomment %}
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
   {% include 'icons.svg' %}
+  {% include 'bold-memberships' %}
   <div class="fadeout-overlay"></div>
 
   {% section 'bt-header' %}

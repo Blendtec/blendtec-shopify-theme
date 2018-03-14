@@ -19,7 +19,7 @@
 {% if comment and comment.created_at %}
   {% assign number_of_comments = article.comments_count | plus: 1 %}
 {% endif %}
-
+{% include 'bold_mem_helper' with 'article' %}
 <div class="grid--full">
   <div class="grid__item large--two-thirds push--large--one-sixth">
     <div class="text-center content-wrapper--horizontal section-header">
@@ -40,7 +40,9 @@
   {% if src %}
   <div class="clearfix">
     <div class="cell-wrapper">
+      <div style="max-width: 1200px;margin:auto;">
       <img src="{{src}}" alt="" class='article-feature-image'>
+      </div>
     </div>
   </div>
   {% endif %}
