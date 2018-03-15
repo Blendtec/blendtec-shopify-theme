@@ -1,10 +1,10 @@
 <div class="looking-for-this">
 <div class="nav-block">
-<span class="custom-title">{{ linklists.looking-for-this.title }}</span>
+<span class="custom-title">{{ linklists[customNav].title }}</span>
 <div class="line"></div>
 <nav>
 <ul>
-{% for link in linklists.looking-for-this.links %}
+{% for link in linklists[customNav].links %}
 <li>
       <a href="{{ link.url }}">{{ link.title }} <span class="arrow">&gt;</span></a>
 </li>
