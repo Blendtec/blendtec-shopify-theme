@@ -1,0 +1,55 @@
+<div class="bt-fifth header-404 javascript-load-image"
+            {% for y in (8..12) %}
+              {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+              backgroundimagesrc{{ y | times: 100 }}="{{section.settings.background-404 | img_url: imageSize }}"
+            {% endfor %}
+>
+<h1 class='text-center text404'>{{ 'general.404.title' | t }}</h1>
+<div class="shg-box">
+<div class="shg-box-overlay"></div>
+</div>
+</div>
+<div class="grid error-message-wrapper">
+<div class="grid__item small--show medium--hide large--hide">
+  <span class="custom-title">ERROR: 404</span>
+<div class="line"></div>
+<div style="margin-top:15px;">
+{{ section.settings.errorMessage }}
+</div>
+</div>
+<div class="grid__item large--one-third medium--one-third margin-adjustment">
+{% assign customNav = 'looking-for-this' %}
+  {% include 'custom-nav' %}
+</div>
+<div class="grid__item large--two-thirds medium--two-thirds small--hide margin-adjustment">
+  <span class="custom-title">ERROR: 404</span>
+<div class="line"></div>
+<div style="margin-top:15px;">
+{{ section.settings.errorMessage }}
+</div>
+</div>
+</div>
+
+{% schema %}
+
+{
+"name":"404-page",
+"class":"page404",
+"settings":[
+{
+"type":"image_picker",
+"id":"background-404",
+"label":"Section Background Image",
+"info":"This is the background image for the section"
+},
+{
+"type":"text",
+"id":"errorMessage",
+"label":"Error Message",
+"default":"We can't seem to find the page you entered. One of these links may help you get back on track."
+}
+],
+"blocks":[],
+"presets": []
+}
+{% endschema %}

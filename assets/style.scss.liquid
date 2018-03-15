@@ -1437,13 +1437,12 @@ body {
 /*============================================================================
   Looking for this snippet
 ==============================================================================*/
+.line { width: 50px; height: 3px; background-color: #eb2330; margin-top: 4px; }
+
+.custom-title { color: #000000; font-weight: bold; font-size: 24px; }
 
 .custom-side-menu {
   .nav-block { margin: 0px 0; }
-
-  .nav-block .custom-title { color: #000000; font-weight: bold; font-size: 24px; }
-
-  .line { width: 50px; height: 3px; background-color: #eb2330; margin-top: 4px; }
 
   .nav-block ul { margin-top: 10px; margin-left: 0; padding-left: 0; }
 
@@ -1454,6 +1453,53 @@ body {
   .nav-block li a { color: #000000; }
 
   .nav-block li a span { color: #eb2330; padding-left: 2px; }
+}
+
+/*============================================================================
+  404 error page
+==============================================================================*/
+.page404 {
+.header-404 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50px;
+    background-position: center center;
+}
+.text404 {
+  padding-top:40px;
+  padding-bottom:40px;
+  color:white;
+}
+.shg-box-overlay {
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+.shg-box{
+    min-height: 10px;
+    background-color: #ea002a;
+}
+.error-message-wrapper{
+    margin-top: 25px;
+    margin-left: 80px;
+    margin-bottom: 50px;
+    margin-right: 80px;
+}
+.margin-adjustment {
+  margin-top:25px;
+}
+@media only screen and (max-width: 865px){
+.error-message-wrapper {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+}
 }
 
 /*============================================================================
