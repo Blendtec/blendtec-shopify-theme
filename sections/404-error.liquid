@@ -1,14 +1,14 @@
-<div class="bt-fifth header-404 javascript-load-image"
-            {% for y in (8..12) %}
-              {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
-              backgroundimagesrc{{ y | times: 100 }}="{{section.settings.background-404 | img_url: imageSize }}"
-            {% endfor %}
->
-<h1 class='text-center text404'>{{ 'general.404.title' | t }}</h1>
-<div class="box">
-<div class="box-overlay"></div>
-</div>
-</div>
+
+<header class="section-header section-header--image has-parallax" style="background-image: url({{section.settings.background-404 | img_url: '1000x' }}); transform: translate3d(0px, 0px, 0px);" data-parallax="true" data-speed="0.5" data-direction="down">
+
+    <div class="text-wrapper--center-cell text-max-width">
+      <div class="text-wrapper--small text-center">
+        <h1 class="section-header__title text-center">{{ 'general.404.title' | t }}</h1>
+
+      </div>
+    </div>
+
+</header>
 <div class="grid error-message-wrapper">
 <div class="grid__item small--show medium--hide large--hide">
   <span class="custom-title">{{ section.settings.errorTitle }}</span>
