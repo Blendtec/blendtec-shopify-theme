@@ -1,320 +1,231 @@
-
 <footer class="site-footer small--text-center {% if section.blocks.size > 0 %}has-content{% endif %}" role="contentinfo">
-  <div class="footer-wrapper javascript-load-image" backgroundimagesrc1200="{{section.settings.background_image | img_url: '1200x' }}" backgroundimagesrc1000="{{section.settings.background_image | img_url: '1000x' }}" backgroundimagesrc800="{{section.settings.background_image | img_url: '800x' }}"  backgroundimagesrc700="{{section.settings.background_image | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.background_image | img_url: '600x' }}">
-    <div class="grid small--text-left">
-      {% if section.blocks.size > 0 %}
-        <div class="footer-container">
-          {% for block in section.blocks limit: section.blocks.size %}
-
-            {% case block.type %}
-
-            {% when 'store_description' %}
-              <div class="grid__item large--one-third footer-content-item">
-                <p class="header">{{ block.settings.title | escape }}</p>
-                <div>{{ block.settings.description_text }}</div>
-              </div>
-
-            {% when 'footer_menu' %}
-              {% assign menu_link_list = "footer" %}
-              {% if block.settings.menu_link_list != blank %}
-                {% assign menu_link_list = block.settings.menu_link_list %}
-              {% endif %}
-
-              <div class="grid__item large--one-third footer-content-item list-column {% if section.blocks.size > 1 and forloop.index < 3 %}right-border{% endif %} bottom-margin-footer">
-                <h3 class="footer-header">{{ linklists[menu_link_list].title }}</h3>
-                  <ul class="no-bullets grid">
-                    {% for link in linklists[menu_link_list].links %}
-                      <li class="grid__item large--one-half medium--one-half small--one-half"><a href="{{ link.url }}">
-                        {% if link.title contains 'Twitter' %}
-                          <span class="icon icon-twitter" aria-hidden="true"></span>
+    <div class="footer-wrapper javascript-load-image" backgroundimagesrc1200="{{section.settings.background_image | img_url: '1200x' }}" backgroundimagesrc1000="{{section.settings.background_image | img_url: '1000x' }}" backgroundimagesrc800="{{section.settings.background_image | img_url: '800x' }}"  backgroundimagesrc700="{{section.settings.background_image | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.background_image | img_url: '600x' }}">
+        <div class="grid small--text-left">
+            {% if section.blocks.size > 0 %}
+                <div class="footer-container">
+                    {% for block in section.blocks limit: section.blocks.size %}
+                        {% case block.type %}
+                        {% when 'store_description' %}
+                        <div class="grid__item large--one-third footer-content-item">
+                            <p class="header">{{ block.settings.title | escape }}</p>
+                            <div>{{ block.settings.description_text }}</div>
+                        </div>
+                        {% when 'footer_menu' %}
+                        {% assign menu_link_list = "footer" %}
+                        {% if block.settings.menu_link_list != blank %}
+                            {% assign menu_link_list = block.settings.menu_link_list %}
                         {% endif %}
-
-                        {% if link.title contains 'Facebook' %}
-                          <span class="icon icon-facebook" aria-hidden="true"></span>
-                        {% endif %}
-
-                        {% if link.title contains 'Instagram' %}
-                          <span class="icon icon-instagram" aria-hidden="true"></span>
-                        {% endif %}
-
-                        {% if link.title contains 'Tumblr' %}
-                          <span class="icon icon-tumblr" aria-hidden="true"></span>
-                        {% endif %}
-
-                        {% if link.title contains 'Pinterest' %}
-                          <span class="icon icon-pinterest" aria-hidden="true"></span>
-                        {% endif %}
-
-                        {% if link.title contains 'Vimeo' %}
-                          <span class="icon icon-vimeo" aria-hidden="true"></span>
-                        {% endif %}
-
-                        {% if link.title contains 'Youtube' %}
-                          <span class="icon icon-youtube" aria-hidden="true"></span>
-                        {% endif %}
-
-                        {% if link.title contains 'Google' %}
-                          <span class="icon icon-google" aria-hidden="true"></span>
-                        {% endif %}
-
-                        {{ link.title }}
-                      </a></li>
+                        <div class="grid__item large--one-third footer-content-item list-column {% if section.blocks.size > 1 and forloop.index < 3 %}right-border{% endif %} bottom-margin-footer">
+                            <h3>{{ linklists[menu_link_list].title }}</h3>
+                            <ul class="no-bullets grid">
+                                {% for link in linklists[menu_link_list].links %}
+                                    <li class="grid__item large--one-half medium--one-half small--one-half"><a href="{{ link.url }}">
+                                            {% if link.title contains 'Twitter' %}
+                                                <span class="icon icon-twitter" aria-hidden="true"></span>
+                                            {% endif %}
+                                            {% if link.title contains 'Facebook' %}
+                                                <span class="icon icon-facebook" aria-hidden="true"></span>
+                                            {% endif %}
+                                            {% if link.title contains 'Instagram' %}
+                                                <span class="icon icon-instagram" aria-hidden="true"></span>
+                                            {% endif %}
+                                            {% if link.title contains 'Tumblr' %}
+                                                <span class="icon icon-tumblr" aria-hidden="true"></span>
+                                            {% endif %}
+                                            {% if link.title contains 'Pinterest' %}
+                                                <span class="icon icon-pinterest" aria-hidden="true"></span>
+                                            {% endif %}
+                                            {% if link.title contains 'Vimeo' %}
+                                                <span class="icon icon-vimeo" aria-hidden="true"></span>
+                                            {% endif %}
+                                            {% if link.title contains 'Youtube' %}
+                                                <span class="icon icon-youtube" aria-hidden="true"></span>
+                                            {% endif %}
+                                            {% if link.title contains 'Google' %}
+                                                <span class="icon icon-google" aria-hidden="true"></span>
+                                            {% endif %}
+                                            {{ link.title }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% when 'social_media' %}
+                        {% assign hasSocial = false %}
+                        {% assign social_options = "Facebook, Twitter, Pinterest, Instagram, Google Plus, tumblr, YouTube, Vimeo" | split: ", " %}
+                        {% for option_title in social_options %}
+                            {% capture option_setting %}social_{{ option_title | downcase | replace: " ", "_" }}_link{% endcapture %}
+                            {% if settings[option_setting] != blank %}
+                                {% assign hasSocial = true %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+                        {% when 'newsletter' %}
+                        <div class="grid__item large--one-third footer-content-item">
+                        {% unless block.settings.title == blank %}
+                        <p class="header">{{ block.settings.title | escape }}</p>
+                    {% else %}
+                        {% comment %}For consistent alignment of the body text,
+                            we always want a header at the wide layout{% endcomment %}
+                        <p class="header">{{ 'layout.footer.newsletter_title' | t }}</p>
+                        {% endunless %}
+                        {% unless block.settings.newsletter_text == blank %}
+                        <p>{{ block.settings.newsletter_text | escape }}</p>
+                    {% else %}
+                        <p>{{ 'layout.footer.newsletter_body' | t }}</p>
+                        {% endunless %}
+                        {% unless block.settings.newsletter_button_text == blank %}
+                        <button class="btn btn--small show-exit-intent">{{ block.settings.newsletter_button_text | escape }}</button>
+                    {% else %}
+                        <button class="btn btn--small show-exit-intent">{{ 'layout.footer.newsletter_button' | t }}</button>
+                        {% endunless %}
+                        </div>
+                        {% endcase %}
                     {% endfor %}
-                  </ul>
-              </div>
-
-            {% when 'social_media' %}
-              {% assign hasSocial = false %}
-              {% assign social_options = "Facebook, Twitter, Pinterest, Instagram, Google Plus, tumblr, YouTube, Vimeo" | split: ", " %}
-              {% for option_title in social_options %}
-                {% capture option_setting %}social_{{ option_title | downcase | replace: " ", "_" }}_link{% endcapture %}
-                {% if settings[option_setting] != blank %}
-                  {% assign hasSocial = true %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
-
-
-
-            {% when 'newsletter' %}
-              <div class="grid__item large--one-third footer-content-item">
-                {% unless block.settings.title == blank %}
-                  <p class="header">{{ block.settings.title | escape }}</p>
-                {% else %}
-                  {% comment %}For consistent alignment of the body text,
-                  we always want a header at the wide layout{% endcomment %}
-                  <p class="header">{{ 'layout.footer.newsletter_title' | t }}</p>
-                {% endunless %}
-
-                {% unless block.settings.newsletter_text == blank %}
-                  <p>{{ block.settings.newsletter_text | escape }}</p>
-                {% else %}
-                  <p>{{ 'layout.footer.newsletter_body' | t }}</p>
-                {% endunless %}
-
-                {% unless block.settings.newsletter_button_text == blank %}
-                  <button class="btn btn--small show-exit-intent">{{ block.settings.newsletter_button_text | escape }}</button>
-                {% else %}
-                  <button class="btn btn--small show-exit-intent">{{ 'layout.footer.newsletter_button' | t }}</button>
-                {% endunless %}
-              </div>
-
-            {% endcase %}
-
-          {% endfor %}
+                </div>
+                <hr class="full-width" />
+            {% endif %}
+            <div>
+            <div class="grid">
+                <div class="grid__item large--one-third medium--one-third small--text-center">
+                    <p>© Copyright {{ 'now' | date: '%Y' }} {{ shop.name | capitalize }}</p>
+                </div>
+                <div class="grid__item large--one-third medium--one-third text-center">
+                    <div class="social">
+                        {% if hasSocial %}
+                            {% include 'social_buttons' %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="grid__item large--one-third medium--one-third large--text-right medium--text-right small--text-center">
+                    <a style="color:{{ section.settings.color_footer_header }}" href="{{section.settings.privacy_policy_link}}">Privacy Policy</a>
+                    &nbsp;|&nbsp;
+                    <a style="color:{{ section.settings.color_footer_header }}" href="{{section.settings.tos_policy_link}}">Terms & Conditions</a>
+                </div>
+            </div>
+            <div class="grid">
+               <div class="grid__item text-right"><small>{{ section.settings.disclaimer_text }}</small></div>
+            </div>
         </div>
-
-        <hr class="full-width" />
-      {% endif %}
-
-  <div class="footer-container-bottom">
-    <div class="bottom-copyright">© Copyright 2018 Blendtec</div>
-    <div class="social-media-bottom">
-              {% if hasSocial %}
-                    {% include 'social_buttons' %}
-              {% endif %}
-
+        </div>
     </div>
-    <div class="bottom-terms">
-        <a style="color:{{ section.settings.color_footer_header }}" href="{{section.settings.privacy_policy_link}}">Privacy Policy</a>
-       &nbsp;|&nbsp;
-       <a style="color:{{ section.settings.color_footer_header }}" href="{{section.settings.tos_policy_link}}">Terms & Conditions</a>
-    </div>
-  </div>
-
-
-    </div>
-  </div>
 </footer>
 
 <style>
-    @media only screen and (min-width: 680px)  {
+    .site-footer a,
+    .site-footer p {
+        color: {{ section.settings.color_footer_text }};
+    }
+    .site-footer h3 {
+        color: {{ section.settings.color_footer_header }};
+    }
 
-    .social-media-bottom {
-      margin:auto;
-      text-align:center;
-    }
-    .bottom-copyright {
-      float:left;
-    }
-    .bottom-terms {
-      float:right;
-      margin-top: -25px;
-    }
-  }
 
-    @media only screen and (max-width: 689px)  {
-
-    .social-media-bottom {
-      margin-top:10px;
-    }
-    .bottom-copyright {
-      margin-top:10px;
-    }
-    .bottom-terms {
-      margin-top:10px;
-    }
-  }
-.social_buttons {
-  color:white;
-  padding-right:10px;
-}
-.social-media-bottom {
-  max-width:250px;
-
-}
-.bottom-copyright {
-  font-size: 12px;
-}
-
-.bottom-terms {
-  font-size: 12px;
-}
     .footer-wrapper {
-      background-size:cover;
-      background-repeat:no-repeat;
-    }
-
-    .footer-header {
-      color: {{ section.settings.color_footer_header }};
+        background-size:cover;
+        background-repeat:no-repeat;
     }
 
     .footer-container {
-      max-width:900px;
-      margin:auto;
+        max-width:900px;
+        margin:auto;
     }
 
-    .footer-container-bottom {
-      max-width:1100px;
-      margin:auto;
-      margin-bottom:75px;
-    }
-
-.bottom-margin-footer {
-  margin-bottom: 35px;
-}
-
-    @media only screen and (min-width: 841px)  {
-      .right-border {
-        border-right-style:solid;
-        border-right-width:1px;
-        border-right-color:white;
-      }
-    }
     .site-footer {
-      background-color: {{ section.settings.color_footer_bg }};
-    }
-
-    .social h1,
-    .social a,
-    .header,
-    .shop-name {
-      color: {{ section.settings.color_footer_header }};
-    }
-
-    .shop-name {
-      fill: {{ section.settings.color_footer_header }};
-    }
-
-    .site-footer,
-    .site-footer .list-column a,
-    .payment-icons li,
-    .social-icons li a,
-    .site-header__logo {
-      color: {{ section.settings.color_footer_text }};
+        background-color: {{ section.settings.color_footer_bg }};
     }
 
     .site-footer hr,
     .site-footer .grid__item {
-      border-color: {{ section.settings.color_footer_HR }};
-    }
-
-    .footer-attribution {
-      border: 1px solid {{ section.settings.color_footer_text }};
-    }
-
-    .footer-attribution a {
-      color: {{ section.settings.color_footer_text }} !important;
+        border-color: {{ section.settings.color_footer_HR }};
     }
 
     .footer-payment svg {
-      color: {{ section.settings.color_footer_text }};
+        color: {{ section.settings.color_footer_text }};
+    }
+
+    .social {
+        margin-bottom: 2rem;
     }
 </style>
 {% schema %}
-  {
-    "name": "bt-Footer",
-    "max_blocks": 4,
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "enable_shop_name",
-        "label": "Enable shop name",
-        "default": true
-      },
-      {
-        "type": "color",
-        "id": "color_footer_header",
-        "label": "Headings",
-        "default": "#404040"
-      },
-      {
-        "type": "color",
-        "id": "color_footer_text",
-        "label": "Text",
-        "default": "#636363"
-      },
-      {
-        "type": "color",
-        "id": "color_footer_bg",
-        "label": "Background",
-        "default": "#f2f2f2"
-      },
-      {
-        "type": "color",
-        "id": "color_footer_HR",
-        "label": "Horizontal rule",
-        "default": "#E2E2E2"
-      },
-      {
-        "type": "image_picker",
-        "id": "background_image",
-        "label": "Background Image"
-      },
-      {
-        "id": "privacy_policy_link",
-        "type": "url",
-        "label": "Link to Privacy Policy"
-      },
     {
-    "id": "tos_policy_link",
-    "type": "url",
-    "label": "Link to Tos"
+        "name":"bt-Footer",
+        "max_blocks":4,
+        "settings":[
+            {
+                "type":"checkbox",
+                "id":"enable_shop_name",
+                "label":"Enable shop name",
+                "default":true
+            },
+            {
+                "type":"color",
+                "id":"color_footer_header",
+                "label":"Headings",
+                "default":"#404040"
+            },
+            {
+                "type":"color",
+                "id":"color_footer_text",
+                "label":"Text",
+                "default":"#636363"
+            },
+            {
+                "type":"color",
+                "id":"color_footer_bg",
+                "label":"Background",
+                "default":"#f2f2f2"
+            },
+            {
+                "type":"color",
+                "id":"color_footer_HR",
+                "label":"Horizontal rule",
+                "default":"#E2E2E2"
+            },
+            {
+                "type":"image_picker",
+                "id":"background_image",
+                "label":"Background Image"
+            },
+            {
+                "id":"privacy_policy_link",
+                "type":"url",
+                "label":"Link to Privacy Policy"
+            },
+            {
+                "id":"tos_policy_link",
+                "type":"url",
+                "label":"Link to Tos"
+            },
+            {
+                "type":"text",
+                "id":"disclaimer_text",
+                "label":"Disclaimer Text"
+            }
+        ],
+        "blocks":[
+            {
+            "type":"footer_menu",
+            "name":"Footer menu",
+            "settings":[
+                {
+                    "type":"link_list",
+                    "id":"menu_link_list",
+                    "label":"Menu"
+                }
+            ]},
+            {
+                "type":"social_media",
+                "limit":1,
+                "name":"Social media",
+                "settings":[
+                    {
+                        "type":"paragraph",
+                        "content":"Social links can be managed in General settings"
+                    }
+                ]
+            }
+        ]
     }
-    ],
-    "blocks": [
-      {
-        "type": "footer_menu",
-        "name": "Footer menu",
-        "settings": [
-          {
-            "type": "link_list",
-            "id": "menu_link_list",
-            "label": "Menu"
-          }
-        ]
-      },
-      {
-        "type": "social_media",
-        "limit": 1,
-        "name": "Social media",
-        "settings": [
-          {
-            "type": "paragraph",
-            "content": "Social links can be managed in General settings"
-          }
-        ]
-      }
-    ]
-  }
 {% endschema %}

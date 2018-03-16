@@ -150,6 +150,7 @@ $zindexDrawer: 20;
 $headerFontWeight: 900;
 $baseFontSize: 16px; // Henseforth known as 1em
 
+
 {% if settings.typekit != blank and settings.typekit-font-body != blank %}
   {% capture base_family %}{{ settings.typekit-font-body }}{% endcapture %}
 {% elsif settings.google-font-body != blank %}
@@ -1595,7 +1596,7 @@ b, strong {
 }
 
 small {
-  font-size: 0.9em;
+  font-size: 0.7em;
 }
 
 sup, sub {
@@ -2099,7 +2100,10 @@ html input[disabled] {
     & + & {margin-top: 1em;}
   }
 }
-
+.bv--ratings-reviews-container {
+  position:relative;
+  z-index:10;
+}
 
 /*================ Force an input/button to look like a text link ================*/
 .text-link {
