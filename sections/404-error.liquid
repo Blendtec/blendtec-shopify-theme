@@ -10,21 +10,21 @@
 <div class="grid--product-wrapper">
 <div class="grid grid--products collection-filters-wrapper">
     <div class="grid__item small--show medium--hide large--hide">
-        <h5 class="custom-title">{{ section.settings.errorTitle }}</h5>
-        <div class="line"></div>
-        <div style="margin-top:15px;">
+        <h4>{{ section.settings.errorTitle }}</h4>
+        <p class="line"></p>
+        <p>
             {{ section.settings.errorMessage }}
-        </div>
+        </p>
     </div>
     <div class="grid__item large--one-third medium--one-third">
         {% assign customNav = 'looking-for-this' %} {% include 'custom-nav' %}
     </div>
     <div class="grid__item large--two-thirds medium--two-thirds small--hide">
-        <h5 class="custom-title">{{ section.settings.errorTitle }}</h5>
-        <div class="line"></div>
-        <div style="margin-top:15px;">
+        <h4>{{ section.settings.errorTitle }}</h4>
+        <p class="line"></p>
+        <p>
             {{ section.settings.errorMessage }}
-        </div>
+        </p>
     </div>
 </div>
 </div>
