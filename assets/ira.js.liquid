@@ -421,7 +421,19 @@ ira.init = function () {
   }
 
   if ($(document.body).hasClass('template-collection')) {
+
     var $firstSection = $('.parallax-container #shopify-section-collection-template .section-header');
+
+    $firstSection
+      .addClass('has-parallax')
+      .attr('data-parallax', 'true')
+      .attr('data-speed', '0.5')
+      .attr('data-direction', 'down');
+
+  }
+
+  if ($('.parallax-element').length) {
+    var $firstSection = $('.parallax-element');
 
     $firstSection
       .addClass('has-parallax')
@@ -1667,11 +1679,10 @@ ira.initInstaGrid = function(){
 
 ira.parallax = function() {
 
-  var onHomePage = window.location.pathname === '/';
-  var onCollectionPage = window.location.pathname.split('/')[1] === 'collections';
-  var onImageCollectionPage = onCollectionPage && $('.section-header--image').length;
+  var parallaxElement = $('.parallax-element').length;
+  var onImageCollectionPage = $('.section-header--image').length;
 
-  if (!onHomePage && !onImageCollectionPage) {
+  if (!parallaxElement && !onImageCollectionPage) {
     return;
   }
 

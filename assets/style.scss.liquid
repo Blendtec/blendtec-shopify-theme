@@ -1436,15 +1436,14 @@ body {
 }
 
 /*============================================================================
-  Looking for this snippet
+  custom nav snippet
 ==============================================================================*/
+.line { width: 50px; height: 3px; background-color: #eb2330; margin-top: 4px; }
+
+.custom-title { color: #000000; font-weight: bold; font-size: 24px; }
 
 .custom-side-menu {
   .nav-block { margin: 0px 0; }
-
-  .nav-block .custom-title { color: #000000; font-weight: bold; font-size: 24px; }
-
-  .line { width: 50px; height: 3px; background-color: #eb2330; margin-top: 4px; }
 
   .nav-block ul { margin-top: 10px; margin-left: 0; padding-left: 0; }
 
@@ -1456,6 +1455,7 @@ body {
 
   .nav-block li a span { color: #eb2330; padding-left: 2px; }
 }
+
 
 /*============================================================================
   #Typography
@@ -4290,7 +4290,8 @@ body:not(.js-drawer-open) .drawer__content {
     .template-list-collection &,
     .template-list-collections &,
     .template-product &,
-    .template-blog & {
+    .template-blog &,
+    .template-404 & {
       padding: 0;
     }
   }
@@ -7529,6 +7530,7 @@ input:not([type="checkbox"]):not([type="image"]), select {
 .grid--product-wrapper {
   width:100%;
   position:relative;
+  background-color: white;
 }
 .grid--products {
   position: relative;
