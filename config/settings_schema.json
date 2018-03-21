@@ -1522,16 +1522,5 @@
         "label": "GTM Id"
       }
     ]
-  },
-  {
-    "name": "Deadline Funnel",
-    "settings": [
-      {
-        "type": "text",
-        "id": "deadline_funnel_id",
-        "label": "Deadline Funnel ID",
-        "info": "The ID is the unique hash found in the tracking script between 'runified/' and another '/'"
-      }
-    ]
   }
 ]
