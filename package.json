@@ -1,0 +1,42 @@
+{
+  "name": "shopify-theme",
+  "version": "1.0.0",
+  "description": "Blendtec Shopify Theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:locale": "theme-lint ./",
+    "lint:layouts": "htmllint --rc ./.htmllintrc layout/* ",
+    "lint:sections": "htmllint --rc ./.htmllintrc sections/* ",
+    "lint:snippets": "htmllint --rc ./.htmllintrc snippets/* ",
+    "lint:html": "npm run lint:layouts && npm run lint:sections && npm run lint:snippets",
+    "lint:htmlfile": "htmllint --rc ./.htmllintrc",
+    "lint:js": "jslint assets/*.liquid",
+    "lint:jsfile": "jslint ",
+    "lint:liquid": "liquid-linter layout sections snippets assets templates --custom-tag section schema"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Blendtec/blendtec-shopify-theme.git"
+  },
+  "author": "devteam@blendtec.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Blendtec/blendtec-shopify-theme/issues"
+  },
+  "homepage": "https://github.com/Blendtec/blendtec-shopify-theme#readme",
+  "devDependencies": {
+    "@shopify/theme-lint": "^2.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "gulp": "^3.9.1",
+    "gulp-html-lint": "0.0.2",
+    "htmllint-cli": "0.0.6",
+    "jslint": "^0.12.0",
+    "liquid-linter-cli": "^0.3.0"
+  }
+}
