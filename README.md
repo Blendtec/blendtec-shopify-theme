@@ -12,7 +12,6 @@ Blendtec.com Shopify Theme
 
   - [NodeJs](https://nodejs.org)
   - NPM
-  - [Grunt-CLI](https://gruntjs.com)
   - [Theme Kit](https://shopify.github.io/themekit/#installation) configured with your dev store instance
 
 ## Workflow
