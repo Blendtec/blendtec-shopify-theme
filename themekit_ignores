@@ -1,8 +1,17 @@
 # plain file names
 config/settings_data.json
+.htmllintrc
+.travis.yml
+.gitignore
+.eslintrc.json
+gulpFile.js
+how-to-use.txt
+npm-debug.log
+watchTheme.sh
 
 # globs
 *.png
+node_modules/*
 
 # regex
 /\.(txt|gif|bat)$/
