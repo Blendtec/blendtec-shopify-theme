@@ -1,8 +1,4 @@
 <!-- /snippets/product-grid-item.liquid -->
-{% include 'bold-memberships-product' %}
-{% if bold_hide_item == true %}
-    {% continue %}
-{% endif %}
 {% comment %}
 
   This snippet is used to showcase each product during the loop,
@@ -113,23 +109,14 @@
             {% assign sale_price = product.price | money %}
             <span class="price">{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
           {% else %}
-            {% include 'bold-memberships-price' %}
-            {% if bold_hide_item == false %}
                 <span class="price">{{ product.price | money }}</span>
-            {% endif %}
           {% endif %}
         {% else %}
           {% if product.price_varies %}
             {% assign price = product.price | money %}
-              {% include 'bold-memberships-price' %}
-              {% if bold_hide_item == false %}
                 <span class="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
-              {% endif %}
           {% else %}
-              {% include 'bold-memberships-price' %}
-              {% if bold_hide_item == false %}
                   {{ product.price | money }}
-              {% endif %}
           {% endif %}
         {% endif %}
         {% endif %}

@@ -1,34 +1,26 @@
 <!doctype html>
-
 {% include 'theme-info' %}
 
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
-  {{ 'raf.js' | asset_url | script_tag }}
-  <![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
+    {{ 'raf.js' | asset_url | script_tag }}
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en">
+<![endif]-->
+<!--[if IE 9 ]>
+<html class="ie9 no-js">
+<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js">
+<!--<![endif]-->
 <head>
+    {{ 'avmws.js' | asset_url | script_tag }}
+    {% include 'google-tag-manager' %}
 
-  <!-- Google Tag Manager -->
-  <noscript>
-    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-43Z4V" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <script>(function (w, d, s, l, i) {
-		  w[l] = w[l] || [];
-		  w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-		  var f = d.getElementsByTagName(s)[0],
-			  j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-		  j.async = true;
-		  j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
-		  f.parentNode.insertBefore(j, f);
-	  })(window, document, 'script', 'dataLayer', '{{ settings.gtm_id }}');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Avantlink -->
-  {{ 'avmws.js' | asset_url | script_tag }}
-  <!-- End AvantLink -->
 
   <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
@@ -56,27 +48,19 @@
   <!-- CSS ================================================== -->
   {{ 'slick.css' | asset_url | stylesheet_tag }}
   {{ 'style.scss.css' | asset_url | stylesheet_tag }}
-
-   {{ 'slick.css' | asset_url | stylesheet_tag }}
-  {% include 'google-fonts' %}
   {{ 'cooperHewitt-fonts.css' | asset_url | stylesheet_tag }}
+  {% include 'google-fonts' %}
 
 
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
-  {% include 'oldIE-js' %}
 
+  {% include 'oldIE-js' %}
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
   {{ 'modernizr.min.js' | asset_url | script_tag }}
-
-  {% comment %} Component Scripts {% endcomment %}
-
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
   <script src="https://use.fontawesome.com/c9786bfd23.js"></script>
-
-
   {{ 'libraries.min.js' | asset_url | script_tag }}
-
 
   {% comment %}
     If you store has customer accounts disabled, you can remove the following JS file
@@ -90,54 +74,40 @@
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
   {% endif %}
 
-{% if template == 'page.find-a-store' %}
-  {% include 'price-spider-header-scripts' %}
-{% endif %}
-<!--Affirm Header Script-->
-  <script src="{{ 'affirm-header.js' | asset_url }}"></script>
-<!--End Affirm Header Script-->
-  {% include 'deadline-funnel' %}
+{{ 'price-spider.js' | asset_url | script_tag }}
+{{ 'affirm-header.js' | asset_url | script_tag }}
 </head>
-
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-  {% include 'icons.svg' %}
-  {% include 'bold-memberships' %}
-  <div class="fadeout-overlay"></div>
+  <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+    {% include 'icons.svg' %}
+    <div class="fadeout-overlay"></div>
+    {% section 'bt-header' %}
+    {% section 'popup' %}
 
-  {% section 'bt-header' %}
-  {% section 'popup' %}
+    <div id="PageContainer" class="is-moved-by-drawer">
+      <main class="main-content" role="main">
+        {{ content_for_layout }}
+      </main>
 
-  <div id="PageContainer" class="is-moved-by-drawer">
-    <main class="main-content" role="main">
-      {{ content_for_layout }}
-    </main>
+      {% section 'bt-footer' %}
+    </div>
 
-    {% section 'bt-footer' %}
-  </div>
+    {{ 'ira.js' | asset_url | script_tag }}
 
-  {{ 'ira.js' | asset_url | script_tag }}
-  {% comment %}{{ 'ira.min.js' | asset_url | script_tag }}{% endcomment %}
+    {% if resetPassword %}
+      <script>
+        $(function() {
+          ira.resetPasswordSuccess();
+        });
+      </script>
+    {% endif %}
 
-  {% comment %}
-    Template-specific js
-  {% endcomment %}
-
-  {% if resetPassword %}
-    <script>
-      $(function() {
-        ira.resetPasswordSuccess();
-      });
-    </script>
-  {% endif %}
-
-  {% comment %}
-    Ajaxify your cart with this plugin.
-    Documentation:
-      - http://shopify.com/timber#ajax-cart
-  {% endcomment %}
+    {% comment %}
+      Ajaxify your cart with this plugin.
+      Documentation: - http://shopify.com/timber#ajax-cart
+    {% endcomment %}
     {{ 'autofit_images.js' | asset_url | script_tag }}
     {{ 'handlebars.min.js' | asset_url | script_tag }}
     {% include 'ajax-cart-template' %}
@@ -163,5 +133,5 @@
     {% if settings.show_multiple_currencies %}
       {% include 'currencies' %}
     {% endif %}
-</body>
+  </body>
 </html>

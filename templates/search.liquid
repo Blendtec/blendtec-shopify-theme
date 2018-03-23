@@ -56,7 +56,6 @@
               {% comment %}
                 Check if the product is on sale and set a variable to be used below.
               {% endcomment %}
-              {% include 'bold_mem_helper' with 'search' %}
               {% assign on_sale = false %}
               {% if item.compare_at_price > item.price %}
                 {% assign on_sale = true %}
