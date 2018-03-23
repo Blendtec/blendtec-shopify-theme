@@ -19,7 +19,6 @@
 {% if comment and comment.created_at %}
   {% assign number_of_comments = article.comments_count | plus: 1 %}
 {% endif %}
-{% include 'bold_mem_helper' with 'article' %}
 <div class="grid--full">
   <div class="grid__item large--two-thirds push--large--one-sixth">
     <div class="text-center content-wrapper--horizontal section-header">

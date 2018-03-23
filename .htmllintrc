@@ -9,5 +9,5 @@
     "line-no-trailing-whitespace": true,
     "title-max-len": false,
     "class-no-dup": true,
-    "raw-ignore-regex": "{{.*?}}|{%.*?%}"
+    "raw-ignore-regex": "{{.*?}}|{%(?!schema|endschema$).*%}|{%schema%}.*?{%endschema%}/gs"
 }

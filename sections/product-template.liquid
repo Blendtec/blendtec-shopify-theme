@@ -7,7 +7,6 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
-{% include 'bold_mem_helper' with 'product' %}
 {% assign on_sale = false %}
 {% if product.compare_at_price > product.price %}
   {% unless hide_on_sale_badge %}
@@ -140,12 +139,9 @@
             <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
               <p class="medium-down--text-center">
                 <span id="ProductPrice" class='faded medium-down--text-center' itemprop="price">
-                  {% include 'bold-memberships-price' %}
-                  {% if bold_hide_item == false %}
                     {{ current_variant.price | money }}
-                  {% endif %}
                 </span>
-                {% if product.compare_at_price_max > product.price and bold_hide_item == false %}
+                {% if product.compare_at_price_max > product.price %}
                   <span id="ComparePrice" class='strikethrough faded medium-down--text-center'>
                     {{ current_variant.compare_at_price | money }}
                   </span>
@@ -193,12 +189,9 @@
 
                 <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
                 <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-                {% include 'bold-memberships-addtocart' %}
-                {%  if bold_hide_item == false %}
                   <button type="submit" name="add" id="AddToCart" class="btn">
                     <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
                   </button>
-                {% endif %}
               <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
               {% endif %}
             </form>

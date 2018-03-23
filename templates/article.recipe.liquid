@@ -19,7 +19,6 @@
 {% if comment and comment.created_at %}
   {% assign number_of_comments = article.comments_count | plus: 1 %}
 {% endif %}
-{% include 'bold_mem_helper' with 'article' %}
 <div class="blog-filters-wrapper has-border">
         {% assign theTagsToSearch = blog.all_tags %}
         {% assign baseUrlTag = blog.title | downcase %}
