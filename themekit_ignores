@@ -8,6 +8,8 @@ gulpFile.js
 how-to-use.txt
 npm-debug.log
 watchTheme.sh
+package.json
+README.md
 
 # globs
 *.png
