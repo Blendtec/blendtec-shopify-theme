@@ -112,6 +112,7 @@
     {{ 'handlebars.min.js' | asset_url | script_tag }}
     {% include 'ajax-cart-template' %}
     {{ 'ajax-cart.js' | asset_url | script_tag }}
+    {% include 'bingads' %}
     <script>
       jQuery(function($) {
         ajaxCart.init({
