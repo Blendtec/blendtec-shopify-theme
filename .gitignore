@@ -1,3 +1,5 @@
 # Intelli-J
 .idea/
 theme.lock
+node_modules
+npm-debug.log
