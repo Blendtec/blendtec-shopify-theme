@@ -11,7 +11,7 @@ notifications:
   webhooks:
     urls:
       - https://outlook.office.com/webhook/3b6879b1-8830-4f1e-a4bf-e4e9761460c1@07261bf4-4bea-401b-ac9c-de322838b380/TravisCI/f8e60d652e5343bc9e009dc701c961bc/f4d49b17-6166-458f-81cd-2b5acbc3801c
-    on_success: always
+    on_success: change
     on_failure: always
     on_error: always
 install:
