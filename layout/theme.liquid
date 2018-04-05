@@ -18,9 +18,8 @@
 <html class="no-js">
 <!--<![endif]-->
 <head>
+    {% include 'easylockdown_head' %}
     {{ 'avmws.js' | asset_url | script_tag }}
-    {% include 'google-tag-manager' %}
-
 
   <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
@@ -89,6 +88,7 @@
     <div id="PageContainer" class="is-moved-by-drawer">
       <main class="main-content" role="main">
         {{ content_for_layout }}
+        {% include 'easylockdown_body' %}
       </main>
 
       {% section 'bt-footer' %}
