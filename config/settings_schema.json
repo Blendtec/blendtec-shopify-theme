@@ -8,6 +8,23 @@
     "theme_documentation_url": "https:\/\/www.github.com\/Blendtec"
   },
   {
+    "name": "EasyLockDown",
+    "settings":[
+      {
+      "type":"image_picker",
+      "id":"easylockdownTopImage",
+      "label":"Easy LockDown Top Image",
+      "info":"This is the image for the top of the easylockdown page"
+      },
+      {
+      "type":"image_picker",
+      "id":"easylockdownSideImage",
+      "label":"Easy LockDown Side Image",
+      "info":"This is the image for the side of the easylockdown page"
+      }
+    ]
+  },
+  {
     "name": "Colors",
     "settings": [
       {
