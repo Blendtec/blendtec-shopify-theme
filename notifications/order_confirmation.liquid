@@ -218,30 +218,19 @@
                                                                 <strong>{{ shipping_price | money }}</strong>
                                                             </td>
                                                         </tr>
-
-
-                                                        {% for line in tax_lines %}
-
-                                                            <tr class="subtotal-line">
-                                                                <td class="subtotal-line__title">
-                                                                    <p>
-                                                                        <span>{{ line.title }}</span>
-                                                                    </p>
-                                                                </td>
-                                                                <td class="subtotal-line__value">
-                                                                    <strong>{{ line.price | money }}</strong>
-                                                                </td>
-                                                            </tr>
-
-                                                        {% endfor %}
                                                         <tr class="subtotal-line">
                                                             <td class="subtotal-line__title">
                                                                 <p>
-                                                                    <span>Tax</span>
+                                                                    <span>Estimated Tax*</span>
                                                                 </p>
                                                             </td>
                                                             <td class="subtotal-line__value">
                                                                 <strong>{{ tax_price | money }}</strong>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><p><small>*We are required by law to charge all applicable sales taxes for online orders.</small></p>
+                                                                <p><small>Please note that the order totals during your checkout reflect estimated sales tax. The actual charge to your form of payment will include applicable state and local sales taxes and will be calculated when order is shipped.</small></p>
                                                             </td>
                                                         </tr>
                                                     </table>
