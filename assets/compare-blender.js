@@ -142,3 +142,8 @@ window.addEventListener("resize", function() {
  standardize_cell_size();
  makeOnlyLeftMostInfoVisible();
 });
+
+window.addEventListener("load", function() {
+ standardize_cell_size();
+ makeOnlyLeftMostInfoVisible();
+});

@@ -214,6 +214,130 @@
     ]
   },
   {
+    "name": "Product Jar Images",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "WildSide",
+        "label": "WildSide+ Image",
+        "info": "Icon for Wildside+ Jar."
+      },
+      {
+        "type": "image_picker",
+        "id": "FourSide",
+        "label": "FourSide Image",
+        "info": "Icon for Fourside Jar."
+      }
+    ]
+  },
+  {
+    "name": "Product Color Images",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "iWhite",
+        "label": "White",
+        "info": "Product color white."
+      },
+      {
+        "type": "image_picker",
+        "id": "iPolarWhite",
+        "label": "Polar White",
+        "info": "Product color Polar White."
+      },
+      {
+        "type": "image_picker",
+        "id": "iBlack",
+        "label": "Black",
+        "info": "Product color Black."
+      },
+      {
+        "type": "image_picker",
+        "id": "iSlateGrey",
+        "label": "Slate Grey",
+        "info": "Product color Slate Grey."
+      },
+      {
+        "type": "image_picker",
+        "id": "iOrchid",
+        "label": "Orchid",
+        "info": "Product color Orchid."
+      },
+      {
+        "type": "image_picker",
+        "id": "iPoppy",
+        "label": "Poppy",
+        "info": "Product color Poppy."
+      },
+      {
+        "type": "image_picker",
+        "id": "iCaribbeanBlue",
+        "label": "Caribbean Blue",
+        "info": "Product color Caribbean Blue."
+      },
+      {
+        "type": "image_picker",
+        "id": "iChartreuse",
+        "label": "Chartreuse",
+        "info": "Product color Chartreuse."
+      },
+      {
+        "type": "image_picker",
+        "id": "iSeaFoam",
+        "label": "Sea Foam",
+        "info": "Product color Sea Foam."
+      },
+      {
+        "type": "image_picker",
+        "id": "iPomegranate",
+        "label": "Pomegranate",
+        "info": "Product color Pomegranate."
+      },
+      {
+        "type": "image_picker",
+        "id": "iDarkRoast",
+        "label": "Dark Roast",
+        "info": "Product color Dark Roast."
+      },
+      {
+        "type": "image_picker",
+        "id": "iCharcoal",
+        "label": "Charcoal",
+        "info": "Product color Charcoal."
+      },
+      {
+        "type": "image_picker",
+        "id": "iChampagne",
+        "label": "Champagne",
+        "info": "Product color Charcoal."
+      },
+      {
+        "type": "image_picker",
+        "id": "iStainlessBlack",
+        "label": "Stainless Black",
+        "info": "Product color Stainless\/Black."
+      },
+      {
+        "type": "image_picker",
+        "id": "iStainlessWhite",
+        "label": "Stainless White",
+        "info": "Product color Stainless\/White."
+      },
+      {
+        "type": "image_picker",
+        "id": "iGunmetal",
+        "label": "Gunmetal",
+        "info": "Product color Gunmetal."
+      },
+      {
+        "type": "image_picker",
+        "id": "iRed",
+        "label": "Red",
+        "info": "Product color Red."
+      }
+    ]
+  },
+  {
     "name": "Typography",
     "settings": [
       {
