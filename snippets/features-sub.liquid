@@ -1,24 +1,24 @@
 <hr class="hr-no-margin">
 
-{% if Features_Sub_title %}
+{% if features_sub_title %}
 {% assign alignmentCounter = alignmentCounter | plus: 1 %}
 {% assign alignmentModulo = alignmentCounter | modulo: 2 %}
 <div class="grid">
-  {% if Features_Sub_image and alignmentModulo == 1 %}
+  {% if features_sub_image and alignmentModulo == 1 %}
   <div class="grid__item large--one-half medium--one-half">
-  	<img style="width:100%" src="https://s3.amazonaws.com/metafields.blendtec.com{{ Features_Sub_image | remove: 'https://metafields.blendtec.com.s3.amazonaws.com' }}">
+  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ features_sub_image | remove: 'https://metafields.blendtec.com.s3.amazonaws.com' }}">
   </div>
   {% endif %}
   <div class="grid__item large--one-half medium--one-half tabs-margin-div">
-    <h4 style="color:black;">{{ Features_Sub_title }}</h4>
+    <h4 class="colorBlack">{{ features_sub_title }}</h4>
     <hr class="red-hr">
 
-  	{{ Features_Sub_text }}
+  	{{ features_sub_text }}
 
   </div>
-  {% if Features_Sub_image and alignmentModulo == 0 %}
+  {% if features_sub_image and alignmentModulo == 0 %}
   <div class="grid__item large--one-half medium--one-half">
-  	<img style="width:100%" src="https://s3.amazonaws.com/metafields.blendtec.com{{ Features_Sub_image | remove: 'https://metafields.blendtec.com.s3.amazonaws.com' }}">
+  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ features_sub_image | remove: 'https://metafields.blendtec.com.s3.amazonaws.com' }}">
   </div>
   {% endif %}
 </div>

@@ -25,6 +25,18 @@
     ]
   },
   {
+    "name": "Metafields",
+    "settings":[
+      {
+        "type": "text",
+        "id": "metafield_buckets",
+        "label": "Instagram",
+        "default": "https://s3.amazonaws.com/metafields.blendtec.com",
+        "info": "The Bucket where metafields stores the images"
+      }
+    ]
+  },
+  {
     "name": "Colors",
     "settings": [
       {

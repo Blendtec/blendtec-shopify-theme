@@ -175,12 +175,9 @@
         {% endfor %}
 
           {% if noPurchase == false %}
-              <script>
-                console.log('{{ product.variants[0].option1 | json }}');
-              </script>
           <div class="grid">
           {% if product.variants[0].option1 %}
-            <div class="grid__item large--one-half medium--one-half align-height-options">
+            <div class="grid__item large--one-half medium--one-half productOptionsHeight">
               <div class="margin-15">
                 <span class="product-options-headers">Color: </span><span id="colorTitle"></span>
               </div>            {% assign done_colors = '' | split: "  ,   " %}
@@ -204,7 +201,7 @@
               </div>
               {% endif %}
               {% if product.variants[0].option2 %}
-            <div class="grid__item large--one-half medium--one-half align-height-options">
+            <div class="grid__item large--one-half medium--one-half productOptionsHeight">
               <div class="margin-15">
                 <span class="product-options-headers">Jar: </span><span id="jarTitle"></span>
               </div>
@@ -224,7 +221,7 @@
 
               </div>
               {% endif %}
-              <div class="grid__item large--one-half medium--one-half align-height-options">
+              <div class="grid__item large--one-half medium--one-half productOptionsHeight">
               <div class="margin-15">
                 <span class="product-options-headers">Quantity </span>
               </div>
@@ -232,7 +229,7 @@
                 <input type="number" id="QuantitySmall" value="1" min="1" onchange="changeQuantity(this)">
               </div>
               </div>
-              <div class="grid__item large--one-half medium--one-half align-height-options">
+              <div class="grid__item large--one-half medium--one-half productOptionsHeight">
               <div class="margin-15">&nbsp;</div>
               <div>
                   <button type="submit" name="add" id="AddToCart" class="btn">
@@ -297,14 +294,14 @@
   </div>
   <div id="tab-3">
     <div class="tabs-margin-div">
-      <h4 style="color:black;">REVIEWS</h4>
+      <h4 class="colorBlack">REVIEWS</h4>
     <hr class="red-hr">
     {% include "bv-ratings-reviews" %}
     </div>
   </div>
   <div id="tab-4">
     <div class="tabs-margin-div">
-      <h4 style="color:black;">QUESTIONS & ANSWERS</h4>
+      <h4 class="colorBlack">QUESTIONS & ANSWERS</h4>
     <hr class="red-hr">
     {% include "bv-questions" %}
     </div>
@@ -346,15 +343,6 @@ var waitJquery = function(func) {
     $('#Quantity').val($(self).val());
   };
 
-  var equalizeHeight = function () {
-    var highest = 0;
-    $('.align-height-options').each(function(index, value){
-      if ($(value).height() > highest) {
-        highest = $(value).height();
-      }
-    });
-    $('.align-height-options').height(highest);
-  };
 
   var enableTabs = function () {
     $('ul.tabs').each(function(){
@@ -378,12 +366,8 @@ var waitJquery = function(func) {
     });
   };
 
-  window.addEventListener('load', function() {
-    waitJquery(function() {
-            equalizeHeight();
-            enableTabs();
-          });
-  });
+$(document).ready(function() {
+  enableTabs();
 
     {% if product.variants[0].option1 %}
   {% assign variant1 = product.variants[0] %}
@@ -393,9 +377,7 @@ var waitJquery = function(func) {
       {% assign textInitial = variant1.option1 %}
       {% assign colorSelectorInitial = variant1.option1 | remove: '/' %}
       {% assign imageSelectorInitial = variant1.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
-        waitJquery(function() {
           changeColor('{{ colorSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
-        });
     {% endif %}
 
     {% if product.variants[0].option2 %}
@@ -406,10 +388,14 @@ var waitJquery = function(func) {
       {% assign textInitial = variant2.option2 %}
                 {% assign jarSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' %}
                 {% assign imageSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' | remove: '+' %}
-        waitJquery(function() {
           changeJar('{{ jarSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
-        });
     {% endif %}
+
+});
+
+
+
+
 
 </script>
 {% comment %}
