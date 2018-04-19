@@ -169,17 +169,17 @@
 
               {% assign noPurchase = false %}
               {% for tag in product.tags %}
-   				 {% if tag == 'NoPurchase'%}
-					{% assign noPurchase = true %}
+           {% if tag == 'NoPurchase'%}
+          {% assign noPurchase = true %}
                  {% endif %}
-			  {% endfor %}
+        {% endfor %}
 
-		      {% if noPurchase == false %}
+          {% if noPurchase == false %}
           <div class="grid">
-          {% if product.selected_variant.option1 %}
-            <div class="grid__item large--one-half medium--one-half align-height-options">
+          {% if product.variants[0].option1 %}
+            <div class="grid__item large--one-half medium--one-half product-options-height">
               <div class="margin-15">
-                <span class="product-options-headers">Color: </span><span id="colorTitle"></span>
+                <span class="product-options-headers">{{ 'products.product.color' | t }}: </span><span id="colorTitle"></span>
               </div>            {% assign done_colors = '' | split: "  ,   " %}
               {% for i in product.variants %}
                 {% unless done_colors contains i.option1 %}
@@ -200,10 +200,10 @@
 
               </div>
               {% endif %}
-              {% if product.selected_variant.option2 %}
-            <div class="grid__item large--one-half medium--one-half align-height-options">
+              {% if product.variants[0].option2 %}
+            <div class="grid__item large--one-half medium--one-half product-options-height">
               <div class="margin-15">
-                <span class="product-options-headers">Jar: </span><span id="jarTitle"></span>
+                <span class="product-options-headers">{{ 'products.product.jar' | t }}: </span><span id="jarTitle"></span>
               </div>
               {% assign done_jars = '' | split: "  ,   " %}
               {% for i in product.variants %}
@@ -221,15 +221,15 @@
 
               </div>
               {% endif %}
-              <div class="grid__item large--one-half medium--one-half align-height-options">
+              <div class="grid__item large--one-half medium--one-half product-options-height">
               <div class="margin-15">
-                <span class="product-options-headers">Quantity </span>
+                <span class="product-options-headers">{{ 'products.product.quantity' | t }} </span>
               </div>
               <div>
                 <input type="number" id="QuantitySmall" value="1" min="1" onchange="changeQuantity(this)">
               </div>
               </div>
-              <div class="grid__item large--one-half medium--one-half align-height-options">
+              <div class="grid__item large--one-half medium--one-half product-options-height">
               <div class="margin-15">&nbsp;</div>
               <div>
                   <button type="submit" name="add" id="AddToCart" class="btn">
@@ -280,12 +280,12 @@
   </div>
 <div class="tabs-wrapper">
   <ul class="tabs" style="margin-bottom:0px;">
-    <li class="tab-options tab-options-selected"><a href="#tab-1">Features</a></li>
-    <li class="tab-options"><a href="#tab-2">Specs</a></li>
-    <li class="tab-options"><a href="#tab-3">Reviews</a></li>
-    <li class="tab-options"><a href="#tab-4">Questions & Answers</a></li>
+    <li class="tab-options tab-options-selected"><a href="#tab-1">{{ 'products.product.features' | t }}</a></li>
+    <li class="tab-options"><a href="#tab-2">{{ 'products.product.specs' | t }}</a></li>
+    <li class="tab-options"><a href="#tab-3">{{ 'products.product.reviews' | t }}</a></li>
+    <li class="tab-options"><a href="#tab-4">{{ 'products.product.questions_answers' | t }}</a></li>
   </ul>
-  <hr style="margin-top:0px;">
+  <hr class="hr-no-margin">
   <div id="tab-1">
     {% include "product-features" %}
   </div>
@@ -293,9 +293,13 @@
     {% include "product-specs" %}
   </div>
   <div id="tab-3">
+      <h4>{{ 'products.product.reviews' | t }}</h4>
+    <hr class="red-hr">
     {% include "bv-ratings-reviews" %}
   </div>
   <div id="tab-4">
+      <h4>{{ 'products.product.questions_answers' | t }}</h4>
+    <hr class="red-hr">
     {% include "bv-questions" %}
   </div>
 </div>
@@ -305,17 +309,6 @@
   {% endif %}
 </div>
 <script type="text/javascript">
-
-var waitJquery = function(func) {
-  if (window.jQuery) {
-    func();
-  } else {
-    setTimeout(function() {
-      waitJquery(func);
-    },100);
-  }
-
-};
 
   var changeColor = function (color, text, id) {
     $('#productSelect-option-0').val(text).change();
@@ -335,15 +328,6 @@ var waitJquery = function(func) {
     $('#Quantity').val($(self).val());
   };
 
-  var equalizeHeight = function () {
-    var highest = 0;
-    $('.align-height-options').each(function(index, value){
-      if ($(value).height() > highest) {
-        highest = $(value).height();
-      }
-    });
-    $('.align-height-options').height(highest);
-  };
 
   var enableTabs = function () {
     $('ul.tabs').each(function(){
@@ -367,28 +351,36 @@ var waitJquery = function(func) {
     });
   };
 
-      waitJquery(function() {
-        equalizeHeight();
-        enableTabs();
-      });
+$(document).ready(function() {
+  enableTabs();
 
-    {% if product.selected_variant.option1 %}
-      {% assign textInitial = product.selected_variant.option1 %}
-      {% assign colorSelectorInitial = product.selected_variant.option1 | remove: '/' %}
-      {% assign imageSelectorInitial = product.selected_variant.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
-        waitJquery(function() {
+    {% if product.variants[0].option1 %}
+  {% assign variant1 = product.variants[0] %}
+  {% if product.selected_variant %}
+    {% assign variant1 = product.selected_variant %}
+  {% endif %}
+      {% assign textInitial = variant1.option1 %}
+      {% assign colorSelectorInitial = variant1.option1 | remove: '/' %}
+      {% assign imageSelectorInitial = variant1.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
           changeColor('{{ colorSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
-        });
     {% endif %}
 
-    {% if product.selected_variant.option2 %}
-      {% assign textInitial = product.selected_variant.option2 %}
-                {% assign jarSelectorInitial = product.selected_variant.option2 | remove: '/' | remove: ' ' %}
-                {% assign imageSelectorInitial = product.selected_variant.option2 | remove: '/' | remove: ' ' | remove: '+' %}
-        waitJquery(function() {
+    {% if product.variants[0].option2 %}
+  {% assign variant2 = product.variants[0] %}
+  {% if product.selected_variant %}
+    {% assign variant2 = product.selected_variant %}
+   {% endif %}
+      {% assign textInitial = variant2.option2 %}
+                {% assign jarSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' %}
+                {% assign imageSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' | remove: '+' %}
           changeJar('{{ jarSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
-        });
     {% endif %}
+
+});
+
+
+
+
 
 </script>
 {% comment %}

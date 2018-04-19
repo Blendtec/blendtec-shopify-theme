@@ -358,6 +358,14 @@
       "from_text_html": "From {{ price }}"
     },
     "product": {
+      "jar": "Jar",
+      "color": "Color",
+      "quantity": "Quantity",
+      "features": "FEATURES",
+      "features_include": "FEATURES INCLUDE",
+      "specs": "SPECS",
+      "reviews": "REVIEWS",
+      "questions_answers": "QUESTIONS & ANSWERS",
       "sold_out": "Sold Out",
       "on_sale": "Sale",
       "on_sale_from_html": "<strong>On Sale<\/strong> from {{ price }}",
