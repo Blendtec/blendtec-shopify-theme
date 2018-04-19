@@ -201,10 +201,6 @@ a.cta {
   margin-top: 15px;
 }
 
-.colorBlack {
-	color:#000;
-}
-
 $bodyFontStack: {{ base_family }};
 $headerFontStack: {{ header_family }};
 $logoFontStack: {{logo_family}};
@@ -4395,7 +4391,7 @@ body:not(.js-drawer-open) .drawer__content {
   margin-top:0px;
   margin-bottom:0px;
 }
-.tabs-margin-div {
+.tabs-wrapper h4 {
 	margin-top:25px;
 }
 
@@ -5431,6 +5427,9 @@ p.h6.light {
   display: flex;
   flex-wrap: wrap;
   border-bottom: 1px solid $colorBorder;
+  h4 {
+    color:#000;
+  }
 }
 
 #PhotoContent { font-size: 0; }
