@@ -314,17 +314,6 @@
 </div>
 <script type="text/javascript">
 
-var waitJquery = function(func) {
-  if (window.jQuery) {
-    func();
-  } else {
-    setTimeout(function() {
-      waitJquery(func);
-    },100);
-  }
-
-};
-
   var changeColor = function (color, text, id) {
     $('#productSelect-option-0').val(text).change();
     $('.color-selector-wrapper').removeClass('color-is-selected');
