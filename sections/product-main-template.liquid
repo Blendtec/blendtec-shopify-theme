@@ -177,9 +177,9 @@
           {% if noPurchase == false %}
           <div class="grid">
           {% if product.variants[0].option1 %}
-            <div class="grid__item large--one-half medium--one-half productOptionsHeight">
+            <div class="grid__item large--one-half medium--one-half product_options_height">
               <div class="margin-15">
-                <span class="product-options-headers">Color: </span><span id="colorTitle"></span>
+                <span class="product-options-headers">{{ 'products.product.color' | t }}: </span><span id="colorTitle"></span>
               </div>            {% assign done_colors = '' | split: "  ,   " %}
               {% for i in product.variants %}
                 {% unless done_colors contains i.option1 %}
@@ -201,9 +201,9 @@
               </div>
               {% endif %}
               {% if product.variants[0].option2 %}
-            <div class="grid__item large--one-half medium--one-half productOptionsHeight">
+            <div class="grid__item large--one-half medium--one-half product_options_height">
               <div class="margin-15">
-                <span class="product-options-headers">Jar: </span><span id="jarTitle"></span>
+                <span class="product-options-headers">{{ 'products.product.jar' | t }}: </span><span id="jarTitle"></span>
               </div>
               {% assign done_jars = '' | split: "  ,   " %}
               {% for i in product.variants %}
@@ -221,15 +221,15 @@
 
               </div>
               {% endif %}
-              <div class="grid__item large--one-half medium--one-half productOptionsHeight">
+              <div class="grid__item large--one-half medium--one-half product_options_height">
               <div class="margin-15">
-                <span class="product-options-headers">Quantity </span>
+                <span class="product-options-headers">{{ 'products.product.quantity' | t }} </span>
               </div>
               <div>
                 <input type="number" id="QuantitySmall" value="1" min="1" onchange="changeQuantity(this)">
               </div>
               </div>
-              <div class="grid__item large--one-half medium--one-half productOptionsHeight">
+              <div class="grid__item large--one-half medium--one-half product_options_height">
               <div class="margin-15">&nbsp;</div>
               <div>
                   <button type="submit" name="add" id="AddToCart" class="btn">
@@ -280,10 +280,10 @@
   </div>
 <div class="tabs-wrapper">
   <ul class="tabs" style="margin-bottom:0px;">
-    <li class="tab-options tab-options-selected"><a href="#tab-1">Features</a></li>
-    <li class="tab-options"><a href="#tab-2">Specs</a></li>
-    <li class="tab-options"><a href="#tab-3">Reviews</a></li>
-    <li class="tab-options"><a href="#tab-4">Questions & Answers</a></li>
+    <li class="tab-options tab-options-selected"><a href="#tab-1">{{ 'products.product.features' | t }}</a></li>
+    <li class="tab-options"><a href="#tab-2">{{ 'products.product.specs' | t }}</a></li>
+    <li class="tab-options"><a href="#tab-3">{{ 'products.product.reviews' | t }}</a></li>
+    <li class="tab-options"><a href="#tab-4">{{ 'products.product.questions_answers' | t }}</a></li>
   </ul>
   <hr class="hr-no-margin">
   <div id="tab-1">
@@ -294,14 +294,14 @@
   </div>
   <div id="tab-3">
     <div class="tabs-margin-div">
-      <h4 class="colorBlack">REVIEWS</h4>
+      <h4 class="colorBlack">{{ 'products.product.reviews' | t }}</h4>
     <hr class="red-hr">
     {% include "bv-ratings-reviews" %}
     </div>
   </div>
   <div id="tab-4">
     <div class="tabs-margin-div">
-      <h4 class="colorBlack">QUESTIONS & ANSWERS</h4>
+      <h4 class="colorBlack">{{ 'products.product.questions_answers' | t }}</h4>
     <hr class="red-hr">
     {% include "bv-questions" %}
     </div>

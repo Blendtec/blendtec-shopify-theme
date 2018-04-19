@@ -1,7 +1,7 @@
 {% assign alignmentCounter = 0 %}
 <div class="grid">
   <div class="grid__item large--one-half medium--one-half tabs-margin-div">
-    <h4 class="colorBlack">FEATURES INCLUDE</h4>
+    <h4 class="colorBlack">{{ 'products.product.features' | t }}</h4>
     <hr class="red-hr">
     <ul>
     <li>
@@ -11,7 +11,7 @@
   </div>
   {% if product.metafields['global']['Features-Include-Image'] %}
   <div class="grid__item large--one-half medium--one-half">
-  	<img style="width:100%" src="https://s3.amazonaws.com/metafields.blendtec.com{{ product.metafields['global']['Features-Include-Image'] | remove: 'https://metafields.blendtec.com.s3.amazonaws.com' }}">
+  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ product.metafields['global']['Features-Include-Image'] | remove: settings['metafield_buckets_src'] }}">
   </div>
   {% endif %}
 </div>

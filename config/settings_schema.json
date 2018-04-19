@@ -30,8 +30,15 @@
       {
         "type": "text",
         "id": "metafield_buckets",
-        "label": "Instagram",
+        "label": "Metafield Buckets",
         "default": "https://s3.amazonaws.com/metafields.blendtec.com",
+        "info": "The Bucket where metafields stores the images"
+      },
+      {
+        "type": "text",
+        "id": "metafield_buckets_src",
+        "label": "Metafield Buckets Src",
+        "default": "https://metafields.blendtec.com.s3.amazonaws.com",
         "info": "The Bucket where metafields stores the images"
       }
     ]

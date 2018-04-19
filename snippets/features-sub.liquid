@@ -6,7 +6,7 @@
 <div class="grid">
   {% if features_sub_image and alignmentModulo == 1 %}
   <div class="grid__item large--one-half medium--one-half">
-  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ features_sub_image | remove: 'https://metafields.blendtec.com.s3.amazonaws.com' }}">
+  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ features_sub_image | remove: settings['metafield_buckets_src'] }}">
   </div>
   {% endif %}
   <div class="grid__item large--one-half medium--one-half tabs-margin-div">
@@ -18,7 +18,7 @@
   </div>
   {% if features_sub_image and alignmentModulo == 0 %}
   <div class="grid__item large--one-half medium--one-half">
-  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ features_sub_image | remove: 'https://metafields.blendtec.com.s3.amazonaws.com' }}">
+  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ features_sub_image | remove: settings['metafield_buckets_src'] }}">
   </div>
   {% endif %}
 </div>
