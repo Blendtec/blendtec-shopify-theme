@@ -169,14 +169,17 @@
 
               {% assign noPurchase = false %}
               {% for tag in product.tags %}
-   				 {% if tag == 'NoPurchase'%}
-					{% assign noPurchase = true %}
+           {% if tag == 'NoPurchase'%}
+          {% assign noPurchase = true %}
                  {% endif %}
-			  {% endfor %}
+        {% endfor %}
 
-		      {% if noPurchase == false %}
+          {% if noPurchase == false %}
+              <script>
+                console.log('{{ product.variants[0].option1 | json }}');
+              </script>
           <div class="grid">
-          {% if product.selected_variant.option1 %}
+          {% if product.variants[0].option1 %}
             <div class="grid__item large--one-half medium--one-half align-height-options">
               <div class="margin-15">
                 <span class="product-options-headers">Color: </span><span id="colorTitle"></span>
@@ -200,7 +203,7 @@
 
               </div>
               {% endif %}
-              {% if product.selected_variant.option2 %}
+              {% if product.variants[0].option2 %}
             <div class="grid__item large--one-half medium--one-half align-height-options">
               <div class="margin-15">
                 <span class="product-options-headers">Jar: </span><span id="jarTitle"></span>
@@ -285,7 +288,7 @@
     <li class="tab-options"><a href="#tab-3">Reviews</a></li>
     <li class="tab-options"><a href="#tab-4">Questions & Answers</a></li>
   </ul>
-  <hr style="margin-top:0px;">
+  <hr class="hr-no-margin">
   <div id="tab-1">
     {% include "product-features" %}
   </div>
@@ -293,10 +296,18 @@
     {% include "product-specs" %}
   </div>
   <div id="tab-3">
+    <div class="tabs-margin-div">
+      <h4 style="color:black;">REVIEWS</h4>
+    <hr class="red-hr">
     {% include "bv-ratings-reviews" %}
+    </div>
   </div>
   <div id="tab-4">
+    <div class="tabs-margin-div">
+      <h4 style="color:black;">QUESTIONS & ANSWERS</h4>
+    <hr class="red-hr">
     {% include "bv-questions" %}
+    </div>
   </div>
 </div>
 
@@ -367,24 +378,34 @@ var waitJquery = function(func) {
     });
   };
 
-      waitJquery(function() {
-        equalizeHeight();
-        enableTabs();
-      });
+  window.addEventListener('load', function() {
+    waitJquery(function() {
+            equalizeHeight();
+            enableTabs();
+          });
+  });
 
-    {% if product.selected_variant.option1 %}
-      {% assign textInitial = product.selected_variant.option1 %}
-      {% assign colorSelectorInitial = product.selected_variant.option1 | remove: '/' %}
-      {% assign imageSelectorInitial = product.selected_variant.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
+    {% if product.variants[0].option1 %}
+  {% assign variant1 = product.variants[0] %}
+  {% if product.selected_variant %}
+    {% assign variant1 = product.selected_variant %}
+  {% endif %}
+      {% assign textInitial = variant1.option1 %}
+      {% assign colorSelectorInitial = variant1.option1 | remove: '/' %}
+      {% assign imageSelectorInitial = variant1.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
         waitJquery(function() {
           changeColor('{{ colorSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
         });
     {% endif %}
 
-    {% if product.selected_variant.option2 %}
-      {% assign textInitial = product.selected_variant.option2 %}
-                {% assign jarSelectorInitial = product.selected_variant.option2 | remove: '/' | remove: ' ' %}
-                {% assign imageSelectorInitial = product.selected_variant.option2 | remove: '/' | remove: ' ' | remove: '+' %}
+    {% if product.variants[0].option2 %}
+  {% assign variant2 = product.variants[0] %}
+  {% if product.selected_variant %}
+    {% assign variant2 = product.selected_variant %}
+   {% endif %}
+      {% assign textInitial = variant2.option2 %}
+                {% assign jarSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' %}
+                {% assign imageSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' | remove: '+' %}
         waitJquery(function() {
           changeJar('{{ jarSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
         });

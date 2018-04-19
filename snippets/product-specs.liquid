@@ -1,1 +1,9 @@
-product specs
+<div class="tabs-margin-div">
+<h4 style="color:black;">SPECS</h4>
+    <hr class="red-hr">
+  <ul>
+  <li>
+{{ product.metafields["global"]["specs"] | replace: ",", "</li><li>" | replace: "|", "," }}
+  </li>
+</ul>
+</div>
