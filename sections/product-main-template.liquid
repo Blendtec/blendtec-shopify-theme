@@ -177,7 +177,7 @@
           {% if noPurchase == false %}
           <div class="grid">
           {% if product.variants[0].option1 %}
-            <div class="grid__item large--one-half medium--one-half product_options_height">
+            <div class="grid__item large--one-half medium--one-half product-options-height">
               <div class="margin-15">
                 <span class="product-options-headers">{{ 'products.product.color' | t }}: </span><span id="colorTitle"></span>
               </div>            {% assign done_colors = '' | split: "  ,   " %}
@@ -201,7 +201,7 @@
               </div>
               {% endif %}
               {% if product.variants[0].option2 %}
-            <div class="grid__item large--one-half medium--one-half product_options_height">
+            <div class="grid__item large--one-half medium--one-half product-options-height">
               <div class="margin-15">
                 <span class="product-options-headers">{{ 'products.product.jar' | t }}: </span><span id="jarTitle"></span>
               </div>
@@ -221,7 +221,7 @@
 
               </div>
               {% endif %}
-              <div class="grid__item large--one-half medium--one-half product_options_height">
+              <div class="grid__item large--one-half medium--one-half product-options-height">
               <div class="margin-15">
                 <span class="product-options-headers">{{ 'products.product.quantity' | t }} </span>
               </div>
@@ -229,7 +229,7 @@
                 <input type="number" id="QuantitySmall" value="1" min="1" onchange="changeQuantity(this)">
               </div>
               </div>
-              <div class="grid__item large--one-half medium--one-half product_options_height">
+              <div class="grid__item large--one-half medium--one-half product-options-height">
               <div class="margin-15">&nbsp;</div>
               <div>
                   <button type="submit" name="add" id="AddToCart" class="btn">
