@@ -1452,6 +1452,13 @@ body {
   display: inline;
 }
 
+@media print
+{
+  .no-print, .no-print *
+  {
+    display: none !important;
+  }
+}
 
 
 /*============================================================================
@@ -9480,3 +9487,9 @@ body:not(.ios) .shopify-section.features {
   font-size: 1.5rem !important;
 }
 
+/*================ Vendor Labels ================*/
+
+.vendor-label {
+  border: 2px dashed #000000;
+  padding: 2em;
+}
