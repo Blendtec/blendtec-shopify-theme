@@ -9,36 +9,36 @@
   },
   {
     "name": "EasyLockDown",
-    "settings":[
+    "settings": [
       {
-      "type":"image_picker",
-      "id":"easylockdownTopImage",
-      "label":"Easy LockDown Top Image",
-      "info":"This is the image for the top of the easylockdown page"
+        "type": "image_picker",
+        "id": "easylockdownTopImage",
+        "label": "Easy LockDown Top Image",
+        "info": "This is the image for the top of the easylockdown page"
       },
       {
-      "type":"image_picker",
-      "id":"easylockdownSideImage",
-      "label":"Easy LockDown Side Image",
-      "info":"This is the image for the side of the easylockdown page"
+        "type": "image_picker",
+        "id": "easylockdownSideImage",
+        "label": "Easy LockDown Side Image",
+        "info": "This is the image for the side of the easylockdown page"
       }
     ]
   },
   {
     "name": "Metafields",
-    "settings":[
+    "settings": [
       {
         "type": "text",
         "id": "metafield_buckets",
         "label": "Metafield Buckets",
-        "default": "https://s3.amazonaws.com/metafields.blendtec.com",
+        "default": "https:\/\/s3.amazonaws.com\/metafields.blendtec.com",
         "info": "The Bucket where metafields stores the images"
       },
       {
         "type": "text",
         "id": "metafield_buckets_src",
         "label": "Metafield Buckets Src",
-        "default": "https://metafields.blendtec.com.s3.amazonaws.com",
+        "default": "https:\/\/metafields.blendtec.com.s3.amazonaws.com",
         "info": "The Bucket where metafields stores the images"
       }
     ]
