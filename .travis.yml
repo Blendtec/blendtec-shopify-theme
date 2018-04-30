@@ -29,4 +29,4 @@ deploy:
   skip_cleanup: true
   script: theme upload -p $STAGE_PASSWORD -s $STAGE_SHOP -t $STAGE_THEME_ID --force --no-update-notifier --ignores './themekit_ignores'
   on:
-    branch: stage
+    branch: develop
