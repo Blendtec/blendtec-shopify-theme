@@ -1,2 +1,5 @@
 run "./watchTheme.sh" this will push any local changes to the theme which matches the git branch you're on.
 If on master branch then it will push to blendtec.myshopify.com, if you're on any other branch then it pushes to devblendtec.myshopify.com
+
+
+
