@@ -3,9 +3,8 @@
 theme.lock
 node_modules
 npm-debug.log
-easylockdown_filter_collection.liquid
-easylockdown_filter_collections.liquid
-easylockdown_filter_search.liquid
-easylockdown_head.liquid
+snippets/easylockdown_filter_collection.liquid
+snippets/easylockdown_filter_collections.liquid
+snippets/easylockdown_filter_search.liquid
+snippets/easylockdown_head.liquid
 snippets/easylockdown_password_form.liquid
-how-to-use.txt*
