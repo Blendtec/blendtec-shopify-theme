@@ -35,11 +35,27 @@
 
     {% if section.settings.notification_bar_text != blank %}
       {% if section.settings.notification_bar_link != blank %}
-        <a href="{{section.settings.notification_bar_link}}" class='table--cell-center'>
-          <span class="header-message-text">{{ section.settings.notification_bar_text | escape }}</span>
+        <a href="{{section.settings.notification_bar_link}}">
+        <div class="notification-header">
+        {% if section.settings.notification_bar_enable_image != blank %}
+          <div class="notification-image-wrapper"><img
+                    class="javascript-load-image"
+                    src="{{section.settings.notification_bar_image | img_url: '150x' }}"
+          ></div>
+          {% endif %}
+          <p class="notification-text">{{ section.settings.notification_bar_text }}</p>
+          </div>
         </a>
       {% else %}
-        <span class="header-message-text table--cell-center text-center">{{ section.settings.notification_bar_text | escape }}</span>
+        <div class="notification-header">
+        {% if section.settings.notification_bar_enable_image != blank %}
+          <div class="notification-image-wrapper"><img
+                    class="javascript-load-image"
+                    src="{{section.settings.notification_bar_image | img_url: '150x' }}"
+          ></div>
+          {% endif %}
+          <p class="notification-text">{{ section.settings.notification_bar_text }}</p>
+          </div>
       {% endif %}
     {% endif %}
 
@@ -530,6 +546,18 @@
         "id": "notification_bar_text",
         "label": "Text",
         "placeholder": "Free shipping on all orders over $50."
+      },
+      {
+        "type": "checkbox",
+        "id": "notification_bar_enable_image",
+        "label": "Enable Image",
+        "info": "This shows the image on the notification bar."
+      },
+      {
+        "type": "image_picker",
+        "id": "notification_bar_image",
+        "label": "Notification Bar Image",
+        "info": "Image on the notification bar"
       },
       {
         "type": "text",

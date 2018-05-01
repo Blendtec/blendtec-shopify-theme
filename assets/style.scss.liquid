@@ -3012,6 +3012,41 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   }
 }
 
+.notification-header {
+  position:relative;
+  max-width:600px;
+  margin:auto;
+  margin-top:5px;
+  .notification-image-wrapper {
+    display:inline-block;
+    width:150px;
+    height:30px;
+    float:left;
+    img {
+      width:100%;
+    }
+  }
+  .notification-text {
+    display:inline-block;
+    height:30px;
+    float:right;
+    margin-top:5px;
+  }
+  @media screen and (max-width: $small) {
+    .notification-text {
+      font-size: .8em;
+      height:15px;
+      float: none;
+      display:block;
+    }
+    .notification-image-wrapper {
+      width:100px;
+      height:15px;
+      float:none;
+    }
+  }
+}
+
 
 
 @include at-query($max, $medium){
