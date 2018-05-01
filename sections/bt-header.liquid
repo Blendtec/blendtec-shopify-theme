@@ -43,7 +43,7 @@
                     src="{{section.settings.notification_bar_image | img_url: '150x' }}"
           ></div>
           {% endif %}
-          <div class="notification-text" class="header-message-text">{{ section.settings.notification_bar_text }}</div>
+          <p class="notification-text">{{ section.settings.notification_bar_text }}</p>
           </div>
         </a>
       {% else %}
@@ -54,7 +54,7 @@
                     src="{{section.settings.notification_bar_image | img_url: '150x' }}"
           ></div>
           {% endif %}
-          <div class="notification-text" class="header-message-text">{{ section.settings.notification_bar_text }}</div>
+          <p class="notification-text">{{ section.settings.notification_bar_text }}</p>
           </div>
       {% endif %}
     {% endif %}
