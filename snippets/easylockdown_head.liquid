@@ -18,7 +18,7 @@
 {% assign easylockdownDateDifference = easylockdownNow | minus: easylockdownPlacedOrder %}
 
 <script type='text/javascript'>var easylockdownLocationDisabled = true;</script>
-<script type='text/javascript' src='/apps/easylockdown/easylockdown-1.0.4.min.js' data-no-instant></script>
+<script type='text/javascript' src='//{{ shop.domain }}/apps/easylockdown/easylockdown-1.0.4.min.js' data-no-instant></script>
 <script type='text/javascript'>if( typeof InstantClick == 'object' ) easylockdown.clearData();</script>
 <style type="text/css">#easylockdown-password-form{padding:30px 0;text-align:center}#easylockdown-wrapper,.easylockdown-form-holder{display:inline-block}#easylockdown-password-error{display:none;color:#fb8077;text-align:left}#easylockdown-password-error.easylockdown-error{border:1px solid #fb8077}#easylockdown-password-form-button{display:inline-block!important;height:auto!important;padding:8px 15px!important;background:#777;border-radius:3px!important;color:#fff!important;text-decoration:none!important;vertical-align:top}.easylockdown-instantclick-fix,.easylockdown-item-selector{position:absolute;z-index:-999;display:none;height:0;width:0;font-size:0;line-height:0}.easylockdown-item-selector + *,.easylockdown-item[data-eld-loc-can],.easylockdown-collection-item[data-eld-loc-can] {display: none;}</style>
 
@@ -27,23 +27,23 @@
 {% unless easylockdownON or easylockdownSuperPage or template == 'customers/register' %}
 {% assign easylockdownLockedContent = false %}
 {% assign easylockdownHiddenContent = false %}
-{% if template contains "page" and page %}{% if page.id == 1478950932 %}{% assign easylockdownLockedContent = true %}{% endif %}{% endif %}
+{% if template == "index" %}{% assign easylockdownLockedContent = true %}{% endif %}
 {% if easylockdownLockedContent %}
-    {% assign easylockdownPasswordProtectedContent = true %}
-    <script type='text/javascript'>
-		easylockdown.routeListByAuth.can.push({aid: '6680', ah: '3550880b4f7c29b9a0d03b2c667338b22412ba2690ba88bc0638ccddae666a60', pn: '', pp: '123456'});
-    </script>
+{% assign easylockdownPasswordProtectedContent = true %}
+<script type='text/javascript'>
+easylockdown.routeListByAuth.can.push({aid: '7006', ah: '0ec591cfb15017f19beb4dee6a6ba4e5487e589c038d007f4d7e4920bf6ee7c0', pn: '', pp: 'Password'});
+</script>
 {% endif %}
 {% endunless %}
 
 {% if easylockdownON or easylockdownPasswordProtectedContent %}<meta name="robots" content="noindex,nofollow">{% endif %}
 
 <script type='text/javascript'>
-	if( typeof easylockdown == 'object' ) {
-        {% if easylockdownON %}easylockdown.router('{{ easylockdownRedirectURL }}'); {% else %}easylockdown.routerByLocation(); {% endif %}
+  if( typeof easylockdown == 'object' ) {
+    {% if easylockdownON %}easylockdown.router('{{ easylockdownRedirectURL }}'); {% else %}easylockdown.routerByLocation(); {% endif %}
 
-		easylockdown.onReady(function(e){
-			easylockdown.hideAllLinks();
-		});
-	}
+    easylockdown.onReady(function(e){
+      easylockdown.hideAllLinks();
+    });
+  }
 </script>
