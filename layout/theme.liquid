@@ -88,7 +88,7 @@
 
     <div id="PageContainer" class="is-moved-by-drawer">
       <main class="main-content" role="main">
-        {{ content_for_layout }}
+        {% comment %}{{ content_for_layout }}{% endcomment %}
         {% include 'easylockdown_body' %}
       </main>
 
