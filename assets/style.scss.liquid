@@ -2744,7 +2744,10 @@ $headerTransition : "height #{$condenseTransitionTime}, background-color 0.5s, t
       top: $headerSize - 10px;
       max-height: $headerSize - 10px;
     }
-    .js-drawer-open & {box-shadow: none;}
+    .js-drawer-open & {
+      box-shadow: none;
+      margin-top:15px;
+    }
   }
 
   @include at-query($min, $large){
@@ -3012,6 +3015,42 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   }
 }
 
+.notification-header {
+  position:relative;
+  max-width:600px;
+  margin:auto;
+  margin-top:5px;
+  .notification-image-wrapper {
+    display:inline-block;
+    width:150px;
+    height:30px;
+    float:left;
+    img {
+      width:100%;
+    }
+  }
+  .notification-text {
+    display:inline-block;
+    height:30px;
+    float:right;
+    margin-top:5px;
+  }
+  @media screen and (max-width: $small) {
+    .notification-text {
+      font-size: .8em;
+      height:15px;
+      float: none;
+      display:block;
+      margin-top:1px;
+    }
+    .notification-image-wrapper {
+      width:100px;
+      height:15px;
+      float:none;
+    }
+  }
+}
+
 
 
 @include at-query($max, $medium){
@@ -3166,14 +3205,14 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   margin-top: 121px;
 
   .respond-to-notification-bar & {
-    margin-top: 200px;
+    margin-top: 160px;
   }
 
   @include at-query($min, $medium + 1) {
     margin-top: 68px;
 
     .respond-to-notification-bar & {
-      margin-top: 130px;
+      margin-top: 108px;
     }
 
     .respond-to-transparent-header & {
@@ -4392,7 +4431,7 @@ body:not(.js-drawer-open) .drawer__content {
   margin-bottom:0px;
 }
 .tabs-wrapper h4 {
-	margin-top:25px;
+  margin-top:25px;
 }
 
 .template-blog .main-content {
@@ -5435,7 +5474,7 @@ p.h6.light {
 #PhotoContent { font-size: 0; }
 
 .product-options-height {
-	height:125px;
+  height:125px;
 }
 
 .product-lightbox-button-open {
