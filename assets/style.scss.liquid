@@ -2744,7 +2744,10 @@ $headerTransition : "height #{$condenseTransitionTime}, background-color 0.5s, t
       top: $headerSize - 10px;
       max-height: $headerSize - 10px;
     }
-    .js-drawer-open & {box-shadow: none;}
+    .js-drawer-open & {
+      box-shadow: none;
+      margin-top:15px;
+    }
   }
 
   @include at-query($min, $large){
