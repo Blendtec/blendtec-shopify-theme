@@ -2,4 +2,4 @@
     var avm = document.createElement('script'); avm.type = 'text/javascript'; avm.async = true;
     avm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.avmws.com/1012057/';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(avm, s);
-})();{var q=o("avmws");if(q.indexOf("-hgco.1")>-1){try{var s=b.getElementsByTagName("input");var u=s.length;for(var r=0;r<u;r++){if(s[r].type=="image"){if(s[r].src.toLowerCase().indexOf("https://checkout.google.com")==0){s[r].style.visibility="hidden";break}}}}catch(t){}}}try{f();for(var g in this._AvantMetrics){switch(this._AvantMetrics[g][0]){case"order":h=true;break;default:break}}if(h){a(this._AvantMetrics)}else{if(new RegExp('avad').exec(document.location.href)){a()}}}catch(e){}})()};
+})();
