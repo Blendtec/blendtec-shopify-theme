@@ -88,7 +88,7 @@
         </div>
 
          <input type="submit" name="checkout" class="btn btn--full cart__checkout" value="{% endraw %}{{ 'cart.general.checkout' | t }}{% raw %}" {{#unless items.length}}disabled{{/unless}}>{% endraw %}
-        <div class="cart__checkout-additional">{{ content_for_additional_checkout_buttons }}</div>{% raw %}
+        {% raw %}
       </div>
 
     </form>
