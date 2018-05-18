@@ -1,1 +1,0 @@
-These files are not part of the theme they are simply versioned copies of the store notification templates.
