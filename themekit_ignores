@@ -10,6 +10,8 @@ npm-debug.log
 watchTheme.sh
 package.json
 README.md
+runtime~app.bundle.js
+runtime~app.bundle.css
 
 # globs
 *.png
