@@ -5,6 +5,9 @@ git:
 language: node_js
 node_js:
 - stable
+cache:
+  directories:
+    - node_modules
 matrix:
   fast_finish: true
 notifications:
@@ -16,9 +19,11 @@ notifications:
     on_error: always
 install:
 - curl -s https://raw.githubusercontent.com/Shopify/themekit/master/scripts/install | sudo python
+- yarn
 script:
 - echo Ya!
-
+after_success:
+- yarn build
 deploy:
 - provider: script
   skip_cleanup: true
