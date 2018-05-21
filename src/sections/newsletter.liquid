@@ -2,7 +2,8 @@
   <div class='display-table-cell'>
     <div class="cell-wrapper text-center">
       {% unless section.settings.homepage_newsletter_title == blank %}
-        <h2>{{ section.settings.homepage_newsletter_title | escape }}</h2>
+        <h3>{{ section.settings.homepage_newsletter_title | upcase | escape}}</h3>
+        <hr class="red-hr"/>
       {% endunless %}
 
       {% unless section.settings.homepage_newsletter_body == blank %}
