@@ -36,6 +36,6 @@ deploy:
 - provider: script
   skip_cleanup: true
   script: 
-    - npm run theme upload -d dist -p $STAGE_PASSWORD -s $STAGE_SHOP -t $STAGE_THEME_ID --force --no-update-notifier --ignores './themekit_ignores'
+    - theme upload -d dist -p $STAGE_PASSWORD -s $STAGE_SHOP -t $STAGE_THEME_ID --force --no-update-notifier --ignores './themekit_ignores'
   on:
     branch: develop
