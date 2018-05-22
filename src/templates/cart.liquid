@@ -134,7 +134,8 @@
           {% endcomment %}
           {% if settings.cart_notes_enable %}
             <div class="grid__item large--one-half">
-              <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+              <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</lab/affirm
+              el>
               <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
             </div>
           {% endif %}
@@ -143,7 +144,9 @@
               <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
               <span class="h3 cart__subtotal">{{ cart.total_price | money }}</span>
             </p>
-            <p class="affirm-as-low-as" data-promo-id="E1B6ELQN2FTEK6VV" data-amount="{{ cart.total_price }}"></p>
+            {% if settings.affirm_enable %}
+              <p class="affirm-as-low-as" data-promo-id="{{settings.affirm_data_promo_id}}" data-amount="{{ cart.total_price }}"></p>
+            {% endif %}
             <p><em>{{ 'cart.general.shipping_at_checkout' | t }}</em></p>
 
               <input type="submit" name="update" class="btn update-cart small--btn--full" value="{{ 'cart.general.update' | t }}">

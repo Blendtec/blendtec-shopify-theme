@@ -1667,11 +1667,35 @@
     ]
   },
   {
+    "name": "Avantlink",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Avantlink Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "avantlink_enable",
+        "label": "Enable Avantlink global script"
+      },
+      {
+        "type": "text",
+        "id": "avantlink_id",
+        "label": "Avantlink Id"
+      }
+    ]
+  },
+  {
     "name": "PriceSpider",
     "settings": [
       {
         "type": "paragraph",
         "content": "PriceSpider find a store widget."
+      },
+      {
+        "type": "checkbox",
+        "id": "pricespider_enable",
+        "label": "Enable Pricespider global script"
       },
       {
         "type": "text",
@@ -1692,6 +1716,30 @@
         "type": "text",
         "id": "gtm_id",
         "label": "GTM Id"
+      }
+    ]
+  },
+  {
+    "name": "Affirm",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Affirm Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "affirm_enable",
+        "label": "Enable Affirm messaging on product and cart page"
+      },
+      {
+        "type": "text",
+        "id": "affirm_public_api_key",
+        "label": "Public API Key"
+      },
+      {
+        "type": "text",
+        "id": "affirm_data_promo_id",
+        "label": "Data Promo Id"
       }
     ]
   }

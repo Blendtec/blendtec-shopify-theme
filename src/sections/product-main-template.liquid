@@ -149,7 +149,12 @@
                   </span>
                 {% endif %}
               </p>
-              <div class="affirm-wrapper"><p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p></div>
+
+                {% if settings.affirm_enable %}
+                  <div class="affirm-wrapper">
+                    <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
+                  </div>
+                {% endif %}
               <div class="margin-15">
                 <span style="font-weight:900;">Warranty: </span><span>{{ product.metafields["global"]["Warranty"] }}</span>
               </div>

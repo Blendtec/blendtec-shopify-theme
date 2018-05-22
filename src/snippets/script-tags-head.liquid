@@ -17,5 +17,10 @@
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
   {% endif %}
 
-{{ 'price-spider.js' | asset_url | script_tag }}
-{{ 'affirm-header.js' | asset_url | script_tag }}
+{% if settings.pricespider_enable %}
+  {{ 'price-spider.js' | asset_url | script_tag }}
+{% endif %}
+
+{% if settings.affirm_enable %}
+  {{ 'affirm-header.js' | asset_url | script_tag }}
+{% endif %}

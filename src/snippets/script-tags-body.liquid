@@ -1,38 +1,43 @@
-    {{ 'app.js' | asset_url | script_tag }}
+ {{ 'app.js' | asset_url | script_tag }}
 
-    {% if template.name == 'product' %}
-        {{ 'product.js' | asset_url | script_tag }}
-    {% endif %}
+ {% if template.name == 'product' %}
+     {{ 'product.js' | asset_url | script_tag }}
+ {% endif %}
 
-    {% if resetPassword %}
-      <script>
-        $(function() {
-          ira.resetPasswordSuccess();
-        });
-      </script>
-    {% endif %}
+ {% if resetPassword %}
+   <script>
+     $(function() {
+       ira.resetPasswordSuccess();
+     });
+   </script>
+ {% endif %}
 
-    {% comment %}
-      Ajaxify your cart with this plugin.
-      Documentation: - http://shopify.com/timber#ajax-cart
-    {% endcomment %}
-    {{ 'autofit_images.js' | asset_url | script_tag }}
-    {% include 'ajax-cart-template' %}
-    {{ 'ajax-cart.js' | asset_url | script_tag }}
+ {% comment %}
+   Ajaxify your cart with this plugin.
+   Documentation: - http://shopify.com/timber#ajax-cart
+ {% endcomment %}
+ {{ 'autofit_images.js' | asset_url | script_tag }}
+ {% include 'ajax-cart-template' %}
+ {{ 'ajax-cart.js' | asset_url | script_tag }}
+
+
+{% if settings.avantlink_enable %}
     {{ 'avmws.js' | asset_url | script_tag }}
-    <script>
-      jQuery(function($) {
-        ajaxCart.init({
-          formSelector: '#AddToCartForm',
-          cartContainer: '#CartContainer',
-          addToCartSelector: '#AddToCart',
-          cartCountSelector: '#CartCount',
-          cartCostSelector: '#CartCost',
-          moneyFormat: {{ shop.money_format | json }}
-        });
-      });
+{% endif %}
 
-      jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
-        ira.CartDrawer.open();
-      });
-    </script>
+<script>
+  jQuery(function($) {
+    ajaxCart.init({
+      formSelector: '#AddToCartForm',
+      cartContainer: '#CartContainer',
+      addToCartSelector: '#AddToCart',
+      cartCountSelector: '#CartCount',
+      cartCostSelector: '#CartCost',
+      moneyFormat: {{ shop.money_format | json }}
+    });
+  });
+
+  jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+    ira.CartDrawer.open();
+  });
+</script>
