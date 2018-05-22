@@ -192,7 +192,9 @@
                   <button type="submit" name="add" id="AddToCart" class="btn">
                     <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
                   </button>
-              <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
+                {% if settings.affirm_enable %}
+                  <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
+                {% endif %}
               {% endif %}
             </form>
           </div>
