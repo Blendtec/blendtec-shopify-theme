@@ -6,9 +6,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "webpack": "webpack",
-    "watch": "webpack --watch",
+    "watch:webpack": "webpack --watch",
+    "watch:theme": "theme watch -d dist",
+    "upload": "theme upload --force -d dist",
     "theme": "theme",
-    "deploy": "yarn run build && theme upload --force -d dist",
     "lint": "slate-tools lint",
     "release": "semantic-release"
   },
