@@ -1,3 +1,11 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.1.0...v1.2.0) (2018-05-22)
+
+
+### Features
+
+* **product.main:** Add margin to tabs-wrapper ([b2ae5d2](https://github.com/Blendtec/blendtec-shopify-theme/commit/b2ae5d2))
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.0.0...v1.1.0) (2018-05-22)
 
