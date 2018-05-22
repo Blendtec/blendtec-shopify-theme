@@ -1,3 +1,11 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.2.0...v1.3.0) (2018-05-22)
+
+
+### Features
+
+* **Settings:** Allow enabling and configuration of affirm, avantlink, pricespider scripts ([2e7ffa7](https://github.com/Blendtec/blendtec-shopify-theme/commit/2e7ffa7))
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.1.0...v1.2.0) (2018-05-22)
 
