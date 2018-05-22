@@ -1,3 +1,16 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.0.0...v1.1.0) (2018-05-22)
+
+
+### Features
+
+* **Newsletter Section:** Style Newsletter Section to design ([#141](https://github.com/Blendtec/blendtec-shopify-theme/issues/141)) ([2e4e46f](https://github.com/Blendtec/blendtec-shopify-theme/commit/2e4e46f))
+
+
+### Reverts
+
+* **ajax-cart.js:** Revert Swagify additions ([#140](https://github.com/Blendtec/blendtec-shopify-theme/issues/140)) ([1d44ee2](https://github.com/Blendtec/blendtec-shopify-theme/commit/1d44ee2))
+
 <a name="1.0.0"></a>
 # 1.0.0 (2018-05-21)
 
