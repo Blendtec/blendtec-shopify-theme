@@ -110,6 +110,9 @@ $colorTextHeader: {{settings.color_header}};
 // Backgrounds
 $colorBody: {{ settings.color_body_bg }};
 $colorHeaderBackground: {{ settings.color_header_bg }};
+$colorHeaderNavText: lighten($colorHeaderBackground, 100%);
+
+
 
 // Border colors
 $colorBorder: {{ settings.color_borders }};
@@ -3474,12 +3477,14 @@ $animation-speed: 400ms;
 $animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);
 
 .secondary-navbar {
-  color: $colorTextHeader;
-  a{
-    color: $colorTextHeader;
-  }
+  color: $colorHeaderNavText;
   font-size: 12px;
   font-family: $headerFontStack;
+
+  a {
+    color: $colorHeaderNavText;
+  }
+
 }
 
 .nav-dot {
@@ -3488,7 +3493,7 @@ $animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);
     border-radius: 100px;
     margin: auto;
     margin-top: 30px;
-    background-color: $colorTextHeader;
+    background-color: $colorHeaderNavText;
 }
 @media only screen and (max-width: 1100px){
   .hide-1100px {
@@ -3566,7 +3571,7 @@ $animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);
     font-family: $headerFontStack;
     position: relative;
     font-size: 14px;
-    color: $colorTextHeader;
+    color: $colorHeaderNavText;
 
     &[data-navigation-top-level] { line-height: $headerSize; }
 
@@ -4728,7 +4733,6 @@ body:not(.js-drawer-open) .drawer__content {
 
   &.features,
   &.featured-text,
-  &.newsletter,
   &.featured-blog,
   &.custom-html,
   &.testimonials,
@@ -8287,6 +8291,10 @@ $imageCTAText: {{settings.color_image_cta_text}};
 .newsletter.shopify-section {
   position: relative;
   background-color: $colorBody;
+
+  .red-hr {
+    margin-left: 46%;
+  }
 }
 
 .newsletter-block {
