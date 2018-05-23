@@ -1729,7 +1729,8 @@
       {
         "type": "checkbox",
         "id": "affirm_enable",
-        "label": "Enable Affirm messaging on product and cart page"
+        "label": "Enable Affirm global script",
+        "info": "This setting is required for the product and cart Affirm branding to work"
       },
       {
         "type": "text",

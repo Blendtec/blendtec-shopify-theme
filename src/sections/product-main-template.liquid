@@ -150,7 +150,7 @@
                 {% endif %}
               </p>
 
-                {% if settings.affirm_enable %}
+                {% if section.settings.affirm_enable %}
                   <div class="affirm-wrapper">
                     <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
                   </div>
@@ -446,6 +446,12 @@ $(document).ready(function() {
         "type": "checkbox",
         "id": "expand_first_tab",
         "label": "Expand first tab when sidebar is sticky"
+      }, 
+      {
+        "type": "checkbox",
+        "id": "affirm_enable",
+        "label": "Show Affirm branding",
+        "info": "This setting requires Affirm to be enabled globally in the Theme settings"
       }
     ],
     "blocks": [
