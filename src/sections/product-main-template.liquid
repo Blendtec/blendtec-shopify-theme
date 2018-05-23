@@ -124,12 +124,11 @@
       <div class="sidebarColumn-inner">
         <div class="content-wrapper--title js-fix-on-scroll--target fix-on-scroll--large-only">
           <h1 itemprop="name" class='medium-down--text-center product-title'>{{ product.title | upcase }}</h1>
-          <div class="grey-gradient"></div>
+          <div class="br-gradient-light"></div>
           <div class="product-summary">{{ product.metafields["global"]["Product-Short-Summary"] }}</div>
             {% include 'bv-new-summary' %}
-            <div class="margin-15">
-              <a href="/pages/compare-blenders"><span class="bold-italic-label">COMPARE MODELS <i class="fa fa-angle-right"></i></span></a>
-            </div>
+              {% assign compareLabel = 'products.product.compare' | t %}
+              {% include 'cta-text' with text: compareLabel, url: '/pages/compare-blenders'%}
             <hr class="hr-darker">
           <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <meta itemprop="priceCurrency" content="{{ shop.currency }}">
@@ -284,11 +283,11 @@
     </div>
   </div>
 <div class="tabs-wrapper">
-  <ul class="tabs" style="margin-bottom:0px;">
-    <li class="tab-options tab-options-selected"><a href="#tab-1">{{ 'products.product.features' | t }}</a></li>
-    <li class="tab-options"><a href="#tab-2">{{ 'products.product.specs' | t }}</a></li>
-    <li class="tab-options"><a href="#tab-3">{{ 'products.product.reviews' | t }}</a></li>
-    <li class="tab-options"><a href="#tab-4">{{ 'products.product.questions_answers' | t }}</a></li>
+  <ul id="tabs">
+    <li class="selected"><a href="#tab-1"><h6>{{ 'products.product.features' | t }}</h6></a></li>
+    <li><a href="#tab-2"><h6>{{ 'products.product.specs' | t | upcase }}</h6></a></li>
+    <li><a href="#tab-3"><h6>{{ 'products.product.reviews' | t | upcase}}</h6></a></li>
+    <li><a href="#tab-4"><h6>{{ 'products.product.questions_answers' | t | upcase }}</h6></a></li>
   </ul>
   <hr class="hr-no-margin">
   <div id="tab-1">
@@ -335,16 +334,19 @@
 
 
   var enableTabs = function () {
-    $('ul.tabs').each(function(){
+    
+    $('#tabs').each(function(){
       var active, content, links = $(this).find('a');
       active = links.first().addClass('active');
       content = $(active.attr('href'));
+      
       links.not(':first').each(function () {
         $($(this).attr('href')).hide();
       });
+
       $(this).find('a').click(function(e){
-      $('.tab-options').removeClass('tab-options-selected');
-      $(this).parent().addClass('tab-options-selected');
+        $('#tabs').find('li').removeClass('selected');
+        $(this).parent().addClass('selected');
         active.removeClass('active');
         content.hide();
         active = $(this);
