@@ -123,7 +123,7 @@
     <div class="grid__item xxlarge--one-third xlarge--two-fifths large--one-half {% if section.settings.image_layout_style == 'stacked_images_sticky_sidebar' %}sticky-sidebar{% endif %}" id='sidebarColumn'>
       <div class="sidebarColumn-inner">
         <div class="content-wrapper--title js-fix-on-scroll--target fix-on-scroll--large-only">
-          <h1 itemprop="name" class='medium-down--text-center product-title'>{{ product.title }}</h1>
+          <h1 itemprop="name" class='medium-down--text-center product-title'>{{ product.title | upcase }}</h1>
           <div class="grey-gradient"></div>
           <div class="product-summary">{{ product.metafields["global"]["Product-Short-Summary"] }}</div>
             {% include 'bv-new-summary' %}
