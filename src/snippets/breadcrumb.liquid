@@ -4,7 +4,7 @@
 {% endcomment %}
 {% unless template == 'index' or template == 'cart' %}
 <nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
-  <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+  <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t | upcase }}</a>
 
   {% if template contains 'product' %}
 
@@ -12,11 +12,11 @@
       <span aria-hidden="true">/</span>
       {% if collection.handle %}
         {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
-        {{ collection.title | link_to: url }}
+        {{ collection.title | link_to: url | upcase }}
       {% endif %}
     {% endif %}
     <span aria-hidden="true">/</span>
-    <span>{{ product.title }}</span>.
+    <span>{{ product.title | upcase }}</span>.
  
 
   {% elsif template contains 'collection' and collection.handle %}
@@ -28,18 +28,18 @@
       <span aria-hidden="true">/</span>
       <span>{{ current_tags | join: " + " }}</span>
     {% else %}
-      <span>{{ collection.title }}</span>
+      <span>{{ collection.title | upcase }}</span>
     {% endif %}
 
   {% elsif template == 'blog' %}
 
     <span aria-hidden="true">/</span>
     {% if current_tags %}
-      {{ blog.title | link_to: blog.url }}
+      {{ blog.title | link_to: blog.url | upcase  }}
       <span aria-hidden="true">/</span>
       <span>{{ current_tags | join: " + " }}</span>
     {% else %}
-    <span>{{ blog.title }}</span>
+    <span>{{ blog.title | upcase }}</span>
     {% endif %}
 
   {% elsif template == 'article' %}
@@ -47,12 +47,12 @@
     <span aria-hidden="true">/</span>
     {{ blog.title | link_to: blog.url }}
     <span aria-hidden="true">/</span>
-    <span>{{ article.title }}</span>
+    <span>{{ article.title | upcase }}</span>
 
   {% elsif template contains 'page' %}
 
    <span aria-hidden="true">/</span>
-   <span>{{ page.title }}</span>
+   <span>{{ page.title | upcase }}</span>
 
   {% else %}
 
