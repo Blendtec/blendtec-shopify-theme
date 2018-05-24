@@ -4345,8 +4345,8 @@ body:not(.js-drawer-open) .drawer__content {
 .main-content {
   @include clearfix();
   display: block;
-  min-height: calc(100vh - 430px); //Make sure, at least, the footer appears at the bottom of the screen.
-  overflow: hidden; //Fix parallax issue when everything besides collection block is turned off
+  min-height: calc(100vh - 430px);
+  overflow: auto;
 
 }
 
