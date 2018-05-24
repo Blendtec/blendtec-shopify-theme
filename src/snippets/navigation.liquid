@@ -10,7 +10,7 @@
       {% endif %}
       <li class="{% if hasChildren %}has-dropdown{% endif %}">
         <a href="{{ link.url }}" data-navigation-top-level>
-          {{ link.title }}
+          {{ link.title | upcase }}
           {% if hasChildren %}<svg><use xlink:href="#icon-dropdown"></use></svg>{% endif %}
         </a>
 
@@ -22,7 +22,7 @@
               <ul>
                 {% for link in linklists[linkHandle].links %}
                   <li class="animation-sequence-{{ count }}" data-index="{{ forloop.index0 }}">
-                    {{ link.title | link_to: link.url }}
+                    {{ link.title | upcase | link_to: link.url }}
                   </li>
                   {% assign count = count | plus: 1 %}
                 {% endfor %}
@@ -48,7 +48,7 @@
           {% else %}
             <ul class="dropdown">
               {% for link in linklists[linkHandle].links %}
-                <li class="animation-sequence-{{ count }}">{{ link.title | link_to: link.url }}</li>
+                <li class="animation-sequence-{{ count }}">{{ link.title | upcase | link_to: link.url }}</li>
                 {% assign count = count | plus: 1 %}
               {% endfor %}
             </ul>
