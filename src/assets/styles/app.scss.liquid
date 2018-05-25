@@ -4355,11 +4355,19 @@ body:not(.js-drawer-open) .drawer__content {
   #Pages
 ==============================================================================*/
 
+
 .main-content {
   @include clearfix();
   display: block;
   min-height: calc(100vh - 430px);
-  overflow: auto;
+
+  .container {
+      -ms-overflow-style: none;  // IE 10+
+      overflow: -moz-scrollbars-none;  // Firefox
+  }
+  .container::-webkit-scrollbar { 
+      display: none;  // Safari and Chrome
+  }
 
 }
 
