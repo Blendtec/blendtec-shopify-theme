@@ -130,9 +130,11 @@
       
         <p>{{ product.metafields["global"]["Product-Short-Summary"] }}</p>
       
-        {% include 'bv-new-summary' %}
+        {% include 'bv-summary' %}
+
         {% assign compareLabel = 'products.product.compare' | t %}
         {% include 'cta-text' with text: compareLabel, url: '/pages/compare-blenders'%}
+
         <hr class="hr-darker">
       
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -145,18 +147,18 @@
           <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
 
             <div class="medium-down--text-center">
-              <h3 class="inline" itemprop="price" id="ProductPrice">
+              <h2 class="inline" itemprop="price" id="ProductPrice">
                 {{ current_variant.price | money }}
-              </h3>
+              </h2>
               {% if product.compare_at_price_max > product.price %}
-                <h5 class="inline strikethrough deemphasize">
+                <h4 class="inline strikethrough deemphasize">
                     {{ current_variant.compare_at_price | money }}
-                </h5>
+                </h4>
               {% endif %}
             </div>
             
               {% if section.settings.affirm_enable %}
-                <div class="affirm-wrapper">
+                <div class="affirm--wrapper">
                   <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
                 </div>
               {% endif %}

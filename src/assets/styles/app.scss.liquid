@@ -2004,9 +2004,7 @@ $textWrapperPaddingLarge: 2.5em;
 .rte--header {
   margin-bottom: 0;
 }
-.bv--ratings-reviews-container {
-  position:relative;
-}
+
 /*============================================================================
   #Links and Buttons
 ==============================================================================*/
@@ -5935,10 +5933,14 @@ p.h6.light {
 
 #jar-options {
 
+  min-height: 50px;
+
   .option {
     display:inline-block;
     cursor:pointer;
     padding: 2px 2px 2px 2px;
+    min-height: 37px;
+    min-width: 37px;
   }
 
   .selected {
@@ -5957,10 +5959,6 @@ p.h6.light {
   border-top-color:#8e8989;
 }
 
-.affirm-wrapper {
-  padding: 15px;
-  background-color: #f7f7f7;
-}
 
 #sidebarColumn {
 
@@ -5970,10 +5968,6 @@ p.h6.light {
 
   .grid__item {
     margin-top: 15px;
-  }
-
-  #AddToCart {
-    width: 100%
   }
 }
 
@@ -9494,6 +9488,7 @@ body:not(.ios) .shopify-section.features {
 
   .affirm-as-low-as {
     margin-top: 1rem;
+    font-size: 1.5em;
   }
 
 }
@@ -9513,3 +9508,19 @@ body:not(.ios) .shopify-section.features {
   font-size: 1.5rem !important;
 }
 
+.affirm--wrapper {
+  margin-top: 15px;
+  min-height: 80px;
+  padding: 5px 0 0 15px;
+  background-color: #f7f7f7;
+}
+
+
+/*================ BAZAARVOICE ================*/
+.bv--ratings-reviews-container {
+  position:relative;
+}
+
+.bv--summary {
+  min-height: 30px;
+}
