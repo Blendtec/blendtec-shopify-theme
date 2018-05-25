@@ -189,7 +189,7 @@
                               {% assign colorSelector = i.option1 | remove: '/' %}
                               {% assign imageSelector = i.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
 
-                              <div class="option" id="{{ imageSelector }}" onclick="changeColor('{{ colorSelector }}', '{{ i.option1 }}', '{{ imageSelector }}')">
+                              <div class="option" id="{{ imageSelector }}" onclick="bt_product.changeColor('{{ colorSelector }}', '{{ i.option1 }}', '{{ imageSelector }}')">
                                 {% if settings[imageSelector] %}
                                   <img src="{{ settings[imageSelector] | img_url: '30x30' }}" class="swatch">
                                 {% else %}
@@ -219,7 +219,7 @@
                             {% assign done_jars = done_jars | concat: tempArr %}
                             {% assign jarSelector = i.option2 | remove: '/' | remove: ' ' %}
                             {% assign imageSelector = i.option2 | remove: '/' | remove: ' ' | remove: '+' %}
-                            <div class="option" id="{{ imageSelector }}" onclick="changeJar('{{ jarSelector }}', '{{ i.option2 }}', '{{ imageSelector }}')">
+                            <div class="option" id="{{ imageSelector }}" onclick="bt_product.changeJar('{{ jarSelector }}', '{{ i.option2 }}', '{{ imageSelector }}')">
                               <img src="{{ settings[imageSelector] | img_url: '30x30' }}" class="option-image">
                             </div>
                           {% endunless %}
@@ -307,26 +307,27 @@
 </div>
 <script type="text/javascript">
 
-  var changeColor = function (color, text, id) {
+
+  bt_product.changeColor = function (color, text, id) {
     $('#productSelect-option-0').val(text).change();
     $('#color-options > .option').removeClass('selected');
     $('#'+id).addClass('selected');
     $('#colorTitle').text(text);
   };
 
-  var changeJar = function (jar, text, id) {
+  bt_product.changeJar = function (jar, text, id) {
     $('#productSelect-option-1').val(text).change();
     $('#jar-options > .option').removeClass('selected');
     $('#'+id).addClass('selected');
     $('#jarTitle').text(text);
   };
 
-  var changeQuantity = function (self) {
+  bt_product.changeQuantity = function (self) {
     $('#Quantity').val($(self).val());
   };
 
 
-  var enableTabs = function () {
+  bt_product.enableTabs = function () {
     
     $('#tabs').each(function(){
       var active, content, links = $(this).find('a');
@@ -352,7 +353,8 @@
   };
 
 $(document).ready(function() {
-  enableTabs();
+  window.bt_product = window.bt_product || {};
+  bt_product.enableTabs();
 
     {% if product.variants[0].option1 %}
   {% assign variant1 = product.variants[0] %}
