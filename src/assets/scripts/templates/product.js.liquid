@@ -2,6 +2,7 @@
  * Product page
  */
  window.ira = window.ira || {};
+ window.bt_product = window.bt_product || {};
 
 // TODO Dedupe
 ira.cacheSelectors = function () {
@@ -51,11 +52,58 @@ ira.cacheSelectors = function () {
   };
 };
 
+bt_product.init = function() {
+  bt_product.enableTabs();
+ }
+
 
 ira.init = function () {
   ira.productSidebar();
   ira.productImageSwitch();
- } 
+} 
+
+bt_product.enableTabs = function () {
+  
+  $('#tabs').each(function(){
+    var active, content, links = $(this).find('a');
+    active = links.first().addClass('active');
+    content = $(active.attr('href'));
+    
+    links.not(':first').each(function () {
+      $($(this).attr('href')).hide();
+    });
+
+    $(this).find('a').click(function(e){
+      $('#tabs').find('li').removeClass('selected');
+      $(this).parent().addClass('selected');
+      active.removeClass('active');
+      content.hide();
+      active = $(this);
+      content = $($(this).attr('href'));
+      active.addClass('active');
+      content.show();
+      return false;
+    });
+  });
+};
+
+bt_product.changeColor = function (color, text, id) {
+  $('#productSelect-option-0').val(text).change();
+  $('#color-options > .option').removeClass('selected');
+  $('#'+id).addClass('selected');
+  $('#colorTitle').text(text);
+};
+
+bt_product.changeJar = function (jar, text, id) {
+  $('#productSelect-option-1').val(text).change();
+  $('#jar-options > .option').removeClass('selected');
+  $('#'+id).addClass('selected');
+  $('#jarTitle').text(text);
+};
+
+bt_product.changeQuantity = function (self) {
+  $('#Quantity').val($(self).val());
+};
 
 ira.switchImage = function (src, imgObject, el, scroll, position) {
   if (scroll) {
@@ -556,7 +604,13 @@ $(document).ready(function(event) {
       ira.productImageSwitch();
       ira.productSidebar();
       new ProductPage();
+
+
+
+
+
+
   })
 
-
+$(bt_product.init);
 $(ira.init);

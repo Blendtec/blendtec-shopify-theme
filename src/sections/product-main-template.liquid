@@ -171,7 +171,7 @@
 
                   <div class="grid__item small--one-whole medium--one-half large--one-half">
                     <h6>{{'products.product.quantity' | t | capitalize}}</h6>
-                    <input type="number" id="QuantitySmall" value="1" min="1" onchange="changeQuantity(this)">
+                    <input type="number" id="QuantitySmall" value="1" min="1" onchange="bt_product.changeQuantity(this)">
                   </div>
 
                   {% if product.variants[0].option1 %}
@@ -305,86 +305,7 @@
     {% include "product-related" %}
   {% endif %}
 </div>
-<script type="text/javascript">
 
-
-  bt_product.changeColor = function (color, text, id) {
-    $('#productSelect-option-0').val(text).change();
-    $('#color-options > .option').removeClass('selected');
-    $('#'+id).addClass('selected');
-    $('#colorTitle').text(text);
-  };
-
-  bt_product.changeJar = function (jar, text, id) {
-    $('#productSelect-option-1').val(text).change();
-    $('#jar-options > .option').removeClass('selected');
-    $('#'+id).addClass('selected');
-    $('#jarTitle').text(text);
-  };
-
-  bt_product.changeQuantity = function (self) {
-    $('#Quantity').val($(self).val());
-  };
-
-
-  bt_product.enableTabs = function () {
-    
-    $('#tabs').each(function(){
-      var active, content, links = $(this).find('a');
-      active = links.first().addClass('active');
-      content = $(active.attr('href'));
-      
-      links.not(':first').each(function () {
-        $($(this).attr('href')).hide();
-      });
-
-      $(this).find('a').click(function(e){
-        $('#tabs').find('li').removeClass('selected');
-        $(this).parent().addClass('selected');
-        active.removeClass('active');
-        content.hide();
-        active = $(this);
-        content = $($(this).attr('href'));
-        active.addClass('active');
-        content.show();
-        return false;
-      });
-    });
-  };
-
-$(document).ready(function() {
-  window.bt_product = window.bt_product || {};
-  bt_product.enableTabs();
-
-    {% if product.variants[0].option1 %}
-  {% assign variant1 = product.variants[0] %}
-  {% if product.selected_variant %}
-    {% assign variant1 = product.selected_variant %}
-  {% endif %}
-      {% assign textInitial = variant1.option1 %}
-      {% assign colorSelectorInitial = variant1.option1 | remove: '/' %}
-      {% assign imageSelectorInitial = variant1.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
-          changeColor('{{ colorSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
-    {% endif %}
-
-    {% if product.variants[0].option2 %}
-  {% assign variant2 = product.variants[0] %}
-  {% if product.selected_variant %}
-    {% assign variant2 = product.selected_variant %}
-   {% endif %}
-      {% assign textInitial = variant2.option2 %}
-                {% assign jarSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' %}
-                {% assign imageSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' | remove: '+' %}
-          changeJar('{{ jarSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
-    {% endif %}
-
-});
-
-
-
-
-
-</script>
 {% comment %}
   To take advantage of a callback on the select dropdown, add option_selection.js
   and customize the JS in timber.productPage as needed.
@@ -401,6 +322,32 @@ $(document).ready(function() {
       * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
 {% endcomment %}
 
+{% javascript %}
+  $(document).ready(function() {
+    {% if product.variants[0].option1 %}
+      {% assign variant1 = product.variants[0] %}
+      {% if product.selected_variant %}
+        {% assign variant1 = product.selected_variant %}
+      {% endif %}
+      {% assign textInitial = variant1.option1 %}
+      {% assign colorSelectorInitial = variant1.option1 | remove: '/' %}
+      {% assign imageSelectorInitial = variant1.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
+      bt_product.changeColor('{{ colorSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
+    {% endif %}
+
+    {% if product.variants[0].option2 %}
+      {% assign variant2 = product.variants[0] %}
+      {% if product.selected_variant %}
+        {% assign variant2 = product.selected_variant %}
+      {% endif %}
+      {% assign textInitial = variant2.option2 %}
+      {% assign jarSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' %}
+      {% assign imageSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' | remove: '+' %}
+      bt_product.changeJar('{{ jarSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
+    {% endif %}
+
+  });
+{% endjavascript %}
 {{ 'option_selection.js' | shopify_asset_url | script_tag }}
 
 {% schema %}
