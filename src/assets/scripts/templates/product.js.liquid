@@ -53,18 +53,13 @@ ira.cacheSelectors = function () {
 };
 
 bt_product.init = function() {
-  bt_product.enableTabs();
- }
-
-
-ira.init = function () {
   ira.productSidebar();
   ira.productImageSwitch();
-} 
+  $('body').trigger('bt:product:ready');
+}
 
-bt_product.enableTabs = function () {
-  
-  $('#tabs').each(function(){
+bt_product.enableTabs = function (el) {
+  $(el).each(function(){
     var active, content, links = $(this).find('a');
     active = links.first().addClass('active');
     content = $(active.attr('href'));
@@ -74,7 +69,7 @@ bt_product.enableTabs = function () {
     });
 
     $(this).find('a').click(function(e){
-      $('#tabs').find('li').removeClass('selected');
+      $(el).find('li').removeClass('selected');
       $(this).parent().addClass('selected');
       active.removeClass('active');
       content.hide();
@@ -94,6 +89,7 @@ bt_product.changeColor = function (color, text, id) {
   $('#colorTitle').text(text);
 };
 
+//TODO decouple from page 
 bt_product.changeJar = function (jar, text, id) {
   $('#productSelect-option-1').val(text).change();
   $('#jar-options > .option').removeClass('selected');
@@ -101,8 +97,9 @@ bt_product.changeJar = function (jar, text, id) {
   $('#jarTitle').text(text);
 };
 
-bt_product.changeQuantity = function (self) {
-  $('#Quantity').val($(self).val());
+//TODO decouple from page 
+bt_product.changeQuantity = function (el) {
+  $('#Quantity').val($(el).val());
 };
 
 ira.switchImage = function (src, imgObject, el, scroll, position) {
@@ -604,13 +601,6 @@ $(document).ready(function(event) {
       ira.productImageSwitch();
       ira.productSidebar();
       new ProductPage();
-
-
-
-
-
-
   })
 
 $(bt_product.init);
-$(ira.init);
