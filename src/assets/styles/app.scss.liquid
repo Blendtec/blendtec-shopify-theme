@@ -5643,34 +5643,41 @@ p.h6.light {
     width:95%;
     margin-bottom: 75px;
 
-    ul {
+
+    #tabs {
       list-style:none;
       margin-bottom: 0px;
-    }
 
-    li {
-      display: inline-block;
-      margin-left: 40px;
-      padding: 0px 15px 0px 15px;
-      margin-bottom:0px;
-      @include at-query($max, $small) {
-        display:block;
-        margin: 10px 0px 0px 5px;
+      li {
+        display: inline-block;
+        margin-left: 40px;
+        padding: 0px 15px 0px 15px;
+        margin-bottom:0px;
+        @include at-query($max, $small) {
+          display:block;
+          margin: 10px 0px 0px 5px;
+        }
       }
-    }
 
-    .selected {
-      border-bottom-color: $colorPrimary;
-      border-bottom-style: solid;
+      .selected {
+        border-bottom-color: $colorPrimary;
+        border-bottom-style: solid;
 
-      h5 {
-        color: $colorPrimary;
+        h5 {
+          color: $colorPrimary;
+        }
       }
+    
     }
-
+    
     .tab {
       padding: 5% 5% 0 5%;
-    }
+
+      ul {
+        list-style: disc outside none;
+        }
+      }
+    
   }
   
 
@@ -5696,11 +5703,13 @@ p.h6.light {
     max-height: 3.1em;
     line-height: 3.1em;
     label {padding-left: 13px;}
+
     .lt-ie9 & {
       .quantity-selector {min-height: 25px;}
       label {margin-top: -8px;}
 
     }
+
   }
 
   .selector-wrapper {
