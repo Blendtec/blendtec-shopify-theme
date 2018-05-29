@@ -5490,9 +5490,6 @@ p.h6.light {
   display: flex;
   flex-wrap: wrap;
   border-bottom: 1px solid $colorBorder;
-  h4 {
-    color:#000;
-  }
 }
 
 .product-pages {
@@ -5642,15 +5639,9 @@ p.h6.light {
     :focus {outline:none;}
     ::-moz-focus-inner {border:0;}
 
-    max-width:1200px;
     margin:auto;
-    width:100%;
+    width:95%;
     margin-bottom: 75px;
-
-    @include at-query($max, 1200px) {
-      margin-left:15px;
-      margin-right:15px;
-    }
 
     ul {
       list-style:none;
@@ -5678,7 +5669,7 @@ p.h6.light {
     }
 
     .tab {
-      padding-top: 15px;
+      padding: 5% 5% 0 5%;
     }
   }
   
