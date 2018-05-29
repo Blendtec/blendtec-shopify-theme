@@ -1,3 +1,11 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.4.0...v1.5.0) (2018-05-29)
+
+
+### Features
+
+* **product-main-template:** Tabs-wrapper width, Product Thumbs size. ([65eba43](https://github.com/Blendtec/blendtec-shopify-theme/commit/65eba43))
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.3.0...v1.4.0) (2018-05-29)
 
