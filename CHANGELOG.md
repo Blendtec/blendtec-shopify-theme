@@ -1,3 +1,26 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.3.0...v1.4.0) (2018-05-29)
+
+
+### Bug Fixes
+
+* **reviews:** allow page height to adjust to review content ([699c934](https://github.com/Blendtec/blendtec-shopify-theme/commit/699c934))
+
+
+### Features
+
+* **breadcrumbs:** Decrease breadcrumbs height, force caps ([236008a](https://github.com/Blendtec/blendtec-shopify-theme/commit/236008a))
+* **navigation:** force caps on navigation links ([03930ea](https://github.com/Blendtec/blendtec-shopify-theme/commit/03930ea))
+* **product-main-template:** Add grey border around color selector ([bfd90b0](https://github.com/Blendtec/blendtec-shopify-theme/commit/bfd90b0))
+* **product-main-template:** Styling Changes ([2a4ac5d](https://github.com/Blendtec/blendtec-shopify-theme/commit/2a4ac5d))
+* **product-template:** Affirm Styling, min-heights set for async elements ([bfb1f62](https://github.com/Blendtec/blendtec-shopify-theme/commit/bfb1f62))
+* **Style:** Hide overflow scrollbars for all browsers ([b3dbb5a](https://github.com/Blendtec/blendtec-shopify-theme/commit/b3dbb5a))
+
+
+### Reverts
+
+* **product-main-template:** revert shopify script tags ([39d9b89](https://github.com/Blendtec/blendtec-shopify-theme/commit/39d9b89))
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.2.0...v1.3.0) (2018-05-22)
 
