@@ -120,274 +120,194 @@
       </div>
     </div>
 
-    <div class="grid__item xxlarge--one-third xlarge--two-fifths large--one-half {% if section.settings.image_layout_style == 'stacked_images_sticky_sidebar' %}sticky-sidebar{% endif %}" id='sidebarColumn'>
-      <div class="sidebarColumn-inner">
-        <div class="content-wrapper--title js-fix-on-scroll--target fix-on-scroll--large-only">
-          <h1 itemprop="name" class='medium-down--text-center product-title'>{{ product.title }}</h1>
-          <div class="grey-gradient"></div>
-          <div class="product-summary">{{ product.metafields["global"]["Product-Short-Summary"] }}</div>
-            {% include 'bv-new-summary' %}
-            <div class="margin-15">
-              <a href="/pages/compare-blenders"><span class="bold-italic-label">COMPARE MODELS <i class="fa fa-angle-right"></i></span></a>
-            </div>
-            <hr class="hr-darker">
-          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-            <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-            <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+  <div class="grid__item xxlarge--one-third xlarge--two-fifths large--one-half {% if section.settings.image_layout_style == 'stacked_images_sticky_sidebar' %}sticky-sidebar{% endif %}" id='sidebarColumn'>
+    <div class="sidebarColumn-inner">
+      <div class="content-wrapper--title js-fix-on-scroll--target fix-on-scroll--large-only">
+      
+        <h1 itemprop="name" class='medium-down--text-center product-title'>{{ product.title | upcase }}</h1>
+      
+        <div class="br-gradient-light"></div>
+      
+        <p>{{ product.metafields["global"]["Product-Short-Summary"] }}</p>
+      
+        {% include 'bv-summary' %}
 
-            {% comment %}
-              ID addToCartForm is a selector for the ajax cart plugin
-            {% endcomment %}
-            <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
-              <p class="medium-down--text-center">
-                <span id="ProductPrice" class='medium-down--text-center' itemprop="price">
-                    {{ current_variant.price | money }}
-                </span>
-                {% if product.compare_at_price_max > product.price %}
-                  <span id="ComparePrice" class='strikethrough medium-down--text-center'>
+        {% assign compareLabel = 'products.product.compare' | t %}
+        {% include 'cta-text' with text: compareLabel, url: '/pages/compare-blenders'%}
+
+        <hr class="hr-darker">
+      
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+          <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+        
+          {% comment %}
+            ID addToCartForm is a selector for the ajax cart plugin
+          {% endcomment %}
+          <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+
+            <div class="medium-down--text-center">
+              <h2 class="inline" itemprop="price" id="ProductPrice">
+                {{ current_variant.price | money }}
+              </h2>
+              {% if product.compare_at_price_max > product.price %}
+                <h4 class="inline strikethrough deemphasize">
                     {{ current_variant.compare_at_price | money }}
-                  </span>
-                {% endif %}
-              </p>
-
-                {% if settings.affirm_enable %}
-                  <div class="affirm-wrapper">
-                    <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
-                  </div>
-                {% endif %}
-              <div class="margin-15">
-                <span style="font-weight:900;">Warranty: </span><span>{{ product.metafields["global"]["Warranty"] }}</span>
-              </div>
-              {% comment %}
-                Add product variants as a dropdown.
-                  - By default, each variant (or combination of variants) will display as its own <option>
-                  - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
-
-                You can leverage jQuery to add a callback on page load and each time the select element changes:
-                  - Include option_selection.js (as seen at the bottom of this file)
-                  - This allows you to use JavaScript anytime the variant dropdown changes
-                  - This also separates out your variant options (ie. size, color, etc.) to separate select elements
-
-                For more information on products with multiple options, visit:
-                  - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
-              {% endcomment %}
-
-              {% assign noPurchase = false %}
-              {% for tag in product.tags %}
-           {% if tag == 'NoPurchase'%}
-          {% assign noPurchase = true %}
-                 {% endif %}
-        {% endfor %}
-
-          {% if noPurchase == false %}
-          <div class="grid">
-          {% if product.variants[0].option1 %}
-            <div class="grid__item large--one-half medium--one-half product-options-height">
-              <div class="margin-15">
-                <span class="product-options-headers">{{ 'products.product.color' | t }}: </span><span id="colorTitle"></span>
-              </div>            {% assign done_colors = '' | split: "  ,   " %}
-              {% for i in product.variants %}
-                {% unless done_colors contains i.option1 %}
-                {% assign tempArr = i.option1 | split: "   ,  " %}
-                {% assign done_colors = done_colors | concat: tempArr %}
-                {% assign colorSelector = i.option1 | remove: '/' %}
-                {% assign imageSelector = i.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
-                <div class="color-selector-wrapper" id="{{ imageSelector }}" onclick="changeColor('{{ colorSelector }}', '{{ i.option1 }}', '{{ imageSelector }}')">
-                {% if settings[imageSelector] %}
-                  <img src="{{ settings[imageSelector] | img_url: '30x30' }}" class="color-selector-image">
-                {% else %}
-                  <div style="background-color:{{ settings[colorSelector] }};border-radius:100px;"></div>
-                {% endif %}
-                </div>
-
-                {% endunless %}
-              {% endfor %}
-
-              </div>
+                </h4>
               {% endif %}
-              {% if product.variants[0].option2 %}
-            <div class="grid__item large--one-half medium--one-half product-options-height">
-              <div class="margin-15">
-                <span class="product-options-headers">{{ 'products.product.jar' | t }}: </span><span id="jarTitle"></span>
-              </div>
-              {% assign done_jars = '' | split: "  ,   " %}
-              {% for i in product.variants %}
-                {% unless done_jars contains i.option2 %}
-                {% assign tempArr = i.option2 | split: "   ,  " %}
-                {% assign done_jars = done_jars | concat: tempArr %}
-                {% assign jarSelector = i.option2 | remove: '/' | remove: ' ' %}
-                {% assign imageSelector = i.option2 | remove: '/' | remove: ' ' | remove: '+' %}
-                <div class="jar-selector-wrapper" id="{{ imageSelector }}" onclick="changeJar('{{ jarSelector }}', '{{ i.option2 }}', '{{ imageSelector }}')">
-                  <img src="{{ settings[imageSelector] | img_url: '30x30' }}" class="jar-selector-image">
+            </div>
+            
+              {% if section.settings.affirm_enable %}
+                <div class="affirm--wrapper">
+                  <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
                 </div>
-
-                {% endunless %}
-              {% endfor %}
-
-              </div>
               {% endif %}
-              <div class="grid__item large--one-half medium--one-half product-options-height">
-              <div class="margin-15">
-                <span class="product-options-headers">{{ 'products.product.quantity' | t }} </span>
-              </div>
-              <div>
-                <input type="number" id="QuantitySmall" value="1" min="1" onchange="changeQuantity(this)">
-              </div>
-              </div>
-              <div class="grid__item large--one-half medium--one-half product-options-height">
-              <div class="margin-15">&nbsp;</div>
-              <div>
-                  <button type="submit" name="add" id="AddToCart" class="btn">
-                    <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
-                    <i class="fa fa-caret-right" aria-hidden="true"></i>
-                  </button>
-                  </div>
-                  </div>
-              </div>
 
-              <div class="product-selectors" style="display:none;">
-                <select name="id" id="productSelect" class="product-single__variants">
-                  {% for variant in product.variants %}
-                    {% if variant.available %}
+              <div class="grid">
+                  <div class="grid__item">
+                    <div class="margin-15">
+                      <h6 class="inline">{{'products.product.warranty' | t | capitalize}}</h6>: 
+                      <p class="inline">{{ product.metafields["global"]["Warranty"] }} 8 year standard warranty</p>
+                    </div>
+                  </div>
 
-                      {% comment %}
+                  <div class="grid__item small--one-whole medium--one-half large--one-half">
+                    <h6>{{'products.product.quantity' | t | capitalize}}</h6>
+                    <input type="number" id="QuantitySmall" value="1" min="1" onchange="bt_product.changeQuantity(this)">
+                  </div>
+
+                  {% if product.variants[0].option1 %}
+                    <div class="grid__item small--one-half medium--one-half large--one-half">
+                      <div class="margin-15">
+                        <h6 class="inline">{{'products.product.color' | t | capitalize}}</h6>
+                        <p class="inline" id="colorTitle"></p>
+                        <div id="color-options">
+
+                          {% assign done_colors = '' | split: "  ,   " %}
+                          {% for i in product.variants %}
+                            {% unless done_colors contains i.option1 %}
+                              {% assign tempArr = i.option1 | split: "   ,  " %}
+                              {% assign done_colors = done_colors | concat: tempArr %}
+                              {% assign colorSelector = i.option1 | remove: '/' %}
+                              {% assign imageSelector = i.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
+
+                              <div class="option" id="{{ imageSelector }}" onclick="bt_product.changeColor('{{ colorSelector }}', '{{ i.option1 }}', '{{ imageSelector }}')">
+                                {% if settings[imageSelector] %}
+                                  <img src="{{ settings[imageSelector] | img_url: '30x30' }}" class="swatch">
+                                {% else %}
+                                  <div style="background-color:{{ settings[colorSelector] }}; border-radius:100px;" class="swatch"></div>
+                                {% endif %}
+                              </div>
+      
+                            {% endunless %}
+                          {% endfor %}
+
+                        </div>
+                      </div>
+
+                    </div>
+                  {% endif %}
+
+                  {% if product.variants[0].option2 %}
+                    <div class="grid__item small--one-half medium--one-whole">
+                      <h6 class="inline">{{ 'products.product.jar' | t }}</h6>: 
+                      <p class="inline" id="jarTitle"></p>
+                      <div id="jar-options">
+
+                        {% assign done_jars = '' | split: "  ,   " %}
+                        {% for i in product.variants %}
+                          {% unless done_jars contains i.option2 %}
+                            {% assign tempArr = i.option2 | split: "   ,  " %}
+                            {% assign done_jars = done_jars | concat: tempArr %}
+                            {% assign jarSelector = i.option2 | remove: '/' | remove: ' ' %}
+                            {% assign imageSelector = i.option2 | remove: '/' | remove: ' ' | remove: '+' %}
+                            <div class="option" id="{{ imageSelector }}" onclick="bt_product.changeJar('{{ jarSelector }}', '{{ i.option2 }}', '{{ imageSelector }}')">
+                              <img src="{{ settings[imageSelector] | img_url: '30x30' }}" class="option-image">
+                            </div>
+                          {% endunless %}
+                        {% endfor %}
+
+                      </div>
+                    </div>
+                  {% endif %}
+                  <div class="grid__item">
+                    {% assign addToCartText = 'products.product.add_to_cart' | t %}
+                    {% include 'cta-submit-button' with text: addToCartText, id: 'AddToCart' %}
+                  </div>
+                </div>
+                <div class="product-selectors" style="display:none;">
+                  <select name="id" id="productSelect" class="product-single__variants">
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                  
+                        {% comment %}
                         Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
-                      {% endcomment %}
+                        {% endcomment %}
+                        <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
 
-                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-                    {% else %}
-                      <option disabled="disabled">
-                        {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                      </option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-
-                <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
-                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                      {% else %}
+                        <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+            
+                  <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+                  <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
                 </div>
-
-              {% endif %}
-            </form>
-
-
-          {% if section.blocks.size > 0 %}
-
-          {% else %}
-
-
-          {% endif %}
-         </div>
-
+          
+          </form>
+        </div>
       </div>
-
     </div>
   </div>
-<div class="tabs-wrapper">
-  <ul class="tabs" style="margin-bottom:0px;">
-    <li class="tab-options tab-options-selected"><a href="#tab-1">{{ 'products.product.features' | t }}</a></li>
-    <li class="tab-options"><a href="#tab-2">{{ 'products.product.specs' | t }}</a></li>
-    <li class="tab-options"><a href="#tab-3">{{ 'products.product.reviews' | t }}</a></li>
-    <li class="tab-options"><a href="#tab-4">{{ 'products.product.questions_answers' | t }}</a></li>
-  </ul>
-  <hr class="hr-no-margin">
-  <div id="tab-1">
-    {% include "product-features" %}
+
+  <div class="tabs-wrapper">
+    <ul id="tabs">
+      <li class="selected">
+        <a href="#tab-1">
+          <h5 class='light-weight'>{{ 'products.product.features' | t }}</h6>
+        </a>
+      </li>
+      <li>
+        <a href="#tab-2">
+          <h5 class="light-weight">{{ 'products.product.specs' | t | upcase }}</h6>
+        </a>
+      </li>
+      <li>
+        <a href="#tab-3">
+          <h5 class="light-weight">{{ 'products.product.reviews' | t | upcase}}</h6>
+        </a>
+      </li>
+      <li>
+        <a href="#tab-4">
+          <h5 class="light-weight">{{ 'products.product.questions_answers' | t | upcase }}</h5>
+        </a>
+      </li>
+    </ul>
+    <hr class="hr-no-margin">
+    <div class="tab" id="tab-1">
+      {% include "product-features" %}
+    </div>
+    <div class="tab" id="tab-2">
+      {% include "product-specs" %}
+    </div>
+    <div class="tab" id="tab-3">
+        <h4>{{ 'products.product.reviews' | t }}</h4>
+      <hr class="red-hr">
+      {% include "bv-ratings-reviews" %}
+    </div>
+    <div class="tab" id="tab-4">
+        <h4>{{ 'products.product.questions_answers' | t }}</h4>
+      <hr class="red-hr">
+      {% include "bv-questions" %}
+    </div>
   </div>
-  <div id="tab-2">
-    {% include "product-specs" %}
-  </div>
-  <div id="tab-3">
-      <h4>{{ 'products.product.reviews' | t }}</h4>
-    <hr class="red-hr">
-    {% include "bv-ratings-reviews" %}
-  </div>
-  <div id="tab-4">
-      <h4>{{ 'products.product.questions_answers' | t }}</h4>
-    <hr class="red-hr">
-    {% include "bv-questions" %}
-  </div>
-</div>
 
   {% if section.settings.product_related %}
     {% include "product-related" %}
   {% endif %}
 </div>
-<script type="text/javascript">
 
-  var changeColor = function (color, text, id) {
-    $('#productSelect-option-0').val(text).change();
-    $('.color-selector-wrapper').removeClass('color-is-selected');
-    $('#'+id).addClass('color-is-selected');
-    $('#colorTitle').text(text);
-  };
-
-  var changeJar = function (jar, text, id) {
-    $('#productSelect-option-1').val(text).change();
-    $('.jar-selector-wrapper').removeClass('jar-is-selected');
-    $('#'+id).addClass('jar-is-selected');
-    $('#jarTitle').text(text);
-  };
-
-  var changeQuantity = function (self) {
-    $('#Quantity').val($(self).val());
-  };
-
-
-  var enableTabs = function () {
-    $('ul.tabs').each(function(){
-      var active, content, links = $(this).find('a');
-      active = links.first().addClass('active');
-      content = $(active.attr('href'));
-      links.not(':first').each(function () {
-        $($(this).attr('href')).hide();
-      });
-      $(this).find('a').click(function(e){
-      $('.tab-options').removeClass('tab-options-selected');
-      $(this).parent().addClass('tab-options-selected');
-        active.removeClass('active');
-        content.hide();
-        active = $(this);
-        content = $($(this).attr('href'));
-        active.addClass('active');
-        content.show();
-        return false;
-      });
-    });
-  };
-
-$(document).ready(function() {
-  enableTabs();
-
-    {% if product.variants[0].option1 %}
-  {% assign variant1 = product.variants[0] %}
-  {% if product.selected_variant %}
-    {% assign variant1 = product.selected_variant %}
-  {% endif %}
-      {% assign textInitial = variant1.option1 %}
-      {% assign colorSelectorInitial = variant1.option1 | remove: '/' %}
-      {% assign imageSelectorInitial = variant1.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
-          changeColor('{{ colorSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
-    {% endif %}
-
-    {% if product.variants[0].option2 %}
-  {% assign variant2 = product.variants[0] %}
-  {% if product.selected_variant %}
-    {% assign variant2 = product.selected_variant %}
-   {% endif %}
-      {% assign textInitial = variant2.option2 %}
-                {% assign jarSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' %}
-                {% assign imageSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' | remove: '+' %}
-          changeJar('{{ jarSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
-    {% endif %}
-
-});
-
-
-
-
-
-</script>
 {% comment %}
   To take advantage of a callback on the select dropdown, add option_selection.js
   and customize the JS in timber.productPage as needed.
@@ -404,6 +324,34 @@ $(document).ready(function() {
       * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
 {% endcomment %}
 
+<script type="text/javascript"/>
+  $(document).ready(function() {
+    $('body').on('bt:product:ready', function() {
+      bt_product.enableTabs($('#tabs'));
+      {% if product.variants[0].option1 %}
+        {% assign variant1 = product.variants[0] %}
+        {% if product.selected_variant %}
+          {% assign variant1 = product.selected_variant %}
+        {% endif %}
+        {% assign textInitial = variant1.option1 %}
+        {% assign colorSelectorInitial = variant1.option1 | remove: '/' %}
+        {% assign imageSelectorInitial = variant1.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
+        bt_product.changeColor('{{ colorSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
+      {% endif %}
+
+      {% if product.variants[0].option2 %}
+        {% assign variant2 = product.variants[0] %}
+        {% if product.selected_variant %}
+          {% assign variant2 = product.selected_variant %}
+        {% endif %}
+        {% assign textInitial = variant2.option2 %}
+        {% assign jarSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' %}
+        {% assign imageSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' | remove: '+' %}
+        bt_product.changeJar('{{ jarSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
+      {% endif %}
+    });
+  });
+</script>
 {{ 'option_selection.js' | shopify_asset_url | script_tag }}
 
 {% schema %}
@@ -446,6 +394,12 @@ $(document).ready(function() {
         "type": "checkbox",
         "id": "expand_first_tab",
         "label": "Expand first tab when sidebar is sticky"
+      }, 
+      {
+        "type": "checkbox",
+        "id": "affirm_enable",
+        "label": "Show Affirm branding",
+        "info": "This setting requires Affirm to be enabled globally in the Theme settings"
       }
     ],
     "blocks": [

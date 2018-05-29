@@ -151,6 +151,7 @@ $zindexDrawer: 20;
 
 /*================ Typography ================*/
 $headerFontWeight: 900;
+$headerFontWeightLight: 500;
 $baseFontSize: 16px; // Henseforth known as 1em
 
 
@@ -191,10 +192,6 @@ $baseFontSize: 16px; // Henseforth known as 1em
 {% endif %}
 
 
-.heavy {
-   font-weight: 900;
-   font-size: 3vmax;
- }
 
 a.cta {
   display: inline-block;
@@ -1395,6 +1392,10 @@ body {
   height: 100%;
 }
 
+.inline {
+  display: inline;
+}
+
 @include at-query ($min, $large) {
   .large--display-table {
     display: table;
@@ -1517,13 +1518,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $headerFontStack;
   font-weight: $headerFontWeight;
   color: $colorTextHeader;
-  margin: 0 0 0.5rem;
+  margin: 15px 0 0.5rem;
   line-height: 1.4;
 
   a {
     text-decoration: none;
     font-weight: inherit;
   }
+
+  
 }
 
 .shop-name {
@@ -1594,6 +1597,22 @@ sup {
 
 sub {
   bottom: -0.5em;
+}
+
+.heavy {
+   font-weight: 900;
+ }
+
+.light-weight {
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.deemphasize {
+  color: lighten($colorTextHeader, 50%);
 }
 
 /*================ Blockquotes ================*/
@@ -1881,13 +1900,7 @@ hr {
 }
 /*================ Helper Typographic Fonts ================*/
 
-.light {
-  font-weight: 300;
-}
 
-.bold {
-  font-weight: 700;
-}
 
 .drop-shadow {
 
@@ -1991,9 +2004,7 @@ $textWrapperPaddingLarge: 2.5em;
 .rte--header {
   margin-bottom: 0;
 }
-.bv--ratings-reviews-container {
-  position:relative;
-}
+
 /*============================================================================
   #Links and Buttons
 ==============================================================================*/
@@ -4342,11 +4353,19 @@ body:not(.js-drawer-open) .drawer__content {
   #Pages
 ==============================================================================*/
 
+
 .main-content {
   @include clearfix();
   display: block;
-  min-height: calc(100vh - 430px); //Make sure, at least, the footer appears at the bottom of the screen.
-  overflow: hidden; //Fix parallax issue when everything besides collection block is turned off
+  min-height: calc(100vh - 430px);
+
+  .container {
+      -ms-overflow-style: none;  // IE 10+
+      overflow: -moz-scrollbars-none;  // Firefox
+  }
+  .container::-webkit-scrollbar { 
+      display: none;  // Safari and Chrome
+  }
 
 }
 
@@ -4396,7 +4415,7 @@ body:not(.js-drawer-open) .drawer__content {
 
 .content-wrapper--squished {
   width: 100%;
-  padding: 2em 2.5em;
+  padding: 1em 1.5em;
 }
 
 #PageContainer {
@@ -4438,9 +4457,6 @@ body:not(.js-drawer-open) .drawer__content {
 .hr-no-margin {
   margin-top:0px;
   margin-bottom:0px;
-}
-.tabs-wrapper h4 {
-  margin-top:25px;
 }
 
 .template-blog .main-content {
@@ -5479,335 +5495,350 @@ p.h6.light {
   }
 }
 
-#PhotoContent { font-size: 0; }
+.product-pages {
 
-.product-options-height {
-  height:125px;
-}
+  #PhotoContent { font-size: 0; }
 
-.product-lightbox-button-open {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.product-lightbox-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: $colorBody;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4);
-  border-radius: 50%;
-
-  svg {
-    display: block;
-    color: $colorTextBody;
+  .product-options-height {
+    height:125px;
   }
 
-  &.open {
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.2s ease;
-
-    svg {
-      width: 14px;
-      height: 14px;
-      margin: 8px;
-    }
-  }
-
-  &.close {
-    position: fixed;
-
-    svg {
-      width: 15px;
-      height: 15px;
-      margin: 20px 20px 18px;
-      transition: color 0.2s ease;
-    }
-
-    &:hover svg {
-      color: darken($colorTextBody, 15%);
-    }
-  }
-}
-
-.product-multiple__photos {
-  display: inline-block;
-  vertical-align: top;
-  padding-right: 1px;
-  max-height:700px;
-  overflow-y:scroll;
-}
-
-.product-thumbnail-button {
-  width: 100%;
-  margin-bottom: 1px;
-  border: 0;
-  background-color: transparent;
-  outline: 0;
-
-  img { display: block; }
-}
-
-.product-lightbox {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding-top: 9.8vw;
-  padding-bottom: 9.8vw;
-  visibility: hidden;
-  opacity: 0;
-  background-color: rgba($colorBody, 0.92);
-  z-index: 100;
-  transition: all 0.2s ease-out;
-  overflow-y: auto;
-
-  @include at-query($max, $medium) {
-    display: none;
-  }
-
-  &.active {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  img {
-    display: block;
-    max-width: 800px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-}
-
-.product-single__variants {
-  display: none;
-
-  .no-js & {
-    display: block;
-  }
-}
-
-.product-single__photos {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  max-width: 100%;
-  font-size: $baseFontSize*2;
-  max-height: 700px;
-
-  &:hover .product-lightbox-button.open {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  img {
-    width: 100%;
-    max-height:700px;
-    max-width:700px;
-  }
-}
-.tabs-wrapper {
-  max-width:1200px;
-  margin:auto;
-  width:100%;
-  margin-bottom: 75px;
-
-  @include at-query($max, 1200px) {
-    margin-left:15px;
-    margin-right:15px;
-  }
-}
-.tabs {
-  list-style:none;
-}
-.tab-options {
-    display: inline-block;
-    margin-left: 40px;
-    padding: 0px 15px 0px 15px;
-    font-family: 'CooperHewitt-bold';
-    font-size: 1.2em;
-    text-transform: uppercase;
-    margin-bottom:0px;
-    @include at-query($max, $small) {
-      display:block;
-      margin: 10px 0px 0px 5px;
-    }
-}
-
-.tab-options a {
-  color:black;
-}
-
-.tab-options-selected {
-    border-bottom-color: #ea002a;
-    border-bottom-style: solid;
-    a {
-      color: #ea002a;
-    }
-}
-
-.product-single__photos,
-.product-single__thumbnails {
-  a, img {
-    display: block;
-    margin: 0 auto;
-  }
-
-  li {
-    margin-bottom: $gutter;
-  }
-}
-
-.quantity-wrapper {
-  &, input {
-    color: black; //A default set colour that merchant can't control, as requested from Shopify feedback.
-  }
-
-  position: relative;
-  max-height: 3.1em;
-  line-height: 3.1em;
-  label {padding-left: 13px;}
-  .lt-ie9 & {
-    .quantity-selector {min-height: 25px;}
-    label {margin-top: -8px;}
-
-  }
-}
-
-.selector-wrapper {
-  color: black; //A default set colour that merchant can't control, as requested from Shopify feedback.
-  position: relative;
-  background-color: white; //match the colour of unstyled inputs
-
-  select {
-    position: relative;
-    z-index: 8;
-  }
-
-  .select-overlay {
+  .product-lightbox-button-open {
     position: absolute;
-    padding-left: 13px;
-    height: 3.1em;
-    line-height: 3.5em;
-    @include at-query($min, $large){line-height: 3.2em;}
-    z-index: 1;
-    width: calc(100% - 10px);
-    white-space: pre;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    .lt-ie9 & {display: none;}
-  }
-}
-
-.product-selectors {
-  margin: em(20px) 0 em(28px);
-}
-
-@include at-query($max, $medium){
-  .fix-on-scroll--large-only{
-    position: relative !important;
-    transform: initial !important;
-    @include transform('inital');
-  }
-}
-
-.product-tab-wrapper {
-  margin-left: 0;
-  list-style: none;
-  border-bottom: 1px solid $colorBorder;
-
-  .rte > div { margin-bottom: 0; }
-}
-
-.product-tab {
-  padding-top: 15px;
-  border-top: 1px solid $colorBorder;
-  overflow-y: hidden;
-
-  #shareBox {
-    height: 32px;
-    margin-bottom: 0;
-  }
-
-  .product-tab-read-more {
-    padding: 7px 10px 6px;
-    margin-top: 15px;
-    margin-bottom: 2px;
-    margin-left: 2px;
-    font-size: em(9px);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    line-height: 1.22;
-    color: $colorTextBody;
-    border-radius: 2px;
-    box-shadow: 0 1px 0 0 rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.22);
-
-    &:focus { outline: 0; }
-  }
-}
-
-.product-tab-title {
-  margin-bottom: 15px;
-  font-size: em(14px);
-  font-weight: 700;
-
-  &:focus { outline: 0; }
-
-  .product-tab:not(.active) & { color: $colorPrimary; }
-}
-
-.product-tab-content {
-  margin-bottom: 15px;
-  overflow-y: hidden;
-  transition: all 0.1s ease;
-
-  .product-tab.inactive & {
-    height: 0 !important;
-    margin-bottom: 0;
-  }
-}
-
-.product-tab-content > div {
-  position: relative;
-  overflow-y: hidden;
-  transition: all 0.1s ease;
-
-  &::after {
-    content: "";
-    position: absolute;
+    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    height: 200px;
-    background: linear-gradient(rgba($colorBody, 0), $colorBody);
+    width: 100%;
+    height: 100%;
+  }
+
+  .product-lightbox-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: $colorBody;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+
+    svg {
+      display: block;
+      color: $colorTextBody;
+    }
+
+    &.open {
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.2s ease;
+
+      svg {
+        width: 14px;
+        height: 14px;
+        margin: 8px;
+      }
+    }
+
+    &.close {
+      position: fixed;
+
+      svg {
+        width: 15px;
+        height: 15px;
+        margin: 20px 20px 18px;
+        transition: color 0.2s ease;
+      }
+
+      &:hover svg {
+        color: darken($colorTextBody, 15%);
+      }
+    }
+  }
+
+  .product-multiple__photos {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 1px;
+    max-height:700px;
+    overflow-y:scroll;
+  }
+
+  .product-thumbnail-button {
+    width: 100%;
+    margin-bottom: 1px;
+    border: 0;
+    background-color: transparent;
+    outline: 0;
+
+    img { display: block; }
+  }
+
+  .product-lightbox {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 9.8vw;
+    padding-bottom: 9.8vw;
     visibility: hidden;
     opacity: 0;
+    background-color: rgba($colorBody, 0.92);
+    z-index: 100;
+    transition: all 0.2s ease-out;
+    overflow-y: auto;
+
+    @include at-query($max, $medium) {
+      display: none;
+    }
+
+    &.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    img {
+      display: block;.heavy {
+        color: white;
+        width: 100%;
+        font-family: 'CooperHewitt-Bold';
+        font-size:24px;
+      }
+      
+      max-width: 800px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  .product-single__variants {
+    display: none;
+
+    .no-js & {
+      display: block;
+    }
+  }
+
+  .product-single__photos {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+    font-size: $baseFontSize*2;
+    max-height: 700px;
+
+    &:hover .product-lightbox-button.open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    img {
+      width: 100%;
+      max-height:700px;
+      max-width:700px;
+    }
+  }
+  .tabs-wrapper {
+
+    :focus {outline:none;}
+    ::-moz-focus-inner {border:0;}
+
+    max-width:1200px;
+    margin:auto;
+    width:100%;
+    margin-bottom: 75px;
+
+    @include at-query($max, 1200px) {
+      margin-left:15px;
+      margin-right:15px;
+    }
+
+    ul {
+      list-style:none;
+      margin-bottom: 0px;
+    }
+
+    li {
+      display: inline-block;
+      margin-left: 40px;
+      padding: 0px 15px 0px 15px;
+      margin-bottom:0px;
+      @include at-query($max, $small) {
+        display:block;
+        margin: 10px 0px 0px 5px;
+      }
+    }
+
+    .selected {
+      border-bottom-color: $colorPrimary;
+      border-bottom-style: solid;
+
+      h5 {
+        color: $colorPrimary;
+      }
+    }
+
+    .tab {
+      padding-top: 15px;
+    }
+  }
+  
+
+
+  .product-single__photos,
+  .product-single__thumbnails {
+    a, img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    li {
+      margin-bottom: $gutter;
+    }
+  }
+
+  .quantity-wrapper {
+    &, input {
+      color: black; //A default set colour that merchant can't control, as requested from Shopify feedback.
+    }
+
+    position: relative;
+    max-height: 3.1em;
+    line-height: 3.1em;
+    label {padding-left: 13px;}
+    .lt-ie9 & {
+      .quantity-selector {min-height: 25px;}
+      label {margin-top: -8px;}
+
+    }
+  }
+
+  .selector-wrapper {
+    color: black; //A default set colour that merchant can't control, as requested from Shopify feedback.
+    position: relative;
+    background-color: white; //match the colour of unstyled inputs
+
+    select {
+      position: relative;
+      z-index: 8;
+    }
+
+    .select-overlay {
+      position: absolute;
+      padding-left: 13px;
+      height: 3.1em;
+      line-height: 3.5em;
+      @include at-query($min, $large){line-height: 3.2em;}
+      z-index: 1;
+      width: calc(100% - 10px);
+      white-space: pre;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      .lt-ie9 & {display: none;}
+    }
+  }
+
+  .product-selectors {
+    margin: em(20px) 0 em(28px);
+  }
+
+  @include at-query($max, $medium){
+    .fix-on-scroll--large-only{
+      position: relative !important;
+      transform: initial !important;
+      @include transform('inital');
+    }
+  }
+
+  .product-tab-wrapper {
+    margin-left: 0;
+    list-style: none;
+    border-bottom: 1px solid $colorBorder;
+
+    .rte > div { margin-bottom: 0; }
+  }
+
+  .product-tab {
+    padding-top: 15px;
+    border-top: 1px solid $colorBorder;
+    overflow-y: hidden;
+
+    #shareBox {
+      height: 32px;
+      margin-bottom: 0;
+    }
+
+    .product-tab-read-more {
+      padding: 7px 10px 6px;
+      margin-top: 15px;
+      margin-bottom: 2px;
+      margin-left: 2px;
+      font-size: em(9px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      line-height: 1.22;
+      color: $colorTextBody;
+      border-radius: 2px;
+      box-shadow: 0 1px 0 0 rgba(0,0,0,0.12), 0 1px 2px 0 rgba(0,0,0,0.22);
+
+      &:focus { outline: 0; }
+    }
+  }
+
+  .product-tab-title {
+    margin-bottom: 15px;
+    font-size: em(14px);
+    font-weight: 700;
+
+    &:focus { outline: 0; }
+
+    .product-tab:not(.active) & { color: $colorPrimary; }
+  }
+
+  .product-tab-content {
+    margin-bottom: 15px;
+    overflow-y: hidden;
     transition: all 0.1s ease;
+
+    .product-tab.inactive & {
+      height: 0 !important;
+      margin-bottom: 0;
+    }
   }
 
-  .product-tab.inactive & {
-    height: 0 !important;
-    margin-bottom: 0;
-  }
-
-  .product-tab.active &.truncated {
-    height: 400px !important;
+  .product-tab-content > div {
+    position: relative;
+    overflow-y: hidden;
+    transition: all 0.1s ease;
 
     &::after {
-      opacity: 1;
-      visibility: visible;
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 200px;
+      background: linear-gradient(rgba($colorBody, 0), $colorBody);
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.1s ease;
+    }
+
+    .product-tab.inactive & {
+      height: 0 !important;
+      margin-bottom: 0;
+    }
+
+    .product-tab.active &.truncated {
+      height: 400px !important;
+
+      &::after {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
 }
-
 
 #shareBox {
 
@@ -5839,6 +5870,10 @@ p.h6.light {
   }
 }
 
+.margin-15 {
+  margin-top: 15px;
+}
+
 #ProductPhotoSlideshow {
   position: relative;
   width: 100%;
@@ -5856,154 +5891,91 @@ p.h6.light {
   }
 }
 
-.bold-italic-label {
-  font-size: .9em;
-  font-family: 'CooperHewitt-BoldItalic';
-}
-
-.margin-15 {
-  margin: 15px 0px 15px 0px;
-}
-
-.color-selector-wrapper {
-  width:30px;
-  height:30px;
-  display:inline-block;
-  cursor:pointer;
-  padding: 2px 2px 2px 2px;
-}
-
-.color-selector-wrapper:hover {
+.active-option {
   border-color: red;
   border-style: solid;
   border-width: 2px;
-  border-radius: 100px;
 }
 
-.color-is-selected {
-  border-color: red;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 100px;
+#color-options {
+
+  @extend .margin-15;
+
+  .option {
+    width:30px;
+    height:30px;
+    display:inline-block;
+    cursor:pointer;
+    padding: 2px 2px 2px 2px;
+
+    .swatch {
+      border: 1px solid grey;
+      width:100%;
+      height:100%;
+    }
+
+    .image {
+      border-radius:100px;
+      margin-bottom:2px;
+    }
+
+  }
+
+  .selected {
+    @extend .active-option;
+    border-radius: 100px;
+  }
+
+  .option:hover {
+    @extend .selected;
+  }
 }
 
-.color-selector-selected {
-  border-color: red;
-  border-style: solid;
-  padding: 2px 2px 2px 2px;
-  border-width: 2px;
-  border-radius: 100px;
+#jar-options {
+
+  min-height: 50px;
+
+  .option {
+    display:inline-block;
+    cursor:pointer;
+    padding: 2px 2px 2px 2px;
+    min-height: 37px;
+    min-width: 37px;
+  }
+
+  .selected {
+    @extend .active-option;
+    border-radius: 5px;
+  }
+
+  .option:hover {
+    @extend .selected;
+  }
+
 }
 
-.color-selector-image {
-  border-radius:100px;
-  width:100%;
-  height:100%;
-  margin-bottom:2px;
-}
-
-.color-selector-wrapper div{
-  height:100%;
-  width:100%;
-}
-
-.jar-selector-wrapper {
-  width:30px;
-  height:30px;
-  display:inline-block;
-  cursor:pointer;
-  padding: 2px 2px 2px 2px;
-}
-
-.jar-selector-wrapper:hover {
-  border-color: red;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 100px;
-}
-
-.jar-is-selected {
-  border-color: red;
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 100px;
-}
-
-.jar-selector-selected {
-  border-color: red;
-  border-style: solid;
-  padding: 2px 2px 2px 2px;
-  border-width: 2px;
-  border-radius: 100px;
-}
-
-.jar-selector-image {
-  border-radius:100px;
-  width:100%;
-  height:100%;
-  margin-bottom:2px;
-}
-
-.jar-selector-wrapper div{
-  height:100%;
-  width:100%;
-}
-
-.product-options-headers {
-  font-weight: 900;
-}
 
 .hr-darker {
   border-top-color:#8e8989;
 }
 
-.affirm-wrapper {
-  padding: 1px;
-  background-color: #f7f7f7;
+
+#sidebarColumn {
+
+  h1 {
+    color: $colorPrimary;
+  }
+
+  .grid__item {
+    margin-top: 15px;
+  }
 }
 
-#ProductPrice {
-  font-family: 'CooperHewitt-Heavy';
-  color: black;
-  font-size: 1.75em;
-}
-
-#ComparePrice {
-  font-family: 'CooperHewitt-Bold';
-  font-size: 1.2em;
-}
-
-#sidebarColumn .product-title {
-  margin-top: em(20px);
-  line-height: 1.2;
-  color: #ea002a;
-  text-transform: uppercase;
-  font-size:3.25em;
-}
-
-.product-summary {
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.grey-gradient {
-  height: 10px;
-  width: 100%;
-  background: linear-gradient(to right, #d0d1d2, white);
-  margin-bottom: 15px;
-}
-
-#AddToCartForm input {
-  width: 100%;
-}
-
-#AddToCart {
-  width: 100%;
-}
-
-#AddToCartForm + .errors {
-  margin-top: em(-15px);
-  margin-bottom: em(25px);
+#AddToCartForm {
+  .errors {
+    margin-top: em(-15px);
+    margin-bottom: em(25px);
+  }
 }
 
 .js-fix-on-scroll--target {
@@ -9360,6 +9332,12 @@ body:not(.ios) .shopify-section.features {
 /*============================================================================
   #Blendtec
 ==============================================================================*/
+.br-gradient-light {
+  height: 10px;
+  width: 100%;
+  background: linear-gradient(to right, #d0d1d2, white);
+  margin-bottom: 15px;
+}
 .br-gradient-grey{
   width: 100%;
   height: 10px;
@@ -9392,12 +9370,7 @@ body:not(.ios) .shopify-section.features {
     opacity: .65;
   }
 
-  .heavy {
-    color: white;
-    width: 100%;
-    font-family: 'CooperHewitt-Bold';
-    font-size:24px;
-  }
+
 
   .description-text {
     color: white;
@@ -9515,6 +9488,7 @@ body:not(.ios) .shopify-section.features {
 
   .affirm-as-low-as {
     margin-top: 1rem;
+    font-size: 1.5em;
   }
 
 }
@@ -9534,3 +9508,19 @@ body:not(.ios) .shopify-section.features {
   font-size: 1.5rem !important;
 }
 
+.affirm--wrapper {
+  margin-top: 15px;
+  min-height: 80px;
+  padding: 5px 0 0 15px;
+  background-color: #f7f7f7;
+}
+
+
+/*================ BAZAARVOICE ================*/
+.bv--ratings-reviews-container {
+  position:relative;
+}
+
+.bv--summary {
+  min-height: 30px;
+}
