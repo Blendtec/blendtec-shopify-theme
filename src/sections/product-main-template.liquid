@@ -49,8 +49,10 @@
     Get first variant, or deep linked one
   {% endcomment %}
   {% assign current_variant = product.selected_or_first_available_variant %}
-  <div class="grid--full product-single">
+  <div class="grid--full">
     <div class="breadcrumb-wrapper content-wrapper--squished content-wrapper--half-top medium-down--text-center medium-down--hide">{% include 'breadcrumb' %}</div>
+  </div>
+  <div class="grid--full product-single">
 
     <div class="grid__item xxlarge--two-thirds xlarge--three-fifths large--one-half text-center" id="PhotoContent" style="background-color:{{ section.settings.product-image-background }}">
 
@@ -64,7 +66,7 @@
         </div>
       {% else %}
         {% if product.images.size > 1 %}
-          <div class="product-multiple__photos large--one-tenth medium-down--hide" id="ProductThumbs">
+          <div class="product-multiple__photos large--two-tenths medium-down--hide" id="ProductThumbs">
             {% for image in product.images %}
               <button class="product-thumbnail-button" data-product-thumbnail>
                 <img src="{{ image | img_url: '200x' }}" data-high-res="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
@@ -75,7 +77,7 @@
           </div>
         {% endif %}
 
-        <div class="product-single__photos {% if product.images.size > 1 %}large--nine-tenths{% else %}large--one-whole{% endif %} medium-down--hide" id="ProductPhoto">
+        <div class="product-single__photos {% if product.images.size > 1 %}large--eight-tenths{% else %}large--one-whole{% endif %} medium-down--hide" id="ProductPhoto">
           {% if product.featured_image %}
             {% assign featured_image = product.featured_image %}
             <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-image-position="1">
@@ -261,7 +263,7 @@
     </div>
   </div>
 
-  <div class="tabs-wrapper">
+  <div class="grid__item large--one-whole tabs-wrapper">
     <ul id="tabs">
       <li class="selected">
         <a href="#tab-1">
