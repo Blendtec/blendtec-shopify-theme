@@ -1,24 +1,24 @@
 <hr class="hr-no-margin">
 
-{% if features_sub_title %}
+{% if title %}
 {% assign alignmentCounter = alignmentCounter | plus: 1 %}
 {% assign alignmentModulo = alignmentCounter | modulo: 2 %}
 <div class="grid">
-  {% if features_sub_image and alignmentModulo == 1 %}
+  {% if image and alignmentModulo == 1 %}
   <div class="grid__item large--one-half medium--one-half">
-  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ features_sub_image | remove: settings['metafield_buckets_src'] }}">
+  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ image | remove: settings['metafield_buckets_src'] }}">
   </div>
   {% endif %}
   <div class="grid__item large--one-half medium--one-half">
-    <h4>{{ features_sub_title }}</h4>
+    <h4>{{ title }}</h4>
     <hr class="red-hr">
 
-  	{{ features_sub_text }}
+  	{{ text }}
 
   </div>
-  {% if features_sub_image and alignmentModulo == 0 %}
+  {% if image and alignmentModulo == 0 %}
   <div class="grid__item large--one-half medium--one-half">
-  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ features_sub_image | remove: settings['metafield_buckets_src'] }}">
+  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ image | remove: settings['metafield_buckets_src'] }}">
   </div>
   {% endif %}
 </div>
