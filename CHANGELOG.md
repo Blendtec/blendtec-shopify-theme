@@ -1,3 +1,11 @@
+<a name="1.5.1"></a>
+## [1.5.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.5.0...v1.5.1) (2018-05-30)
+
+
+### Bug Fixes
+
+* **product-main-template:** Fix list style in tabbed content ([a3676cf](https://github.com/Blendtec/blendtec-shopify-theme/commit/a3676cf))
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.4.0...v1.5.0) (2018-05-29)
 
