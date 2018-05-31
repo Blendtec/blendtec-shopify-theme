@@ -12,7 +12,7 @@
       <span aria-hidden="true">/</span>
       {% if collection.handle %}
         {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
-        {{ collection.title | link_to: url | upcase }}
+        {{ collection.title | upcase | link_to: url}}
       {% endif %}
     {% endif %}
     <span aria-hidden="true">/</span>
@@ -35,17 +35,17 @@
 
     <span aria-hidden="true">/</span>
     {% if current_tags %}
-      {{ blog.title | link_to: blog.url | upcase  }}
+      {{ blog.title | link_to: blog.url}}
       <span aria-hidden="true">/</span>
       <span>{{ current_tags | join: " + " }}</span>
     {% else %}
     <span>{{ blog.title | upcase }}</span>
     {% endif %}
 
-  {% elsif template == 'article' %}
+  {% elsif template == 'article' or template == 'article.recipe' %}
 
     <span aria-hidden="true">/</span>
-    {{ blog.title | link_to: blog.url }}
+    {{ blog.title | upcase | link_to: blog.url }}
     <span aria-hidden="true">/</span>
     <span>{{ article.title | upcase }}</span>
 
@@ -57,7 +57,7 @@
   {% else %}
 
    <span aria-hidden="true">/</span>
-   <span>{{ page_title }}</span>
+   <span>{{ page_title | upcase }}</span>
 
   {% endif %}
 </nav>
