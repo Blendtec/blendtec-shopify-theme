@@ -2799,7 +2799,9 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
     }
 
     .header-control:not(.active):hover {
-      background-color: white;
+      a, svg {
+        color: $colorPrimary;
+      }
     }
 
     > div+div {
