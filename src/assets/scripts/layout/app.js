@@ -143,7 +143,6 @@ ira.init = function () {
   }
 
   if ($(document.body).hasClass('template-collection')) {
-
     var $firstSection = $('.parallax-container #shopify-section-collection-template .section-header');
 
     $firstSection
@@ -152,7 +151,7 @@ ira.init = function () {
       .attr('data-speed', '0.5')
       .attr('data-direction', 'down');
 
-  }
+  } 
 
   if ($('.parallax-element').length) {
     var $firstSection = $('.parallax-element');
@@ -193,7 +192,6 @@ ira.init = function () {
   ira.cache.$body.addClass('ready');
   $(document).trigger('ira.ready');
 
-  //new ProductPage();
 };
 
 ira.setupCurrencyConverter = function() {

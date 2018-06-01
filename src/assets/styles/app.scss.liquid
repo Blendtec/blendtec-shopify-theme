@@ -195,9 +195,8 @@ $baseFontSize: 16px; // Henseforth known as 1em
 
 a.cta {
   display: inline-block;
-  font-size: 18px;
+  font-size: 1.5em;
   font-style: italic;
-  font-weight: 900;
   margin-top: 15px;
 }
 
@@ -1467,28 +1466,6 @@ body {
 }
 
 /*============================================================================
-  custom nav snippet
-==============================================================================*/
-.line { width: 50px; height: 3px; background-color: #eb2330; margin-top: 4px; }
-
-.custom-title { color: #000000; font-weight: bold; font-size: 24px; }
-
-.custom-side-menu {
-  .nav-block { margin: 0px 0; }
-
-  .nav-block ul { margin-top: 10px; margin-left: 0; padding-left: 0; }
-
-  .nav-block li { list-style: none; color: #000000; font-style: italic; font-weight: bold; font-size: 16px; line-height: 30px; text-transform: uppercase; }
-
-  .nav-block li:hover a { color: #eb2330; }
-
-  .nav-block li a { color: #000000; }
-
-  .nav-block li a span { color: #eb2330; padding-left: 2px; }
-}
-
-
-/*============================================================================
   #Typography
 ==============================================================================*/
 body,
@@ -1827,6 +1804,10 @@ hr {
     .template-collection & {padding: 2.5em}
 
     p:last-of-type {margin-bottom: 0;}
+
+    H1 {
+      color: lighten($colorTextHeader, 100%);
+    }
   }
 
   //The white overlay
@@ -2818,7 +2799,9 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
     }
 
     .header-control:not(.active):hover {
-      background-color: white;
+      a, svg {
+        color: $colorPrimary;
+      }
     }
 
     > div+div {
@@ -3766,6 +3749,30 @@ $animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);
   }
 }
 
+/*================ Side Navigation ================*/
+  .side-menu {
+    ul {
+      list-style: none; 
+    }
+
+    a {
+      color: $colorTextHeader;
+      i {
+        color: $colorPrimary;
+      }
+    }
+
+    a:hover {
+      color: $colorPrimary;
+    }
+
+    .btn {
+      margin-top: 15px;
+    }
+
+  }
+
+
 /*================ Home to hamburger and cart that toggle drawers ================*/
 .site-nav--mobile {
   @extend .site-nav;
@@ -4358,6 +4365,7 @@ body:not(.js-drawer-open) .drawer__content {
   @include clearfix();
   display: block;
   min-height: calc(100vh - 430px);
+  overflow: auto;
 
   .container {
       -ms-overflow-style: none;  // IE 10+
@@ -4374,22 +4382,22 @@ body:not(.js-drawer-open) .drawer__content {
     display: none;
 }
 
-@include at-query($max, $medium){
-  .main-content {
-    padding: 0 3em;
-
-    .template-index &,
-    .template-collection &,
-    .template-list-collection &,
-    .template-list-collections &,
-    .template-product &,
-    .template-blog &,
-    .template-404 & {
-      padding: 0;
-    }
-  }
-
-}
+//@include at-query($max, $medium){
+//  .main-content {
+//    padding: 0 3em;
+//
+//    .template-index &,
+//    .template-collection &,
+//    .template-list-collection &,
+//    .template-list-collections &,
+//    .template-product &,
+//    .template-blog &,
+//    .template-404 & {
+//      padding: 0;
+//    }
+//  }
+//
+//}
 
 .content-wrapper {
   padding: 4em;
@@ -5350,6 +5358,15 @@ $ig-gap: 0px;
   #Collection Filters
 ==============================================================================*/
 
+.page-controls-wrapper {
+  @extend .collection-filters-wrapper;
+}
+
+.page-controls {
+  @extend .collection-filters;
+}
+
+
 .collection-filters-wrapper {
   position: relative;
   display: table;
@@ -5383,6 +5400,8 @@ $ig-gap: 0px;
     }
   }
 }
+
+
 
 .collection-filters {
   display: table-cell;
