@@ -1,5 +1,9 @@
 {
   "general": {
+    "contact": {
+      "hours": "Mon. - Fri. 9:00 a.m. - 5:00 p.m. MST",
+      "hours-meta": "Mo,Tu,We,Th,Fr 9:00-17:30"
+    },
     "meta": {
       "tags": "Tagged \"{{ tags }}\"",
       "page": "Page {{ page }}"
@@ -310,6 +314,12 @@
       "account": "Account",
       "search": "Search",
       "cart": "Cart"
+    },
+    "secondary-navigation": {
+      "form-header": "RECIPES & MORE",
+      "form-body": "Subscribe to get recipes, tips, and offers delivered to your inbox.",
+      "contact-header": "CUSTOMER SERVICE",
+      "contact-sub-header": "Customer Service Hours"
     },
     "promo-header": {
       "live_chat": "Live Chat"

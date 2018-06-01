@@ -195,9 +195,8 @@ $baseFontSize: 16px; // Henseforth known as 1em
 
 a.cta {
   display: inline-block;
-  font-size: 18px;
+  font-size: 1.5em;
   font-style: italic;
-  font-weight: 900;
   margin-top: 15px;
 }
 
@@ -1465,28 +1464,6 @@ body {
 .nav-placeholder {
   padding-top: 50px;
 }
-
-/*============================================================================
-  custom nav snippet
-==============================================================================*/
-.line { width: 50px; height: 3px; background-color: #eb2330; margin-top: 4px; }
-
-.custom-title { color: #000000; font-weight: bold; font-size: 24px; }
-
-.custom-side-menu {
-  .nav-block { margin: 0px 0; }
-
-  .nav-block ul { margin-top: 10px; margin-left: 0; padding-left: 0; }
-
-  .nav-block li { list-style: none; color: #000000; font-style: italic; font-weight: bold; font-size: 16px; line-height: 30px; text-transform: uppercase; }
-
-  .nav-block li:hover a { color: #eb2330; }
-
-  .nav-block li a { color: #000000; }
-
-  .nav-block li a span { color: #eb2330; padding-left: 2px; }
-}
-
 
 /*============================================================================
   #Typography
@@ -3242,6 +3219,10 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   }
 }
 
+.page-content {
+  padding-top: 2em;
+}
+
 /*=========================== Search Bar ==========================*/
 
 /**
@@ -3765,6 +3746,26 @@ $animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);
     transition-delay: 0s;
   }
 }
+
+/*================ Side Navigation ================*/
+  .side-menu {
+    padding-left: 2em;
+    ul {
+      list-style: none; 
+    }
+
+    a {
+      color: $colorTextHeader;
+      i {
+        color: $colorPrimary;
+      }
+    }
+
+    a:hover {
+      color: $colorPrimary;
+    }
+  }
+
 
 /*================ Home to hamburger and cart that toggle drawers ================*/
 .site-nav--mobile {
@@ -5350,6 +5351,15 @@ $ig-gap: 0px;
   #Collection Filters
 ==============================================================================*/
 
+.page-controls-wrapper {
+  @extend .collection-filters-wrapper;
+}
+
+.page-controls {
+  @extend .collection-filters;
+}
+
+
 .collection-filters-wrapper {
   position: relative;
   display: table;
@@ -5383,6 +5393,8 @@ $ig-gap: 0px;
     }
   }
 }
+
+
 
 .collection-filters {
   display: table-cell;

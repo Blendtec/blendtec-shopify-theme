@@ -1,34 +1,25 @@
-<header class="section-header
-    parallax-element
-    section-header--image" style="background-image: url({{ section.settings.background-404 | img_url: 'master' }})">
+<header class="section-header section-header--image" style="background-image: url({{section.settings.background-404 | img_url: 'master'}})">
     <div class="text-wrapper--center-cell text-max-width">
         <div class="text-wrapper--small text-center">
-            <h1 class="section-header__title text-center">{{ 'general.404.title' | t }}</h1>
+            <h1 class="section-header__title text-center">{{ 'general.404.title' | t | upcase }}</h1>
         </div>
     </div>
 </header>
-<div class="grid--product-wrapper">
-<div class="grid grid--products collection-filters-wrapper">
-    <div class="grid__item small--show medium--hide large--hide">
-        <h6 class="custom-title">{{ section.settings.errorTitle }}</h6>
-        <p class="line"></p>
-        <p>
-            {{ section.settings.errorMessage }}
-        </p>
-    </div>
-    <div class="grid__item large--one-third medium--one-third">
-        {% assign customNav = 'looking-for-this' %} {% include 'custom-nav' %}
-    </div>
-    <div class="grid__item large--two-thirds medium--two-thirds small--hide">
-        <h6 class="custom-title">{{ section.settings.errorTitle }}</h6>
-        <p class="line"></p>
-        <p>
-            {{ section.settings.errorMessage }}
-        </p>
+<div class="grid__item page-controls-wrapper">
+    {% include 'breadcrumb' %}
+</div>
+<div class="grid__item">
+    <div class="grid">
+        <div class="grid__item large--one-quarter small--one-whole">
+            {% include 'side-menu' with nav: 'looking-for-this' %}
+        </div>
+        <div class="grid__item large--three-quarters small--one-whole margin-15">
+            <div class="rte text-center">
+                <p>{{ section.settings.errorMessage }}</p>
+            </div>
+        </div>
     </div>
 </div>
-</div>
-
 {% schema %}
 {
    "name":"404-page",
@@ -45,12 +36,6 @@
          "id":"errorMessage",
          "label":"Error Message",
          "default":"We can't seem to find the page you entered. One of these links may help you get back on track."
-      },
-      {
-         "type":"text",
-         "id":"errorTitle",
-         "label":"Error Message Title",
-         "default":"ERROR: 404"
       }
    ],
    "blocks":[
