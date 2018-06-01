@@ -1804,6 +1804,10 @@ hr {
     .template-collection & {padding: 2.5em}
 
     p:last-of-type {margin-bottom: 0;}
+
+    H1 {
+      color: lighten($colorTextHeader, 100%);
+    }
   }
 
   //The white overlay
@@ -3219,10 +3223,6 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   }
 }
 
-.page-content {
-  padding-top: 2em;
-}
-
 /*=========================== Search Bar ==========================*/
 
 /**
@@ -3749,7 +3749,6 @@ $animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);
 
 /*================ Side Navigation ================*/
   .side-menu {
-    padding-left: 2em;
     ul {
       list-style: none; 
     }
@@ -3764,6 +3763,11 @@ $animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);
     a:hover {
       color: $colorPrimary;
     }
+
+    .btn {
+      margin-top: 15px;
+    }
+
   }
 
 
@@ -4359,6 +4363,7 @@ body:not(.js-drawer-open) .drawer__content {
   @include clearfix();
   display: block;
   min-height: calc(100vh - 430px);
+  overflow: auto;
 
   .container {
       -ms-overflow-style: none;  // IE 10+
@@ -4375,22 +4380,22 @@ body:not(.js-drawer-open) .drawer__content {
     display: none;
 }
 
-@include at-query($max, $medium){
-  .main-content {
-    padding: 0 3em;
-
-    .template-index &,
-    .template-collection &,
-    .template-list-collection &,
-    .template-list-collections &,
-    .template-product &,
-    .template-blog &,
-    .template-404 & {
-      padding: 0;
-    }
-  }
-
-}
+//@include at-query($max, $medium){
+//  .main-content {
+//    padding: 0 3em;
+//
+//    .template-index &,
+//    .template-collection &,
+//    .template-list-collection &,
+//    .template-list-collections &,
+//    .template-product &,
+//    .template-blog &,
+//    .template-404 & {
+//      padding: 0;
+//    }
+//  }
+//
+//}
 
 .content-wrapper {
   padding: 4em;
