@@ -1,3 +1,11 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.5.2...v1.6.0) (2018-06-01)
+
+
+### Features
+
+* **page.secondary.liquid:** Add secondary page template with side nav ([749d8f9](https://github.com/Blendtec/blendtec-shopify-theme/commit/749d8f9))
+
 <a name="1.5.2"></a>
 ## [1.5.2](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.5.1...v1.5.2) (2018-05-31)
 
