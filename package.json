@@ -83,13 +83,7 @@
       {
         "path": "@semantic-release/github",
         "assets": [
-          { "path": "dist/assets", "label": "Css, Js, Image, Fonts distribution" },
-          { "path": "dist/config", "label": "Config Schema" },
-          { "path": "dist/layout", "label": "Shopify Layouts" },
-          { "path": "dist/locales", "label": "Shopify Localization" },
-          { "path": "dist/sections", "label": "Shopify Sections" },
-          { "path": "dist/snippets", "label": "Shopify Snippets" },
-          { "path": "dist/templates", "label": "Shopify Templates" }
+          { "path": "dist/**", "label": "Blendtec Shopify Theme" }
         ]
       }
     ]
