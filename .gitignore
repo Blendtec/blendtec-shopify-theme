@@ -8,6 +8,8 @@ snippets/easylockdown_body.liquid
 
 # build
 dist
+*.zip
+*.tar.gz
 
 # Logs
 logs

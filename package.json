@@ -11,7 +11,8 @@
     "upload": "theme upload --force -d dist",
     "theme": "theme",
     "lint": "slate-tools lint",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "zip": "cd dist && tar -zcf ../blendtec-theme.tar.gz * ../CHANGELOG.md  && cd .."
   },
   "repository": "git+https://github.com/Blendtec/blendtec-shopify-theme.git",
   "author": "devteam@blendtec.com",
@@ -83,7 +84,7 @@
       {
         "path": "@semantic-release/github",
         "assets": [
-          { "path": "dist/**", "label": "Blendtec Shopify Theme" }
+          { "path": "blendtec-theme.tar.gz", "label": "Blendtec Shopify Theme" }
         ]
       }
     ]
