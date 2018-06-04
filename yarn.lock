@@ -660,6 +660,25 @@
     parse-github-url "^1.0.1"
     url-join "^4.0.0"
 
+"@semantic-release/github@^4.2.17":
+  version "4.2.17"
+  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-4.2.17.tgz#1d3f465b4bdbc57ecfcb55aefdc554804a8cbc76"
+  dependencies:
+    "@octokit/rest" "^15.2.0"
+    "@semantic-release/error" "^2.2.0"
+    aggregate-error "^1.0.0"
+    bottleneck "^2.0.1"
+    debug "^3.1.0"
+    fs-extra "^6.0.0"
+    globby "^8.0.0"
+    issue-parser "^2.0.0"
+    lodash "^4.17.4"
+    mime "^2.0.3"
+    p-filter "^1.0.0"
+    p-retry "^2.0.0"
+    parse-github-url "^1.0.1"
+    url-join "^4.0.0"
+
 "@semantic-release/npm@^3.2.0", "@semantic-release/npm@^3.2.5":
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-3.2.5.tgz#c48c897c4b596ab2fc984f95f9ce2d57d7ec05f7"
