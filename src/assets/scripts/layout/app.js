@@ -57,7 +57,6 @@ ira.cacheSelectors = function () {
 bt.init = function() {
   //legacy
   ira.init();
-  console.log('APP READY');
   $(document).trigger('bt:ready');
 };
 
