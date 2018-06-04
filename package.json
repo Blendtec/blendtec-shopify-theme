@@ -22,6 +22,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "^2.0.2",
     "@semantic-release/git": "^5.0.0",
+    "@semantic-release/github": "^4.2.17",
     "@semantic-release/npm": "^3.2.5",
     "@shopify/slate-tools": "^1.0.0-beta.1",
     "@shopify/theme-lint": "^2.0.0",
@@ -63,7 +64,8 @@
     "branch": "master",
     "verifyConditions": [
       "@semantic-release/changelog",
-      "@semantic-release/git"
+      "@semantic-release/git",
+      "@semantic-release/github"
     ],
     "prepare": [
       {
@@ -77,6 +79,18 @@
         "path": "@semantic-release/npm",
         "npmPublish": false,
         "tarballDir": "dist"
+      },
+      {
+        "path": "@semantic-release/github",
+        "assets": [
+          { "path": "dist/assets", "label": "Css, Js, Image, Fonts distribution" },
+          { "path": "dist/config", "label": "Config Schema" },
+          { "path": "dist/layout", "label": "Shopify Layouts" },
+          { "path": "dist/locales", "label": "Shopify Localization" },
+          { "path": "dist/sections", "label": "Shopify Sections" },
+          { "path": "dist/snippets", "label": "Shopify Snippets" },
+          { "path": "dist/templates", "label": "Shopify Templates" }
+        ]
       }
     ]
   }

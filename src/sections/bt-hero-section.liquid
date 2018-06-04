@@ -1,50 +1,34 @@
-<div id="thePopUp" class="exit-intent-overlay">
-  <section class="exit-intent inline-subscribe">
-    <div class="display-table-cell exit-intent__content">
-<button onclick="exitPopup()" type="button" id="exitButton" class="close product-comparison--close" data-dismiss="modal" aria-hidden="true">
-<i class="fa fa-times" style="position:fixed;" aria-hidden="true"></i>
-</button>
-<i class="fa fa-spinner fa-spin" style="font-size:48px;" id="videoLoadingSpinner"></i>
-<div id="videoWrapper" style="opacity:0;">
-  <iframe style="width:100%;height:100%;" id="videoIdToShow" class="javascript-load-image"
-        numBlocks="{{section.blocks.size}}"
-        typeImage="imagebasesrc"
-        {% for i in section.blocks %}
-
-          {% assign placement = forloop.index  %}
-              {{placement}}imagebasesrc100="https://www.youtube.com/embed/{{ i.settings.video_id }}?playlist={{ i.settings.video_id }}"
-        {% endfor %}
-src="">
-</iframe>
-</div>
-    </div>
-  </section>
+<div id="video__modal" class="exit-intent-overlay">
+    <section class="exit-intent inline-subscribe">
+        <div class="display-table-cell exit-intent__content">
+            <i class="fa fa-spinner fa-spin" style="font-size:48px;" id="video-loading-spinner"></i>
+            <div id="modal-video-wrapper" style="opacity:0;">
+                <iframe style="width:100%;height:100%;" id="modal-video-frame" class="javascript-load-image" numBlocks="{{section.blocks.size}}"
+                    typeImage="imagebasesrc" {% for i in section.blocks %} {% assign placement=forloop.index %} {{placement}}imagebasesrc100="https://www.youtube.com/embed/{{ i.settings.video_id }}?playlist={{ i.settings.video_id }}"
+                    {% endfor %} src="">
+                </iframe>
+            </div>
+        </div>
+    </section>
 </div>
 <div class="bt-hero">
-    <div class="hero javascript-load-image"
-         numBlocks="{{ section.blocks.size }}"
-         typeImage="backgroundimagesrc"
-            {% for i in section.blocks %}
-            {% assign placement = forloop.index %}
-        {% for y in (1..6) %}
-            {% assign imageSize = y | times: 200 | downcase | append: 'x' %}
-            {{ placement }}backgroundimagesrc{{ y | times: 200 }}="{{ i.settings.hero_image | img_url: imageSize }}"
-
-        {% endfor %}
-            {% endfor %}>
+    <div class="hero javascript-load-image" numBlocks="{{ section.blocks.size }}" typeImage="backgroundimagesrc" {% for i in
+        section.blocks %} {% assign placement=forloop.index %} {% for y in (1..6) %} {% assign imageSize=y | times: 200 | downcase
+        | append: 'x' %} {{ placement }}backgroundimagesrc{{ y | times: 200 }}="{{ i.settings.hero_image | img_url: imageSize }}"
+        {% endfor %} {% endfor %}>
         <div class="header-text-wrapper small--hide">
-        {% for i in section.blocks %}
-        <div class="show-block-{{forloop.index}}" style="display:none;">
-            <h1 class="heavy" style="color:{{i.settings.line_one_color}}">{{ i.settings.line_one }}</h1>
-            <h1 class="heavy" style="margin-left:8%;width:90%;color:{{i.settings.line_two_color}}">{{ i.settings.line_two }}</h1>
-            <h1 class="heavy" style="margin-left:12%;width:86%;color:{{i.settings.line_three_color}}">{{ i.settings.line_three }}</h1>
-            <div class="button-wrapper">
-                <button onclick="showPopUp()" class="btn btn--small btn--left">
-                    <i class="fa fa-caret-right"></i>
-                    {{ i.settings.hero_button1text }}</button>
-                {% include 'cta-button' with text: i.settings.hero_button2text, url: i.settings.hero_button2Link %}
+            {% for i in section.blocks %}
+            <div class="show-block-{{forloop.index}}" style="display:none;">
+                <h1 class="heavy" style="color:{{i.settings.line_one_color}}">{{ i.settings.line_one }}</h1>
+                <h1 class="heavy" style="margin-left:8%;width:90%;color:{{i.settings.line_two_color}}">{{ i.settings.line_two }}</h1>
+                <h1 class="heavy" style="margin-left:12%;width:86%;color:{{i.settings.line_three_color}}">{{ i.settings.line_three }}</h1>
+                <div class="button-wrapper">
+                    <button class="btn btn--small btn--left btn-hero--play">
+                        <i class="fa fa-caret-right"></i>
+                        {{ i.settings.hero_button1text }}</button>
+                    {% include 'cta-button' with text: i.settings.hero_button2text, url: i.settings.hero_button2Link %}
 
-            </div>
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -52,196 +36,110 @@ src="">
     <div class="small--show medium--hide large--hide">
         {% for i in section.blocks %}
         <div class="show-block-{{forloop.index}}" style="display:none;">
-        <div class="header-text-wrapper">
-            <h1 class="heavy" style="color: {{i.settings.line_one_color}}">{{ i.settings.line_one }}</h1>
-            <h1 class="heavy" style="margin-left:8%;width:90%;color:{{i.settings.line_two_color}}">{{ i.settings.line_two }}</h1>
-            <h1 class="heavy" style="margin-left:12%;width:86%;color:{{i.settings.line_three_color}}">{{ i.settings.line_three }}</h1>
-            <div class="button-wrapper">
-                <button onclick="showPopUp()" class="btn btn--small btn--left">
-                    <i class="fa fa-caret-right"></i>
-                    {{ i.settings.hero_button1text }}</button>
-                {% include 'cta-button' with text: i.settings.hero_button2text, url: i.settings.hero_button2Link %}
+            <div class="header-text-wrapper">
+                <h1 class="heavy" style="color: {{i.settings.line_one_color}}">{{ i.settings.line_one }}</h1>
+                <h1 class="heavy" style="margin-left:8%;width:90%;color:{{i.settings.line_two_color}}">{{ i.settings.line_two }}</h1>
+                <h1 class="heavy" style="margin-left:12%;width:86%;color:{{i.settings.line_three_color}}">{{ i.settings.line_three }}</h1>
+                <div class="button-wrapper">
+                    <button class="btn btn--small btn--left btn-hero--play">
+                        <i class="fa fa-caret-right"></i>
+                        {{ i.settings.hero_button1text }}</button>
+                    {% include 'cta-button' with text: i.settings.hero_button2text, url: i.settings.hero_button2Link %}
+                </div>
             </div>
-        </div>
         </div>
         {% endfor %}
     </div>
 </div>
-<style>
-
-#exitButton{
-    background: transparent;
-    padding: 0;
-    border: 0;
-    position:absolute;
-    cursor:pointer;
-    right:10px;
-    top:10px;
-    width:25px;
-}
-#exitButton:hover{
-  opacity:.5;
-}
-
-</style>
 <script type="text/javascript">
-
-    var startVideo = function () {
-        document.getElementById("videoIdToShow").src += '&autoplay=1';
-        var ifr=document.getElementById('videoIdToShow');
-        ifr.onload=function(){
-            $('#videoLoadingSpinner').hide();
-            $('#videoWrapper').animate({
-                opacity: 1,
-              }, 250, function() {
-                ifr.onload = null;
-              });
-        }
-    }
-
-    var stopVideo = function() {
-        var ysrc = document.getElementById("videoIdToShow").src;
-        var newsrc = ysrc.replace("&autoplay=1", "");
-        document.getElementById("videoIdToShow").src = newsrc;
-        $('#videoWrapper').css("opacity", 0);
-            $('#videoLoadingSpinner').show();
-    }
-    var exitPopup = function() {
-        document.getElementById('thePopUp').classList.remove('show');
-        stopVideo();
-    };
-
-    var showPopUp = function() {
-        $('#thePopUp').addClass('show');
-        setTimeout(function() {
-            startVideo();
-        }, 100);
-    }
-
-$(document).ready(function() {
-    $('body').on('click', '.exit-intent-overlay', function(e){
-        if ( $(e.target).parents('.exit-intent').length === 0 ){
-            stopVideo();
-        }
+    $(document).on('bt:ready', function () {
+        $(document).trigger('bt:component:hero');
     });
-
-    var resizeVideo = function() {
-    var widthToSet = $(window).width() - 100;
-    var maxWidth = {{ section.settings.video_max_size }};
-        if (widthToSet > maxWidth) {
-            widthToSet = maxWidth;
-        }
-    var heightToSet = widthToSet * 9 / 16;
-    $('#videoWrapper').width(widthToSet);
-    $('#videoWrapper').height(heightToSet);
-    };
-
-    window.addEventListener("resize", function() {
-        resizeVideo();
-    });
-
-resizeVideo();
-});
-
-</script>
-{% schema %}
-    {
+</script> 
+{%schema%}
+{
     "name":"bt-hero-section",
     "class":"section1",
     "max_blocks":9,
-    "settings":[
-    {
-    "type":"range",
-    "id":"video_max_size",
-    "min":500,
-    "max":2000,
-    "step":20,
-    "unit":"px",
-    "label":"Max Video Size",
-    "default":800,
-    "info":"Maximum size of the shown video"
-    }
-    ],
     "blocks":[
-    {
-    "type":"header",
-    "name":"hero",
-    "settings":[
-    {
-    "type":"image_picker",
-    "id":"hero_image",
-    "label":"Hero Image",
-    "info":"Landscape orientation (3:2 w:h). 1200 x 752px minimum recommended"
-    },
-    {
-    "type":"text",
-    "id":"line_one",
-    "label":"Header One",
-    "default":"A BLENDER AS"
-    },
-    {
-           "type": "color",
-           "id": "line_one_color",
-           "label": "Header One Color",
-           "default": "#ffffff"
-    },
-    {
-    "type":"text",
-    "id":"line_two",
-    "label":"Header Two",
-    "default":"POWERFUL AS"
-    },
-    {
-           "type": "color",
-           "id": "line_two_color",
-           "label": "Header Two Color",
-           "default": "#ffffff"
-    },
-    {
-    "type":"text",
-    "id":"line_three",
-    "label":"Header Three",
-    "default":"YOUR AMBITION"
-    },
-    {
-           "type": "color",
-           "id": "line_three_color",
-           "label": "Third Header Color",
-           "default": "#ffffff"
-    },
-    {
-    "type":"text",
-    "id":"hero_button1text",
-    "label":"Hero Button 1 text",
-    "default":"WATCH THE VIDEO"
-    },
-    {
-    "type":"text",
-    "id":"video_id",
-    "label":"Id for youtube video to be shown.",
-    "default":"tgbNymZ7vqY",
-    "info":"Id for youtube video to be shown. So for 'https://www.youtube.com/watch?v=tgbNymZ7vqY' the id you need to enter is 'tgbNymZ7vqY'"
-    },
-    {
-    "type": "url",
-    "id": "hero_button2Link",
-    "label": "Section 2 Link"
-    },
-    {
-    "type":"text",
-    "id":"hero_button2text",
-    "label":"Hero Button 2 text",
-    "default":"SHOP BLENDERS"
-    }
-    ]
-    }
+       {
+          "type":"header",
+          "name":"hero",
+          "settings":[
+             {
+                "type":"image_picker",
+                "id":"hero_image",
+                "label":"Hero Image",
+                "info":"Landscape orientation (3:2 w:h). 1200 x 752px minimum recommended"
+             },
+             {
+                "type":"text",
+                "id":"line_one",
+                "label":"Header One",
+                "default":"A BLENDER AS"
+             },
+             {
+                "type":"color",
+                "id":"line_one_color",
+                "label":"Header One Color",
+                "default":"#ffffff"
+             },
+             {
+                "type":"text",
+                "id":"line_two",
+                "label":"Header Two",
+                "default":"POWERFUL AS"
+             },
+             {
+                "type":"color",
+                "id":"line_two_color",
+                "label":"Header Two Color",
+                "default":"#ffffff"
+             },
+             {
+                "type":"text",
+                "id":"line_three",
+                "label":"Header Three",
+                "default":"YOUR AMBITION"
+             },
+             {
+                "type":"color",
+                "id":"line_three_color",
+                "label":"Third Header Color",
+                "default":"#ffffff"
+             },
+             {
+                "type":"text",
+                "id":"hero_button1text",
+                "label":"Hero Button 1 text",
+                "default":"WATCH THE VIDEO"
+             },
+             {
+                "type":"text",
+                "id":"video_id",
+                "label":"Id for youtube video to be shown.",
+                "default":"tgbNymZ7vqY",
+                "info":"Id for youtube video to be shown. So for 'https://www.youtube.com/watch?v=tgbNymZ7vqY' the id you need to enter is 'tgbNymZ7vqY'"
+             },
+             {
+                "type":"url",
+                "id":"hero_button2Link",
+                "label":"Section 2 Link"
+             },
+             {
+                "type":"text",
+                "id":"hero_button2text",
+                "label":"Hero Button 2 text",
+                "default":"SHOP BLENDERS"
+             }
+          ]
+       }
     ],
-    "presets": [
-    {
-    "name": "bt-hero-section",
-    "category": "Image"
-    }
+    "presets":[
+       {
+          "name":"bt-hero-section",
+          "category":"Image"
+       }
     ]
-    }
-{% endschema %}
-
+ }
+{%endschema%}

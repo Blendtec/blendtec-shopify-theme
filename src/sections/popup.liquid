@@ -9,16 +9,6 @@
 
 <div class="exit-intent-overlay" {% if section.settings.enable_exit_intent %}data-exit-intent-overlay{% endif %}>
   <section class='exit-intent inline-subscribe {% if section.settings.exit_intent_image != blank %} exit-intent--large {% endif %} {% if useExitIntentPlaceholder  %}no-top{% endif %}'>
-    {% if section.settings.exit_intent_image != blank %}
-      <div class="exit-intent__image"></div>
-
-      <style>
-        .exit-intent__image {
-          background-image: url('{{ section.settings.exit_intent_image | img_url: '800x1200' }}');
-        }
-      </style>
-    {% endif %}
-
     <div class="display-table-cell exit-intent__content">
       {% form 'customer' %}
         {{ form.errors | default_errors }}
