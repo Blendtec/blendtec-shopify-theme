@@ -4,6 +4,10 @@
      {{ 'product.js' | asset_url | script_tag }}
  {% endif %}
 
+ {% if template.name == 'index' %}
+     {{ 'home.js' | asset_url | script_tag }}
+ {% endif %}
+
  {% if resetPassword %}
    <script>
      $(function() {
