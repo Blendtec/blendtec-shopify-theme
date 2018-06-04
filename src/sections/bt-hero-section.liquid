@@ -4,7 +4,7 @@
             <i class="fa fa-spinner fa-spin" style="font-size:48px;" id="video-loading-spinner"></i>
             <div id="modal-video-wrapper" style="opacity:0;">
                 <iframe style="width:100%;height:100%;" id="modal-video-frame" class="javascript-load-image" numBlocks="{{section.blocks.size}}"
-                    typeImage="imagebasesrc" {% for i in section.blocks %} {% assign placement=f orloop.index %} {{placement}}imagebasesrc100="https://www.youtube.com/embed/{{ i.settings.video_id }}?playlist={{ i.settings.video_id }}"
+                    typeImage="imagebasesrc" {% for i in section.blocks %} {% assign placement=forloop.index %} {{placement}}imagebasesrc100="https://www.youtube.com/embed/{{ i.settings.video_id }}?playlist={{ i.settings.video_id }}"
                     {% endfor %} src="">
                 </iframe>
             </div>
@@ -13,7 +13,7 @@
 </div>
 <div class="bt-hero">
     <div class="hero javascript-load-image" numBlocks="{{ section.blocks.size }}" typeImage="backgroundimagesrc" {% for i in
-        section.blocks %} {% assign placement=f orloop.index %} {% for y in (1..6) %} {% assign imageSize=y | times: 200 | downcase
+        section.blocks %} {% assign placement=forloop.index %} {% for y in (1..6) %} {% assign imageSize=y | times: 200 | downcase
         | append: 'x' %} {{ placement }}backgroundimagesrc{{ y | times: 200 }}="{{ i.settings.hero_image | img_url: imageSize }}"
         {% endfor %} {% endfor %}>
         <div class="header-text-wrapper small--hide">
@@ -55,15 +55,91 @@
     $(document).on('bt:ready', function () {
         $(document).trigger('bt:component:hero');
     });
-</script> {% schema %} { "name":"bt-hero-section", "class":"section1", "max_blocks":9, "blocks":[ { "type":"header", "name":"hero",
-"settings":[ { "type":"image_picker", "id":"hero_image", "label":"Hero Image", "info":"Landscape orientation (3:2 w:h). 1200
-x 752px minimum recommended" }, { "type":"text", "id":"line_one", "label":"Header One", "default":"A BLENDER AS" }, { "type":
-"color", "id": "line_one_color", "label": "Header One Color", "default": "#ffffff" }, { "type":"text", "id":"line_two", "label":"Header
-Two", "default":"POWERFUL AS" }, { "type": "color", "id": "line_two_color", "label": "Header Two Color", "default": "#ffffff"
-}, { "type":"text", "id":"line_three", "label":"Header Three", "default":"YOUR AMBITION" }, { "type": "color", "id": "line_three_color",
-"label": "Third Header Color", "default": "#ffffff" }, { "type":"text", "id":"hero_button1text", "label":"Hero Button 1 text",
-"default":"WATCH THE VIDEO" }, { "type":"text", "id":"video_id", "label":"Id for youtube video to be shown.", "default":"tgbNymZ7vqY",
-"info":"Id for youtube video to be shown. So for 'https://www.youtube.com/watch?v=tgbNymZ7vqY' the id you need to enter is
-'tgbNymZ7vqY'" }, { "type": "url", "id": "hero_button2Link", "label": "Section 2 Link" }, { "type":"text", "id":"hero_button2text",
-"label":"Hero Button 2 text", "default":"SHOP BLENDERS" } ] }], "presets": [ { "name": "bt-hero-section", "category": "Image"
-} ] } {% endschema %}
+</script> 
+{%schema%}
+{
+    "name":"bt-hero-section",
+    "class":"section1",
+    "max_blocks":9,
+    "blocks":[
+       {
+          "type":"header",
+          "name":"hero",
+          "settings":[
+             {
+                "type":"image_picker",
+                "id":"hero_image",
+                "label":"Hero Image",
+                "info":"Landscape orientation (3:2 w:h). 1200 x 752px minimum recommended"
+             },
+             {
+                "type":"text",
+                "id":"line_one",
+                "label":"Header One",
+                "default":"A BLENDER AS"
+             },
+             {
+                "type":"color",
+                "id":"line_one_color",
+                "label":"Header One Color",
+                "default":"#ffffff"
+             },
+             {
+                "type":"text",
+                "id":"line_two",
+                "label":"Header Two",
+                "default":"POWERFUL AS"
+             },
+             {
+                "type":"color",
+                "id":"line_two_color",
+                "label":"Header Two Color",
+                "default":"#ffffff"
+             },
+             {
+                "type":"text",
+                "id":"line_three",
+                "label":"Header Three",
+                "default":"YOUR AMBITION"
+             },
+             {
+                "type":"color",
+                "id":"line_three_color",
+                "label":"Third Header Color",
+                "default":"#ffffff"
+             },
+             {
+                "type":"text",
+                "id":"hero_button1text",
+                "label":"Hero Button 1 text",
+                "default":"WATCH THE VIDEO"
+             },
+             {
+                "type":"text",
+                "id":"video_id",
+                "label":"Id for youtube video to be shown.",
+                "default":"tgbNymZ7vqY",
+                "info":"Id for youtube video to be shown. So for 'https://www.youtube.com/watch?v=tgbNymZ7vqY' the id you need to enter is 'tgbNymZ7vqY'"
+             },
+             {
+                "type":"url",
+                "id":"hero_button2Link",
+                "label":"Section 2 Link"
+             },
+             {
+                "type":"text",
+                "id":"hero_button2text",
+                "label":"Hero Button 2 text",
+                "default":"SHOP BLENDERS"
+             }
+          ]
+       }
+    ],
+    "presets":[
+       {
+          "name":"bt-hero-section",
+          "category":"Image"
+       }
+    ]
+ }
+{%endschema%}
