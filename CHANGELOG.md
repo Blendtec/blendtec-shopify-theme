@@ -1,3 +1,16 @@
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.6.0...v1.7.0) (2018-06-04)
+
+
+### Bug Fixes
+
+* **bt-hero-section:** fix json scrambled by autoformat ([36a5441](https://github.com/Blendtec/blendtec-shopify-theme/commit/36a5441))
+
+
+### Features
+
+* **package.json:** Configure semantic-release/github plugin ([d72f0ce](https://github.com/Blendtec/blendtec-shopify-theme/commit/d72f0ce))
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.5.2...v1.6.0) (2018-06-01)
 
