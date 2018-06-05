@@ -55,6 +55,7 @@ ira.cacheSelectors = function () {
 bt_product.init = function() {
   ira.productSidebar();
   ira.productImageSwitch();
+  new ProductPage();
   $('body').trigger('bt:product:ready');
 }
 
@@ -595,12 +596,4 @@ ProductPage.prototype.gotoSlide = function(image) {
   }
 };
 
-
-
-$(document).ready(function(event) {
-      ira.productImageSwitch();
-      ira.productSidebar();
-      new ProductPage();
-  })
-
-$(bt_product.init);
+$(document).on('bt:ready', bt_product.init);
