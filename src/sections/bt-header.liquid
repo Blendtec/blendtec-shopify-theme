@@ -10,73 +10,22 @@
 {% if section.settings.notification_bar_enable %}
   {% assign notification_bar_on = true %}
 {% endif %}
-
 {% if notification_bar_on %}
+
+  {% assign social_options = "Facebook, Twitter, Pinterest, Instagram, Google Plus, tumblr, YouTube, Vimeo" | split: ", " %}
+  {% assign is_social = false %}
+  {% assign supported_codes = settings.supported_currencies | split: ' ' %}
   {% include 'defineParallaxAttributes' %}
+  {% include 'notification-bar' with 
+      converter_enabled: currency_converter_enabled,
+      currency_codes: supported_codes,
+      bar_text: section.settings.notification_bar_text,
+      bar_url: section.settings.notification_bar_link,
+      bar_img_enable: section.settings.notification_bar_enable_image
+      bar_img: section.settings.notification_bar_image
 
-  <div id='notification-bar' class='table' {{reverseParallaxAttributes}}>
-    {% if currency_converter_enabled %}
-      <div class="header-message-currency">
-        <label class="currency-picker__wrapper">
-          <span class="header-message-label currency-picker__label">Currency</span>
-          <select class="currency-picker" name="currencies" style="display: inline; width: auto; vertical-align: inherit;">
-          {% assign codes = 'USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,ILS,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK' | split: ',' %}
-          {% assign supported_codes = settings.supported_currencies | split: ' ' %}
-          <option value="{{ shop.currency }}" selected="selected">{{ shop.currency }}</option>
-          {% for code in supported_codes %}
-            {% if code != shop.currency and codes contains code %}
-            <option value="{{ code }}">{{ code }}</option>
-            {% endif %}
-          {% endfor %}
-          </select>
-        </label>
-      </div>
-    {% endif %}
+  %}
 
-    {% if section.settings.notification_bar_text != blank %}
-      {% if section.settings.notification_bar_link != blank %}
-        <a href="{{section.settings.notification_bar_link}}">
-        <div class="notification-header">
-        {% if section.settings.notification_bar_enable_image != blank %}
-          <div class="notification-image-wrapper"><img
-                    class="javascript-load-image"
-                    src="{{section.settings.notification_bar_image | img_url: '150x' }}"
-          ></div>
-          {% endif %}
-          <p class="notification-text">{{ section.settings.notification_bar_text }}</p>
-          </div>
-        </a>
-      {% else %}
-        <div class="notification-header">
-        {% if section.settings.notification_bar_enable_image != blank %}
-          <div class="notification-image-wrapper"><img
-                    class="javascript-load-image"
-                    src="{{section.settings.notification_bar_image | img_url: '150x' }}"
-          ></div>
-          {% endif %}
-          <p class="notification-text">{{ section.settings.notification_bar_text }}</p>
-          </div>
-      {% endif %}
-    {% endif %}
-
-    {% assign social_options = "Facebook, Twitter, Pinterest, Instagram, Google Plus, tumblr, YouTube, Vimeo" | split: ", " %}
-    {% assign is_social = false %}
-    {% for option_title in social_options %}
-      {% capture option_setting %}social_{{ option_title | downcase | replace: " ", "_" }}_link{% endcapture %}
-      {% if settings[option_setting] != blank %}
-        {% assign is_social = true %}
-      {% endif %}
-    {% endfor %}
-    {% if section.settings.notification_bar_enable_social and is_social %}
-      <div class="header-message-social">
-        <span class="header-message-label">{{ 'layout.footer.social_title' | t }}</span>
-
-        <ul class="header-message-social-links">
-          {% include 'social_links' %}
-        </ul>
-      </div>
-    {% endif %}
-  </div>
 {% endif %}
 
 {% assign hasBreadcrumbs = false %}
