@@ -351,6 +351,7 @@
     },
     storyGrid: {
       init: function () {
+        page.storyGrid.cacheSelectors();
         page.el.$featuredContent.each(function (i, el) {
           $(el).imagesLoaded(function () {
             $(el).find('.grid--story__image').each(function (idx, ele) {
