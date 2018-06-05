@@ -1,0 +1,56 @@
+<div id='notification-bar' class='table' {{reverseParallaxAttributes}}>
+    {% if converter_enabled %}
+        <div class="header-message-currency">
+            <label class="currency-picker__wrapper">
+                <span class="header-message-label currency-picker__label">Currency</span>
+                <select class="currency-picker" name="currencies" style="display: inline; width: auto; vertical-align: inherit;">
+                {% assign codes = 'USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,ILS,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK' | split: ',' %}
+                <option value="{{ shop.currency }}" selected="selected">{{ shop.currency }}</option>
+                {% for code in supported_codes %}
+                    {% if code != shop.currency and codes contains code %}
+                        <option value="{{ code }}">{{ code }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+            </label>
+        </div>
+    {% endif %}
+    {% if bar_text != blank %}
+        {% if bar_url != blank %}
+            <a href="{{bar_url}}">
+                <div class="notification-header">
+                    {% if bar_img_enable != blank %}
+                        <div class="notification-image-wrapper">
+                            <img src="{{bar_img | img_url: '150x' }}">
+                        </div>
+                    {% endif %}
+                    <p class="notification-text">{{ bar_text }}</p>
+                </div>
+            </a>
+        {% else %}
+          <div class="notification-header">
+            {% if bar_img_enable != blank %}
+                <div class="notification-image-wrapper">
+                    <img src="{{bar_img | img_url: '150x' }}">
+                </div>
+            {% endif %}
+            <p class="notification-text">{{ bar_text }}</p>
+          </div>
+        {% endif %}
+    {% endif %}
+    
+    {% for option_title in social_options %}          
+        {% capture option_setting %}social_{{ option_title | downcase | replace: " ", "_" }}_link{% endcapture %}
+        {% if settings[option_setting] != blank %}
+            {% assign is_social = true %}
+        {% endif %}
+    {% endfor %}
+    {% if section.settings.notification_bar_enable_social and is_social %}
+        <div class="header-message-social">
+            <span class="header-message-label">{{ 'layout.footer.social_title' | t }}</span>
+            <ul class="header-message-social-links">
+                {% include 'social_links' %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
