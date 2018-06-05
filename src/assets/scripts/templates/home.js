@@ -6,6 +6,27 @@
       // INIT PAGE LEVEL COMPONENTS
       return true;
     },
+    editorReload: function (event) {
+      var $section = $(event.target);
+      var type = $section.attr('class').replace('shopify-section', '').trim();
+
+      /* eslint-disable */
+      switch (type) {
+        case 'bt-hero':
+          page.hero.init();
+          break;
+        case 'instagram':
+          page.instagram.init();
+          break;
+        case 'featured-content':
+          page.storyGrid.init();
+          break;
+        default:
+          break;
+
+      }
+      /* eslint-enable */
+    },
     hero: {
       init: function () {
         page.hero.cacheSelectors();
@@ -312,7 +333,7 @@
 
 
         if (page.instagram.instagramImageData.length <= page.instagram.maxImages) {
-          return; //No point in loading in new images if there aren't enough.
+          return;
         }
 
         page.instagram.updateInterval = setInterval(function () {
@@ -321,11 +342,38 @@
           }
 
           if (index >= page.instagram.numberOfImages) index = 0;
-          page.instagram.updateImages(index++)
+          page.instagram.updateImages(index++);
         }, page.instagram.refreshTime)
       },
       cacheSelectors: function () {
         page.el.$instagramContainer = $('#instagrid');
+      },
+    },
+    storyGrid: {
+      init: function () {
+        page.el.$featuredContent.each(function (i, el) {
+          $(el).imagesLoaded(function () {
+            $(el).find('.grid--story__image').each(function (idx, ele) {
+              var $ele = $(ele);
+              var $image = $ele.find('img');
+
+              if (!$image.length) { return; }
+
+              var image = $image.get(0).getBoundingClientRect();
+
+              var aspect = image.height / image.width;
+
+              if (aspect > 0.6) {
+                $ele.addClass('aspect-wide');
+              } else {
+                $ele.addClass('aspect-narrow');
+              }
+            });
+          });
+        });
+      },
+      cacheSelectors: function () {
+        page.el.$featuredContent = $('.featured-content');
       },
     },
   };
@@ -333,19 +381,6 @@
   $(document).on('bt:ready', page.init);
   $(document).on('bt:component:hero', page.hero.init);
   $(document).on('bt:component:instagram', page.instagram.init);
-  $(document).on('shopify:section:load', function (event) {
-    var $section = $(event.target);
-    var type = $section.attr('class').replace('shopify-section', '').trim();
-
-    switch (type) {
-      case 'bt-hero':
-        page.hero.init();
-        break;
-      case 'instagram':
-        page.instagram.init();
-        break;
-
-    }
-  });
-
+  $(document).on('bt:component:storygrid', page.storyGrid.init);
+  $(document).on('shopify:section:load', page.editorReload);
 })();

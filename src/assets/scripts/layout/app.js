@@ -61,7 +61,6 @@ bt.init = function() {
 };
 
 ira.init = function () {
-  FastClick.attach(document.body);
   ira.cacheSelectors();
   ira.accessibleNav();
   ira.drawersInit();
@@ -79,10 +78,6 @@ ira.init = function () {
     ira.cache.$body.imagesLoaded(function() {
       ira.footerInit();
     });
-  }
-
-  if ($('#story-grid').length) {
-    ira.storyGridInit();
   }
 
   $(window).on('resize', function() {
@@ -941,29 +936,6 @@ ira.exitIntentInit = function(){
   if(q == "customer_posted=true") {
     $overlay.addClass('show');
   };
-}
-
-ira.storyGridInit = function(){
-  $('.featured-content').each(function(i, el){
-    $(el).imagesLoaded(function(){
-      $(el).find('.grid--story__image').each(function(i, el){
-        var $el = $(el);
-        var $image = $el.find('img'),
-            image;
-
-        if (!$image.length) { return; }
-
-        var image = $image.get(0).getBoundingClientRect();
-
-        var h = image.height,
-            w = image.width;
-        var aspect = h/w;
-
-        if (aspect > 0.6) { $el.addClass('aspect-wide'); }
-        else { $el.addClass('aspect-narrow'); }
-      });
-    });
-  });
 }
 
 ira.imageGridInit = function(){

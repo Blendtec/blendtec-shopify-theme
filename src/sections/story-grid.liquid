@@ -40,10 +40,14 @@
     border-top: 1px solid;
   }
 </style>
-
+<script type="text/javascript">
+    $(document).on('bt:ready', function () {
+        $(document).trigger('bt:component:storygrid');
+    });
+</script> 
 {% schema %}
   {
-    "name": "Image with text",
+    "name": "Story Grid",
     "max_blocks": 5,
     "class": "featured-content",
     "settings": [
