@@ -55,7 +55,8 @@ const miniCssExtractPlugin = new MiniCssExtractPlugin({
 module.exports = {
   entry: {
     app: './src/assets/scripts/layout/app.js',
-    //vendor: ['jquery', 'lodash', 'slick-carousel'],
+    home: './src/assets/scripts/templates/home.js',
+    vendor: ['jquery', 'lodash', 'slick-carousel'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

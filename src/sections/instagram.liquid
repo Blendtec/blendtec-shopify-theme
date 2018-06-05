@@ -19,6 +19,12 @@
   </div>
 {% endif %}
 
+<script type="text/javascript">
+    $(document).on('bt:ready', function () {
+      console.log('INSTAGRAM READY');
+        $(document).trigger('bt:component:instagram');
+    });
+</script> 
 {% schema %}
   {
     "name": "Instagram feed",
