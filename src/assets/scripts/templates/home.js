@@ -21,6 +21,9 @@
         case 'featured-content':
           page.storyGrid.init();
           break;
+        case 'review-carousel':
+          page.reviewCarousel.init();
+          break;
         default:
           break;
 
@@ -374,14 +377,35 @@
         });
       },
       cacheSelectors: function () {
+        page.reviewCarousel.cacheSelectors();
         page.el.$featuredContent = $('.featured-content');
       },
     },
+    reviewCarousel: {
+      init: function () {
+        console.log('INIT REVIEWS');
+        page.reviewCarousel.cacheSelectors();
+        page.el.$singleItem.slick({
+          dots: true,
+          arrows: true,
+          mobileFirst: true,
+          respondTo: 'min',
+          adaptiveHeight: true,
+          pauseOnHover: false,
+          draggable: true,
+          lazyload: 'progressive',
+        }).init(function () {});
+      },
+      cacheSelectors: function () {
+        page.el.$singleItem = $('.single-item');
+      },
+    }
   };
 
   $(document).on('bt:ready', page.init);
   $(document).on('bt:component:hero', page.hero.init);
   $(document).on('bt:component:instagram', page.instagram.init);
   $(document).on('bt:component:storygrid', page.storyGrid.init);
+  $(document).on('bt:component:review-carousel', page.reviewCarousel.init);
   $(document).on('shopify:section:load', page.editorReload);
 })();

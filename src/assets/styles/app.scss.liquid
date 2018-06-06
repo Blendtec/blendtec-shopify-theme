@@ -406,11 +406,17 @@ $max: max-width;
 ==============================================================================*/
 
 .red-hr {
-    border-color: #f41d2f;
-    margin: 5px 0px 10px 0px;
-    width: 50px;
-    border-width: 3px 0 0;
+  border-color: $colorPrimary;
+  margin: 5px 0px 10px 0px;
+  width: 50px;
+  border-width: 3px 0 0;
 }
+
+.red-hr--center {
+  @extend .red-hr;
+  margin: 5px auto 10px auto;
+}
+
 #easylockdown-password-form{
   padding-top:0px;
 
@@ -9584,12 +9590,30 @@ body:not(.ios) .shopify-section.features {
         height: 50%;
       }
 
+
       @media only screen and (min-width: $medium) {
         height: 100%;
       }
     }
   }
 
+}
+
+.review-carousel {
+
+  min-height: 393px;
+
+  .reviews-wrapper {
+    min-height: 375px;
+    padding-top: 80px;
+  }
+
+  .slider-wrapper{
+    max-width:600px;
+    width:100%;
+    margin:0 auto;
+    margin-bottom:40px;
+  }
 }
 
 /*================ AFFIRM ================*/

@@ -1,0 +1,70 @@
+<div class="section-wrapper" style="{% if section.settings.background %} background-image: url({{ section.settings.background | img_url: '1200x' }}) {% endif %}">
+  <div class="reviews-wrapper" style="{% if section.settings.review_background %} background-image: url({{ section.settings.review_background | img_url: '1200x' }}) {% endif %}">
+    <div class="slider single-item slider-wrapper">
+      {% for i in section.blocks %}
+        <div class="text-center">
+          <h3>{{i.settings.review_text}}</h3>
+          <hr class="red-hr--center">
+          {% include 'cta-text' with text: {{i.settings.review_cta_text}}, url: {{i.settings.review_cta_url}} %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).trigger('bt:component:review-carousel');
+  });
+</script>
+{% schema %}
+{
+  "name":"Review Carousel",
+  "class":"review-carousel",
+  "max_blocks":8,
+  "settings":[
+     {
+        "type":"image_picker",
+        "id":"background",
+        "label":"Section Background Image",
+        "info":"This is the background image for the section"
+     },
+     {
+        "type":"image_picker",
+        "id":"review_background",
+        "label":"Review Background",
+        "info":"The background for the reviews"
+     }
+  ],
+  "blocks":[
+     {
+        "type":"header",
+        "name":"Review",
+        "settings":[
+           {
+              "type":"text",
+              "id":"review_text",
+              "label":"Review Content",
+              "default":"“This blender is easy to use and delivers really awesome blending results.”"
+           },
+           {
+              "type":"text",
+              "id":"review_cta_text",
+              "label":"Text for the Review Link",
+              "default":"READ REVIEW"
+           },
+           {
+              "type":"url",
+              "id":"review_cta_url",
+              "label":"Link for the featured review"
+           }
+        ]
+     }
+  ],
+  "presets":[
+     {
+        "name":"bt-center-text-cta",
+        "category":"Image"
+     }
+  ]
+}
+{% endschema %}
