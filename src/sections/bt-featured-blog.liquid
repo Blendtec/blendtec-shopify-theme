@@ -16,7 +16,7 @@
                           {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
                           {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe1 | img_url: imageSize }}"
                         {% endfor %}
-                      {% endfor %}>
+                      {% endfor %}/>
               </a>
             </div>
             <div class="grid__item small--one-whole medium--one-half large--one-half">
@@ -51,11 +51,10 @@
                    {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
                    {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe2 | img_url: imageSize }}"
                  {% endfor %}
-                {% endfor %}>
+                {% endfor %}/>
               </a>
             </div>
             <div class="grid__item small--one-whole medium--one-half large--one-half">
-  
                 <div class="text-wrapper">
                     {% for i in section.blocks %}
                     <div class="show-block-{{forloop.index}}" style="display:none;">
@@ -66,11 +65,12 @@
                        {% include 'cta-text' with text: {{i.settings.recipe2_learnmore}}, url: {{i.settings.recipe2_url}}%}
                     </div>
                     {% endfor %}
-                 </div>
-  
+                </div>
             </div>
         </div>
+      </div>
     </div>
+
  </div>
 {% schema %}
 {
