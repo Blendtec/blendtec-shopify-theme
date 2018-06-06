@@ -1,358 +1,193 @@
-<div class="bt-fifth section5-background">
-  <div class="grid blocks-wrapper" style="">
-      <div class="">
-        <div class="featured-blog-block block-featured-left">
-          <a
-          class="show-block-href"
-          {% for i in section.blocks %}
-            {{ forloop.index }}href="{{i.settings.recipe1_url}}"
-          {% endfor %}
-           href="">
-            <div class="section5-recipe-container">
-              <div style="padding:0;" class="image-wrapper-featured-blog">
-                <img class="javascript-load-image recipe-image" style="width:100%;height:100%;"
-                numBlocks="{{section.blocks.size}}"
-                typeImage="imagebasesrc"
-                {% for i in section.blocks %}
-
-                  {% assign placement = forloop.index  %}
-
-                    {% for y in (1..6) %}
-                      {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
-                      {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe1 | img_url: imageSize }}"
-
-                    {% endfor %}
-
-                {% endfor %}>
-              </div>
-              <div class="text-wrapper-featured-blog">
+<div class="bt-featured-blog">
+    <div class="grid section-content">
+      <div class="grid__item xlarge--one-half large--one-whole medium--one-whole small--one-whole">
+        <div class="grid recipe">
+            <div class="image-wrapper grid__item small--one-whole medium--one-half large--one-half">
+              <a class="show-block-href" href=""
               {% for i in section.blocks %}
-                <div class="show-block-{{forloop.index}}" style="display:none;">
-                  <div class="section5-small-description">{{ i.settings.recipe1_label }}</div>
-                  <h3 class="section5-recipe-title">{{i.settings.recipe1_title}}</h3>
-                  <hr class="section5-red-hr">
-                  <div class="section5-recipe-text">{{i.settings.recipe1_text}}</div>
-                  <div style="margin-top:15px;">
-                    <a href="{{ i.settings.recipe1_url }}" class="section5-learn-more">{{i.settings.recipe1_learnmore}}</a>
-                    <span class="section5-arrow">&gt;</span>
-                  </div>
-                  </div>
-                  {% endfor %}
-                  </div>
-            </div>
-          </a>
-        </div>
-        <div class="featured-blog-block block-featured-right">
-          <a
-          class="show-block-href"
-          {% for i in section.blocks %}
-            {{ forloop.index }}href="{{i.settings.recipe2_url}}"
-          {% endfor %}
-          href="">
-            <div class="section5-recipe-container">
-              <div style="padding:0;" class="image-wrapper-featured-blog">
+                {{ forloop.index }}href="{{i.settings.recipe1_url}}"
+              {% endfor %}>
                 <img class="javascript-load-image recipe-image" style="width:100%;height:100%;"
-                numBlocks="{{section.blocks.size}}"
-                typeImage="imagebasesrc"
-                {% for i in section.blocks %}
-
-                  {% assign placement = forloop.index  %}
-
-                    {% for y in (1..6) %}
-                      {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
-                      {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe2 | img_url: imageSize }}"
-
-                    {% endfor %}
-
-                {% endfor %}>
-
-              </div>
-              <div class="text-wrapper-featured-blog">
-              {% for i in section.blocks %}
-                <div class="show-block-{{forloop.index}}" style="display:none;">
-                  <div class="section5-small-description">{{ i.settings.recipe2_label }}</div>
-                  <h3 class="section5-recipe-title">{{i.settings.recipe2_title}}</h3>
-                  <hr class="section5-red-hr">
-                  <div class="section5-recipe-text">{{i.settings.recipe2_text}}</div>
-                  <div style="margin-top:15px;">
-                    <a href="{{ i.settings.recipe2_url }}" class="section5-learn-more">{{i.settings.recipe2_learnmore}}</a>
-                    <span class="section5-arrow">&gt;</span>
-                  </div>
-                  </div>
-                  {% endfor %}
-              </div>
+                      numBlocks="{{section.blocks.size}}"
+                      typeImage="imagebasesrc"
+                      {% for i in section.blocks %}
+                        {% assign placement = forloop.index  %}
+                        {% for y in (1..6) %}
+                          {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+                          {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe1 | img_url: imageSize }}"
+                        {% endfor %}
+                      {% endfor %}>
+              </a>
             </div>
-          </a>
+            <div class="grid__item small--one-whole medium--one-half large--one-half">
+                <div class="text-wrapper">
+                    {% for i in section.blocks %}
+                    <div class="show-block-{{forloop.index}}" style="display:none;">
+                      <p class="section5-small-description">{{ i.settings.recipe1_label }}</p>
+                      <h3 class="section5-recipe-title">{{i.settings.recipe1_title}}</h3>
+                      <hr class="red-hr">
+                      <p class="section5-recipe-text">{{i.settings.recipe1_text}}</p>
+                      {% include 'cta-text' with text: {{i.settings.recipe1_learnmore}}, url: {{i.settings.recipe1_url}}%}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
       </div>
-  </div>
-  </div>
-<style>
-.blocks-wrapper{
-  padding-top:35px;
-  max-width:{{ section.settings.block_width | times: 2 | plus: 500 }}px;
-  margin:auto;
-}
-.block-featured-left{
-  float:left;
-  margin-left:100px;
-}
-.block-featured-right{
-  float:right;
-  margin-right:100px;
-}
-@media screen and (max-width: {{section.settings.block_width | times: 2 | plus: 300}}px) {
-  .block-featured-left{
-    margin-left:50px;
-  }
-  .block-featured-right{
-    margin-right:50px;
-  }
-}
-
-
-@media screen and (max-width: {{section.settings.block_width | times: 2 | plus: 100}}px) {
-  .block-featured-left{
-    margin-left:0px;
-  }
-  .block-featured-right{
-    margin-right:0px;
-    float:left;
-    margin-top:10px;
-    margin-bottom: 40px;
-  }
-  .blocks-wrapper{
-    max-width:{{ section.settings.block_width }}px;
-    margin:auto;
-  }
-
-}
-
-.bt-fifth.section5-background {
-    background-color: #e7e7e7;
-    background-image: url();
-    padding-bottom:40px;
-}
-
-.image-wrapper-featured-blog{
-    padding: 0;
-    width: 50%;
-    display: inline-block;
-    float: left;
-}
-.text-wrapper-featured-blog{
-  width:{{section.settings.block_width | divided_by: 2 | minus: 20}}px;
-  height:{{section.settings.block_height}}px;
-  float:right;
-}
-.image-wrapper-featured-blog{
-  width:{{section.settings.block_width| divided_by: 2}}px;
-  height:{{section.settings.block_height}}px;
-  float:left;
-}
-.featured-blog-block{
-  width:{{section.settings.block_width}}px;
-  height:{{section.settings.block_height}}px;
-}
-  .section5-arrow{
-    position: absolute;
-    margin-top: 7px;
-    font-size: 9px;
-    margin-left: 3px;
-    font-weight: 900;
-    font-style: italic;
-    color: #f41d2f;
-  }
-  .section5-learn-more{
-    color: #f41d2f;
-    font-size: 18px;
-    font-style: italic;
-    text-decoration: none;
-    font-weight: 900;
-  }
-  .review-text{
-    color:black;
-    font-weight:600;
-    line-height:1.25;
-  }
-    .section5-learn-more{
-    color: #f41d2f;
-    font-size:18px;
-    font-style:italic;
-    text-decoration:none;
-    font-weight:900;
-  }
-  .section5-small-description{
-      margin-top: 25px;
-      color: #3d3f4b;
-      font-size: 14px;
-  }
-  .section5-recipe-title{
-    color: #3d3f4b;
-    font-size: 32px;
-    line-height: 1;
-    margin-top: 8px;
-  }
-  .section5-recipe-text{
-      color: #3d3f4b;
-      line-height: 1.2;
-  }
-  .section5-recipe-container{
-    height:100%;
-    border: solid 1px #979797;
-    margin:3px;
-    background-color: #E7E7E7;;
-  }
-  .section5-recipe-container:hover {
--webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
-
-  }
-  .section5-background{
-    background-size: cover;
-  }
-  .section5-red-hr{
-    border-color: #f41d2f;
-    width: 120px;
-    margin: 0 auto;
-    padding: 10px;
-  }
-
-@media screen and (max-width: {{section.settings.block_width | minus: 1}}px) {
-  .section5-recipe-container{
-    margin: 0px;
-  }
-.text-wrapper-featured-blog{
-  float:left;
-  padding:3px;
-}
-.featured-blog-block{
-  width:{{section.settings.block_width | divided_by: 2}}px;
-  height:{{section.settings.block_height | times: 2}}px;
-}
-  .blocks-wrapper{
-    max-width:{{ section.settings.block_width | divided_by: 2 }}px;
-  }
-}
-</style>
-
+      <div class="grid__item xlarge--one-half large--one-whole medium--one-whole small--one-whole">
+        <div class="grid recipe">
+            <div class="image-wrapper grid__item small--one-whole medium--one-half large--one-half">
+              <a href=""
+              class="show-block-href"
+              {% for i in section.blocks %}
+               {{ forloop.index }}href="{{i.settings.recipe2_url}}"
+              {% endfor %}>
+                <img class="javascript-load-image recipe-image" style="width:100%;height:100%;"
+                numBlocks="{{section.blocks.size}}"
+                typeImage="imagebasesrc"
+                {% for i in section.blocks %}
+                 {% assign placement = forloop.index  %}
+                 {% for y in (1..6) %}
+                   {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+                   {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe2 | img_url: imageSize }}"
+                 {% endfor %}
+                {% endfor %}>
+              </a>
+            </div>
+            <div class="grid__item small--one-whole medium--one-half large--one-half">
+  
+                <div class="text-wrapper">
+                    {% for i in section.blocks %}
+                    <div class="show-block-{{forloop.index}}" style="display:none;">
+                       <p class="section5-small-description">{{ i.settings.recipe2_label }}</p>
+                       <h3 class="section5-recipe-title">{{i.settings.recipe2_title}}</h3>
+                       <hr class="red-hr">
+                       <p class="section5-recipe-text">{{i.settings.recipe2_text}}</p>
+                       {% include 'cta-text' with text: {{i.settings.recipe2_learnmore}}, url: {{i.settings.recipe2_url}}%}
+                    </div>
+                    {% endfor %}
+                 </div>
+  
+            </div>
+        </div>
+    </div>
+ </div>
 {% schema %}
 {
-"name":"bt-featured-blog",
-"class":"section5",
-"max_blocks":8,
-"settings":[
-{
-"type":"image_picker",
-"id":"section5_background",
-"label":"Section Background Image",
-"info":"This is the background image for the section"
-},
-{
-  "type":"range",
-  "id":"block_width",
-  "min":500,
-  "max":900,
-  "step":5,
-  "unit":"px",
-  "label":"Width of the Blocks",
-  "default":670
-},
-{
-  "type":"range",
-  "id":"block_height",
-  "min":300,
-  "max":700,
-  "step":5,
-  "unit":"px",
-  "label":"Height of the Blocks",
-  "default":450
-}
-],
-"blocks":[
-{
-"type":"header",
-"name":"bt-featured-product-lrg",
-"settings":[
-{
-"type":"image_picker",
-"id":"recipe1",
-"label":"The First Recipe",
-"info":"This is the image for the first recipe"
-},
-{
-"type":"text",
-"id":"recipe1_label",
-"label":"Recipe 1 label",
-"default":"Blendtec Recipe"
-},
-{
-"type":"text",
-"id":"recipe1_title",
-"label":"Recipe 1 title",
-"default":"Rasberry Go Smoothie"
-},
-{
-"type":"text",
-"id":"recipe1_text",
-"label":"Recipe 1 text",
-"default":"Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros"
-},
-{
-"type": "url",
-"id": "recipe1_url",
-"label": "Link to 1st Recipe"
-},
-{
-"type":"text",
-"id":"recipe1_learnmore",
-"label":"Recipe 1 Link Text",
-"default":"LEARN MORE"
-},
-{
-"type":"image_picker",
-"id":"recipe2",
-"label":"The Second Recipe",
-"info":"This is the image for the second recipe"
-},
-{
-"type":"text",
-"id":"recipe2_label",
-"label":"Recipe 2 label",
-"default":"Blendtec Recipe"
-},
-{
-"type":"text",
-"id":"recipe2_title",
-"label":"Recipe 2 title",
-"default":"Creamy Tomato Soup"
-},
-{
-"type":"text",
-"id":"recipe2_text",
-"label":"Recipe 2 text",
-"default":"Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros"
-},
-{
-"type": "url",
-"id": "recipe2_url",
-"label": "Link to 2nd Recipe"
-},
-{
-"type":"text",
-"id":"recipe2_learnmore",
-"label":"Recipe 2 Link Text",
-"default":"LEARN MORE"
-}
-]
-}
-],
-    "presets": [
-      {
-        "name": "bt-featured-blog",
-        "category": "Image"
-      }
-    ]
+  "name": "bt-featured-blog",
+  "class": "featured-blog",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "section5_background",
+      "label": "Section Background Image",
+      "info": "This is the background image for the section"
+    },
+    {
+      "type": "range",
+      "id": "block_width",
+      "min": 500,
+      "max": 900,
+      "step": 5,
+      "unit": "px",
+      "label": "Width of the Blocks",
+      "default": 670
+    },
+    {
+      "type": "range",
+      "id": "block_height",
+      "min": 300,
+      "max": 700,
+      "step": 5,
+      "unit": "px",
+      "label": "Height of the Blocks",
+      "default": 450
+    }
+  ],
+  "blocks": [
+    {
+      "type": "header",
+      "name": "bt-featured-product-lrg",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "recipe1",
+          "label": "The First Recipe",
+          "info": "This is the image for the first recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe1_label",
+          "label": "Recipe 1 label",
+          "default": "Blendtec Recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe1_title",
+          "label": "Recipe 1 title",
+          "default": "Rasberry Go Smoothie"
+        },
+        {
+          "type": "text",
+          "id": "recipe1_text",
+          "label": "Recipe 1 text",
+          "default": "Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros"
+        },
+        {
+          "type": "url",
+          "id": "recipe1_url",
+          "label": "Link to 1st Recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe1_learnmore",
+          "label": "Recipe 1 Link Text",
+          "default": "LEARN MORE"
+        },
+        {
+          "type": "image_picker",
+          "id": "recipe2",
+          "label": "The Second Recipe",
+          "info": "This is the image for the second recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe2_label",
+          "label": "Recipe 2 label",
+          "default": "Blendtec Recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe2_title",
+          "label": "Recipe 2 title",
+          "default": "Creamy Tomato Soup"
+        },
+        {
+          "type": "text",
+          "id": "recipe2_text",
+          "label": "Recipe 2 text",
+          "default": "Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros"
+        },
+        {
+          "type": "url",
+          "id": "recipe2_url",
+          "label": "Link to 2nd Recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe2_learnmore",
+          "label": "Recipe 2 Link Text",
+          "default": "LEARN MORE"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "bt-featured-blog",
+      "category": "Image"
+    }
+  ]
 }
 {% endschema %}
