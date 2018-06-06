@@ -1,4 +1,4 @@
-<div class="bt-featured-blog">
+<div class="bt-featured-blog" {%if section.settings.background %} style="background-image: url({{section.settings.background | img_url: '1200x'}} );"{% endif %}>
     <div class="grid section-content">
       <div class="grid__item xlarge--one-half large--one-whole medium--one-whole small--one-whole">
         <div class="grid recipe">
@@ -70,7 +70,6 @@
         </div>
       </div>
     </div>
-
  </div>
 {% schema %}
 {
@@ -80,7 +79,7 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "section5_background",
+      "id": "background",
       "label": "Section Background Image",
       "info": "This is the background image for the section"
     },

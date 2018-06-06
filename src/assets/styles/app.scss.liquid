@@ -9529,6 +9529,7 @@ body:not(.ios) .shopify-section.features {
 .bt-featured-blog {
 
   background-color: #e7e7e7;
+  background-size: cover; 
 
    @media only screen and (max-width: $small) {
      padding-bottom:0px;
@@ -9601,8 +9602,6 @@ body:not(.ios) .shopify-section.features {
 
 .review-carousel {
 
-  min-height: 393px;
-
   .reviews-wrapper {
     min-height: 375px;
     padding-top: 80px;
@@ -9613,6 +9612,28 @@ body:not(.ios) .shopify-section.features {
     width:100%;
     margin:0 auto;
     margin-bottom:40px;
+  }
+}
+
+
+.partners {
+  .section-wrapper {
+  	background-size: cover;
+    background-position-y:20%;
+    min-height: 200px;
+  }
+
+  .brand-images {
+    padding-left: 15%;
+    padding-top: 55px;
+
+    .grid__item {
+      height: 100px;
+    }
+
+    brand-image {
+      max-height: 100px;
+    }
   }
 }
 
