@@ -2,16 +2,14 @@
     <div class="grid brand-images">
         {% for slide in section.blocks limit: section.blocks.size %}
           <div class="partner grid__item large--one-eighth medium--one-eighth small--one-half">
-            {% if slide.settings.empty_corporate_partner == false %}
-           	  {% if slide.settings.link %}
-           	    <a href="{{slide.settings.corporate_partners_link}}" target="_blank">
-              {% endif %}
+         	  {% if slide.settings.link %}
+         	    <a href="{{slide.settings.corporate_partners_link}}" target="_blank">
+            {% endif %}
 
-                  <img class="brand-image" src="{{slide.settings.image | img_url: '100x' }}"/>
+                <img class="brand-image" src="{{slide.settings.image | img_url: '100x' }}"/>
 
-              {% if slide.settings.link %}
-                </a>
-              {% endif %}
+            {% if slide.settings.link %}
+              </a>
             {% endif %}
           </div>
         {% endfor %}
