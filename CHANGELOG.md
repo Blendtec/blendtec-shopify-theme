@@ -1,3 +1,16 @@
+<a name="1.7.1"></a>
+## [1.7.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.7.0...v1.7.1) (2018-06-07)
+
+
+### Bug Fixes
+
+* **bt-hero-section:** change class name to allow event listening ([6f91370](https://github.com/Blendtec/blendtec-shopify-theme/commit/6f91370))
+
+
+### Performance Improvements
+
+* **vendor.js:** remove FastClick library ([215112e](https://github.com/Blendtec/blendtec-shopify-theme/commit/215112e))
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.5.2...v1.6.0) (2018-06-01)
 
