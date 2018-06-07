@@ -1,3 +1,16 @@
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.7.1...v1.8.0) (2018-06-07)
+
+
+### Bug Fixes
+
+* **partner-brands:** remove deprecated setting check ([593d95f](https://github.com/Blendtec/blendtec-shopify-theme/commit/593d95f))
+
+
+### Features
+
+* **theme:** Add google site verification setting ([57bb1f7](https://github.com/Blendtec/blendtec-shopify-theme/commit/57bb1f7))
+
 <a name="1.7.1"></a>
 ## [1.7.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.7.0...v1.7.1) (2018-06-07)
 
