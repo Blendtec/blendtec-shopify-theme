@@ -1706,6 +1706,20 @@
     ]
   },
   {
+    "name": "Google Site Verification",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Google Site Verification"
+      },
+      {
+        "type": "text",
+        "id": "google_site_verification",
+        "label": "Code"
+      }
+    ]
+  },
+  {
     "name": "Google Tag Manager",
     "settings": [
       {

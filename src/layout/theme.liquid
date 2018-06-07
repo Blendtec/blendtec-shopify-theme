@@ -1,8 +1,10 @@
 <!doctype html>
+
     {% include 'theme-info' %}
     {% include 'html5-shiv' %}
     
     <head>
+
         {% include 'fonts' %}
         {% include 'google-fonts' %}
         {% include 'easylockdown_head' %}
@@ -12,8 +14,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
         <meta name="theme-color" content="{{ settings.color_primary }}">
-        <meta name="description" content="{{ page_description | escape }}">
         <link rel="canonical" href="{{ canonical_url }}">
+
+        {% if page_description %}
+            <meta name="description" content="{{ page_description | escape }}">
+        {% endif %}
+
+        {% if settings.google_site_verification != blank %}
+            <meta name="google-site-verification" content="{{settings.google_site_verification}}" />
+        {% endif %}
     
         {% if settings.favicon_image != blank %}
           <link rel="shortcut icon" href="{{ settings.favicon_image | img_url: '32x' }}" type="image/png" />
@@ -23,8 +32,6 @@
         {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
         </title>
     
-        {% if page_description %}
-        {% endif %}
     
         {% include 'social-meta-tags' %}
         {% include 'style-tags' %}
@@ -33,8 +40,8 @@
      
     </head>
     <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
-        {% include 'icons.svg' %}
         <div class="fadeout-overlay"></div>
+        {% include 'icons.svg' %}
         {% section 'bt-header' %}
         {% section 'popup' %}
     
