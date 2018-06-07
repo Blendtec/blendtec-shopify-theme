@@ -1,4 +1,3 @@
-console.log("NAVIGATOR", navigator);
 /**
  * Ira main initializer
  */
@@ -70,7 +69,6 @@ ira.init = function () {
   ira.collectionSortSetup();
   ira.collectionViews();
   ira.loginForms();
-  ira.imageGridInit();
   ira.exitIntentInit();
   ira.truncateExcerptText();
   ira.headerInit();
@@ -146,14 +144,6 @@ ira.init = function () {
       slideTimeout: carousel.attr('data-slide-timeout')
     }));
   });
-
-  // $('.feature-video-container').each(function(_, videoEl) {
-  //   var video = $(videoEl);
-
-  //   ira.videoPlayers.push(new ira.VideoPlayer({
-  //     container: video
-  //   }));
-  // });
 
   //Parallax is on by default at Shopify's request.  If you'd like to remove it,
   //simply comment out the following line:
@@ -715,9 +705,6 @@ ira.getNavWidth = function() {
   return navWidth;
 }
 
-//Since the header elements are variably sized, and we want the content pushed down
-//differently depending on whether or not the header is transparent, we use this
-//fine little function.
 ira.adjustContentOffset = function(options){
 
   //Both transparent header and parallax are only for index page
@@ -786,8 +773,6 @@ ira.adjustContentOffset = function(options){
   return adjust();
 
 }
-
-
 
 ira.searchInit = function(options){
 
@@ -939,10 +924,6 @@ ira.exitIntentInit = function(){
   };
 }
 
-ira.imageGridInit = function(){
-  ira.grid = new ira.ImageGrid();
-}
-
 ira.mobileNavToggle = function () {
   $('.mobile-nav__has-sublist').on('click', function() {
     $(this).toggleClass('mobile-nav--expanded');
@@ -958,8 +939,6 @@ ira.updateHash = function (hash) {
   window.location.hash = '#' + hash;
   $('#' + hash).attr('tabindex', -1).focus();
 };
-
-
 
 ira.responsiveVideos = function () {
   $('iframe[src*="youtube.com/embed"]').wrap('<div class="video-wrapper"></div>');
@@ -1447,152 +1426,6 @@ ira.Drawers = (function () {
 })();
 
 /*============================================================================
-  ImageGrid
-==============================================================================*/
-ira.ImageGrid = (function () {
-  var ImageGrid = function (options) {
-    var defaults = {
-      gridClass: '.grid--full',
-      subpixelGrid: '[data-grid-subpixel]'
-    };
-
-    this.config = $.extend(defaults, options);
-
-    this.$nodes = {
-      parent: $('body, html'),
-      grid: $(this.config.gridClass),
-      gridSubpixel: $(this.config.subpixelGrid),
-      imageCells : $('.grid__image'),
-    };
-
-    this.$grid = this.$nodes.grid;
-    this.$subpixelGrid = this.$nodes.gridSubpixel;
-
-    if (this.$grid.length || this.$subpixelGrid.length) {
-      this.init();
-    }
-  };
-
-
-  ImageGrid.prototype.init = function () {
-
-    var maxCallFrequency = 100; //ms
-    var throttlePrepare = _.throttle(function(){
-      if (this.$grid) { this.resizeImages(); }
-      if (this.$subpixelGrid) { this.subpixelGrid(); }
-    }.bind(this), maxCallFrequency);
-
-    //Make sure it fires at least once, in case e.g. imagesLoaded never fires beause all are non-existant
-    //which we need to handle and replace with placeholder content
-    if (this.$grid) { this.resizeImages(); }
-    if (this.$subpixelGrid) { this.subpixelGrid(); }
-
-    if (this.$grid && this.$grid.imagesLoaded) {
-      this.$grid.imagesLoaded().done(function(){
-        if (this.$grid) { this.resizeImages(); }
-        if (this.$subpixelGrid) {
-          this.bindEvents();
-          this.subpixelGrid();
-        }
-        $(window).on('widthChange', throttlePrepare);
-      }.bind(this));
-    }
-  };
-
-  ImageGrid.prototype.subpixelGrid = function(){
-    var cells = this.$subpixelGrid.find('[data-grid-item]');
-    cells
-      .addClass('height-css')
-      .height('auto')
-      .find('img')
-      .removeClass('processed')
-      .width('auto')
-      .height('auto');
-
-    if (!cells.length) return;
-
-    cells.each(function(i, e){
-      var cell = $(e);
-      var wrapper = $(e).find('.image-wrapper');
-      var img = wrapper.find('img:first');
-
-      cell.imagesLoaded(function() {
-        if (img.length) {
-          var wrapperWidth = wrapper.outerWidth(),
-              wrapperHeight = wrapper.outerHeight();
-          var wrapperAspect = wrapperWidth/wrapperHeight;
-
-          var aspectRatio = img[0].naturalWidth/img[0].naturalHeight;
-
-          if (aspectRatio > wrapperAspect) {
-            img
-              .height(Math.ceil(wrapperHeight + 2))
-              .addClass('processed');
-          } else {
-            img
-              .width(Math.ceil(wrapperWidth + 2))
-              .addClass('processed');
-          }
-        }
-
-        cell
-          .height(parseInt(cell.height(), 10))
-          .removeClass('height-css');
-      });
-    });
-  };
-
-  ImageGrid.prototype.bindEvents = function() {
-    this.$subpixelGrid.find('[data-grid-item].has-hover').on('mouseenter mouseleave', function(event) {
-      var $target = $(event.currentTarget).find('.index-grid-item-overlay');
-      if ($target.length) {
-        var opacityType = event.type === 'mouseenter' ? 'hover-opacity' : 'opacity';
-        var newOpacity = parseFloat($target.data(opacityType),10);
-        $target.css('opacity', newOpacity);
-      }
-    });
-  };
-
-  ImageGrid.prototype.resizeImages = function(){
-    var cells = this.$nodes.imageCells;
-    cells.removeClass('processed');
-
-    if (!cells.length) return;
-
-    cells.each(function(i, e){
-      var cell = $(e);
-      var wrapper = $(e).find('.cell-wrapper');
-      var img = wrapper.find('img:last');
-      var imgVariant = wrapper.find('img:first').length ? wrapper.find('img:first') : false;
-
-      if (img.length) {
-        wrapper.add(img).css({
-          "height": "auto"
-        });
-
-        cell.imagesLoaded(function() {
-          var wrapperWidth = wrapper.outerWidth();
-          var aspectRatio = img[0].naturalWidth/img[0].naturalHeight;
-
-          if (imgVariant) {
-            var aspectRatioVariant = imgVariant[0].naturalWidth/imgVariant[0].naturalHeight;
-            if (aspectRatio < aspectRatioVariant) {
-              imgVariant.addClass('is-short');
-            }
-          }
-
-          wrapper.height(Math.floor(wrapperWidth/aspectRatio));
-          img.height(Math.floor(wrapperWidth/aspectRatio));
-          cell.addClass('processed');
-        });
-      }
-    });
-  };
-
-  return ImageGrid;
-})();
-
-/*============================================================================
   Carousel
 ==============================================================================*/
 ira.carousels = [];
@@ -1759,22 +1592,9 @@ $(document)
         slideTimeout: carousel.attr('data-slide-timeout')
       }));
       break;
-    case 'index-grid-wrapper':
-      ira.imageGridInit();
-      break;
-    case 'featured-collections':
-      ira.imageGridInit();
-      break;
-    case 'featured-products':
-      ira.imageGridInit();
-      break;
-    case 'featured-blog':
-      ira.imageGridInit();
-      break;
     case 'collection-pages':
       ira.collectionSortSetup();
       ira.collectionViews();
-      ira.imageGridInit();
       break;
     case 'product-pages':
       //ira.productImageSwitch();

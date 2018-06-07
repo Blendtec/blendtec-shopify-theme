@@ -40,7 +40,11 @@
     {% include 'onboarding-featured-products' %}
   </div>
 {% endif %}
-
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).trigger('bt:component:grid');
+  });
+</script>
 {% schema %}
   {
     "name": "Featured collection",
