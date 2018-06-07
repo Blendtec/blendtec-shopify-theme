@@ -4,9 +4,11 @@
           <div class="partner grid__item large--one-eighth medium--one-eighth small--one-half">
             {% if slide.settings.empty_corporate_partner == false %}
            	  {% if slide.settings.link %}
-           	    <a href="{{slide.settings.corporate_partners_link}}">
+           	    <a href="{{slide.settings.corporate_partners_link}}" target="_blank">
               {% endif %}
-              <img class="brand-image" src="{{slide.settings.image | img_url: '100x' }}"/>
+
+                  <img class="brand-image" src="{{slide.settings.image | img_url: '100x' }}"/>
+
               {% if slide.settings.link %}
                 </a>
               {% endif %}
@@ -18,32 +20,31 @@
 
 {% schema %}
 {
-  "name":"bt-testimonial-brands",
+  "name":"Partner Brands",
   "class":"partners",
   "max_blocks":8,
   "settings":[
      {
         "type":"image_picker",
         "id":"background",
-        "label":"Section Background Image",
-        "info":"This is the background image for the section"
+        "label":"Section Background Image"
      }
   ],
   "blocks":[
      {
         "type":"header",
-        "name":"Corporate Partners",
+        "name":"Partner",
         "settings":[
            {
               "type":"image_picker",
               "id":"image",
               "label":"Corporate Partners",
-              "info":"Image showing the logo of one of Blendtec's corporate partners"
+              "info":"Partner Brand Image (100x ~100) recommended."
            },
            {
               "type":"url",
               "id":"link",
-              "label":"Link to corporate partner"
+              "label":"URL to corporate partner"
            }
         ]
      }
