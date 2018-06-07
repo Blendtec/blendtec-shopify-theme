@@ -2,9 +2,12 @@
 
   var page = {
     el: {},
+    isIOS: false,
+    isAndroid: false,
+    $videoPlayers: null,
     init: function () {
-      // INIT PAGE LEVEL COMPONENTS
-      return true;
+      page.isIOS = /iPad|iPhone|iPod/.test(navigator.platform);
+      page.isAndroid = /Android/i.test(navigator.userAgent);
     },
     editorReload: function (event) {
       var $section = $(event.target);
@@ -24,9 +27,11 @@
         case 'review-carousel':
           page.reviewCarousel.init();
           break;
+        case 'video-player':
+          page.videoPlayer.init();
+          break;
         default:
           break;
-
       }
       /* eslint-enable */
     },
@@ -383,7 +388,6 @@
     },
     reviewCarousel: {
       init: function () {
-        console.log('INIT REVIEWS');
         page.reviewCarousel.cacheSelectors();
         page.el.$singleItem.slick({
           dots: true,
@@ -394,12 +398,41 @@
           pauseOnHover: false,
           draggable: true,
           lazyload: 'progressive',
-        }).init(function () {});
+        }).init(function () { });
       },
       cacheSelectors: function () {
         page.el.$singleItem = $('.single-item');
       },
-    }
+    },
+    videoPlayer: {
+      init: function () {
+        page.videoPlayer.cacheSelectors();
+        page.$videoPlayers = page.el.$featureVideoContainer.map(function (idx, el) {
+          return page.videoPlayer.Create({$container: $(el)});
+        });
+      },
+      Create: function (cfg) {
+        var supportsInlinePlayer = ('playsInline' in document.createElement('video'));
+        var defaults = {};
+        var config = $.extend(defaults, cfg);
+
+        config.sectionID = config.$container.attr('data-id');
+
+        if (config.offsetNotificationBar) {
+          config.$container.addClass('offset-notification-bar');
+        }
+
+        if (page.isIOS && !supportsInlinePlayer) {
+          config.$container.find('.feature-video-video').hide();
+        }
+
+      },
+      cacheSelectors: function () {
+        page.el.$featureVideo = $('.feature-video-video');
+        page.el.$featureVideoContainer = $('.feature-video-container');
+      },
+      supportsInlinePlayer: false,
+    },
   };
 
   $(document).on('bt:ready', page.init);
@@ -407,5 +440,6 @@
   $(document).on('bt:component:instagram', page.instagram.init);
   $(document).on('bt:component:storygrid', page.storyGrid.init);
   $(document).on('bt:component:review-carousel', page.reviewCarousel.init);
+  $(document).on('bt:component:video-player', page.videoPlayer.init);
   $(document).on('shopify:section:load', page.editorReload);
 })();

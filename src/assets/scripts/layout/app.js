@@ -1,3 +1,4 @@
+console.log("NAVIGATOR", navigator);
 /**
  * Ira main initializer
  */
@@ -146,13 +147,13 @@ ira.init = function () {
     }));
   });
 
-  $('.feature-video-container').each(function(_, videoEl) {
-    var video = $(videoEl);
+  // $('.feature-video-container').each(function(_, videoEl) {
+  //   var video = $(videoEl);
 
-    ira.videoPlayers.push(new ira.VideoPlayer({
-      container: video
-    }));
-  });
+  //   ira.videoPlayers.push(new ira.VideoPlayer({
+  //     container: video
+  //   }));
+  // });
 
   //Parallax is on by default at Shopify's request.  If you'd like to remove it,
   //simply comment out the following line:
@@ -1701,38 +1702,6 @@ ira.Carousel = (function(){
   return Carousel;
 })();
 
-/*============================================================================
-  Videa players
-==============================================================================*/
-
-var supportsInlinePlayer = ('playsInline' in document.createElement('video'));
-
-ira.videoPlayers = [];
-
-ira.VideoPlayer = (function(){
-
-  var VideoPlayer = function(config){
-    var defaults = { };
-
-    this.config = $.extend(defaults, config);
-    this.config.sectionID = this.config.container.attr('data-id');
-
-    if (config.offsetNotificationBar) {
-      this.config.container.addClass('offset-notification-bar');
-    };
-
-    this.init();
-  };
-
-  VideoPlayer.prototype.init = function() {
-    if (ira.isIOS && !supportsInlinePlayer) {
-      this.config.container.find('.feature-video-video').hide();
-    };
-  };
-
-  return VideoPlayer;
-})();
-
 $(bt.init);
 
 
@@ -1788,14 +1757,6 @@ $(document)
         container: carousel,
         enableKenBurns: carousel.attr('data-ken-burns'),
         slideTimeout: carousel.attr('data-slide-timeout')
-      }));
-      break;
-    case 'video-player':
-      ira.videoPlayers = [];
-      var video = section.children('.feature-video-container');
-
-      ira.videoPlayers.push(new ira.VideoPlayer({
-        container: video
       }));
       break;
     case 'index-grid-wrapper':

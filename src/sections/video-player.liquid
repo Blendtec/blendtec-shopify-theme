@@ -44,7 +44,11 @@
     <a class="full-slide-link" href='{{section.settings.button_link}}' tabindex='0'></a>
   {% endif %}
 </div>
-
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).trigger('bt:component:video-player');
+  });
+</script>
 <style>
   #feature-video-{{section.id}} .feature-video-container-inner {
     background-image: url({{ section.settings.fallback_image | img_url: '1440x', scale: 2 }});
