@@ -50,7 +50,11 @@
     {% endfor %}
   {% endif %}
 </div>
-
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).trigger('bt:component:grid');
+  });
+</script>
 {% schema %}
   {
     "name": "Blog posts",

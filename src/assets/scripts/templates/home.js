@@ -2,9 +2,12 @@
 
   var page = {
     el: {},
+    isIOS: false,
+    isAndroid: false,
+    $videoPlayers: null,
     init: function () {
-      // INIT PAGE LEVEL COMPONENTS
-      return true;
+      page.isIOS = /iPad|iPhone|iPod/.test(navigator.platform);
+      page.isAndroid = /Android/i.test(navigator.userAgent);
     },
     editorReload: function (event) {
       var $section = $(event.target);
@@ -24,9 +27,23 @@
         case 'review-carousel':
           page.reviewCarousel.init();
           break;
+        case 'video-player':
+          page.videoPlayer.init();
+          break;
+        case 'index-grid-wrapper':
+          page.grid.init();
+          break;
+        case 'featured-collections':
+          page.grid.init();
+          break;
+        case 'featured-products':
+          page.grid.init();
+          break;
+        case 'featured-blog':
+          page.grid.init();
+          break;
         default:
           break;
-
       }
       /* eslint-enable */
     },
@@ -34,11 +51,13 @@
       init: function () {
         page.hero.cacheSelectors();
         page.el.$playBtn.on('click', page.hero.showPopUp);
-        $(window).on('resize', page.hero.resizeVideo);
-        $(document).on('bt:intent:dismiss', page.hero.stopVideo);
+        page.el.$window.on('resize', page.hero.resizeVideo);
+        page.el.$document.on('bt:intent:dismiss', page.hero.stopVideo);
         page.hero.resizeVideo();
       },
       cacheSelectors: function () {
+        page.el.$window = $(window);
+        page.el.$document = $(document);
         page.el.$videoModal = $('#video__modal');
         page.el.$playBtn = $('.btn-hero--play');
         page.el.$videoSpinner = $('#video-loading-spinner');
@@ -72,7 +91,7 @@
       },
       resizeVideo: function () {
         var $videoWrapper = page.el.$videoWrapper;
-        var widthToSet = $(window).width() - 100;
+        var widthToSet = page.el.$window.width() - 100;
         var maxWidth = 1000;
 
         if (widthToSet > maxWidth) {
@@ -117,7 +136,7 @@
 
 
         var promise = jQuery.Deferred();
-        var url = page.instagram.baseAPI + 'users/self/media/' + options.feedType + '?access_token=' + options.accessToken;
+        var url = `${page.instagram.baseAPI}users/self/media/${options.feedType}?access_token=${options.accessToken}`;
 
         $.ajax({
           type: 'GET',
@@ -127,7 +146,7 @@
           success: function (response) {
 
             if (!response) {
-              promise.reject({ code: 400, message: "No response from Instagram servers" });
+              promise.reject({ code: 400, message: 'No response from Instagram servers' });
             }
 
             if (response.meta.code === 400) {
@@ -167,7 +186,7 @@
         }
 
         images.forEach(function (image, i) {
-          if (i >= page.instagram.maxImages) return;
+          if (i >= page.instagram.maxImages) { return; }
 
           var div = document.createElement('div');
           var src = image.images.standard_resolution.url;
@@ -176,7 +195,7 @@
           var link = document.createElement('a');
 
           var spacer = document.createElement('div');
-          spacer.className = 'spacer'
+          spacer.className = 'spacer';
 
           img.src = src;
           img.className = 'photo';
@@ -194,28 +213,28 @@
         page.el.$instagramContainer.append(allImages);
       },
       doesImageHaveCaption: function (image) {
-        var likes = (!_.isNull(image.likes) && typeof image.likes.count === 'number')
-        var text = (!_.isNull(image.caption) && typeof image.caption.text === 'string')
+        var likes = (!_.isNull(image.likes) && typeof image.likes.count === 'number');
+        var text = (!_.isNull(image.caption) && typeof image.caption.text === 'string');
 
         if (!text && !likes) {
           return false;
         }
 
-        return { text: text, likes: likes }
+        return { text: text, likes: likes };
       },
       getUserID: function (userName) {
-        var url = page.instagram.baseAPI + 'users/search?q=' + userName + '&client_id=' + page.instagram.clientID;
+        var url = `${page.instagram.baseAPI}users/search?q=${userName}&client_id=${page.instagram.clientID}`;
 
-        url += '&callback=callbackFunction'; //make it a JSONP request
+        url += '&callback=callbackFunction'; // make it a JSONP request
         var promise = jQuery.Deferred();
 
         $.ajax({
-          'type': 'GET',
+          type: 'GET',
           dataType: 'jsonp',
           data: {},
           url: url,
           success: function (data) {
-            if (typeof data.data === "undefined") {
+            if (typeof data.data === 'undefined') {
               return promise.reject(data.meta);
             }
             var target = data.data.filter(function (e) {
@@ -265,9 +284,9 @@
       },
       replaceCaption: function (index, image) {
         var target = page.el.$instagramContainer.children().eq(index);
-        var captionSelector = '.instagrid-caption'
-        var countSelector = captionSelector + ' .likes .count';
-        var quoteSelector = captionSelector + ' .quote';
+        var captionSelector = '.instagrid-caption';
+        var countSelector = `${captionSelector} .likes .count`;
+        var quoteSelector = `${captionSelector} .quote`;
         var captionText = '';
         var likeCount = 0;
         var willImageHave = page.instagram.doesImageHaveCaption(image);
@@ -289,7 +308,7 @@
         var target = nodes.eq(index);
         var originalImg = target.find('img.photo');
         var newImg = document.createElement('img');
-        var transitionCSS = page.instagram.transitionSpeed + 'ms ease-in-out';
+        var transitionCSS = `${page.instagram.transitionSpeed}ms ease-in-out`;
         var instagramLink = image.images.standard_resolution.url;
         var source = image.link;
 
@@ -302,9 +321,9 @@
 
         setTimeout(function () {
           originalImg.remove();
-        }, page.instagram.transitionSpeed)
+        }, page.instagram.transitionSpeed);
 
-        $(newImg).css('position', 'absolute')
+        $(newImg).css('position', 'absolute');
         target.children('.image-wrapper').prepend(newImg);
 
         page.instagram.replaceCaption(index, image);
@@ -344,9 +363,9 @@
             index = Math.floor(Math.random() * page.instagram.numberOfImages + 1);
           }
 
-          if (index >= page.instagram.numberOfImages) index = 0;
+          if (index >= page.instagram.numberOfImages) { index = 0; }
           page.instagram.updateImages(index++);
-        }, page.instagram.refreshTime)
+        }, page.instagram.refreshTime);
       },
       cacheSelectors: function () {
         page.el.$instagramContainer = $('#instagrid');
@@ -383,7 +402,6 @@
     },
     reviewCarousel: {
       init: function () {
-        console.log('INIT REVIEWS');
         page.reviewCarousel.cacheSelectors();
         page.el.$singleItem.slick({
           dots: true,
@@ -394,18 +412,182 @@
           pauseOnHover: false,
           draggable: true,
           lazyload: 'progressive',
-        }).init(function () {});
+        }).init(function () { });
       },
       cacheSelectors: function () {
         page.el.$singleItem = $('.single-item');
       },
-    }
+    },
+    videoPlayer: {
+      init: function () {
+        page.videoPlayer.cacheSelectors();
+        page.$videoPlayers = page.el.$featureVideoContainer.map(function (idx, el) {
+          return page.videoPlayer.Create({ $container: $(el) });
+        });
+      },
+      Create: function (cfg) {
+        var supportsInlinePlayer = ('playsInline' in document.createElement('video'));
+        var defaults = {};
+        var config = $.extend(defaults, cfg);
+
+        config.sectionID = config.$container.attr('data-id');
+
+        if (config.offsetNotificationBar) {
+          config.$container.addClass('offset-notification-bar');
+        }
+
+        if (page.isIOS && !supportsInlinePlayer) {
+          config.$container.find('.feature-video-video').hide();
+        }
+
+      },
+      cacheSelectors: function () {
+        page.el.$featureVideo = $('.feature-video-video');
+        page.el.$featureVideoContainer = $('.feature-video-container');
+      },
+      supportsInlinePlayer: false,
+    },
+    grid: {
+      config: {},
+      $nodes: null,
+      $grid: null,
+      $subpixelGrid: null,
+      $imageCells: null,
+      init: function (options) {
+        page.grid.cacheSelectors();
+        var defaults = {};
+        page.grid.config = $.extend(defaults, options);
+        var maxCallFrequency = 100;
+
+        page.grid.$imageCells = page.el.$gridImage;
+        page.grid.$grid = page.el.$gridFull;
+        page.grid.$subpixelGrid = page.el.$subpixelGrid;
+
+        var throttlePrepare = _.throttle(function () {
+          if (page.grid.$grid) { page.grid.resizeImages(); }
+          if (page.grid.$subpixelGrid) { page.grid.subpixelGrid(); }
+        }, maxCallFrequency);
+
+        if (page.grid.$grid) { page.grid.resizeImages(); }
+        if (page.grid.$subpixelGrid) { page.grid.subpixelGrid(); }
+
+        if (page.grid.$grid && page.grid.$grid.imagesLoaded) {
+          page.grid.$grid.imagesLoaded().done(function () {
+            if (page.grid.$grid) { page.grid.resizeImages(); }
+            if (page.grid.$subpixelGrid) {
+              page.grid.bindEvents();
+              page.grid.subpixelGrid();
+            }
+            page.el.$window.on('widthChange', throttlePrepare);
+          });
+        }
+      },
+      cacheSelectors: function () {
+        page.el.$bodyHtml = $('body, html');
+        page.el.$gridFull = $('grid--full');
+        page.el.$gridImage = $('grid__image');
+        page.el.$subpixelGrid = $('[data-grid-subpixel]');
+
+      },
+      bindEvents: function () {
+        page.grid.$subpixelGrid.find('[data-grid-item].has-hover').on('mouseenter mouseleave', function (event) {
+          var $target = $(event.currentTarget).find('.index-grid-item-overlay');
+          if ($target.length) {
+            var opacityType = event.type === 'mouseenter' ? 'hover-opacity' : 'opacity';
+            var newOpacity = parseFloat($target.data(opacityType), 10);
+            $target.css('opacity', newOpacity);
+          }
+        });
+      },
+      subpixelGrid: function () {
+        var $cells = page.grid.$subpixelGrid.find('[data-grid-item]');
+
+        $cells
+          .addClass('height-css')
+          .height('auto')
+          .find('img')
+          .removeClass('processed')
+          .width('auto')
+          .height('auto');
+
+        if (!$cells.length) { return; }
+
+        $cells.each(function (i, el) {
+          var $cell = $(el);
+          var $wrapper = $cell.find('.image-wrapper');
+          var $img = $wrapper.find('img:first');
+
+          $cell.imagesLoaded(function () {
+            if ($img.length) {
+              var wrapperWidth = $wrapper.outerWidth();
+              var wrapperHeight = $wrapper.outerHeight();
+              var wrapperAspect = wrapperWidth / wrapperHeight;
+              var aspectRatio = $img[0].naturalWidth / $img[0].naturalHeight;
+
+              if (aspectRatio > wrapperAspect) {
+                $img
+                  .height(Math.ceil(wrapperHeight + 2))
+                  .addClass('processed');
+              } else {
+                $img
+                  .width(Math.ceil(wrapperWidth + 2))
+                  .addClass('processed');
+              }
+            }
+
+            $cell
+              .height(parseInt($cell.height(), 10))
+              .removeClass('height-css');
+          });
+        });
+      },
+      resizeImages: function () {
+        var $cells = page.grid.$imageCells;
+        $cells.removeClass('processed');
+
+        if (!$cells.length) { return; }
+
+        $cells.each(function (i, el) {
+          var $cell = $(el);
+          var $wrapper = $cell.find('.cell-wrapper');
+          var $img = $wrapper.find('img:last');
+          /* eslint-disable */
+          var imgVariant = $wrapper.find('img:first').length ? $wrapper.find('img:first') : false;
+          /* eslint-enable */
+
+          if ($img.length) {
+            $wrapper.add($img).css({
+              height: 'auto',
+            });
+
+            $cell.imagesLoaded(function () {
+              var wrapperWidth = $wrapper.outerWidth();
+              var aspectRatio = $img[0].naturalWidth / $img[0].naturalHeight;
+
+              if (imgVariant) {
+                var aspectRatioVariant = imgVariant[0].naturalWidth / imgVariant[0].naturalHeight;
+                if (aspectRatio < aspectRatioVariant) {
+                  imgVariant.addClass('is-short');
+                }
+              }
+
+              $wrapper.height(Math.floor(wrapperWidth / aspectRatio));
+              $img.height(Math.floor(wrapperWidth / aspectRatio));
+              $cell.addClass('processed');
+            });
+          }
+        });
+      },
+    },
   };
 
-  $(document).on('bt:ready', page.init);
+
+  $(document).ready(page.init);
   $(document).on('bt:component:hero', page.hero.init);
   $(document).on('bt:component:instagram', page.instagram.init);
   $(document).on('bt:component:storygrid', page.storyGrid.init);
   $(document).on('bt:component:review-carousel', page.reviewCarousel.init);
+  $(document).on('bt:component:video-player', page.videoPlayer.init);
+  $(document).on('bt:component:grid', page.grid.init);
   $(document).on('shopify:section:load', page.editorReload);
 })();
