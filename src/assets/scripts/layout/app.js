@@ -24,12 +24,6 @@ ira.cacheSelectors = function () {
     // Drawers
     $allDrawers: $('.drawer'),
 
-    // Product Page
-    $productImage: $('#ProductPhotoImg'),
-    $thumbImages: $('#ProductThumbs').find('[data-product-thumbnail]'),
-    $photoContainer: $('#PhotoContent'),
-    $productSidebar: $('#sidebarColumn'),
-
     // Customer Pages
     $recoverPasswordLink: $('#RecoverPassword'),
     $hideRecoverPasswordLink: $('#HideRecoverPasswordLink'),
