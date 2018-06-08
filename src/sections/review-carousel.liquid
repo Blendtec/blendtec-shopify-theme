@@ -4,7 +4,7 @@
       {% for i in section.blocks %}
         <div class="text-center">
           <h3>{{i.settings.review_text}}</h3>
-          <hr class="red-hr--center">
+          <hr class="accent--center">
           {% include 'cta-text' with text: {{i.settings.review_cta_text}}, url: {{i.settings.review_cta_url}} %}
         </div>
       {% endfor %}

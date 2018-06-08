@@ -405,17 +405,6 @@ $max: max-width;
   #easylockdown password form
 ==============================================================================*/
 
-.red-hr {
-  border-color: $colorPrimary;
-  margin: 5px 0px 10px 0px;
-  width: 50px;
-  border-width: 3px 0 0;
-}
-
-.red-hr--center {
-  @extend .red-hr;
-  margin: 5px auto 10px auto;
-}
 
 #easylockdown-password-form{
   padding-top:0px;
@@ -1671,6 +1660,18 @@ hr {
       display: none;
     }
   }
+  &.accent {
+    border-color: $colorPrimary;
+    margin: 5px 0px 10px 0px;
+    width: 50px;
+    border-width: 3px 0 0;
+  }
+
+  &.accent--center {
+    @extend hr.accent;
+    margin: 5px auto 10px auto;
+  }
+
 }
 
 /*================ Section Headers ================*/
