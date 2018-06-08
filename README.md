@@ -7,9 +7,6 @@
 
 ## Getting Started
 #### This project is volatile at the moment as it is being aggressively migrated to [Shopify Slate](https://github.com/Shopify/slate) and is in the midst of some intermediary steps. During this time we are making every effort to keep the project viable so there are some oddities in some things such as unused build artifacts and dependencies that aren't being utilized yet. If you are a developer for one of our international dealers we would very much encourage you to get in touch with us if you'd like to contribute. 
-  1. `$ git clone git@github.com:Blendtec/blendtec-shopify-theme.git`
-  2. `$ cd blendtec-shopify-theme`
-  3. `$ yarn`
 
 ### Prerequisites
 
@@ -21,6 +18,7 @@
 ## Workflow
 1. `$ git clone git@github.com:Blendtec/blendtec-shopify-theme.git`
 2. `$ cd blendtec-shopify-theme`
+2. `$ yarn`
 3. `$ yarn upload`
 4. `$ yarn watch:webpack` * leave running
 5. In a new terminal `$ yarn watch:theme` * leave running
