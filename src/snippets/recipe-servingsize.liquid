@@ -1,0 +1,15 @@
+{% assign servingSize = article.metafields["global"]["servingsize"] %}
+{% assign servingSize = servingSize | replace: "tbsp", " tbsp" %}
+{% assign servingSize = servingSize | replace: "0.125", "1/8 " %}
+{% assign servingSize = servingSize | replace: "0.25", "1/4 " %}
+{% assign servingSize = servingSize | replace: "0.33", "1/3 " %}
+{% assign servingSize = servingSize | replace: "0.5", "1/2 " %}
+{% assign servingSize = servingSize | replace: "0.75", "3/4 " %}
+{% assign servingSize = servingSize | replace: ".125", " 1/8 " %}
+{% assign servingSize = servingSize | replace: ".25", " 1/4 " %}
+{% assign servingSize = servingSize | replace: ".5", " 1/2 " %}
+{% assign servingSize = servingSize | replace: ".75", " 3/4 " %}
+{% assign servingSize = servingSize | replace: ".33", " 1/3 " %}
+{% assign servingSize = servingSize | replace: ".0625", " 1/16 " %}
+
+{{ servingSize }}
