@@ -1,3 +1,17 @@
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.8.0...v1.9.0) (2018-06-15)
+
+
+### Bug Fixes
+
+* **recipe-template:** Servingsizes not showing measurement ([e1289bc](https://github.com/Blendtec/blendtec-shopify-theme/commit/e1289bc))
+* **review-carousel:** Fix bottom margin gap ([5a53347](https://github.com/Blendtec/blendtec-shopify-theme/commit/5a53347))
+
+
+### Features
+
+* **affirm styling:** affirm 'learn more' link style as CTA ([8d43abf](https://github.com/Blendtec/blendtec-shopify-theme/commit/8d43abf))
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.7.1...v1.8.0) (2018-06-07)
 
