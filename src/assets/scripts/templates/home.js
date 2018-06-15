@@ -1,4 +1,5 @@
-(function () {
+import $ from 'jquery';
+import _ from 'lodash';
 
   var page = {
     el: {},
@@ -582,12 +583,11 @@
   };
 
 
-  $(document).ready(page.init);
-  $(document).on('bt:component:hero', page.hero.init);
-  $(document).on('bt:component:instagram', page.instagram.init);
-  $(document).on('bt:component:storygrid', page.storyGrid.init);
-  $(document).on('bt:component:review-carousel', page.reviewCarousel.init);
-  $(document).on('bt:component:video-player', page.videoPlayer.init);
-  $(document).on('bt:component:grid', page.grid.init);
-  $(document).on('shopify:section:load', page.editorReload);
-})();
+$(document).ready(page.init);
+$(document).on('bt:component:hero', page.hero.init);
+$(document).on('bt:component:instagram', page.instagram.init);
+$(document).on('bt:component:storygrid', page.storyGrid.init);
+$(document).on('bt:component:review-carousel', page.reviewCarousel.init);
+$(document).on('bt:component:video-player', page.videoPlayer.init);
+$(document).on('bt:component:grid', page.grid.init);
+$(document).on('shopify:section:load', page.editorReload);

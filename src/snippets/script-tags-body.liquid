@@ -5,7 +5,7 @@
  {% endif %}
 
  {% if template.name == 'index' %}
-     {{ 'home.js' | asset_url | script_tag }}
+     <script src="{{ 'home.bundle.js' | asset_url }}" type="module"></script>
  {% endif %}
 
  {% if template.name == 'collection' %}

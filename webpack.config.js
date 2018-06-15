@@ -56,29 +56,33 @@ module.exports = {
   entry: {
     app: './src/assets/scripts/layout/app.js',
     home: './src/assets/scripts/templates/home.js',
-    vendor: ['jquery', 'lodash', 'slick-carousel'],
+    index: './src/assets/scripts/index.js',
+    vendor: ['lodash'],
+  },
+  externals: {
+    jquery: 'jQuery'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'assets/[name].bundle.js',
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          chunks: 'initial',
-          name: 'vendor',
-          test: 'vendor',
-          enforce: true,
-        },
-      },
-    },
-    runtimeChunk: true,
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       vendor: {
+  //         chunks: 'initial',
+  //         name: 'vendor',
+  //         test: 'vendor',
+  //         enforce: true,
+  //       },
+  //     },
+  //   },
+  //   runtimeChunk: true,
+  // },
   plugins: [
-    providePlugin,
+  //  providePlugin,
     copyWebpackPluginConf,
-    miniCssExtractPlugin,
+    //miniCssExtractPlugin,
   ],
   module: {
     rules: [{
@@ -90,18 +94,18 @@ module.exports = {
         'sass-loader',
       ],
     },
-    {
-      test: /\.js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            '@babel/preset-env',
-          ],
-        },
-      },
-    },
+    // {
+    //   test: /\.js$/,
+    //   exclude: /(node_modules|bower_components)/,
+    //   use: {
+    //     loader: 'babel-loader',
+    //     options: {
+    //       presets: [
+    //         '@babel/preset-env',
+    //       ],
+    //     },
+    //   },
+    // },
     ],
   },
 };
