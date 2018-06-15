@@ -1,0 +1,23 @@
+<!-- /templates/page-secondary.liquid -->
+<header class="section-header section-header--image" style="background-image: url('//cdn.shopify.com/s/files/1/2182/0257/files/404-background.jpg?v=1521487025')">
+    <div class="text-wrapper--center-cell text-max-width">
+        <div class="text-wrapper--small text-center">
+            <h1 class="section-header__title text-center">{{ page.title | upcase }}</h1>
+        </div>
+    </div>
+</header>
+<div class="grid__item page-controls-wrapper">
+    {% include 'breadcrumb' %}
+</div>
+<div class="content-wrapper--horizontal grid__item">
+    <div class="grid">
+        <div class="grid__item large--one-quarter small--one-whole">
+            {% include 'side-menu' with nav: 'secondary-menu' %}
+        </div>
+        <div class="grid__item large--three-quarters small--one-whole margin-15">
+            <div class="rte">
+                {{ page.content }}
+            </div>
+        </div>
+    </div>
+</div>

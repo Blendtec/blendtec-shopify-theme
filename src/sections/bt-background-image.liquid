@@ -1,0 +1,119 @@
+<div class="bt-background-image">
+    <div class="grid section4-background-image javascript-load-image"
+         numBlocks="{{section.blocks.size}}"
+         typeImage="backgroundimagesrc"
+         tieTextClass="show-block-"
+            {% for i in section.blocks %}
+            {% assign placement = forloop.index  %}
+        {% for y in (8..12) %}
+            {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+            {{placement}}backgroundimagesrc{{ y | times: 100 }}="{{i.settings.main_background_image | img_url: imageSize }}"
+        {% endfor %}
+            {% endfor %}>
+        {% if section.settings.image_orientation == 'one' %}
+        <div class="grid__item large--one-sixth medium--one-sixth small--one-twelfth"></div>
+        <div style="text-align:left;" class="grid__item large--one-third medium--two-thirds small--five-sixths">
+            {% endif %}
+            {% if section.settings.image_orientation == 'two' %}
+            <div class="grid__item large--one-half medium--one-half small--one-twelfth"></div>
+            <div style="text-align:right;" class="grid__item large--one-third medium--two-thirds small--five-sixths">
+                {% endif %}
+                {% for i in section.blocks %}
+                    <div class="show-block-{{forloop.index}}" style="display:none;">
+                        <h2 style="color:{{i.settings.header_color}}">
+                            {{i.settings.header}}
+                        </h2>
+                        <p class="section4-text" style="color:{{i.settings.body_color}}">{{i.settings.body}}</p>
+                        {% include 'cta-text' with text: {{i.settings.cta_text}}, url: {{i.settings.section4_link}}, text_color: {{i.settings.cta_text_color}}%}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% schema %}
+    {
+        "name": "bt-background-image",
+        "class": "bt-background-image",
+        "max_blocks": 9,
+        "settings": [
+          {
+            "type": "radio",
+            "id": "image_orientation",
+            "label": "Image/text vs Text/image",
+            "options": [
+              {
+                "value": "one",
+                "label": "Text on Left"
+              },
+              {
+                "value": "two",
+                "label": "Text on Right"
+              }
+            ],
+            "default": "one",
+            "info": "This determines the orientation of this section"
+          }
+        ],
+        "blocks": [
+          {
+            "type": "header",
+            "name": "bt-background-image",
+            "settings": [
+              {
+                "type": "image_picker",
+                "id": "main_background_image",
+                "label": "Section 4 main image",
+                "info": "This is the main background image for this section"
+              },
+              {
+                "type": "text",
+                "id": "header",
+                "label": "Header",
+                "default": "TOM'S STORY"
+              },
+              {
+                "type": "color",
+                "id": "header_color",
+                "label": "Header color",
+                "default": "#3d3f4b"
+              },
+              {
+                "type": "text",
+                "id": "body",
+                "label": "Body Text",
+                "default": "A lifetime inventor and entrepreneur, Tom Dickson was innovating long before he built his first blender. Whether rigging his doorbell to open the front gate or outfitting go-karts with engines that took them past 80 mph, Tom's passion for tinkering and innovating goes all the way back to his childhood."
+              },
+              {
+                "type": "color",
+                "id": "body_color",
+                "label": "Body text color",
+                "default": "#3d3f4b"
+              },
+              {
+                "type": "text",
+                "id": "cta_text",
+                "label": "Section 4 Link Text",
+                "default": "LEARN MORE"
+              },
+              {
+                "type": "color",
+                "id": "cta_text_color",
+                "label": "CTA Color",
+                "default": "#f41d2f"
+              },
+              {
+                "type": "url",
+                "id": "section4_link",
+                "label": "Section 4 Link"
+              }
+            ]
+          }
+        ],
+        "presets": [
+          {
+            "name": "bt-background-image",
+            "category": "Image"
+          }
+        ]
+      }
+{% endschema %}

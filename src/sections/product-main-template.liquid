@@ -1,0 +1,453 @@
+{% comment %}
+
+  Rich snippets (itemscope, itemtype, etc.) for products are a theme requirement,
+  and allow search engines to easily understand what the content is.
+
+  For more information on these Scheme.org tags, visit:
+    - http://schema.org/docs/gs.html
+
+{% endcomment %}
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% unless hide_on_sale_badge %}
+    {% assign on_sale = true %}
+  {% endunless %}
+{% endif %}
+
+{% assign hasFeaturedImage = false %}
+{% if product.selected_or_first_available_variant.featured_image %}
+  {% assign hasFeaturedImage = true %}
+{% endif %}
+
+{% capture lightbox %}
+  <div class="product-lightbox" data-product-lightbox>
+    <button class="product-lightbox-button close" data-product-lightbox-button="close"><svg><use xlink:href="#icon-close"></use></svg></button>
+    {% for image in product.images %}
+      <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
+    {% endfor %}
+  </div>
+{% endcapture %}
+
+<div
+  id="product-outer-container"
+  itemscope
+  itemtype="http://schema.org/Product"
+  data-product="{{ product | json | escape }}"
+  {% if hasFeaturedImage %}
+  data-initial-image-position="{{ product.selected_or_first_available_variant.featured_image.position | json | minus: 1 }}"
+  {% endif %}
+  data-money-format="{{ shop.money_with_currency_format }}"
+  data-shop-default-currency="{{ shop.currency }}"
+  data-product-options-size="{{ product.options.size }}"
+  data-product-options-first="{{ product.options.first }}"
+  data-product-variants-size="{{ product.variants.size }}"
+  data-product-variants-first="{{ product.variants.first.title }}"
+>
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+  <div class="grid--full">
+    <div class="breadcrumb-wrapper content-wrapper--squished content-wrapper--half-top medium-down--text-center medium-down--hide">{% include 'breadcrumb' %}</div>
+  </div>
+  <div class="grid--full product-single">
+
+    <div class="grid__item xxlarge--two-thirds xlarge--three-fifths large--one-half text-center" id="PhotoContent" style="background-color:{{ section.settings.product-image-background }}">
+
+      {% if section.settings.image_layout_style == "stacked_images" or section.settings.image_layout_style == "stacked_images_sticky_sidebar" %}
+        <div class="product-single__photos large--one-whole medium-down--hide" id="ProductPhoto" data-product-images="stacked">
+          {% for image in product.images %}
+            <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" id="ProductPhotoImg-{{ forloop.index }}">
+          {% else %}
+            <img src="//cdn.shopify.com/s/images/themes/product-1.png" class='default-image placeholder-image'>
+          {% endfor %}
+        </div>
+      {% else %}
+        {% if product.images.size > 1 %}
+          <div class="product-multiple__photos large--two-tenths medium-down--hide" id="ProductThumbs">
+            {% for image in product.images %}
+              <button class="product-thumbnail-button" data-product-thumbnail>
+                <img src="{{ image | img_url: '200x' }}" data-high-res="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
+              </button>
+            {% endfor %}
+
+            {{ lightbox }}
+          </div>
+        {% endif %}
+
+        <div class="product-single__photos {% if product.images.size > 1 %}large--eight-tenths{% else %}large--one-whole{% endif %} medium-down--hide" id="ProductPhoto">
+          {% if product.featured_image %}
+            {% assign featured_image = product.featured_image %}
+            <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-image-position="1">
+            <button class="product-lightbox-button-open" data-product-lightbox-button="open"><span class="product-lightbox-button open"><svg><use xlink:href="#icon-glass"></use></svg></span></button>
+            {{ lightbox }}
+          {% else %}
+            <img src="//cdn.shopify.com/s/images/themes/product-1.png" class='default-image placeholder-image'>
+          {% endif %}
+
+        </div>
+      {% endif %}
+
+      {% comment %}
+        Now create the mobile slideshow.
+      {% endcomment %}
+
+      <div class="large--hide product-single__photos" id="ProductPhotoSlideshow">
+        {% assign featured_image = product.featured_image %}
+
+        <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-variant-id="{{ featured_image.variants.first.id }}">
+        {% if product.images.size > 1 %}
+          {% for image in product.images %}
+            {% unless image == featured_image %}
+              {% if image.attached_to_variant? %}
+                {% assign variantIDs = image.variants | map: 'id' | join: '-' %}
+                <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant' id="{{ variantIDs }}">
+              {% else %}
+                <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" class='not-attached-to-variant'>
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+
+        {% comment %}
+          Make sure the default, non-variant featured image is shown
+          if the user is accessing the URL from a variant URL.
+        {% endcomment %}
+
+        {% unless product.featured_image == featured_image %}
+          <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-unless='unlessupinhere' >
+        {% endunless %}
+      </div>
+    </div>
+
+  <div class="grid__item xxlarge--one-third xlarge--two-fifths large--one-half {% if section.settings.image_layout_style == 'stacked_images_sticky_sidebar' %}sticky-sidebar{% endif %}" id='sidebarColumn'>
+    <div class="sidebarColumn-inner">
+      <div class="content-wrapper--title js-fix-on-scroll--target fix-on-scroll--large-only">
+      
+        <h1 itemprop="name" class='medium-down--text-center product-title'>{{ product.title | upcase }}</h1>
+      
+        <div class="br-gradient-light"></div>
+      
+        <p>{{ product.metafields["global"]["Product-Short-Summary"] }}</p>
+      
+        {% include 'bv-summary' %}
+
+        {% assign compareLabel = 'products.product.compare' | t %}
+        {% include 'cta-text' with text: compareLabel, url: '/pages/compare-blenders'%}
+
+        <hr class="hr-darker">
+      
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+          <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+        
+          {% comment %}
+            ID addToCartForm is a selector for the ajax cart plugin
+          {% endcomment %}
+          <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+
+            <div class="medium-down--text-center">
+              <h2 class="inline" itemprop="price" id="ProductPrice">
+                {{ current_variant.price | money }}
+              </h2>
+              {% if product.compare_at_price_max > product.price %}
+                <h4 class="inline strikethrough deemphasize">
+                    {{ current_variant.compare_at_price | money }}
+                </h4>
+              {% endif %}
+            </div>
+            
+              {% if section.settings.affirm_enable %}
+                <div class="affirm--wrapper">
+                  <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
+                </div>
+              {% endif %}
+
+              <div class="grid">
+                  <div class="grid__item">
+                    <div class="margin-15">
+                      <h6 class="inline">{{'products.product.warranty' | t | capitalize}}</h6>: 
+                      <p class="inline">{{ product.metafields["global"]["Warranty"] }}</p>
+                    </div>
+                  </div>
+
+                  <div class="grid__item small--one-whole medium--one-half large--one-half">
+                    <h6>{{'products.product.quantity' | t | capitalize}}</h6>
+                    <input type="number" id="QuantitySmall" value="1" min="1" onchange="bt_product.changeQuantity(this)">
+                  </div>
+
+                  {% if product.variants[0].option1 %}
+                    <div class="grid__item small--one-half medium--one-half large--one-half">
+                      <div class="margin-15">
+                        <h6 class="inline">{{'products.product.color' | t | capitalize}}</h6>
+                        <p class="inline" id="colorTitle"></p>
+                        <div id="color-options">
+
+                          {% assign done_colors = '' | split: "  ,   " %}
+                          {% for i in product.variants %}
+                            {% unless done_colors contains i.option1 %}
+                              {% assign tempArr = i.option1 | split: "   ,  " %}
+                              {% assign done_colors = done_colors | concat: tempArr %}
+                              {% assign colorSelector = i.option1 | remove: '/' %}
+                              {% assign imageSelector = i.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
+
+                              <div class="option" id="{{ imageSelector }}" onclick="bt_product.changeColor('{{ colorSelector }}', '{{ i.option1 }}', '{{ imageSelector }}')">
+                                {% if settings[imageSelector] %}
+                                  <img src="{{ settings[imageSelector] | img_url: '30x30' }}" class="swatch">
+                                {% else %}
+                                  <div style="background-color:{{ settings[colorSelector] }}; border-radius:100px;" class="swatch"></div>
+                                {% endif %}
+                              </div>
+      
+                            {% endunless %}
+                          {% endfor %}
+
+                        </div>
+                      </div>
+
+                    </div>
+                  {% endif %}
+
+                  {% if product.variants[0].option2 %}
+                    <div class="grid__item small--one-half medium--one-whole">
+                      <h6 class="inline">{{ 'products.product.jar' | t }}</h6>: 
+                      <p class="inline" id="jarTitle"></p>
+                      <div id="jar-options">
+
+                        {% assign done_jars = '' | split: "  ,   " %}
+                        {% for i in product.variants %}
+                          {% unless done_jars contains i.option2 %}
+                            {% assign tempArr = i.option2 | split: "   ,  " %}
+                            {% assign done_jars = done_jars | concat: tempArr %}
+                            {% assign jarSelector = i.option2 | remove: '/' | remove: ' ' %}
+                            {% assign imageSelector = i.option2 | remove: '/' | remove: ' ' | remove: '+' %}
+                            <div class="option" id="{{ imageSelector }}" onclick="bt_product.changeJar('{{ jarSelector }}', '{{ i.option2 }}', '{{ imageSelector }}')">
+                              <img src="{{ settings[imageSelector] | img_url: '30x30' }}" class="option-image">
+                            </div>
+                          {% endunless %}
+                        {% endfor %}
+
+                      </div>
+                    </div>
+                  {% endif %}
+                  <div class="grid__item">
+                    {% assign addToCartText = 'products.product.add_to_cart' | t %}
+                    {% include 'cta-submit-button' with text: addToCartText, id: 'AddToCart' %}
+                  </div>
+                </div>
+                <div class="product-selectors" style="display:none;">
+                  <select name="id" id="productSelect" class="product-single__variants">
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+                  
+                        {% comment %}
+                        Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                        {% endcomment %}
+                        <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                      {% else %}
+                        <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+            
+                  <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+                  <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                </div>
+          
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid__item large--one-whole tabs-wrapper">
+    <ul id="tabs">
+      <li class="selected">
+        <a href="#tab-1">
+          <h5 class='light-weight'>{{ 'products.product.features' | t }}</h6>
+        </a>
+      </li>
+      <li>
+        <a href="#tab-2">
+          <h5 class="light-weight">{{ 'products.product.specs' | t | upcase }}</h6>
+        </a>
+      </li>
+      <li>
+        <a href="#tab-3">
+          <h5 class="light-weight">{{ 'products.product.reviews' | t | upcase}}</h6>
+        </a>
+      </li>
+      <li>
+        <a href="#tab-4">
+          <h5 class="light-weight">{{ 'products.product.questions_answers' | t | upcase }}</h5>
+        </a>
+      </li>
+    </ul>
+    <hr class="hr-no-margin">
+    <div class="tab" id="tab-1">
+      {% include "product-features" %}
+    </div>
+    <div class="tab" id="tab-2">
+      {% include "product-specs" %}
+    </div>
+    <div class="tab" id="tab-3">
+        <h4>{{ 'products.product.reviews' | t }}</h4>
+      <hr class="accent">
+      {% include "bv-ratings-reviews" %}
+    </div>
+    <div class="tab" id="tab-4">
+        <h4>{{ 'products.product.questions_answers' | t }}</h4>
+      <hr class="accent">
+      {% include "bv-questions" %}
+    </div>
+  </div>
+
+  {% if section.settings.product_related %}
+    {% include "product-related" %}
+  {% endif %}
+</div>
+
+{% comment %}
+  To take advantage of a callback on the select dropdown, add option_selection.js
+  and customize the JS in timber.productPage as needed.
+
+  Currently, timber.productPage does the following:
+    - Hides your <select> tag from above
+    - Breaks out the product variants into separate product options, if more than one exists
+    - Generates a <select> tag for each product option
+    - Enables/disables elements based on variant availability
+
+  Callback notes:
+    - Keep the callback available to the global scope (window.selectCallback) so that advanced
+      addons can override it.
+      * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
+{% endcomment %}
+
+<script type="text/javascript"/>
+  $(document).ready(function() {
+    $('body').on('bt:product:ready', function() {
+      bt_product.enableTabs($('#tabs'));
+      {% if product.variants[0].option1 %}
+        {% assign variant1 = product.variants[0] %}
+        {% if product.selected_variant %}
+          {% assign variant1 = product.selected_variant %}
+        {% endif %}
+        {% assign textInitial = variant1.option1 %}
+        {% assign colorSelectorInitial = variant1.option1 | remove: '/' %}
+        {% assign imageSelectorInitial = variant1.option1 | remove: '/' | remove: ' ' | prepend: 'i' %}
+        bt_product.changeColor('{{ colorSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
+      {% endif %}
+
+      {% if product.variants[0].option2 %}
+        {% assign variant2 = product.variants[0] %}
+        {% if product.selected_variant %}
+          {% assign variant2 = product.selected_variant %}
+        {% endif %}
+        {% assign textInitial = variant2.option2 %}
+        {% assign jarSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' %}
+        {% assign imageSelectorInitial = variant2.option2 | remove: '/' | remove: ' ' | remove: '+' %}
+        bt_product.changeJar('{{ jarSelectorInitial }}', '{{ textInitial }}', '{{ imageSelectorInitial }}');
+      {% endif %}
+    });
+  });
+</script>
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "class": "product-pages",
+    "settings": [
+      {
+        "type": "color",
+        "id": "product-image-background",
+        "label": "Image background color",
+        "default": "#fff"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_related",
+        "label": "Show related products"
+      },
+      {
+        "type": "select",
+        "id": "image_layout_style",
+        "label": "Image layout style",
+        "options": [
+          {
+            "value": "thumbnails",
+            "label": "Thumbnails"
+          },
+          {
+            "value": "stacked_images",
+            "label": "Stacked images"
+          },
+          {
+            "value": "stacked_images_sticky_sidebar",
+            "label": "Stacked images with sticky sidebar"
+          }
+        ],
+        "default": "thumbnails"
+      },
+      {
+        "type": "checkbox",
+        "id": "expand_first_tab",
+        "label": "Expand first tab when sidebar is sticky"
+      }, 
+      {
+        "type": "checkbox",
+        "id": "affirm_enable",
+        "label": "Show Affirm branding",
+        "info": "This setting requires Affirm to be enabled globally in the Theme settings"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tab",
+        "name": "Tab",
+        "settings": [
+          {
+            "type": "page",
+            "id": "product_tab_page",
+            "label": "Select page as tab content"
+          }
+        ]
+      },
+      {
+        "type": "share",
+        "name": "Share buttons",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "share_facebook",
+            "label": "Facebook"
+          },
+          {
+            "type": "checkbox",
+            "id": "share_pinterest",
+            "label": "Pinterest"
+          },
+          {
+            "type": "checkbox",
+            "id": "share_google",
+            "label": "Google Plus"
+          },
+          {
+            "type": "checkbox",
+            "id": "share_twitter",
+            "label": "Twitter"
+          },
+          {
+            "type": "checkbox",
+            "id": "share_tumblr",
+            "label": "Tumblr"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,434 @@
+{% comment %}
+
+  Rich snippets (itemscope, itemtype, etc.) for products are a theme requirement,
+  and allow search engines to easily understand what the content is.
+
+  For more information on these Scheme.org tags, visit:
+    - http://schema.org/docs/gs.html
+
+{% endcomment %}
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% unless hide_on_sale_badge %}
+    {% assign on_sale = true %}
+  {% endunless %}
+{% endif %}
+
+{% assign hasFeaturedImage = false %}
+{% if product.selected_or_first_available_variant.featured_image %}
+  {% assign hasFeaturedImage = true %}
+{% endif %}
+
+{% capture lightbox %}
+  <div class="product-lightbox" data-product-lightbox>
+    <button class="product-lightbox-button close" data-product-lightbox-button="close"><svg><use xlink:href="#icon-close"></use></svg></button>
+    {% for image in product.images %}
+      <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
+    {% endfor %}
+  </div>
+{% endcapture %}
+
+<div
+  id="product-outer-container"
+  itemscope
+  itemtype="http://schema.org/Product"
+  data-product="{{ product | json | escape }}"
+  {% if hasFeaturedImage %}
+  data-initial-image-position="{{ product.selected_or_first_available_variant.featured_image.position | json | minus: 1 }}"
+  {% endif %}
+  data-money-format="{{ shop.money_with_currency_format }}"
+  data-shop-default-currency="{{ shop.currency }}"
+  data-product-options-size="{{ product.options.size }}"
+  data-product-options-first="{{ product.options.first }}"
+  data-product-variants-size="{{ product.variants.size }}"
+  data-product-variants-first="{{ product.variants.first.title }}"
+>
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+  <div class="grid--full product-single">
+    <div class="breadcrumb-wrapper content-wrapper--squished content-wrapper--half-top medium-down--text-center medium-down--hide">{% include 'breadcrumb' %}</div>
+
+    <div class="grid__item xxlarge--two-thirds xlarge--three-fifths large--one-half text-center" id="PhotoContent" style="background-color:{{ section.settings.product-image-background }}">
+
+      {% if section.settings.image_layout_style == "stacked_images" or section.settings.image_layout_style == "stacked_images_sticky_sidebar" %}
+        <div class="product-single__photos large--one-whole medium-down--hide" id="ProductPhoto" data-product-images="stacked">
+          {% for image in product.images %}
+            <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" id="ProductPhotoImg-{{ forloop.index }}">
+          {% else %}
+            <img src="//cdn.shopify.com/s/images/themes/product-1.png" class='default-image placeholder-image'>
+          {% endfor %}
+        </div>
+      {% else %}
+        {% if product.images.size > 1 %}
+          <div class="product-multiple__photos large--one-tenth medium-down--hide" id="ProductThumbs">
+            {% for image in product.images %}
+              <button class="product-thumbnail-button" data-product-thumbnail>
+                <img src="{{ image | img_url: '200x' }}" data-high-res="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
+              </button>
+            {% endfor %}
+
+            {{ lightbox }}
+          </div>
+        {% endif %}
+
+        <div class="product-single__photos {% if product.images.size > 1 %}large--nine-tenths{% else %}large--one-whole{% endif %} medium-down--hide" id="ProductPhoto">
+          {% if product.featured_image %}
+            {% assign featured_image = product.featured_image %}
+            <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-image-position="1">
+            <button class="product-lightbox-button-open" data-product-lightbox-button="open"><span class="product-lightbox-button open"><svg><use xlink:href="#icon-glass"></use></svg></span></button>
+            {{ lightbox }}
+          {% else %}
+            <img src="//cdn.shopify.com/s/images/themes/product-1.png" class='default-image placeholder-image'>
+          {% endif %}
+
+          <div class="bv--ratings-reviews-container">
+              {% include 'bv-ratings-reviews' %}
+          </div>
+
+        </div>
+      {% endif %}
+
+      {% comment %}
+        Now create the mobile slideshow.
+      {% endcomment %}
+
+      <div class="large--hide product-single__photos" id="ProductPhotoSlideshow">
+        {% assign featured_image = product.featured_image %}
+
+        <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-variant-id="{{ featured_image.variants.first.id }}">
+        {% if product.images.size > 1 %}
+          {% for image in product.images %}
+            {% unless image == featured_image %}
+              {% if image.attached_to_variant? %}
+                {% assign variantIDs = image.variants | map: 'id' | join: '-' %}
+                <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant' id="{{ variantIDs }}">
+              {% else %}
+                <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" class='not-attached-to-variant'>
+              {% endif %}
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+
+        {% comment %}
+          Make sure the default, non-variant featured image is shown
+          if the user is accessing the URL from a variant URL.
+        {% endcomment %}
+
+        {% unless product.featured_image == featured_image %}
+          <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-unless='unlessupinhere' >
+        {% endunless %}
+      </div>
+    </div>
+
+    <div class="grid__item xxlarge--one-third xlarge--two-fifths large--one-half {% if section.settings.image_layout_style == 'stacked_images_sticky_sidebar' %}sticky-sidebar{% endif %}" id='sidebarColumn'>
+      <div class="sidebarColumn-inner">
+        <div class="content-wrapper--title js-fix-on-scroll--target fix-on-scroll--large-only">
+          <h1 itemprop="name" class='medium-down--text-center product-title'>{{ product.title }}</h1>
+            {% include 'bv-summary' %}
+          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+            <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+            {% comment %}
+              ID addToCartForm is a selector for the ajax cart plugin
+            {% endcomment %}
+            <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+              <p class="medium-down--text-center">
+                <span id="ProductPrice" class='faded medium-down--text-center' itemprop="price">
+                    {{ current_variant.price | money }}
+                </span>
+                {% if product.compare_at_price_max > product.price %}
+                  <span id="ComparePrice" class='strikethrough faded medium-down--text-center'>
+                    {{ current_variant.compare_at_price | money }}
+                  </span>
+                {% endif %}
+              </p>
+              {% comment %}
+                Add product variants as a dropdown.
+                  - By default, each variant (or combination of variants) will display as its own <option>
+                  - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
+
+                You can leverage jQuery to add a callback on page load and each time the select element changes:
+                  - Include option_selection.js (as seen at the bottom of this file)
+                  - This allows you to use JavaScript anytime the variant dropdown changes
+                  - This also separates out your variant options (ie. size, color, etc.) to separate select elements
+
+                For more information on products with multiple options, visit:
+                  - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
+              {% endcomment %}
+
+              {% assign noPurchase = false %}
+              {% for tag in product.tags %}
+   				 {% if tag == 'NoPurchase'%}
+					{% assign noPurchase = true %}
+                 {% endif %}
+			  {% endfor %}
+
+		      {% if noPurchase == false %}
+              <div class="product-selectors">
+                <select name="id" id="productSelect" class="product-single__variants">
+                  {% for variant in product.variants %}
+                    {% if variant.available %}
+
+                      {% comment %}
+                        Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                      {% endcomment %}
+
+                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+                    {% else %}
+                      <option disabled="disabled">
+                        {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                      </option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+
+                <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                  <button type="submit" name="add" id="AddToCart" class="btn">
+                    <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                  </button>
+                {% if section.settings.affirm_enable %}
+                  <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
+                {% endif %}
+              {% endif %}
+            </form>
+          </div>
+
+          {% if section.blocks.size > 0 %}
+            <section class="product-tabs" {{ block.shopify_attributes }}>
+
+              <ul class="product-tab-wrapper">
+                <li class="product-tab {% if section.settings.expand_first_tab %}active{% endif %}" data-product-tab>
+                  <button class="product-tab-title" data-product-tab-title>{{ "products.product.description" | t }}</button>
+                  <div class="product-description rte product-tab-content" itemprop="description" data-product-tab-content>
+                    <div data-product-tab-content-inner>{{ product.description }}</div>
+                    <button class="product-tab-read-more hidden" data-read-more="{{ 'products.product.read_less' | t }}">{{ "products.product.read_more" | t }}</button>
+                  </div>
+                </li>
+
+                {% for block in section.blocks %}
+                  {% if block.type == "tab" %}
+                    <li class="product-tab" data-product-tab>
+                      <button class="product-tab-title" data-product-tab-title>{{ pages[block.settings.product_tab_page].title }}</button>
+                      <div class="product-returns product-tab-content rte" data-product-tab-content>
+                        <div data-product-tab-content-inner>{{ pages[block.settings.product_tab_page].content }}</div>
+                        <button class="product-tab-read-more hidden" data-read-more="{{ 'products.product.read_less' | t }}">{{ "products.product.read_more" | t }}</button>
+                      </div>
+                    </li>
+                  {% elsif block.type == "share" %}
+                    <li class="product-tab" data-product-tab>
+                      <button class="product-tab-title" data-product-tab-title>{{ "general.share.share_this" | t }}</button>
+
+                      <div class="product-tab-content rte" data-product-tab-content>
+                        {% if block.settings.share_facebook %}
+                          {% assign facebook = true %}
+                        {% endif %}
+                        {% if block.settings.share_pinterest %}
+                          {% assign pinterest = true %}
+                        {% endif %}
+                        {% if block.settings.share_google %}
+                          {% assign google = true %}
+                        {% endif %}
+                        {% if block.settings.share_twitter %}
+                          {% assign twitter = true %}
+                        {% endif %}
+                        {% if block.settings.share_tumblr %}
+                          {% assign tumblr = true %}
+                        {% endif %}
+
+                        <div id="shareBox">
+                          {% if facebook %}
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url }}" target="_blank" class='facebook'>
+                              <button>
+                                <div class="icon-fallback-text">
+                                  <span class="icon icon-facebook"></span>
+                                  <span class="fallback-text">Facebook</span>
+                                 </div>
+                              </button>
+                            </a>
+                          {% endif %}
+                          {% if pinterest %}
+                            <a href="http://pinterest.com/pin/create/button/?url={{ shop.url }}{{ product.url }}&media={{ featured_image | img_url: 'large' }}&description={{ featured_image.alt | escape }}" target="_blank" class='pinterest'>
+                              <button>
+                                <div class="icon-fallback-text">
+                                  <span class="icon icon-pinterest"></span>
+                                  <span class="fallback-text">Pinterest</span>
+                                </div>
+                              </button>
+                            </a>
+                          {% endif %}
+                          {% if google %}
+                            <a href="https://plus.google.com/share?url={{ shop.url }}{{ product.url }}" target="_blank" class='google'>
+                              <button>
+                                <div class="icon-fallback-text">
+                                  <span class="icon icon-google-plus"></span>
+                                  <span class="fallback-text">Google</span>
+                                </div>
+                              </button>
+                            </a>
+                          {% endif %}
+                          {% if twitter %}
+                            <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url }}&text={{product.title}}" target="_blank" class='twitter'>
+                              <button>
+                                <div class="icon-fallback-text">
+                                  <span class="icon icon-twitter"></span>
+                                  <span class="fallback-text">Twitter</span>
+                                </div>
+                              </button>
+                            </a>
+                          {% endif %}
+                          {% if tumblr %}
+                            <a href="http://www.tumblr.com/share/link?url={{shop.url}}{{product.url}}" target="_blank"  class='tumblr'>
+                              <button>
+                                <div class="icon-fallback-text">
+                                  <span class="icon icon-tumblr"></span>
+                                  <span class="fallback-text">Tumblr</span>
+                                </div>
+                              </button>
+                            </a>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+
+            </section>
+          {% else %}
+            <div class="product-description rte" id="description" itemprop="description">
+              {{ product.description }}
+            </div>
+
+              <div class="product-disclaimer">
+                  <p><small>{{ product.metafields["global"]["disclaimer"] }}</small></p>
+              </div>
+          {% endif %}
+         </div>
+      </div>
+    </div>
+  </div>
+
+  {% if section.settings.product_related %}
+    {% include "product-related" %}
+  {% endif %}
+</div>
+
+{% comment %}
+  To take advantage of a callback on the select dropdown, add option_selection.js
+  and customize the JS in timber.productPage as needed.
+
+  Currently, timber.productPage does the following:
+    - Hides your <select> tag from above
+    - Breaks out the product variants into separate product options, if more than one exists
+    - Generates a <select> tag for each product option
+    - Enables/disables elements based on variant availability
+
+  Callback notes:
+    - Keep the callback available to the global scope (window.selectCallback) so that advanced
+      addons can override it.
+      * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
+{% endcomment %}
+
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "class": "product-pages",
+    "settings": [
+      {
+        "type": "color",
+        "id": "product-image-background",
+        "label": "Image background color",
+        "default": "#F9F9F9"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_related",
+        "label": "Show related products"
+      },
+      {
+        "type": "select",
+        "id": "image_layout_style",
+        "label": "Image layout style",
+        "options": [
+          {
+            "value": "thumbnails",
+            "label": "Thumbnails"
+          },
+          {
+            "value": "stacked_images",
+            "label": "Stacked images"
+          },
+          {
+            "value": "stacked_images_sticky_sidebar",
+            "label": "Stacked images with sticky sidebar"
+          }
+        ],
+        "default": "thumbnails"
+      },
+      {
+        "type": "checkbox",
+        "id": "expand_first_tab",
+        "label": "Expand first tab when sidebar is sticky"
+      },
+      {
+        "type": "checkbox",
+        "id": "affirm_enable",
+        "label": "Show Affirm branding",
+        "info": "This setting requires Affirm to be enabled globally in the Theme settings"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tab",
+        "name": "Tab",
+        "settings": [
+          {
+            "type": "page",
+            "id": "product_tab_page",
+            "label": "Select page as tab content"
+          }
+        ]
+      },
+      {
+        "type": "share",
+        "name": "Share buttons",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "share_facebook",
+            "label": "Facebook"
+          },
+          {
+            "type": "checkbox",
+            "id": "share_pinterest",
+            "label": "Pinterest"
+          },
+          {
+            "type": "checkbox",
+            "id": "share_google",
+            "label": "Google Plus"
+          },
+          {
+            "type": "checkbox",
+            "id": "share_twitter",
+            "label": "Twitter"
+          },
+          {
+            "type": "checkbox",
+            "id": "share_tumblr",
+            "label": "Tumblr"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

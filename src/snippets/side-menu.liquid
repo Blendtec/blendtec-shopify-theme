@@ -1,0 +1,20 @@
+<div class="side-menu">
+        <div class="menu-section">
+                {% include 'custom-nav' with nav: nav %}
+        </div>
+        <div class="menu-section">
+                <h4>{{'layout.secondary-navigation.form-header' | t}}</h4>
+                <hr class="accent" />
+                <p>{{'layout.secondary-navigation.form-body' | t}}</p>
+                {% include 'email-signup' %}
+        </div>
+        <div class="menu-section">
+                <h4>{{'layout.secondary-navigation.contact-header' | t}}</h4>
+                <hr class="accent" />
+                <a itemprop="telephone" href="tel:{{shop.phone}}">{{shop.phone}}</a>
+                <h6>{{'layout.secondary-navigation.contact-sub-header' | t}}</h6>
+                <p>
+                        <time itemprop="openingHours" datetime="{{'general.contact.hours-meta'}}">{{'general.contact.hours' | t}}</time>
+                </p>
+        </div>
+</div>

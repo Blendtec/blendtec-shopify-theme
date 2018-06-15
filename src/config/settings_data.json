@@ -1,0 +1,1578 @@
+{
+  "current": {
+    "easylockdownTopImage": "",
+    "easylockdownSideImage": "",
+    "color_primary": "#ed1b2c",
+    "color_body_bg": "#ffffff",
+    "color_borders": "#e2e2e2",
+    "color_header": "#58595b",
+    "color_body_text": "#58595b",
+    "color_button_text": "#ffffff",
+    "color_image_cta_background": "#ffffff",
+    "color_image_cta_text": "#ffffff",
+    "font_logo": "Google_Roboto+Slab_400,400i,700,700i_serif",
+    "font_header": "Google_Roboto_400,400i,700,700i_sans",
+    "font": "Google_Roboto+Condensed_400,400i,700,700i_sans",
+    "google-font-logo": "",
+    "google-font-header": "",
+    "google-font-body": "",
+    "typekit": "",
+    "typekit-font-logo": "",
+    "typekit-font-header": "",
+    "typekit-font-body": "",
+    "favicon_image": "",
+    "cart_notes_enable": false,
+    "cart_vendor_enable": false,
+    "social_twitter_link": "blendtec",
+    "social_facebook_link": "blendtec",
+    "social_pinterest_link": "blendtec",
+    "social_instagram_link": "blendtec",
+    "social_tumblr_link": "",
+    "social_youtube_link": "blendtec",
+    "social_vimeo_link": "",
+    "show_multiple_currencies": true,
+    "currency_format": "money_with_currency_format",
+    "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+    "default_currency": "USD",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#1990c6",
+    "checkout_error_color": "#ff6d6d",
+    "color_transparent_header_icon": "#fff",
+    "button_rounding_px": "2",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "sticky_header": true,
+          "transparent_header": true,
+          "color_transparent_header_icon": "#ffffff",
+          "navigation_style": "links",
+          "color_nav_drawer": "#1f1f1f",
+          "color_nav_border": "#383838",
+          "color_nav_text": "#ffffff",
+          "nav_linklist": "main-menu",
+          "catalog_menu": "",
+          "catalog_menu_image": "",
+          "nav_linklist_2": "",
+          "nav_linklist_3": "",
+          "logo_image": "shopify:\/\/shop_images\/Blendtec_Logo_2014.svg_9c980495-4215-4c70-81eb-9180e09195d8.png",
+          "logo_max_width": "300",
+          "logo_transparent_image": "",
+          "notification_bar_enable_currency": false,
+          "notification_bar_enable_social": false,
+          "notification_bar_text": "Some Text here",
+          "notification_bar_link": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "store_description",
+            "settings": {
+              "title": "About",
+              "description_text": "<p>This Section is perfect for providing a three to four sentence description of your store. Talk a little bit about your history and your values. This Section looks best with three to four sentences!<\/p>"
+            }
+          },
+          "footer-1": {
+            "type": "footer_menu",
+            "settings": {
+              "menu_link_list": "footer"
+            }
+          },
+          "footer-2": {
+            "type": "social_media",
+            "settings": {}
+          },
+          "footer-3": {
+            "type": "newsletter",
+            "settings": {
+              "title": "Newsletter",
+              "newsletter_text": "Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.",
+              "newsletter_button_text": "Subscribe Now"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1",
+          "footer-2",
+          "footer-3"
+        ],
+        "settings": {
+          "enable_shop_name": true,
+          "color_footer_header": "#ffffff",
+          "color_footer_text": "#ffffff",
+          "color_footer_bg": "#1e2921",
+          "color_footer_HR": "#27372c"
+        }
+      },
+      "popup": {
+        "type": "popup",
+        "settings": {
+          "enable_exit_intent": true,
+          "title": "Join our Newsletter",
+          "exit_intent_body": "<p>Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.<\/p>",
+          "exit_intent_image": ""
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "enable_collection_filtering": true,
+          "enable_collection_sorting": true,
+          "collection_style": "grid__image--caption",
+          "collection_layout_style": "threeByThree",
+          "show_collection_header": false,
+          "show_collection_description": false,
+          "enable_dropshadow": false,
+          "image_alignment": "center",
+          "color_overlay_opacity": "0.8",
+          "color_overlay_color": "#031207",
+          "color_text": "#ffffff"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "product-image-background": "#f9f9f9",
+          "product_related": false,
+          "image_layout_style": "thumbnails",
+          "expand_first_tab": false
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "enable_blog_author": false
+        }
+      },
+      "grid": {
+        "type": "grid",
+        "blocks": {
+          "grid2-0": {
+            "type": "grid-item",
+            "settings": {
+              "image": "",
+              "overlayOpacity": "0.3",
+              "overlayColor": "#000000",
+              "textColor": "#ffffff",
+              "heading": "",
+              "subheading": "",
+              "link": "",
+              "linkText": "",
+              "buttonStyle": "2",
+              "textAlignment": "bottom right"
+            }
+          },
+          "grid2-1": {
+            "type": "grid-item",
+            "settings": {
+              "image": "",
+              "overlayOpacity": "0.3",
+              "overlayColor": "#000000",
+              "textColor": "#ffffff",
+              "heading": "",
+              "subheading": "",
+              "link": "",
+              "linkText": "",
+              "buttonStyle": "2",
+              "textAlignment": "center left"
+            }
+          },
+          "grid2-2": {
+            "type": "grid-item",
+            "settings": {
+              "image": "",
+              "overlayOpacity": "0.3",
+              "overlayColor": "#000000",
+              "textColor": "#ffffff",
+              "heading": "",
+              "subheading": "",
+              "link": "",
+              "linkText": "",
+              "buttonStyle": "2",
+              "textAlignment": "center"
+            }
+          },
+          "grid2-3": {
+            "type": "grid-item",
+            "settings": {
+              "image": "",
+              "overlayOpacity": "0.3",
+              "overlayColor": "#000000",
+              "textColor": "#ffffff",
+              "heading": "",
+              "subheading": "",
+              "link": "",
+              "linkText": "",
+              "buttonStyle": "2",
+              "textAlignment": "center left"
+            }
+          },
+          "grid2-4": {
+            "type": "grid-item",
+            "settings": {
+              "image": "",
+              "overlayOpacity": "0.3",
+              "overlayColor": "#000000",
+              "textColor": "#ffffff",
+              "heading": "",
+              "subheading": "",
+              "link": "",
+              "linkText": "",
+              "buttonStyle": "2",
+              "textAlignment": "top left"
+            }
+          }
+        },
+        "block_order": [
+          "grid2-0",
+          "grid2-1",
+          "grid2-2",
+          "grid2-3",
+          "grid2-4"
+        ],
+        "settings": {
+          "enable_animation": false
+        }
+      },
+      "bt-header": {
+        "type": "bt-header",
+        "settings": {
+          "sticky_header": true,
+          "transparent_header": true,
+          "color_transparent_header_icon": "#fff",
+          "navigation_style": "links",
+          "color_nav_drawer": "#383838",
+          "color_nav_border": "#383838",
+          "color_nav_text": "#fff",
+          "nav_linklist": "main-menu",
+          "catalog_menu": "",
+          "catalog_menu_image": "",
+          "nav_linklist_2": "",
+          "nav_linklist_3": "",
+          "logo_image": "shopify:\/\/shop_images\/Blendtec_Logo_2014.svg_9c980495-4215-4c70-81eb-9180e09195d8.png",
+          "logo_max_width": "300",
+          "logo_transparent_image": "",
+          "notification_bar_enable": true,
+          "notification_bar_enable_currency": false,
+          "notification_bar_enable_social": true,
+          "notification_bar_enable_chat": true,
+          "notification_bar_text": "Bonnie Hustle Message",
+          "notification_bar_link": ""
+        }
+      },
+      "1511808930852": {
+        "type": "bt-hero-section",
+        "blocks": {
+          "1511808937914": {
+            "type": "header",
+            "settings": {
+              "hero_image": "shopify:\/\/shop_images\/hero-large_64abfb3b-2bac-4aaf-9f79-f9463d572e37.jpg",
+              "top_header": "A BLENDER AS",
+              "second_header": "POWERFUL AS",
+              "third_header": "YOUR AMBITION",
+              "hero_button1text": "WATCH THE VIDEO",
+              "hero_button2text": "SHOP BLENDERS",
+              "hero_button2Link": "shopify:\/\/collections\/all"
+            }
+          }
+        },
+        "block_order": [
+          "1511808937914"
+        ],
+        "settings": {
+          "enable_ken_burns": false,
+          "enable_progress_bar": true,
+          "enable_dropshadow": false,
+          "color_overlay_opacity": "0.8",
+          "color_overlay_color": "#031207",
+          "progress_bar_color": "#ffffff",
+          "controls_color": "#ffffff",
+          "slide_timeout": 10
+        }
+      },
+      "1512065675516": {
+        "type": "bt-headline-with-cta",
+        "settings": {
+          "background_image1": "shopify:\/\/shop_images\/lines.png",
+          "section3_top_button": "SHOP BLENDERS",
+          "section3_top_button_link": "",
+          "h4_subhead": "H4 SUB HEAD",
+          "h3_headline": "H3 HEADLINE",
+          "descriptive_title": "DESCRIPTIVE TITLE",
+          "black_background_height": 259
+        }
+      },
+      "1512066206695": {
+        "type": "bt-featured-product-lrg",
+        "settings": {
+          "blender_image": "shopify:\/\/shop_images\/blender.png",
+          "blender_background_image": "shopify:\/\/shop_images\/group-9.png",
+          "background_image2": "",
+          "descriptive_title": "DESCRIPTIVE TITLE",
+          "info_topleft_title": "LID",
+          "info_topleft_text": "Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem.",
+          "info_topright_title": "JAR",
+          "info_topright_text": "Donec dolor est, suscipit ac consectetur at, suscipit ac sem. Vivamus nec urna eu nisi venenatis facilisis. Fusce vitae efficitur ligula.",
+          "info_midleft_title": "SHAPE",
+          "info_midleft_text": "Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem.",
+          "info_bottomright_title": "BLADE",
+          "info_bottomright_text": "Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem.",
+          "info_bottomleft_title": "MOTOR",
+          "info_bottomleft_text": "Donec dolor est, suscipit ac velor alle consect at, alor disict suscipit ac sem."
+        }
+      },
+      "1512071987846": {
+        "type": "bt-image-with-text",
+        "settings": {
+          "section2_image": "shopify:\/\/shop_images\/running-dude-large.png",
+          "section2_headline": "HEADLINE H2",
+          "section2_text": "Nam et leo scelerisque, facilisis turpis non, maximus elit. Donec ut arcu ac magna viverra ornare eu ac sem. Nunc orci diam, ultricies ac dignissim ac, eleifend eget libero. Vestibulum eleifend vel tortor nec vulputate. Nam sed sodales turpis, nec imperdiet nisi. Morbi vitae euismod erat, eu dignissim risus.",
+          "section2_linktext": "LEARN MORE",
+          "section2_link": "",
+          "image_orientation": "one"
+        }
+      },
+      "1512073976168": {
+        "type": "bt-featured-collection",
+        "settings": {
+          "bottom_blender1": "shopify:\/\/shop_images\/598563588-copy.png",
+          "blender1_title": "DESIGNER",
+          "blender1_link": "",
+          "bottom_blender2": "shopify:\/\/shop_images\/598563588-copy-3.png",
+          "blender2_title": "PRO",
+          "blender2_link": "",
+          "bottom_blender3": "shopify:\/\/shop_images\/598563588-copy-2.png",
+          "blender3_title": "CLASSIC",
+          "blender3_link": "",
+          "background_image2": "shopify:\/\/shop_images\/lines-dirty_faa83f1f-5430-4a60-8cc8-5305c1f845ec.png"
+        }
+      },
+      "1512074572381": {
+        "type": "bt-background-image",
+        "settings": {
+          "main_background_image": "shopify:\/\/shop_images\/group-3_37c69bd0-928c-443b-8d79-c06d4e12c391.jpg",
+          "section4_headline": "H2 HEADLINE TOM'S STORY",
+          "section4_text": "Nam et leo scelerisque, facilisis turpis non, maximus elit. Donec ut arcu ac magna viverra ornare eu ac sem. Nunc orci diam, ultricies ac dignissim ac, eleifend eget libero. Vestibulum eleifend vel tortor nec vulputate. Nam sed sodales turpis, nec imperdiet nisi. Morbi vitae euismod erat, eu dignissim risus.",
+          "section4_link_text": "WATCH TOM'S VIDEO",
+          "section4_link": "",
+          "image_orientation": "one"
+        }
+      },
+      "1512074808483": {
+        "type": "bt-featured-blog",
+        "settings": {
+          "section5_background": "shopify:\/\/shop_images\/dirty-background_1200x_ddff79fa-ed24-4edb-a5bb-329976132568.png",
+          "recipe1": "shopify:\/\/shop_images\/598563588-copy-7.jpg",
+          "recipe1_title": "Rasberry Go Smoothie",
+          "recipe1_text": "Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros",
+          "recipe1_url": "",
+          "recipe2": "shopify:\/\/shop_images\/598563588-copy-6.jpg",
+          "recipe2_title": "Creamy Tomato Soup",
+          "recipe2_text": "Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros",
+          "recipe2_url": ""
+        }
+      },
+      "1512076411774": {
+        "type": "bt-center-text-cta",
+        "settings": {
+          "section5_background": "shopify:\/\/shop_images\/dirty-background_1200x_ddff79fa-ed24-4edb-a5bb-329976132568.png",
+          "section5_review": "“This blender is easy to use and delivers really awesome blending results.”",
+          "review_background": "shopify:\/\/shop_images\/lines_6d5ce428-fe0f-46a1-95f2-3e0a0791c110.png",
+          "section5_review_linktext": "READ REVIEW",
+          "section5_review_link": ""
+        }
+      },
+      "1512078573329": {
+        "type": "bt-testimonial-brands",
+        "blocks": {
+          "1512078623188": {
+            "type": "header",
+            "settings": {
+              "corporate_partners": "shopify:\/\/shop_images\/minute-maid.png",
+              "corporate_partners_link": "",
+              "empty_corporate_partner": false
+            }
+          },
+          "1512078647164": {
+            "type": "header",
+            "settings": {
+              "corporate_partners": "shopify:\/\/shop_images\/chirardelli_904509ea-7760-4b69-aa57-93a6bf883543.png",
+              "corporate_partners_link": "",
+              "empty_corporate_partner": false
+            }
+          },
+          "1512078655283": {
+            "type": "header",
+            "settings": {
+              "corporate_partners": "shopify:\/\/shop_images\/beans_3c29f827-ac63-43d2-b38d-8f3b9f836043.png",
+              "corporate_partners_link": "",
+              "empty_corporate_partner": false
+            }
+          },
+          "1512078659858": {
+            "type": "header",
+            "settings": {
+              "corporate_partners": "shopify:\/\/shop_images\/gatorade.png",
+              "corporate_partners_link": "",
+              "empty_corporate_partner": false
+            }
+          },
+          "1512078665273": {
+            "type": "header",
+            "settings": {
+              "corporate_partners": "shopify:\/\/shop_images\/jamba.png",
+              "corporate_partners_link": "",
+              "empty_corporate_partner": false
+            }
+          },
+          "1512078671604": {
+            "type": "header",
+            "settings": {
+              "corporate_partners": "shopify:\/\/shop_images\/muscle_milk.png",
+              "corporate_partners_link": "",
+              "empty_corporate_partner": false
+            }
+          },
+          "1512078676827": {
+            "type": "header",
+            "settings": {
+              "corporate_partners": "shopify:\/\/shop_images\/coke.png",
+              "corporate_partners_link": "",
+              "empty_corporate_partner": false
+            }
+          },
+          "1512078692743": {
+            "type": "header",
+            "settings": {
+              "corporate_partners": "",
+              "corporate_partners_link": "",
+              "empty_corporate_partner": true
+            }
+          }
+        },
+        "block_order": [
+          "1512078623188",
+          "1512078647164",
+          "1512078655283",
+          "1512078659858",
+          "1512078665273",
+          "1512078671604",
+          "1512078676827",
+          "1512078692743"
+        ],
+        "settings": {
+          "section5_background": "shopify:\/\/shop_images\/dirty-background_1200x_ddff79fa-ed24-4edb-a5bb-329976132568.png"
+        }
+      }
+    },
+    "content_for_index": [
+      "1511808930852",
+      "1512071987846",
+      "1512065675516",
+      "1512066206695",
+      "1512073976168",
+      "1512074572381",
+      "1512074808483",
+      "1512076411774",
+      "1512078573329"
+    ]
+  },
+  "presets": {
+    "Street": {
+      "font_logo": "Google_Tinos_400,400i,700,700i_serif",
+      "font_header": "Google_Roboto+Condensed_400,400i,700,700i_sans",
+      "font": "Google_Roboto+Condensed_400,400i,700,700i_sans",
+      "color_primary": "#a16c41",
+      "color_body_bg": "#ffffff",
+      "color_transparent_header_icon": "#fff",
+      "color_borders": "#e2e2e2",
+      "color_header": "#222",
+      "color_body_text": "#565656",
+      "color_button_text": "#ffffff",
+      "color_image_cta_background": "#ffffff",
+      "color_image_cta_text": "#444444",
+      "button_rounding_px": "2",
+      "show_multiple_currencies": true,
+      "currency_format": "money_with_currency_format",
+      "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "default_currency": "USD",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "sticky_header": true,
+            "transparent_header": true,
+            "color_transparent_header_icon": "#ffffff",
+            "navigation_style": "links",
+            "color_nav_drawer": "#1f1f1f",
+            "color_nav_border": "#383838",
+            "color_nav_text": "#ffffff",
+            "logo_max_width": "300",
+            "notification_bar_enable_currency": true,
+            "notification_bar_enable_social": true,
+            "notification_bar_text": "Free shipping on all orders"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "store_description",
+              "settings": {
+                "title": "About",
+                "description_text": "<p>This Section is perfect for providing a three to four sentence description of your store. Talk a little bit about your history and your values. This Section looks best with three to four sentences!<\/p>"
+              }
+            },
+            "footer-1": {
+              "type": "footer_menu",
+              "settings": {
+                "menu_link_list": "footer"
+              }
+            },
+            "footer-2": {
+              "type": "social_media",
+              "settings": {}
+            },
+            "footer-3": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Newsletter",
+                "newsletter_text": "Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.",
+                "newsletter_button_text": "Subscribe Now"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1",
+            "footer-2",
+            "footer-3"
+          ],
+          "settings": {
+            "color_footer_header": "#ffffff",
+            "color_footer_text": "#ffffff",
+            "color_footer_bg": "#1e2921",
+            "color_footer_HR": "#27372c"
+          }
+        },
+        "carousel": {
+          "type": "carousel",
+          "blocks": {
+            "carousel-0": {
+              "type": "slide",
+              "settings": {
+                "text_position": "align-center-middle",
+                "heading_text": "Welcome to your new store!",
+                "page_text": "This is your new slideshow. There are many like it, but this one is yours. It's perfect for product promotions or announcements.",
+                "button_cta": "Setup your store"
+              }
+            }
+          },
+          "block_order": [
+            "carousel-0"
+          ],
+          "settings": {
+            "enable_ken_burns": true,
+            "enable_progress_bar": false,
+            "enable_dropshadow": false,
+            "color_overlay_opacity": "0.3",
+            "color_overlay_color": "#000000",
+            "progress_bar_color": "#FFFFFF",
+            "controls_color": "#ffffff"
+          }
+        },
+        "carousel-2": {
+          "type": "carousel",
+          "blocks": {
+            "carousel-3-0": {
+              "type": "slide",
+              "settings": {
+                "text_position": "align-center-middle",
+                "heading_text": "Welcome to your new store!",
+                "page_text": "This is your new slideshow. There are many like it, but this one is yours. It's perfect for product promotions or announcements.",
+                "button_cta": "Setup your store"
+              }
+            }
+          },
+          "block_order": [
+            "carousel-3-0"
+          ],
+          "settings": {
+            "enable_ken_burns": true,
+            "enable_progress_bar": false,
+            "enable_dropshadow": false,
+            "color_overlay_opacity": "0.3",
+            "color_overlay_color": "#000000",
+            "progress_bar_color": "#FFFFFF",
+            "controls_color": "#ffffff"
+          }
+        },
+        "features": {
+          "type": "features",
+          "blocks": {
+            "1": {
+              "type": "feature",
+              "settings": {
+                "feature-icon": "",
+                "title": "Text column",
+                "feature-subheading": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).<\/p>",
+                "feature-buttonText": "Read more",
+                "feature-url": ""
+              }
+            },
+            "2": {
+              "type": "feature",
+              "settings": {
+                "feature-icon": "",
+                "title": "Text column",
+                "feature-subheading": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).<\/p>",
+                "feature-buttonText": "Read more",
+                "feature-url": ""
+              }
+            },
+            "3": {
+              "type": "feature",
+              "settings": {
+                "feature-icon": "",
+                "title": "Text column",
+                "feature-subheading": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).<\/p>",
+                "feature-buttonText": "Read more",
+                "feature-url": ""
+              }
+            }
+          },
+          "block_order": [
+            "1",
+            "2",
+            "3"
+          ],
+          "settings": {
+            "title": "",
+            "subheading": ""
+          }
+        },
+        "instagram": {
+          "type": "instagram",
+          "settings": {}
+        },
+        "popup": {
+          "type": "popup",
+          "settings": {
+            "enable_exit_intent": true,
+            "title": "Join our Newsletter",
+            "exit_intent_body": "<p>Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.<\/p>"
+          }
+        },
+        "featured-collection": {
+          "type": "featured-collection",
+          "blocks": {
+            "featured-collection-0": {
+              "type": "featured_collection",
+              "settings": {
+                "textAlignment": "center"
+              }
+            },
+            "featured-collection-1": {
+              "type": "featured_collection",
+              "settings": {
+                "textAlignment": "center"
+              }
+            },
+            "featured-collection-2": {
+              "type": "featured_collection",
+              "settings": {
+                "textAlignment": "center"
+              }
+            },
+            "featured-collection-3": {
+              "type": "featured_collection",
+              "settings": {
+                "textAlignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "featured-collection-0",
+            "featured-collection-1",
+            "featured-collection-2",
+            "featured-collection-3"
+          ],
+          "settings": {
+            "homepage_collection_block_perrow": "2"
+          }
+        },
+        "featured-blog": {
+          "type": "featured-blog",
+          "settings": {}
+        },
+        "featured-text": {
+          "type": "featured-text",
+          "settings": {
+            "title": "Welcome to your new store!",
+            "text": "<p>This Featured Text section is perfect for a quick introductory paragraph about your store. You'll want to share your values with your customers and let them what makes purchasing from you unique. It may also be a good idea to mention your shipping and returns policies.<\/p>"
+          }
+        },
+        "featured-text-2": {
+          "type": "featured-text",
+          "settings": {
+            "title": "Welcome to your new store!",
+            "text": "<p>This Featured Text section is perfect for a quick introductory paragraph about your store. You'll want to share your values with your customers and let them what makes purchasing from you unique. It may also be a good idea to mention your shipping and returns policies.<\/p>"
+          }
+        },
+        "grid": {
+          "type": "grid",
+          "blocks": {
+            "grid2-0": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "bottom right"
+              }
+            },
+            "grid2-1": {
+              "type": "grid-item",
+              "settings": {
+                "image": "",
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center left"
+              }
+            },
+            "grid2-2": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center"
+              }
+            },
+            "grid2-3": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center left"
+              }
+            },
+            "grid2-4": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "top left"
+              }
+            }
+          },
+          "block_order": [
+            "grid2-0",
+            "grid2-1",
+            "grid2-2",
+            "grid2-3",
+            "grid2-4"
+          ],
+          "settings": {}
+        },
+        "grid-2": {
+          "type": "grid",
+          "blocks": {
+            "grid3-0": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "bottom right"
+              }
+            },
+            "grid3-1": {
+              "type": "grid-item",
+              "settings": {
+                "image": "",
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center left"
+              }
+            },
+            "grid3-2": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center"
+              }
+            },
+            "grid3-3": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "top left"
+              }
+            }
+          },
+          "block_order": [
+            "grid3-0",
+            "grid3-1",
+            "grid3-2",
+            "grid3-3"
+          ],
+          "settings": {}
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "homepage_newsletter_title": "Join our newsletter",
+            "homepage_newsletter_body": "<p>Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.<\/p>"
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "enable_collection_filtering": true,
+            "enable_collection_sorting": true,
+            "collection_style": "grid__image--caption",
+            "collection_layout_style": "threeByThree"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "carousel",
+        "features",
+        "grid-2",
+        "featured-text",
+        "featured-collection",
+        "newsletter",
+        "grid",
+        "featured-text-2",
+        "carousel-2",
+        "featured-blog",
+        "instagram"
+      ]
+    },
+    "Modern": {
+      "color_primary": "#db504a",
+      "color_body_bg": "#ffffff",
+      "color_borders": "#e2e2e2",
+      "color_header": "#222",
+      "color_body_text": "#424242",
+      "color_button_text": "#ffffff",
+      "color_image_cta_background": "#ffffff",
+      "color_image_cta_text": "#444444",
+      "font_logo": "Google_PT+Sans_400,400i,700,700i_sans",
+      "font_header": "Google_PT+Sans_400,400i,700,700i_sans",
+      "font": "Google_Roboto+Condensed_400,400i,700,700i_sans",
+      "google-font-logo": "",
+      "google-font-header": "",
+      "google-font-body": "",
+      "typekit": "",
+      "typekit-font-logo": "",
+      "typekit-font-header": "",
+      "typekit-font-body": "",
+      "favicon_image": "",
+      "cart_notes_enable": false,
+      "cart_vendor_enable": false,
+      "show_multiple_currencies": true,
+      "currency_format": "money_with_currency_format",
+      "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "default_currency": "USD",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "sticky_header": true,
+            "transparent_header": true,
+            "color_transparent_header_icon": "#ffffff",
+            "navigation_style": "links",
+            "color_nav_drawer": "#1f1f1f",
+            "color_nav_border": "#383838",
+            "color_nav_text": "#ffffff",
+            "nav_linklist": "main-menu",
+            "nav_linklist_2": "",
+            "nav_linklist_3": "",
+            "logo_image": "",
+            "logo_max_width": "300",
+            "logo_transparent_image": "",
+            "notification_bar_enable_currency": true,
+            "notification_bar_enable_social": true,
+            "notification_bar_text": "Free shipping on all orders",
+            "notification_bar_link": ""
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "store_description",
+              "settings": {
+                "title": "About",
+                "description_text": "<p>This Section is perfect for providing a three to four sentence description of your store. Talk a little bit about your history and your values. This Section looks best with three to four sentences!<\/p>"
+              }
+            },
+            "footer-1": {
+              "type": "footer_menu",
+              "settings": {
+                "menu_link_list": "footer"
+              }
+            },
+            "footer-2": {
+              "type": "social_media",
+              "settings": {}
+            },
+            "footer-3": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Newsletter",
+                "newsletter_text": "Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.",
+                "newsletter_button_text": "Subscribe Now"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1",
+            "footer-2",
+            "footer-3"
+          ],
+          "settings": {
+            "color_footer_header": "#ffffff",
+            "color_footer_text": "#ffffff",
+            "color_footer_bg": "#3b3b3b",
+            "color_footer_HR": "#585858"
+          }
+        },
+        "carousel": {
+          "type": "carousel",
+          "blocks": {
+            "carousel-0": {
+              "type": "slide",
+              "settings": {
+                "text_position": "align-center-middle",
+                "heading_text": "Welcome to your new store!",
+                "page_text": "This is your new slideshow. There are many like it, but this one is yours. It's perfect for product promotions or announcements.",
+                "button_cta": "Setup your store"
+              }
+            }
+          },
+          "block_order": [
+            "carousel-0"
+          ],
+          "settings": {
+            "enable_ken_burns": true,
+            "enable_progress_bar": true,
+            "enable_dropshadow": false,
+            "color_overlay_opacity": "0.3",
+            "color_overlay_color": "#000000",
+            "progress_bar_color": "#FFFFFF",
+            "controls_color": "#ffffff"
+          }
+        },
+        "carousel-2": {
+          "type": "carousel",
+          "blocks": {
+            "carousel-3-0": {
+              "type": "slide",
+              "settings": {
+                "text_position": "align-center-middle",
+                "heading_text": "Welcome to your new store!",
+                "page_text": "This is your new slideshow. There are many like it, but this one is yours. It's perfect for product promotions or announcements.",
+                "button_cta": "Setup your store"
+              }
+            }
+          },
+          "block_order": [
+            "carousel-3-0"
+          ],
+          "settings": {
+            "enable_ken_burns": true,
+            "enable_progress_bar": false,
+            "enable_dropshadow": false,
+            "color_overlay_opacity": "0.3",
+            "color_overlay_color": "#000000",
+            "progress_bar_color": "#FFFFFF",
+            "controls_color": "#ffffff"
+          }
+        },
+        "carousel-3": {
+          "type": "carousel",
+          "blocks": {
+            "carousel-2-0": {
+              "type": "slide",
+              "settings": {
+                "text_position": "align-center-middle",
+                "heading_text": "Welcome to your new store!",
+                "page_text": "This is your new slideshow. There are many like it, but this one is yours. It's perfect for product promotions or announcements.",
+                "button_cta": "Setup your store"
+              }
+            }
+          },
+          "block_order": [
+            "carousel-2-0"
+          ],
+          "settings": {
+            "enable_ken_burns": true,
+            "enable_progress_bar": false,
+            "enable_dropshadow": false,
+            "color_overlay_opacity": "0.3",
+            "color_overlay_color": "#000000",
+            "progress_bar_color": "#FFFFFF",
+            "controls_color": "#ffffff"
+          }
+        },
+        "features-2": {
+          "type": "features",
+          "blocks": {
+            "1-2": {
+              "type": "feature",
+              "settings": {
+                "feature-icon": "",
+                "title": "Text column",
+                "feature-subheading": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).<\/p>",
+                "feature-buttonText": "Read more",
+                "feature-url": ""
+              }
+            },
+            "2-2": {
+              "type": "feature",
+              "settings": {
+                "feature-icon": "",
+                "title": "Text column",
+                "feature-subheading": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).<\/p>",
+                "feature-buttonText": "Read more",
+                "feature-url": ""
+              }
+            },
+            "3-2": {
+              "type": "feature",
+              "settings": {
+                "feature-icon": "",
+                "title": "Text column",
+                "feature-subheading": "<p>Text columns are great for displaying key features of a product or the steps that are performed after a purchase (ie. packaging, shipping, tracking).<\/p>",
+                "feature-buttonText": "Read more",
+                "feature-url": ""
+              }
+            }
+          },
+          "block_order": [
+            "1-2",
+            "2-2",
+            "3-2"
+          ],
+          "settings": {
+            "title": "",
+            "subheading": ""
+          }
+        },
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "collection_style": "grid__image--caption",
+            "featured_products_per_row": "3"
+          }
+        },
+        "story-grid": {
+          "type": "story-grid",
+          "blocks": {
+            "story-grid-0": {
+              "type": "content_block",
+              "settings": {
+                "block_image": "",
+                "layout": "two-one",
+                "image_position": "right",
+                "text_alignment": "left",
+                "text_header": "Welcome to Shopify",
+                "text_body": "<p>Read a breakdown of Ira's features by visiting our Features page.<\/p>",
+                "button_cta": "Read more",
+                "button_link": "",
+                "border_override": false
+              }
+            }
+          },
+          "block_order": [
+            "story-grid-0"
+          ],
+          "settings": {
+            "header_color": "#ffffff",
+            "text_color": "#ffffff",
+            "background_color": "#3b3b3b",
+            "border_color": "#ffffff"
+          }
+        },
+        "instagram": {
+          "type": "instagram",
+          "settings": {}
+        },
+        "grid": {
+          "type": "grid",
+          "blocks": {
+            "grid2-0": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "bottom right"
+              }
+            },
+            "grid2-1": {
+              "type": "grid-item",
+              "settings": {
+                "image": "",
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center left"
+              }
+            },
+            "grid2-2": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center"
+              }
+            },
+            "grid2-3": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center left"
+              }
+            },
+            "grid2-4": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "top left"
+              }
+            }
+          },
+          "block_order": [
+            "grid2-0",
+            "grid2-1",
+            "grid2-2",
+            "grid2-3",
+            "grid2-4"
+          ],
+          "settings": {}
+        },
+        "popup": {
+          "type": "popup",
+          "settings": {
+            "enable_exit_intent": false
+          }
+        },
+        "featured-text": {
+          "type": "featured-text",
+          "settings": {
+            "title": "Welcome to your new store!",
+            "text": "<p>This Featured Text section is perfect for a quick introductory paragraph about your store. You'll want to share your values with your customers and let them what makes purchasing from you unique. It may also be a good idea to mention your shipping and returns policies.<\/p>"
+          }
+        },
+        "testimonials": {
+          "type": "testimonials",
+          "blocks": {
+            "1497739267611-0": {
+              "type": "testimonial",
+              "settings": {
+                "text": "<p>\"Absolutely fantastic products. Well made, great service and quickly shipped.\"<\/p>",
+                "title": "Jane Smith",
+                "profile": ""
+              }
+            },
+            "1497739267611-1": {
+              "type": "testimonial",
+              "settings": {
+                "text": "<p>\"Absolutely fantastic products. Well made, great service and quickly shipped.\"<\/p>",
+                "title": "Jane Smith",
+                "profile": ""
+              }
+            },
+            "1497739267611-2": {
+              "type": "testimonial",
+              "settings": {
+                "text": "<p>\"Absolutely fantastic products. Well made, great service and quickly shipped.\"<\/p>",
+                "title": "Jane Smith",
+                "profile": ""
+              }
+            }
+          },
+          "block_order": [
+            "1497739267611-0",
+            "1497739267611-1",
+            "1497739267611-2"
+          ],
+          "settings": {
+            "title": "Testimonials",
+            "subheading": ""
+          }
+        },
+        "featured-blog": {
+          "type": "featured-blog",
+          "settings": {}
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "enable_collection_filtering": false,
+            "enable_collection_sorting": false,
+            "collection_style": "grid__image--caption",
+            "collection_layout_style": "threeByThree"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "carousel",
+        "features-2",
+        "carousel-2",
+        "featured-text",
+        "story-grid",
+        "testimonials",
+        "grid",
+        "featured-products",
+        "carousel-3",
+        "featured-blog",
+        "instagram"
+      ]
+    },
+    "Ecstatic": {
+      "font_logo": "Google_PT+Sans_400,400i,700,700i_sans",
+      "font_header": "Google_Roboto+Condensed_400,400i,700,700i_sans",
+      "font": "Google_PT+Sans_400,400i,700,700i_sans",
+      "google-font-body": "'Slabo 27px', serif;",
+      "color_primary": "#fb674b",
+      "color_body_bg": "#ffffff",
+      "color_borders": "#e2e2e2",
+      "color_transparent_header_icon": "#fff",
+      "color_header": "#222",
+      "color_body_text": "#333333",
+      "color_button_text": "#ffffff",
+      "color_image_cta_background": "#ffffff",
+      "show_multiple_currencies": true,
+      "currency_format": "money_with_currency_format",
+      "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+      "default_currency": "USD",
+      "color_image_cta_text": "#3a3a3a",
+      "button_rounding_px": "2",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "sticky_header": true,
+            "transparent_header": true,
+            "color_transparent_header_icon": "#ffffff",
+            "navigation_style": "links",
+            "color_nav_drawer": "#1f1f1f",
+            "color_nav_border": "#383838",
+            "color_nav_text": "#ffffff",
+            "nav_linklist_2": "",
+            "nav_linklist_3": "",
+            "logo_image": "",
+            "logo_max_width": "300",
+            "logo_transparent_image": "",
+            "notification_bar_enable_currency": false,
+            "notification_bar_enable_social": false,
+            "notification_bar_text": "Free shipping on all orders over $100",
+            "notification_bar_link": ""
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "store_description",
+              "settings": {
+                "title": "About",
+                "description_text": "<p>This Section is perfect for providing a three to four sentence description of your store. Talk a little bit about your history and your values. This Section looks best with three to four sentences!<\/p>"
+              }
+            },
+            "footer-1": {
+              "type": "footer_menu",
+              "settings": {
+                "menu_link_list": "footer"
+              }
+            },
+            "footer-2": {
+              "type": "newsletter",
+              "settings": {
+                "title": "Newsletter",
+                "newsletter_text": "Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.",
+                "newsletter_button_text": "Subscribe now"
+              }
+            },
+            "footer-3": {
+              "type": "social_media",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1",
+            "footer-2",
+            "footer-3"
+          ],
+          "settings": {
+            "color_footer_header": "#ffffff",
+            "color_footer_text": "#ffffff",
+            "color_footer_bg": "#1f665d",
+            "color_footer_HR": "#408078"
+          }
+        },
+        "carousel": {
+          "type": "carousel",
+          "blocks": {
+            "carousel-0": {
+              "type": "slide",
+              "settings": {
+                "text_position": "align-center-bottom",
+                "heading_text": "Welcome to your new store!",
+                "page_text": "This is your new slideshow. There are many like it, but this one is yours. It's perfect for product promotions or announcements.",
+                "button_cta": "Setup your store"
+              }
+            }
+          },
+          "block_order": [
+            "carousel-0"
+          ],
+          "settings": {
+            "enable_ken_burns": true,
+            "enable_progress_bar": true,
+            "enable_dropshadow": true,
+            "color_overlay_opacity": "0.3",
+            "color_overlay_color": "#000000",
+            "progress_bar_color": "#FFFFFF",
+            "controls_color": "#ffffff"
+          }
+        },
+        "featured-text": {
+          "type": "featured-text",
+          "settings": {
+            "text": "<p>This Featured Text section is perfect for a quick introductory paragraph about your store. You'll want to share your values with your customers and let them what makes purchasing from you unique. It may also be a good idea to mention your shipping and returns policies.<\/p>"
+          }
+        },
+        "featured-collection": {
+          "type": "featured-collection",
+          "blocks": {
+            "featured-collection-0": {
+              "type": "featured_collection",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center"
+              }
+            },
+            "featured-collection-1": {
+              "type": "featured_collection",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center"
+              }
+            },
+            "featured-collection-2": {
+              "type": "featured_collection",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "featured-collection-0",
+            "featured-collection-1",
+            "featured-collection-2"
+          ],
+          "settings": {
+            "homepage_collection_block_perrow": "3"
+          }
+        },
+        "grid": {
+          "type": "grid",
+          "blocks": {
+            "grid-0": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "bottom right"
+              }
+            },
+            "grid-1": {
+              "type": "grid-item",
+              "settings": {
+                "image": "",
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center left"
+              }
+            },
+            "grid-2": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center"
+              }
+            },
+            "grid-3": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "center left"
+              }
+            },
+            "grid-4": {
+              "type": "grid-item",
+              "settings": {
+                "overlayOpacity": "0.3",
+                "overlayColor": "#000000",
+                "textColor": "#ffffff",
+                "buttonStyle": "2",
+                "textAlignment": "top left"
+              }
+            }
+          },
+          "block_order": [
+            "grid-0",
+            "grid-1",
+            "grid-2",
+            "grid-3",
+            "grid-4"
+          ],
+          "settings": {}
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "homepage_newsletter_title": "Join our newsletter",
+            "homepage_newsletter_body": "<p>Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.<\/p>"
+          }
+        },
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "collection_style": "grid__image--caption",
+            "featured_products_per_row": "3"
+          }
+        },
+        "instagram": {
+          "type": "instagram",
+          "settings": {}
+        },
+        "popup": {
+          "type": "popup",
+          "settings": {
+            "enable_exit_intent": true,
+            "title": "Join our newsletter",
+            "exit_intent_body": "<p>Briefly describe your newsletter and write a quick sentence about your commitment to not spamming your subscribers.<\/p>"
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "enable_collection_filtering": true,
+            "enable_collection_sorting": true,
+            "collection_style": "grid__image--caption",
+            "collection_layout_style": "twoByThree"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "blocks": {
+            "product-template-0": {
+              "type": "share",
+              "settings": {
+                "share_facebook": true,
+                "share_pinterest": true,
+                "share_google": true,
+                "share_twitter": true,
+                "share_tumblr": true
+              }
+            }
+          },
+          "block_order": [
+            "product-template-0"
+          ],
+          "settings": {
+            "product-image-background": "#F9F9F9",
+            "product_related": true
+          }
+        }
+      },
+      "content_for_index": [
+        "carousel",
+        "featured-text",
+        "featured-collection",
+        "grid",
+        "featured-products",
+        "newsletter",
+        "instagram"
+      ]
+    }
+  }
+}

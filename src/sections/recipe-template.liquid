@@ -1,0 +1,94 @@
+<div class="grid template-recipe">
+    <div>
+        {% assign youtube = article.metafields["global"]["youtube_id"] %}
+        {% if youtube %}
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{youtube}}?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+    </div>
+    <div class="grid recipe--stats">
+        <div class="grid__item large--one-third medium--one-third">
+            <h5>Total Time:&nbsp;
+            {% assign snipTime = article.metafields["global"]["cooktime"] %}
+                <span itemprop="cookTime">{% include 'cooktime' %}</span>
+            </h5>
+        </div>
+        <div class="grid__item large--one-third medium--one-third">
+            <h5>{{ 'recipes.servings' | t }}:&nbsp;
+                <span  itemprop="recipeYield">{{ article.metafields["global"]["servings"] }}</span>
+            </h5>
+        </div>
+        <div class="grid__item large--one-third medium--one-third">
+            <h5>{{ 'recipes.calories' | t }}:&nbsp;
+                <span  itemprop="calories">{{ article.metafields["global"]["calories"] }}</span>
+            </h5>
+        </div>
+    </div>
+    <hr/>
+    <div class="grid">
+        <div class="grid__item large--one-half medium--one-half recipe-ingredients">
+            <h3>{{ 'recipes.ingredients' | t}}</h3>
+            {% include 'recipe-ingredients' %}
+                <div style="margin-top:60px;" class="recipe--nutrition-info" itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" typeof="NutritionInformation">
+                    <h3>{{ 'recipes.nutrition_info' | t}}</h3>
+                    <ul>
+                        <li><span>{{ 'recipes.servingsize' | t}}: </span><span  itemprop="servingSize">{% include 'recipe-servingsize' %}</span></li>
+                        <li><span >{{ 'recipes.fat' | t}}: </span><span itemprop="fatContent">{{ article.metafields["global"]["fat"] | divided_by: 1000 }}g</span></li>
+                        <li><span >{{ 'recipes.satfat' | t}}: </span><span itemprop="saturatedFatContent">{{ article.metafields["global"]["satfat"] | divided_by: 1000}}g</span></li>
+                        <li><span >{{ 'recipes.cholesterol' | t}}: </span><span itemprop="cholesterolContent">{{ article.metafields["global"]["cholesterol"] }}mg</span></li>
+                        <li><span >{{ 'recipes.sodium' | t}}: </span><span itemprop="sodiumContent">{{ article.metafields["global"]["sodium"] | divided_by: 1 }}mg</span></li>
+                        <li><span >{{ 'recipes.carbs' | t}}: </span><span itemprop="carbohydrateContent">{{ article.metafields["global"]["carbohydrates"] | divided_by: 1000 }}g</span></li>
+                        <li><span >{{ 'recipes.fiber' | t}}: </span><span itemprop="fiberContent">{{ article.metafields["global"]["fiber"] | divided_by: 1000 }}g</span></li>
+                        <li><span >{{ 'recipes.sugar' | t}}: </span><span itemprop="sugarContent">{{ article.metafields["global"]["sugar"] | divided_by: 1000 }}g</span></li>
+                        <li><span >{{ 'recipes.protein' | t}}: </span><span itemprop="proteinContent">{{ article.metafields["global"]["protein"] | divided_by: 1000 }}g</span></li>
+                    </ul>
+                </div>
+        </div>
+        <div class="grid__item large--one-half medium--one-half recipe--instructions">
+            <h3>{{ 'recipes.instructions' | t}}</h3>
+            <span itemprop="recipeInstructions">{{ article.metafields["global"]["instructions"] }}</span>
+        </div>
+    </div>
+    {% assign nonEdible = article.metafields["global"]["non_edible"] %}
+    {% if nonEdible == 0 %}
+        <div class="grid">
+            <div class="grid__item large--one-half medium--one-half">
+            </div>
+            {% if article.metafields["global"]["variations"] %}
+            <div class="grid__item large--one-half medium--one-half recipe--variations">
+                <h3>Notes</h3>
+                {{ article.metafields["global"]["variations"] }}
+            </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+{% if section.settings.show_share_buttons %}
+    {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+{% endif %}
+
+{% schema %}
+{
+    "name": "Posts",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "blog_show_author",
+            "label": "Show author",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "blog_show_date",
+            "label": "Show date",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_share_buttons",
+            "label": "Show social sharing buttons",
+            "default": true
+        }
+    ]
+}
+{% endschema %}
+

@@ -1,0 +1,14 @@
+{% assign menu = linklists[nav] %}
+<div class="side-nav">
+        <h3>{{ menu.title | upcase }}</h3>
+        <hr class="accent"/>
+        <nav>
+            <ul>
+            {% for link in menu.links %}
+                <li>
+                    {% include 'cta-nav-link' with text: link.title, url: link.url%}
+                </li>
+            {% endfor %}
+            </ul>
+        </nav>
+</div>

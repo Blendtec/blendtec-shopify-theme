@@ -1,0 +1,1761 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Blendtec",
+    "theme_author": "Blendtec",
+    "theme_version": "2.3.1",
+    "theme_support_url": "https:\/\/www.github.com\/Blendtec",
+    "theme_documentation_url": "https:\/\/www.github.com\/Blendtec"
+  },
+  {
+    "name": "EasyLockDown",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "easylockdownTopImage",
+        "label": "Easy LockDown Top Image",
+        "info": "This is the image for the top of the easylockdown page"
+      },
+      {
+        "type": "image_picker",
+        "id": "easylockdownSideImage",
+        "label": "Easy LockDown Side Image",
+        "info": "This is the image for the side of the easylockdown page"
+      }
+    ]
+  },
+  {
+    "name": "Metafields",
+    "settings": [
+      {
+        "type": "text",
+        "id": "metafield_buckets",
+        "label": "Metafield Buckets",
+        "default": "https:\/\/s3.amazonaws.com\/metafields.blendtec.com",
+        "info": "The Bucket where metafields stores the images"
+      },
+      {
+        "type": "text",
+        "id": "metafield_buckets_src",
+        "label": "Metafield Buckets Src",
+        "default": "https:\/\/metafields.blendtec.com.s3.amazonaws.com",
+        "info": "The Bucket where metafields stores the images"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Navigation, slideshow, featured content and footer colors can be adjusted in their respective Sections."
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Accent",
+        "default": "#f06340",
+        "info": "Used for text links, buttons and the header message."
+      },
+      {
+        "type": "color",
+        "id": "color_body_bg",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_borders",
+        "label": "Border",
+        "default": "#e2e2e2"
+      },
+      {
+        "type": "color",
+        "id": "color_header",
+        "label": "Headings",
+        "default": "#232323"
+      },
+      {
+        "type": "color",
+        "id": "color_header_bg",
+        "label": "Header Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": "Text",
+        "default": "#424242"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Button text",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_image_cta_background",
+        "label": "Image overlay background",
+        "info": "When a customer hovers over a product or collection on your site, the price and title will be overlayed using these colors.",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_image_cta_text",
+        "label": "Image overlay text",
+        "default": "#444444"
+      }
+    ]
+  },
+  {
+    "name": "Product Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "White",
+        "label": "White",
+        "default": "#ffffff",
+        "info": "Product color white."
+      },
+      {
+        "type": "color",
+        "id": "Polar White",
+        "label": "Polar White",
+        "default": "#ffffff",
+        "info": "Product color Polar White."
+      },
+      {
+        "type": "color",
+        "id": "Black",
+        "label": "Black",
+        "default": "#000000",
+        "info": "Product color Black."
+      },
+      {
+        "type": "color",
+        "id": "Slate Grey",
+        "label": "Slate Grey",
+        "default": "#828387",
+        "info": "Product color Slate Grey."
+      },
+      {
+        "type": "color",
+        "id": "Orchid",
+        "label": "Orchid",
+        "default": "#622f50",
+        "info": "Product color Orchid."
+      },
+      {
+        "type": "color",
+        "id": "Poppy",
+        "label": "Poppy",
+        "default": "#ee1b2c",
+        "info": "Product color Poppy."
+      },
+      {
+        "type": "color",
+        "id": "Caribbean Blue",
+        "label": "Caribbean Blue",
+        "default": "#0ea6b4",
+        "info": "Product color Caribbean Blue."
+      },
+      {
+        "type": "color",
+        "id": "Chartreuse",
+        "label": "Chartreuse",
+        "default": "#b2c142",
+        "info": "Product color Chartreuse."
+      },
+      {
+        "type": "color",
+        "id": "Sea Foam",
+        "label": "Sea Foam",
+        "default": "#9ed6cd",
+        "info": "Product color Sea Foam."
+      },
+      {
+        "type": "color",
+        "id": "Pomegranate",
+        "label": "Pomegranate",
+        "default": "#772330",
+        "info": "Product color Pomegranate."
+      },
+      {
+        "type": "color",
+        "id": "Dark Roast",
+        "label": "Dark Roast",
+        "default": "#49301c",
+        "info": "Product color Dark Roast."
+      },
+      {
+        "type": "color",
+        "id": "Charcoal",
+        "label": "Charcoal",
+        "default": "#585550",
+        "info": "Product color Charcoal."
+      },
+      {
+        "type": "color",
+        "id": "Champagne",
+        "label": "Champagne",
+        "default": "#49301c",
+        "info": "Product color Charcoal."
+      },
+      {
+        "type": "color",
+        "id": "StainlessBlack",
+        "label": "Stainless Black",
+        "default": "#a7a8ac",
+        "info": "Product color Stainless\/Black."
+      },
+      {
+        "type": "color",
+        "id": "StainlessWhite",
+        "label": "Stainless White",
+        "default": "#a7a8ac",
+        "info": "Product color Stainless\/White."
+      },
+      {
+        "type": "color",
+        "id": "Gunmetal",
+        "label": "Gunmetal",
+        "default": "#58585a",
+        "info": "Product color Gunmetal."
+      },
+      {
+        "type": "color",
+        "id": "Red",
+        "label": "Red",
+        "default": "#ee1b2c",
+        "info": "Product color Red."
+      }
+    ]
+  },
+  {
+    "name": "Product Jar Images",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "WildSide",
+        "label": "WildSide+ Image",
+        "info": "Icon for Wildside+ Jar."
+      },
+      {
+        "type": "image_picker",
+        "id": "FourSide",
+        "label": "FourSide Image",
+        "info": "Icon for Fourside Jar."
+      }
+    ]
+  },
+  {
+    "name": "Product Color Images",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "iWhite",
+        "label": "White",
+        "info": "Product color white."
+      },
+      {
+        "type": "image_picker",
+        "id": "iPolarWhite",
+        "label": "Polar White",
+        "info": "Product color Polar White."
+      },
+      {
+        "type": "image_picker",
+        "id": "iBlack",
+        "label": "Black",
+        "info": "Product color Black."
+      },
+      {
+        "type": "image_picker",
+        "id": "iSlateGrey",
+        "label": "Slate Grey",
+        "info": "Product color Slate Grey."
+      },
+      {
+        "type": "image_picker",
+        "id": "iOrchid",
+        "label": "Orchid",
+        "info": "Product color Orchid."
+      },
+      {
+        "type": "image_picker",
+        "id": "iPoppy",
+        "label": "Poppy",
+        "info": "Product color Poppy."
+      },
+      {
+        "type": "image_picker",
+        "id": "iCaribbeanBlue",
+        "label": "Caribbean Blue",
+        "info": "Product color Caribbean Blue."
+      },
+      {
+        "type": "image_picker",
+        "id": "iChartreuse",
+        "label": "Chartreuse",
+        "info": "Product color Chartreuse."
+      },
+      {
+        "type": "image_picker",
+        "id": "iSeaFoam",
+        "label": "Sea Foam",
+        "info": "Product color Sea Foam."
+      },
+      {
+        "type": "image_picker",
+        "id": "iPomegranate",
+        "label": "Pomegranate",
+        "info": "Product color Pomegranate."
+      },
+      {
+        "type": "image_picker",
+        "id": "iDarkRoast",
+        "label": "Dark Roast",
+        "info": "Product color Dark Roast."
+      },
+      {
+        "type": "image_picker",
+        "id": "iCharcoal",
+        "label": "Charcoal",
+        "info": "Product color Charcoal."
+      },
+      {
+        "type": "image_picker",
+        "id": "iChampagne",
+        "label": "Champagne",
+        "info": "Product color Charcoal."
+      },
+      {
+        "type": "image_picker",
+        "id": "iStainlessBlack",
+        "label": "Stainless Black",
+        "info": "Product color Stainless\/Black."
+      },
+      {
+        "type": "image_picker",
+        "id": "iStainlessWhite",
+        "label": "Stainless White",
+        "info": "Product color Stainless\/White."
+      },
+      {
+        "type": "image_picker",
+        "id": "iGunmetal",
+        "label": "Gunmetal",
+        "info": "Product color Gunmetal."
+      },
+      {
+        "type": "image_picker",
+        "id": "iRed",
+        "label": "Red",
+        "info": "Product color Red."
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_logo",
+        "label": "Logo",
+        "options": [
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Bold",
+            "label": "CooperHewitt-Bold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BoldItalic",
+            "label": "CooperHewitt-BoldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Book",
+            "label": "CooperHewitt-Book"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BookItalic",
+            "label": "CooperHewitt-BookItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Heavy",
+            "label": "CooperHewitt-Heavy"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-HeavyItalic",
+            "label": "CooperHewitt-HeavyItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Light",
+            "label": "CooperHewitt-Light"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-LightItalic",
+            "label": "CooperHewitt-LightItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Medium",
+            "label": "CooperHewitt-Medium"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-MediumItalic",
+            "label": "CooperHewitt-MediumItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Semibold",
+            "label": "CooperHewitt-Semibold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-SemiboldItalic",
+            "label": "CooperHewitt-SemiboldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Thin",
+            "label": "CooperHewitt-Thin"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-ThinItalic",
+            "label": "CooperHewitt-ThinItalic"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Alegreya+Sans_400,400i,700,700i_sans",
+            "label": "Alegreya Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Archivo+Narrow_400,400i,700,700i_sans",
+            "label": "Archivo Narrow"
+          },
+          {
+            "group": "Sans serif",
+            "value": "'Arial', 'Helvetica', Arial, sans-serif",
+            "label": "Arial"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Arimo_400,400i,700,700i_sans",
+            "label": "Arimo"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Asap_400,400i,700,700i_sans",
+            "label": "Asap"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Cabin_400,400i,700,700i_sans",
+            "label": "Cabin"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Cantarell_400,400i,700,700i_sans",
+            "label": "Cantarell"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Catamaran_400,400i,700,700i_sans",
+            "label": "Catamaran"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Cuprum_400,400i,700,700i_sans",
+            "label": "Cuprum"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Dosis_400,400i,700,700i_sans",
+            "label": "Dosis"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Droid+Sans:_400,400i,700,700i_sans",
+            "label": "Droid Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Exo_400,400i,700,700i_sans",
+            "label": "Exo"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Exo+2_400,400i,700,700i_sans",
+            "label": "Exo 2"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Fira+Sans_400,400i,700,700i_sans",
+            "label": "Fira Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "'Helvetica Neue', 'Helvetica', Arial, sans-serif",
+            "label": "Helvetica Neue"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Hind_400,400i,700,700i_sans",
+            "label": "Hind"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Istok+Web_400,400i,700,700i_sans",
+            "label": "Istok Web"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Josefin+Sans_400,400i,700,700i_sans",
+            "label": "Josefin Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Karla_400,400i,700,700i_sans",
+            "label": "Karla"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Lato_400,400i,700,700i_sans",
+            "label": "Lato"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Maven+Pro_400,400i,700,700i_sans",
+            "label": "Maven Pro"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Merriweather+Sans_400,400i,700,700i_sans",
+            "label": "Merriweather Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Montserrat_400,700_sans",
+            "label": "Montserrat"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Muli_400,400i,700,700i_sans",
+            "label": "Muli"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Noto+Sans_400,400i,700,700i_sans",
+            "label": "Noto Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Open+Sans_400,400i,700,700i_sans",
+            "label": "Open Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Orbitron_400,400i,700,700i_sans",
+            "label": "Orbitron"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Poppins_400,400i,700,700i_sans",
+            "label": "Poppins"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_PT+Sans_400,400i,700,700i_sans",
+            "label": "PT Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Quattrocento+Sans_400,400i,700,700i_sans",
+            "label": "Quattrocento Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Raleway_400,400i,700,700i_sans",
+            "label": "Raleway"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Roboto_400,400i,700,700i_sans",
+            "label": "Roboto"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Roboto+Condensed_400,400i,700,700i_sans",
+            "label": "Roboto Condensed"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Rubik_400,400i,700,700i_sans",
+            "label": "Rubik"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Signika_400,400i,700,700i_sans",
+            "label": "Signika"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Source+Sans+Pro_400,400i,700,700i_sans",
+            "label": "Source Sans Pro"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Titillium+Web_400,400i,700,700i_sans",
+            "label": "Titillium Web"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Ubuntu_400,400i,700,700i_sans",
+            "label": "Ubuntu"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Work+Sans_400,400i,700,700i_sans",
+            "label": "Work Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Yanone+Kaffeesatz_400,400i,700,700i_sans",
+            "label": "Yanone Kaffeesatz"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Alegreya_400,400i,700,700i_serif",
+            "label": "Alegreya"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Arvo_400,400i,700,700i_serif",
+            "label": "Arvo"
+          },
+          {
+            "group": "Serif",
+            "value": "'Baskerville', 'Times New Roman', serif",
+            "label": "Baskerville"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Crimson+Text_400,400i,700,700i_seif",
+            "label": "Crimson Text"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Droid+Serif_400,400i,700,700i_serif",
+            "label": "Droid Serif"
+          },
+          {
+            "group": "Serif",
+            "value": "'Garamond', 'Times New Roman', serif",
+            "label": "Garamond"
+          },
+          {
+            "group": "Serif",
+            "value": "'Georgia', 'Times New Roman', serif",
+            "label": "Georgia"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Josefin+Slab_400,400i,700,700i_serif",
+            "label": "Josefin Slab"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Lora_400,400i,700,700i_serif",
+            "label": "Lora"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Merriweather_400,400i,700,700i_serif",
+            "label": "Merriweather"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Noticia+Text_400,400i,700,700i_serif",
+            "label": "Noticia Text"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Noto+Serif_400,400i,700,700i_serif",
+            "label": "Noto Serif"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Playfair+Display_400,400i,700,700i_serif",
+            "label": "Playfair Display"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_PT+Serif_400,400i,700,700i_serif",
+            "label": "PT Serif"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Roboto+Slab_400,400i,700,700i_serif",
+            "label": "Roboto Slab"
+          },
+          {
+            "group": "Serif",
+            "value": "'Times New Roman', serif",
+            "label": "Times New Roman"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Tinos_400,400i,700,700i_serif",
+            "label": "Tinos"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Volkhov_400,400i,700,700i_serif",
+            "label": "Volkhov"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Vollkorn_400,400i,700,700i_serif",
+            "label": "Vollkorn"
+          }
+        ],
+        "default": "Google_Source+Sans+Pro_400,400i,700,700i_sans"
+      },
+      {
+        "type": "select",
+        "id": "font_header",
+        "label": "Header",
+        "options": [
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Bold",
+            "label": "CooperHewitt-Bold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BoldItalic",
+            "label": "CooperHewitt-BoldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Book",
+            "label": "CooperHewitt-Book"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BookItalic",
+            "label": "CooperHewitt-BookItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Heavy",
+            "label": "CooperHewitt-Heavy"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-HeavyItalic",
+            "label": "CooperHewitt-HeavyItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Light",
+            "label": "CooperHewitt-Light"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-LightItalic",
+            "label": "CooperHewitt-LightItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Medium",
+            "label": "CooperHewitt-Medium"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-MediumItalic",
+            "label": "CooperHewitt-MediumItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Semibold",
+            "label": "CooperHewitt-Semibold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-SemiboldItalic",
+            "label": "CooperHewitt-SemiboldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Thin",
+            "label": "CooperHewitt-Thin"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-ThinItalic",
+            "label": "CooperHewitt-ThinItalic"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Alegreya+Sans_400,400i,700,700i_sans",
+            "label": "Alegreya Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Archivo+Narrow_400,400i,700,700i_sans",
+            "label": "Archivo Narrow"
+          },
+          {
+            "group": "Sans serif",
+            "value": "'Arial', 'Helvetica', Arial, sans-serif",
+            "label": "Arial"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Arimo_400,400i,700,700i_sans",
+            "label": "Arimo"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Asap_400,400i,700,700i_sans",
+            "label": "Asap"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Cabin_400,400i,700,700i_sans",
+            "label": "Cabin"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Cantarell_400,400i,700,700i_sans",
+            "label": "Cantarell"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Catamaran_400,400i,700,700i_sans",
+            "label": "Catamaran"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Cuprum_400,400i,700,700i_sans",
+            "label": "Cuprum"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Dosis_400,400i,700,700i_sans",
+            "label": "Dosis"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Droid+Sans:_400,400i,700,700i_sans",
+            "label": "Droid Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Exo_400,400i,700,700i_sans",
+            "label": "Exo"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Exo+2_400,400i,700,700i_sans",
+            "label": "Exo 2"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Fira+Sans_400,400i,700,700i_sans",
+            "label": "Fira Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "'Helvetica Neue', 'Helvetica', Arial, sans-serif",
+            "label": "Helvetica Neue"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Hind_400,400i,700,700i_sans",
+            "label": "Hind"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Istok+Web_400,400i,700,700i_sans",
+            "label": "Istok Web"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Josefin+Sans_400,400i,700,700i_sans",
+            "label": "Josefin Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Karla_400,400i,700,700i_sans",
+            "label": "Karla"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Lato_400,400i,700,700i_sans",
+            "label": "Lato"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Maven+Pro_400,400i,700,700i_sans",
+            "label": "Maven Pro"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Merriweather+Sans_400,400i,700,700i_sans",
+            "label": "Merriweather Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Montserrat_400,700_sans",
+            "label": "Montserrat"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Muli_400,400i,700,700i_sans",
+            "label": "Muli"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Noto+Sans_400,400i,700,700i_sans",
+            "label": "Noto Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Open+Sans_400,400i,700,700i_sans",
+            "label": "Open Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Orbitron_400,400i,700,700i_sans",
+            "label": "Orbitron"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Poppins_400,400i,700,700i_sans",
+            "label": "Poppins"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_PT+Sans_400,400i,700,700i_sans",
+            "label": "PT Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Quattrocento+Sans_400,400i,700,700i_sans",
+            "label": "Quattrocento Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Raleway_400,400i,700,700i_sans",
+            "label": "Raleway"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Roboto_400,400i,700,700i_sans",
+            "label": "Roboto"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Roboto+Condensed_400,400i,700,700i_sans",
+            "label": "Roboto Condensed"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Rubik_400,400i,700,700i_sans",
+            "label": "Rubik"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Signika_400,400i,700,700i_sans",
+            "label": "Signika"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Source+Sans+Pro_400,400i,700,700i_sans",
+            "label": "Source Sans Pro"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Titillium+Web_400,400i,700,700i_sans",
+            "label": "Titillium Web"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Ubuntu_400,400i,700,700i_sans",
+            "label": "Ubuntu"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Work+Sans_400,400i,700,700i_sans",
+            "label": "Work Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Yanone+Kaffeesatz_400,400i,700,700i_sans",
+            "label": "Yanone Kaffeesatz"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Alegreya_400,400i,700,700i_serif",
+            "label": "Alegreya"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Arvo_400,400i,700,700i_serif",
+            "label": "Arvo"
+          },
+          {
+            "group": "Serif",
+            "value": "'Baskerville', 'Times New Roman', serif",
+            "label": "Baskerville"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Crimson+Text_400,400i,700,700i_seif",
+            "label": "Crimson Text"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Droid+Serif_400,400i,700,700i_serif",
+            "label": "Droid Serif"
+          },
+          {
+            "group": "Serif",
+            "value": "'Garamond', 'Times New Roman', serif",
+            "label": "Garamond"
+          },
+          {
+            "group": "Serif",
+            "value": "'Georgia', 'Times New Roman', serif",
+            "label": "Georgia"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Josefin+Slab_400,400i,700,700i_serif",
+            "label": "Josefin Slab"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Lora_400,400i,700,700i_serif",
+            "label": "Lora"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Merriweather_400,400i,700,700i_serif",
+            "label": "Merriweather"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Noticia+Text_400,400i,700,700i_serif",
+            "label": "Noticia Text"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Noto+Serif_400,400i,700,700i_serif",
+            "label": "Noto Serif"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Playfair+Display_400,400i,700,700i_serif",
+            "label": "Playfair Display"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_PT+Serif_400,400i,700,700i_serif",
+            "label": "PT Serif"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Roboto+Slab_400,400i,700,700i_serif",
+            "label": "Roboto Slab"
+          },
+          {
+            "group": "Serif",
+            "value": "'Times New Roman', serif",
+            "label": "Times New Roman"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Tinos_400,400i,700,700i_serif",
+            "label": "Tinos"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Volkhov_400,400i,700,700i_serif",
+            "label": "Volkhov"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Vollkorn_400,400i,700,700i_serif",
+            "label": "Vollkorn"
+          }
+        ],
+        "default": "Google_Source+Sans+Pro_400,400i,700,700i_sans"
+      },
+      {
+        "type": "select",
+        "id": "font",
+        "label": "Body",
+        "options": [
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Bold",
+            "label": "CooperHewitt-Bold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BoldItalic",
+            "label": "CooperHewitt-BoldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Book",
+            "label": "CooperHewitt-Book"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-BookItalic",
+            "label": "CooperHewitt-BookItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Heavy",
+            "label": "CooperHewitt-Heavy"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-HeavyItalic",
+            "label": "CooperHewitt-HeavyItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Light",
+            "label": "CooperHewitt-Light"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-LightItalic",
+            "label": "CooperHewitt-LightItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Medium",
+            "label": "CooperHewitt-Medium"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-MediumItalic",
+            "label": "CooperHewitt-MediumItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Semibold",
+            "label": "CooperHewitt-Semibold"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-SemiboldItalic",
+            "label": "CooperHewitt-SemiboldItalic"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-Thin",
+            "label": "CooperHewitt-Thin"
+          },
+          {
+            "group": "Cooper Hewitt",
+            "value": "CooperHewitt-ThinItalic",
+            "label": "CooperHewitt-ThinItalic"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Alegreya+Sans_400,400i,700,700i_sans",
+            "label": "Alegreya Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Archivo+Narrow_400,400i,700,700i_sans",
+            "label": "Archivo Narrow"
+          },
+          {
+            "group": "Sans serif",
+            "value": "'Arial', 'Helvetica', Arial, sans-serif",
+            "label": "Arial"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Arimo_400,400i,700,700i_sans",
+            "label": "Arimo"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Asap_400,400i,700,700i_sans",
+            "label": "Asap"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Cabin_400,400i,700,700i_sans",
+            "label": "Cabin"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Cantarell_400,400i,700,700i_sans",
+            "label": "Cantarell"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Catamaran_400,400i,700,700i_sans",
+            "label": "Catamaran"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Cuprum_400,400i,700,700i_sans",
+            "label": "Cuprum"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Dosis_400,400i,700,700i_sans",
+            "label": "Dosis"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Droid+Sans:_400,400i,700,700i_sans",
+            "label": "Droid Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Exo_400,400i,700,700i_sans",
+            "label": "Exo"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Exo+2_400,400i,700,700i_sans",
+            "label": "Exo 2"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Fira+Sans_400,400i,700,700i_sans",
+            "label": "Fira Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "'Helvetica Neue', 'Helvetica', Arial, sans-serif",
+            "label": "Helvetica Neue"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Hind_400,400i,700,700i_sans",
+            "label": "Hind"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Istok+Web_400,400i,700,700i_sans",
+            "label": "Istok Web"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Josefin+Sans_400,400i,700,700i_sans",
+            "label": "Josefin Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Karla_400,400i,700,700i_sans",
+            "label": "Karla"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Lato_400,400i,700,700i_sans",
+            "label": "Lato"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Maven+Pro_400,400i,700,700i_sans",
+            "label": "Maven Pro"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Merriweather+Sans_400,400i,700,700i_sans",
+            "label": "Merriweather Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Montserrat_400,700_sans",
+            "label": "Montserrat"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Muli_400,400i,700,700i_sans",
+            "label": "Muli"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Noto+Sans_400,400i,700,700i_sans",
+            "label": "Noto Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Open+Sans_400,400i,700,700i_sans",
+            "label": "Open Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Orbitron_400,400i,700,700i_sans",
+            "label": "Orbitron"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Poppins_400,400i,700,700i_sans",
+            "label": "Poppins"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_PT+Sans_400,400i,700,700i_sans",
+            "label": "PT Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Quattrocento+Sans_400,400i,700,700i_sans",
+            "label": "Quattrocento Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Raleway_400,400i,700,700i_sans",
+            "label": "Raleway"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Roboto_400,400i,700,700i_sans",
+            "label": "Roboto"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Roboto+Condensed_400,400i,700,700i_sans",
+            "label": "Roboto Condensed"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Rubik_400,400i,700,700i_sans",
+            "label": "Rubik"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Signika_400,400i,700,700i_sans",
+            "label": "Signika"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Source+Sans+Pro_400,400i,700,700i_sans",
+            "label": "Source Sans Pro"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Titillium+Web_400,400i,700,700i_sans",
+            "label": "Titillium Web"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Ubuntu_400,400i,700,700i_sans",
+            "label": "Ubuntu"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Work+Sans_400,400i,700,700i_sans",
+            "label": "Work Sans"
+          },
+          {
+            "group": "Sans serif",
+            "value": "Google_Yanone+Kaffeesatz_400,400i,700,700i_sans",
+            "label": "Yanone Kaffeesatz"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Alegreya_400,400i,700,700i_serif",
+            "label": "Alegreya"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Arvo_400,400i,700,700i_serif",
+            "label": "Arvo"
+          },
+          {
+            "group": "Serif",
+            "value": "'Baskerville', 'Times New Roman', serif",
+            "label": "Baskerville"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Crimson+Text_400,400i,700,700i_seif",
+            "label": "Crimson Text"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Droid+Serif_400,400i,700,700i_serif",
+            "label": "Droid Serif"
+          },
+          {
+            "group": "Serif",
+            "value": "'Garamond', 'Times New Roman', serif",
+            "label": "Garamond"
+          },
+          {
+            "group": "Serif",
+            "value": "'Georgia', 'Times New Roman', serif",
+            "label": "Georgia"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Josefin+Slab_400,400i,700,700i_serif",
+            "label": "Josefin Slab"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Lora_400,400i,700,700i_serif",
+            "label": "Lora"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Merriweather_400,400i,700,700i_serif",
+            "label": "Merriweather"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Noticia+Text_400,400i,700,700i_serif",
+            "label": "Noticia Text"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Noto+Serif_400,400i,700,700i_serif",
+            "label": "Noto Serif"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Playfair+Display_400,400i,700,700i_serif",
+            "label": "Playfair Display"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_PT+Serif_400,400i,700,700i_serif",
+            "label": "PT Serif"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Roboto+Slab_400,400i,700,700i_serif",
+            "label": "Roboto Slab"
+          },
+          {
+            "group": "Serif",
+            "value": "'Times New Roman', serif",
+            "label": "Times New Roman"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Tinos_400,400i,700,700i_serif",
+            "label": "Tinos"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Volkhov_400,400i,700,700i_serif",
+            "label": "Volkhov"
+          },
+          {
+            "group": "Serif",
+            "value": "Google_Vollkorn_400,400i,700,700i_serif",
+            "label": "Vollkorn"
+          }
+        ],
+        "default": "Google_Source+Sans+Pro_400,400i,700,700i_sans"
+      },
+      {
+        "type": "header",
+        "content": "Google font integration",
+        "info": "Didn't see the font you wanted above? Enter any other Google font here, followed by a fallback font keyword like serif or sans-serif. Learn more about font stacks in [our documentation](http:\/\/fluorescent.co\/ira\/typography.html)."
+      },
+      {
+        "type": "text",
+        "id": "google-font-logo",
+        "label": "Google logo font",
+        "placeholder": "'Droid Serif', serif"
+      },
+      {
+        "type": "text",
+        "id": "google-font-header",
+        "label": "Google header font",
+        "placeholder": "'Droid Serif', serif"
+      },
+      {
+        "type": "text",
+        "id": "google-font-body",
+        "label": "Google body font",
+        "placeholder": "'Droid Serif', serif"
+      },
+      {
+        "type": "header",
+        "content": "Typekit integration",
+        "info": "These settings will override the font settings above. For information on using Typekit, head to [our documentation](http:\/\/fluorescent.co\/ira\/typography.html)."
+      },
+      {
+        "type": "text",
+        "id": "typekit",
+        "label": "Typekit kit id"
+      },
+      {
+        "type": "text",
+        "id": "typekit-font-logo",
+        "label": "Typekit logo font"
+      },
+      {
+        "type": "text",
+        "id": "typekit-font-header",
+        "label": "Typekit header font"
+      },
+      {
+        "type": "text",
+        "id": "typekit-font-body",
+        "label": "Typekit body font"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Favicons are tiny icons that appear next to your site's title or URL in browser tabs, bookmark menus, and address bars."
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon_image",
+        "label": "Favicon",
+        "info": "32 x 32px .png required"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable order notes"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_vendor_enable",
+        "label": "Show product vendor"
+      },
+      {
+        "type": "text",
+        "id": "cart_notice_one",
+        "label": "Cart Notice",
+        "info": "This text appears underneath the cart summary"
+      },
+      {
+        "type": "text",
+        "id": "cart_notice_two",
+        "label": "Cart Notice Two",
+        "info": "This text appears underneath the cart summary"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Social links can be displayed in the Header message and Footer sections."
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter",
+        "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "https:\/\/facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest",
+        "info": "https:\/\/pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "http:\/\/instagram.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr",
+        "info": "http:\/\/shopify.tumblr.com"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube",
+        "info": "https:\/\/www.youtube.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo",
+        "info": "https:\/\/vimeo.com\/shopify"
+      }
+    ]
+  },
+  {
+    "name": "Currency",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The currency converter can be enabled in your header as part of the promotions bar. To offer multiple currencies on your online store, you must first [edit your store's currency formatting](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/help-script-find-money-formats)."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_multiple_currencies",
+        "label": "Enable currency conversion",
+        "default": true,
+        "info": "Even though prices are displayed in different currencies, orders will still be processed in your store's currency."
+      },
+      {
+        "type": "select",
+        "id": "currency_format",
+        "label": "Format",
+        "options": [
+          {
+            "value": "money_format",
+            "label": "Without currency ($10.00)"
+          },
+          {
+            "value": "money_with_currency_format",
+            "label": "With currency ($10.00 CAD)"
+          }
+        ],
+        "default": "money_with_currency_format"
+      },
+      {
+        "type": "text",
+        "id": "supported_currencies",
+        "label": "Supported currencies",
+        "default": "INR GBP CAD USD AUD EUR JPY",
+        "info": "Use the country's ISO [currency code](http:\/\/www.xe.com\/iso4217.php). Separate your currency codes with a space."
+      },
+      {
+        "type": "text",
+        "id": "default_currency",
+        "label": "Default currency",
+        "default": "USD"
+      }
+    ]
+  },
+  {
+    "name": "Avantlink",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Avantlink Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "avantlink_enable",
+        "label": "Enable Avantlink global script"
+      },
+      {
+        "type": "text",
+        "id": "avantlink_id",
+        "label": "Avantlink Id"
+      }
+    ]
+  },
+  {
+    "name": "PriceSpider",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "PriceSpider find a store widget."
+      },
+      {
+        "type": "checkbox",
+        "id": "pricespider_enable",
+        "label": "Enable Pricespider global script"
+      },
+      {
+        "type": "text",
+        "id": "pricespider_main_widget_id",
+        "label": "Widget Id",
+        "info": "Widget Id is found here: https:\/\/portal.pricespider.com under WhereToBuy menu"
+      }
+    ]
+  },
+  {
+    "name": "Google Site Verification",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Google Site Verification"
+      },
+      {
+        "type": "text",
+        "id": "google_site_verification",
+        "label": "Code"
+      }
+    ]
+  },
+  {
+    "name": "Google Tag Manager",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Google Tag Manager ID"
+      },
+      {
+        "type": "text",
+        "id": "gtm_id",
+        "label": "GTM Id"
+      }
+    ]
+  },
+  {
+    "name": "Affirm",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Affirm Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "affirm_enable",
+        "label": "Enable Affirm global script",
+        "info": "This setting is required for the product and cart Affirm branding to work"
+      },
+      {
+        "type": "text",
+        "id": "affirm_public_api_key",
+        "label": "Public API Key"
+      },
+      {
+        "type": "text",
+        "id": "affirm_data_promo_id",
+        "label": "Data Promo Id"
+      }
+    ]
+  }
+]

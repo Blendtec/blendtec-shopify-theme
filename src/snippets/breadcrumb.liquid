@@ -1,0 +1,64 @@
+<!-- /snippets/breadcrumb.liquid -->
+{% comment %}
+  Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+{% unless template == 'index' or template == 'cart' %}
+<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+  <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t | upcase }}</a>
+
+  {% if template contains 'product' %}
+
+    {% if collection %}
+      <span aria-hidden="true">/</span>
+      {% if collection.handle %}
+        {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+        {{ collection.title | upcase | link_to: url}}
+      {% endif %}
+    {% endif %}
+    <span aria-hidden="true">/</span>
+    <span>{{ product.title | upcase }}</span>.
+ 
+
+  {% elsif template contains 'collection' and collection.handle %}
+
+    <span aria-hidden="true">/</span>
+    {% if current_tags %}
+      {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+      {{ collection.title | link_to: url }}
+      <span aria-hidden="true">/</span>
+      <span>{{ current_tags | join: " + " }}</span>
+    {% else %}
+      <span>{{ collection.title | upcase }}</span>
+    {% endif %}
+
+  {% elsif template == 'blog' %}
+
+    <span aria-hidden="true">/</span>
+    {% if current_tags %}
+      {{ blog.title | link_to: blog.url}}
+      <span aria-hidden="true">/</span>
+      <span>{{ current_tags | join: " + " }}</span>
+    {% else %}
+    <span>{{ blog.title | upcase }}</span>
+    {% endif %}
+
+  {% elsif template == 'article' or template == 'article.recipe' %}
+
+    <span aria-hidden="true">/</span>
+    {{ blog.title | upcase | link_to: blog.url }}
+    <span aria-hidden="true">/</span>
+    <span>{{ article.title | upcase }}</span>
+
+  {% elsif template contains 'page' %}
+
+   <span aria-hidden="true">/</span>
+   <span>{{ page.title | upcase }}</span>
+
+  {% else %}
+
+   <span aria-hidden="true">/</span>
+   <span>{{ page_title | upcase }}</span>
+
+  {% endif %}
+</nav>
+{% endunless %}

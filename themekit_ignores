@@ -10,10 +10,14 @@ npm-debug.log
 watchTheme.sh
 package.json
 README.md
+runtime~app.bundle.js
+runtime~app.bundle.css
 
 # globs
 *.png
+runtime~*
 node_modules/*
+notifications/*
 
 # regex
 /\.(txt|gif|bat)$/

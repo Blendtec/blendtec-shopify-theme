@@ -1,0 +1,73 @@
+
+{% if section.settings.title == blank and section.settings.exit_intent_body == blank %}
+  {% assign useExitIntentPlaceholder = true %}
+{% else %}
+  {% assign useExitIntentPlaceholder = false %}
+{% endif %}
+
+{% assign form_action = settings.newsletter_form_action %}
+
+<div class="exit-intent-overlay" {% if section.settings.enable_exit_intent %}data-exit-intent-overlay{% endif %}>
+  <section class='exit-intent inline-subscribe {% if section.settings.exit_intent_image != blank %} exit-intent--large {% endif %} {% if useExitIntentPlaceholder  %}no-top{% endif %}'>
+    <div class="display-table-cell exit-intent__content">
+      {% form 'customer' %}
+        {{ form.errors | default_errors }}
+
+        {% if form.posted_successfully? %}
+          <p class="form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+        {% else %}
+          {% unless useExitIntentPlaceholder %}
+            <h2 class="exit-intent-header">
+              {{ section.settings.title | escape }}
+            </h2>
+          {% endunless %}
+
+          {% unless useExitIntentPlaceholder %}
+            {{ section.settings.exit_intent_body }}
+          {% endunless %}
+
+          <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+
+          <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.email_address_placeholder' | t }}" name="contact[email]" aria-label="{{ 'general.newsletter_form.email_address_placeholder' | t }}" autocorrect="off" autocapitalize="off" class='grid__item one-whole'>
+
+          <button class="btn one-whole">
+            {{ 'general.newsletter_form.subscribe' | t}}
+          </button>
+        {% endif %}
+      {% endform %}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+  {
+    "name": "Popup",
+    "class": "popup",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_exit_intent",
+        "default": false,
+        "label": "Enable exit intent",
+        "info": "Automatically triggers the newsletter popup if it detects that your customer intends to leave your site."
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading text",
+        "placeholder": "Join our newsletter"
+      },
+      {
+        "type": "richtext",
+        "id": "exit_intent_body",
+        "label": "Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "exit_intent_image",
+        "label": "Feature image",
+        "info": "400 x 600px recommended"
+      }
+    ]
+  }
+{% endschema %}

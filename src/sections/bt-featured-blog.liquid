@@ -1,0 +1,192 @@
+<div class="bt-featured-blog" {%if section.settings.background %} style="background-image: url({{section.settings.background | img_url: '1200x'}} );"{% endif %}>
+    <div class="grid section-content">
+      <div class="grid__item xlarge--one-half large--one-whole medium--one-whole small--one-whole">
+        <div class="grid recipe">
+            <div class="image-wrapper grid__item small--one-whole medium--one-half large--one-half">
+              <a class="show-block-href" href=""
+              {% for i in section.blocks %}
+                {{ forloop.index }}href="{{i.settings.recipe1_url}}"
+              {% endfor %}>
+                <img class="javascript-load-image recipe-image" style="width:100%;height:100%;"
+                      numBlocks="{{section.blocks.size}}"
+                      typeImage="imagebasesrc"
+                      {% for i in section.blocks %}
+                        {% assign placement = forloop.index  %}
+                        {% for y in (1..6) %}
+                          {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+                          {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe1 | img_url: imageSize }}"
+                        {% endfor %}
+                      {% endfor %}/>
+              </a>
+            </div>
+            <div class="grid__item small--one-whole medium--one-half large--one-half">
+                <div class="text-wrapper">
+                    {% for i in section.blocks %}
+                    <div class="show-block-{{forloop.index}}" style="display:none;">
+                      <p class="section5-small-description">{{ i.settings.recipe1_label }}</p>
+                      <h3 class="section5-recipe-title">{{i.settings.recipe1_title}}</h3>
+                      <hr class="accent">
+                      <p class="section5-recipe-text">{{i.settings.recipe1_text}}</p>
+                      {% include 'cta-text' with text: {{i.settings.recipe1_learnmore}}, url: {{i.settings.recipe1_url}}%}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="grid__item xlarge--one-half large--one-whole medium--one-whole small--one-whole">
+        <div class="grid recipe">
+            <div class="image-wrapper grid__item small--one-whole medium--one-half large--one-half">
+              <a href=""
+              class="show-block-href"
+              {% for i in section.blocks %}
+               {{ forloop.index }}href="{{i.settings.recipe2_url}}"
+              {% endfor %}>
+                <img class="javascript-load-image recipe-image" style="width:100%;height:100%;"
+                numBlocks="{{section.blocks.size}}"
+                typeImage="imagebasesrc"
+                {% for i in section.blocks %}
+                 {% assign placement = forloop.index  %}
+                 {% for y in (1..6) %}
+                   {% assign imageSize = y | times: 100 | downcase | append: 'x'  %}
+                   {{placement}}imagebasesrc{{ y | times: 100 }}="{{i.settings.recipe2 | img_url: imageSize }}"
+                 {% endfor %}
+                {% endfor %}/>
+              </a>
+            </div>
+            <div class="grid__item small--one-whole medium--one-half large--one-half">
+                <div class="text-wrapper">
+                    {% for i in section.blocks %}
+                    <div class="show-block-{{forloop.index}}" style="display:none;">
+                       <p class="section5-small-description">{{ i.settings.recipe2_label }}</p>
+                       <h3 class="section5-recipe-title">{{i.settings.recipe2_title}}</h3>
+                       <hr class="accent">
+                       <p class="section5-recipe-text">{{i.settings.recipe2_text}}</p>
+                       {% include 'cta-text' with text: {{i.settings.recipe2_learnmore}}, url: {{i.settings.recipe2_url}}%}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+ </div>
+{% schema %}
+{
+  "name": "bt-featured-blog",
+  "class": "featured-blog",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Section Background Image",
+      "info": "This is the background image for the section"
+    },
+    {
+      "type": "range",
+      "id": "block_width",
+      "min": 500,
+      "max": 900,
+      "step": 5,
+      "unit": "px",
+      "label": "Width of the Blocks",
+      "default": 670
+    },
+    {
+      "type": "range",
+      "id": "block_height",
+      "min": 300,
+      "max": 700,
+      "step": 5,
+      "unit": "px",
+      "label": "Height of the Blocks",
+      "default": 450
+    }
+  ],
+  "blocks": [
+    {
+      "type": "header",
+      "name": "bt-featured-product-lrg",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "recipe1",
+          "label": "The First Recipe",
+          "info": "This is the image for the first recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe1_label",
+          "label": "Recipe 1 label",
+          "default": "Blendtec Recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe1_title",
+          "label": "Recipe 1 title",
+          "default": "Rasberry Go Smoothie"
+        },
+        {
+          "type": "text",
+          "id": "recipe1_text",
+          "label": "Recipe 1 text",
+          "default": "Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros"
+        },
+        {
+          "type": "url",
+          "id": "recipe1_url",
+          "label": "Link to 1st Recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe1_learnmore",
+          "label": "Recipe 1 Link Text",
+          "default": "LEARN MORE"
+        },
+        {
+          "type": "image_picker",
+          "id": "recipe2",
+          "label": "The Second Recipe",
+          "info": "This is the image for the second recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe2_label",
+          "label": "Recipe 2 label",
+          "default": "Blendtec Recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe2_title",
+          "label": "Recipe 2 title",
+          "default": "Creamy Tomato Soup"
+        },
+        {
+          "type": "text",
+          "id": "recipe2_text",
+          "label": "Recipe 2 text",
+          "default": "Curabitur posuere dui et lacinia tincidunt. Phasellus rutrum neque libero. Sed eget metus efficitur, pellentesque sapien in, fringilla eros"
+        },
+        {
+          "type": "url",
+          "id": "recipe2_url",
+          "label": "Link to 2nd Recipe"
+        },
+        {
+          "type": "text",
+          "id": "recipe2_learnmore",
+          "label": "Recipe 2 Link Text",
+          "default": "LEARN MORE"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "bt-featured-blog",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

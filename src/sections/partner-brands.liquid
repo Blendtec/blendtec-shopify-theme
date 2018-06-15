@@ -1,0 +1,59 @@
+<div class="section-wrapper" {%if section.settings.background %}style="background-image: url({{section.settings.background | img_url: '1200x' }})"{% endif %}>
+    <div class="grid brand-images">
+        {% for slide in section.blocks limit: section.blocks.size %}
+          <div class="partner grid__item large--one-eighth medium--one-eighth small--one-half">
+         	  {% if slide.settings.link %}
+         	    <a href="{{slide.settings.corporate_partners_link}}" target="_blank">
+            {% endif %}
+
+                <img class="brand-image" src="{{slide.settings.image | img_url: '100x' }}"/>
+
+            {% if slide.settings.link %}
+              </a>
+            {% endif %}
+          </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name":"Partner Brands",
+  "class":"partners",
+  "max_blocks":8,
+  "settings":[
+     {
+        "type":"image_picker",
+        "id":"background",
+        "label":"Section Background Image"
+     }
+  ],
+  "blocks":[
+     {
+        "type":"header",
+        "name":"Partner",
+        "settings":[
+           {
+              "type":"image_picker",
+              "id":"image",
+              "label":"Corporate Partners",
+              "info":"Partner Brand Image (100x ~100) recommended."
+           },
+           {
+              "type":"url",
+              "id":"link",
+              "label":"URL to corporate partner"
+           }
+        ]
+     }
+  ],
+  "presets":[
+     {
+        "name":"Partner Brands",
+        "category":"Image"
+     }
+  ]
+}
+{% endschema %}
+
+

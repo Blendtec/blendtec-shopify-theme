@@ -1,0 +1,48 @@
+<header class="section-header section-header--image" style="background-image: url({{section.settings.background-404 | img_url: 'master'}})">
+    <div class="text-wrapper--center-cell text-max-width">
+        <div class="text-wrapper--small text-center">
+            <h1 class="section-header__title text-center">{{ 'general.404.title' | t | upcase }}</h1>
+        </div>
+    </div>
+</header>
+<div class="grid__item page-controls-wrapper">
+    {% include 'breadcrumb' %}
+</div>
+<div class="content-wrapper--horizontal grid__item">
+    <div class="grid">
+        <div class="grid__item large--one-quarter small--one-whole">
+            {% include 'side-menu' with nav: 'looking-for-this' %}
+        </div>
+        <div class="grid__item large--three-quarters small--one-whole margin-15">
+            <div class="rte text-center">
+                <p>{{ section.settings.errorMessage }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+   "name":"404-page",
+   "class":"page404",
+   "settings":[
+      {
+         "type":"image_picker",
+         "id":"background-404",
+         "label":"Section Background Image",
+         "info":"This is the background image for the section"
+      },
+      {
+         "type":"text",
+         "id":"errorMessage",
+         "label":"Error Message",
+         "default":"We can't seem to find the page you entered. One of these links may help you get back on track."
+      }
+   ],
+   "blocks":[
+
+   ],
+   "presets":[
+
+   ]
+}
+{% endschema %}

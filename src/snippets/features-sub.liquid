@@ -1,0 +1,25 @@
+<hr class="hr-no-margin">
+
+{% if title %}
+{% assign alignmentCounter = alignmentCounter | plus: 1 %}
+{% assign alignmentModulo = alignmentCounter | modulo: 2 %}
+<div class="grid">
+  {% if image and alignmentModulo == 1 %}
+  <div class="grid__item large--one-half medium--one-half">
+  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ image | remove: settings['metafield_buckets_src'] }}">
+  </div>
+  {% endif %}
+  <div class="grid__item large--one-half medium--one-half">
+    <h4>{{ title }}</h4>
+    <hr class="accent">
+
+  	{{ text }}
+
+  </div>
+  {% if image and alignmentModulo == 0 %}
+  <div class="grid__item large--one-half medium--one-half">
+  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ image | remove: settings['metafield_buckets_src'] }}">
+  </div>
+  {% endif %}
+</div>
+{% endif %}
