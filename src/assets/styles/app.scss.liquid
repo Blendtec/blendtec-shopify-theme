@@ -198,6 +198,7 @@ a.cta {
   font-size: 1.5em;
   font-style: italic;
   margin-top: 15px;
+  text-transform: uppercase;
 }
 
 $bodyFontStack: {{ base_family }};
@@ -9612,7 +9613,6 @@ body:not(.ios) .shopify-section.features {
     max-width:600px;
     width:100%;
     margin:0 auto;
-   // margin-bottom:40px;
   }
 }
 
@@ -9644,6 +9644,17 @@ body:not(.ios) .shopify-section.features {
   .affirm-as-low-as {
     margin-top: 1rem;
     font-size: 1.5em;
+
+    a {
+      text-transform: uppercase;
+      font-style: italic;
+      @extend .heavy;
+    }
+    
+    a::after {
+      content: " \f105";
+      font-family: FontAwesome;
+    }
   }
 
 }
@@ -9666,8 +9677,9 @@ body:not(.ios) .shopify-section.features {
 .affirm--wrapper {
   margin-top: 15px;
   min-height: 80px;
-  padding: 5px 0 0 15px;
+  padding: 5px 0 5px 15px;
   background-color: #f7f7f7;
+  @extend .text-center;
 }
 
 
