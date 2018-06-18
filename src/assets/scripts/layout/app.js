@@ -386,7 +386,7 @@ ira.stickyHeader = function (options) {
   if (window.location.pathname.indexOf('products') !== -1 &&
     ira.cache.$html.hasClass('supports-touch')) {
     // We don't want sticky header on the product page for mobile
-    return $(`.${CLASS_NAME}`).removeClass(CLASS_NAME);
+    return $('.' + CLASS_NAME).removeClass(CLASS_NAME);
   }
 
   if (stickyHeaderEnabled) {
@@ -504,7 +504,7 @@ ira.transparentHeader = function (options) {
   var onImageCollectionPage = onCollectionPage && $('.section-header--image').length;
   transparentHeaderEnabled = onHomePage || onImageCollectionPage;
   if (!onHomePage && !onImageCollectionPage) {
-    $(`.${  className}`).removeClass(className);
+    $('.' + className).removeClass(className);
   }
 
   // Important to call this /after/ the classname has been removed.
@@ -920,8 +920,8 @@ ira.getHash = function () {
 };
 
 ira.updateHash = function (hash) {
-  window.location.hash = `#${  hash}`;
-  $(`#${  hash}`).attr('tabindex', -1).focus();
+  window.location.hash = '#' + hash;
+  $('#' + hash).attr('tabindex', -1).focus();
 };
 
 ira.responsiveVideos = function () {
@@ -950,11 +950,11 @@ ira.blogFilter = function () {
      value = value.replace(/ /gi, '-');;
     value = value.toLowerCase();
     var blog = $target.data('collection-handle');
-    var collection = `/blogs/${  encodeURIComponent(blog) }/tagged/`;
+    var collection = '/blogs/' + encodeURIComponent(blog) + '/tagged/';
     if (value) {
        location = collection + encodeURIComponent(value);
     } else {
-       location = `/blogs/${  encodeURIComponent(blog)}`;
+       location = '/blogs/' + encodeURIComponent(blog);
     }
   };;
 };;
