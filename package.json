@@ -84,7 +84,10 @@
       {
         "path": "@semantic-release/github",
         "assets": [
-          { "path": "blendtec-theme.tar.gz", "label": "Blendtec Shopify Theme" }
+          {
+            "path": "blendtec-theme.tar.gz",
+            "label": "Blendtec Shopify Theme"
+          }
         ]
       }
     ]
