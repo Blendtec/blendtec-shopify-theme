@@ -12,6 +12,7 @@ const path = require('path');
 
 const copyWebpackPluginConf = new CopyWebpackPlugin([
   {from: './src/assets/fonts/**/*.{ttf,woff,eof,svg}', to: 'assets', flatten: true},
+  {from: './src/assets/scripts/layout/app.js', to: 'assets'},
   {from: './src/assets/images', to: 'assets'},
   {from: './src/assets/**/*.liquid', to: 'assets', flatten: true},
   {from: './src/assets/scripts/**/*.js', to: 'assets', flatten: true},

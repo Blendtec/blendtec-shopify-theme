@@ -1031,7 +1031,7 @@ ira.parallax = function () {
           distance = Number(distance.toFixed(2));
 
           $el.css({
-            transform: `translate3d(0, ${  sym  }${distance  }px, 0)`,
+            transform: 'translate3d(0,' +  sym + distance + 'px, 0)',
           });
         });
       }
@@ -1065,7 +1065,7 @@ ira.truncateExcerptText = function () {
       var cut = cutKeepingTags(this, 180);
       var elements = $(cut.text);
       // Add the elipses to the last child element in whatever tag its in.
-      elements.find('*:last-child').last().text(`${elements.find('*:last-child').last().text()  }...`);
+      elements.find('*:last-child').last().text(elements.find('*:last-child').last().text() + '...');
 
       $(this).text('')
         .append(elements);
@@ -1098,9 +1098,9 @@ ira.truncateExcerptText = function () {
     return {
       text:
         // Wrap text using current elem tag.
-        `${elem.outerHTML.match(/^<[^>]+>/m)[0]
-        + grabText
-         }</${  elem.localName  }>`,
+        elem.outerHTML.match(/^<[^>]+>/m)[0]
+        + grabText +
+         '</${  elem.localName  }>',
       count: reqCount - missCount,
     };
   }
@@ -1115,25 +1115,25 @@ ira.Drawers = (function () {
   var Drawer = function (id, position, options) {
     var defaults = {
       close: '.js-drawer-close',
-      open: `.js-drawer-open-${  id}`,
+      open: '.js-drawer-open-' +id,
       openClass: 'js-drawer-open',
-      dirOpenClass: `js-drawer-open-${  id}`,
+      dirOpenClass: 'js-drawer-open-' + id,
     };
 
     this.$nodes = {
       parent: $('body, html'),
       page: $('#PageContainer'),
       moved: $('.is-moved-by-drawer'),
-      headerControl: $(`${'.header-control' + '.'}${defaults.dirOpenClass}`),
+      headerControl: $('.header-control' + '.' + defaults.dirOpenClass),
       background: $('.drawer__background'),
-      content: $(`#${  id  } .drawer__content`),
+      content: $('#' + id + '.drawer__content'),
     };
 
     this.config = $.extend(defaults, options);
     this.position = position;
     this.id = id;
 
-    this.$drawer = $(`#${  id}`);
+    this.$drawer = $('#' + id);
 
     if (!this.$drawer.length) {
       return false;
@@ -1172,7 +1172,7 @@ ira.Drawers = (function () {
       externalCall = true;
     }
 
-    $(`.js-drawer-open-${  this.id}`).closest('.header-control').addClass('active');
+    $('.js-drawer-open-' + this.id).closest('.header-control').addClass('active');
 
     // ira.carousels.forEach(function(carousel) {
     //   carousel.pause();
@@ -1201,7 +1201,7 @@ ira.Drawers = (function () {
     this.$nodes.moved.addClass('is-transitioning');
     this.$drawer.prepareTransition();
 
-    this.$nodes.parent.addClass(`${this.config.openClass  } ${  this.config.dirOpenClass}`);
+    this.$nodes.parent.addClass(this.config.openClass + ' ' + this.config.dirOpenClass);
     this.drawerIsOpen = true;
 
     Drawer.prototype.trapFocus(this.$drawer, 'drawer_focus');
@@ -1245,7 +1245,7 @@ ira.Drawers = (function () {
     this.$nodes.moved.prepareTransition({disableExisting: true});
     this.$drawer.prepareTransition({disableExisting: true});
 
-    this.$nodes.parent.removeClass(`${this.config.dirOpenClass  } ${  this.config.openClass}`);
+    this.$nodes.parent.removeClass(this.config.dirOpenClass + ' ' + this.config.openClass);
 
     this.drawerIsOpen = false;
 
@@ -1257,7 +1257,7 @@ ira.Drawers = (function () {
 
 
   Drawer.prototype.trapFocus = function ($container, eventNamespace) {
-    var eventName = eventNamespace ? `focusin.${  eventNamespace}` : 'focusin';
+    var eventName = eventNamespace ? 'focusin.' + eventNamespace : 'focusin';
 
     $container.attr('tabindex', '-1');
 
@@ -1271,7 +1271,7 @@ ira.Drawers = (function () {
   };
 
   Drawer.prototype.removeTrapFocus = function ($container, eventNamespace) {
-    var eventName = eventNamespace ? `focusin.${  eventNamespace}` : 'focusin';
+    var eventName = eventNamespace ? 'focusin.' + eventNamespace : 'focusin';
 
     $container.removeAttr('tabindex');
     $(document).off(eventName);
@@ -1403,7 +1403,7 @@ ira.Carousel = (function () {
       }
     });
 
-    var maxHeight = Math.max(...heights);;
+    var maxHeight = Math.max.apply(heights);
 
     this.slick.$slides.each(function (_, slide) {
       if ($(slide).children('.carousel-slide-text').length) {
