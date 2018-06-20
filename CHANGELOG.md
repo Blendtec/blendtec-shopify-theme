@@ -1,3 +1,43 @@
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.8.0...v1.9.0) (2018-06-15)
+
+
+### Bug Fixes
+
+* **recipe-template:** Servingsizes not showing measurement ([e1289bc](https://github.com/Blendtec/blendtec-shopify-theme/commit/e1289bc))
+* **review-carousel:** Fix bottom margin gap ([5a53347](https://github.com/Blendtec/blendtec-shopify-theme/commit/5a53347))
+
+
+### Features
+
+* **affirm styling:** affirm 'learn more' link style as CTA ([8d43abf](https://github.com/Blendtec/blendtec-shopify-theme/commit/8d43abf))
+
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.7.1...v1.8.0) (2018-06-07)
+
+
+### Bug Fixes
+
+* **partner-brands:** remove deprecated setting check ([593d95f](https://github.com/Blendtec/blendtec-shopify-theme/commit/593d95f))
+
+
+### Features
+
+* **theme:** Add google site verification setting ([57bb1f7](https://github.com/Blendtec/blendtec-shopify-theme/commit/57bb1f7))
+
+<a name="1.7.1"></a>
+## [1.7.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.7.0...v1.7.1) (2018-06-07)
+
+
+### Bug Fixes
+
+* **bt-hero-section:** change class name to allow event listening ([6f91370](https://github.com/Blendtec/blendtec-shopify-theme/commit/6f91370))
+
+
+### Performance Improvements
+
+* **vendor.js:** remove FastClick library ([215112e](https://github.com/Blendtec/blendtec-shopify-theme/commit/215112e))
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.5.2...v1.6.0) (2018-06-01)
 
