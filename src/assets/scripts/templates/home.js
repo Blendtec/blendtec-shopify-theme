@@ -74,7 +74,7 @@
             {
               opacity: 1,
             },
-            250,
+            250
           );
         });
       },
@@ -136,7 +136,7 @@
 
 
         var promise = jQuery.Deferred();
-        var url = `${page.instagram.baseAPI}users/self/media/${options.feedType}?access_token=${options.accessToken}`;
+        var url = page.instagram.baseAPI + 'users/self/media/' + options.feedType + '?access_token=' + options.accessToken;
 
         $.ajax({
           type: 'GET',
@@ -223,7 +223,7 @@
         return { text: text, likes: likes };
       },
       getUserID: function (userName) {
-        var url = `${page.instagram.baseAPI}users/search?q=${userName}&client_id=${page.instagram.clientID}`;
+        var url = page.instagram.baseAPI + 'users/search?q=' + userName + '&client_id=' + page.instagram.clientID;
 
         url += '&callback=callbackFunction'; // make it a JSONP request
         var promise = jQuery.Deferred();
@@ -285,8 +285,8 @@
       replaceCaption: function (index, image) {
         var target = page.el.$instagramContainer.children().eq(index);
         var captionSelector = '.instagrid-caption';
-        var countSelector = `${captionSelector} .likes .count`;
-        var quoteSelector = `${captionSelector} .quote`;
+        var countSelector = captionSelector + ' .likes .count';
+        var quoteSelector = captionSelector + ' .quote';
         var captionText = '';
         var likeCount = 0;
         var willImageHave = page.instagram.doesImageHaveCaption(image);
@@ -308,7 +308,7 @@
         var target = nodes.eq(index);
         var originalImg = target.find('img.photo');
         var newImg = document.createElement('img');
-        var transitionCSS = `${page.instagram.transitionSpeed}ms ease-in-out`;
+        var transitionCSS = page.instagram.transitionSpeed + 'ms ease-in-out';
         var instagramLink = image.images.standard_resolution.url;
         var source = image.link;
 

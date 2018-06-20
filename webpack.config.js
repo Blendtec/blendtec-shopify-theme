@@ -27,6 +27,11 @@ const copyWebpackPluginConf = new CopyWebpackPlugin([
   {from: './src/templates', to: 'templates'},
 ]);
 
+const copyScripts = new CopyWebpackPlugin([
+  {from: './src/assets/scripts/layout/app.js', to: 'assets'},
+  {from: './src/assets/scripts/templates/home.js', to: 'assets'},
+]);
+
 const providePlugin = new webpack.ProvidePlugin({
   $: 'jquery',
   jQuery: 'jquery',
@@ -79,6 +84,7 @@ module.exports = {
   plugins: [
     providePlugin,
     copyWebpackPluginConf,
+    copyScripts,
     miniCssExtractPlugin,
   ],
   module: {
