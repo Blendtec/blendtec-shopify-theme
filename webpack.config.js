@@ -11,6 +11,7 @@ const path = require('path');
 //     filename: 'index.html'
 // });
 
+
 const copyWebpackPluginConf = new CopyWebpackPlugin([
   {from: './src/assets/fonts/**/*.{ttf,woff,eof,svg}', to: 'assets', flatten: true},
   {from: './src/assets/scripts/layout/app.js', to: 'assets'},
