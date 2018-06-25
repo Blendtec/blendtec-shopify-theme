@@ -1,3 +1,4 @@
+
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -25,11 +26,6 @@ const copyWebpackPluginConf = new CopyWebpackPlugin([
   {from: './src/sections', to: 'sections'},
   {from: './src/snippets', to: 'snippets'},
   {from: './src/templates', to: 'templates'},
-]);
-
-const copyScripts = new CopyWebpackPlugin([
-  {from: './src/assets/scripts/layout/app.js', to: 'assets'},
-  {from: './src/assets/scripts/templates/home.js', to: 'assets'},
 ]);
 
 const providePlugin = new webpack.ProvidePlugin({
@@ -84,7 +80,6 @@ module.exports = {
   plugins: [
     providePlugin,
     copyWebpackPluginConf,
-    copyScripts,
     miniCssExtractPlugin,
   ],
   module: {
