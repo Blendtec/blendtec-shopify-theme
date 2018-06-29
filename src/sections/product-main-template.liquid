@@ -19,6 +19,8 @@
   {% assign hasFeaturedImage = true %}
 {% endif %}
 
+{% assign featured_image = product.featured_image %}
+
 {% assign nocompare = false %}
 {% assign nocolor = false %}
 {% assign nospecs = false %}
@@ -30,6 +32,7 @@
 {% assign noaddtocart = false %}
 {% assign noquantity = false %}
 {% assign nojars = false %}
+{% assign nopackageincludes = false%}
 
 {% if product.metafields["global"]["nocompare"] == 'true' %}
   {% assign nocompare = true %}
@@ -73,6 +76,10 @@
 
 {% if product.metafields["global"]["nojars"] == 'true' %}
   {% assign nojars = true %}
+{% endif %}
+
+{% if product.metafields["global"]["nopackageincludes"] == 'true' %}
+  {% assign nopackageincludes = true %}
 {% endif %}
 
 
@@ -123,36 +130,24 @@
         </div>
       {% else %}
         {% if product.images.size > 1 %}
-          <div class="product-multiple__photos large--two-tenths medium-down--hide" id="ProductThumbs">
+          <div class="grid__item product-multiple__photos large--two-tenths medium-down--hide" id="ProductThumbs">
+            <button onclick="bt_product.changeImage('{{ featured_image.variants.first.id }}')" class="product-thumbnail-button" data-product-thumbnail>
+              <img src="{{ featured_image | img_url: '200x' }}" data-high-res="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}">
+            </button>
             {% for image in product.images %}
-              <button class="product-thumbnail-button" data-product-thumbnail>
-                <img src="{{ image | img_url: '200x' }}" data-high-res="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
-              </button>
+              {% unless image == featured_image %}
+                {% assign variantIDs = image.variants | map: 'id' | join: '-' %}
+                  <button onclick="bt_product.changeImage('{{ variantIDs }}')" class="product-thumbnail-button" data-product-thumbnail>
+                    <img src="{{ image | img_url: '200x' }}" data-high-res="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
+                  </button>
+              {% endunless %}
             {% endfor %}
 
             {{ lightbox }}
           </div>
         {% endif %}
-
-        <div class="product-single__photos {% if product.images.size > 1 %}large--eight-tenths{% else %}large--one-whole{% endif %} medium-down--hide" id="ProductPhoto">
-          {% if product.featured_image %}
-            {% assign featured_image = product.featured_image %}
-            <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-image-position="1">
-            <button class="product-lightbox-button-open" data-product-lightbox-button="open"><span class="product-lightbox-button open"><svg><use xlink:href="#icon-glass"></use></svg></span></button>
-            {{ lightbox }}
-          {% else %}
-            <img src="//cdn.shopify.com/s/images/themes/product-1.png" class='default-image placeholder-image'>
-          {% endif %}
-
-        </div>
-      {% endif %}
-
-      {% comment %}
-        Now create the mobile slideshow.
-      {% endcomment %}
-
-      <div class="large--hide product-single__photos" id="ProductPhotoSlideshow">
-        {% assign featured_image = product.featured_image %}
+    <div class="grid__item {% if product.images.size > 1 %}large--eight-tenths{% else %}large--one-whole{% endif %}">
+        <div class="productSlideShowWrapper product-single__photos" id="ProductPhotoSlideshow">
 
         <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-variant-id="{{ featured_image.variants.first.id }}">
         {% if product.images.size > 1 %}
@@ -176,7 +171,14 @@
         {% unless product.featured_image == featured_image %}
           <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-unless='unlessupinhere' >
         {% endunless %}
+        </div>
       </div>
+      {% endif %}
+
+      {% comment %}
+        Now create the mobile slideshow.
+      {% endcomment %}
+
     </div>
 
   <div class="grid__item xxlarge--one-third xlarge--two-fifths large--one-half {% if section.settings.image_layout_style == 'stacked_images_sticky_sidebar' %}sticky-sidebar{% endif %}" id='sidebarColumn'>
@@ -234,13 +236,13 @@
               <div class="grid">
                   <div class="grid__item">
                     <div class="margin-15">
-                      <h6 class="inline">{{'products.product.warranty' | t | capitalize}}</h6>: 
+                      <h6 class="inline">{{'products.product.warranty' | t | capitalize}}:</h6> 
                       <p class="inline">{{ product.metafields["global"]["Warranty"] }}</p>
                     </div>
                   </div>
         {% unless noquantity %}
                   <div class="grid__item small--one-whole medium--one-half large--one-half">
-                    <h6>{{'products.product.quantity' | t | capitalize}}</h6>
+                    <h6>{{'products.product.quantity' | t | capitalize}}:</h6>
                     <input type="number" id="QuantitySmall" value="1" min="1" onchange="bt_product.changeQuantity(this)">
                   </div>
         {% endunless %}
@@ -248,7 +250,7 @@
                   {% if product.variants[0].option1 %}
                     <div class="grid__item small--one-half medium--one-half large--one-half">
                       <div class="margin-15">
-                        <h6 class="inline">{{'products.product.color' | t | capitalize}}</h6>
+                        <h6 class="inline">{{'products.product.color' | t | capitalize}}:</h6>
                         <p class="inline" id="colorTitle"></p>
                         <div id="color-options">
 
@@ -280,7 +282,7 @@
         {% unless nojars %}
                   {% if product.variants[0].option2 %}
                     <div class="grid__item small--one-half medium--one-whole">
-                      <h6 class="inline">{{ 'products.product.jar' | t }}</h6>: 
+                      <h6 class="inline">{{ 'products.product.jar' | t }}:</h6> 
                       <p class="inline" id="jarTitle"></p>
                       <div id="jar-options">
 
@@ -350,7 +352,7 @@
       </li>
       {% endunless %}
       {% unless noreviews %}
-      <li>
+      <li id="reviewsTab">
         <a href="#tab-3">
           <h5 class="light-weight">{{ 'products.product.reviews' | t | upcase}}</h6>
         </a>
