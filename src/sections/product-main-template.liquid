@@ -215,7 +215,7 @@
                 action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical"
                 {% endunless %}
                 >
-      {% unless noprice %}
+          {% unless noprice %}
             <div class="medium-down--text-center">
               <h2 class="inline" itemprop="price" id="ProductPrice">
                 {{ current_variant.price | money }}
@@ -232,7 +232,7 @@
                   <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
                 </div>
               {% endif %}
-      {% endunless %}
+          {% endunless %}
               <div class="grid">
                   <div class="grid__item">
                     <div class="margin-15">
@@ -240,12 +240,12 @@
                       <p class="inline">{{ product.metafields["global"]["Warranty"] }}</p>
                     </div>
                   </div>
-        {% unless noquantity %}
+              {% unless noquantity %}
                   <div class="grid__item small--one-whole medium--one-half large--one-half">
                     <h6>{{'products.product.quantity' | t | capitalize}}:</h6>
                     <input type="number" id="QuantitySmall" value="1" min="1" onchange="bt_product.changeQuantity(this)">
                   </div>
-        {% endunless %}
+              {% endunless %}
                 {% unless nocolor %}
                   {% if product.variants[0].option1 %}
                     <div class="grid__item small--one-half medium--one-half large--one-half">
@@ -279,7 +279,7 @@
                     </div>
                   {% endif %}
                 {% endunless %}
-        {% unless nojars %}
+                {% unless nojars %}
                   {% if product.variants[0].option2 %}
                     <div class="grid__item small--one-half medium--one-whole">
                       <h6 class="inline">{{ 'products.product.jar' | t }}:</h6> 
@@ -352,7 +352,7 @@
       </li>
       {% endunless %}
       {% unless noreviews %}
-      <li id="reviewsTab">
+      <li id="reviews-tab">
         <a href="#tab-3">
           <h5 class="light-weight">{{ 'products.product.reviews' | t | upcase}}</h6>
         </a>

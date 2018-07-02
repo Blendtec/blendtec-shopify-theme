@@ -53,18 +53,16 @@ ira.cacheSelectors = function () {
 };
 
 var bvEnableScrollToReviews = function () {
-  if ($('.bv_button_buttonFull').length ) {
-      $('.bv_button_buttonFull').on('click', function () {
-        $('#reviewsTab').find('a').trigger('click');
-        $('html, body').animate({
-            scrollTop: $("#reviewsTab").offset().top
-        }, 500);
-      });
-  } else {
-    setTimeout(function () {
-    bvEnableScrollToReviews();
-    }, 50);
-  }
+  setTimeout(function() {
+    if ($('.bv_button_buttonFull').length ) {
+        $('.bv_button_buttonFull').on('click', function () {
+          $('#reviews-tab').find('a').trigger('click');
+          $('html, body').animate({
+              scrollTop: $("#reviews-tab").offset().top
+          }, 500);
+        });
+    }  
+  }, 5000);
 };
 
 bt_product.init = function() {
