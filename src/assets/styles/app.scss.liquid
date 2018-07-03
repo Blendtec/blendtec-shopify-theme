@@ -3331,7 +3331,7 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   background-color: $colorPrimary;
   &, a {color: $colorBtnPrimaryText;}
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -3342,16 +3342,15 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   z-index: 10;
   text-align: center;
   text-transform: uppercase;
-  white-space: nowrap;
   letter-spacing: 1px;
-  font-size: .7em;
+  font-size: .8em;
   font-weight: 800;
 }
 
 //While this class effects the header, conceptually it only exists
 //because of the notification bar.
 .offset-by-notification-bar {
-  position: absolute;
+  position: fixed;
   top: $notificationBarHeight !important;
   //important is necessary because this class by itself
   //doesn't have enough specificity, but we want it to
