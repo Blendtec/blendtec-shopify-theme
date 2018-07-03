@@ -215,24 +215,24 @@
                   action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical"
                 {% endunless %}
                 >
-          {% unless noprice %}
-            <div class="medium-down--text-center">
-              <h2 class="inline" itemprop="price" id="ProductPrice">
-                {{ current_variant.price | money }}
-              </h2>
-              {% if product.compare_at_price_max > product.price %}
-                <h4 class="inline strikethrough deemphasize">
-                    {{ current_variant.compare_at_price | money }}
-                </h4>
-              {% endif %}
-            </div>
+            {% unless noprice %}
+              <div class="medium-down--text-center">
+                <h2 class="inline" itemprop="price" id="ProductPrice">
+                  {{ current_variant.price | money }}
+                </h2>
+                {% if product.compare_at_price_max > product.price %}
+                  <h4 class="inline strikethrough deemphasize">
+                      {{ current_variant.compare_at_price | money }}
+                  </h4>
+                {% endif %}
+              </div>
             
               {% if section.settings.affirm_enable %}
                 <div class="affirm--wrapper">
                   <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
                 </div>
               {% endif %}
-          {% endunless %}
+            {% endunless %}
               <div class="grid">
                   <div class="grid__item">
                     <div class="margin-15">
@@ -240,12 +240,12 @@
                       <p class="inline">{{ product.metafields["global"]["Warranty"] }}</p>
                     </div>
                   </div>
-              {% unless noquantity %}
+                {% unless noquantity %}
                   <div class="grid__item small--one-whole medium--one-half large--one-half">
                     <h6>{{'products.product.quantity' | t | capitalize}}:</h6>
                     <input type="number" id="QuantitySmall" value="1" min="1" onchange="bt_product.changeQuantity(this)">
                   </div>
-              {% endunless %}
+                {% endunless %}
                 {% unless nocolor %}
                   {% if product.variants[0].option1 %}
                     <div class="grid__item small--one-half medium--one-half large--one-half">
@@ -345,25 +345,25 @@
         </a>
       </li>
       {% unless nospecs %}
-      <li>
-        <a href="#tab-2">
-          <h5 class="light-weight">{{ 'products.product.specs' | t | upcase }}</h6>
-        </a>
-      </li>
+        <li>
+          <a href="#tab-2">
+            <h5 class="light-weight">{{ 'products.product.specs' | t | upcase }}</h6>
+          </a>
+        </li>
       {% endunless %}
       {% unless noreviews %}
-      <li id="reviews-tab">
-        <a href="#tab-3">
-          <h5 class="light-weight">{{ 'products.product.reviews' | t | upcase}}</h6>
-        </a>
-      </li>
+        <li id="reviews-tab">
+          <a href="#tab-3">
+            <h5 class="light-weight">{{ 'products.product.reviews' | t | upcase}}</h6>
+          </a>
+        </li>
       {% endunless %}
       {% unless noQA %}
-      <li>
-        <a href="#tab-4">
-          <h5 class="light-weight">{{ 'products.product.questions_answers' | t | upcase }}</h5>
-        </a>
-      </li>
+        <li>
+          <a href="#tab-4">
+            <h5 class="light-weight">{{ 'products.product.questions_answers' | t | upcase }}</h5>
+          </a>
+        </li>
       {% endunless %}
     </ul>
     <hr class="hr-no-margin">
@@ -371,23 +371,23 @@
       {% include "product-features" %}
     </div>
     {% unless nospecs %}
-    <div class="tab" id="tab-2">
-      {% include "product-specs" %}
-    </div>
+      <div class="tab" id="tab-2">
+        {% include "product-specs" %}
+      </div>
     {% endunless %}
     {% unless noreviews %}
-    <div class="tab" id="tab-3">
-        <h4>{{ 'products.product.reviews' | t }}</h4>
-      <hr class="accent">
-      {% include "bv-ratings-reviews" %}
-    </div>
+      <div class="tab" id="tab-3">
+          <h4>{{ 'products.product.reviews' | t }}</h4>
+        <hr class="accent">
+        {% include "bv-ratings-reviews" %}
+      </div>
     {% endunless %}
     {% unless noQA %}
-    <div class="tab" id="tab-4">
-        <h4>{{ 'products.product.questions_answers' | t }}</h4>
-      <hr class="accent">
-      {% include "bv-questions" %}
-    </div>
+      <div class="tab" id="tab-4">
+          <h4>{{ 'products.product.questions_answers' | t }}</h4>
+        <hr class="accent">
+        {% include "bv-questions" %}
+      </div>
     {% endunless %}
   </div>
 
