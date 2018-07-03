@@ -373,6 +373,7 @@
       "quantity": "Quantity",
       "features": "FEATURES",
       "features_include": "FEATURES INCLUDE",
+      "package_includes": "PACKAGE INCLUDES",
       "specs": "SPECS",
       "reviews": "REVIEWS",
       "questions_answers": "QUESTIONS & ANSWERS",
