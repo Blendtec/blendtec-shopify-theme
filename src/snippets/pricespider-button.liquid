@@ -1,0 +1,15 @@
+ <div style="display:none;margin-right:5px;" class="btn ps-widget" 
+       {% for variant in product.variants %}
+       		ps-sku-{{ variant.id }}="{{variant.sku}}"
+       {% if variant.selected %}
+       ps-sku="{{variant.sku}}"g
+       {% endif %}
+       {% endfor %}
+       ></div>
+
+
+<style>
+	.ps-widget[ps-sku].ps-disabled > small, .ps-widget[data-ps-sku].ps-disabled > small {
+    	line-height: 22px !important;
+	}
+</style>

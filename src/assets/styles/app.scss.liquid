@@ -2024,18 +2024,18 @@ html input[disabled] {
 .btn,
 .rte .btn {
   display: inline-block;
-  padding: em(13px) em(21px);
-  width: auto;
+  padding: em(13px) em(21px) !important;
+  width: auto !important;
   margin: 0;
-  border-radius: $radius;
-  line-height: 1.42;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
+  border-radius: $radius !important;
+  line-height: 1.42 !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
   cursor: pointer;
-  border: 1px solid transparent;
+  border: 1px solid transparent !important;
   @include prefix('user-select', 'none');
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2267,7 +2267,12 @@ form {
 .form-vertical {
   margin-bottom: $gutter / 2;
 }
-
+.registration-wrapper {
+  margin: 0px 5px 0px 5px;
+}
+.registration-margin-top {
+  margin-top:100px;
+}
 input,
 textarea,
 button,
@@ -3326,7 +3331,7 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   background-color: $colorPrimary;
   &, a {color: $colorBtnPrimaryText;}
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -3337,16 +3342,15 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   z-index: 10;
   text-align: center;
   text-transform: uppercase;
-  white-space: nowrap;
   letter-spacing: 1px;
-  font-size: .7em;
+  font-size: .8em;
   font-weight: 800;
 }
 
 //While this class effects the header, conceptually it only exists
 //because of the notification bar.
 .offset-by-notification-bar {
-  position: absolute;
+  position: fixed;
   top: $notificationBarHeight !important;
   //important is necessary because this class by itself
   //doesn't have enough specificity, but we want it to
@@ -5700,7 +5704,9 @@ p.h6.light {
     
     .tab {
       padding: 5% 5% 0 5%;
-
+      h4 {
+        text-transform:uppercase;
+      }
       ul {
         list-style: disc outside none;
         }
@@ -9156,7 +9162,9 @@ $captionFontSize: rem(26px);
     top: 1em;
   }
 }
-
+.exit-intent-overlay-scroll {
+  overflow-y:scroll;
+}
 .exit-intent__content {
   padding: 2.5em;
 }

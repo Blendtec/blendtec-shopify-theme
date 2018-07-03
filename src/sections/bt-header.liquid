@@ -159,6 +159,14 @@
 </header>
 
 <style>
+{% if notification_bar_on %}
+  .medium-down--fixed {
+    top: 40px;
+  }
+  .js-drawer-open .site-header-controls.medium-down--fixed{
+    top:65px;
+  }
+{% endif %}
   @media screen and (max-width: 840px) {
     .header-control.active,
     .header-control.active:hover,
