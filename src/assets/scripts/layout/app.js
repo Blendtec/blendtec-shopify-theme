@@ -455,13 +455,6 @@ ira.stickyHeader = function (options) {
       var top = window.pageYOffset ? window.pageYOffset : document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop;
       var controlsOffset = headerControls.position().top;
 
-      // if (notificationBarEnabled && top >= notificationBarHeight){
-      if (notificationBarEnabled && top >= notificationBarHeight) {
-        header.removeClass('offset-by-notification-bar');;
-      } else if (notificationBarEnabled && top < notificationBarHeight) {
-        header.addClass('offset-by-notification-bar');;
-      }
-
       // Add the && !() so it doesn't always re-register on scroll
       if (top >= controlsHeight && !headerControls.hasClass('medium-down--fixed')) {
         headerControls.addClass('medium-down--fixed');
