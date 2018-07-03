@@ -198,7 +198,7 @@
         {% assign compareLabel = 'products.product.compare' | t %}
         
         {% unless nocompare %}
-        {% include 'cta-text' with text: compareLabel, url: '/pages/compare-blenders'%}
+          {% include 'cta-text' with text: compareLabel, url: '/pages/compare-blenders'%}
         {% endunless  %}
 
         <hr class="hr-darker">
@@ -212,7 +212,7 @@
           {% endcomment %}
           <form 
                 {% unless nopurchase %}
-                action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical"
+                  action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical"
                 {% endunless %}
                 >
           {% unless noprice %}
