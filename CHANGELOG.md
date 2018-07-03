@@ -1,3 +1,14 @@
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.9.0...v1.10.0) (2018-07-03)
+
+
+### Features
+
+* **pricespider button:** enable the pricespider button ([a8db230](https://github.com/Blendtec/blendtec-shopify-theme/commit/a8db230))
+* **product-template:** requested changes to the product template page ([311934c](https://github.com/Blendtec/blendtec-shopify-theme/commit/311934c))
+* **registraiton:** mobile version of registration with corrected spacing and allow popup to scroll ([efb883b](https://github.com/Blendtec/blendtec-shopify-theme/commit/efb883b))
+* **top header:** made top header stick to top of page ([293937d](https://github.com/Blendtec/blendtec-shopify-theme/commit/293937d))
+
 <a name="1.9.0"></a>
 # [1.9.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.8.0...v1.9.0) (2018-06-15)
 
