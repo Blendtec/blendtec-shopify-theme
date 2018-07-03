@@ -19,6 +19,71 @@
   {% assign hasFeaturedImage = true %}
 {% endif %}
 
+{% assign featured_image = product.featured_image %}
+
+{% assign nocompare = false %}
+{% assign nocolor = false %}
+{% assign nospecs = false %}
+{% assign noreviews = false %}
+{% assign nopurchase = false %}
+{% assign noQA = false %}
+{% assign nostars = false %}
+{% assign noprice = false %}
+{% assign noaddtocart = false %}
+{% assign noquantity = false %}
+{% assign nojars = false %}
+{% assign nopackageincludes = false%}
+
+{% if product.metafields["global"]["nocompare"] == 'true' %}
+  {% assign nocompare = true %}
+{% endif %}
+
+{% if product.metafields["global"]["nocolor"] == 'true' %}
+  {% assign nocolor = true %}
+{% endif %}
+
+{% if product.metafields["global"]["nospecs"] == 'true' %}
+  {% assign nospecs = true %}
+{% endif %}
+
+{% if product.metafields["global"]["noreviews"] == 'true' %}
+  {% assign noreviews = true %}
+{% endif %}
+
+{% if product.metafields["global"]["nopurchase"] == 'true' %}
+  {% assign nopurchase = true %}
+{% endif %}
+
+{% if product.metafields["global"]["noQA"] == 'true' %}
+  {% assign noQA = true %}
+{% endif %}
+
+{% if product.metafields["global"]["nostars"] == 'true' %}
+  {% assign nostars = true %}
+{% endif %}
+
+{% if product.metafields["global"]["noprice"] == 'true' %}
+  {% assign noprice = true %}
+{% endif %}
+
+{% if product.metafields["global"]["noaddtocart"] == 'true' %}
+  {% assign noaddtocart = true %}
+{% endif %}
+
+{% if product.metafields["global"]["noquantity"] == 'true' %}
+  {% assign noquantity = true %}
+{% endif %}
+
+{% if product.metafields["global"]["nojars"] == 'true' %}
+  {% assign nojars = true %}
+{% endif %}
+
+{% if product.metafields["global"]["nopackageincludes"] == 'true' %}
+  {% assign nopackageincludes = true %}
+{% endif %}
+
+
+
 {% capture lightbox %}
   <div class="product-lightbox" data-product-lightbox>
     <button class="product-lightbox-button close" data-product-lightbox-button="close"><svg><use xlink:href="#icon-close"></use></svg></button>
@@ -27,7 +92,6 @@
     {% endfor %}
   </div>
 {% endcapture %}
-
 <div
   id="product-outer-container"
   itemscope
@@ -66,36 +130,24 @@
         </div>
       {% else %}
         {% if product.images.size > 1 %}
-          <div class="product-multiple__photos large--two-tenths medium-down--hide" id="ProductThumbs">
+          <div class="grid__item product-multiple__photos large--two-tenths medium-down--hide" id="ProductThumbs">
+            <button onclick="bt_product.changeImage('{{ featured_image.variants.first.id }}')" class="product-thumbnail-button" data-product-thumbnail>
+              <img src="{{ featured_image | img_url: '200x' }}" data-high-res="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}">
+            </button>
             {% for image in product.images %}
-              <button class="product-thumbnail-button" data-product-thumbnail>
-                <img src="{{ image | img_url: '200x' }}" data-high-res="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
-              </button>
+              {% unless image == featured_image %}
+                {% assign variantIDs = image.variants | map: 'id' | join: '-' %}
+                  <button onclick="bt_product.changeImage('{{ variantIDs }}')" class="product-thumbnail-button" data-product-thumbnail>
+                    <img src="{{ image | img_url: '200x' }}" data-high-res="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
+                  </button>
+              {% endunless %}
             {% endfor %}
 
             {{ lightbox }}
           </div>
         {% endif %}
-
-        <div class="product-single__photos {% if product.images.size > 1 %}large--eight-tenths{% else %}large--one-whole{% endif %} medium-down--hide" id="ProductPhoto">
-          {% if product.featured_image %}
-            {% assign featured_image = product.featured_image %}
-            <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-image-position="1">
-            <button class="product-lightbox-button-open" data-product-lightbox-button="open"><span class="product-lightbox-button open"><svg><use xlink:href="#icon-glass"></use></svg></span></button>
-            {{ lightbox }}
-          {% else %}
-            <img src="//cdn.shopify.com/s/images/themes/product-1.png" class='default-image placeholder-image'>
-          {% endif %}
-
-        </div>
-      {% endif %}
-
-      {% comment %}
-        Now create the mobile slideshow.
-      {% endcomment %}
-
-      <div class="large--hide product-single__photos" id="ProductPhotoSlideshow">
-        {% assign featured_image = product.featured_image %}
+    <div class="grid__item {% if product.images.size > 1 %}large--eight-tenths{% else %}large--one-whole{% endif %}">
+        <div class="productSlideShowWrapper product-single__photos" id="ProductPhotoSlideshow">
 
         <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-variant-id="{{ featured_image.variants.first.id }}">
         {% if product.images.size > 1 %}
@@ -119,7 +171,14 @@
         {% unless product.featured_image == featured_image %}
           <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-unless='unlessupinhere' >
         {% endunless %}
+        </div>
       </div>
+      {% endif %}
+
+      {% comment %}
+        Now create the mobile slideshow.
+      {% endcomment %}
+
     </div>
 
   <div class="grid__item xxlarge--one-third xlarge--two-fifths large--one-half {% if section.settings.image_layout_style == 'stacked_images_sticky_sidebar' %}sticky-sidebar{% endif %}" id='sidebarColumn'>
@@ -131,11 +190,16 @@
         <div class="br-gradient-light"></div>
       
         <p>{{ product.metafields["global"]["caption"] }}</p>
-      
-        {% include 'bv-summary' %}
+        
+        {% unless nostars %}
+          {% include 'bv-summary' %}
+        {% endunless %}
 
         {% assign compareLabel = 'products.product.compare' | t %}
-        {% include 'cta-text' with text: compareLabel, url: '/pages/compare-blenders'%}
+        
+        {% unless nocompare %}
+          {% include 'cta-text' with text: compareLabel, url: '/pages/compare-blenders'%}
+        {% endunless  %}
 
         <hr class="hr-darker">
       
@@ -146,42 +210,47 @@
           {% comment %}
             ID addToCartForm is a selector for the ajax cart plugin
           {% endcomment %}
-          <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
-
-            <div class="medium-down--text-center">
-              <h2 class="inline" itemprop="price" id="ProductPrice">
-                {{ current_variant.price | money }}
-              </h2>
-              {% if product.compare_at_price_max > product.price %}
-                <h4 class="inline strikethrough deemphasize">
-                    {{ current_variant.compare_at_price | money }}
-                </h4>
-              {% endif %}
-            </div>
+          <form 
+                {% unless nopurchase %}
+                  action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical"
+                {% endunless %}
+                >
+            {% unless noprice %}
+              <div class="medium-down--text-center">
+                <h2 class="inline" itemprop="price" id="ProductPrice">
+                  {{ current_variant.price | money }}
+                </h2>
+                {% if product.compare_at_price_max > product.price %}
+                  <h4 class="inline strikethrough deemphasize">
+                      {{ current_variant.compare_at_price | money }}
+                  </h4>
+                {% endif %}
+              </div>
             
               {% if section.settings.affirm_enable %}
                 <div class="affirm--wrapper">
                   <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
                 </div>
               {% endif %}
-
+            {% endunless %}
               <div class="grid">
                   <div class="grid__item">
                     <div class="margin-15">
-                      <h6 class="inline">{{'products.product.warranty' | t | capitalize}}</h6>: 
+                      <h6 class="inline">{{'products.product.warranty' | t | capitalize}}:</h6> 
                       <p class="inline">{{ product.metafields["global"]["Warranty"] }}</p>
                     </div>
                   </div>
-
+                {% unless noquantity %}
                   <div class="grid__item small--one-whole medium--one-half large--one-half">
-                    <h6>{{'products.product.quantity' | t | capitalize}}</h6>
+                    <h6>{{'products.product.quantity' | t | capitalize}}:</h6>
                     <input type="number" id="QuantitySmall" value="1" min="1" onchange="bt_product.changeQuantity(this)">
                   </div>
-
+                {% endunless %}
+                {% unless nocolor %}
                   {% if product.variants[0].option1 %}
                     <div class="grid__item small--one-half medium--one-half large--one-half">
                       <div class="margin-15">
-                        <h6 class="inline">{{'products.product.color' | t | capitalize}}</h6>
+                        <h6 class="inline">{{'products.product.color' | t | capitalize}}:</h6>
                         <p class="inline" id="colorTitle"></p>
                         <div id="color-options">
 
@@ -209,10 +278,11 @@
 
                     </div>
                   {% endif %}
-
+                {% endunless %}
+                {% unless nojars %}
                   {% if product.variants[0].option2 %}
                     <div class="grid__item small--one-half medium--one-whole">
-                      <h6 class="inline">{{ 'products.product.jar' | t }}</h6>: 
+                      <h6 class="inline">{{ 'products.product.jar' | t }}:</h6> 
                       <p class="inline" id="jarTitle"></p>
                       <div id="jar-options">
 
@@ -232,11 +302,14 @@
                       </div>
                     </div>
                   {% endif %}
+                {% endunless %}
+                {% unless noaddtocart %}
                   <div class="grid__item">
                     {% assign addToCartText = 'products.product.add_to_cart' | t %}
                     {% include 'cta-submit-button' with text: addToCartText, id: 'AddToCart' %}
                     {% include 'pricespider-button' %}
                   </div>
+                {% endunless %}
                 </div>
                 <div class="product-selectors" style="display:none;">
                   <select name="id" id="productSelect" class="product-single__variants">
@@ -271,39 +344,51 @@
           <h5 class='light-weight'>{{ 'products.product.features' | t }}</h6>
         </a>
       </li>
-      <li>
-        <a href="#tab-2">
-          <h5 class="light-weight">{{ 'products.product.specs' | t | upcase }}</h6>
-        </a>
-      </li>
-      <li>
-        <a href="#tab-3">
-          <h5 class="light-weight">{{ 'products.product.reviews' | t | upcase}}</h6>
-        </a>
-      </li>
-      <li>
-        <a href="#tab-4">
-          <h5 class="light-weight">{{ 'products.product.questions_answers' | t | upcase }}</h5>
-        </a>
-      </li>
+      {% unless nospecs %}
+        <li>
+          <a href="#tab-2">
+            <h5 class="light-weight">{{ 'products.product.specs' | t | upcase }}</h6>
+          </a>
+        </li>
+      {% endunless %}
+      {% unless noreviews %}
+        <li id="reviews-tab">
+          <a href="#tab-3">
+            <h5 class="light-weight">{{ 'products.product.reviews' | t | upcase}}</h6>
+          </a>
+        </li>
+      {% endunless %}
+      {% unless noQA %}
+        <li>
+          <a href="#tab-4">
+            <h5 class="light-weight">{{ 'products.product.questions_answers' | t | upcase }}</h5>
+          </a>
+        </li>
+      {% endunless %}
     </ul>
     <hr class="hr-no-margin">
     <div class="tab" id="tab-1">
       {% include "product-features" %}
     </div>
-    <div class="tab" id="tab-2">
-      {% include "product-specs" %}
-    </div>
-    <div class="tab" id="tab-3">
-        <h4>{{ 'products.product.reviews' | t }}</h4>
-      <hr class="accent">
-      {% include "bv-ratings-reviews" %}
-    </div>
-    <div class="tab" id="tab-4">
-        <h4>{{ 'products.product.questions_answers' | t }}</h4>
-      <hr class="accent">
-      {% include "bv-questions" %}
-    </div>
+    {% unless nospecs %}
+      <div class="tab" id="tab-2">
+        {% include "product-specs" %}
+      </div>
+    {% endunless %}
+    {% unless noreviews %}
+      <div class="tab" id="tab-3">
+          <h4>{{ 'products.product.reviews' | t }}</h4>
+        <hr class="accent">
+        {% include "bv-ratings-reviews" %}
+      </div>
+    {% endunless %}
+    {% unless noQA %}
+      <div class="tab" id="tab-4">
+          <h4>{{ 'products.product.questions_answers' | t }}</h4>
+        <hr class="accent">
+        {% include "bv-questions" %}
+      </div>
+    {% endunless %}
   </div>
 
   {% if section.settings.product_related %}
