@@ -307,6 +307,7 @@
                   <div class="grid__item">
                     {% assign addToCartText = 'products.product.add_to_cart' | t %}
                     {% include 'cta-submit-button' with text: addToCartText, id: 'AddToCart' %}
+                    {% include 'pricespider-button' %}
                   </div>
                 {% endunless %}
                 </div>
