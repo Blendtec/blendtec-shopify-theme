@@ -1,21 +1,33 @@
 {% assign alignmentCounter = 0 %}
+{% unless nopackageincludes %}
 <div class="grid">
   <div class="grid__item large--one-half medium--one-half">
-    <h4>{{ 'products.product.features' | t | upcase }}</h4>
+    <h4>{{ 'products.product.package_includes' | t | upcase }}</h4>
     <hr class="accent">
     <ul>
     <li>
-  	{{ product.metafields["global"]["Features-Included"] | replace: ",", "</li><li>" | replace: "|", "," }}
+    {{ product.metafields["global"]["package-includes"] | replace: ",", "</li><li>" | replace: "|", "," }}
     </li>
   </ul>
   </div>
   {% if product.metafields['global']['Features-Include-Image'] %}
   <div class="grid__item large--one-half medium--one-half">
-  	<img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ product.metafields['global']['Features-Include-Image'] | remove: settings['metafield_buckets_src'] }}">
+    <img style="width:100%" src="{{ settings['metafield_buckets'] }}{{ product.metafields['global']['Features-Include-Image'] | remove: settings['metafield_buckets_src'] }}">
   </div>
   {% endif %}
 </div>
+<hr>
+{% endunless %}
 {% include 'features-sub' with title: product.metafields['global']['Features-Sub1-title'], image: product.metafields['global']['Features-Sub1-image'], text: product.metafields["global"]["Features-Sub1-text"]   %}
+{% if product.metafields['global']['Features-Sub1-title'] %} 
+<hr>
+{% endif %}
 {% include 'features-sub' with title: product.metafields['global']['Features-Sub2-title'], image: product.metafields['global']['Features-Sub2-image'], text: product.metafields["global"]["Features-Sub2-text"]   %}
+{% if product.metafields['global']['Features-Sub2-title'] %} 
+<hr>
+{% endif %}
 {% include 'features-sub' with title: product.metafields['global']['Features-Sub3-title'], image: product.metafields['global']['Features-Sub3-image'], text: product.metafields["global"]["Features-Sub3-text"]   %}
+{% if product.metafields['global']['Features-Sub3-title'] %} 
+<hr>
+{% endif %}
 {% include 'features-sub' with title: product.metafields['global']['Features-Sub4-title'], image: product.metafields['global']['Features-Sub4-image'], text: product.metafields["global"]["Features-Sub4-text"]   %}
