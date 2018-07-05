@@ -3,7 +3,7 @@
     <!-- Bazaarvoice Summary Container -->
 {% endcomment %}
 <div class="bv--summary">
-    <div id="bv-button-enable" onmouseover="enableBvReviews('#bv-button-enable');" data-bv-show="rating_summary" data-bv-productId="{{product.id}}">
+    <div data-bv-show="rating_summary" data-bv-productId="{{product.id}}">
     {% if product.metafields.bazaarvoice.reviews-aggregate-ratings %}
         {{ product.metafields.bazaarvoice.reviews-aggregate-ratings }}
     {% endif %}
