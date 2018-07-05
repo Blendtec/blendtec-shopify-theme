@@ -1,3 +1,12 @@
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.10.1...v1.11.0) (2018-07-05)
+
+
+### Features
+
+* **bv review button:** enable the bazaarvoice review button without a loop ([a93368c](https://github.com/Blendtec/blendtec-shopify-theme/commit/a93368c))
+* **BV review button:** enabled the BV review button ([e170185](https://github.com/Blendtec/blendtec-shopify-theme/commit/e170185))
+
 <a name="1.10.1"></a>
 ## [1.10.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.10.0...v1.10.1) (2018-07-05)
 
