@@ -52,11 +52,21 @@ ira.cacheSelectors = function () {
   };
 };
 
+function enableBvReviews() {
+  $(document).on('click','.bv_button_buttonFull', function () {
+    $('#reviews-tab').find('a').trigger('click');
+    $('html, body').animate({
+        scrollTop: $("#reviews-tab").offset().top
+    }, 500);
+  }); 
+}
+
 bt_product.init = function() {
   ira.productSidebar();
   ira.productImageSwitch();
   new ProductPage();
   $('body').trigger('bt:product:ready');
+  enableBvReviews();
 }
 
 bt_product.enableTabs = function (el) {
