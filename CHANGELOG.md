@@ -1,3 +1,12 @@
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.10.0...v1.10.1) (2018-07-05)
+
+
+### Bug Fixes
+
+* **bazaarvoice button:** got rid of loop to activate bazaarvoice button ([eead8ec](https://github.com/Blendtec/blendtec-shopify-theme/commit/eead8ec))
+* **product page and navbar:** corrected small bugs from last push ([74ff1ee](https://github.com/Blendtec/blendtec-shopify-theme/commit/74ff1ee))
+
 <a name="1.10.0"></a>
 # [1.10.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.9.0...v1.10.0) (2018-07-03)
 
