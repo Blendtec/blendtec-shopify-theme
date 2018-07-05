@@ -2809,6 +2809,7 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
     @include at-query($min, $large){
       margin-right: 0.8em;
       float: right;
+      top: 0px;
     }
 
     .header-control:not(.active):hover {
@@ -2825,6 +2826,7 @@ body:not(.js-drawer-open).template-collection .transparent-header:not(.js-search
   &.has-breadcrumbs.offset-by-notification-bar:not(.transparent-header) .site-header-controls {
     @include at-query($min, $medium + 1) {
       border-bottom: 1px solid #eee;
+      top: 0px;
     }
   }
 }
@@ -5911,6 +5913,7 @@ p.h6.light {
 #ProductPhotoSlideshow {
   position: relative;
   width: 100%;
+  max-width:700px;
 
   &.slick-slider { margin-bottom: 0; }
 
@@ -9628,7 +9631,7 @@ body:not(.ios) .shopify-section.features {
 
 .partners {
   .section-wrapper {
-  	background-size: cover;
+    background-size: cover;
     background-position-y:20%;
     min-height: 200px;
   }

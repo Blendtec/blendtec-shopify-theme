@@ -52,25 +52,11 @@ ira.cacheSelectors = function () {
   };
 };
 
-var bvEnableScrollToReviews = function () {
-  setTimeout(function() {
-    if ($('.bv_button_buttonFull').length ) {
-        $('.bv_button_buttonFull').on('click', function () {
-          $('#reviews-tab').find('a').trigger('click');
-          $('html, body').animate({
-              scrollTop: $("#reviews-tab").offset().top
-          }, 500);
-        });
-    }  
-  }, 5000);
-};
-
 bt_product.init = function() {
   ira.productSidebar();
   ira.productImageSwitch();
   new ProductPage();
   $('body').trigger('bt:product:ready');
-  bvEnableScrollToReviews();
 }
 
 bt_product.enableTabs = function (el) {
