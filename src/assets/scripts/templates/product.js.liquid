@@ -52,6 +52,18 @@ ira.cacheSelectors = function () {
   };
 };
 
+function enableBvReviews(id) {
+    if ($('.bv_button_buttonFull').length ) {
+        $('.bv_button_buttonFull').on('click', function () {
+          $('#reviews-tab').find('a').trigger('click');
+          $('html, body').animate({
+              scrollTop: $("#reviews-tab").offset().top
+          }, 500);
+        });
+        $(id).attr('onmouseover', null);
+    }  
+}
+
 bt_product.init = function() {
   ira.productSidebar();
   ira.productImageSwitch();
