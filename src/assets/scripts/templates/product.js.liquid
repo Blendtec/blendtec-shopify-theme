@@ -53,7 +53,6 @@ ira.cacheSelectors = function () {
 };
 
 var bvEnableScrollToReviews = function () {
-  setTimeout(function() {
     if ($('.bv_button_buttonFull').length ) {
         $('.bv_button_buttonFull').on('click', function () {
           $('#reviews-tab').find('a').trigger('click');
@@ -61,8 +60,11 @@ var bvEnableScrollToReviews = function () {
               scrollTop: $("#reviews-tab").offset().top
           }, 500);
         });
-    }  
-  }, 5000);
+    } else {
+      setTimeout(function(){
+        bvEnableScrollToReviews();
+      }, 100);
+    }
 };
 
 bt_product.init = function() {
