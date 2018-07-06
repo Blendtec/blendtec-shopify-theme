@@ -22,9 +22,15 @@
 
 ### Features
 
+* **pricespider button setup:** button spacing issue fixed ([f629562](https://github.com/Blendtec/blendtec-shopify-theme/commit/f629562))
+* **Compare blenders update:** fixed styling issue on the product compare page ([a2f9e4c](https://github.com/Blendtec/blendtec-shopify-theme/commit/a2f9e4c))
+* **Google Verification:** google site verification meta tag added ([5a68b0f](https://github.com/Blendtec/blendtec-shopify-theme/commit/5a68b0f))
+* **Product template updates:** made the caption go underneath the title ([9bcc9c1](https://github.com/Blendtec/blendtec-shopify-theme/commit/9bcc9c1))
+* **IE homepage overflow:** fixed bug on ie of there being a scrollbar next to the main-content div ([a575572](https://github.com/Blendtec/blendtec-shopify-theme/commit/a575572))
+* **IE not working home page:** make front page work with ie ([28c2780](https://github.com/Blendtec/blendtec-shopify-theme/commit/28c2780))
 * **pricespider button:** enable the pricespider button ([a8db230](https://github.com/Blendtec/blendtec-shopify-theme/commit/a8db230))
 * **product-template:** requested changes to the product template page ([311934c](https://github.com/Blendtec/blendtec-shopify-theme/commit/311934c))
-* **registraiton:** mobile version of registration with corrected spacing and allow popup to scroll ([efb883b](https://github.com/Blendtec/blendtec-shopify-theme/commit/efb883b))
+* **registration:** mobile version of registration with corrected spacing and allow popup to scroll ([efb883b](https://github.com/Blendtec/blendtec-shopify-theme/commit/efb883b))
 * **top header:** made top header stick to top of page ([293937d](https://github.com/Blendtec/blendtec-shopify-theme/commit/293937d))
 
 <a name="1.9.0"></a>
