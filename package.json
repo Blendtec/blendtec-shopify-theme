@@ -34,6 +34,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-shopify": "^22.0.0",
     "eslint-plugin-standard": "^3.0.1",
+    "imagesloaded": "^4.1.4",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
@@ -59,7 +60,7 @@
     "lodash": "3.9.3",
     "masonry-layout": "3.3.0",
     "normalize.css": "^8.0.0",
-    "slick-carousel": "1.5.5"
+    "slick-carousel": "^1.8.1"
   },
   "release": {
     "branch": "master",
