@@ -557,4 +557,9 @@ var ajaxCart = (function(module, $) {
 
   return module;
 
+
 }(ajaxCart || {}, jQuery));
+$(document).on('cart:load', function(e) {
+  ajaxCart.load();
+  e.stopPropagation();
+});
