@@ -1,3 +1,78 @@
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.10.1...v1.11.0) (2018-07-05)
+
+
+### Features
+
+* **bv review button:** enable the bazaarvoice review button without a loop ([a93368c](https://github.com/Blendtec/blendtec-shopify-theme/commit/a93368c))
+* **BV review button:** enabled the BV review button ([e170185](https://github.com/Blendtec/blendtec-shopify-theme/commit/e170185))
+
+<a name="1.10.1"></a>
+## [1.10.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.10.0...v1.10.1) (2018-07-05)
+
+
+### Bug Fixes
+
+* **bazaarvoice button:** got rid of loop to activate bazaarvoice button ([eead8ec](https://github.com/Blendtec/blendtec-shopify-theme/commit/eead8ec))
+* **product page and navbar:** corrected small bugs from last push ([74ff1ee](https://github.com/Blendtec/blendtec-shopify-theme/commit/74ff1ee))
+
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.9.0...v1.10.0) (2018-07-03)
+
+
+### Features
+
+* **pricespider button setup:** button spacing issue fixed ([f629562](https://github.com/Blendtec/blendtec-shopify-theme/commit/f629562))
+* **Compare blenders update:** fixed styling issue on the product compare page ([a2f9e4c](https://github.com/Blendtec/blendtec-shopify-theme/commit/a2f9e4c))
+* **Google Verification:** google site verification meta tag added ([5a68b0f](https://github.com/Blendtec/blendtec-shopify-theme/commit/5a68b0f))
+* **Product template updates:** made the caption go underneath the title ([9bcc9c1](https://github.com/Blendtec/blendtec-shopify-theme/commit/9bcc9c1))
+* **IE homepage overflow:** fixed bug on ie of there being a scrollbar next to the main-content div ([a575572](https://github.com/Blendtec/blendtec-shopify-theme/commit/a575572))
+* **IE not working home page:** make front page work with ie ([28c2780](https://github.com/Blendtec/blendtec-shopify-theme/commit/28c2780))
+* **pricespider button:** enable the pricespider button ([a8db230](https://github.com/Blendtec/blendtec-shopify-theme/commit/a8db230))
+* **product-template:** requested changes to the product template page ([311934c](https://github.com/Blendtec/blendtec-shopify-theme/commit/311934c))
+* **registration:** mobile version of registration with corrected spacing and allow popup to scroll ([efb883b](https://github.com/Blendtec/blendtec-shopify-theme/commit/efb883b))
+* **top header:** made top header stick to top of page ([293937d](https://github.com/Blendtec/blendtec-shopify-theme/commit/293937d))
+
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.8.0...v1.9.0) (2018-06-15)
+
+
+### Bug Fixes
+
+* **recipe-template:** Servingsizes not showing measurement ([e1289bc](https://github.com/Blendtec/blendtec-shopify-theme/commit/e1289bc))
+* **review-carousel:** Fix bottom margin gap ([5a53347](https://github.com/Blendtec/blendtec-shopify-theme/commit/5a53347))
+
+
+### Features
+
+* **affirm styling:** affirm 'learn more' link style as CTA ([8d43abf](https://github.com/Blendtec/blendtec-shopify-theme/commit/8d43abf))
+
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.7.1...v1.8.0) (2018-06-07)
+
+
+### Bug Fixes
+
+* **partner-brands:** remove deprecated setting check ([593d95f](https://github.com/Blendtec/blendtec-shopify-theme/commit/593d95f))
+
+
+### Features
+
+* **theme:** Add google site verification setting ([57bb1f7](https://github.com/Blendtec/blendtec-shopify-theme/commit/57bb1f7))
+
+<a name="1.7.1"></a>
+## [1.7.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.7.0...v1.7.1) (2018-06-07)
+
+
+### Bug Fixes
+
+* **bt-hero-section:** change class name to allow event listening ([6f91370](https://github.com/Blendtec/blendtec-shopify-theme/commit/6f91370))
+
+
+### Performance Improvements
+
+* **vendor.js:** remove FastClick library ([215112e](https://github.com/Blendtec/blendtec-shopify-theme/commit/215112e))
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.5.2...v1.6.0) (2018-06-01)
 
