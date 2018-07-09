@@ -8,16 +8,15 @@ const copyWebpackPluginConf = new CopyWebpackPlugin([
   {from: './src/assets/fonts/**/*.{ttf,woff,eof,svg}', to: 'assets', flatten: true},
   {from: './src/assets/images', to: 'assets'},
   {from: './src/assets/**/*.liquid', to: 'assets', flatten: true},
-  // LEGACY SCRIPTS - These have not been migrated to webpack and are beying copied directly
+  // LEGACY SCRIPTS - These have not been migrated to ES5 and are being copied directly
   {from: './src/assets/scripts/util/autofit_images.js', to: 'assets', flatten: true},
-  {from: './src/assets/scripts/sections/jquery.currencies.min.js', to: 'assets', flatten: true},
+  {from: './src/assets/scripts/static/jquery.currencies.min.js', to: 'assets', flatten: true},
   {from: './src/assets/scripts/static/price-spider.js', to: 'assets', flatten: true},
   {from: './src/assets/scripts/static/raf.js', to: 'assets', flatten: true},
-  {from: './src/assets/scripts/static/respond.min.js', to: 'assets', flatten: true},
   {from: './src/assets/scripts/static/vendor.min.js', to: 'assets', flatten: true},
+  {from: './src/assets/scripts/static/respond.min.js', to: 'assets', flatten: true},
   // END LEGACY SCRIPTS
   {from: './src/assets/styles/**/*.css', to: 'assets', flatten: true},
-  //{from: './node_modules/slick-carousel/slick/fonts/*.woff', to: 'assets'},
   {from: './src/assets/svg', to: 'assets', flatten: true},
   {from: './src/config', to: 'config'},
   {from: './src/layout', to: 'layout'},
@@ -42,7 +41,8 @@ module.exports = {
     vendor: ['lodash', 'slick-carousel', 'imagesloaded'],
   },
   externals: {
-    jquery: 'jQuery'
+    jquery: 'jQuery',
+    slick: 'slick',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -56,7 +56,6 @@ module.exports = {
     rules: [{
       test: /\.scss$/,
       use: [
-        // process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
         MiniCssExtractPlugin.loader,
         'css-loader',
         'sass-loader',
@@ -66,18 +65,13 @@ module.exports = {
       test: /vendor\/.+\.(jsx|js)$/,
       loader: 'imports-loader?jQuery=jquery,$=jquery,this=>window'
     },
-    // {
-    //   test: /\.js$/,
-    //   exclude: /(node_modules|bower_components)/,
-    //   use: {
-    //     loader: 'babel-loader',
-    //     options: {
-    //       presets: [
-    //         '@babel/preset-env',
-    //       ],
-    //     },
-    //   },
-    // },
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader'
+      },
+    },
     ],
-  },
+  }
 };
