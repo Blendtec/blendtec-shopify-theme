@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import initScrollTriggers from '../util/scroll-triggers';
 import hero from './hero';
 import footer from './footer';
 import instagram from './instagram';
@@ -9,6 +8,7 @@ import reviewCarousel from './review-carousel';
 import videoPlayer from './video-player';
 import carousel from './carousel';
 import header from './header';
+import exitIntent from './exit-intent';
 
 var imagesLoaded = require('imagesloaded');
 imagesLoaded.makeJQueryPlugin($);
@@ -18,6 +18,7 @@ var page = {
     init: function() {
         page.cacheSelectors();
         header.init();
+        exitIntent.init();
         page.el.$window.on('widthChange', footer.init);
         page.el.$body.imagesLoaded(footer.init);
     },

@@ -26,7 +26,7 @@ var header = {
         header.CartDrawer = new Drawers('CartDrawer', 'right', {
             onDrawerOpen: ajaxCart.load
         });
-        header.el.$body.on('ajaxCart.afterCartLoad', header.CartDrawer.open);
+        header.el.$body.on('ajaxCart.afterCartLoad', () => { header.CartDrawer.open(); });
         header.stickyHeader({
             stickyHeaderEnabled:
                 header.el.$header.attr('data-sticky-header') == 'true',

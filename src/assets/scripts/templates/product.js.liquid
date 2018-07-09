@@ -14,38 +14,14 @@ ira.cacheSelectors = function () {
     windowHeight             : $(window).height(),
 
     // Navigation
-    $navigation              : $('#AccessibleNav'),
-    $mobileSubNavToggle      : $('.mobile-nav__has-sublist'),
     $header                  : $('.site-header'),
-    $headerControls          : $('.site-header-controls'),
     $headerCurrencyConverter : $('.header-message-currency'),
-
-    // Drawers
-    $allDrawers                 : $('.drawer'),
-
-    // Collection Pages
-    $changeView              : $('.change-view'),
 
     // Product Page
     $productImage            : $('#ProductPhotoImg'),
     $thumbImages             : $('#ProductThumbs').find('[data-product-thumbnail]'),
     $photoContainer          : $('#PhotoContent'),
     $productSidebar          : $('#sidebarColumn'),
-
-    // Customer Pages
-    $recoverPasswordLink     : $('#RecoverPassword'),
-    $hideRecoverPasswordLink : $('#HideRecoverPasswordLink'),
-    $recoverPasswordForm     : $('#RecoverPasswordForm'),
-    $customerLoginForm       : $('#CustomerLoginForm'),
-    $passwordResetSuccess    : $('#ResetSuccess'),
-
-
-    //Exit intent / misc
-    $exitIntentOverlay      :  $('.exit-intent-overlay'),
-    $notificationBar        :  $('#notification-bar'),
-    $fadeOutOverlay         :  $('.fadeout-overlay'),
-    $searchBar              :  $('#HeaderSearchBar'),
-    $pageContainer          :  $("#PageContainer"),
 
     // Footer
     $footer                 :  $('#shopify-section-footer')
@@ -62,8 +38,10 @@ function enableBvReviews() {
 }
 
 bt_product.init = function() {
+  ira.cacheSelectors();
   ira.productSidebar();
   ira.productImageSwitch();
+
   new ProductPage();
   $('body').trigger('bt:product:ready');
   enableBvReviews();

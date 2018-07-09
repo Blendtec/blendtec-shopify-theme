@@ -8,7 +8,7 @@ var exitIntent = {
        exitIntent.el.$body= $(document.body);
     },
     init: function() {
-        var $overlay = this.cache.$exitIntentOverlay;
+        var $overlay = exitIntent.el.$exitIntentOverlay;
 
         if (window.ThemeEditor == null && $('[data-exit-intent-overlay]').length) {
           setTimeout(function () {
@@ -38,15 +38,15 @@ var exitIntent = {
         });
       
         // checks URL for successful submission of form, then shows the popup
-        q = window.location.search.slice(1);
+        var q = window.location.search.slice(1);
         if (q == 'customer_posted=true') {
           $overlay.addClass('show');
         }
     },
     dismiss: function(e) {
-        exitIntent.el.$document.trigger('bt:intent:dismiss', e);
+        $(document).trigger('bt:intent:dismiss', e);
         e.preventDefault();
-        exitIntent.el.$exitIntentOverlay.removeClass('show');
+        $('.exit-intent-overlay').removeClass('show');
     }
 };
 

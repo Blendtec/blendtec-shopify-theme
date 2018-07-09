@@ -9,7 +9,7 @@ var page = {
     el: {},
     windowHeight: 0,
     windowWidth: 0,
-    init: function() {
+    init: () => {
         page.cacheSelectors();
         page.el.$document.on('bt:header:init', accesibleNav.init);
         page.el.$window.on('resize', page.windowResizeHandler);
@@ -29,7 +29,7 @@ var page = {
         page.el.$document.trigger('bt:ready');
         page.el.$body.addClass('ready');
     },
-    cacheSelectors: function() {
+    cacheSelectors: () => {
         page.el.$window = $(window);
         page.el.$document = $(document);
         page.el.$body = $(document.body);
@@ -38,7 +38,7 @@ var page = {
         page.windowHeight = page.el.$window.height();
         page.windowWidth = page.el.$window.width();
     },
-    windowResizeHandler: function() {
+    windowResizeHandler: () => {
         var width = page.el.$window.width();
         var height = page.el.$window.height();
         if (page.windowWidth != width) {
@@ -50,7 +50,7 @@ var page = {
             page.windowHeight = height;
         }
     },
-    ie8Resize: function() {
+    ie8Resize: () => {
         if (page.el.$window.width() > 841) {
             $('.large--one-third').css('width', '33.33%');
         }
@@ -58,7 +58,7 @@ var page = {
         $('.site-header .large--one-third').css('width', '33.33%');
         $('.controls-container').css('width', '100%');
     },
-    mobileNavToggle: function() {
+    mobileNavToggle: () => {
         page.el.$navSubList.on('click', function() {
             $(this).toggleClass('mobile-nav--expanded');
             $(this)
