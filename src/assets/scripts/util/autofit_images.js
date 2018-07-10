@@ -221,12 +221,12 @@ function initAutofitImages() {
 
   };
 
-  window.onresize = function () {
+  $(window).onresize = function () {
   	loadImagesByWidth(imageString, backgroundString);
   };
 
 
-  window.onscroll = function () {
+  $(window).onscroll = function () {
     loadIfVisible();
   };
 

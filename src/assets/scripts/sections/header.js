@@ -396,6 +396,7 @@ var header = {
         }
     },
     setNavStyle: function(type) {
+        console.log('nav style set');
         if (type === 'mobile') {
             $('.js-drawer-open-NavDrawer').css('display', 'inline-block');
             $('.js-account-icon').css('display', 'none');
