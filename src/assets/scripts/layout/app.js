@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Platform from '../util/platform';
 import initScrollTriggers from '../util/scroll-triggers';
+import initAutofitImages from '../util/autofit_images';
 import accesibleNav from '../util/accessible-nav';
 import truncator from '../util/truncator';
 import responsiveVideos from '../util/responsive-videos';
@@ -10,6 +11,7 @@ var page = {
     windowHeight: 0,
     windowWidth: 0,
     init: () => {
+        initAutofitImages();
         page.cacheSelectors();
         page.el.$document.on('bt:header:init', accesibleNav.init);
         page.el.$window.on('resize', page.windowResizeHandler);
