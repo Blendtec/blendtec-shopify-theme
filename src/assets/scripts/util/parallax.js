@@ -5,28 +5,25 @@ import Platform from './platform';
 var parallax = {
     el: {},
     animating: false,
-    init: function() {
+    init: function(containerSelector) {
         parallax.cacheSelectors();
-        var $firstSection = $('.parallax-element:not(#notification-bar)');
 
-        $firstSection
+        const $container = $(containerSelector);
+        if (!$container.length) {
+            return;
+        }
+        $container
             .addClass('has-parallax')
             .attr('data-parallax', 'true')
             .attr('data-speed', '0.5')
             .attr('data-direction', 'down');
 
-        var parallaxElement = $('.parallax-element').length;
-        var onImageCollectionPage = $('.section-header--image').length;
-
-        if (!parallaxElement && !onImageCollectionPage) {
-            return;
-        }
-
-
         var $parallax = $('[data-parallax="true"]:not(#notification-bar');
         parallax.el.$body.addClass('js-parallax');
         parallax.scrollEvent($parallax);
-        parallax.el.$window.on('scroll', () => parallax.throttlePrepare($parallax));
+        parallax.el.$window.on('scroll', () => {
+            parallax.throttlePrepare($parallax);
+        });
     },
     cacheSelectors: function() {
         parallax.el.$window = $(window);
@@ -44,7 +41,7 @@ var parallax = {
     scrollEvent: function(element) {
         var windowWidth = $(window).width();
         var windowHeight = $(window).height();
-        
+
         if (!Platform.isTouchDevice() && windowWidth > 840) {
             var viewportTop = $(window).scrollTop();
 

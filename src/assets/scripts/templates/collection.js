@@ -16,17 +16,7 @@ var collection = {
             collection.adjustHeadinge
         );
 
-        var $firstSection = $(
-            '.parallax-container #shopify-section-collection-template'
-        );
-
-        $firstSection
-            .addClass('has-parallax')
-            .attr('data-parallax', 'true')
-            .attr('data-speed', '0.5')
-            .attr('data-direction', 'down');
-
-            parallax.init($firstSection);
+        parallax.init('.parallax-container #shopify-section-collection-template .section-header');
     },
     cacheSelectors: function() {
         collection.el.$changeView = $('.change-view');
