@@ -1,5 +1,5 @@
 <footer class="site-footer small--text-center {% if section.blocks.size > 0 %}has-content{% endif %}" role="contentinfo">
-    <div class="footer-wrapper javascript-load-image" backgroundimagesrc1200="{{section.settings.background_image | img_url: '1200x' }}" backgroundimagesrc1000="{{section.settings.background_image | img_url: '1000x' }}" backgroundimagesrc800="{{section.settings.background_image | img_url: '800x' }}"  backgroundimagesrc700="{{section.settings.background_image | img_url: '700x' }}" backgroundimagesrc600="{{section.settings.background_image | img_url: '600x' }}">
+    <div class="footer-wrapper" style="background-image: url({{section.settings.background_image | img_url: '1200x' }})">
         <div class="grid small--text-left">
             {% if section.blocks.size > 0 %}
                 <div class="footer-container">
