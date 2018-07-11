@@ -75,10 +75,6 @@ var Drawers = (function () {
 
     $('.js-drawer-open-' + this.id).closest('.header-control').addClass('active');
 
-    // ira.carousels.forEach(function(carousel) {
-    //   carousel.pause();
-    // });
-
     // Without this, the drawer opens, the click event bubbles up to $nodes.page
     // which closes the drawer.
     if (evt && evt.stopPropagation) {
@@ -90,10 +86,6 @@ var Drawers = (function () {
     if (this.drawerIsOpen && !externalCall) {
       return this.close();
     }
-
-    //if (this.otherDrawersOpen()) {
-    //  this.otherDrawer().close();
-   // }
 
     this.scrollPositionOnOpen = $(window).scrollTop();
 
@@ -136,10 +128,6 @@ var Drawers = (function () {
     if ($(window).width() <= 840) {
       $(window).scrollTop(this.scrollPositionOnOpen);
     }
-
-    // ira.carousels.forEach(function(carousel) {
-    //   carousel.play();
-    // });
 
     // deselect any focused form elements
     $(document.activeElement).trigger('blur');
@@ -193,17 +181,6 @@ var Drawers = (function () {
     }.bind(this));
     return output;
   };;
-
-//  Drawer.prototype.otherDrawersOpen = function () {
-//    for (var i = 0; i < ira.allDrawers.length; i++) {
-//      var e = ira.allDrawers[i];
-//      if (e.drawerIsOpen && (e.id !== this.id)) {
-//        return true;
-//      }
-//    }
-//    return false;
-//
-//  };;
 
   return Drawer;
 })();

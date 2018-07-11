@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import _ from 'lodash';
 import converter from '../util/currency-converter';
-import Platform from '../util/platform';
 import Drawers from '../util/drawer';
+import search from './header-search';
 
 var header = {
     el: {},
@@ -52,7 +52,7 @@ var header = {
             });
         }
 
-        header.searchInit({
+        search.init({
             transparentHeaderEnabled:
                 header.el.$header.attr('data-transparent-header') == 'true',
             stickyHeaderEnabled:
@@ -83,7 +83,6 @@ var header = {
             window.location.pathname.indexOf('products') !== -1 &&
             header.el.$html.hasClass('supports-touch')
         ) {
-            // We don't want sticky header on the product page for mobile
             return $('.' + CLASS_NAME).removeClass(CLASS_NAME);
         }
 
@@ -430,104 +429,6 @@ var header = {
         });
 
         return navWidth;
-    },
-    searchInit: function(options) {
-        var config = {
-            openClassSelector: '.search-open',
-            closeClassSelector: '.search-close',
-            searchBarSelector: '#HeaderSearchBar',
-            searchInputSelector: '#searchBarInput',
-            jsClassOpen: 'js-search-open'
-        };
-
-        var transparentHeaderEnabled = options.transparentHeaderEnabled;
-
-        var $nodes = {
-            open: $(config.openClassSelector),
-            close: $(config.closeClassSelector),
-            searchBar: $(config.searchBarSelector),
-            input: $(config.searchInputSelector)
-        };
-
-        // Only have elements be tab-able when search is open
-        $nodes.close.add($nodes.input).attr('tabindex', -1);
-
-        function drawerOpenHandler(e) {
-            $(document).trigger('drawer:open', ['Searchbar']);
-            $nodes.searchBar.revealer('show');
-            $nodes.close.add($nodes.input).attr('tabindex', 0);
-
-            if (
-                !(
-                    (Platform.isIOS() && options.stickyHeaderEnabled) ||
-                    Platform.isOldIE()
-                )
-            ) {
-                $nodes.input[0].select();
-            }
-
-            header.el.$header.add(header.el.$html).addClass(config.jsClassOpen);
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-
-        function drawerCloseHandler(e) {
-            if (
-                typeof e !== 'undefined' &&
-                typeof e.preventDefault === 'function'
-            ) {
-                e.preventDefault();
-            }
-            $nodes.searchBar.revealer('hide');
-            header.el.$header
-                .add(header.el.$html)
-                .removeClass(config.jsClassOpen);
-
-            $nodes.close.add($nodes.input).attr('tabindex', 0);
-        }
-
-        function keyboardHandlers() {
-            // Close the menu when the escape key is pressed.
-            window.onkeydown = function(event) {
-                if (event.keyCode === 27) {
-                    drawerCloseHandler();
-                }
-
-                // alt+f brings up search
-                if (event.keyCode === 70 && event.altKey) {
-                    event.preventDefault();
-                    drawerOpenHandler();
-                }
-            };
-        }
-
-        function closeOnOutsideClick(e) {
-            // Only close if the user clicks outside of searchbox.
-            // Also included header, otherwise it pre-emptively closes before opening.
-            if (
-                $('html').hasClass('js-search-open') &&
-                $(e.target).closest($nodes.searchBar).length === 0 &&
-                $(e.target).closest(header.el.$header).length === 0
-            ) {
-                drawerCloseHandler();
-            }
-        }
-
-        function killEvent(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-        // IE8 doesn't play nicely with some of our layout voodoo,
-        // so when they click search just follow the href to search page.
-        if (!Platform.isOldIE()) {
-            $($nodes.open[0]).on('click', drawerOpenHandler);
-            $($nodes.close[0]).on('click', drawerCloseHandler);
-            $($nodes.searchBar[0]).on('click', killEvent);
-            $(document).on('click', closeOnOutsideClick);
-            keyboardHandlers();
-        }
     },
     initCatalogMenu: function() {
         var triggers = menu.find('ul li');
