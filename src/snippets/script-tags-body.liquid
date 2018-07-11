@@ -1,16 +1,22 @@
 <script src="{{ 'app.bundle.js' | asset_url }}" type="module"></script> 
+<script src="{{ 'app.bundle.js' | asset_url }}" nomodule></script> 
+
 <script src="{{ 'sections.bundle.js' | asset_url }}" type="module"></script>
+<script src="{{ 'sections.bundle.js' | asset_url }}" nomodule></script>
 
  {% if template.name == 'blog' %}
     <script src="{{ 'blog.bundle.js' | asset_url }}" type="module"></script>
+     <script src="{{ 'blog.bundle.js' | asset_url }}" nomodule></script>
  {% endif %}
 
  {% if template.name == 'collection' %}
     <script src="{{ 'collection.bundle.js' | asset_url }}" type="module"></script>
+    <script src="{{ 'collection.bundle.js' | asset_url }}" nomodule></script>
  {% endif %}
 
  {% if template.name == 'index' %}
     <script src="{{ 'index.bundle.js' | asset_url }}" type="module"></script>
+    <script src="{{ 'index.bundle.js' | asset_url }}" nomodule></script>
  {% endif %}
 
  {% if template.name == 'product' %}
@@ -27,7 +33,6 @@
    Ajaxify your cart with this plugin.
    Documentation: - http://shopify.com/timber#ajax-cart
  {% endcomment %}
- {{ 'autofit_images.js' | asset_url | script_tag }}
  {% include 'ajax-cart-template' %}
  {{ 'ajax-cart.js' | asset_url | script_tag }}
 
