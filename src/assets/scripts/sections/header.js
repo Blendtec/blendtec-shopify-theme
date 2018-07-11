@@ -1,14 +1,11 @@
 import $ from 'jquery';
-import _ from 'lodash';
 import converter from '../util/currency-converter';
 import Drawers from '../util/drawer';
 import search from './header-search';
+import navigation from './header-navigation';
 
 var header = {
     el: {},
-    navigationStyle: null,
-    navWidth: 0,
-    navDrawer: null,
     cartDrawer: null,
     allDrawers: [],
     cacheSelectors: function() {
@@ -22,7 +19,6 @@ var header = {
     },
     init: function(ignoreNav) {
         this.cacheSelectors();
-        header.NavDrawer = new Drawers('NavDrawer', 'right');
         header.CartDrawer = new Drawers('CartDrawer', 'right', {
             onDrawerOpen: () => { $(document).trigger('cart:load');}
         });
@@ -46,7 +42,7 @@ var header = {
         });
 
         if (!ignoreNav) {
-            header.setupNavigation({
+            navigation.init({
                 navigationInline:
                     header.el.$header.attr('data-inline-navigation') == 'true'
             });
@@ -63,11 +59,7 @@ var header = {
             setTimeout(converter.init(), 50);
         }
 
-        var catalogMenu = $('.dropdown.catalog-menu');
-        if (catalogMenu.length) {
-            header.initCatalogMenu(catalogMenu);
-        }
-
+        
         if (header.el.$notificationBar.length > 0) {
             header.el.$body.addClass('respond-to-notification-bar');
         }
@@ -330,119 +322,7 @@ var header = {
             }
         }
     },
-    setupNavigation: function(options) {
-        var debouncedPrepare = _.debounce(function() {
-            if (options.navigationInline) {
-                if (header.navigationStyle === 'desktop') {
-                    header.setNavStyle(header.whichNav());
-                } else if (
-                    header.navigationStyle === 'mobile' &&
-                    Math.ceil($(window).width()) * (3 / 4) >
-                        Math.ceil(
-                            $('.site-header__logo').outerWidth(true) + 1
-                        ) +
-                            header.navWidth +
-                            15
-                ) {
-                    header.navigationStyle = 'desktop';
-                    header.setNavStyle('desktop');
-                }
-            }
-        }, 100);
 
-        $(window).on('resize', debouncedPrepare);
-
-        $('.has-dropdown').on('mouseenter mouseleave', function(event) {
-            var target = $(event.target);
-            var container = target.hasClass('has-dropdown')
-                ? target
-                : target.closest('.has-dropdown');
-            var catalogMenu = container.find('.catalog-menu');
-
-            if (catalogMenu.length && event.type == 'mouseenter') {
-                catalogMenu.css('margin-left', 0);
-
-                var offset = 0;
-
-                catalogMenu.addClass('visibly-hidden');
-                var width = catalogMenu.outerWidth();
-                var left = catalogMenu.offset().left;
-                var difference = window.innerWidth - (width + left);
-
-                if (difference < 0) {
-                    offset = difference - 20;
-                }
-
-                catalogMenu.removeClass('visibly-hidden');
-                catalogMenu.css('margin-left', offset);
-            }
-
-            container.find('a').toggleClass('active');
-            container.find('.dropdown').revealer('toggle');
-        });
-
-        if (options.navigationInline) {
-            header.navigationStyle = 'desktop';
-            if ($('.site-header').imagesLoaded) {
-                $('.site-header').imagesLoaded(function() {
-                    header.setNavStyle(header.whichNav());
-                });
-            }
-
-            if ($(window).width() > 840) {
-                header.navWidth = header.getNavWidth();
-            }
-        }
-    },
-    setNavStyle: function(type) {
-        if (type === 'mobile') {
-            $('.js-drawer-open-NavDrawer').css('display', 'inline-block');
-            $('.js-account-icon').css('display', 'none');
-            $('.main-navigation')
-                .hide()
-                .removeClass('nav-loading');
-        } else {
-            $('.js-drawer-open-NavDrawer').css('display', 'none');
-            $('.js-account-icon').css('display', 'inline-block');
-            $('.main-navigation')
-                .css({ left: '17%' })
-                .show()
-                .removeClass('nav-loading');
-        }
-    },
-    whichNav: function() {
-        var windowWidth = Math.ceil($(window).width()) * (3 / 4);
-        var logoWidth = Math.ceil($('.site-header__logo').outerWidth(true));
-        var availableWidth = windowWidth - logoWidth;
-
-        if (availableWidth - 15 < header.getNavWidth()) {
-            return 'mobile';
-        } else {
-            return 'desktop';
-        }
-    },
-    getNavWidth: function() {
-        var navWidth = 20;
-
-        $('.main-navigation li').each(function(i, el) {
-            navWidth += Math.ceil($(el).outerWidth(true));
-        });
-
-        return navWidth;
-    },
-    initCatalogMenu: function() {
-        var triggers = menu.find('ul li');
-        var images = menu.find('.catalog-menu-collection-image');
-
-        triggers.on('mouseenter', function(event) {
-            var index = $(event.target).attr('data-index');
-            images.filter('[data-index=' + index + ']').addClass('visible');
-        });
-
-        triggers.on('mouseleave', function() {
-            images.removeClass('visible');
-        });
-    },
     adjustContentOffset: function(options) {
         // Both transparent header and parallax are only for index page
         var transparentHeaderEnabled = options.transparentHeaderEnabled;

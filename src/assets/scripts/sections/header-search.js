@@ -38,11 +38,11 @@ var search = {
         search.el.$close.add(search.el.$input).attr('tabindex', -1);
 
         if (!Platform.isOldIE()) {
-            $(search.el.$open[0]).on('click', search.drawerOpenHandler);
-            $(search.el.$close[0]).on('click', search.drawerCloseHandler);
-            $(search.el.$searchBar[0]).on('click', events.kill);
-            $(document).on('click', search.closeOnOutsideClick);
-            $(search.el.$window).on('keydown', search.keyboardHandlers); 
+            search.el.$open.on('click', search.drawerOpenHandler);
+            search.el.$close.on('click', search.drawerCloseHandler.bind);
+            search.el.$searchBar.on('click', events.kill);
+            search.el.$document.on('click', search.closeOnOutsideClick);
+            search.el.$window.on('keydown', search.keyboardHandlers); 
         }
     },
     drawerOpenHandler: function(e) {
@@ -92,7 +92,7 @@ var search = {
             $(e.target).closest(search.el.$searchBar).length === 0 &&
             $(e.target).closest(search.el.$header).length === 0
         ) {
-            drawerCloseHandler();
+            search.drawerCloseHandler();
         }
     }
 };

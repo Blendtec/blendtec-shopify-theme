@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 class Platform {
     static isIOS() {
         return /iPad|iPhone|iPod/.test(navigator.platform);
@@ -14,6 +16,10 @@ class Platform {
     static isTouchDevice() {
           return 'ontouchstart' in window || // works on most browsers
               'onmsgesturechange' in window; // works on ie10
+    }
+
+    static viewPortWidth() {
+        return $(window).width();
     }
  }
  
