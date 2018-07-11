@@ -21,7 +21,7 @@ var deferJQuery = function (func) {
   if (window.jQuery) {
   	func();
   } else {
-    setTimeout(function() { func }, 50);
+    setTimeout(function() { deferJQuery(func) }, 100);
   }
 };
 
