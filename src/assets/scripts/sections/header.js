@@ -24,7 +24,7 @@ var header = {
         this.cacheSelectors();
         header.NavDrawer = new Drawers('NavDrawer', 'right');
         header.CartDrawer = new Drawers('CartDrawer', 'right', {
-            onDrawerOpen: ajaxCart.load
+            onDrawerOpen: () => { $(document).trigger('cart:load');}
         });
         header.el.$body.on('ajaxCart.afterCartLoad', () => { header.CartDrawer.open(); });
         header.stickyHeader({
