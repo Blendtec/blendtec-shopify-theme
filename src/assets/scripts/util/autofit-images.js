@@ -1,25 +1,26 @@
 import $ from 'jquery';
  
-
 var autoFitImages = {
   el: {
-    newImg: new Image
   },
   cacheSelectors: function () {
     this.el.backgroundString = 'backgroundimagesrc';
     this.el.imageString = 'imagebasesrc';
-
+    this.el.newImg = new Image;
+    this.el.window = $(window);
+    this.el.$classesAffected = $('.javascript-load-image');
   },
-  init: function(self = this) {
-    self.cacheSelectors();
-    $(window).resize(function () {
+  init: function() {
+    var self = this;
+    this.cacheSelectors();
+    this.el.window.resize(function () {
       self.loadImagesByWidth(self.el.imageString, self.el.backgroundString);
     });
-    $(window).scroll(function () {
+    this.el.window.scroll(function () {
       self.loadIfVisible();
     });
-    self.loadImagesByWidth(self.el.imageString, self.el.backgroundString);
-    self.loadIfNotVisible(0);    
+    this.loadImagesByWidth(self.el.imageString, self.el.backgroundString);
+    this.loadIfNotVisible(0);    
 
   },
   getClosestWidth: function(element, baseNode) {
@@ -38,40 +39,37 @@ var autoFitImages = {
   },
   getPosition: function(element) {
         var yPosition = 0;
-
         while(element) {
             yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
             element = element.offsetParent;
         }
-
         return yPosition; 
   },
   showImage: function(element, source, backgroundImage) {
         element.alreadyLoaded = true;
+        var $element = $(element);
         if (typeof element != 'undefined' && typeof source != 'undefined' && typeof backgroundImage != 'undefined') {
           if ((!element.src || element.src.length === 0) && !backgroundImage) {
             element.src = source;
-
             var originalElementOpacity = $(element).css('opacity');
             if (!originalElementOpacity || originalElementOpacity == 0) {
               originalElementOpacity = 1;
             }
-            $(element).css('opacity', 0);
+            $element.css('opacity', 0);
 
             element.onload = function() {
-              $(element).animate({
+              $element.animate({
                                 opacity: originalElementOpacity
                               }, 500, function() {
                                 element.onload = null;
                               });
             }
-          } else if (backgroundImage && element.style.backgroundImage != 'url('+source+')') {
-              $(element).css('backgroundImage', 'url('+source+')');
+          } else if (backgroundImage && $element.css('background-image') !== 'url('+source+')' ) {
+              $element.css('backgroundImage', 'url('+source+')');
           } else if ($(element).attr('src') != source) {
-              $(element).attr('src', source);
+              $element.attr('src', source);
           }
         }
-
   },
   loadIfVisible: function(bottomSet, topSet) {
         if (!bottomSet) {
@@ -85,14 +83,14 @@ var autoFitImages = {
         var keepOpaque = true;
         if (bottom_of_page === null && top_of_page === null) {
           var doc = document.documentElement;
-          var top = ($(window).pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
-          var win_height = window.innerHeight;
+          var top = (this.el.window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+          var win_height = this.el.window.innerHeight();
           bottom_of_page = top+win_height;
           top_of_page = top;
           keepOpaque = false;
         }
         var self = this;
-        var imagesToLoad = $('.javascript-load-image');
+        var imagesToLoad = this.el.$classesAffected;
         for (var i in imagesToLoad) {
           if (imagesToLoad && imagesToLoad[i] && (imagesToLoad[i].selectedSrc || imagesToLoad[i].selectedBackgroundSrc)) {
             var elem_position_top = this.getPosition(imagesToLoad[i]);
@@ -107,7 +105,7 @@ var autoFitImages = {
         }  
   },
   loadImagesByWidth: function(imagessrc, backgroundimagesrc) {
-      var imagesToLoad = $('.javascript-load-image');
+      var imagesToLoad = this.el.$classesAffected;
       for (var i in imagesToLoad) {
          var chosenNode = this.getClosestWidth(imagesToLoad[i], imagessrc);
          if (chosenNode && imagesToLoad[i] && imagesToLoad[i].attributes && imagesToLoad[i].attributes[chosenNode]) {
@@ -123,14 +121,14 @@ var autoFitImages = {
   preloadImage: function(element, source, backgroundImage, callback) {
         this.el.newImg.onload = function() {
           if (backgroundImage) {
-            element.style.backgroundImage = 'url('+source+')';
+            $(element).css('background-image', 'url('+source+')');
           }
           callback();
         }
         this.el.newImg.src = source;
   },
   loadIfNotVisible: function(i) {
-      var imagesToLoad = $('.javascript-load-image');
+      var imagesToLoad = this.el.$classesAffected;
       var self = this;
       if (i < imagesToLoad.length) {
         var imageToLoad = imagesToLoad[i];
@@ -155,7 +153,5 @@ var autoFitImages = {
       }
   }
 };
- 
-
  
 export default autoFitImages;

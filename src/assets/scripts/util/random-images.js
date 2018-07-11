@@ -1,10 +1,10 @@
 import $ from 'jquery';
  
-
 var randomImages = {
   el: {
   },
   cacheSelectors: function () {
+    this.el.$classesAffected = $('.javascript-load-image');
   },
   init: function(self = this) {
     self.cacheSelectors();
@@ -18,7 +18,6 @@ var randomImages = {
           var att = document.createAttribute(attrib.name.replace(/[0-9]*/,''));
           att.value = attrib.value;
           elem.setAttributeNode(att);
-
         }
     }
   },
@@ -34,7 +33,7 @@ var randomImages = {
   },
   randomize: function () {
       var maxArrLength = 0;
-      var images = $('.javascript-load-image');
+      var images = this.el.$classesAffected;
       maxArrLength = Number(images.attr('numblocks'));
       if (maxArrLength > 0) {
         var randomImageToShow = Math.floor((Math.random() * maxArrLength) + 1);
