@@ -6,10 +6,9 @@ var randomImages = {
   cacheSelectors: function () {
     this.el.$classesAffected = $('.javascript-load-image');
   },
-  init: function(self = this) {
-    self.cacheSelectors();
-
-    self.randomize(); 
+  init: function() {
+    this.cacheSelectors();
+    this.randomize(); 
   },
   addAttributes: function(nodeName, elem, num) {
     for (var i = 0; i < elem.attributes.length; i++) {
