@@ -304,7 +304,7 @@
                   {% endif %}
                 {% endunless %}
                 {% unless noaddtocart %}
-                  <div class="grid__item div-child-bottom-margin">
+                  <div class="grid__item button-child-margin5">
                     {% assign addToCartText = 'products.product.add_to_cart' | t %}
                     {% include 'cta-submit-button' with text: addToCartText, id: 'AddToCart' %}
                     {% include 'pricespider-button' %}
