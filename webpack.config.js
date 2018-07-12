@@ -9,7 +9,6 @@ const copyWebpackPluginConf = new CopyWebpackPlugin([
   {from: './src/assets/images', to: 'assets'},
   {from: './src/assets/**/*.liquid', to: 'assets', flatten: true},
   // LEGACY SCRIPTS - These have not been migrated to ES5 and are being copied directly
-  {from: './src/assets/scripts/util/autofit_images.js', to: 'assets', flatten: true},
   {from: './src/assets/scripts/static/jquery.currencies.min.js', to: 'assets', flatten: true},
   {from: './src/assets/scripts/static/price-spider.js', to: 'assets', flatten: true},
   {from: './src/assets/scripts/static/raf.js', to: 'assets', flatten: true},

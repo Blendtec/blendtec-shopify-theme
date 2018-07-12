@@ -4,7 +4,7 @@
 <script src="{{ 'sections.bundle.js' | asset_url }}" type="module"></script>
 <script src="{{ 'sections.bundle.js' | asset_url }}" nomodule></script>
 
- {% if template.name == 'blog' %}
+ {% if template.name == 'blog' or template.name == 'article' %}
     <script src="{{ 'blog.bundle.js' | asset_url }}" type="module"></script>
      <script src="{{ 'blog.bundle.js' | asset_url }}" nomodule></script>
  {% endif %}
