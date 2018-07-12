@@ -32,6 +32,7 @@ var page = {
         responsiveVideos.init();
         page.el.$document.trigger('bt:ready');
         page.el.$body.addClass('ready');
+        page.mobileNavToggle();
     },
     cacheSelectors: () => {
         page.el.$window = $(window);
@@ -72,4 +73,5 @@ var page = {
     }
 };
 
+console.log('is it working');
 $(document).ready(page.init);
