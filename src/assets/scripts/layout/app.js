@@ -73,5 +73,4 @@ var page = {
     }
 };
 
-console.log('is it working');
 $(document).ready(page.init);
