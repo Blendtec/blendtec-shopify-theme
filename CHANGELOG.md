@@ -1,3 +1,12 @@
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.11.0...v1.12.0) (2018-07-12)
+
+
+### Features
+
+* **pricespider button:** fixed styling ofr pricespider button ([dd1325d](https://github.com/Blendtec/blendtec-shopify-theme/commit/dd1325d))
+* **pricespider button js:** moved the js into the product.js.liquid ([cbee146](https://github.com/Blendtec/blendtec-shopify-theme/commit/cbee146))
+
 <a name="1.11.0"></a>
 # [1.11.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.10.1...v1.11.0) (2018-07-05)
 
