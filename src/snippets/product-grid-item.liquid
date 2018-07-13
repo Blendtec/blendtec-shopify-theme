@@ -95,9 +95,9 @@
         {% endif %}
       </div>
 
-      <span class="product_image_caption">
-        <h6>
-          {{ product.title }} <br> <span
+  <span class="product_image_caption">
+    <h6>{{ product.title }}<br>
+      <span
         id="title-{{product.id}}"
       {% for variant in product.variants %}
       title{{forloop.index}}="{{variant.title}}"
@@ -105,40 +105,44 @@
       {% unless product.variants[0].title == 'Default Title' %}
         {{product.variants[0].title}}
       {% endunless %}
-    </span></h6>
-
-    {% if product.price > 0 %}
-        {% if on_sale %}
-          {% if product.price_varies %}
-            {% assign sale_price = product.price | money %}
-            <span class="price">{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
-          {% else %}
-                <span class="price">{{ product.price | money }}</span>
-          {% endif %}
-        {% else %}
-          {% if product.price_varies %}
-            {% assign price = product.price | money %}
-                <span class="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
-          {% else %}
-                  {{ product.price | money }}
-          {% endif %}
-        {% endif %}
-        {% endif %}
-
-          <strong
-        id="soldout-{{product.id}}"
-        {% for variant in product.variants %}
-        {% unless variant.available %}
-        style="display:none;"
-        {% endunless %}
-        soldout{{forloop.index}}={{variant.available}}
-        {% endfor %}
-      ></strong>
-        {% if on_sale %}
-          <s><span class="price">{{ product.compare_at_price | money }}</span></s>
-        {% endif %}
       </span>
-    </a>
+    </h6>
+    {% for variant in product.variants %}
+      <div class="price-section-{{product.id}}" id="price-section-{{product.id}}-{{forloop.index}}" style="display:none;">
+        {% if variant.price > 0 %}
+          {% if on_sale %}
+            {% if variant.price_varies %}
+              {% assign sale_price = variant.price | money %}
+              <span class="price">{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
+            {% else %}
+                  <span class="price">{{ variant.price | money }}</span>
+            {% endif %}
+          {% else %}
+            {% if variant.price_varies %}
+              {% assign price = variant.price | money %}
+                  <span class="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
+            {% else %}
+                    {{ variant.price | money }}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+        <strong
+          id="soldout-{{product.id}}"
+          {% for variant in product.variants %}
+            {% unless variant.available %}
+              style="display:none;"
+            {% endunless %}
+          soldout{{forloop.index}}={{variant.available}}
+          {% endfor %}>
+        </strong>
+        {% if on_sale %}
+          <s><span class="price">{{ variant.compare_at_price | money }}</span></s>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </span>
+</a>
 <div class="bv--inline-rating text-center">
     {% include 'bv-inline-ratings' %}
 </div>

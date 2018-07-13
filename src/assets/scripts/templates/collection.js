@@ -16,7 +16,7 @@ var collection = {
             collection.adjustHeadings
         );
 
-        $('.single-item').slick({
+        collection.el.$singleItem.slick({
             dots: false,
             arrows: false,
             mobileFirst: true,
@@ -25,37 +25,37 @@ var collection = {
             pauseOnHover: false,
             draggable: true,
             lazyload: 'progressive',
-        }).init(function () {
-            var imagePosition = '0';
-            $('.slick-dots').addClass('large--hide');
+        }).init(() => {
+            let imagePosition = '0';
+            collection.el.$singleDots.addClass('large--hide');
             if (imagePosition) {
-                $('.single-item').slick('slickGoTo', imagePosition, false);
+                collection.el.$singleItem.slick('slickGoTo', imagePosition, false);
             }
         });
-        $('.single-item').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        collection.el.$singleItem.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
             collection.slackChangeItem(event, slick, currentSlide, nextSlide);
         });
 
         parallax.init('.parallax-container #shopify-section-collection-template .section-header');
     },
     slackChangeItem: function (event, slick, currentSlide, nextSlide) {
-        var productId = event.target.getAttribute('productId');
-        var title = document.getElementById('title-' + productId).getAttribute('title' + (nextSlide + 1));
+        let productId = event.target.getAttribute('productId');
+        let title = $('#title-' + productId).attr('title' + (nextSlide + 1));
         if (title !== 'Default Title') {
           $('#title-' + productId).text(title);
         }
 
-        var isAvailable = document.getElementById('soldout-' + productId).getAttribute('soldout' + (nextSlide + 1));
+        let isAvailable = $('#soldout-' + productId).attr('soldout' + (nextSlide + 1));
         if (isAvailable === "false") {
             $('#soldout-' + productId).show();
         } else {
             $('#soldout-' + productId).hide();
         }
 
-        $('.price-' + productId).hide();
-        $('#price-' + productId + '-' + (nextSlide + 1)).show();
+        $('.price-section-' + productId).hide();
+        $('#price-section-' + productId + '-' + (nextSlide + 1)).show();
 
-        var link = document.getElementById('link-' + productId).getAttribute('link' + (nextSlide + 1));
+        let link = $('#link-' + productId).attr('link' + (nextSlide + 1));
         $('#link-' + productId).attr('href', link);
     },
     cacheSelectors: function() {
@@ -64,6 +64,8 @@ var collection = {
         collection.el.$collectionSort = $('collection-sort');
         collection.changeView();
         collection.adjustHeadings();
+        collection.el.$singleItem = $('.single-item');
+        collection.el.$singleDots = $('.slick-dots');
     },
     editorReload: function(event) {
         var $section = $(event.target);
