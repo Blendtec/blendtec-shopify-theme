@@ -1,3 +1,12 @@
+<a name="1.12.1"></a>
+## [1.12.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.12.0...v1.12.1) (2018-07-12)
+
+
+### Bug Fixes
+
+* **blog filter overlap:** fix the blog filter being above the header ([becb6ff](https://github.com/Blendtec/blendtec-shopify-theme/commit/becb6ff))
+* **mobile navbar:** mobile navbar not expanding fix ([#172](https://github.com/Blendtec/blendtec-shopify-theme/issues/172)) ([6df5ba6](https://github.com/Blendtec/blendtec-shopify-theme/commit/6df5ba6))
+
 <a name="1.12.0"></a>
 # [1.12.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.11.0...v1.12.0) (2018-07-12)
 
