@@ -13,10 +13,50 @@ var collection = {
             .each(collection.pad);
         $('.collection-sort').on('change', 'select', collection.sort);
         $('.supports-touch .product_image_caption').each(
-            collection.adjustHeadinge
+            collection.adjustHeadings
         );
 
+        $('.single-item').slick({
+            dots: false,
+            arrows: false,
+            mobileFirst: true,
+            respondTo: 'min',
+            adaptiveHeight: true,
+            pauseOnHover: false,
+            draggable: true,
+            lazyload: 'progressive',
+        }).init(function () {
+            var imagePosition = '0';
+            $('.slick-dots').addClass('large--hide');
+            if (imagePosition) {
+                $('.single-item').slick('slickGoTo', imagePosition, false);
+            }
+        });
+        $('.single-item').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            collection.slackChangeItem(event, slick, currentSlide, nextSlide);
+        });
+
         parallax.init('.parallax-container #shopify-section-collection-template .section-header');
+    },
+    slackChangeItem: function (event, slick, currentSlide, nextSlide) {
+        var productId = event.target.getAttribute('productId');
+        var title = document.getElementById('title-' + productId).getAttribute('title' + (nextSlide + 1));
+        if (title !== 'Default Title') {
+          $('#title-' + productId).text(title);
+        }
+
+        var isAvailable = document.getElementById('soldout-' + productId).getAttribute('soldout' + (nextSlide + 1));
+        if (isAvailable === "false") {
+            $('#soldout-' + productId).show();
+        } else {
+            $('#soldout-' + productId).hide();
+        }
+
+        $('.price-' + productId).hide();
+        $('#price-' + productId + '-' + (nextSlide + 1)).show();
+
+        var link = document.getElementById('link-' + productId).getAttribute('link' + (nextSlide + 1));
+        $('#link-' + productId).attr('href', link);
     },
     cacheSelectors: function() {
         collection.el.$changeView = $('.change-view');
@@ -119,5 +159,6 @@ var collection = {
         });
     }
 };
+
 
 $(collection.init);
