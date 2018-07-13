@@ -13,10 +13,50 @@ var collection = {
             .each(collection.pad);
         $('.collection-sort').on('change', 'select', collection.sort);
         $('.supports-touch .product_image_caption').each(
-            collection.adjustHeadinge
+            collection.adjustHeadings
         );
 
+        collection.el.$singleItem.slick({
+            dots: false,
+            arrows: false,
+            mobileFirst: true,
+            respondTo: 'min',
+            adaptiveHeight: true,
+            pauseOnHover: false,
+            draggable: true,
+            lazyload: 'progressive',
+        }).init(() => {
+            let imagePosition = '0';
+            collection.el.$singleDots.addClass('large--hide');
+            if (imagePosition) {
+                collection.el.$singleItem.slick('slickGoTo', imagePosition, false);
+            }
+        });
+        collection.el.$singleItem.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+            collection.slackChangeItem(event, slick, currentSlide, nextSlide);
+        });
+
         parallax.init('.parallax-container #shopify-section-collection-template .section-header');
+    },
+    slackChangeItem: function (event, slick, currentSlide, nextSlide) {
+        let productId = event.target.getAttribute('productId');
+        let title = $('#title-' + productId).attr('title' + (nextSlide + 1));
+        if (title !== 'Default Title') {
+          $('#title-' + productId).text(title);
+        }
+
+        let isAvailable = $('#soldout-' + productId).attr('soldout' + (nextSlide + 1));
+        if (isAvailable === "false") {
+            $('#soldout-' + productId).show();
+        } else {
+            $('#soldout-' + productId).hide();
+        }
+
+        $('.price-section-' + productId).hide();
+        $('#price-section-' + productId + '-' + (nextSlide + 1)).show();
+
+        let link = $('#link-' + productId).attr('link' + (nextSlide + 1));
+        $('#link-' + productId).attr('href', link);
     },
     cacheSelectors: function() {
         collection.el.$changeView = $('.change-view');
@@ -24,6 +64,8 @@ var collection = {
         collection.el.$collectionSort = $('collection-sort');
         collection.changeView();
         collection.adjustHeadings();
+        collection.el.$singleItem = $('.single-item');
+        collection.el.$singleDots = $('.slick-dots');
     },
     editorReload: function(event) {
         var $section = $(event.target);
@@ -119,5 +161,6 @@ var collection = {
         });
     }
 };
+
 
 $(collection.init);

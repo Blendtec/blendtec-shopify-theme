@@ -33,7 +33,6 @@
             {% assign drop_shadow= 'drop-shadow' %}
         {% endif %}
     {% endif %}
-
     <header class="section-header {{ image_header }} {{ drop_shadow }}" style="background-image: url({{ collection.image | img_url: 'master' }})">
         {% if section.settings.show_collection_header %}
             <div class="text-wrapper--center-cell text-max-width">
@@ -171,44 +170,7 @@
     }
 
 </style>
-<script type="text/javascript">
-        $(document).ready(function () {
-            $('.single-item').slick({
-                dots: false,
-                arrows: true,
-                mobileFirst: true,
-                respondTo: 'min',
-                adaptiveHeight: true,
-                pauseOnHover: false,
-                draggable: true,
-                lazyload: 'progressive',
-            }).init(function () {
-                var imagePosition = '0';
-                $('.slick-dots').addClass('large--hide');
-                if (imagePosition) {
-                    $('.single-item').slick('slickGoTo', imagePosition, false);
-                }
-            });
-            $(".single-item").on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-                var productId = event.target.getAttribute('productId');
-                var title = document.getElementById('title-' + productId).getAttribute('title' + (nextSlide + 1));
-                $('#title-' + productId).text(title);
 
-                var isAvailable = document.getElementById('soldout-' + productId).getAttribute('soldout' + (nextSlide + 1));
-                if (isAvailable === "false") {
-                    $('#soldout-' + productId).show();
-                } else {
-                    $('#soldout-' + productId).hide();
-                }
-
-                $('.price-' + productId).hide();
-                $('#price-' + productId + '-' + (nextSlide + 1)).show();
-
-                var link = document.getElementById('link-' + productId).getAttribute('link' + (nextSlide + 1));
-                $('#link-' + productId).attr('href', link);
-            });
-        });
-</script>
 {%schema%}
 {
    "name":"Collection pages",
