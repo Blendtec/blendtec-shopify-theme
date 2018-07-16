@@ -1,1 +1,22 @@
-{{ snipTime | minus: 18000 | date: "%l H&nbsp; %M M&nbsp; %S S" | replace: "12 H&nbsp;", "" | replace: "0 H&nbsp;", ""| replace: "00 M&nbsp;", ""| replace: "00 S", "" }}
+{% if snipTime == blank %}
+    <meta itemprop="cookTime" value="00:00:00"/>
+{% else %}
+    {% assign hours = snipTime | divided_by: 3600 %}
+    {% if hours < 10 %}
+        {% assign hours = hours | prepend: '0' %}
+    {% endif %}
+    {% assign remaining = snipTime | modulo: 3600 %}
+    {% assign minutes = remaining | divided_by: 60 %}
+
+    {% if minutes < 10 %}
+        {% assign minutes = minutes | prepend: '0' %}
+    {% endif %}
+    {% assign remaining = snipTime | modulo: 60 %}
+    {% assign seconds = remaining %}
+    {% if seconds < 10 %}
+        {% assign seconds = seconds | prepend: '0' %}
+    {% endif %}
+    {{ snipTime | minus: 18000 | date: "%l H&nbsp; %M M&nbsp; %S S" | replace: "12 H&nbsp;", "" | replace: "0 H&nbsp;", ""| replace: "00 M&nbsp;", ""| replace: "00 S", "" }}
+    <meta itemprop="cookTime" value="{{hours}}:{{minutes}}:{{seconds}}"/>
+{% endif %}
+
