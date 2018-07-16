@@ -1,3 +1,16 @@
+<a name="1.13.0"></a>
+# [1.13.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.12.2...v1.13.0) (2018-07-16)
+
+
+### Bug Fixes
+
+* **recipe templates:** Schema.org recipe markup adjustments ([#174](https://github.com/Blendtec/blendtec-shopify-theme/issues/174)) ([01fb45e](https://github.com/Blendtec/blendtec-shopify-theme/commit/01fb45e))
+
+
+### Features
+
+* **checkout:** Update checkout template ([#175](https://github.com/Blendtec/blendtec-shopify-theme/issues/175)) ([5712c5d](https://github.com/Blendtec/blendtec-shopify-theme/commit/5712c5d))
+
 <a name="1.12.2"></a>
 ## [1.12.2](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.12.1...v1.12.2) (2018-07-13)
 
