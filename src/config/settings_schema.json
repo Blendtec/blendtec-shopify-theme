@@ -52,59 +52,9 @@
       },
       {
         "type": "color",
-        "id": "color_primary",
-        "label": "Accent",
-        "default": "#f06340",
-        "info": "Used for text links, buttons and the header message."
-      },
-      {
-        "type": "color",
-        "id": "color_body_bg",
-        "label": "Background",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "color_borders",
-        "label": "Border",
-        "default": "#e2e2e2"
-      },
-      {
-        "type": "color",
-        "id": "color_header",
-        "label": "Headings",
-        "default": "#232323"
-      },
-      {
-        "type": "color",
-        "id": "color_header_bg",
-        "label": "Header Background",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
         "id": "color_body_text",
         "label": "Text",
         "default": "#424242"
-      },
-      {
-        "type": "color",
-        "id": "color_button_text",
-        "label": "Button text",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "color_image_cta_background",
-        "label": "Image overlay background",
-        "info": "When a customer hovers over a product or collection on your site, the price and title will be overlayed using these colors.",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "color_image_cta_text",
-        "label": "Image overlay text",
-        "default": "#444444"
       }
     ]
   },
