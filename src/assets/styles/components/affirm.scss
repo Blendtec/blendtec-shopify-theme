@@ -1,0 +1,40 @@
+/*================ AFFIRM ================*/
+.template-product {
+    .affirm-as-low-as {
+        margin-top: 1rem;
+        font-size: 1.5em;
+
+        a {
+            text-transform: uppercase;
+            font-style: italic;
+            @extend .heavy;
+        }
+
+        a::after {
+            content: ' \f105';
+            font-family: FontAwesome;
+        }
+    }
+}
+.template-cart {
+    .affirm-as-low-as {
+        margin: 1rem 0 1rem 0;
+    }
+}
+.template-blog {
+    .section-header--image {
+        padding-top: 90px;
+    }
+}
+
+.__affirm-logo {
+    font-size: 1.5rem !important;
+}
+
+.affirm--wrapper {
+    margin-top: 15px;
+    min-height: 80px;
+    padding: 5px 0 5px 15px;
+    background-color: #f7f7f7;
+    @extend .text-center;
+}

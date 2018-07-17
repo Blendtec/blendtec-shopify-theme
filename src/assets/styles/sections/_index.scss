@@ -1,0 +1,39 @@
+/*============================================================================
+  #Index sections
+    - Features
+    - Featured text
+    - Testimonials
+    - Grid
+==============================================================================*/
+
+.parallax-container .shopify-section {
+    position: relative;
+    background-color: $colorBody;
+    z-index: 1;
+  
+    &.has-parallax { z-index: 0; }
+  
+    &.features,
+    &.featured-text,
+    &.featured-blog,
+    &.custom-html,
+    &.testimonials,
+    &.brands {
+      border-top: 1px solid $colorBorder;
+    }
+  
+    &:first-of-type,
+    &.carousel + *,
+    &.video-player + *,
+    &.featured-collections + *,
+    &.instagram + *,
+    &.index-grid-wrapper + * {
+      border-top: 0;
+      margin-bottom: -1px;
+    }
+  
+    &:last-of-type { margin-bottom: -1px; }
+  
+    &.instagram,
+    &.featured-content { margin-bottom: 0; }
+  }

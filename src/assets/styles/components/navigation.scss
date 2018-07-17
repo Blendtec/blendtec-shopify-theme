@@ -1,0 +1,379 @@
+/*============================================================================
+  #Site Nav and Dropdowns
+==============================================================================*/
+
+
+
+.secondary-navbar {
+  color: $colorHeaderNavText;
+  font-size: 12px;
+  font-family: $headerFontStack;
+
+  a {
+    color: $colorHeaderNavText;
+  }
+
+}
+
+.nav-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 100px;
+    margin: auto;
+    margin-top: 30px;
+    background-color: $colorHeaderNavText;
+}
+@media only screen and (max-width: 1100px){
+  .hide-1100px {
+    display:none !important;
+  }
+}
+@media only screen and (max-width: 1300px){
+.logo-link img {
+  margin-left:-30px;
+}
+
+}
+@media only screen and (max-width: 910px){
+.logo-link img {
+  margin-left:-45px;
+}
+}
+@media only screen and (max-width: $medium){
+.logo-link img {
+  margin-left:0px;
+}
+
+}
+@media only screen and (max-width: 865px){
+.slight-35px-adjustment {
+  margin-left:35px;
+}
+}
+
+.main-navigation {
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  margin-left: 15px;
+  vertical-align: middle;
+
+  @media only screen and (max-width: 910px){
+    margin-left:0px;
+
+  }
+  &.nav-loading { opacity: 0; }
+
+  @include at-query($max, $large - 1) { display: none; }
+
+  ul {
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 30px;
+  }
+  @media only screen and (max-width: 1300px){
+    li {
+      margin-left: 15px;
+    }
+  }
+  @media only screen and (max-width: 1050px){
+    li {
+      margin-left: 10px;
+    }
+  }
+  @media only screen and (max-width: 970px){
+    li {
+      margin-left: 5px;
+    }
+  }
+  a {
+    font-family: $headerFontStack;
+    position: relative;
+    font-size: 14px;
+    color: $colorHeaderNavText;
+
+    &[data-navigation-top-level] { line-height: $headerSize; }
+
+    &:hover { color: $colorPrimary; }
+
+    @include at-query($max, $medium) { line-height: 1.6 !important; }
+  }
+
+  .dropdown {
+
+    a {
+      left: -7px;
+      opacity: 0;
+      @include backface(hidden);
+      color: #000000;
+    }
+
+    @for $i from 0 to 20 {
+      .animation-sequence-#{$i} a {
+        transition: opacity $animation-speed $animation-curve 0.1s, left $animation-speed $animation-curve 0.1s;
+      }
+    }
+  }
+
+  .dropdown.visible {
+
+    a {
+      opacity: 1;
+      left: 0;
+    }
+
+    @for $i from 0 to 20 {
+      $delay: $i * 100 / 3;
+      .animation-sequence-#{$i} a {
+        transition: opacity $animation-speed #{$delay}ms $animation-curve, left $animation-speed #{$delay}ms $animation-curve;
+      }
+    }
+  }
+
+  svg {
+    position: relative;
+    top: -1px;
+    width: 7px;
+    height: 6px;
+    margin-left: 2px;
+    color: inherit;
+    transition: transform 0.2s ease;
+  }
+
+  .active svg {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+
+  .dropdown {
+    position: absolute;
+    left: -30px;
+    display: none;
+    min-width: 200px;
+    padding: 25px 30px;
+    margin-left: 0;
+    margin-top: -22px;
+    background-color: $colorBody;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.35);
+    text-align: left;
+    transition: transform 0.15s ease-in, opacity 0.15s ease-in;
+
+    &.visibly-hidden {
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    &.animating {
+      display: block;
+      opacity: 0;
+      transform: scale(0.9);
+      transform-origin: top center;
+    }
+
+    &.visible {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+      transform-origin: top center;
+    }
+
+    li {
+      display: block;
+      margin-left: 0;
+    }
+
+    a {
+      font-size: 14px;
+
+      .template-collection .transparent-header &,
+      .template-index .transparent-header & {
+        color: rgba($colorNavText, 0.8) !important;
+        &:hover { color: rgba(darken($colorNavText, 15%), 0.8) !important; }
+      }
+    }
+  }
+
+
+}
+
+.nav-bar {
+  background-color: $colorNav;
+}
+
+.site-nav {
+  font-size: em(16px);
+  cursor: default;
+  margin: 0 0 0 (-$gutter / 2);
+
+  li {
+    margin: 0;
+    display: block;
+  }
+
+  > li {
+    position: relative;
+    display: inline-block;
+  }
+}
+
+.catalog-menu {
+  display: flex;
+  flex-direction: row;
+  min-height: 250px;
+  z-index: 1;
+
+  &.animating,
+  &.visible {
+    transform-origin: top left;
+    display: flex !important;
+  }
+
+  ul {
+    min-width: 140px;
+  }
+}
+
+.catalog-menu-image-container {
+  background-color: #eee;
+  position: relative;
+  min-width: 400px;
+  margin-right: -30px;
+  margin-top: -25px;
+  margin-bottom: -25px;
+  margin-left: 40px;
+  box-sizing: content-box;
+  overflow: hidden;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  img {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+  }
+}
+
+.catalog-menu-collection-image {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  transition-delay: 0.2s;
+
+  &.visible {
+    opacity: 1;
+    transition-delay: 0s;
+  }
+}
+
+/*================ Side Navigation ================*/
+  .side-menu {
+    ul {
+      list-style: none; 
+    }
+
+    a {
+      color: $colorTextHeader;
+      i {
+        color: $colorPrimary;
+      }
+    }
+
+    a:hover {
+      color: $colorPrimary;
+    }
+
+    .btn {
+      margin-top: 15px;
+    }
+
+  }
+
+
+/*================ Home to hamburger and cart that toggle drawers ================*/
+.site-nav--mobile {
+  @extend .site-nav;
+
+  .text-right & {
+    margin: 0 (-$gutter / 2) 0 0;
+  }
+}
+
+.site-nav__link {
+  display: block;
+  text-decoration: none;
+  white-space: nowrap;
+  color: $colorNavText;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: darken($colorNavText, 15%);
+  }
+
+  .icon-arrow-down {
+    position: relative;
+    top: -2px;
+    font-size: 10px;
+    padding-left: $gutter / 4;
+  }
+
+  .site-nav--active > & {
+    font-weight: bold;
+  }
+
+  .site-nav--mobile & {
+    display: inline-block;
+  }
+}
+
+/*================ Dropdowns ================*/
+.site-nav__dropdown {
+  display: none;
+  position: absolute;
+  left: 0;
+  margin: 0;
+  z-index: $zindexNavDropdowns;
+
+  .supports-no-touch .site-nav--has-dropdown:hover &,
+  .site-nav--has-dropdown.nav-hover &,
+  .nav-focus + & {
+    display: block;
+  }
+
+  a {
+    background-color: $colorNav;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: darken($colorNav, 10%);
+    }
+  }
+}
+
+/*============================================================================
+  #Placeholder
+==============================================================================*/
+
+.nav-placeholder {
+    padding-top: 50px;
+}

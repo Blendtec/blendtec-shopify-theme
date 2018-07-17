@@ -1,0 +1,129 @@
+/*============================================================================
+  #Breakpoint and Grid Variables
+==============================================================================*/
+$viewportIncrement: 1px;
+
+
+
+$small: 700px;
+$medium: 840px;
+$large: 841px;
+$xlarge: 1000px;
+$xxlarge: 1200px;
+
+$siteMaxWidth : none;
+
+
+$postSmall: $small + $viewportIncrement;
+$preMedium: $medium - $viewportIncrement;
+$preLarge: $large - $viewportIncrement;
+
+/*================ The following are dependencies of csswizardry grid ================*/
+$breakpoints: (
+  'small' '(max-width: #{$small})',
+  'medium' '(min-width: #{$postSmall}) and (max-width: #{$medium})',
+  'medium-down' '(max-width: #{$medium})',
+  'large' '(min-width: #{$large})',
+  'xlarge' '(min-width: #{$xlarge})',
+  'xxlarge' '(min-width: #{$xxlarge})'
+);
+$breakpoint-has-widths: ('small', 'medium', 'medium-down', 'large', 'xlarge', 'xxlarge');
+$breakpoint-has-push:  ('medium', 'medium-down', 'large');
+$breakpoint-has-pull:  ('medium', 'medium-down', 'large');
+
+/*============================================================================
+  #General Variables
+==============================================================================*/
+
+// Colors
+$colorPrimary: #ea002a;
+$colorPlaceholder: #C2C2C2; //Only used when the theme has no content
+
+
+// Button colors
+$colorBtnPrimary: #a16c41;
+$colorBtnPrimaryHover: darken($colorBtnPrimary, 3%);
+$colorBtnPrimaryActive: darken($colorBtnPrimaryHover, 3%);
+$colorBtnPrimaryText: #ffffff;
+$colorInputs: #EAEAEA;
+
+
+// Text link colors
+$colorLink: $colorPrimary;
+$colorLinkHover: lighten($colorPrimary, 15%);
+
+// Text colors
+$colorTextBody: #424242;
+$colorTextHeader: #222;
+
+// Backgrounds
+$colorBody: #ffffff;
+$colorHeaderBackground: #000000;
+$colorHeaderNavText: lighten($colorHeaderBackground, 100%);
+
+
+
+// Border colors
+$colorBorder: #e2e2e2;
+
+// Nav and dropdown link background
+$colorNav: #f2f2f2;
+$colorNavText: white;
+$colorNavAccentBackground: #EEE;
+$colorOverlayBackground: #ffffff;
+$colorOverlayText: #444444;
+
+// Helper colors
+$disabledGrey: #f6f6f6;
+$disabledBorder: darken($disabledGrey, 25%);
+$errorRed: #d02e2e;
+$errorRedBg: #fff6f6;
+$successGreen: #56ad6a;
+$successGreenBg: #ecfef0;
+
+// Drawers
+$drawerNavWidth: 300px;
+$drawerCartWidth: 300px;
+
+
+// Sizing variables
+$siteWidth: 1200px;
+$gutter: 30px;
+$gridGutter: 30px; // can be a %, but nested grids will have smaller margins because of it
+$radius: 2px;
+$zoom: 1.015;
+
+
+// Z-index
+$zindexNavDropdowns: 5;
+$zindexDrawer: 20;
+
+/*================ Typography ================*/
+$headerFontWeight: 900;
+$headerFontWeightLight: 500;
+$baseFontSize: 16px; // Henseforth known as 1em
+
+$bodyFontStack: "Roboto Condensed", "HelveticaNeue", "Helvetica Neue", sans-serif;
+$headerFontStack: 'CooperHewitt-Heavy';
+$logoFontStack: "Roboto Slab", serif;
+$socialIconFontStack: 'icons';
+
+/*================ Homepage Block Sizing ================*/
+
+$maxMonitorWidth: 1200; //same as $siteMaxWidth but w/o px
+$homePageBlockHeight: 33.33vw;
+$homePageBlockMaxHeight: strip-units($maxMonitorWidth / (100 / $homePageBlockHeight)) + 0px;
+
+/*================ Header Sizing Variables ================*/
+
+$headerFontSize: 28px;
+$headerSize: 68px;
+$notificationBarHeight: 40px;
+$defaultHoverSpeed : 0.3s;
+
+$siteHeaderNormalSize : 136px;
+$siteHeaderCondensedSize: 116px;
+
+/*================ Navigation Animation ================*/
+$animation-speed: 400ms;
+$animation-curve: cubic-bezier(0.57, 0.06, 0.05, 0.95);

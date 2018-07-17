@@ -1,0 +1,86 @@
+$blogTextColor: $colorTextBody;
+$blogBgColor: $colorBody;
+
+.featured-blog.shopify-section {
+  position: relative;
+  background-color: $colorBody;
+}
+
+#featured-blog {
+  @include clearfix();
+
+  color: $blogTextColor;
+  background-color: $blogBgColor;
+
+  .excerpt {
+    color: lighten($blogTextColor, 1%);
+    img:first-child {display: none;}
+  }
+
+  .featured-blog__title {
+    transition: 0.2s ease;
+    margin-bottom: 1rem;
+    color: $colorTextHeader;
+  }
+
+  a:hover .featured-blog__title, a:hover + .featured-blog__caption .featured-blog__title {
+    color: $colorPrimary;
+  }
+}
+
+.featured-blog__caption {
+  min-height: 17em;
+}
+
+.featured-blog__image-wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 5px 0 5px;
+}
+
+.meta-info {
+  text-transform: uppercase;
+  opacity: 0.4;
+  font-size: em(12px);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.author {
+  margin-top: -0.5rem;
+}
+
+.blog-info {
+  font-size: 1em;
+  display: block;
+}
+
+.featured-blog__image {
+  //We want this to be a square
+  //So the height/padding trick forces equal heights relative to width
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background-size: cover;
+  -ms-behavior: url('//cdn.shopify.com/s/files/1/2182/0257/t/7/assets/backgroundsize.min.htc'); //polyfill IE8
+  position: relative;
+  @include prefix('transition-duration', '1s');
+  @include prefix('transition-property', 'transform');
+  -webkit-transition-property: -webkit-transform;
+  background-position: center center;
+
+  h5, & + h5 {
+    position: absolute;
+    top: 45%;
+    margin: 0 auto;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+
+
+  a:hover {
+    color: $colorLink;
+  }
+
+}

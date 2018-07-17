@@ -1,0 +1,72 @@
+/*============================================================================
+  #Features */
+
+  .index-features {
+    padding: 8vw 30px calc(8vw - 50px);
+    text-align: center;
+  
+    h2,
+    .subheading {
+      max-width: 500px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  
+    h2 + .index-features-items,
+    .subheading + .index-features-items {
+      margin-top: 40px;
+    }
+  
+    .index-features-items {
+      font-size: 0;
+  
+      @include at-query($max, $small){
+        padding-right: 0;
+      }
+  
+      article {
+        display: inline-block;
+        max-width: 400px;
+        padding-right: 25px;
+        padding-left: 25px;
+        margin-bottom: 50px;
+        float: none;
+        font-size: $baseFontSize - 2;
+  
+        @include at-query($min, $large){
+          font-size: $baseFontSize;
+        }
+  
+        @include at-query($max, $small){
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+  
+      .index-features-item-image {
+        margin: 0;
+  
+        img {
+          display: block;
+          margin-right: auto;
+          margin-left: auto;
+  
+          &.placeholder { max-width: 76px; }
+        }
+  
+        a + figcaption h4,
+        img + figcaption h4,
+        svg + figcaption h4 {
+          margin-top: 0.875em;
+        }
+      }
+    }
+  
+    .index-feature-item-text > *:last-child {
+      margin-bottom: 0;
+    }
+  
+    .index-feature-item-link {
+      margin-top: 1rem;
+    }
+  }

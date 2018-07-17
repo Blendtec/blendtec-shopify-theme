@@ -1,2 +1,18 @@
-  {{ 'slick.css' | asset_url | stylesheet_tag }}
-  {{ 'app.scss.css' | asset_url | stylesheet_tag }}
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+{{ 'app.bundle.css' | asset_url | stylesheet_tag }}
+
+{% if template.name == 'blog' or template.name == 'article' %}
+   {{ 'blog.bundle.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+{% if template.name == 'collection'%}
+   {{ 'collection.bundle.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+{% if template == 'page.registration'%}
+   {{ 'registration.bundle.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+{% if template == 'page.warranties'%}
+   {{ 'warranty.bundle.css' | asset_url | stylesheet_tag }}
+{% endif %}

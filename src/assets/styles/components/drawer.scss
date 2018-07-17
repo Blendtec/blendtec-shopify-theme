@@ -1,0 +1,289 @@
+/*============================================================================
+  #Drawers
+==============================================================================*/
+
+//By not using all we avoid transforming things like `width` which we only
+//change for breakpoint resizing (and don't want to animate).
+$drawerIconColor: rgba(255, 255, 255, 0.3);
+
+// Even though we're using the transition() SCSS function, we have to
+// manually add the properties for Safari webkit.  This is because
+// Safari's -webkit-transition does't recognize the property transform,
+// only recognizing -webkit-transform.  Since Shopify's version of SCSS
+// doesn't allow for string replacement on the fly, we have to manually
+// specify them here.
+//
+// Additionally, Safari requires them all to be on one line.
+
+$drawerTransition: 'transform 0s ease, visibility 0s ease';
+
+$drawerTransitionLarge: 'transform 0.3s ease, visibility 0.3s ease';
+
+$drawerContentTransitionLarge: 'transform 0.3s ease 0.1s, padding-top 0.3s ease 0.1s, opacity 0.2s ease 0.2s';
+
+$drawerContentTransition: 'transform 0s ease 0s, padding-top 0s ease 0s, opacity 0s ease 0s';
+
+$drawerTransitionWebkit: -webkit-transform 0s ease, visibility 0s ease;
+
+$drawerTransitionLargeWebkit: -webkit-transform 0.3s ease, visibility 0.3s ease;
+
+$drawerContentTransitionLargeWebkit: -webkit-transform 0.3s ease 0.1s,
+    padding-top 0.3s ease 0.1s, opacity 0.2s ease 0.2s;
+
+$drawerContentTransitionWebkit: -webkit-transform 0s ease 0s,
+    padding-top 0s ease 0s, opacity 0s ease 0s;
+
+.drawer {
+    display: none;
+    padding-bottom: $gutter * 2;
+    max-width: 100%;
+    z-index: $zindexDrawer;
+    @include transition($drawerTransition);
+    @include backface(hidden);
+    font-weight: 400;
+
+    @include at-query($min, $large) {
+        @include transition($drawerTransitionLarge);
+        -webkit-transition: $drawerTransitionLargeWebkit;
+    }
+
+    @include at-query($max, $medium) {
+        //The drawer is below the header ONLY on medium/small,
+        font-size: 1.125em;
+    }
+
+    a:not(.accent),
+    .mobile-nav__link {
+        transition: 0.3s;
+
+        &:not(.no-hover):hover,
+        &:not(.no-hover):focus {
+            opacity: 0.7;
+            transition: 0s;
+        }
+    }
+
+    .fallback-text {
+        font-size: 22px;
+    }
+
+    .empty-cart {
+        text-align: center;
+
+        img {
+            display: block;
+            margin: 0 auto;
+            padding-bottom: $gutter / 2;
+        }
+    }
+
+    .mobile-nav__has-sublist .icon,
+    .mobile-nav__has-sublist .icon:before {
+        color: $drawerIconColor;
+        font-size: 1em;
+
+        @include at-query($max, $medium) {
+            font-size: 1.125em;
+        }
+
+        @include transition('color 0.5s');
+    }
+
+    .mobile-nav__has-sublist:hover .icon:before {
+        color: darken($drawerIconColor, 15);
+    }
+
+    hr {
+        position: relative;
+        width: calc(100% + 80px); //40px is the mobile-nav's padding-left;
+        left: -40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 0 auto;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+    button[disabled] {
+        background-color: transparentize(desaturate($colorPrimary, 100%), 0.75);
+        a:hover {
+            opacity: 1;
+        }
+    }
+
+    button[disabled]:hover {
+        background-color: transparentize(desaturate($colorPrimary, 100%), 0.75);
+    }
+}
+
+.js-drawer-open {
+    @include at-query($min, $large) {
+        overflow: hidden;
+    }
+}
+
+//The menu always clips under the carousel no matter what
+//(as if it's a z-index issue, but it isn't) on IE8-9 only.
+.lt-ie9.js-drawer-open,
+.ie9.js-drawer-open {
+    .main-content {
+        visibility: hidden;
+    }
+}
+
+@include at-query($max, $medium) {
+    .js-drawer-open {
+        #PageContainer {
+            overflow: hidden;
+            display: none;
+        }
+        //Stops header from overlapping on scroll up on iOS
+        header {
+            position: fixed;
+        }
+
+        //Make the drawer background colour cover everything
+        //Stops gaps from appearing on iOS when scrolling on position fixed
+        #PageContainer:before {
+            content: ' ';
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            left: 0;
+
+            bottom: 0px; //fallback
+            //Make sure that it stretches really far down
+            //since users can go past bottom on iOS before scroll update
+            bottom: -100vh;
+        }
+    }
+
+    .drawer {
+        top: 80px !important;
+    }
+}
+
+body:not(.js-drawer-open) .drawer__content {
+    //Remove the delay when we're REMOVING it from the page.
+    //This stops the content from being slower than the bg on exit.
+    transition-delay: 0s;
+}
+//We have two separate class declarations here, which ensures that only
+//ONE of the .drawer__content divs opens.  Since .js-drawer-open-* is on
+//body both of the .drawer__contents are it's children.
+.js-drawer-open-CartDrawer #CartDrawer,
+.js-drawer-open-NavDrawer #NavDrawer {
+    display: block;
+    @include at-query($min, $medium + 1) {
+        opacity: 1;
+    }
+}
+
+/*============================================================================
+  #Cart Drawer
+==============================================================================*/
+
+#CartContainer {
+    padding: $gutter + 10px;
+
+    @include at-query($max, $medium) {
+        padding-top: 0;
+    }
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+.fixed-overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 28;
+    top: 0;
+
+    bottom: 0;
+    //without this we can't scroll on expanded drawers on mobile bp,
+    //but with it we sometimes get an gap on ios
+
+    @include at-query($min, $large) {
+        top: 0px !important; //overwrite js from shopify's admin bar;
+        left: auto;
+        padding-top: 0;
+        width: 33.333%;
+        width: calc(100% / 3);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+}
+
+.fixed-overlay--content {
+    position: relative;
+    width: 100%;
+    margin-top: $gutter;
+    min-height: 100vh;
+
+    @include at-query($min, $medium + 1) {
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    z-index: 999;
+}
+
+.drawer__title,
+.drawer__close {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.drawer__title {
+    width: 100%;
+}
+
+.js-search-open {
+    z-index: 11;
+}
+
+.drawer__header {
+    display: table;
+    height: $headerSize;
+    max-height: $headerSize;
+    min-height: $headerSize;
+    width: 100%;
+    padding-left: $gutter + 10px;
+    padding-right: $gutter + 10px;
+}
+
+.drawer__close {
+    width: 1%;
+    text-align: center;
+    font-size: 1.125em;
+
+    button {
+        float: right;
+        font-size: 1.75em;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        color: white;
+    }
+}
+
+.supports-fontface:not(.lt-ie9) .icon-fallback-text .fallback-text {
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+}

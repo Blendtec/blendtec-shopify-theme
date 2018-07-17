@@ -7,6 +7,8 @@ import accesibleNav from '../util/accessible-nav';
 import truncator from '../util/truncator';
 import responsiveVideos from '../util/responsive-videos';
 
+import '../../styles/app.scss';
+
 var page = {
     el: {},
     windowHeight: 0,

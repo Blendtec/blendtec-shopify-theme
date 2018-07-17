@@ -1,0 +1,164 @@
+/*============================================================================
+  #Sass Mixins
+==============================================================================*/
+.clearfix {
+    &:after {
+      content: '';
+      display: table;
+      clear: both; }
+    *zoom: 1;
+  }
+  
+  @mixin clearfix() {
+    &:after {
+      content: '';
+      display: table;
+      clear: both; }
+    *zoom: 1;
+  }
+  
+  @mixin prefix($property, $value) {
+    -webkit-#{$property}: #{$value};
+    -moz-#{$property}: #{$value};
+    -ms-#{$property}: #{$value};
+    -o-#{$property}: #{$value};
+    #{$property}: #{$value};
+  }
+  
+  @mixin transition($transition: 0.1s all) {
+    @include prefix('transition', #{$transition});
+  }
+  
+  @mixin transform($transform: 0.1s all) {
+    @include prefix('transform', #{$transform});
+  }
+  
+  @mixin gradient($from, $to, $fallback) {
+    background: $fallback;
+    background: -moz-linear-gradient(top, $from 0%, $to 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$from), color-stop(100%,$to));
+    background: -webkit-linear-gradient(top, $from 0%, $to 100%);
+    background: -o-linear-gradient(top, $from 0%, $to 100%);
+    background: -ms-linear-gradient(top, $from 0%, $to 100%);
+    background: linear-gradient(top bottom, $from 0%, $to 100%);
+  }
+  
+  @mixin backface($visibility: hidden) {
+    @include prefix('backface-visibility', #{$visibility});
+  }
+  
+  @mixin box-sizing($box-sizing: border-box) {
+    -webkit-box-sizing: #{$box-sizing};
+    -moz-box-sizing: #{$box-sizing};
+    box-sizing: #{$box-sizing};
+  }
+  
+  @mixin animation($animate...) {
+      $max: length($animate);
+      $animations: '';
+  
+      @for $i from 1 through $max {
+          $animations: #{$animations + nth($animate, $i)};
+  
+          @if $i < $max {
+              $animations: #{$animations + ", "};
+          }
+      }
+      -webkit-animation: $animations;
+      -moz-animation:    $animations;
+      -o-animation:      $animations;
+      animation:         $animations;
+  }
+  
+  @mixin keyframes($animationName) {
+      @-webkit-keyframes #{$animationName} {
+          @content;
+      }
+      @-moz-keyframes #{$animationName} {
+          @content;
+      }
+      @-o-keyframes #{$animationName} {
+          @content;
+      }
+      @keyframes #{$animationName} {
+          @content;
+      }
+  }
+  
+  
+  @function em($target, $context: $baseFontSize) {
+    @if $target == 0 {
+      @return 0;
+    }
+    @return $target / $context + 0em;
+  }
+  
+  @function rem($target, $context: $baseFontSize) {
+    @if $target == 0 {
+      @return 0;
+    }
+    @return $target / $context + 0rem;
+  }
+  
+  @function color-control($color) {
+    @if (lightness( $color ) > 40) {
+      @return #000;
+    }
+    @else {
+      @return #fff;
+    }
+  }
+
+  /*============================================================================
+  Dependency-free breakpoint mixin
+    - Based on http://blog.grayghostvisuals.com/sass/sass-media-query-mixin/
+    - Usage docs: http://shopify.github.io/Timber/#sass-mixins
+==============================================================================*/
+$min: min-width;
+$max: max-width;
+@mixin at-query ($constraint_, $viewport1_, $viewport2_:null) {
+ $constraint: $constraint_; $viewport1: $viewport1_; $viewport2: $viewport2_;
+  @if type-of($constraint_) == number {
+    $viewport1 : $constraint_; $viewport2 : $viewport1_; $constraint : null;
+  }
+  @if $constraint == $min {
+    @media screen and ($min: $viewport1) {
+      @content;
+    }
+  } @else if $constraint == $max {
+    @media screen and ($max: $viewport1) {
+      @content;
+    }
+  } @else {
+    @media screen and ($min: $viewport1) and ($max: $viewport2) {
+      @content;
+    }
+  }
+}
+
+
+
+@mixin kenBurns($size : '1.05'){
+  @include prefix('transform', 'scale(#{$size})');
+}
+
+// Used to reduce code duplication for the transparent header
+// Since we have pretty complicated rules as when these rules
+// should be activateable.
+@mixin transparentHeader(){
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  @include at-query ($min, $medium + 1) {
+    &, .site-header-controls {
+      background-color: transparent;
+      box-shadow: none !important;
+    }
+  }
+
+  .site-header-controls {
+    div + div {border-left: none;}
+    > div:not(.active):hover {
+      background-color: transparent;
+    }
+  }
+}
