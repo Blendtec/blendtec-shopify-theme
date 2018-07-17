@@ -1,0 +1,33 @@
+/*============================================================================
+  #Links and Buttons
+==============================================================================*/
+a,
+.text-link {
+  color: $colorLink;
+  text-decoration: none;
+  background: transparent;
+}
+
+a:hover,
+a:focus,
+.text-link:hover {
+  color: $colorLinkHover;
+}
+
+a.cta {
+    display: inline-block;
+    font-size: 1.5em;
+    font-style: italic;
+    margin-top: 15px;
+    text-transform: uppercase;
+  }
+  
+
+/*================ Force an input/button to look like a text link ================*/
+.text-link {
+  display: inline;
+  border: 0 none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}

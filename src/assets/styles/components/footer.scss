@@ -1,0 +1,239 @@
+/*============================================================================
+  #Site Footer
+==============================================================================*/
+
+#shopify-section-footer {
+    &.absolute {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+    }
+  
+    &.hidden { opacity: 0; }
+  }
+  
+  .site-footer {
+    width: 100%;
+    margin-top: 3em;
+    overflow: hidden; //so super long HRs don't extent out of bounds
+  
+    .template-index &,
+    .template-collection &,
+    .template-list-collections &,
+    .template-product & {margin-top: 0;}
+  
+    .grid {
+      margin-left: 0;
+    }
+  
+    .list-column li {
+      margin-bottom: 0;
+    }
+  
+    p,
+    .list-column a,
+    input {
+      @include at-query($min, $medium + 1) {
+        font-size: em(14px);
+      }
+  
+      font-size: 1em;
+      line-height: em(30px);
+    }
+  
+    .footer-wrapper {
+      padding: 30px 40px 30px 40px;
+  
+      hr.full-width {
+        width: 200%;
+        margin-left: -50%;
+        margin-top: 0;
+      }
+    }
+  
+    &.has-content .footer-wrapper {
+      padding-top: 60px;
+    }
+  
+    h1 { font-size: 1.75rem; }//28px in em
+  
+    .btn.show-exit-intent {
+      margin-top: em(15px);
+      margin-bottom: em(15px);
+    }
+  
+    a:hover,
+    .list-column a:hover {
+      color: #a16c41;;
+    }
+  
+    .grid__item:first-child {
+      padding-left: 0;
+    }
+  
+    @include at-query($max, $medium){
+      .floatR {
+        float: none;
+        clear: both;
+      }
+    }
+  
+    .footer-blocks-container {
+      @include clearfix();
+      padding-bottom: 40px;
+  
+      @include at-query($max, $medium) {
+        .grid__item:not(:first-child) {
+          border-top-width: 1px;
+          border-top-style: solid;
+          padding-top: 35px;
+        }
+  
+        .grid__item:not(:last-child) {
+          margin-bottom: 35px;
+        }
+      }
+    }
+  
+    .grid .grid {
+      margin-left: 0px;
+  
+      .grid__item {
+        padding: 0;
+      }
+    }
+  
+    .header {
+      font-family: $headerFontStack;
+      text-transform: uppercase;
+      padding-bottom: em(8px);
+      font-weight: bold;
+      letter-spacing: em(1px);
+      font-size: em(12px)
+    }
+  
+    .shop-name {
+      margin-bottom: 0;
+    }
+  
+    form {
+      padding-top: 10px;
+      padding-bottom: 30px;
+    }
+  
+  
+  
+    @include at-query ($max, $small) {
+  
+      .small--border-top {
+        border-top: 1px solid $colorBorder;
+        width: calc(100% + 15px); //15px is for the footer-wrapper padding.
+        padding: 40px;
+      }
+  
+      .small--text-center { margin-bottom: 5px; }
+    }
+  
+    @include at-query($max, $medium){
+      .grid__item {
+        padding-left: 0;
+      }
+      ul {
+        margin-bottom: 0;
+      }
+  
+      .show-exit-intent {
+        margin-bottom: 35px;
+      }
+    }
+  
+  
+    .helper-section:hover .helper-note {
+      @include transform('translateY(40px)');
+    }
+  }
+  
+  .footer-lower {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0;
+  
+    @include at-query($max, $large - 1) {
+      display: block;
+      text-align: center;
+    }
+  }
+  
+  .footer-lower-right {
+    display: flex;
+    align-items: center;
+  
+    @include at-query($max, $large - 1) {
+      flex-direction: column;
+    }
+  }
+  
+  .footer-attribution {
+    padding: 1px 15px 2px;
+    border-radius: 15px;
+    opacity: 0.3;
+  
+    a {
+      font-weight: 700;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+  }
+  
+  .footer-payment {
+    margin-right: 10px;
+  
+    @include at-query($max, $large - 1) {
+      margin-top: calc(1em - 5px);
+      margin-bottom: calc(1em - 5px);
+      margin-right: 0;
+    }
+  
+    ul {
+      margin-right: -5px;
+      margin-bottom: 0;
+      margin-left: -5px;
+      font-size: 0;
+    }
+  
+    li {
+      display: inline-block;
+      margin: 5px 2px;
+    }
+  
+    svg {
+      display: block;
+      height: 30px;
+      opacity: 0.3;
+    }
+  
+    .visa svg { width: 53px; }
+    .master svg { width: 45px; }
+    .american-express svg { width: 58px; }
+    .apple-pay svg { width: 40px; }
+    .paypal svg { width: 58px; }
+    .diners-club svg { width: 30px; }
+    .jcb svg { width: 42px; }
+    .maestro svg { width: 45px; }
+    .google-wallet svg { width: 60px; }
+    .discover svg { width: 58px; }
+    .solo svg { width: 36px; }
+    .switch svg { width: 24px; }
+    .laser svg { width: 32px; }
+    .dankort svg { width: 49px; }
+    .dwolla svg { width: 58px; }
+    .bitcoin svg { width: 60px; }
+    .forbrugsforeningen svg { width: 28px; }
+    .shopify-pay svg { width: 35px; }
+  }
+  

@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
@@ -26,9 +27,10 @@ const copyWebpackPluginConf = new CopyWebpackPlugin([
 ]);
 
 const miniCssExtractPlugin = new MiniCssExtractPlugin({
-  path: path.resolve(__dirname, 'dist'),
-  filename: 'assets/[name].bundle.css',
+  filename: 'assets/[name].bundle.css'
 });
+
+const optimizeCssAssetPlugin  = new OptimizeCssAssetsPlugin({})
 
 module.exports = {
   entry: {
@@ -37,6 +39,8 @@ module.exports = {
     blog: './src/assets/scripts/templates/blog.js',
     collection: './src/assets/scripts/templates/collection.js',
     index: './src/assets/scripts/templates/index.js',
+    registration: './src/assets/scripts/templates/registration.js',
+    warranty: './src/assets/scripts/templates/warranty.js',
     vendor: ['lodash', 'slick-carousel', 'imagesloaded'],
   },
   externals: {
@@ -50,6 +54,7 @@ module.exports = {
 
   plugins: [
     copyWebpackPluginConf,
+    miniCssExtractPlugin
   ],
   module: {
     rules: [{
@@ -57,7 +62,7 @@ module.exports = {
       use: [
         MiniCssExtractPlugin.loader,
         'css-loader',
-        'sass-loader',
+        'sass-loader'
       ],
     },
     { 
@@ -72,5 +77,10 @@ module.exports = {
       },
     },
     ],
+  }, 
+  optimization: {
+    minimizer: [
+      optimizeCssAssetPlugin
+    ]
   }
 };

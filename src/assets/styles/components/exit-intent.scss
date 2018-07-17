@@ -1,0 +1,118 @@
+/*============================================================================
+  #Exit Intent
+==============================================================================*/
+
+.exit-intent {
+    position: relative;
+    max-width: 525px;
+    max-height: 435px;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    @include at-query($min, $medium + 1){ width: 50% }
+    background-color: $colorBody;
+    color: $colorTextBody;
+    @include prefix('transform-style', 'preserve-3d');
+    @include prefix('transform-origin', '50% 0');
+    @include backface(hidden);
+    transition: all 0.3s;
+    opacity: 0;
+    text-align: center;
+    display: table;
+    @include transform('translateX(-50%) translateY(-50%) rotateX(-60deg)');
+  
+    .show & {
+      @include transform('translateX(-50%) translateY(-50%)');
+      opacity: 1;
+    }
+  
+    input {
+      width: 100%;
+      padding-left: 13px;
+    }
+    .btn {width: 100%; margin-top: 10px;}
+  
+  
+    .close-exit-intent {
+      position: absolute;
+      right: 1em;
+      top: 1em;
+    }
+  }
+  .exit-intent-overlay-scroll {
+    overflow-y:scroll;
+  }
+  .exit-intent__content {
+    padding: 2.5em;
+  }
+  
+  .exit-intent-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    opacity: 0;
+    @include prefix('perspective', '1000px');
+  
+  
+    z-index: -1;
+    &.show {
+      opacity: 1;
+      z-index: 100000; //one higher than .helper-note
+    }
+  }
+  
+  
+  //The exit intent image only appears for larger screensizes
+  @include at-query($min, $medium + 1){
+    .exit-intent--large {
+      max-width: em(800px);
+      width: 100%;
+  
+      .exit-intent__content {
+        width: 50%;
+      }
+    }
+  }
+  
+  .exit-intent__image {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    -ms-behavior: url('//cdn.shopify.com/s/files/1/2182/0257/t/7/assets/backgroundsize.min.htc'); //polyfill IE8
+    width: 100%;
+  
+    height: em(600px);
+    max-height: 75vh;
+    min-height: em(250px); //handles a very short viewport
+  
+    display: none;
+  
+    @include at-query($min, $medium + 1){
+      display: block;
+    }
+  }
+  
+  //FF bugs
+  
+  //Firefox doesn't play nicely with some of the backface and perspective stuff
+  //Confirmed in 41.0.1.  Mozilla will likely fix soon and then we can remove this
+  //but leave it in until they do.
+  @-moz-document url-prefix() {
+      .exit-intent  {
+        //Remove rotate() as we don't get the effect we want with perspective
+        @include transform('translateX(-50%) translateY(-50%)');
+      }
+  
+  
+      //Firefox has some jumpiness on OSX for scale of overlaid images,
+      //there are issues in bugzilla
+      //All the classes that have kenburns enabled.  Unfortunately we can't append
+      //this to the mixin because that's now how te *-document selector works.
+      .featured-blog__image:hover, .ken-burns, .cell-wrapper--has-alternate-image:hover img, .collection-block__image-wrapper:hover .collectionBlock__image {
+        @include prefix('transform', 'initial');
+      }
+  }
+  

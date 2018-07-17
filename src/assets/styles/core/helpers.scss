@@ -1,0 +1,107 @@
+/*============================================================================
+  #Helper Classes
+==============================================================================*/
+.is-transitioning {
+    display: block !important;
+    visibility: visible !important;
+}
+
+.display-table {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table {
+    display: table;
+}
+
+.display-table-cell {
+    display: table-cell !important;
+    vertical-align: middle;
+    float: none;
+}
+
+.table--full-height {
+    display: table;
+    height: 100% !important;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.table--cell-center {
+    display: table-cell !important;
+    vertical-align: middle;
+}
+
+.grid--full-height {
+    height: 100%;
+}
+
+.inline {
+    display: inline;
+}
+
+@include at-query($min, $large) {
+    .large--display-table {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    .large--display-table-cell {
+        display: table-cell;
+        vertical-align: middle;
+        float: none;
+    }
+}
+.preloader {
+    display: none !important;
+}
+
+.fixed--medium-down {
+    position: fixed !important;
+}
+
+@include at-query($min, $large) {
+    .large--fixed {
+        position: fixed;
+        top: 0 !important;
+    }
+
+    .large--absolute {
+        position: absolute;
+    }
+}
+
+.floatR {
+    float: right;
+}
+.floatL {
+    float: left;
+}
+
+@include at-query($max, $large) {
+    .medium-down--floatL {
+        float: left;
+    }
+}
+
+.faded {
+    opacity: 0.5;
+}
+
+.block {
+    display: block;
+    clear: both;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.inline {
+    display: inline;
+}

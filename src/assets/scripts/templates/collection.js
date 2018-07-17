@@ -1,6 +1,10 @@
 import $ from 'jquery';
 import parallax from '../util/parallax';
 
+import '../../styles/templates/collection.scss';
+
+
+
 var collection = {
     el: {},
     init: function() {

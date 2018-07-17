@@ -1,0 +1,133 @@
+/*============================================================================
+  #Pages
+==============================================================================*/
+
+
+.main-content {
+    @include clearfix();
+    display: block;
+    min-height: calc(100vh - 430px);
+    overflow-y:hidden;
+    overflow: auto;
+  
+    .container {
+        -ms-overflow-style: none;  // IE 10+
+        overflow: -moz-scrollbars-none;  // Firefox
+    }
+    .container::-webkit-scrollbar { 
+        display: none;  // Safari and Chrome
+    }
+  
+  }
+  
+  ::-webkit-scrollbar {
+      //Hide the scrollbar, as it can affect page width/layout.
+      display: none;
+  }
+  
+  .content-wrapper {
+    padding: 4em;
+    max-width: $siteWidth;
+    margin: 0 auto;
+    padding-bottom: 0;
+  }
+  
+  .content-wrapper--horizontal {
+    max-width: $siteWidth;
+    margin: 3em auto;
+  
+    h1 {margin-top: 0 !important;}
+    nav {margin-bottom: 0 !important;}
+  }
+  
+  .content-wrapper--title {
+    padding: 0 2.5em 4em 2.5em;
+    max-width: $siteWidth;
+    margin: 0 auto;
+    padding-bottom: 0;
+  }
+  
+  .content-wrapper--squished {
+    width: 100%;
+    padding: 1em 1.5em;
+  }
+  
+  #PageContainer {
+    width: 100%;
+    min-height: 100vh;
+    background-color: $colorBody;
+    overflow: hidden; //Added for the collections page but can be removed if it breaks index
+    & + hr {
+      margin: 0 0 1em 0;
+    }
+  }
+  
+  .template-list-collections {
+  
+    .section-header {
+      margin-top: 2.625rem;
+      margin-bottom: 2.625rem;
+    }
+  }
+  
+  .template-collection, .template-cart {
+    .section-header > div > *:last-child {margin-bottom: 0;}
+    .section-header > div > *:first-child {margin-top: 0;}
+  }
+  
+  @include at-query($max, $medium){
+    .template-collection .section-header {
+      margin: 0;
+    }
+  }
+  
+  
+  .template-product {
+    .slick-dots li { margin: 0; }
+  
+    .content-wrapper--title {padding-bottom: 2.5em;}
+  }
+  
+  .hr-no-margin {
+    margin-top:0px;
+    margin-bottom:0px;
+  }
+  
+  .template-blog .main-content {
+    .inline-list.blog-info {
+      margin-left: 15px;
+    }
+  
+    .excerpt img:first-child {display: none;}
+  
+    a:hover + .featured-blog__caption h4, h4:hover {color: $colorPrimary;}
+  
+    .pagination {margin-bottom: 0;}
+  }
+  
+  #PageContainer > main > div > div.grid__item.large--two-thirds.push--large--one-sixth
+  
+  .template-article {
+    #Comments > ul > li {
+        padding-left: 3em;
+    }
+  }
+  
+  .article-feature-image {
+    margin-bottom: 1.9rem !important;
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 620px;
+  }
+  
+  
+  
+  .template-article main > .grid--full > .grid__item {
+    //Make sure that the meta info on the article page is not
+    //clipped by the image.
+    z-index: 2;
+  }
+  
+  .template-article article { margin-bottom: 1em; }
+  

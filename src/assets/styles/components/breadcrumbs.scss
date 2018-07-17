@@ -1,0 +1,29 @@
+/*============================================================================
+  #Breadcrumbs
+==============================================================================*/
+.breadcrumb-wrapper {
+    background-color: $colorBody;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 1px 1px -1px rgba(0,0,0,0.3);
+  }
+  
+  .breadcrumb {
+    font-size: em(14px);
+  
+    a,
+    span {
+      display: inline-block;
+      padding: 0 2px 0 0;
+      margin-right: 2px;
+  
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+  
+  p.h6.light {
+      margin-bottom: 0.75em;
+  }
+  

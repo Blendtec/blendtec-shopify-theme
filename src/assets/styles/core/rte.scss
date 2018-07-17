@@ -1,0 +1,38 @@
+  /*============================================================================
+  #Rich Text Editor
+==============================================================================*/
+.rte {
+    margin-bottom: $gutter / 2;
+  
+    img { max-width: 100%; }
+  
+    a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+  
+    // Add some top margin to headers from the rich text editor
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.5em;
+  
+      &:first-child {
+        margin-top: 0;
+      }
+  
+      a {
+        text-decoration: none;
+      }
+    }
+  
+    > div {
+      margin-bottom: $gutter / 2;
+    }
+  
+    li {
+      margin-bottom: 0.4em;
+    }
+  }
+  
+  .rte--header {
+    margin-bottom: 0;
+  }

@@ -1,0 +1,502 @@
+/*============================================================================
+  #Typography
+==============================================================================*/
+@font-face {
+  font-family: 'icons';
+  src: url('//cdn.shopify.com/s/files/1/2182/0257/t/7/assets/icons.eot');
+  src: url('//cdn.shopify.com/s/files/1/2182/0257/t/7/assets/icons.eot#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/2182/0257/t/7/assets/icons.woff') format("woff"),
+       url('//cdn.shopify.com/s/files/1/2182/0257/t/7/assets/icons.ttf') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/2182/0257/t/7/assets/icons.svg#timber-icons') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body,
+input,
+textarea,
+button,
+select {
+  font-size: $baseFontSize;
+  line-height: 1.6;
+  font-family: $bodyFontStack;
+  color: $colorTextBody;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale
+}
+
+body, html, button, input {
+  font-size: $baseFontSize;
+  @include at-query($min, $large){
+    font-size: $baseFontSize;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  display: block;
+  font-family: $headerFontStack;
+  font-weight: $headerFontWeight;
+  color: $colorTextHeader;
+  margin: 15px 0 0.5rem;
+  line-height: 1.4;
+
+  a {
+    text-decoration: none;
+    font-weight: inherit;
+  }
+
+  
+}
+
+.shop-name {
+  font-family: $logoFontStack;
+}
+
+svg { fill: currentColor; }
+
+p {
+  //font size inheirited from html/body.
+  margin: 0 0 1rem;
+  img {margin: 0;}
+}
+
+h1 {
+  font-size: em(68px);
+}
+
+h2 {
+  font-size: em(45px);
+}
+
+h3 {
+  font-size: em(28px);
+}
+
+h4 {
+  font-size: em(24px);
+}
+
+h5 {
+  font-size: em(20px);
+}
+
+h6 {
+  font-size: em(16px);
+}
+
+.h1 { @extend h1; }
+.h2 { @extend h2; }
+.h3 { @extend h3; }
+.h4 { @extend h4; }
+.h5 { @extend h5; }
+.h6 { @extend h6; }
+
+em {
+  font-style: italic;
+}
+
+b, strong {
+  font-weight: bold;
+}
+
+small {
+  font-size: 0.7em;
+}
+
+sup, sub {
+  position: relative;
+  font-size: 60%;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.5em;
+}
+
+.heavy {
+   font-weight: 900;
+ }
+
+.light-weight {
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.deemphasize {
+  color: lighten($colorTextHeader, 50%);
+}
+
+/*================ Blockquotes ================*/
+blockquote {
+  font-size: 1.125em;
+  line-height: 1.45;
+  font-style: italic;
+  margin: 0 0 $gutter;
+  padding: ($gutter / 2) $gutter;
+  border-left: 1px solid $colorBorder;
+
+  p {
+    margin-bottom: 0;
+
+    & + cite {
+      margin-top: $gutter / 2;
+    }
+  }
+
+  cite {
+    display: block;
+    font-size: 0.75em;
+
+    &:before {
+      content: '\2014 \0020';
+    }
+  }
+}
+
+/*================ Code ================*/
+code, pre {
+  background-color: #faf7f5;
+  font-family: Consolas,monospace;
+  font-size: 1em;
+  border: 0 none;
+  padding: 0 2px;
+  color: #51ab62;
+}
+
+pre {
+  overflow: auto;
+  padding: $gutter / 2;
+  margin: 0 0 $gutter;
+}
+
+/*================ Horizontal Rules ================*/
+hr {
+  clear: both;
+  border-top: solid $colorBorder;
+  border-width: 1px 0 0;
+  margin: $gutter 0;
+  height: 0;
+
+  &.hr--small {
+    margin: 1em 0 0 0;
+  }
+
+  &.hr--center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100%;
+    margin: em(50px) 0;
+  }
+
+  &.hr--clear {
+    border-top-color: transparent;
+  }
+
+  &.hr--default-bottom {margin-bottom: $gutter;}
+
+  &.hr--small-only {
+    @include at-query($min, $postSmall){
+      display: none;
+    }
+  }
+  &.accent {
+    border-color: $colorPrimary;
+    margin: 5px 0px 10px 0px;
+    width: 50px;
+    border-width: 3px 0 0;
+  }
+
+  &.accent--center {
+    @extend hr.accent;
+    margin: 5px auto 10px auto;
+  }
+
+}
+/*================ Section Headers ================*/
+
+.section-header {
+    display: table;
+    width: 100%;
+  
+    h1 + .meta-info {
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    p:last-child {
+      margin-bottom: 0;
+    }
+  
+  .section-header:before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  
+    .with-overlay & {
+      content: '';
+    }
+  }
+  
+  
+  
+    //Make sure the spacing is equidistant
+    //This handles the case of last and first child
+    //being the same element (i.e. the only one)
+    > div{
+      > *:first-child{
+        margin-top: 0.625rem;
+      }
+  
+      > *:last-child{
+        margin-bottom: 3rem;
+      }
+    }
+  
+  }
+  
+  @include at-query ($min, $postSmall) {
+  
+    .section-header__title {
+      margin-bottom: 0;
+    }
+  
+    .section-header__title + p{
+      margin-top: .5rem;
+    }
+  
+    .section-header__left {
+      //this gives us proper centering when it's wrapped in a centred table
+      //e.g. on the collections list page
+      display: inline-block;
+      vertical-align: text-bottom;
+      margin-bottom: 0;
+  
+      h1, h2, h3, h4,
+      .h1, .h2, .h3, .h4 {
+        margin-bottom: 0;
+      }
+  
+      p:last-of-type {
+        margin-bottom: 1.5rem;
+      }
+  
+      & + a {
+        float: right;
+        //This offsets the a tag so that the baseline is the same with the
+        //.h1 before it.  h1 = 36px (2.25 rem) / 2
+        position: relative;
+        top: 1.25em;
+      }
+    }
+  
+    .section-header__right {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: right;
+      width: 335px;
+  
+      @include at-query ($max, $medium) {
+        margin-bottom: $gutter;
+      }
+    }
+  }
+  
+  .section-header__right {
+    .form-horizontal,
+    .collection-view {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  
+    @include at-query ($min, $postSmall) {
+      label + select,
+      .collection-view {
+        margin-left: $gutter / 2;
+      }
+    }
+  }
+  
+  
+  
+  .section-header--image {
+    background-size: cover;
+    -ms-behavior: url('//cdn.shopify.com/s/files/1/2182/0257/t/7/assets/backgroundsize.min.htc'); //polyfill IE8
+    height: 209px;
+    @include at-query($max, $medium){
+      height: 280px;
+    }
+    position: relative;
+    margin-bottom: 0;
+    display: table;
+    width: 100%;
+    border-bottom: $colorPrimary solid 15px;
+  
+    .text-wrapper--center-cell {
+      text-align: center;
+    }
+  
+    .text-wrapper {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      vertical-align: middle;
+  
+      //Need to make top/bottom padding explicit for FF
+      //Safari and Chrome are fine without it though
+      .template-collection & {padding: 2.5em}
+  
+      p:last-of-type {margin-bottom: 0;}
+  
+      H1 {
+        color: lighten($colorTextHeader, 100%);
+      }
+    }
+  
+    //The white overlay
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+  
+    .respond-to-transparent-header & {
+      @include at-query($min, $medium){
+        padding-top: 90px;
+        box-sizing: content-box;
+      }
+    }
+  
+  }
+  
+  .section-header--no-image-loaded {
+    & > div {max-width: 1200px;}
+    padding: 0 4em;
+    margin: 0 auto;
+    margin: 3em 0;
+  
+    //Need to make top/bottom padding explicit for FF
+    //Safari and Chrome are fine without it though
+    .template-collection & .text-wrapper {padding: 2.5em}
+  }
+  
+  .collection-view {
+    display: inline-block;
+    border: 1px solid $colorBorder;
+    border-radius: $radius;
+    padding: 0 5px;
+    height: 37px; // same as form elements
+    overflow: hidden;
+  
+    /*================ Only show on larger screens ================*/
+    @include at-query ($min, $large) {
+      display: inline-block;
+    }
+  }
+  
+  .change-view {
+    display: block;
+    background: none;
+    border: 0 none;
+    float: left;
+    padding: 10px 8px;
+    color: $colorBorder;
+    line-height: 1;
+  
+    &:hover,
+    &:focus {
+      color: $colorPrimary;
+    }
+  }
+  
+  .change-view--active {
+    cursor: default;
+    color: $colorPrimary;
+  }
+  @media (max-width: $medium) {
+    h1{
+      font-size: em(40px);
+    }
+  }
+  /*================ Helper Typographic Fonts ================*/
+  
+  
+  
+  .drop-shadow {
+  
+    @include at-query($min, $postSmall) {
+      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  button.drop-shadow {
+  
+    @include at-query($min, $postSmall) {
+      text-shadow: none;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  .accent {
+    color: $colorPrimary !important;
+  }
+  
+  /*================ Text wrapper ================*/
+  
+  .text-max-width {
+    max-width: 70em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  $textWrapperPadding: 8vw 3em;
+  $textWrapperPaddingLarge: 2.5em;
+  .text-wrapper {
+    padding: $textWrapperPadding;
+  
+    @include at-query($min, $postSmall){
+      padding: $textWrapperPaddingLarge;
+    }
+  
+    > div > *:last-child { margin-bottom: 0; }
+  }
+  
+  //This is used for elements we want to centre
+  //Note: the parent must have display: table set
+  //(e.g. using class .table--full-height)
+  .text-wrapper--center-cell {
+    @extend .text-wrapper;
+    display: table-cell !important;
+    vertical-align: middle;
+    width: 100%;
+  
+    @include at-query($min, $postSmall){
+      padding: 0 $textWrapperPaddingLarge;
+    }
+  }
+  
+  .center-cell {
+    display: table-cell !important;
+    vertical-align: middle;
+    width: 100%;
+  }
+  
+  .text-wrapper--small {
+    max-width: em(575px);
+    margin: 0 auto;
+  }
+

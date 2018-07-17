@@ -1,0 +1,18 @@
+.bt-background-image {
+    h2 {
+        @media only screen and (max-width: $medium) {
+            margin-top: 40%;
+        }
+
+        @media only screen and (min-width: $medium + 1) {
+            margin-top: 20%;
+        }
+    }
+
+    .section4-background-image {
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 600px;
+        background-position: 50%;
+    }
+}

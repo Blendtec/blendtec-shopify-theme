@@ -1,0 +1,86 @@
+/*=========================== Search Bar ==========================*/
+
+/**
+ * We extend .site-header so that #searchBar changes from pos: absolute/fixed
+ * depending on whether sticky header is set.
+ */
+
+ #HeaderSearchBar {
+    @extend .site-header;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1; //one-less than .site-header
+    display: none;
+    min-height: 0;
+    max-height: none;
+    height: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    @include transition('0s');
+    opacity: 0;
+  
+    &.animating {
+      display: block;
+      opacity: 0;
+      @include transform('initial');
+      @include prefix('transition', 'opacity 0.3s cubic-bezier(0.36, 1.01, 0.17, 1.01)');
+    }
+  
+    &.visible {
+      display: block;
+      opacity: 1;
+      z-index: 30;
+    }
+  
+    form {
+      width: 100%;
+      height: 100%;
+    }
+  
+    //IE9 renames all 'search' inputs to 'text'.
+    input[type="search"], input[type="text"]{
+      font-size: 1.25em;
+      border: none;
+      max-width: 680px;
+      width: 100%;
+      height: 55px;
+      padding-left: 0;
+      margin-top: 18vh;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: transparent;
+      font-size: em(26px);
+    }
+  
+    input[type="search"]:focus {
+     outline: none;
+    }
+  
+    button {
+      position: absolute;
+      top: 35px;
+      right: em(20px);
+  
+      @include at-query($max, $medium) {
+        top: 20px;
+        right: em(0);
+      }
+    }
+  
+    &.medium-down--fixed {
+      top: 0 !important; //overwrite js
+    }
+  }
+  
+  .search-close {
+  
+    svg {
+      width: 20px;
+      height: 20px;
+      color: white;
+    }
+  }
+  

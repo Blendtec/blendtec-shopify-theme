@@ -1,0 +1,90 @@
+.newsletter.shopify-section {
+    position: relative;
+    background-color: $colorBody;
+  
+    .red-hr {
+      margin-left: 46%;
+    }
+  }
+  
+  .newsletter-block {
+    height: $homePageBlockHeight;
+    max-height: $homePageBlockMaxHeight;
+    width: 100%;
+    padding: 0 10em;
+  
+    .cell-wrapper{
+      max-width: 33em;
+      margin: 0 auto;
+    }
+  
+    @media screen and (max-width: 840px) {
+      padding: em(75px) em(120px) em(100px) em(120px);
+    }
+  
+    @media screen and (max-width: 700px) {
+      padding: 3em 3em 3.6em 3em
+    }
+  
+    #featured-blog + & {
+      border-top: 1px solid $colorBorder;
+    }
+  }
+  
+  .inline-subscribe {
+  
+  
+    form {
+      position: relative;
+      width: 100%;
+      margin-left: auto;
+      margin-top: 1.5em;
+    }
+  
+    &.no-top form {
+      margin-top: 0px; //ie fallback
+      margin-top: initial;
+    }
+  
+    &:not(.exit-intent) input {
+      font-size: 1em;
+      padding-right: 145px;
+      padding-left: 1em;
+      width: 100%;
+  
+      @media screen and (max-width: $small) { padding-right: 125px; }
+    }
+  
+    &:not(.exit-intent) .btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 3.1em;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  
+    @include at-query($max, $small){
+      .small--one-whole {
+        width: 100% !important; //make sure it overwrites .btn
+        left: 0%;
+        top: 0%;
+  
+      }
+  
+      .btn {
+        margin-top: 10px;
+        width: 100%
+      }
+  
+      input { padding-left: 1.2em; margin-top: .5em; }
+    }
+  
+    @include at-query($max, $medium) {
+      &.exit-intent .btn {
+        margin-top: 10px;
+        width: 100%;
+      }
+    }
+  
+  }
