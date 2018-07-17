@@ -63,7 +63,6 @@
         <div class="grid__item grid--full large--one-whole" data-grid-subpixel itemscope itemtype="http://schema.org/ItemList">
             {% for article in blog.articles %}
                 {% assign remainder = forloop.index0 | modulo:3 %}
-                <meta itemprop="position" content="{{forloop.index0}}" />
         
                 {% if article.image.size >= 1 %}
                     {% assign src = article.image | img_url: 'master' %}
@@ -73,7 +72,7 @@
         
                 <div class="grid__item large--one-third medium--one-half small--one-whole" data-grid-item itemprop="itemListElement" itemscope itemtype="http://schema.org/Recipe">
                     {% if src %}
-                        <a itemprop="url" href="{{article.url}}">
+                        <a href="{{article.url}}">
                             <div class="featured-blog__image-wrapper">
                                 <div class='featured-blog__image'>
                                     <span class="image-wrapper">
@@ -88,6 +87,7 @@
                         <meta itemprop="recipeCuisine" content="{{article.tags.first}}" />
                         <meta itemprop="keywords" content="{{article.tags | join: ', '}}" />
                         <meta itemprop="author" content="{{article.author}}" />
+                        <meta itemprop="position" content="{{forloop.index0}}" />
                     
                         {% if section.settings.show_date %}
                             <p class="meta-info" itemprop="datePublished">{{article.published_at | date: "%B %d, %Y"  }}</p>

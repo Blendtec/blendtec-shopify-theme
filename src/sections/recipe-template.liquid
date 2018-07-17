@@ -19,7 +19,7 @@
         </div>
         <div class="grid__item large--one-third medium--one-third">
             <h5>{{ 'recipes.calories' | t }}:&nbsp;
-                <span  itemprop="calories">{{ article.metafields["global"]["calories"] }}</span>
+                <span>{{ article.metafields["global"]["calories"] }}</span>
             </h5>
         </div>
     </div>
@@ -31,7 +31,7 @@
             <div style="margin-top:60px;" class="recipe--nutrition-info" itemprop="nutrition" itemscope itemtype="http://schema.org/NutritionInformation" typeof="NutritionInformation">
                 <h3>{{ 'recipes.nutrition_info' | t}}</h3>
                 <ul>
-                    <meta itemprop="calories" content"{{ article.metafields["global"]["calories"] }}">
+                    <meta itemprop="calories" content="{{ article.metafields["global"]["calories"] }}">
                     <li><span>{{ 'recipes.servingsize' | t}}: </span><span  itemprop="servingSize">{% include 'recipe-servingsize' %}</span></li>
                     <li><span>{{ 'recipes.fat' | t}}: </span><span itemprop="fatContent">{{ article.metafields["global"]["fat"] | divided_by: 1000 }}g</span></li>
                     <li><span>{{ 'recipes.satfat' | t}}: </span><span itemprop="saturatedFatContent">{{ article.metafields["global"]["satfat"] | divided_by: 1000}}g</span></li>
