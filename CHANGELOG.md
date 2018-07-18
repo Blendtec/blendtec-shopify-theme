@@ -1,3 +1,19 @@
+<a name="1.14.0"></a>
+# [1.14.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.13.0...v1.14.0) (2018-07-18)
+
+
+### Bug Fixes
+
+* **checkout.liquid:** sidebar div nested incorrectly ([#178](https://github.com/Blendtec/blendtec-shopify-theme/issues/178)) ([7d2afdd](https://github.com/Blendtec/blendtec-shopify-theme/commit/7d2afdd))
+* **j:** got rid of random j ([0b2e843](https://github.com/Blendtec/blendtec-shopify-theme/commit/0b2e843))
+* **recipe-templates:** Recipe microdata updates ([#177](https://github.com/Blendtec/blendtec-shopify-theme/issues/177)) ([1b699de](https://github.com/Blendtec/blendtec-shopify-theme/commit/1b699de))
+
+
+### Features
+
+* **product template:** adding youtube videos to product page ([c4ae99b](https://github.com/Blendtec/blendtec-shopify-theme/commit/c4ae99b))
+* **product videos:** added product videos and made style changes to video player ([959b588](https://github.com/Blendtec/blendtec-shopify-theme/commit/959b588))
+
 <a name="1.13.0"></a>
 # [1.13.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.12.2...v1.13.0) (2018-07-16)
 
