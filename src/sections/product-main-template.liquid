@@ -57,7 +57,7 @@
 {% if product.metafields["global"]["noQA"] == 'true' %}
   {% assign noQA = true %}
 {% endif %}
-
+ 
 {% if product.metafields["global"]["nostars"] == 'true' %}
   {% assign nostars = true %}
 {% endif %}
@@ -82,8 +82,9 @@
   {% assign nopackageincludes = true %}
 {% endif %}
 
+{% assign youtubeIds = 'AkTdM-wggBo,ZvX1uJ789cc,6lW4hTepKqQ' | split: "," %}
 
-
+{% include 'youtube-video' %} 
 {% capture lightbox %}
   <div class="product-lightbox" data-product-lightbox>
     <button class="product-lightbox-button close" data-product-lightbox-button="close"><svg><use xlink:href="#icon-close"></use></svg></button>
@@ -142,6 +143,12 @@
                   </button>
               {% endunless %}
             {% endfor %}
+            {% for videoId in youtubeIds %}
+              <button onclick="bt_product.changeImage('{{ videoId }}')" class="product-thumbnail-button youtube-thumbnail" data-product-thumbnail>
+                <i class="fa fa-play-circle youtube-thumbnail-play" aria-hidden="true"></i>
+                <img src="https://img.youtube.com/vi/{{ videoId }}/0.jpg">
+              </button>
+            {% endfor %}
 
             {{ lightbox }}
           </div>
@@ -171,6 +178,13 @@
         {% unless product.featured_image == featured_image %}
           <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-unless='unlessupinhere' >
         {% endunless %}
+        {% for videoId in youtubeIds %}
+              <button class="product-thumbnail-button youtube-thumbnail youtube-video-start" data-variant-id="{{ videoId }}" id="{{ videoId }}">
+                <i class="fa fa-play-circle youtube-image-play" aria-hidden="true"></i>
+                <img src="https://img.youtube.com/vi/{{ videoId }}/0.jpg" >
+              </button>
+            
+        {% endfor %}
         </div>
       </div>
       {% endif %}

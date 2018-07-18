@@ -390,7 +390,29 @@
   .margin-15 {
     margin-top: 15px;
   }
-  
+ 
+  .youtube-thumbnail { 
+    opacity:.9;
+    position:relative;
+  }
+
+  .youtube-thumbnail:hover {
+    opacity: .7; 
+  }
+
+  .youtube-thumbnail-play {
+    position: absolute;
+    top: 40%;
+    left: 42%;
+    font-size:25px;
+  }
+  .youtube-image-play {
+    position: absolute;
+    top: 45%;
+    left: 47%;
+    font-size: 3.5em;
+  }
+
   #ProductPhotoSlideshow {
     position: relative;
     width: 100%;
@@ -400,7 +422,7 @@
   
     .slick-dots {
       top: auto;
-      bottom: 0;
+      bottom: -55px;
       margin-left: 0;
     }
   

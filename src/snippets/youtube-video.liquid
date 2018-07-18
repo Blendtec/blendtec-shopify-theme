@@ -1,0 +1,18 @@
+<div id="video__modal" class="exit-intent-overlay">
+    <section class="exit-intent inline-subscribe">
+        <div class="display-table-cell exit-intent__content">
+            <i class="fa fa-spinner fa-spin" style="font-size:48px;" id="video-loading-spinner"></i>
+            <div id="modal-video-wrapper" style="opacity:0;">
+                <iframe style="width:100%;height:100%;" id="modal-video-frame">
+                </iframe>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log('this should loaddd');
+        $(document).trigger('bt:component:hero'); 
+    });
+</script> 
