@@ -82,7 +82,7 @@
   {% assign nopackageincludes = true %}
 {% endif %}
 
-{% assign youtubeIds = 'AkTdM-wggBo,ZvX1uJ789cc,6lW4hTepKqQ' | split: "," %}
+{% assign youtubeIds = product.metafields["global"]["youtubeVideos"] | split: "," %}
 
 {% include 'youtube-video' %} 
 {% capture lightbox %}
@@ -145,7 +145,7 @@
             {% endfor %}
             {% for videoId in youtubeIds %}
               <button onclick="bt_product.changeImage('{{ videoId }}')" class="product-thumbnail-button youtube-thumbnail" data-product-thumbnail>
-                <i class="fa fa-play-circle youtube-thumbnail-play" aria-hidden="true"></i>
+                <i class="fa fa-play-circle youtube-thumbnail-play" aria-hidden="true" style="font-size:25px;"></i>
                 <img src="https://img.youtube.com/vi/{{ videoId }}/0.jpg">
               </button>
             {% endfor %}
@@ -153,7 +153,7 @@
             {{ lightbox }}
           </div>
         {% endif %}
-    <div class="grid__item {% if product.images.size > 1 %}large--eight-tenths{% else %}large--one-whole{% endif %}">
+    <div class="grid__item medium-no-padding {% if product.images.size > 1 %}large--eight-tenths{% else %}large--one-whole{% endif %}">
         <div class="productSlideShowWrapper product-single__photos" id="ProductPhotoSlideshow">
 
         <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg" data-variant-id="{{ featured_image.variants.first.id }}">
@@ -180,7 +180,7 @@
         {% endunless %}
         {% for videoId in youtubeIds %}
               <button class="product-thumbnail-button youtube-thumbnail youtube-video-start" data-variant-id="{{ videoId }}" id="{{ videoId }}">
-                <i class="fa fa-play-circle youtube-image-play" aria-hidden="true"></i>
+                <i class="fa fa-play-circle youtube-image-play" aria-hidden="true" style="font-size: 3.5em;"></i>
                 <img src="https://img.youtube.com/vi/{{ videoId }}/0.jpg" >
               </button>
             

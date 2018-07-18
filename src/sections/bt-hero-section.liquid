@@ -1,16 +1,4 @@
-<div id="video__modal" class="exit-intent-overlay">
-    <section class="exit-intent inline-subscribe">
-        <div class="display-table-cell exit-intent__content">
-            <i class="fa fa-spinner fa-spin" style="font-size:48px;" id="video-loading-spinner"></i>
-            <div id="modal-video-wrapper" style="opacity:0;">
-                <iframe style="width:100%;height:100%;" id="modal-video-frame" class="javascript-load-image" numBlocks="{{section.blocks.size}}"
-                    typeImage="imagebasesrc" {% for i in section.blocks %} {% assign placement=forloop.index %} {{placement}}imagebasesrc100="https://www.youtube.com/embed/{{ i.settings.video_id }}?playlist={{ i.settings.video_id }}"
-                    {% endfor %} src="">
-                </iframe>
-            </div>
-        </div>
-    </section>
-</div>
+{% include 'youtube-video' %} 
 <div class="bt-hero">
     <div class="hero javascript-load-image" numBlocks="{{ section.blocks.size }}" typeImage="backgroundimagesrc" {% for i in
         section.blocks %} {% assign placement=forloop.index %} {% for y in (1..6) %} {% assign imageSize=y | times: 200 | downcase
@@ -23,7 +11,7 @@
                 <h1 class="heavy" style="margin-left:8%;width:90%;color:{{i.settings.line_two_color}}">{{ i.settings.line_two }}</h1>
                 <h1 class="heavy" style="margin-left:12%;width:86%;color:{{i.settings.line_three_color}}">{{ i.settings.line_three }}</h1>
                 <div class="button-wrapper button-child-margin2">
-                    <button class="btn btn--small btn--left btn-hero--play">
+                    <button class="btn btn--small btn--left btn-hero--play youtube-video-start" data-variant-id="{{ i.settings.video_id }}">
                         <i class="fa fa-caret-right"></i>
                         {{ i.settings.hero_button1text }}</button>
                     {% include 'cta-button' with text: i.settings.hero_button2text, url: i.settings.hero_button2Link %}
@@ -41,7 +29,7 @@
                 <h1 class="heavy" style="margin-left:8%;width:90%;color:{{i.settings.line_two_color}}">{{ i.settings.line_two }}</h1>
                 <h1 class="heavy" style="margin-left:12%;width:86%;color:{{i.settings.line_three_color}}">{{ i.settings.line_three }}</h1>
                 <div class="button-wrapper button-child-margin2">
-                    <button class="btn btn--small btn--left btn-hero--play">
+                    <button class="btn btn--small btn--left btn-hero--play youtube-video-start" data-variant-id="{{ i.settings.video_id }}">
                         <i class="fa fa-caret-right"></i>
                         {{ i.settings.hero_button1text }}</button>
                     {% include 'cta-button' with text: i.settings.hero_button2text, url: i.settings.hero_button2Link %}
@@ -51,11 +39,6 @@
         {% endfor %}
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(document).trigger('bt:component:hero');
-    });
-</script> 
 {%schema%}
 {
     "name":"bt-hero-section",
