@@ -83,7 +83,7 @@
   
       img { display: block; }
     }
-    @include at-query($max, $medium){
+    @include at-query($max, $medium) {
       .medium-no-padding {
         padding-left: 0px;
       }
@@ -410,7 +410,7 @@
     width: 20px;
     height: 20px;
   }
-  
+
   .youtube-thumbnail { 
     opacity:.9;
     position:relative;
@@ -436,7 +436,7 @@
     width: 100%;
     max-width:700px;
   
-    &.slick-slider { margin-bottom: 0; }
+    &.slick-slider { margin-bottom: 0; }j
   
     .slick-dots {
       top: auto;
