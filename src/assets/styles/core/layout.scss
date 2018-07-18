@@ -1,0 +1,39 @@
+/*============================================================================
+  #Basic Styles
+==============================================================================*/
+html {
+    background-color: #ffffff;
+    padding-top: 0 !important; //overwrite shopify's admin
+  }
+  
+  body {
+    background-color: $colorBody;
+    max-width: $siteMaxWidth;
+    margin: 0 auto;
+    position: relative;
+  
+  
+    //Stops Android/iOS from putting a colour "focus" on tapped elements.
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  
+  
+  .wrapper {
+    @include clearfix();
+    max-width: $siteWidth;
+    margin: 0 auto;
+    padding: 0 ($gutter / 2);
+  
+    @include at-query ($min, $small) {
+      padding: 0 $gutter;
+    }
+  }
+  
+  *:active {
+    outline: none !important;
+  }
+  [tabindex='-1']:focus {
+    outline: none;
+  }
+  
+  

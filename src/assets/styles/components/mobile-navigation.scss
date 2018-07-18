@@ -1,0 +1,184 @@
+/*============================================================================
+  #Mobile Nav
+  - List of items inside the mobile drawer
+==============================================================================*/
+$sublistAnimation : "all 300ms cubic-bezier(0.57, 0.06, 0.05, 0.95)";
+
+
+.mobile-nav {
+  padding: $gutter + 10px;
+  padding-bottom: 0;
+  margin-left: 0;
+
+  @include at-query($max, $medium) {
+    padding-top: 0;
+  }
+
+  .mobile-nav & {
+    padding: 5px 0;
+
+    @include at-query($min, $medium + 1){
+      padding-bottom: 30px;
+    }
+  }
+
+  li:not(.mobile-nav__search) {
+    margin-bottom: 0;
+  }
+
+  //The first nav after the header should not have any styling
+  .mobile-nav__header + & {
+    margin: 0;
+  }
+}
+
+.mobile-nav__search {
+  padding-right: 40px;
+  margin-bottom: 35px;
+
+  .search-bar {
+    margin-bottom: 0;
+  }
+}
+
+.mobile-nav__item {
+  position: relative;
+  display: block;
+  padding-top: 0px;
+  overflow: hidden;
+
+  .mobile-nav > &:last-child:after {
+    display: none;
+  }
+}
+
+.mobile-nav__item a,
+.mobile-nav__toggle button {
+  text-decoration: none;
+  @include transition($defaultHoverSpeed);
+}
+
+.mobile-nav__header {
+  font-size: 0.775em; //it's approx ~em(12px)
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  padding-top: 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  letter-spacing: em(1px);
+
+  @include at-query($max, $medium){
+    padding-top: 0px;
+    padding-bottom: 10px;
+  }
+
+  .ajaxcart__header & {padding-top: 0; padding-bottom: 0;}
+}
+
+.mobile-nav__has-sublist {
+  @include backface(hidden);
+  @include at-query($min, $medium + 1){width: 100%;}
+
+  .mobile-nav__link {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+}
+
+.mobile-nav__toggle {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 7px;
+  width: 7px;
+  outline: none;
+
+  svg {
+    position: relative;
+    top: 2px;
+    display: block;
+    width: 7px;
+    height: 6px;
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-nav--expanded & svg {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+  }
+}
+
+.mobile-nav__toggle-open {
+  .mobile-nav--expanded & {
+    display: none;
+  }
+}
+
+.mobile-nav__toggle-close {
+  display: none;
+
+  .mobile-nav--expanded & {
+    display: block;
+  }
+}
+
+.mobile-nav__sublist {
+  position: relative;
+  margin: 0;
+  margin-left: 1em;
+  max-height: 0;
+  //the "close" animation
+  @include transition("all #{$animation-speed} #{$animation-curve};");
+
+  .mobile-nav--expanded + & {
+    max-height: 700px;
+    //the "open" animation
+    @include transition("max-height #{$animation-speed} ease-in;");
+  }
+
+  .mobile-nav__item {
+    margin-left:-7px;
+    opacity: 0;
+    @include backface(hidden);
+
+    @for $i from 0 to 20 {
+      &.animation-sequence-#{$i} {
+        transition: opacity $animation-speed $animation-curve, margin-left $animation-speed $animation-curve;
+      }
+    }
+
+    &::after {
+      top: 0;
+      bottom: auto;
+    }
+  }
+
+  .mobile-nav--expanded + & > .mobile-nav__item {
+    opacity: 1;
+    margin-left:0;
+
+    @for $i from 0 to 20 {
+      $delay: $i * 100 / 2;
+      &.animation-sequence-#{$i} {
+        transition: opacity $animation-speed #{$delay}ms $animation-curve, margin-left $animation-speed #{$delay}ms $animation-curve;
+      }
+    }
+  }
+}
+
+.fadeout-overlay {
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+    position: fixed;
+    @include transition(0.2s);
+    background-color: $colorBody;
+  }
+
+  .fadeout-overlay.show {
+    opacity: 1;
+    z-index: 999999;
+  }

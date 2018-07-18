@@ -1,0 +1,20 @@
+.partners {
+    .section-wrapper {
+        background-size: cover;
+        background-position-y: 20%;
+        min-height: 200px;
+    }
+
+    .brand-images {
+        padding-left: 15%;
+        padding-top: 55px;
+
+        .grid__item {
+            height: 100px;
+        }
+
+        brand-image {
+            max-height: 100px;
+        }
+    }
+}

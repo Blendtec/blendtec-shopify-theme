@@ -1,0 +1,259 @@
+/*============================================================================
+  #Story Grid
+==============================================================================*/
+
+#story-grid .placeholder {
+    .cell-wrapper {
+        height: 100% !important;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    svg {
+        width: 330px;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        @include at-query($max, $small) {
+            top: 0;
+            transform: translate(-50%, 0);
+        }
+    }
+}
+
+.grid--story {
+    background-color: $colorBody;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    button {
+        margin-top: 1.2rem;
+    }
+
+    h3 {
+        margin-bottom: 0.5em;
+    }
+
+    .table--full-height {
+        width: 100%;
+    }
+
+    .text-wrapper {
+        display: block;
+        max-width: 36em; //needs to be the same as p's max-width so it centres properly
+        @include at-query($max, $small) {
+            margin: 0 auto;
+            text-align: center;
+        }
+        @include at-query($min, $small) {
+            &.align-left {
+                text-align: left;
+            }
+
+            &.align-center {
+                text-align: center;
+            }
+
+            &.align-right {
+                text-align: right;
+            }
+        }
+    }
+
+    .grid__item {
+        height: $homePageBlockHeight;
+        max-height: $homePageBlockMaxHeight;
+        overflow: hidden; //necessary because cell-wrapper will be larger so the img can expand and be resized.
+        padding-left: 0px;
+
+        @include at-query($max, $small) {
+            height: 50vw;
+        }
+
+        &.border-top {
+            border-top: 1px solid transparentize($colorBorder, 0.5);
+        }
+
+        &.aspect-narrow img {
+            max-height: calc(100% + 2px);
+        }
+        &.aspect-wide img {
+            max-width: calc(100% + 2px);
+        }
+
+        .cell-wrapper {
+            position: relative;
+            height: $homePageBlockHeight;
+            max-height: $homePageBlockMaxHeight;
+
+            @include at-query($max, $small) {
+                height: 50vw;
+            }
+        }
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            height: auto;
+            max-width: none;
+            min-width: calc(100% + 2px);
+            min-height: calc(#{$homePageBlockHeight} + 2px);
+
+            @include at-query($max, $small) {
+                min-height: calc(50vw + 2px);
+            }
+        }
+    }
+
+    .grid__item--variable-height {
+        height: auto !important; //overwrites specificity from media queries
+        max-height: none !important;
+    }
+
+    .cell-height--two-rows {
+        height: $homePageBlockHeight * 2;
+        max-height: $homePageBlockMaxHeight * 2;
+    }
+
+    .cell-width--two-thirds {
+        width: 66%;
+    }
+
+    .cell-width--half-half {
+        width: 50%;
+    }
+
+    @include at-query($max, $small) {
+        .grid__item {
+            //overwrite custom heights.
+            width: 100% !important;
+            height: auto;
+        }
+
+        //Borders should only appear between two text blocks.
+        :not(.grid--story__image).grid__item
+            + .grid__item:not(.grid--story__image) {
+            border-top: 1px solid #000000;
+        }
+    }
+}
+
+.grid--masonry {
+    overflow: hidden;
+    opacity: 1;
+    @include transition('0.2s linear');
+
+    .grid__image {
+        overflow: hidden;
+    }
+
+    .cell-wrapper {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+
+        img {
+            position: relative;
+            top: 0;
+        }
+
+        img.has-hover {
+            @include transition('opacity 0.2s linear');
+        }
+    }
+
+    img {
+        display: block;
+    }
+}
+
+.hover-image {
+    opacity: 0;
+    z-index: 5;
+}
+
+.cell-wrapper--alternate-image {
+    position: absolute;
+    top: 0;
+    height: 100%;
+
+    img {
+        min-width: auto; //ie fallback
+        max-width: auto; //ie fallback
+
+        min-width: initial;
+        max-width: initial;
+        width: auto;
+    }
+}
+
+.grid--product-wrapper {
+    width: 100%;
+    position: relative;
+    background-color: white;
+}
+.grid--products {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: auto;
+
+    .grid__image {
+        margin: 0;
+    }
+
+    > .grid__item {
+        > a .cell-wrapper img.has-hover {
+            transition: opacity 0.15s ease-in;
+        }
+
+        > a:hover .cell-wrapper img.has-hover {
+            opacity: 0;
+        }
+
+        .cell-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        img {
+            position: relative;
+        }
+
+        img.is-variant {
+            position: absolute;
+            top: 0;
+        }
+
+        &.processed img {
+            position: absolute;
+            top: 0;
+            left: -1px;
+            right: -1px;
+            width: calc(100% + 1px);
+            max-width: none;
+            background-color: $colorBody;
+
+            &.is-variant {
+                top: 50%;
+                transform: translateY(-50%);
+
+                &.is-short {
+                    top: 0;
+                    left: 50%;
+                    width: auto;
+                    height: 100%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,152 @@
+/*=========================== Notification Bar ==========================*/
+#notification-bar {
+    background-color: $colorPrimary;
+    &, a {color: $colorBtnPrimaryText;}
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $notificationBarHeight;
+    max-width: $siteMaxWidth;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: .8em;
+    font-weight: 800;
+  }
+  
+  //While this class effects the header, conceptually it only exists
+  //because of the notification bar.
+  .offset-by-notification-bar {
+    position: fixed;
+    top: $notificationBarHeight !important;
+    //important is necessary because this class by itself
+    //doesn't have enough specificity, but we want it to
+    //overwrite complicated `top` rules for the stickyheader
+  }
+  
+  .header-message-currency,
+  .header-message-social,
+  .header-message-chat {
+    position: absolute;
+    top: 6px;
+    border-radius: 2px;
+    padding: 4px 5px;
+    height: 27px;
+  }
+  
+  .header-message-currency {
+    left: 10px;
+  
+    @include at-query($max, $medium) { left: 6px; }
+  
+    select {
+      padding: 0;
+      height: 19px;
+      font-size: 13px;
+      font-weight: 700;
+      width: 46px !important;
+      margin-right: -10px;
+      border: none;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+  
+      @include at-query($max, $medium) { width: 55px !important; }
+    }
+  }
+  
+  .header-message-text {
+    @include at-query($max, $small) { display: none !important; }
+  }
+  
+  .currency-picker-label {
+    font-size: 13px;
+  
+    &:after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid;
+      position: relative;
+      top: 10px;
+      margin-left: 3px;
+    }
+  }
+  
+  .currency-picker-outer {
+    position: relative;
+    display: inline-block;
+  }
+  .header-message-chat {
+    right: 200px;
+  
+    @include at-query($max, $medium) { right: 12px; }
+  }
+  .header-message-social {
+    right: 10px;
+  
+    @include at-query($max, $medium) { right: 6px; }
+  }
+  
+  .header-message-social-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  
+    .icon {
+      font-size: 0;
+      width: 14px;
+      display: inline-block;
+      margin-left: 4px;
+  
+      &:before {
+        font-size: 14px;
+        margin-right: 0;
+      }
+    }
+  
+    li {
+      display: inline-block;
+      margin: 0;
+  
+      @include at-query($max, $medium) {
+        &:first-child .icon {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  
+  .header-message-label {
+    text-transform: capitalize;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    font-size: 13px;
+    margin-right: 5px;
+  
+    @include at-query($max, $medium) { display: none; }
+  }
+  
+  .large-margin-right{
+    margin-right:60px;
+  }
+  @media only screen and (max-width: 1100px){
+    .large-margin-right{
+      margin-right:20px;
+    }
+  }
+  @media only screen and (max-width: $medium){
+    .large-margin-right{
+      margin-right:0px;
+    }
+  }

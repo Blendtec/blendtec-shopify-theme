@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import '../../styles/templates/blog.scss';
 
 var blog = {
     init:  function() {

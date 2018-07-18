@@ -1,0 +1,23 @@
+/*============================================================================
+  #Pagination
+==============================================================================*/
+.pagination {
+    margin-bottom: 1.9em;
+    margin-top: 1.9em;
+    text-align: center;
+  
+    > span {
+      display: inline-block;
+      line-height: 1;
+    }
+  
+    a {
+      display: block;
+    }
+  
+    a,
+    .page.current {
+      padding: 8px;
+    }
+  }
+  

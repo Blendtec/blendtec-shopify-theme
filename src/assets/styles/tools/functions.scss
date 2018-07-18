@@ -1,0 +1,30 @@
+@function strip-units($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+@mixin grid-media-query($media-query) {
+    $breakpoint-found: false;
+
+    @each $breakpoint in $breakpoints {
+        $name: nth($breakpoint, 1);
+        $declaration: nth($breakpoint, 2);
+
+        @if $media-query == $name and $declaration {
+            $breakpoint-found: true;
+
+            @media only screen and #{$declaration} {
+                @content;
+            }
+        }
+    }
+
+    @if $breakpoint-found == false {
+        @warn "Breakpoint '#{$media-query}' does not exist";
+    }
+}
+
+@mixin silent-relative() {
+    @if $use-silent-classes == true {
+        position: relative;
+    }
+}

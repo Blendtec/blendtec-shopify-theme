@@ -1,0 +1,211 @@
+/*============================================================================
+  #Animations
+==============================================================================*/
+
+@include keyframes(fade-and-flip) {
+    0% {
+        @include prefix('transform', 'rotate(90deg)');
+        opacity: 1;
+    }
+    25% {
+        @include prefix('transform', 'rotate(90deg)');
+    }
+    49% {
+        @include prefix('transform', 'rotate(90deg)');
+        opacity: 0;
+    }
+    50% {
+        @include prefix('transform', 'rotate(270deg)');
+        opacity: 0;
+    }
+    100% {
+        @include prefix('transform', 'rotate(270deg)');
+        opacity: 1;
+    }
+}
+
+@include keyframes(fade-in) {
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+//Bug: Putting this class declaration ABOVE any @include at-query breaks the at-query.
+.fade-and-flip:before {
+    position: relative;
+    display: inline-block !important; //allows us to rotate the pseudo-element
+    @include animation('fade-and-flip 0.4s ease-out 1 forwards');
+}
+
+.fade-in:before {
+    position: relative;
+    display: inline-block !important; //allows us to rotate the pseudo-element
+    @include animation('fade-in 0.4s ease-in 1 forwards');
+}
+
+/*============================================================================
+  #Animation Layer
+==============================================================================*/
+
+$animation-sequence-curve: cubic-bezier(0.19, 1, 0.22, 1);
+
+%slide-up-animation-start {
+    opacity: 0;
+    transition: opacity 0.2s linear, transform 0s linear 1s;
+    @include prefix('transform', 'translateY(20px)');
+}
+
+%slide-up-animation-end {
+    opacity: 1;
+    transition: opacity 0.6s $animation-sequence-curve,
+        transform 1.5s $animation-sequence-curve;
+    @include prefix('transform', 'translateY(0)');
+}
+
+// Carousel
+.shopify-section.carousel .carousel-slide-text h1,
+.shopify-section.carousel .carousel-slide-text p,
+.shopify-section.carousel .carousel-slide-text .button-container {
+    @extend %slide-up-animation-start;
+}
+
+.shopify-section.carousel .visible .carousel-slide-text {
+    h1,
+    p,
+    .button-container {
+        @extend %slide-up-animation-end;
+        margin-left: 10%;
+    }
+
+    h1 {
+        transition-delay: 0.4s;
+    }
+    p {
+        transition-delay: 0.5s;
+    }
+    .button-container {
+        transition-delay: 0.6s;
+    }
+}
+
+// Featured Collections and Home Grid
+body:not(.ios) .shopify-section.featured-collections figcaption.can-animate,
+body:not(.ios) .shopify-section.index-grid-wrapper figcaption.can-animate {
+    h3,
+    .index-grid-item-text,
+    .btn {
+        @extend %slide-up-animation-start;
+    }
+}
+
+body:not(.ios)
+    .shopify-section.featured-collections.visible
+    figcaption.can-animate,
+body:not(.ios)
+    .shopify-section.index-grid-wrapper
+    .index-grid-item.visible
+    figcaption.can-animate {
+    opacity: 1;
+
+    h3,
+    .index-grid-item-text,
+    .btn {
+        @extend %slide-up-animation-end;
+    }
+
+    @for $i from 0 to 5 {
+        $delay: $i * 200;
+        &.animation-sequence-#{$i} {
+            h3 {
+                transition-delay: #{200 + $delay}ms;
+            }
+            .index-grid-item-text {
+                transition-delay: #{300 + $delay}ms;
+            }
+            .btn {
+                transition-delay: #{400 + $delay}ms;
+            }
+        }
+    }
+}
+
+// Video
+body:not(.ios)
+    .shopify-section.video-player
+    .feature-video-slide-text.can-animate {
+    h1,
+    p,
+    a {
+        @extend %slide-up-animation-start;
+    }
+}
+
+body:not(.ios)
+    .shopify-section.video-player.visible
+    .feature-video-slide-text.can-animate {
+    h1,
+    p,
+    a {
+        @extend %slide-up-animation-end;
+    }
+
+    h1 {
+        transition-delay: 400ms;
+    }
+    p {
+        transition-delay: 500ms;
+    }
+    a {
+        transition-delay: 600ms;
+    }
+}
+
+// Testimonials
+body:not(.ios) .shopify-section.testimonials {
+    .index-testimonials-items.can-animate > article {
+        opacity: 0;
+        transition: opacity 1s linear;
+    }
+
+    @for $i from 0 to 3 {
+        $delay: $i * 100;
+
+        &.visible
+            .index-testimonials-items.can-animate
+            > article.animation-sequence-#{$i} {
+            transition-delay: #{200 + $delay}ms;
+        }
+    }
+
+    &.visible .index-testimonials-items.can-animate > article {
+        opacity: 1;
+    }
+}
+
+// Features
+body:not(.ios) .shopify-section.features {
+    .index-features-items.can-animate > article {
+        opacity: 0;
+        transition: opacity 1s linear;
+    }
+
+    @for $i from 0 to 3 {
+        $delay: $i * 100;
+
+        &.visible
+            .index-features-items.can-animate
+            > article.animation-sequence-#{$i} {
+            transition-delay: #{200 + $delay}ms;
+        }
+    }
+
+    &.visible .index-features-items.can-animate > article {
+        opacity: 1;
+    }
+}

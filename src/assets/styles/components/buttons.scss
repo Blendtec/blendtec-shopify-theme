@@ -1,0 +1,100 @@
+button {
+    overflow: visible;
+  }
+  
+  button[disabled],
+  html input[disabled] {
+    &, a {
+      cursor: default;
+    }
+  }
+  
+  .btn,
+  .rte .btn {
+    display: inline-block;
+    padding: em(13px) em(21px) !important;
+    width: auto !important;
+    margin: 0;
+    border-radius: $radius !important;
+    line-height: 1.42 !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    cursor: pointer;
+    border: 1px solid transparent !important;
+    @include prefix('user-select', 'none');
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    @include transition(background-color 100ms ease);
+  
+    /*================ Set primary button colors - can override later ================*/
+    background-color: $colorPrimary;
+    color: $colorBtnPrimaryText;
+  
+    &:hover {
+      background-color: $colorBtnPrimaryHover;
+      color: $colorBtnPrimaryText;
+      transition: 0s;
+    }
+  
+    &:active,
+    &:focus {
+     background-color: $colorBtnPrimaryActive;
+     color: $colorBtnPrimaryText;
+    }
+  
+    &[disabled],
+    &.disabled {
+      cursor: default;
+      color: $disabledBorder;
+      background-color: $disabledGrey;
+    }
+  }
+  
+  .ps-widget {
+    margin-right:5px !important;
+    text-transform: uppercase;
+  }
+  
+  .grid__item > .ps-widget {
+    font-size: 1.125em !important;
+  }
+  
+  .button-child-margin5 button{
+    margin-bottom: 5px;
+  }
+  
+  .button-child-margin2 {
+    a {
+      margin-top:2px;
+    }
+    
+    button {
+      margin-top:2px;
+    }
+  }
+  
+  
+  .btn--small {
+    padding: 10px 15px;
+    font-size: em(14px);
+  }
+  
+  .btn--large {
+    padding: 13px 33px 13px 33px;
+    font-size: em(18px);
+  }
+  
+  .btn--full {
+    width: 100%;
+  }
+  
+  @include at-query($max, $small){
+    .small--btn--full {
+      width: 100%;
+  
+      & + & {margin-top: 1em;}
+    }
+  }

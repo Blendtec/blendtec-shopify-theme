@@ -17,7 +17,7 @@ var page = {
     el: {},
     init: function() {
         page.cacheSelectors();
-        header.init();
+        header.init(); 
         exitIntent.init();
         page.el.$window.on('widthChange', footer.init);
         page.el.$body.imagesLoaded(footer.init);

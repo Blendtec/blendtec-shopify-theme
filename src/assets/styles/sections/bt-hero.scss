@@ -1,0 +1,97 @@
+.bt-hero {
+    h1 {
+      font-family:'CooperHewitt-Heavy';
+      font-size: 80px;
+    }
+    h4 {
+      font-family:'CooperHewitt-Bold';
+      font-size:36px;
+    }
+    @media only screen and (max-width: $medium) {
+      h1 {
+        font-size: 60px;
+      }
+    }
+    .hero {
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 680px;
+    }
+    @media only screen and (min-width: 1550px) {
+      .hero {
+        height: 780px;
+      }
+    }
+    @media only screen and (min-width: 2000px) {
+      .hero {
+        height: 880px;
+      }
+    }
+  
+    .hero-info {
+      height: 680px;
+      background-color: #6f6f6f;
+    }
+  
+    .heavy {
+      margin-bottom: -30px;
+    }
+  
+    .header-text-wrapper {
+      padding-top: 15%;
+      padding-left: 10%;
+    }
+  
+  
+    .btn--left {
+      border-right: solid;
+      border-right-color: #ffffff;
+      border-right-width: 1px;
+      margin-right: -3px;
+    }
+  
+    .button-wrapper {
+      margin-top: 4%;
+      margin-left: 32%;
+    }
+  
+    .small--show {
+      .button-wrapper {
+        margin-top: 4%;
+        margin-left: 15%;
+      }
+  
+      .header-text-wrapper {
+        background-color: #58595b;
+        padding: 5px;
+      }
+  
+      H1 {
+        margin-bottom: -15px;
+        font-size: 30px;
+      }
+  
+    }
+    @media only screen and (max-width: $large) {
+      .hero {
+        height: 480px;
+      }
+      .header-text-wrapper {
+        padding-top: 25%;
+        padding-left: 10%;
+      }
+    }
+  
+    @media only screen and (max-width: $medium) {
+      .hero {
+        height: 480px;
+      }
+    }
+  
+    @media only screen and (max-width: $small) {
+      .hero {
+        height: 240px;
+      }
+    }
+  
+  }

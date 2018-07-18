@@ -1,0 +1,182 @@
+/*============================================================================
+  #Product Hover Effects
+==============================================================================*/
+
+@mixin productHoverTransition(){
+    @include transition(0.5s);
+  }
+  
+  $captionFontSize: rem(26px);
+  
+  .product_image {
+    position: relative;
+    overflow: hidden;
+  
+    img {
+      width: 100%;
+      @include productHoverTransition();
+    }
+  
+  
+    //Create an element-wide overlay
+    &:after {
+      @include productHoverTransition();
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: " ";
+    }
+  
+    &:hover:after {
+      background-color: rgba(255, 255, 255, 0.76);
+      z-index: 5;
+    }
+  
+    .product_image_caption {
+      @include productHoverTransition();
+  
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      z-index: 6;
+      color: $colorOverlayText;
+      padding: 0px em(10px) 0px em(10px);
+  
+      h2, .h2 {
+        // Move the element up by half it's size to totally centre it.
+        margin-top: calc(-#{em(26px)} / 2);
+      }
+  
+    }
+  
+  
+    &:hover {
+  
+      .product_image_caption {
+          opacity: 1;
+        }
+  
+  
+      img {
+        @include prefix('filter', 'blur(2px)');
+        @include prefix('transform', 'scale(1.03)');
+      }
+    }
+  }
+  
+  .grid__image--hover {
+    $captionSize : 70%;
+    position: relative;
+  
+    a {
+      color: $colorTextBody;
+    }
+  
+    .price {
+      font-size: 1em;
+      margin-top: -5px;
+    }
+  
+    .product_image_caption {
+      position: absolute;
+      width: $captionSize;
+      padding: 1.5em 1.5em 1.4em 1.5em;
+      opacity: 0;
+      color: $colorOverlayText;
+      background-color: $colorOverlayBackground;
+  
+      text-align: center;
+      transition: opacity 0.2s;
+      max-width: 325px;
+      margin: 0 auto;
+      display: block;
+      left: 50%;
+      bottom: 10%;
+  
+      @include transform('translateX(-50%)');
+  
+        h6, .h6 { color: $colorOverlayText; margin-bottom: 0; }
+  
+      .lt-ie9 & {
+      /* IE8+ - must be on one line, unfortunately */
+      -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1, M12=0, M21=0, M22=1, SizingMethod='auto expand')";
+  
+      /* IE6 and 7 */
+      // filter: progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0,M21=0,M22=1,SizingMethod='auto expand');
+      //Centering
+      margin-left: -77px;
+      margin-top: -3px;
+  
+      }
+  
+    }
+  
+    &:hover .product_image_caption {
+      opacity: 1;
+      transition: 0s;
+    }
+  
+  }
+  
+  .grid__image--caption {
+    @extend .grid__image--hover;
+  
+    .product_image_caption {
+      h6 { color: $colorTextBody;}
+      opacity: 1;
+      :not(.supports-touch) & {color: $colorTextBody;}
+  
+      background-color: $colorBody !important;
+      width: 100%;
+      max-width: none;
+      margin: 0 auto;
+      max-height: 50%;
+      display: block;
+      @include transform('none');
+      padding: 1.50em 1.5em 1.4em 1.5em; // 1.85
+      min-height: 85px; //105px
+      position: static;
+  
+    }
+  
+  }
+  
+  //For touch devices, we need to have the overlay
+  //be always visible as we can't rely on hover.
+  .supports-touch .product_image_caption, {
+    opacity: 1;
+    background-color: transparentize($colorOverlayBackground, 0.05);
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    max-height: 50%;
+    position: static;
+    display: block;
+    @include transform('none');
+    padding: 1.50em 1.5em 1.4em 1.5em; // 1.85
+    min-height: 85px; //105px
+  
+    h2, .h2 {margin-top: 0;}
+  }
+  
+  .focus_image {
+    &, img {@include productHoverTransition(); }
+  
+    &:hover {
+      img {
+        @include prefix('transform', 'scale(1.03)');
+      }
+    }
+  }
+  
+  .price {
+    @include productHoverTransition();
+    margin-bottom: 0;
+  }
+  
+  
