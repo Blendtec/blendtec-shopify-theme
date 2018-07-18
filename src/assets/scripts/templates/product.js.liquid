@@ -87,9 +87,9 @@ bt_product.changeJar = function (jar, text, id) {
 };
 
 bt_product.changeImage = function (id) {
-  var position = $('#' + id).attr('data-slick-index');
+  var position = $('#' + id).parent().parent().attr('data-slick-index');
   if (!position) {
-    position = 0;
+    position = 0; 
   }
   $('#ProductPhotoSlideshow').slick('slickGoTo', position, false);
 }

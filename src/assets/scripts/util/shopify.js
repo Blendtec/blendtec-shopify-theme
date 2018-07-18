@@ -15,11 +15,11 @@ var shopify = {
     el: {},
     cacheSelectors: function() {
         shopify.el.$document = $(document);
-        // TODO
+        // TODO 
         shopify.el.$carousel = $('.carousel');
     },
     init: function() {
-        shopify.cacheSelectors();
+        shopify.cacheSelectors(); 
         shopify.el.$document
             .on('shopify:section:load', shopify.handleSectionLoad)
             .on('shopify:section:select', shopify.handleSectionSelect)
@@ -33,9 +33,8 @@ var shopify = {
             .attr('class')
             .replace('shopify-section', '')
             .trim();
-
+   
         initScrollTriggers();
-
         switch (type) {
             case 'header':
                 header.init();
