@@ -1,185 +1,189 @@
 <!-- /templates/blog.liquid -->
-        {% paginate blog.articles by 12 %}
-        {% comment %}
-        This template is also used for listing out articles of a specific tag.
-        You can change layouts or styles by checking if current_tags is true.
-        {% endcomment %}
-<div class="grid--full template-blog">
-    {% if section.settings.header_img %}
-        <header class="section-header
+{% paginate blog.articles by 12 %}
+    <div class="grid--full template-blog">
+        {% if section.settings.header_img %}
+            <header class="section-header
             {% if section.settings.header_img %}
-                section-header--image"
-                style="background-image: url({{ section.settings.header_img | img_url: '1440x'}})"
+                section-header--image" style="background-image: url({{ section.settings.header_img | img_url: '1440x'}})"
             {% else %}
-               "
-            {% endif %}
-        >
-        <div class="text-center content-wrapper--horizontal section-header">
-            <div class="display-table-cell">
-                {% if current_tags %}
-                    <h1 style="color: {{ section.settings.color_text }}">{{ 'blogs.title' | t | link_to: blog.url }} &mdash; {{ current_tags.first }}
-                        <a href="{{blog.url}}.atom">
-                            <span aria-hidden="true" class='icon icon-rss'></span>
-                        </a>
-                    </h1>
-                {% else %}
-                    <h1 style="color: {{ section.settings.color_text }}">{{ blog.title }}
-                        <a href="{{blog.url}}.atom">
-                            <span aria-hidden="true" class='icon icon-rss'></span>
-                        </a>
-                    </h1>
-                {% endif %}
-            </div>
-        </div>
-        </header>
-    {% else %}
-        <div class="grid__item large--two-thirds push--large--one-sixth">
-            <div class="text-center content-wrapper--horizontal section-header">
-                <div class="display-table-cell">
-                    {% if current_tags %}
-                        <h1>{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}
-                            <a href="{{blog.url}}.atom">
-                                <span aria-hidden="true" class='icon icon-rss'></span>
-                            </a>
-                        </h1>
-                    {% else %}
-                        <h1>{{ blog.title }}
-                            <a href="{{blog.url}}.atom">
-                                <span aria-hidden="true" class='icon icon-rss'></span>
-                            </a>
-                        </h1>
-                    {% endif %}
-
-                </div>
-            </div>
-        </div>
-    {% endif %}
-    <div class="blog-filters-wrapper has-border">
-        {% assign theTagsToSearch = blog.all_tags %}
-        {% assign baseUrlTag = blog.title | downcase %}
-        {% include 'breadcrumb' %}
-        <div >{% include 'blog-tag' %}</div>
-    </div>
-    <div class="grid__item grid--full large--one-whole" data-grid-subpixel itemscope itemtype="http://schema.org/ItemList">
-        {% comment %}
-        Loop through each article in your blog. This is limited to what you set for pagination above.
-
-        For more info on article liquid tags:
-        - http://docs.shopify.com/themes/liquid-variables/article
-        {% endcomment %}
-        {% for article in blog.articles %}
-        <meta itemprop="position" content="{{forloop.index0}}" />
-        {% assign remainder = forloop.index0 | modulo:3 %}
-
-        {% if article.image.size >= 1 %}
-        {% assign src = article.image | img_url: 'master' %}
-        {% else %}
-        {% assign src = false %}
-        {% endif %}
-
-        <div class="grid__item large--one-third medium--one-half small--one-whole" data-grid-item itemprop="itemListElement" itemscope itemtype="http://schema.org/Article">
-            {% if src %}
-            <a itemprop="url" href="{{article.url}}">
-                <div class="featured-blog__image-wrapper">
-                    <div class='featured-blog__image'>
-                <span class="image-wrapper">
-                    <img src="{{ src }}" itemprop="image"/>
-                </span>
+                "
+            {% endif %}>
+                <div class="text-center content-wrapper--horizontal section-header">
+                    <div class="display-table-cell">
+                        {% if current_tags %}
+                            <h1 style="color: {{ section.settings.color_text }}">
+                                {{ 'blogs.title' | t | link_to: blog.url }} &mdash; {{ current_tags.first }}
+                                <a href="{{blog.url}}.atom">
+                                    <span aria-hidden="true" class='icon icon-rss'></span>
+                                </a>
+                            </h1>
+                        {% else %}
+                            <h1 style="color: {{ section.settings.color_text }}">
+                                {{ blog.title }}
+                                <a href="{{blog.url}}.atom">
+                                    <span aria-hidden="true" class='icon icon-rss'></span>
+                                </a>
+                            </h1>
+                        {% endif %}
                     </div>
                 </div>
-            </a>
-            {% endif %}
-            <div class="featured-blog__caption small--text-center text-wrapper">
-                {% if section.settings.show_date %}
-                <p class="meta-info" itemprop="datePublished">{{article.published_at | date: "%B %d, %Y"  }}</p>
-                {% endif %}
-                <a  itemprop="url" href="{{article.url}}"><h4 class='featured-blog__title' itemprop="name">{{article.title | upcase}}</h4></a>
-
-                {% if section.settings.show_blog_author %}
-                <p class="author" itemprop="author">{{'blogs.article.author_by_html' | t: author : article.author }}</p>
-                {% endif %}
-
-                <span class="excerpt">
-                  {{article.excerpt_or_content}}
-              </span>
-
-                <p class='blog-info'>
-                    <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t | upcase}}
-                        <i class="fa fa-angle-right"></i>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </p>
-
-                <ul class="inline-list blog-info">
-                    {% if blog.comments_enabled? and section.settings.show_comment_number %}
-                        <li>
-                            <a href="{{ article.url }}#Comments">
-                                {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
-                            </a>
-                        </li>
-                    {% endif %}
-                </ul>
-               {% if section.settings.show_tags? %}
-                    <span class="blog-info" itemprop="keywords">
-                        {% include 'tags-article' %}
-                    </span>
-                {% endif %}
+            </header>
+        {% else %}
+            <div class="grid__item large--two-thirds push--large--one-sixth">
+                <div class="text-center content-wrapper--horizontal section-header">
+                    <div class="display-table-cell">
+                        {% if current_tags %}
+                            <h1>
+                                {{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}
+                                <a href="{{blog.url}}.atom">
+                                    <span aria-hidden="true" class='icon icon-rss'></span>
+                                </a>
+                            </h1>
+                        {% else %}
+                            <h1>
+                                {{ blog.title }}
+                                <a href="{{blog.url}}.atom">
+                                    <span aria-hidden="true" class='icon icon-rss'></span>
+                                </a>
+                            </h1>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-        </div>
-        {% if remainder == 2 %}
-        {% comment %}We want to manually break rows after 3.{% endcomment %}
-        <div class="clearfix medium-down--hide"></div>
         {% endif %}
-        {% endfor %}
-        {% if paginate.pages > 1 %}
-        <hr>
-        <div class="pagination">
-            {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+        <div class="blog-filters-wrapper has-border">
+            {% assign theTagsToSearch = blog.all_tags %}
+            {% assign baseUrlTag = blog.title | downcase %}
+            {% include 'breadcrumb' %}
+            <div >{% include 'blog-tag' %}</div>
         </div>
-        {% endif %}
+        <div class="grid__item grid--full large--one-whole" data-grid-subpixel itemscope itemtype="http://schema.org/ItemList">
+            {% for article in blog.articles %}
+                {% assign remainder = forloop.index0 | modulo:3 %}
+
+                {% if article.image.size >= 1 %}
+                    {% assign src = article.image | img_url: 'master' %}
+                {% else %}
+                    {% assign src = false %}
+                {% endif %}
+
+                <div class="grid__item large--one-third medium--one-half small--one-whole"
+                    data-grid-item
+                    itemprop="itemListElement"
+                    itemscope
+                    itemtype="http://schema.org/Article">
+                    {% if src %}
+                        <a href="{{article.url}}">
+                            <div class="featured-blog__image-wrapper">
+                                <div class='featured-blog__image'>
+
+                                    <span class="image-wrapper">
+                                        <img src="{{ src }}" itemprop="image"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    {% endif %}
+                    <div class="featured-blog__caption small--text-center text-wrapper">
+                        <meta itemprop="keywords" content="{{article.tags | join: ', '}}" />
+                        <meta itemprop="author" content="{{article.author | remove:" *"}}" />
+                        <meta itemprop="dateModified" content="{{article.created_at}}" />
+                        <meta itemprop="headline" content="{{article.title}}" />
+                        <meta itemprop="position" content="{{forloop.index0}}" />
+                        {% if section.settings.show_date %}
+                            <p class="meta-info" itemprop="datePublished">{{article.published_at | date:"%B %d, %Y"  }}</p>
+                        {% endif %}
+                        <a itemprop="url" href="{{article.url}}"><h4 class="featured-blog__title" itemprop="name" >{{article.title | upcase}}</h4></a>
+
+                        {% if section.settings.show_blog_author %}
+                            <span itemtype="https://schema.org/Organization" itemscope="itemscope" itemprop="publisher">
+                                <meta itemprop="name" content="{{shop.name}}" />
+                                <meta itemprop="logo" content="//cdn.shopify.com/s/files/1/2182/0257/files/Blendtec-Logo-no-background_300x.png" />
+                                <p class="author">{{'blogs.article.author_by_html' | t: author : article.author }}</p>
+                            </span>
+                        {% endif %}
+
+                        <span class="excerpt">
+                            {{article.excerpt_or_content | truncate: 100}}
+                        </span>
+
+                        <p class='blog-info'>
+                            <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t | upcase}}
+                                <i class="fa fa-angle-right"></i>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </p>
+
+                        <ul class="inline-list blog-info">
+                            {% if blog.comments_enabled? and section.settings.show_comment_number %}
+                                <li>
+                                    <a href="{{ article.url }}#Comments">
+                                        {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                        {% if section.settings.show_tags? %}
+                            <span class="blog-info" itemprop="keywords">
+                                {% include 'tags-article' %}
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if remainder == 2 %}
+                    <div class="clearfix medium-down--hide"></div>
+                {% endif %}
+            {% endfor %}
+            {% if paginate.pages > 1 %}
+                <hr>
+                <div class="pagination">
+                    {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+                </div>
+            {% endif %}
+        </div>
     </div>
-</div>
 {% endpaginate %}
+
 
 {% schema %}
 {
-   "name": "Blog",
-    "settings": [
-    {
-        "type": "checkbox",
-        "id": "show_blog_author",
-        "default": true,
-        "label": "Show author"
-    },
-    {
-    "type": "checkbox",
-    "id": "show_tags",
-    "default": true,
-    "label": "Show tags"
-    },
-    {
-    "type": "checkbox",
-    "id": "show_comment_number",
-    "default": true,
-    "label": "Show Comment Preview"
-    },
-    {
-    "type": "checkbox",
-    "id": "show_date",
-    "default": true,
-    "label": "Show Publish Date"
-    },
-    {
-    "type": "image_picker",
-    "id": "header_img",
-    "label": "Header Image"
-    },
-    {
-    "type": "color",
-    "id": "color_text",
-    "default": "#FFFFFF",
-    "label": "Text color"
-    }
+        "name":"Blog",
+        "settings": [
+        {
+            "type":"checkbox",
+            "id":"show_blog_author",
+            "default": true,
+            "label":"Show author"
+        },
+        {
+            "type":"checkbox",
+            "id":"show_tags",
+            "default": true,
+            "label":"Show tags"
+        },
+        {
+            "type":"checkbox",
+            "id":"show_comment_number",
+            "default": true,
+            "label":"Show Comment Preview"
+        },
+        {
+            "type":"checkbox",
+            "id":"show_date",
+            "default": true,
+            "label":"Show Publish Date"
+        },
+        {
+            "type":"image_picker",
+            "id":"header_img",
+            "label":"Header Image"
+        },
+        {
+            "type":"color",
+            "id":"color_text",
+            "default":"#FFFFFF",
+            "label":"Text color"
+        }
     ]
 }
 {% endschema %}
