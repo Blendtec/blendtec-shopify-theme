@@ -1,0 +1,35 @@
+.cookie-wrapper {
+	position: fixed;
+    bottom: -200px;
+    display: none;
+    z-index: 100;
+    background-color: #171717;
+    width: 100%;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.1em;
+    padding-left: 30px;
+}
+
+@include at-query($max, $medium) {
+  .cookie-wrapper {
+    font-size: .9em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+.cookie-button {
+    font-size: .8em;
+    line-height: .8 !important;
+}
+
+.cookie-wrapper span {
+    padding-right: 20px;
+}
+
+.cookie-inner-wrapper {
+    max-width: 1200px;
+    margin: auto;
+}
