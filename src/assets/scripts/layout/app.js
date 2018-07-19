@@ -36,9 +36,7 @@ var page = {
         page.el.$document.trigger('bt:ready');
         page.el.$body.addClass('ready');
         page.mobileNavToggle();
-        if (!$.cookie('acceptCookies')) {
-            cookieNotification.init();
-        }
+        cookieNotification.init();
     },
     cacheSelectors: () => {
         page.el.$window = $(window);

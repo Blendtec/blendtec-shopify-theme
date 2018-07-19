@@ -1,6 +1,10 @@
 <div class="cookie-wrapper">
 	<div class="cookie-inner-wrapper">
-		<span>{{ 'general.cookies.cookie_message' | t }}</span>
+		<span class="cookie-text"><span>{{ 'general.cookies.cookie_message' | t }}</span> <a href="{{ settings.privacy_page_link }}">{{ 'general.cookies.learn_more' | t }}</a></span>
 		<button class="btn cookie-button">{{ 'general.cookies.accept' | t }}</button>
 	</div>
 </div>
+<script>
+	console.log('{{ settings | json }}');
+
+</script>
