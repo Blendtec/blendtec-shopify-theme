@@ -1,3 +1,16 @@
+<a name="1.15.0"></a>
+# [1.15.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.14.0...v1.15.0) (2018-07-19)
+
+
+### Bug Fixes
+
+* **Article:** Article meta fields ([86fcf7a](https://github.com/Blendtec/blendtec-shopify-theme/commit/86fcf7a))
+
+
+### Features
+
+* **cookie notification:** added the we use cookies banner ([#180](https://github.com/Blendtec/blendtec-shopify-theme/issues/180)) ([fb6cf28](https://github.com/Blendtec/blendtec-shopify-theme/commit/fb6cf28))
+
 <a name="1.14.0"></a>
 # [1.14.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.13.0...v1.14.0) (2018-07-18)
 
