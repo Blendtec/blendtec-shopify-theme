@@ -1,0 +1,21 @@
+.cookie-wrapper {
+    position: fixed;
+    bottom: -200px;
+    display: none;
+    z-index: 100;
+    background-color: $colorHeaderBackground;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    color: $colorBtnPrimaryText;
+}
+
+.cookie-text {
+    padding-right: 20px;
+}
+
+.cookie-inner-wrapper {
+    max-width: $siteWidth;
+    margin: auto;
+}

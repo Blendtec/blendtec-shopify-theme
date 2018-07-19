@@ -6,6 +6,7 @@ import randomImages from '../util/random-images';
 import accesibleNav from '../util/accessible-nav';
 import truncator from '../util/truncator';
 import responsiveVideos from '../util/responsive-videos';
+import cookieNotification from '../util/cookie-notification';
 
 import '../../styles/app.scss';
 
@@ -35,6 +36,7 @@ var page = {
         page.el.$document.trigger('bt:ready');
         page.el.$body.addClass('ready');
         page.mobileNavToggle();
+        cookieNotification.init();
     },
     cacheSelectors: () => {
         page.el.$window = $(window);

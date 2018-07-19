@@ -1521,6 +1521,18 @@
     ]
   },
   {
+    "name": "Privacy Page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "privacy_page_link",
+        "label": "Privacy Page",
+        "info": "The page for privacy policy",
+        "default": "/page/privacy-policy"
+      }
+    ]
+  },
+  {
     "name": "Social media",
     "settings": [
       {
