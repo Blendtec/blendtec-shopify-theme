@@ -6,6 +6,7 @@ import randomImages from '../util/random-images';
 import accesibleNav from '../util/accessible-nav';
 import truncator from '../util/truncator';
 import responsiveVideos from '../util/responsive-videos';
+import cookieNotification from '../util/cookie-notification';
 
 import '../../styles/app.scss';
 
@@ -35,7 +36,9 @@ var page = {
         page.el.$document.trigger('bt:ready');
         page.el.$body.addClass('ready');
         page.mobileNavToggle();
-        page.cookieController();
+        if (!$.cookie('acceptCookies')) {
+            cookieNotification.init();
+        }
     },
     cacheSelectors: () => {
         page.el.$window = $(window);
@@ -45,8 +48,6 @@ var page = {
         page.el.$navSubList = $('.mobile-nav__has-sublist');
         page.windowHeight = page.el.$window.height();
         page.windowWidth = page.el.$window.width();
-        page.el.$cookieWrapper = $('.cookie-wrapper');
-        page.el.$cookieButton = $('.cookie-button');
     },
     windowResizeHandler: () => {
         var width = page.el.$window.width();
@@ -58,24 +59,6 @@ var page = {
         if (page.windowHeight != height) {
             page.el.$window.trigger('heightChange');
             page.windowHeight = height;
-        }
-    },
-    cookieController: () => {
-        if (!$.cookie('acceptCookies')) {
-            page.el.$cookieWrapper.show();
-              page.el.$cookieWrapper.animate({
-                bottom: '0px',
-              }, 500, function() {
-              });
-
-              page.el.$cookieButton.on('click', function() {
-                  page.el.$cookieWrapper.animate({
-                    bottom: '-200px',
-                  }, 100, function() {
-                    page.el.$cookieWrapper.hide();
-                    $.cookie("acceptCookies", 1, {expires: 14});
-                  });
-              });
         }
     },
     ie8Resize: () => {
