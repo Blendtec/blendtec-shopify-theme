@@ -1,3 +1,11 @@
+<a name="1.16.0"></a>
+# [1.16.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.15.0...v1.16.0) (2018-07-30)
+
+
+### Features
+
+* **product-main-template:** Hide affirm, warranty, and/or pricespider according to metafield values ([b95d1cd](https://github.com/Blendtec/blendtec-shopify-theme/commit/b95d1cd))
+
 <a name="1.15.0"></a>
 # [1.15.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.14.0...v1.15.0) (2018-07-19)
 
