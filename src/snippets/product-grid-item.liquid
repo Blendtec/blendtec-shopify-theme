@@ -1,152 +1,144 @@
 <!-- /snippets/product-grid-item.liquid -->
-{% comment %}
-
-  This snippet is used to showcase each product during the loop,
-  'for product in collection.products' in collection.liquid.
-
-  A liquid variable (grid_item_width) is set just before the this
-  snippet is included to change the size of the container.
-  Once the variable is set on a page, all future instances of this
-  snippet will use that width. Overwrite the variable to adjust this.
-
-  Example
-    - assign grid_item_width = 'large--one-quarter medium--one-half'
-
-{% endcomment %}
-
-{% comment %}
-  Set the default grid_item_width if no variable is set
-{% endcomment %}
 {% unless grid_item_width %}
-  {% assign grid_item_width = 'large--one-third medium--one-third' %}
+    {% assign grid_item_width = 'large--one-third medium--one-third' %}
 {% endunless %}
 
-{% comment %}
-  Check if the product is on sale and set a variable to be used below.
-{% endcomment %}
 {% assign on_sale = false %}
 {% if product.compare_at_price > product.price %}
-  {% unless hide_on_sale_badge %}
-    {% assign on_sale = true %}
-  {% endunless %}
+    {% unless hide_on_sale_badge %}
+        {% assign on_sale = true %}
+    {% endunless %}
 {% endif %}
-{% comment %}
-  Check if the product is sold out and set a variable to be used below.
-{% endcomment %}
+
 {% assign sold_out = true %}
 {% if product.available %}
-  {% assign sold_out = false %}
+    {% assign sold_out = false %}
 {% endif %}
 
 {% unless hover_class %}
-  {% assign hover_class = 'product_image focus_image' %}
+    {% assign hover_class = 'product_image focus_image' %}
 {% endunless %}
 
 {% unless fit_image_class %}
-  {% assign fit_image_class = 'grid__image' %}
+    {% assign fit_image_class = 'grid__image' %}
 {% endunless %}
 
 {% assign variant_image = false %}
 {% if product.images.size > 1 %}
-  {% assign variant_image = product.images[1] %}
+    {% assign variant_image = product.images[1] %}
 {% endif %}
 <div class="grid__item {{ fit_image_class }} {{hover_class}} {{ grid_item_width }} {{product_class}} animation-sequence-{{ forloop.index0 }}">
-<a
-        id="link-{{product.id}}"
-      {% for variant in product.variants %}
-      link{{forloop.index}}="{{ product.url | within: collection }}?variant={{variant.id}}"
-      {% endfor %}
- href="{{ product.url | within: collection }}?variant={{product.variants[0].id}}" tabindex='0'>
-      <div class="">
-        {% if on_sale %}
-          <div class='sale-badge'>{{ 'products.product.on_sale' | t }}</div>
-        {% endif %}
-
-        {% if product.variants.size > 0 %}
-        <div productId="{{product.id}}" class=" slider single-item CollectionProductPhotoSlideshow" style="display:block !important;">
-          {% assign featured_image = product.featured_image %}
-
-          {% if product.variants.size > 0 %}
-            {% for variant in product.variants %}
-            {% if variant.featured_image.src %}
-            {% assign image = variant.featured_image %}
-                  {% assign variantIDs = image.variants | map: 'id' | join: '-' %}
-                  <div><img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' id="{{ variantIDs }}"></div>
-            {% else %}
-                   <div><img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' id="{{ variantIDs }}"></div>
-            {% endif %}
-            {% endfor %}
-          {% endif %}
-          {% if variants.size == 0 %}
-            {% assign image = product.featured_image %}
-                  <div><img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" data-variant-id="{{ variantIDs }}" class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' id="{{ variantIDs }}"></div>
-          {% endif %}
-          {% comment %}
-            Make sure the default, non-variant featured image is shown
-            if the user is accessing the URL from a variant URL.
-          {% endcomment %}
-
-          {% unless product.featured_image == featured_image %}
-            <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-unless='unlessupinhere' >
-          {% endunless %}
-        </div>
-        {% else %}
-          <img src="//cdn.shopify.com/s/images/themes/product-1.png" class="placeholder-image">
-        {% endif %}
-      </div>
-
-  <span class="product_image_caption">
-    <h6>{{ product.title }}<br>
-      <span
-        id="title-{{product.id}}"
-      {% for variant in product.variants %}
-      title{{forloop.index}}="{{variant.title}}"
-      {% endfor %}>
-      {% unless product.variants[0].title == 'Default Title' %}
-        {{product.variants[0].title}}
-      {% endunless %}
-      </span>
-    </h6>
+   <a id="link-{{product.id}}"
     {% for variant in product.variants %}
-      <div class="price-section-{{product.id}}" id="price-section-{{product.id}}-{{forloop.index}}" style="display:none;">
-        {% if variant.price > 0 %}
-          {% if on_sale %}
-            {% if variant.price_varies %}
-              {% assign sale_price = variant.price | money %}
-              <span class="price">{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
-            {% else %}
-                  <span class="price">{{ variant.price | money }}</span>
-            {% endif %}
-          {% else %}
-            {% if variant.price_varies %}
-              {% assign price = variant.price | money %}
-                  <span class="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
-            {% else %}
-                    {{ variant.price | money }}
-            {% endif %}
-          {% endif %}
-        {% endif %}
-
-        <strong
-          id="soldout-{{product.id}}"
-          {% for variant in product.variants %}
-            {% unless variant.available %}
-              style="display:none;"
-            {% endunless %}
-          soldout{{forloop.index}}={{variant.available}}
-          {% endfor %}>
-        </strong>
-        {% if on_sale %}
-          <s><span class="price">{{ variant.compare_at_price | money }}</span></s>
-        {% endif %}
-      </div>
+        link{{forloop.index}}="{{ product.url | within: collection }}?variant={{variant.id}}"
     {% endfor %}
-  </span>
-</a>
-{% unless product.metafields["global"]["nostars"] == 'true' %}
-  <div class="bv--inline-rating text-center">
-      {% include 'bv-inline-ratings' %}
-  </div>
-{% endunless %}
+    href="{{ product.url | within: collection }}?variant={{product.variants[0].id}}" tabindex='0'>
+        <div>
+            {% if on_sale %}
+                <div class='sale-badge'>{{ 'products.product.on_sale' | t }}</div>
+            {% endif %}
 
+            {% if product.variants.size > 0 %}
+                <div productId="{{product.id}}" class=" slider single-item CollectionProductPhotoSlideshow" style="display:block !important;">
+                    {% assign featured_image = product.featured_image %}
+                    {% if product.variants.size > 0 %}
+                        {% for variant in product.variants %}
+                            {% if variant.featured_image.src %}
+                                {% assign image = variant.featured_image %}
+                                {% assign variantIDs = image.variants | map: 'id' | join: '-' %}
+                                <div>
+                                    <img src="{{ image | img_url: 'master' }}" 
+                                         alt="{{ image.alt | escape }}" 
+                                         data-variant-id="{{ variantIDs }}" 
+                                         class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' 
+                                         id="{{ variantIDs }}">
+                                </div>
+                            {% else %}
+                                <div>
+                                    <img src="{{ featured_image | img_url: 'master' }}" 
+                                         alt="{{ featured_image.alt | escape }}" 
+                                         data-variant-id="{{ variantIDs }}" 
+                                         class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' 
+                                         id="{{ variantIDs }}">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if variants.size == 0 %}
+                        {% assign image = product.featured_image %}
+                        <div>
+                            <img src="{{ image | img_url: 'master' }}" 
+                                 alt="{{ image.alt | escape }}" 
+                                 data-variant-id="{{ variantIDs }}" 
+                                 class='attached-to-variant product-{{product.id}}-{{ forloop.index }}' 
+                                 id="{{ variantIDs }}">
+                        </div>
+                    {% endif %}
+                    {% comment %}
+                        Make sure the default, non-variant featured image is shown
+                        if the user is accessing the URL from a variant URL.
+                    {% endcomment %}
+
+                    {% unless product.featured_image == featured_image %}
+                        <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}" data-unless='unlessupinhere' >
+                    {% endunless %}
+                </div>
+            {% else %}
+                <img src="//cdn.shopify.com/s/images/themes/product-1.png" class="placeholder-image">
+            {% endif %}
+        </div>
+
+        <span class="product_image_caption">
+            <h6>{{ product.title }}<br>
+                <span id="title-{{product.id}}"
+                    {% for variant in product.variants %}
+                        title{{forloop.index}}="{{variant.title}}"
+                    {% endfor %}>
+                    {% unless product.variants[0].title == 'Default Title' %}
+                        {{product.variants[0].title}}
+                    {% endunless %}
+                </span>
+            </h6>
+            {% for variant in product.variants %}
+                <div class="price-section-{{product.id}}" id="price-section-{{product.id}}-{{forloop.index}}" style="display:none;">
+                    {% if variant.price > 0 %}
+                        {% if on_sale %}
+                            {% if variant.price_varies %}
+                                {% assign sale_price = variant.price | money %}
+                                <span class="price">{{ 'products.product.on_sale_from_html' | t: price: sale_price }}</span>
+                            {% else %}
+                                <span class="price">{{ variant.price | money }}</span>
+                            {% endif %}
+                        {% else %}
+                            {% if variant.price_varies %}
+                                {% assign price = variant.price | money %}
+                                <span class="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
+                            {% else %}
+                                {{ variant.price | money }}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+                    <strong id="soldout-{{product.id}}"
+                        {% for variant in product.variants %}
+                            {% unless variant.available %}
+                                style="display:none;"
+                            {% endunless %}
+                            soldout{{forloop.index}}={{variant.available}}
+                        {% endfor %}>
+                    </strong>
+                    {% if on_sale %}
+                        <s>
+                            <span class="price">{{ variant.compare_at_price | money }}</span>
+                        </s>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </span>
+    </a>
+    {% unless product.metafields["global"]["nostars"] == 'true' %}
+      <div class="bv--inline-rating text-center">
+          {% include 'bv-inline-ratings' %}
+      </div>
+    {% endunless %}
 </div>
