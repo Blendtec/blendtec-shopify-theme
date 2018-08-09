@@ -143,7 +143,10 @@
     {% endfor %}
   </span>
 </a>
-<div class="bv--inline-rating text-center">
-    {% include 'bv-inline-ratings' %}
-</div>
+{% unless product.metafields["global"]["nostars"] == 'true' %}
+  <div class="bv--inline-rating text-center">
+      {% include 'bv-inline-ratings' %}
+  </div>
+{% endunless %}
+
 </div>
