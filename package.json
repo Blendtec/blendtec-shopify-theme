@@ -9,7 +9,9 @@
     "watch:theme": "theme watch -d dist",
     "upload": "theme upload --force -d dist",
     "theme": "theme",
-    "lint": "slate-tools lint",
+    "lint:all": "slate-tools lint",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix ",
     "release": "semantic-release",
     "zip": "cd dist && tar -zcf ../blendtec-theme.tar.gz * ../CHANGELOG.md  && cd .."
   },
