@@ -33,6 +33,9 @@
 {% assign noquantity = false %}
 {% assign nojars = false %}
 {% assign nopackageincludes = false%}
+{% assign hidewarranty = false%}
+{% assign hideaffirm = false%}
+{% assign hidepricespider = false%}
 
 {% if product.metafields["global"]["nocompare"] == 'true' %}
   {% assign nocompare = true %}
@@ -80,6 +83,18 @@
 
 {% if product.metafields["global"]["nopackageincludes"] == 'true' %}
   {% assign nopackageincludes = true %}
+{% endif %}
+
+{% if product.metafields["global"]["hide_pricespider"] == 'true' %}
+  {% assign hidepricespider= true %}
+{% endif %}
+
+{% if product.metafields["global"]["hide_affirm"] == 'true' %}
+  {% assign hideaffirm = true %}
+{% endif %}
+
+{% if product.metafields["global"]["hide_warranty"] == 'true' %}
+  {% assign hidewarranty = true %}
 {% endif %}
 
 {% assign youtubeIds = product.metafields["global"]["youtubeVideos"] | split: "," %}
@@ -242,18 +257,22 @@
               </div>
             
               {% if section.settings.affirm_enable %}
-                <div class="affirm--wrapper">
-                  <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
-                </div>
+                {% unless hideaffirm %}
+                    <div class="affirm--wrapper">
+                        <p class="affirm-as-low-as" data-amount="{{current_variant.price}}"></p>
+                    </div>
+                {% endunless %}
               {% endif %}
             {% endunless %}
               <div class="grid">
+                {% unless hidewarranty %}
                   <div class="grid__item">
                     <div class="margin-15">
                       <h6 class="inline">{{'products.product.warranty' | t | capitalize}}:</h6> 
                       <p class="inline">{{ product.metafields["global"]["Warranty"] }}</p>
                     </div>
                   </div>
+                {% endunless %}
                 {% unless noquantity %}
                   <div class="grid__item small--one-whole medium--one-half large--one-half">
                     <h6>{{'products.product.quantity' | t | capitalize}}:</h6>
@@ -321,7 +340,9 @@
                   <div class="grid__item button-child-margin5">
                     {% assign addToCartText = 'products.product.add_to_cart' | t %}
                     {% include 'cta-submit-button' with text: addToCartText, id: 'AddToCart' %}
-                    {% include 'pricespider-button' %}
+                    {% unless hidepricespider %}
+                        {% include 'pricespider-button' %}
+                    {% endunless %}
                   </div>
                 {% endunless %}
                 </div>
@@ -343,7 +364,7 @@
             
                   <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
                   <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-                </div>
+              </div>
           
           </form>
         </div>
