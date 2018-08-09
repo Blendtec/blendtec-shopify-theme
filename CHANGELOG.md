@@ -1,3 +1,11 @@
+<a name="1.17.0"></a>
+# [1.17.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.16.0...v1.17.0) (2018-08-09)
+
+
+### Features
+
+* **remove stars:** removed stars from collection page if product doesn't show stars ([805f17d](https://github.com/Blendtec/blendtec-shopify-theme/commit/805f17d))
+
 <a name="1.16.0"></a>
 # [1.16.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.15.0...v1.16.0) (2018-07-30)
 
