@@ -7,6 +7,7 @@
     - http://schema.org/docs/gs.html
 
 {% endcomment %}
+{% include 'bold-product' with product, hide_action: 'break', output: 'none' %}
 {% assign on_sale = false %}
 {% if product.compare_at_price > product.price %}
   {% unless hide_on_sale_badge %}

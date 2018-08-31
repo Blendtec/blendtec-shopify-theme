@@ -53,6 +53,7 @@
           {% endif %}
           <div class="grid--full">
             {% for item in search.results %}
+            {% include 'bold-product' with item, hide_action: 'skip' %}
               {% include 'easylockdown_filter_search' with item %}
               {% comment %}
                 Check if the product is on sale and set a variable to be used below.
