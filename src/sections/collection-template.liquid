@@ -127,6 +127,7 @@
     <div class="grid--product-wrapper">
         <div class="grid--products grid--full">
             {% for product in collection.products %}
+                {% include 'bold-product' with product, hide_action: 'skip' %}
                 {% include 'easylockdown_filter_collection' with product %}
                 {% assign hover_class = section.settings.collection_style %}
                 {% assign fit_image_class = 'grid__item--variable-height grid__image' %}
