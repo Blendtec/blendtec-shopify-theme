@@ -30,7 +30,7 @@ const miniCssExtractPlugin = new MiniCssExtractPlugin({
   filename: 'assets/[name].bundle.css'
 });
 
-const optimizeCssAssetPlugin  = new OptimizeCssAssetsPlugin({})
+const optimizeCssAssetPlugin = new OptimizeCssAssetsPlugin({})
 
 module.exports = {
   entry: {
@@ -41,7 +41,7 @@ module.exports = {
     index: './src/assets/scripts/templates/index.js',
     registration: './src/assets/scripts/templates/registration.js',
     warranty: './src/assets/scripts/templates/warranty.js',
-    vendor: ['lodash', 'slick-carousel', 'imagesloaded'],
+    vendor: ['lodash', 'slick-carousel', 'imagesloaded', 'lazysizes'],
   },
   externals: {
     jquery: 'jQuery',

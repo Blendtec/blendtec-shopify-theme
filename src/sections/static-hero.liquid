@@ -1,0 +1,37 @@
+<div class="static-hero">
+
+{% assign imageWidths = "500 700 900 1100" %}
+{% assign imageClasses = "img-test testeragain" %}
+{% assign imageObject = section.settings.static_image_background %}
+{% assign imageBackground = true %}
+{% include 'lazy-load-image' %}
+
+</div>
+
+<style>
+	.img-test {
+		height:500px;
+		width:100%;
+	}
+</style>
+
+
+
+{% schema %}
+  {
+    "name": "static-hero",
+    "class": "static-hero",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "static_image_background",
+        "label": "Background Image",
+        "info": "Required. Should be at least 400 x 250px."
+      }
+    ],
+	  "presets": [{
+	    "name": "Static Hero",
+	    "category": "Text"
+	  }]
+  }
+{% endschema %}

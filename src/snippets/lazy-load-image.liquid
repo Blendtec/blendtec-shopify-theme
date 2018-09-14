@@ -1,0 +1,31 @@
+{% assign widthsArray = imageWidths | split: " " %}
+{% assign imageUrls = '' %}
+{% assign imageSmallest = '' %}
+{% assign backgroundImage = '' %}
+
+{% for width in widthsArray %}
+	{% assign addedX = width | append: 'x' %}
+	{% assign addedW = width | append: 'w, ' | prepend: ' ' %}
+	{% assign addedPX = width | append: 'px ' %}
+	{% assign tempImage = imageObject | img_url: addedX %}
+	{% if imageUrls.size == 0 %}
+		{% assign imageSmallest = tempImage %}
+	{% endif %}
+	{% assign backgroundImage = imageUrls %}
+	{% assign imageUrls = imageUrls | append: tempImage | append: addedW %}
+{% endfor %}
+
+{% if imageBackground == true %}
+<div class="lazyload {{imageClasses}}"
+  style="background-image: url('{{imageSmallest}}')"
+ data-bg="{{backgroundImage}}"
+ data-sizes="auto" ></div>
+{% else %}
+<img class="lazyload fade-in {{imageClasses}}"
+ src="{{imageSmallest}}"
+ data-srcset="{{imageUrls}}"
+ data-aspectratio="{{ image_object.aspect_ratio }}"
+ data-sizes="auto"
+ data-parent-fit="contain"
+ alt="{{ image_object.alt | escape }}" />
+{% endif %}

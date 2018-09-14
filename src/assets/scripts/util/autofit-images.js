@@ -20,7 +20,12 @@ var autoFitImages = {
     });
     this.loadImagesByWidth(autoFitImages.el.imageString, autoFitImages.el.backgroundString);
     this.loadIfNotVisible(0);    
-
+    document.addEventListener('lazybeforeunveil', function(e){
+        var bg = e.target.getAttribute('data-bg');
+        if(bg){
+            e.target.style.backgroundImage = 'url(' + bg + ')';
+        }
+    });
   },
   getClosestWidth: function(element, baseNode) {
       var elementWidth = element.offsetWidth;
