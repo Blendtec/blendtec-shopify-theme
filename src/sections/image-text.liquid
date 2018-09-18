@@ -1,0 +1,104 @@
+
+<div class="image-text">
+        <div class="grid" style="max-width:1200px;margin:auto;">
+            <div class="grid__item">
+                <div class="grid">
+                    {% if section.settings.text_orientation == 'two' %}
+                        <div class="grid__item large--one-half">
+                            {% assign imageWidths = "400 600 800 1000" %}
+                            {% assign imageObject = section.settings.section_image %}
+                            {% assign imageClasses = 'image-text-image' %}
+                            {% include 'lazy-load-image' %}
+                        </div>
+                    {% endif %}
+                            <div class="grid__item large--one-half">
+                                <div class="top-margin">
+                                    <h2 style="color:{{section.settings.header_color}}">{{section.settings.header}}</h2>
+                                    <hr class="accent">
+                                    <div style="color: {{section.settings.text_color}}">{{section.settings.text}}</div>
+                                    <div class="button-margin">
+                                        {% assign text = section.settings.button_text %}
+                                        {% assign url = section.settings.button_link %}
+                                        {% include 'cta-button' %}
+                                    </div>
+                                </div>
+                            </div>
+                    {% if section.settings.text_orientation == 'one' %}
+                        <div class="grid__item large--one-half">
+                            {% assign imageWidths = "400 600 800 1000" %}
+                            {% assign imageObject = section.settings.section_image %}
+                            {% assign imageClasses = 'image-text-image' %}
+                            {% include 'lazy-load-image' %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Image Text",
+    "class": "image-text-wrapper",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "section_image",
+        "label": "Section Image",
+        "info": "Required."
+      },
+    {
+    "type":      "radio",
+    "id":        "text_orientation",
+    "label":     "Text left vs Text right",
+    "options": [
+    { "value": "one", "label": "Text left" },
+    { "value": "two", "label": "Text right" }
+    ],
+    "default":   "two",
+    "info":      "This determines the orientation of this section"
+    },
+     {
+        "type":"text",
+        "id":"header",
+        "label":"Section 2 Headline",
+        "default":"BEST BLENDER"
+    },
+    {
+        "type": "color",
+        "id": "header_color",
+        "label": "Header Color",
+        "default": "#000000"
+    },
+    {
+        "type":"text",
+        "id":"text",
+        "label":"Text",
+        "default":"Every Blendtec is professional-grade with the most powerful motors in the industry, the longest warranty in the business, and fashion-forward industrial designs that look great on your countertop. Blendtec blenders are the most advanced blenders you can buy."
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+    },
+    {
+        "type":"text",
+        "id": "button_text",
+        "label":"Button Text",
+        "default":"Get Yours"
+    },
+    {
+       "type": "url",
+       "id": "button_link",
+       "label": "Button Link"
+    }
+    ],
+      "presets": [{
+        "name": "Image Text",
+        "category": "Text"
+      }]
+  }
+{% endschema %}
