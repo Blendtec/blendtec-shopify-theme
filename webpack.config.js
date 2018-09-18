@@ -31,7 +31,7 @@ const miniCssExtractPlugin = new MiniCssExtractPlugin({
 });
 
 const optimizeCssAssetPlugin = new OptimizeCssAssetsPlugin({})
-
+  
 module.exports = {
   entry: {
     app: './src/assets/scripts/layout/app.js',
@@ -51,10 +51,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'assets/[name].bundle.js',
   },
-
   plugins: [
     copyWebpackPluginConf,
-    miniCssExtractPlugin
+    miniCssExtractPlugin,
   ],
   module: {
     rules: [{

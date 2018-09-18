@@ -1,7 +1,6 @@
 {% assign widthsArray = imageWidths | split: " " %}
 {% assign imageUrls = '' %}
 {% assign imageSmallest = '' %}
-{% assign backgroundImage = '' %}
 
 {% for width in widthsArray %}
 	{% assign addedX = width | append: 'x' %}
@@ -11,16 +10,10 @@
 	{% if imageUrls.size == 0 %}
 		{% assign imageSmallest = tempImage %}
 	{% endif %}
-	{% assign backgroundImage = imageUrls %}
 	{% assign imageUrls = imageUrls | append: tempImage | append: addedW %}
 {% endfor %}
 
-{% if imageBackground == true %}
-<div class="lazyload {{imageClasses}}"
-  style="background-image: url('{{imageSmallest}}')"
- data-bg="{{backgroundImage}}"
- data-sizes="auto" ></div>
-{% else %}
+
 <img class="lazyload fade-in {{imageClasses}}"
  src="{{imageSmallest}}"
  data-srcset="{{imageUrls}}"
@@ -28,4 +21,3 @@
  data-sizes="auto"
  data-parent-fit="contain"
  alt="{{ image_object.alt | escape }}" />
-{% endif %}
