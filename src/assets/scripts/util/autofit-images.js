@@ -20,7 +20,6 @@ var autoFitImages = {
     });
     this.loadImagesByWidth(autoFitImages.el.imageString, autoFitImages.el.backgroundString);
     this.loadIfNotVisible(0);    
-
   },
   getClosestWidth: function(element, baseNode) {
       var elementWidth = element.offsetWidth;

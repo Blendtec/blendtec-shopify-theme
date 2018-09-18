@@ -1,0 +1,97 @@
+
+<div class="static-hero">
+        <div class="grid" style="max-width:1200px;margin:auto;">
+            <div class="grid__item">
+                <div class="grid">
+                	{% if section.settings.text_orientation == 'two' %}
+	                    <div class="grid__item large--one-half"></div>
+                    {% endif %}
+                            <div class="grid__item large--one-half">
+                                <div class="top-margin">
+                                    <h2 style="color:{{section.settings.header_color}}">{{section.settings.header}}</h2>
+                                    <hr class="accent">
+                                    <div style="color: {{section.settings.text_color}}">{{section.settings.text}}</div>
+                                    <div class="button-margin">
+                                    	{% assign text = section.settings.button_text %}
+                                    	{% assign url = section.settings.button_link %}
+                                    	{% include 'cta-button' %}
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+
+        </div>
+</div>
+
+{% assign backgroundImageWidths = "1100 1300 1500" %}
+{% assign backgroundClass = ".static-hero" %}
+{% assign imageObject = section.settings.static_image_background %}
+{% include 'lazy-load-background' %}
+
+
+
+{% schema %}
+  {
+    "name": "static hero",
+    "class": "static-hero-wrapper",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "static_image_background",
+        "label": "Background Image",
+        "info": "Required. Should be at least 1100 pixels wide."
+      },
+	{
+	"type":      "radio",
+	"id":        "text_orientation",
+	"label":     "Text left vs Text right",
+	"options": [
+	{ "value": "one", "label": "Text left" },
+	{ "value": "two", "label": "Text right" }
+	],
+	"default":   "two",
+	"info":      "This determines the orientation of this section"
+	},
+     {
+        "type":"text",
+        "id":"header",
+        "label":"Section 2 Headline",
+        "default":"DESIGNER 725"
+    },
+    {
+        "type": "color",
+        "id": "header_color",
+        "label": "Header Color",
+        "default": "#FFFFFF"
+    },
+    {
+        "type":"text",
+        "id":"text",
+        "label":"Text",
+        "default":"SmartBlend technology, multi-speed pulse, a 100-speed touch slider, and a sleek, show-stopping design make the Designer 725 the star of any kitchen."
+    },
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#FFFFFF"
+    },
+    {
+        "type":"text",
+        "id": "button_text",
+        "label":"Button Text",
+        "default":"Shop"
+    },
+    {
+       "type": "url",
+       "id": "button_link",
+       "label": "Button Link"
+    }
+    ],
+	  "presets": [{
+	    "name": "Static Hero",
+	    "category": "Text"
+	  }]
+  }
+{% endschema %}

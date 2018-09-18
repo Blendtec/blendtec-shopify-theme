@@ -1,0 +1,21 @@
+{% assign widthsArray = backgroundImageWidths | split: " " | reverse %}
+{% assign imageUrls = '' %}
+{% assign imageLargest = '' %}
+<style>
+{% for width in widthsArray %}
+	{% assign addedX = width | append: 'x' %}
+	{% assign tempImage = imageObject | img_url: addedX %}
+	{% assign addedPX = width | append: 'px ' %}
+	{% if forloop.first == true %}
+	    {{backgroundClass}} {
+	    	background-image: url('{{tempImage}}');
+	    }
+	{% else %}
+	@media only screen and (max-width: {{addedPX}}) {
+	    {{backgroundClass}} {
+	    	background-image: url('{{tempImage}}');
+	    }
+	}
+	{% endif %}
+{% endfor %}
+</style>
