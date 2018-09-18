@@ -37,6 +37,12 @@
         </div>
 </div>
 
+{% if section.settings.static_image_background %}
+    {% assign backgroundImageWidths = "1100 1300 1500" %}
+    {% assign backgroundClass = ".image-text" %}
+    {% assign imageObject = section.settings.static_image_background %}
+    {% include 'lazy-load-background' %}
+{% endif %}
 
 {% schema %}
   {
@@ -48,6 +54,12 @@
         "id": "section_image",
         "label": "Section Image",
         "info": "Required."
+      },
+      {
+        "type": "image_picker",
+        "id": "static_image_background",
+        "label": "Section Background Image",
+        "info": "Make at least 1100 px wide"
       },
     {
     "type":      "radio",
