@@ -1,0 +1,23 @@
+.image-text {
+	width:100%;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center;
+	h2 {
+		font-family: 'CooperHewitt-Bold';
+	}
+	.top-margin {
+		margin-top: 100px;
+	}
+	.button-margin {
+		margin-top: 25px;
+		margin-bottom:100px; 
+		a {
+	    	padding: 10px 35px !important;
+	    	font-family: 'CooperHewitt-Light' !important;
+		}
+	}
+	.image-text-image {
+		width:100%;
+	}
+}
