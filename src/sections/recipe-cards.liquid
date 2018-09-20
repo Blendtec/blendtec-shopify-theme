@@ -1,0 +1,57 @@
+
+<div class="recipe-cards">
+        <div class="grid">
+            <div class="grid__item large--two-thirds medium--two-thirds section-title">RECIPES</div>
+            <div class="grid__item large--one-third medium--one-third">
+                {% assign text = 'View More Recipes' %}
+                {% assign url = '/blogs/recipes' %}
+                {% include 'cta-button' %}
+            </div>
+        </div>
+        <div class="grid">
+            <div class="grid__item large--one-third medium--one-third">
+                {% assign art = articles[section.settings.featured_article] %}
+                {% assign cardClass = 'recipe-card-1' %}
+                {% include 'recipe-card' %}
+            </div>
+            <div class="grid__item large--one-third medium--one-third">
+                {% assign art = articles[section.settings.featured_article_2] %}
+                {% assign cardClass = 'recipe-card-2' %}
+                {% include 'recipe-card' %}
+            </div>
+            <div class="grid__item large--one-third medium--one-third">
+                {% assign art = articles[section.settings.featured_article_3] %}
+                {% assign cardClass = 'recipe-card-3' %}
+                {% include 'recipe-card' %}
+            </div>
+        </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Recipe Cards",
+    "class": "recipe-cards-wrapper",
+    "settings": [
+        {
+           "type": "article",
+           "id": "featured_article",
+           "label": "Choose a recipe you want to display."
+        },
+        {
+           "type": "article",
+           "id": "featured_article_2",
+           "label": "Choose a recipe you want to display."
+        },
+        {
+           "type": "article",
+           "id": "featured_article_3",
+           "label": "Choose a recipe you want to display."
+        }
+    ],
+      "presets": [{
+        "name": "Recipe Cards",
+        "category": "Text"
+      }]
+  }
+{% endschema %}

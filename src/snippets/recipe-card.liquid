@@ -1,0 +1,14 @@
+<div class="recipe-card {{ cardClass }}">
+	<div class="card-title">
+		{{art.title}}
+	</div>
+{% assign text = 'View Recipe' %}
+{% assign url = art.url %}
+{% include 'cta-button' %}
+</div>
+{% if art.image %}
+    {% assign backgroundImageWidths = "1100 1300 1500" %}
+    {% assign backgroundClass = "." | append: cardClass %}
+    {% assign imageObject = art.image %}
+    {% include 'lazy-load-background' %}
+{% endif %}
