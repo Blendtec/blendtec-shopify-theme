@@ -1,14 +1,15 @@
 
 <div class="recipe-cards">
         <div class="grid">
-            <div class="grid__item large--two-thirds medium--two-thirds section-title">RECIPES</div>
+            <div class="grid__item large--two-thirds medium--two-thirds section-title">{{section.settings.section_title}}</div>
             <div class="grid__item large--one-third medium--one-third">
-                {% assign text = 'View More Recipes' %}
-                {% assign url = '/blogs/recipes' %}
+                {% assign text = section.settings.more_recipes %}
+                {% assign url = section.settings.recipes_link %}
                 {% include 'cta-button' %}
             </div>
         </div>
         <div class="grid">
+        {% assign viewRecipes = section.settings.view_recipe %}
             <div class="grid__item large--one-third medium--one-third">
                 {% assign art = articles[section.settings.featured_article] %}
                 {% assign cardClass = 'recipe-card-1' %}
@@ -47,6 +48,29 @@
            "type": "article",
            "id": "featured_article_3",
            "label": "Choose a recipe you want to display."
+        },
+         {
+            "type":"text",
+            "id":"more_recipes",
+            "label":"Top Button",
+            "default":"View More Recipes"
+        },
+         {
+            "type":"text",
+            "id":"view_recipe",
+            "label":"View Recipe Button",
+            "default":"View Recipe"
+        },
+        {
+           "type": "url",
+           "id": "recipes_link",
+           "label": "More Recipes Link"
+        },
+         {
+            "type":"text",
+            "id":"section_title",
+            "label":"Section title",
+            "default":"RECIPES"
         }
     ],
       "presets": [{
