@@ -1,3 +1,11 @@
+<a name="1.17.1"></a>
+## [1.17.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.17.0...v1.17.1) (2018-08-15)
+
+
+### Bug Fixes
+
+* **pagination:** re-added pagination ([#183](https://github.com/Blendtec/blendtec-shopify-theme/issues/183)) ([766638c](https://github.com/Blendtec/blendtec-shopify-theme/commit/766638c))
+
 <a name="1.17.0"></a>
 # [1.17.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.16.0...v1.17.0) (2018-08-09)
 
