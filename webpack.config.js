@@ -30,8 +30,8 @@ const miniCssExtractPlugin = new MiniCssExtractPlugin({
   filename: 'assets/[name].bundle.css'
 });
 
-const optimizeCssAssetPlugin  = new OptimizeCssAssetsPlugin({})
-
+const optimizeCssAssetPlugin = new OptimizeCssAssetsPlugin({})
+  
 module.exports = {
   entry: {
     app: './src/assets/scripts/layout/app.js',
@@ -41,7 +41,7 @@ module.exports = {
     index: './src/assets/scripts/templates/index.js',
     registration: './src/assets/scripts/templates/registration.js',
     warranty: './src/assets/scripts/templates/warranty.js',
-    vendor: ['lodash', 'slick-carousel', 'imagesloaded'],
+    vendor: ['lodash', 'slick-carousel', 'imagesloaded', 'lazysizes'],
   },
   externals: {
     jquery: 'jQuery',
@@ -51,10 +51,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'assets/[name].bundle.js',
   },
-
   plugins: [
     copyWebpackPluginConf,
-    miniCssExtractPlugin
+    miniCssExtractPlugin,
   ],
   module: {
     rules: [{

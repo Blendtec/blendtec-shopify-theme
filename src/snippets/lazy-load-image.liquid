@@ -1,0 +1,23 @@
+{% assign widthsArray = imageWidths | split: " " %}
+{% assign imageUrls = '' %}
+{% assign imageSmallest = '' %}
+
+{% for width in widthsArray %}
+	{% assign addedX = width | append: 'x' %}
+	{% assign addedW = width | append: 'w, ' | prepend: ' ' %}
+	{% assign addedPX = width | append: 'px ' %}
+	{% assign tempImage = imageObject | img_url: addedX %}
+	{% if imageUrls.size == 0 %}
+		{% assign imageSmallest = tempImage %}
+	{% endif %}
+	{% assign imageUrls = imageUrls | append: tempImage | append: addedW %}
+{% endfor %}
+
+
+<img class="lazyload fade-in {{imageClasses}}"
+ src="{{imageSmallest}}"
+ data-srcset="{{imageUrls}}"
+ data-aspectratio="{{ image_object.aspect_ratio }}"
+ data-sizes="auto"
+ data-parent-fit="contain"
+ alt="{{ image_object.alt | escape }}" />
