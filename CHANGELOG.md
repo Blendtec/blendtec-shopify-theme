@@ -1,3 +1,13 @@
+<a name="1.18.0"></a>
+# [1.18.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.17.1...v1.18.0) (2018-09-21)
+
+
+### Features
+
+* **Bold Product-Discount:** duplicate and hide discounted items setup ([#184](https://github.com/Blendtec/blendtec-shopify-theme/issues/184)) ([d96c233](https://github.com/Blendtec/blendtec-shopify-theme/commit/d96c233))
+* **static hero:** static hero section ([#185](https://github.com/Blendtec/blendtec-shopify-theme/issues/185)) ([d6e2424](https://github.com/Blendtec/blendtec-shopify-theme/commit/d6e2424))
+* **static recipe section:** featured recipes ([f64f972](https://github.com/Blendtec/blendtec-shopify-theme/commit/f64f972)), closes [#186](https://github.com/Blendtec/blendtec-shopify-theme/issues/186)
+
 <a name="1.17.1"></a>
 ## [1.17.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.17.0...v1.17.1) (2018-08-15)
 
