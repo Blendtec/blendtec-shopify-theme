@@ -1,0 +1,17 @@
+.s4com-helpcenter {
+	margin: auto;
+	max-width:$xxlarge;
+	.s4com-articles a.s4com-active + .s4com-article-body {
+	    opacity: 1;
+	    max-height: 1000px;
+	    visibility: visible;
+	}
+
+	.s4com-articles a + .s4com-article-body {
+	    opacity: 0;
+	    visibility: hidden;
+	    max-height: 0;
+	    display: block !important;
+	    transition: all 0.35s ease-in-out;
+	}
+}
