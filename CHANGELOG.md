@@ -1,3 +1,11 @@
+<a name="1.19.0"></a>
+# [1.19.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.18.0...v1.19.0) (2018-09-27)
+
+
+### Features
+
+* **faq:** centered the faq and added a css transition to when the question is clicked on ([#189](https://github.com/Blendtec/blendtec-shopify-theme/issues/189)) ([560602a](https://github.com/Blendtec/blendtec-shopify-theme/commit/560602a))
+
 <a name="1.18.0"></a>
 # [1.18.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.17.1...v1.18.0) (2018-09-21)
 
