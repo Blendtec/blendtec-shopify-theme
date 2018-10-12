@@ -1,3 +1,11 @@
+<a name="1.19.1"></a>
+## [1.19.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.19.0...v1.19.1) (2018-10-12)
+
+
+### Bug Fixes
+
+* **image alt:** added alt to image in recipe ([7e859a6](https://github.com/Blendtec/blendtec-shopify-theme/commit/7e859a6))
+
 <a name="1.19.0"></a>
 # [1.19.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.18.0...v1.19.0) (2018-09-27)
 
