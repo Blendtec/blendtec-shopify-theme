@@ -7,7 +7,7 @@
     "build": "webpack",
     "watch:webpack": "webpack --watch",
     "watch:theme": "theme watch -d dist",
-    "upload": "theme upload --force -d dist",
+    "upload": "theme deploy -d dist",
     "theme": "theme",
     "lint:all": "slate-tools lint",
     "lint": "eslint",
