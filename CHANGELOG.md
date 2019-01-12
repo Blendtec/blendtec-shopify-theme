@@ -1,3 +1,17 @@
+<a name="1.19.2"></a>
+## [1.19.2](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.19.1...v1.19.2) (2019-01-12)
+
+
+### Bug Fixes
+
+* **package:** update upload command to use new deploy command ([2896eec](https://github.com/Blendtec/blendtec-shopify-theme/commit/2896eec))
+* **search:** search close bug ([722bde3](https://github.com/Blendtec/blendtec-shopify-theme/commit/722bde3))
+
+
+### Reverts
+
+* **cookie-notification:** remove cookie banner ([fafd7ce](https://github.com/Blendtec/blendtec-shopify-theme/commit/fafd7ce))
+
 <a name="1.19.1"></a>
 ## [1.19.1](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.19.0...v1.19.1) (2018-10-12)
 
