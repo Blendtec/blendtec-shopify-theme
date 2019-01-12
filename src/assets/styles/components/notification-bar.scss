@@ -19,14 +19,9 @@
     font-weight: 800;
   }
   
-  //While this class effects the header, conceptually it only exists
-  //because of the notification bar.
   .offset-by-notification-bar {
     position: fixed;
     top: $notificationBarHeight !important;
-    //important is necessary because this class by itself
-    //doesn't have enough specificity, but we want it to
-    //overwrite complicated `top` rules for the stickyheader
   }
   
   .header-message-currency,
