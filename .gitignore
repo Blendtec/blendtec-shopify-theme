@@ -1,5 +1,6 @@
 #Shopify
 theme.lock
+config.yml
 snippets/easylockdown_filter_collection.liquid
 snippets/easylockdown_filter_collections.liquid
 snippets/easylockdown_filter_search.liquid

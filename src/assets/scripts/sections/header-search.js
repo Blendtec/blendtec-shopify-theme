@@ -39,7 +39,7 @@ var search = {
 
         if (!Platform.isOldIE()) {
             search.el.$open.on('click', search.drawerOpenHandler);
-            search.el.$close.on('click', search.drawerCloseHandler.bind);
+            search.el.$close.on('click', search.drawerCloseHandler.bind(this));
             search.el.$searchBar.on('click', events.kill);
             search.el.$document.on('click', search.closeOnOutsideClick);
             search.el.$window.on('keydown', search.keyboardHandlers); 

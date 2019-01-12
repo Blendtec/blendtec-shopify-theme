@@ -28,12 +28,12 @@ after_success:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: npm run release && theme upload -d dist -p $PROD_PASSWORD -s $PROD_SHOP -t $PROD_THEME_ID --no-update-notifier --ignores './themekit_ignores'
+  script: npm run release && theme deploy -n -d dist -p $PROD_PASSWORD -s $PROD_SHOP -t $PROD_THEME_ID --no-update-notifier --ignores './themekit_ignores'
   on:
     branch: master
 
 - provider: script
   skip_cleanup: true
-  script:  theme upload -d dist -p $STAGE_PASSWORD -s $STAGE_SHOP -t $STAGE_THEME_ID --no-update-notifier --ignores './themekit_ignores'
+  script:  theme deploy -n -d dist -p $STAGE_PASSWORD -s $STAGE_SHOP -t $STAGE_THEME_ID --no-update-notifier --ignores './themekit_ignores'
   on:
     branch: develop
