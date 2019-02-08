@@ -141,14 +141,7 @@
           </div>
         {% endif %}
 
-        <div class="grid__item full-height large--one-third medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control search-open">
-          <a class="icon-fallback-text site-nav__link table--cell-center" href="/search" aria-controls="HeaderSearchBar" aria-expanded="false"  tabindex="0">
-            <span class="icon search-svg" tabindex="-1">
-              <svg><use xlink:href="#icon-search"></use></svg>
-            </span>
-            <span class="fallback-text" tabindex="-1">{{ 'layout.navigation.search' | t }}</span>
-          </a>
-        </div>
+        
         <div class="grid__item full-height large--one-third medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control  js-drawer-open-CartDrawer">
           {% comment %}
             Show number of items in the cart and total cost in the /cart link
@@ -165,6 +158,14 @@
               <svg class="icon-close"><use xlink:href="#icon-close"></use></svg>
             </span>
             <span tabindex="-1" class="fallback-text">{{ 'layout.navigation.cart' | t }}</span>
+          </a>
+        </div>
+        <div class="grid__item full-height large--one-third medium--one-sixth push--medium--thirteen-fiftieths small--one-third header-control search-open">
+          <a class="icon-fallback-text site-nav__link table--cell-center" href="/search" aria-controls="HeaderSearchBar" aria-expanded="false"  tabindex="0">
+            <span class="icon search-svg" tabindex="-1">
+              <svg><use xlink:href="#icon-search"></use></svg>
+            </span>
+            <span class="fallback-text" tabindex="-1">{{ 'layout.navigation.search' | t }}</span>
           </a>
         </div>
       </div>
