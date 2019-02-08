@@ -95,14 +95,6 @@
         </div>
 
 
-        <div class="grid__item full-height large--one-twelfth medium--one-sixth push--medium--one-quarter small--one-third header-control search-open">
-          <a class="icon-fallback-text site-nav__link table--cell-center center-aligned" href="/search" aria-controls="HeaderSearchBar" aria-expanded="false"  tabindex="0">
-            <span class="icon search-svg" tabindex="-1">
-              <svg><use xlink:href="#icon-search"></use></svg>
-            </span>
-            <span class="fallback-text" tabindex="-1">{{ 'layout.navigation.search' | t }}</span>
-          </a>
-        </div>
 
         <div class="grid__item full-height large--five-twelfths medium-down--hide secondary-navbar questions-margin" style="background-color:transparent;margin-top:24px;">
             <span class="fallback-text" tabindex="-1">{{section.settings.questions_text }}<a href="tel:{{section.settings.questions_text_number}}">{{section.settings.questions_text_number}}</a></span>
@@ -147,6 +139,15 @@
               <svg class="icon-close"><use xlink:href="#icon-close"></use></svg>
             </span>
             <span tabindex="-1" class="fallback-text">{{ 'layout.navigation.cart' | t }}</span>
+          </a>
+        </div>
+
+        <div class="grid__item full-height large--one-twelfth medium--one-sixth push--medium--one-quarter small--one-third header-control search-open">
+          <a class="icon-fallback-text site-nav__link table--cell-center center-aligned" href="/search" aria-controls="HeaderSearchBar" aria-expanded="false"  tabindex="0">
+            <span class="icon search-svg" tabindex="-1">
+              <svg><use xlink:href="#icon-search"></use></svg>
+            </span>
+            <span class="fallback-text" tabindex="-1">{{ 'layout.navigation.search' | t }}</span>
           </a>
         </div>
       </div>
