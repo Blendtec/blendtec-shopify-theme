@@ -1,3 +1,12 @@
+<a name="1.20.0"></a>
+# [1.20.0](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.19.2...v1.20.0) (2019-02-08)
+
+
+### Features
+
+* **bt-header:** Really moving search ([7487160](https://github.com/Blendtec/blendtec-shopify-theme/commit/7487160))
+* **header:** move search after cart ([e26d5ca](https://github.com/Blendtec/blendtec-shopify-theme/commit/e26d5ca))
+
 <a name="1.19.2"></a>
 ## [1.19.2](https://github.com/Blendtec/blendtec-shopify-theme/compare/v1.19.1...v1.19.2) (2019-01-12)
 
